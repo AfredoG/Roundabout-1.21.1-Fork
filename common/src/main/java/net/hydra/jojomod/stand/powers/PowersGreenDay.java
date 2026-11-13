@@ -1119,7 +1119,7 @@ public class PowersGreenDay extends NewPunchingStand {
     }
 
     public boolean isWideSkin() {
-        boolean isWide = ((AbstractClientPlayer) this.self).getModelName().equals("default");
+        boolean isWide = ((AbstractClientPlayer) this.self).getSkin().model().id().equals("default");
 
         IPlayerEntity pl = ((IPlayerEntity) self);
         ItemStack visage = pl.roundabout$getMaskSlot();

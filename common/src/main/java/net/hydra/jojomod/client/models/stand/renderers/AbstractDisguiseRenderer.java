@@ -111,7 +111,7 @@ public abstract class AbstractDisguiseRenderer extends LivingEntityRenderer<Livi
 
     @Override
     public ResourceLocation getTextureLocation(LivingEntity entity) {
-        return currentSkin != null ? currentSkin.texture() : DefaultPlayerSkin.getDefaultSkin();
+        return currentSkin != null ? currentSkin.texture() : DefaultPlayerSkin.getDefaultTexture();
     }
 
     private void setupModelArmPoses(LivingEntity entity, PlayerModel<LivingEntity> model) {

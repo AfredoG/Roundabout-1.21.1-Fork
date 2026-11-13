@@ -114,9 +114,9 @@ public class FirstPersonArmsSlimModel<T extends Entity> extends PsuedoHierarchic
 
     public static ResourceLocation getTextureLocation(Entity entity) {
         if (entity instanceof Player player) {
-            return ((AbstractClientPlayer) player).getSkinTextureLocation();
+            return ((AbstractClientPlayer) player).getSkin().texture();
         }
-        return DefaultPlayerSkin.getDefaultSkin();
+        return DefaultPlayerSkin.getDefaultTexture();
     }
 
     public void render(Entity context, float partialTicks, PoseStack poseStack, MultiBufferSource bufferSource, int light, float r, float g, float b, float heyFull) {

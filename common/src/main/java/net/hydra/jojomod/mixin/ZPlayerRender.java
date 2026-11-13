@@ -546,7 +546,7 @@ public abstract class ZPlayerRender<T extends LivingEntity, M extends EntityMode
                 return;
             }
             $$4.xRot = 0.0F;
-            RenderType tl = RenderType.entityTranslucentCull(acl.getSkinTextureLocation());
+            RenderType tl = RenderType.entityTranslucentCull(acl.getSkin().texture());
             if (ClientUtil.hasChangedArms(acl)){
                 tl = RenderType.entityTranslucent(ClientUtil.getChangedArmTexture(acl));
             }
@@ -654,7 +654,7 @@ public abstract class ZPlayerRender<T extends LivingEntity, M extends EntityMode
                 $$6.leftLeg.translateAndRotate(stack);
                 rdbt$copyTo($$6.leftLeg, ModStrayModels.LeftHeel.root());
                 ModStrayModels.LeftHeel.render(acl, ClientUtil.getDelta(), stack, buffer, integer,
-                        1, 1, 1, 1, acl.getSkinTextureLocation());
+                        1, 1, 1, 1, acl.getSkin().texture());
                 if (muscle > -1) {
                         roundabout$renderRightLegExtraModel(stack, buffer, integer, acl, scale, scale, scale, delta,
                                 r, g, b, StandIcons.MUSCLE, 0.01F, 0, 0, alpha);
@@ -664,7 +664,7 @@ public abstract class ZPlayerRender<T extends LivingEntity, M extends EntityMode
                 stack.pushPose();
                 $$6.rightLeg.translateAndRotate(stack);
                 ModStrayModels.RightHeel.render(acl, ClientUtil.getDelta(), stack, buffer, integer,
-                        1, 1, 1, 1, acl.getSkinTextureLocation());
+                        1, 1, 1, 1, acl.getSkin().texture());
                 if (muscle > -1) {
                     roundabout$renderLeftLegExtraModel(stack, buffer, integer, acl, scale, scale, scale, delta,
                             r, g, b, StandIcons.MUSCLE, 0.01F, 0, 0, alpha);

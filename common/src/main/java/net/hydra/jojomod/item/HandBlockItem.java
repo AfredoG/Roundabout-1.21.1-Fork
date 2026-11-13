@@ -45,9 +45,9 @@ public class HandBlockItem extends BlockItem {
     }
 
     public Component getName(ItemStack p_42977_) {
-        if (p_42977_.is(ModItems.HAND) && p_42977_.hasTag()) {
+        if (p_42977_.is(ModItems.HAND) && net.hydra.jojomod.util.ItemData.has(p_42977_)) {
             String s = null;
-            CompoundTag compoundtag = p_42977_.getTag();
+            CompoundTag compoundtag = net.hydra.jojomod.util.ItemData.copy(p_42977_);
             if (compoundtag.contains("HandOwner", 8)) {
                 s = compoundtag.getString("HandOwner");
             } else if (compoundtag.contains("HandOwner", 10)) {
@@ -65,14 +65,6 @@ public class HandBlockItem extends BlockItem {
         return super.getName(p_42977_);
     }
 
-    public void verifyTagAfterLoad(CompoundTag p_151179_) {
-        super.verifyTagAfterLoad(p_151179_);
-        if (p_151179_.contains("HandOwner", 8) && !Util.isBlank(p_151179_.getString("HandOwner"))) {
-            GameProfile gameprofile = new GameProfile((UUID)null, p_151179_.getString("HandOwner"));
-            SkullBlockEntity.updateGameprofile(gameprofile, (p_151177_) -> {
-                p_151179_.put("HandOwner", NbtUtils.writeGameProfile(new CompoundTag(), p_151177_));
-            });
-        }
-    }
-
+    // HandOwner remains readable as either a string or a legacy compound above.
+    // The skin is stored separately in HandProfile; no asynchronous mutation of a detached tag is needed.
 }

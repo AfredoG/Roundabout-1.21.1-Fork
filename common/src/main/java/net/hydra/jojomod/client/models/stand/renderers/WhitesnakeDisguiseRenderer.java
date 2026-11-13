@@ -33,8 +33,6 @@ public final class WhitesnakeDisguiseRenderer
         extends LivingEntityRenderer<WhitesnakeEntity, PlayerModel<WhitesnakeEntity>> {
     private final PlayerModel<WhitesnakeEntity> regularModel;
     private final PlayerModel<WhitesnakeEntity> slimModel;
-    private final Map<UUID, SkinData> skins = new ConcurrentHashMap<>();
-    private final Set<UUID> requestedSkins = ConcurrentHashMap.newKeySet();
 
     public WhitesnakeDisguiseRenderer(EntityRendererProvider.Context context) {
         super(context, new PlayerModel<>(context.bakeLayer(ModelLayers.PLAYER), false), 0.5F);
@@ -100,19 +98,8 @@ public final class WhitesnakeDisguiseRenderer
     }
 
     private SkinData getSkin(WhitesnakeEntity entity) {
-        GameProfile profile = entity.getDisguiseProfile();
-        if (profile == null) return new SkinData(DefaultPlayerSkin.getDefaultSkin(), false);
-        UUID id = profile.getId();
-        SkinData current = skins.computeIfAbsent(id, ignored -> new SkinData(
-                DefaultPlayerSkin.getDefaultSkin(id), "slim".equals(DefaultPlayerSkin.getSkinModelName(id))));
-        if (requestedSkins.add(id)) {
-            Minecraft.getInstance().getSkinManager().registerSkins(profile, (type, location, texture) -> {
-                if (type == MinecraftProfileTexture.Type.SKIN) {
-                    skins.put(id, new SkinData(location, "slim".equals(texture.getMetadata("model"))));
-                }
-            }, false);
-        }
-        return current;
+        var skin = net.hydra.jojomod.util.SkinUtil.getSkin(entity.getDisguiseProfile());
+        return new SkinData(skin.texture(), skin.slim());
     }
 
     private static ItemStack heldItem(WhitesnakeEntity entity) {

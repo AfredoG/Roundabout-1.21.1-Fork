@@ -1,7 +1,6 @@
 package net.hydra.jojomod.event.powers.whitesnake;
 
 import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.Agent;
 import com.mojang.authlib.ProfileLookupCallback;
 import net.hydra.jojomod.entity.stand.StandEntity;
 import net.hydra.jojomod.event.index.PowerIndex;
@@ -58,7 +57,7 @@ public final class WhitesnakeDisguiseService {
 
     private static Optional<GameProfile> findProfile(MinecraftServer server, String name) {
         AtomicReference<GameProfile> result = new AtomicReference<>();
-        server.getProfileRepository().findProfilesByNames(new String[]{name}, Agent.MINECRAFT,
+        server.getProfileRepository().findProfilesByNames(new String[]{name},
                 new ProfileLookupCallback() {
                     @Override
                     public void onProfileLookupSucceeded(GameProfile profile) {
@@ -66,7 +65,7 @@ public final class WhitesnakeDisguiseService {
                     }
 
                     @Override
-                    public void onProfileLookupFailed(GameProfile profile, Exception exception) {
+                    public void onProfileLookupFailed(String name, Exception exception) {
                     }
                 });
         return Optional.ofNullable(result.get());

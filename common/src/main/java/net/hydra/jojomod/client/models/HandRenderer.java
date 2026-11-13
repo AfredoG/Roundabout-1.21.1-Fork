@@ -196,10 +196,9 @@ public class HandRenderer <T extends BlockEntity> implements BlockEntityRenderer
 
 
         if ($$1 != null) {
-            Minecraft $$3 = Minecraft.getInstance();
-            Map<MinecraftProfileTexture.Type, MinecraftProfileTexture> $$4 = $$3.getSkinManager().getInsecureSkinInformation($$1);
-
-            return $$4.containsKey(MinecraftProfileTexture.Type.SKIN) ? RenderType.entityTranslucent($$3.getSkinManager().registerTexture((MinecraftProfileTexture)$$4.get(MinecraftProfileTexture.Type.SKIN), MinecraftProfileTexture.Type.SKIN)) : RenderType.entityCutoutNoCull(DefaultPlayerSkin.getDefaultSkin(UUIDUtil.getOrCreatePlayerUUID($$1)));
+            var skin = SkinUtil.getPlayerSkin($$1);
+            return skin.textureUrl() != null ? RenderType.entityTranslucent(skin.texture())
+                    : RenderType.entityCutoutNoCull(skin.texture());
         } else {
             return RenderType.entityCutoutNoCullZOffset(WIDE_BASE);
         }
@@ -217,7 +216,7 @@ public class HandRenderer <T extends BlockEntity> implements BlockEntityRenderer
         if (uuid == null){
             return false;
         }
-        if (DefaultPlayerSkin.getDefaultSkin(uuid).getPath().contains("wide")){
+        if (DefaultPlayerSkin.get(uuid).model() == net.minecraft.client.resources.PlayerSkin.Model.WIDE){
             return false;
         } else {
             return true;

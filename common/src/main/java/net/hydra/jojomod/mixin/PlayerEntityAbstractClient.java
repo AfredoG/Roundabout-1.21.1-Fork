@@ -36,8 +36,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public abstract class PlayerEntityAbstractClient extends Player implements IPlayerEntityAbstractClient {
 
 
-    @Shadow
-    public abstract ResourceLocation getSkinTextureLocation();
 
     @Shadow
     protected abstract @Nullable PlayerInfo getPlayerInfo();
@@ -118,13 +116,13 @@ public abstract class PlayerEntityAbstractClient extends Player implements IPlay
     public ItemStack roundabout$getLastVisage(){
         return roundabout$lastVisage;
     }
-    @Inject(method = "getSkinTextureLocation",
-            at = @At(value = "HEAD"), cancellable = true)
-    public void roundabout$getTextureLocation(CallbackInfoReturnable<ResourceLocation> cir) {
+    @Inject(method = "getSkin()Lnet/minecraft/client/resources/PlayerSkin;",
+            at = @At(value = "RETURN"), cancellable = true)
+    public void roundabout$getTextureLocation(CallbackInfoReturnable<net.minecraft.client.resources.PlayerSkin> cir) {
         if (this instanceof StandUser su && su.roundabout$isDisguised()) {
             GameProfile profile = su.roundabout$getDisguiseProfile();
             if (profile != null) {
-                cir.setReturnValue(SkinUtil.getSkin(profile).texture());
+                cir.setReturnValue(SkinUtil.withTexture(cir.getReturnValue(), SkinUtil.getSkin(profile).texture()));
                 return;
             }
         }
@@ -132,9 +130,9 @@ public abstract class PlayerEntityAbstractClient extends Player implements IPlay
         byte shape = ple.roundabout$getShapeShift();
         ShapeShifts shift = ShapeShifts.getShiftFromByte(shape);
         if (shift == ShapeShifts.OVA) {
-            cir.setReturnValue(StandIcons.OVA_ENYA_SKIN);
+            cir.setReturnValue(SkinUtil.withTexture(cir.getReturnValue(), StandIcons.OVA_ENYA_SKIN));
         } else if (shift == ShapeShifts.EERIE){
-            cir.setReturnValue(StandIcons.EERIE_SKIN);
+            cir.setReturnValue(SkinUtil.withTexture(cir.getReturnValue(), StandIcons.EERIE_SKIN));
         } else {
             ItemStack visage = ple.roundabout$getMaskSlot();
             if (visage != null && !visage.isEmpty()) {
@@ -143,27 +141,27 @@ public abstract class PlayerEntityAbstractClient extends Player implements IPlay
                     if (vd.isCharacterVisage()) {
                         if (FateTypes.isUndisguisedZombie(this)) {
                             // 37 67 -34
-                            cir.setReturnValue(ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/entity/visage/zombie_skins/" + vd.getSkinPath() + ".png"));
+                            cir.setReturnValue(SkinUtil.withTexture(cir.getReturnValue(), ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/entity/visage/zombie_skins/" + vd.getSkinPath() + ".png")));
 
                         } else {
-                            cir.setReturnValue(ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/entity/visage/player_skins/" + vd.getSkinPath() + ".png"));
+                            cir.setReturnValue(SkinUtil.withTexture(cir.getReturnValue(), ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/entity/visage/player_skins/" + vd.getSkinPath() + ".png")));
 
                         }
                         return;
                     } else if (visage.is(ModItems.RAT_MASK) && !isSpectator()){
-                        cir.setReturnValue(ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/entity/visage/rat/rat_skin.png"));
+                        cir.setReturnValue(SkinUtil.withTexture(cir.getReturnValue(), ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/entity/visage/rat/rat_skin.png")));
                         return;
                     }
                 }
             }
 
             if (FateTypes.isUndisguisedZombie(this)) {
-                PlayerModel pm = ClientUtil.getPlayerModel(this);
-                if (pm != null && (((IPlayerModel)pm).roundabout$getSlim())){
-                    cir.setReturnValue(StandIcons.ZOMBIE_SKIN_SLIM);
+                // Renderer selection also calls getSkin in 1.21: use the vanilla result to avoid recursion.
+                if (cir.getReturnValue().model() == net.minecraft.client.resources.PlayerSkin.Model.SLIM){
+                    cir.setReturnValue(SkinUtil.withTexture(cir.getReturnValue(), StandIcons.ZOMBIE_SKIN_SLIM));
                     return;
                 } else {
-                    cir.setReturnValue(StandIcons.ZOMBIE_SKIN);
+                    cir.setReturnValue(SkinUtil.withTexture(cir.getReturnValue(), StandIcons.ZOMBIE_SKIN));
                     return;
                 }
             }
@@ -219,7 +217,7 @@ public abstract class PlayerEntityAbstractClient extends Player implements IPlay
             }
         }
         PlayerInfo $$0 = this.getPlayerInfo();
-        return $$0 == null ? DefaultPlayerSkin.getDefaultSkin(this.getUUID()) : $$0.getSkinLocation();
+        return $$0 == null ? DefaultPlayerSkin.get(this.getUUID()).texture() : $$0.getSkin().texture();
     }
 
     public PlayerEntityAbstractClient(Level $$0, BlockPos $$1, float $$2, GameProfile $$3) {

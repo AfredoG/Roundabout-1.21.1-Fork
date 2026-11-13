@@ -5419,12 +5419,11 @@ public class PowersKillerQueen extends NewPunchingStand {
                     if (!pl.isAlive()) {
                         ItemStack hand = new ItemStack(ModItems.HAND);
 
-                        CompoundTag tag = hand.getOrCreateTag();
+                        CompoundTag tag = net.hydra.jojomod.util.ItemData.copy(hand);
                         tag.putString("HandOwner",pl.getName().getString());
-                        hand.getItem().verifyTagAfterLoad(tag);
-                        tag.put("HandProfile", NbtUtils.writeGameProfile(new CompoundTag(), pl.getGameProfile()));
+                        tag.put("HandProfile", net.hydra.jojomod.util.ProfileData.write(pl.getGameProfile()));
 
-                        hand.setTag(tag);
+                        net.hydra.jojomod.util.ItemData.set(hand, tag);
                         pl.spawnAtLocation(hand);
                     }
 
@@ -5436,12 +5435,11 @@ public class PowersKillerQueen extends NewPunchingStand {
                     if (!target.isAlive() && target instanceof D4CCloneEntity pl && pl.getDisguiseProfile() != null) {
                         ItemStack hand = new ItemStack(ModItems.HAND);
 
-                        CompoundTag tag = hand.getOrCreateTag();
+                        CompoundTag tag = net.hydra.jojomod.util.ItemData.copy(hand);
                         tag.putString("HandOwner",pl.getName().getString());
-                        hand.getItem().verifyTagAfterLoad(tag);
-                        tag.put("HandProfile", NbtUtils.writeGameProfile(new CompoundTag(), pl.getDisguiseProfile()));
+                        tag.put("HandProfile", net.hydra.jojomod.util.ProfileData.write(pl.getDisguiseProfile()));
 
-                        hand.setTag(tag);
+                        net.hydra.jojomod.util.ItemData.set(hand, tag);
                         pl.spawnAtLocation(hand);
                     }
                 }

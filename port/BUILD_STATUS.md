@@ -8,7 +8,7 @@
 - Gradle help: успешно.
 - Подготовка исходников и классов Minecraft/NeoForge: успешно.
 - processResources: успешно; проверены метаданные, access transformer, mixin-конфигурации и 141 рецепт.
-- compileJava: НЕУСПЕШНО, 961 ошибка, 18 предупреждений (последняя полная проверка текущих исходников).
+- compileJava: НЕУСПЕШНО, 846 ошибок, 18 предупреждений (последняя полная проверка текущих исходников).
 - JDK 21 и Gradle восстановлены; подготовка Minecraft/NeoForge и processResources прошли в новой среде.
 - JAR для установки: отсутствует.
 - Запуск клиента и выделенного сервера полного мода: не выполнен (компиляция не проходит).
@@ -22,8 +22,8 @@
 
 | Ошибка | Количество |
 |---|---:|
-| cannot find symbol | 547 |
-| method does not override or implement a method from a supertype | 129 |
+| cannot find symbol | 439 |
+| method does not override or implement a method from a supertype | 126 |
 | minecraft has private access in Gui | 11 |
 | method isCorrectToolForDrops in class Item cannot be applied to given types; | 9 |
 | incompatible types: ResourceKey<Enchantment> cannot be converted to Holder<Enchantment> | 7 |
@@ -33,10 +33,10 @@
 | incompatible types: ItemStack cannot be converted to ItemCost | 6 |
 | package minecraft does not exist | 6 |
 | incompatible types: Reference<SoundEvent> cannot be converted to SoundEvent | 5 |
-| incompatible types: BlockGetter cannot be converted to LevelReader | 5 |
-| invalid method reference | 5 |
-| incompatible types: double cannot be converted to LivingEntity | 5 |
 | incompatible types: EquipmentSlot cannot be converted to ItemStack | 5 |
+| incompatible types: double cannot be converted to LivingEntity | 5 |
+| invalid method reference | 5 |
+| incompatible types: BlockGetter cannot be converted to LevelReader | 5 |
 
 ## Что требуется закончить
 
@@ -150,3 +150,21 @@
 - Полный мод ещё не собирается; клиент/сервер не запускались, игрового JAR нет.
 
 Следующие задачи: оставшаяся геометрия/attachments и рендеринг, замена MobType тегами и динамическими проверками, зачарования/стрелы Manhattan Transfer, оставшиеся ItemStack API и события NeoForge. При первом запуске проверить применение ModifyArgs, запрет эффектов Hex/вампира, Pearl Jam, еду с контейнером, управление Whitesnake под водой и масштабирование сущностей. build-errors.txt соответствует последней компиляции.
+
+
+## Последний этап — 13 ноября 2026: скины, маскировки и профили рук
+
+- После очистки среды восстановлен полный архив 3a62cb7 (961 ошибка). Незавершённые правки скинов восстановлены по журналу работы; накопительный патч сохранён дважды до завершения новой компиляции.
+- Доступ к скинам, плащам, элитрам и типу модели переведён на PlayerSkin. Обновлены рендереры рук, частей тела, клонов, маскировок, слои плащей и вызывающие их способности.
+- SkinUtil централизует загрузку. SkinManager 1.21 декодирует уже имеющиеся свойства текстур: для UUID без textures добавлено асинхронное fetchProfile через MinecraftSessionService. Никаких join/get, блокирующих отрисовку; до завершения используется стандартный скин. Кэш ограничен 256 профилями и 10 минутами с момента записи; ошибка запроса не блокирует последующие обновления навсегда. Для offline UUID версии 3 лишний запрос не делается. Переданные textures имеют приоритет над кэшем UUID.
+- Убраны дублирующие кэши скинов WhitesnakeDisguiseRenderer и CloneRenderer. Текстура и slim/wide берутся из одного результата. Выбор стандартной модели больше не зависит от подстроки wide в имени файла.
+- PlayerEntityAbstractClient перехватывает RETURN getSkin вместо удалённого getSkinTextureLocation. Подмена текстуры сохраняет исходные capeTexture, elytraTexture и модель; исходный объект неизменяемый. Для пользовательской текстуры убраны прежний URL и признак secure, относящиеся к исходной текстуре.
+- Предотвращена рекурсия: внутри getSkin нельзя выбирать зомби-модель через EntityRenderDispatcher/ClientUtil.getPlayerModel, поскольку диспетчер тоже вызывает getSkin. Используется model из исходного возвращённого PlayerSkin.
+- Серверный поиск профиля Whitesnake/Diver Down обновлён под Authlib 6: без Agent.MINECRAFT, ошибка callback принимает имя. Сохранены фоновый запрос и применение в серверном потоке.
+- ProfileData сохраняет прежние поля Id/Name/Properties/Value/Signature, включая несколько свойств с одним именем. Руки Killer Queen записываются через ItemData/CUSTOM_DATA. HandBlockEntity получает registry provider при сетевом getUpdateTag и читает старый HandProfile. HandOwner принимается и строкой, и compound; удалён устаревший verifyTagAfterLoad, который менял только форму имени, не используемый для скина HandProfile.
+- Учтено требование Authlib 6 к непустым ссылкам UUID/имени: имя-only legacy профиль получает детерминированный offline UUID; UUID-only получает пустую строку имени; пустой тег возвращает null.
+- Отдельный Java-запуск с реальными классами Minecraft/NeoForge проверил round-trip UUID/имени/подписанных и неподписанных свойств, legacy имя/UUID, пустой тег, обе модели рук, сохранение плаща/элитр и их отсутствие. Проверка прошла, сеть в тесте не использовалась.
+- compileJava: 961 → 847 → 846 ошибок, 18 предупреждений. SkinUtil, ProfileData, PlayerEntityAbstractClient, HandBlockItem, HandBlockEntity и оба DisguiseService не имеют ошибок Java. git diff --check проходит. Никакие исходники не исключались.
+- Полный мод не компилируется, игрового JAR нет; загрузка текстур через сеть, применение mixin и рендеринг в игре ещё не проверены.
+
+Далее: VertexConsumer/BufferBuilder и слои рендера; оставшиеся MobType/зачарования, стрелы Manhattan Transfer, события NeoForge. Проверить при первом игровом запуске обычные/зомби-скины, маски, slim/wide, смену профиля маскировки, отсутствие сети, плащи/элитры, сохранение и размещение рук. Актуальная диагностика — port/build-errors.txt (846 ошибок).

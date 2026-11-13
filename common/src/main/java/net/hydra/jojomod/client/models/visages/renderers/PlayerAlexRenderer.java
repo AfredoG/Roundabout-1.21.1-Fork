@@ -31,7 +31,7 @@ public class PlayerAlexRenderer<T extends JojoNPC> extends PlayerLikeRenderer<Jo
     @Override
     public ResourceLocation getTextureLocation(JojoNPC entity) {
         if (entity instanceof JojoNPCPlayer jnp && jnp.faker instanceof AbstractClientPlayer AP){
-            return ((AbstractClientPlayer) jnp.faker).getSkinTextureLocation();
+            return ((AbstractClientPlayer) jnp.faker).getSkin().texture();
         }
         else {
             return ALEX_SKIN;

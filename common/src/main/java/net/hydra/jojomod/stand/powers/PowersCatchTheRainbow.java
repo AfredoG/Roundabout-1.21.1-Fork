@@ -785,7 +785,7 @@ public class PowersCatchTheRainbow extends NewDashPreset {
                 if (isClient()) {
                     if (HasOffHand) {
                         AbstractClientPlayer abstractClientPlayer = (AbstractClientPlayer) this.self;
-                        if ((abstractClientPlayer).getModelName().equals("default")) {
+                        if ((abstractClientPlayer).getSkin().model().id().equals("default")) {
                             tryPowerPacket(POWER_2);
                         } else {
                             tryPowerPacket(OFF_HAND_THROW_SLIM);

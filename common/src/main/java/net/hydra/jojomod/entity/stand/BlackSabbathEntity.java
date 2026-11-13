@@ -1649,7 +1649,7 @@ public class BlackSabbathEntity extends StandEntity implements HasCustomInventor
     }
 
     public boolean isWideSkin(Player p) {
-        return ((AbstractClientPlayer) p).getModelName().equals("default");
+        return ((AbstractClientPlayer) p).getSkin().model().id().equals("default");
     }
 
     public boolean isStuck = false;

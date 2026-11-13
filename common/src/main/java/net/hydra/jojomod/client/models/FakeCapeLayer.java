@@ -83,7 +83,7 @@ public class FakeCapeLayer<T extends LivingEntity, M extends EntityModel<T>> ext
                 }
             }
             if (ce.getPlayer() instanceof AbstractClientPlayer $$3) {
-            if ($$3.isCapeLoaded() && !$$3.isInvisible() && $$3.isModelPartShown(PlayerModelPart.CAPE) && $$3.getCloakTextureLocation() != null) {
+            if (!$$3.isInvisible() && $$3.isModelPartShown(PlayerModelPart.CAPE) && $$3.getSkin().capeTexture() != null) {
                 ItemStack $$10 = $$3.getItemBySlot(EquipmentSlot.CHEST);
                 if (!$$10.is(Items.ELYTRA)) {
                     $$0.pushPose();
@@ -114,7 +114,7 @@ public class FakeCapeLayer<T extends LivingEntity, M extends EntityModel<T>> ext
                     $$0.mulPose(Axis.ZP.rotationDegrees($$19 / 2.0F));
                     $$0.mulPose(Axis.YP.rotationDegrees(180.0F - $$19 / 2.0F));
                     VertexConsumer $$21 = $$1.getBuffer(RenderType.entityTranslucent(
-                            $$3.getCloakTextureLocation()
+                            $$3.getSkin().capeTexture()
                     ));
                     ((PlayerModel) this.getParentModel()).renderCloak($$0, $$21, $$2, OverlayTexture.NO_OVERLAY);
 
@@ -179,7 +179,7 @@ public class FakeCapeLayer<T extends LivingEntity, M extends EntityModel<T>> ext
                     }
                 }
             }
-            if ($$3.isCapeLoaded() && !$$3.isInvisible() && $$3.isModelPartShown(PlayerModelPart.CAPE) && $$3.getCloakTextureLocation() != null) {
+            if (!$$3.isInvisible() && $$3.isModelPartShown(PlayerModelPart.CAPE) && $$3.getSkin().capeTexture() != null) {
                 ItemStack $$10 = $$3.getItemBySlot(EquipmentSlot.CHEST);
                 if (!$$10.is(Items.ELYTRA)) {
                     $$0.pushPose();
@@ -210,7 +210,7 @@ public class FakeCapeLayer<T extends LivingEntity, M extends EntityModel<T>> ext
                     $$0.mulPose(Axis.ZP.rotationDegrees($$19 / 2.0F));
                     $$0.mulPose(Axis.YP.rotationDegrees(180.0F - $$19 / 2.0F));
                     VertexConsumer $$21 = $$1.getBuffer(RenderType.entityTranslucent(
-                            $$3.getCloakTextureLocation()
+                            $$3.getSkin().capeTexture()
                     ));
                     ((PlayerModel)this.getParentModel()).renderCloak($$0, $$21, $$2, OverlayTexture.NO_OVERLAY);
                     $$0.popPose();

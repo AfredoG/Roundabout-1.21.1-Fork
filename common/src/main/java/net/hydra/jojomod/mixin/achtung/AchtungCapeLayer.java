@@ -117,8 +117,8 @@ public abstract class AchtungCapeLayer extends RenderLayer<AbstractClientPlayer,
             ClientUtil.setThrowFadeToTheEther(ClientUtil.getThrowFadePercent($$3, $$4));
         }
         if (ClientUtil.getThrowFadeToTheEther() != 1) {
-            if ($$3.isCapeLoaded() && !$$3.isInvisible() && $$3.isModelPartShown(PlayerModelPart.CAPE)
-                && $$3.getCloakTextureLocation() != null && !ClientUtil.checkIfClientCanSeeMobsForWindVision()
+            if (!$$3.isInvisible() && $$3.isModelPartShown(PlayerModelPart.CAPE)
+                && $$3.getSkin().capeTexture() != null && !ClientUtil.checkIfClientCanSeeMobsForWindVision()
             ) {
                 ItemStack $$10 = $$3.getItemBySlot(EquipmentSlot.CHEST);
                 if (!$$10.is(Items.ELYTRA)) {
@@ -150,7 +150,7 @@ public abstract class AchtungCapeLayer extends RenderLayer<AbstractClientPlayer,
                     $$0.mulPose(Axis.ZP.rotationDegrees($$19 / 2.0F));
                     $$0.mulPose(Axis.YP.rotationDegrees(180.0F - $$19 / 2.0F));
                     VertexConsumer $$21 = $$1.getBuffer(RenderType.entityTranslucent(
-                            $$3.getCloakTextureLocation()
+                            $$3.getSkin().capeTexture()
                     ));
                     this.getParentModel().renderCloak($$0, $$21, $$2, OverlayTexture.NO_OVERLAY);
                     $$0.popPose();

@@ -58,18 +58,10 @@ public class SeperatedArmRenderer extends StandRenderer<SeperatedArmEntity> {
     }
 
     private ResourceLocation getSkin(GameProfile gameProfile) {
-        if (!gameProfile.isComplete()) {
+        if (gameProfile == null || gameProfile.getId() == null || gameProfile.getName() == null || gameProfile.getName().isEmpty()) {
             return PART_FIVE_GREEN_DAY;
-        } else {
-            final Minecraft minecraft = Minecraft.getInstance();
-            SkinManager skinManager = minecraft.getSkinManager();
-            final Map<MinecraftProfileTexture.Type, MinecraftProfileTexture> loadSkinFromCache = skinManager.getInsecureSkinInformation(gameProfile); // returned map may or may not be typed
-            if (loadSkinFromCache.containsKey(MinecraftProfileTexture.Type.SKIN)) {
-                return skinManager.registerTexture(loadSkinFromCache.get(MinecraftProfileTexture.Type.SKIN), MinecraftProfileTexture.Type.SKIN);
-            } else {
-                return DefaultPlayerSkin.getDefaultSkin(gameProfile.getId());
-            }
         }
+        return net.hydra.jojomod.util.SkinUtil.getSkin(gameProfile).texture();
     }
 
     @Override

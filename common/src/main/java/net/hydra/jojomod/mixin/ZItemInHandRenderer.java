@@ -205,7 +205,7 @@ public abstract class ZItemInHandRenderer {
         $$0.mulPose(Axis.YP.rotationDegrees($$7 * $$13 * 70.0F));
         $$0.mulPose(Axis.ZP.rotationDegrees($$7 * $$12 * -20.0F));
         AbstractClientPlayer $$14 = this.minecraft.player;
-        RenderSystem.setShaderTexture(0, $$14.getSkinTextureLocation());
+        RenderSystem.setShaderTexture(0, $$14.getSkin().texture());
         $$0.translate($$7 * -1.0F, 3.6F, 3.5F);
         $$0.mulPose(Axis.ZP.rotationDegrees($$7 * 120.0F));
         $$0.mulPose(Axis.XP.rotationDegrees(200.0F));

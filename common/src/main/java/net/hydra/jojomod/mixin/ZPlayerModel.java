@@ -193,12 +193,12 @@ public abstract class ZPlayerModel<T extends LivingEntity> extends HumanoidModel
 
                     ps.mulPose(Axis.XP.rotationDegrees(90-(36*amt)-(ClientUtil.getFrameTime()*36)));
 
-                    RenderType tl = RenderType.entityTranslucentCull($$0.getSkinTextureLocation());
+                    RenderType tl = RenderType.entityTranslucentCull($$0.getSkin().texture());
                     if (ClientUtil.hasChangedLegs($$0)){
                         tl = RenderType.entityTranslucent(ClientUtil.getChangedLegTexture($$0));
                     }
                     rightLeg.render(ps, mb.getBuffer(tl), packedLight, OverlayTexture.NO_OVERLAY);
-                    tl = RenderType.entityTranslucent($$0.getSkinTextureLocation());
+                    tl = RenderType.entityTranslucent($$0.getSkin().texture());
                     if (ClientUtil.hasChangedLegs($$0)){
                         tl = RenderType.entityTranslucent(ClientUtil.getChangedLegTexture($$0));
                     }
@@ -261,12 +261,12 @@ public abstract class ZPlayerModel<T extends LivingEntity> extends HumanoidModel
                     ps.translate(0.05,0,-0.1);
                     ps.mulPose(Axis.XP.rotationDegrees(90-(36*amt)-(ClientUtil.getFrameTime()*36)));
 
-                    RenderType tl = RenderType.entityTranslucentCull($$0.getSkinTextureLocation());
+                    RenderType tl = RenderType.entityTranslucentCull($$0.getSkin().texture());
                     if (ClientUtil.hasChangedLegs($$0)){
                         tl = RenderType.entityTranslucent(ClientUtil.getChangedLegTexture($$0));
                     }
                     rightLeg.render(ps, mb.getBuffer(tl), packedLight, OverlayTexture.NO_OVERLAY);
-                    tl = RenderType.entityTranslucent($$0.getSkinTextureLocation());
+                    tl = RenderType.entityTranslucent($$0.getSkin().texture());
                     if (ClientUtil.hasChangedLegs($$0)){
                         tl = RenderType.entityTranslucent(ClientUtil.getChangedLegTexture($$0));
                     }
@@ -327,12 +327,12 @@ public abstract class ZPlayerModel<T extends LivingEntity> extends HumanoidModel
                 }
                 this.rightSleeve.copyFrom(this.rightArm);
                 this.leftSleeve.copyFrom(this.leftArm);
-                RenderType tl = RenderType.entityTranslucentCull($$0.getSkinTextureLocation());
+                RenderType tl = RenderType.entityTranslucentCull($$0.getSkin().texture());
                 if (ClientUtil.hasChangedArms($$0)){
                     tl = RenderType.entityTranslucent(ClientUtil.getChangedArmTexture($$0));
                 }
                 one.render(ps, mb.getBuffer(tl), packedLight, OverlayTexture.NO_OVERLAY);
-                tl = RenderType.entityTranslucent($$0.getSkinTextureLocation());
+                tl = RenderType.entityTranslucent($$0.getSkin().texture());
                 if (ClientUtil.hasChangedArms($$0)){
                     tl = RenderType.entityTranslucent(ClientUtil.getChangedArmTexture($$0));
                 }

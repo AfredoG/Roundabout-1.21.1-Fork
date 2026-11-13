@@ -61,8 +61,6 @@ public class CloneRenderer<T extends CloneEntity> extends LivingEntityRenderer<T
 
     private final PlayerModel<T> bulk;
     private final PlayerModel<T> slim;
-    private final Map<UUID, SkinData> skins = new ConcurrentHashMap<>();
-    private final Set<UUID> requestedSkins = ConcurrentHashMap.newKeySet();
 
     public CloneRenderer(EntityRendererProvider.Context context) {
         super(context,new PlayerModel<>(context.bakeLayer(ModelLayers.PLAYER),false),0.5F);
@@ -148,12 +146,12 @@ public class CloneRenderer<T extends CloneEntity> extends LivingEntityRenderer<T
 
         Player player = entity.getPlayer();
         if (player instanceof AbstractClientPlayer clientPlayer) {
-            return clientPlayer.getSkinTextureLocation();
+            return clientPlayer.getSkin().texture();
         }
 
         Optional<UUID> uuid = entity.getPlayerUUID();
         if (uuid.isEmpty()) {
-            return DefaultPlayerSkin.getDefaultSkin();
+            return DefaultPlayerSkin.getDefaultTexture();
         }
 
         Minecraft mc = Minecraft.getInstance();
@@ -169,7 +167,7 @@ public class CloneRenderer<T extends CloneEntity> extends LivingEntityRenderer<T
             return loc;
         }
 
-        return DefaultPlayerSkin.getDefaultSkin(uuid.get());
+        return DefaultPlayerSkin.get(uuid.get()).texture();
     }
 
 
@@ -182,7 +180,7 @@ public class CloneRenderer<T extends CloneEntity> extends LivingEntityRenderer<T
         if (uuid == null){
             return slim;
         }
-        if (DefaultPlayerSkin.getDefaultSkin(uuid).getPath().contains("wide")){
+        if (DefaultPlayerSkin.get(uuid).model() == net.minecraft.client.resources.PlayerSkin.Model.WIDE){
             return bulk;
         } else {
             return slim;
@@ -498,19 +496,8 @@ public class CloneRenderer<T extends CloneEntity> extends LivingEntityRenderer<T
     public record SkinData(ResourceLocation texture, boolean slim) {
     }
     private SkinData getSkin(CloneEntity entity) {
-        GameProfile profile = entity.getDisguiseProfile();
-        if (profile == null) return new SkinData(DefaultPlayerSkin.getDefaultSkin(), false);
-        UUID id = profile.getId();
-        SkinData current = skins.computeIfAbsent(id, ignored -> new SkinData(
-                DefaultPlayerSkin.getDefaultSkin(id), "slim".equals(DefaultPlayerSkin.getSkinModelName(id))));
-        if (requestedSkins.add(id)) {
-            Minecraft.getInstance().getSkinManager().registerSkins(profile, (type, location, texture) -> {
-                if (type == MinecraftProfileTexture.Type.SKIN) {
-                    skins.put(id, new SkinData(location, "slim".equals(texture.getMetadata("model"))));
-                }
-            }, false);
-        }
-        return current;
+        var skin = net.hydra.jojomod.util.SkinUtil.getSkin(entity.getDisguiseProfile());
+        return new SkinData(skin.texture(), skin.slim());
     }
 }
 

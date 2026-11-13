@@ -1,6 +1,5 @@
 package net.hydra.jojomod.event.powers;
 
-import com.mojang.authlib.Agent;
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.ProfileLookupCallback;
 import net.hydra.jojomod.stand.powers.PowersDiverDown;
@@ -50,7 +49,7 @@ public final class DiverDownDisguiseService {
 
     private static GameProfile findProfile(MinecraftServer server, String name) {
         AtomicReference<GameProfile> result = new AtomicReference<>();
-        server.getProfileRepository().findProfilesByNames(new String[]{name}, Agent.MINECRAFT,
+        server.getProfileRepository().findProfilesByNames(new String[]{name},
                 new ProfileLookupCallback() {
                     @Override
                     public void onProfileLookupSucceeded(GameProfile profile) {
@@ -58,7 +57,7 @@ public final class DiverDownDisguiseService {
                     }
 
                     @Override
-                    public void onProfileLookupFailed(GameProfile profile, Exception exception) {
+                    public void onProfileLookupFailed(String name, Exception exception) {
                     }
                 });
         return result.get();

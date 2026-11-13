@@ -485,7 +485,7 @@ private void setStupidTicksSon(int ticks){stupidTicksSon = ticks;}
     }
 
     public boolean isWideSkin(Player p) {
-        return ((AbstractClientPlayer) p).getModelName().equals("default");
+        return ((AbstractClientPlayer) p).getSkin().model().id().equals("default");
     }
 
     private boolean biteFingers(LivingEntity ojiroSasame){

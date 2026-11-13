@@ -119,9 +119,9 @@ public class HandBlockEntity extends BlockEntity {
     }
 
     @Override
-    public CompoundTag getUpdateTag() {
-        CompoundTag tag = super.getUpdateTag();
-        saveAdditional(tag);
+    public CompoundTag getUpdateTag(net.minecraft.core.HolderLookup.Provider registries) {
+        CompoundTag tag = super.getUpdateTag(registries);
+        saveAdditional(tag, registries);
         return tag;
     }
 
@@ -135,11 +135,11 @@ public class HandBlockEntity extends BlockEntity {
         if (storedStack == null) {
             return null;
         }
-        if (storedStack.hasTag()) {
-            CompoundTag tag = storedStack.getTag();
+        if (net.hydra.jojomod.util.ItemData.has(storedStack)) {
+            CompoundTag tag = net.hydra.jojomod.util.ItemData.copy(storedStack);
 
             if (tag != null && tag.contains("HandProfile")) {
-                return NbtUtils.readGameProfile(tag.getCompound("HandProfile"));
+                return net.hydra.jojomod.util.ProfileData.read(tag.getCompound("HandProfile"));
             }
 
             setChanged();

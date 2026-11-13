@@ -119,9 +119,9 @@ public class VisagePartLayer<T extends LivingEntity, A extends HumanoidModel<T>>
 
                 if (user.roundabout$getStandPowers() instanceof PowersWalkingHeart PW && (PW.rendersInCombatMode() || PW.hasExtendedHeelsForWalking())){
                     if (user instanceof AbstractClientPlayer PE) {
-                        renderRightHeelPart(poseStack, bufferSource, packedLight, entity, xx, yy, zz, partialTicks, PE.getSkinTextureLocation(),
+                        renderRightHeelPart(poseStack, bufferSource, packedLight, entity, xx, yy, zz, partialTicks, PE.getSkin().texture(),
                                 r, g, b);
-                        renderLeftHeelPart(poseStack, bufferSource, packedLight, entity, xx, yy, zz, partialTicks, PE.getSkinTextureLocation(),
+                        renderLeftHeelPart(poseStack, bufferSource, packedLight, entity, xx, yy, zz, partialTicks, PE.getSkin().texture(),
                                 r, g, b);
                     }
                 }

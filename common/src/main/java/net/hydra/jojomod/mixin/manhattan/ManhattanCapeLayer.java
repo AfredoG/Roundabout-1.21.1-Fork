@@ -74,8 +74,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
         private void roundabout$renderCape(PoseStack $$0, MultiBufferSource $$1, int $$2, AbstractClientPlayer $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, CallbackInfo ci) {
             IEntityAndData entityAndData = ((IEntityAndData) $$3);
             if (ClientUtil.getThrowFadeToTheEther() != 1) {
-                if ($$3.isCapeLoaded() && $$3.isModelPartShown(PlayerModelPart.CAPE)
-                        && $$3.getCloakTextureLocation() != null && entityAndData.roundabout$getTrueInvisibilityManhattan() < 1
+                if ($$3.isModelPartShown(PlayerModelPart.CAPE)
+                        && $$3.getSkin().capeTexture() != null && entityAndData.roundabout$getTrueInvisibilityManhattan() < 1
                         && ClientUtil.checkIfClientCanSeeMobsForWindVision()
                 ) {
                     ItemStack $$10 = $$3.getItemBySlot(EquipmentSlot.CHEST);
@@ -108,7 +108,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
                         $$0.mulPose(Axis.ZP.rotationDegrees($$19 / 2.0F));
                         $$0.mulPose(Axis.YP.rotationDegrees(180.0F - $$19 / 2.0F));
                         VertexConsumer $$21 = $$1.getBuffer(RenderType.entityTranslucent(
-                                $$3.getCloakTextureLocation()
+                                $$3.getSkin().capeTexture()
                         ));
                         this.getParentModel().renderCloak($$0, $$21, $$2, OverlayTexture.NO_OVERLAY);
                         $$0.popPose();

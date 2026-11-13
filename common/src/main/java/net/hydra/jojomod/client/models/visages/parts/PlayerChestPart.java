@@ -75,7 +75,7 @@ public class PlayerChestPart extends PsuedoHierarchicalModel {
             if (((TimeStop)context.level()).CanTimeStopEntity(context) || ClientUtil.checkIfGamePaused()){
                 partialTicks = 0;
             }
-            VertexConsumer consumer = bufferSource.getBuffer(RenderType.entityTranslucent(LE.getSkinTextureLocation()));
+            VertexConsumer consumer = bufferSource.getBuffer(RenderType.entityTranslucent(LE.getSkin().texture()));
             if (ClientUtil.hasChangedBody(context)){
                 consumer = bufferSource.getBuffer(RenderType.entityTranslucent(ClientUtil.getChangedBodyTexture(context)));
             }
