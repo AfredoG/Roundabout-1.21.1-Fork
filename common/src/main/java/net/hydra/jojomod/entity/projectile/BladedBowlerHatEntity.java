@@ -60,14 +60,14 @@ public class BladedBowlerHatEntity extends AbstractArrow {
     }
 
     public BladedBowlerHatEntity(Level level, LivingEntity livingEntity, ItemStack itemStack) {
-            super(ModEntities.BLADED_BOWLER_HAT, livingEntity, level);
+            super(ModEntities.BLADED_BOWLER_HAT, livingEntity, level, itemStack, null);
             bowlerHatItem = itemStack;
             this.bowlerHatItem = itemStack.copy();
             this.entityData.set(ID_LOYALTY, (byte) EnchantmentHelper.getLoyalty(itemStack));
             this.entityData.set(ID_FOIL, itemStack.hasFoil());
         }
     public BladedBowlerHatEntity(Level $$0, LivingEntity $$1, ItemStack $$2, double p_36862_, double p_36863_, double p_36864_) {
-        super(ModEntities.BLADED_BOWLER_HAT, p_36862_, p_36863_, p_36864_, $$0);
+        super(ModEntities.BLADED_BOWLER_HAT, p_36862_, p_36863_, p_36864_, $$0, $$2, null);
         this.bowlerHatItem = $$2.copy();
         this.entityData.set(ID_LOYALTY, (byte) EnchantmentHelper.getLoyalty($$2));
         this.entityData.set(ID_FOIL, $$2.hasFoil());
@@ -195,6 +195,11 @@ public class BladedBowlerHatEntity extends AbstractArrow {
             Entity $$0 = this.getOwner();
             return $$0 == null ? false : !($$0 instanceof ServerPlayer) || !$$0.isSpectator();
         }
+
+    @Override
+    protected ItemStack getDefaultPickupItem() {
+        return new ItemStack(net.hydra.jojomod.item.ModItems.BOWLER_HAT);
+    }
 
     @Override
     protected ItemStack getPickupItem() {
@@ -409,7 +414,7 @@ public class BladedBowlerHatEntity extends AbstractArrow {
         public void readAdditionalSaveData(CompoundTag $$0) {
             super.readAdditionalSaveData($$0);
             if ($$0.contains("BladedBowlerHat", 10)) {
-                this.bowlerHatItem = ItemStack.of($$0.getCompound("BladedBowlerHat"));
+                this.bowlerHatItem = ItemStack.parseOptional(this.registryAccess(), $$0.getCompound("BladedBowlerHat"));
             }
 
             this.dealtDamage = $$0.getBoolean("DealtDamage");
@@ -420,7 +425,7 @@ public class BladedBowlerHatEntity extends AbstractArrow {
         public void addAdditionalSaveData(CompoundTag $$0) {
             super.addAdditionalSaveData($$0);
             if (!this.bowlerHatItem.isEmpty()) {
-                $$0.put("BladedBowlerHat", this.bowlerHatItem.save(new CompoundTag()));
+                $$0.put("BladedBowlerHat", this.bowlerHatItem.saveOptional(this.registryAccess()));
             }
             $$0.putBoolean("DealtDamage", this.dealtDamage);
         }

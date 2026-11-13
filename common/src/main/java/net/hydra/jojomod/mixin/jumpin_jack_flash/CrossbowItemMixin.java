@@ -19,13 +19,14 @@ public class CrossbowItemMixin {
             method = "performShooting",
             at = @At("TAIL")
     )
-    private static void jjf$crossbowRecoil(
+    private void jjf$crossbowRecoil(
             Level level,
             LivingEntity shooter,
             InteractionHand hand,
             ItemStack crossbow,
             float velocity,
             float accuracy,
+            @javax.annotation.Nullable LivingEntity target,
             CallbackInfo ci
     ) {
         if (!(shooter instanceof ZeroGravityAccess access)) {

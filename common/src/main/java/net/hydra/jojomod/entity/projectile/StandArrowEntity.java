@@ -47,18 +47,18 @@ public class StandArrowEntity extends AbstractArrow {
             EntityDataSerializers.ITEM_STACK);
 
     public StandArrowEntity(Level $$0, LivingEntity $$1) {
-        super(ModEntities.STAND_ARROW, $$1, $$0);
+        super(ModEntities.STAND_ARROW, $$1, $$0, new ItemStack(net.hydra.jojomod.item.ModItems.STAND_ARROW), null);
     }
     public StandArrowEntity(EntityType<? extends StandArrowEntity> $$0, Level $$1) {
         super($$0, $$1);
     }
 
     public StandArrowEntity(Level $$0, double $$1, double $$2, double $$3) {
-        super(ModEntities.STAND_ARROW, $$1, $$2, $$3, $$0);
+        super(ModEntities.STAND_ARROW, $$1, $$2, $$3, $$0, new ItemStack(net.hydra.jojomod.item.ModItems.STAND_ARROW), null);
     }
 
     public StandArrowEntity(Level $$0, LivingEntity $$1, ItemStack $$2, double p_36862_, double p_36863_, double p_36864_) {
-        super(ModEntities.STAND_ARROW, p_36862_, p_36863_, p_36864_, $$0);
+        super(ModEntities.STAND_ARROW, p_36862_, p_36863_, p_36864_, $$0, $$2, null);
         this.setArrow($$2.copy());
     }
 
@@ -233,7 +233,7 @@ public class StandArrowEntity extends AbstractArrow {
         this.setRemoved($$0);
     }
     public StandArrowEntity(Level $$0, LivingEntity $$1, ItemStack stack) {
-        super(ModEntities.STAND_ARROW, $$1, $$0);
+        super(ModEntities.STAND_ARROW, $$1, $$0, stack, null);
         setArrow(stack.copy());
     }
 
@@ -244,6 +244,11 @@ public class StandArrowEntity extends AbstractArrow {
         this.entityData.set(STAND_ARROW,arrow);
     }
     @Override
+    protected ItemStack getDefaultPickupItem() {
+        return new ItemStack(net.hydra.jojomod.item.ModItems.STAND_ARROW);
+    }
+
+    @Override
     protected ItemStack getPickupItem() {
         return getArrow();
     }
@@ -252,13 +257,13 @@ public class StandArrowEntity extends AbstractArrow {
     @Override
     public void addAdditionalSaveData(CompoundTag $$0){
         CompoundTag compoundtag = new CompoundTag();
-        $$0.put("standArrow",this.getPickupItem().save(compoundtag));
+        $$0.put("standArrow",this.getPickupItem().saveOptional(this.registryAccess()));
         super.addAdditionalSaveData($$0);
     }
     @Override
     public void readAdditionalSaveData(CompoundTag $$0){
         CompoundTag compoundtag = $$0.getCompound("standArrow");
-        ItemStack itemstack = ItemStack.of(compoundtag);
+        ItemStack itemstack = ItemStack.parseOptional(this.registryAccess(), compoundtag);
         this.setArrow(itemstack);
         super.readAdditionalSaveData($$0);
     }

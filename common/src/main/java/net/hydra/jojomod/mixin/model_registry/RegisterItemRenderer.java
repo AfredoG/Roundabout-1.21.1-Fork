@@ -49,11 +49,11 @@ public abstract class RegisterItemRenderer implements IItemRenderer {
                 return this.itemModelShaper.getModelManager().getModel(ModItemModels.WORTHY_BOW);
             }
         } if ($$0.is(Items.CROSSBOW) && $$2 !=null){
-            if (CrossbowItem.containsChargedProjectile($$0,ModItems.STAND_ARROW)){
+            if ($$0.getOrDefault(net.minecraft.core.component.DataComponents.CHARGED_PROJECTILES, net.minecraft.world.item.component.ChargedProjectiles.EMPTY).contains(ModItems.STAND_ARROW)){
                 return this.itemModelShaper.getModelManager().getModel(ModItemModels.STAND_ARROW_CROSSBOW);
-            } else if (CrossbowItem.containsChargedProjectile($$0,ModItems.STAND_BEETLE_ARROW)){
+            } else if ($$0.getOrDefault(net.minecraft.core.component.DataComponents.CHARGED_PROJECTILES, net.minecraft.world.item.component.ChargedProjectiles.EMPTY).contains(ModItems.STAND_BEETLE_ARROW)){
                 return this.itemModelShaper.getModelManager().getModel(ModItemModels.STAND_BEETLE_CROSSBOW);
-            } else if (CrossbowItem.containsChargedProjectile($$0,ModItems.WORTHY_ARROW)){
+            } else if ($$0.getOrDefault(net.minecraft.core.component.DataComponents.CHARGED_PROJECTILES, net.minecraft.world.item.component.ChargedProjectiles.EMPTY).contains(ModItems.WORTHY_ARROW)){
                 return this.itemModelShaper.getModelManager().getModel(ModItemModels.STAND_WORTHY_CROSSBOW);
             }
         }

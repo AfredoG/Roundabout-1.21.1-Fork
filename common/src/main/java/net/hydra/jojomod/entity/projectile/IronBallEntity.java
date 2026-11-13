@@ -29,6 +29,7 @@ import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
@@ -47,7 +48,7 @@ public class IronBallEntity extends AbstractArrow {
                 EntityDataSerializers.ITEM_STACK);
 
     public IronBallEntity(Level $$0, LivingEntity $$1) {
-        super(ModEntities.IRON_BALL, $$1, $$0);
+        super(ModEntities.IRON_BALL, $$1, $$0, new ItemStack(Items.IRON_INGOT), null);
         this.pickup = Pickup.DISALLOWED;
     }
     public IronBallEntity(EntityType<? extends IronBallEntity> $$0, Level $$1) {
@@ -56,13 +57,19 @@ public class IronBallEntity extends AbstractArrow {
     }
 
     public IronBallEntity(Level $$0, double $$1, double $$2, double $$3) {
-        super(ModEntities.IRON_BALL, $$1, $$2, $$3, $$0);
+        super(ModEntities.IRON_BALL, $$1, $$2, $$3, $$0, new ItemStack(Items.IRON_INGOT), null);
         this.pickup = Pickup.DISALLOWED;
     }
 
     public IronBallEntity(Level $$0, LivingEntity $$1, ItemStack $$2, double p_36862_, double p_36863_, double p_36864_) {
-        super(ModEntities.IRON_BALL, p_36862_, p_36863_, p_36864_, $$0);
+        super(ModEntities.IRON_BALL, p_36862_, p_36863_, p_36864_, $$0, $$2, null);
         this.setArrow($$2.copy());
+        this.pickup = Pickup.DISALLOWED;
+    }
+
+    public IronBallEntity(Level level, LivingEntity shooter, ItemStack ammo, ItemStack weapon) {
+        super(ModEntities.IRON_BALL, shooter, level, ammo, weapon);
+        this.setArrow(ammo.copy());
         this.pickup = Pickup.DISALLOWED;
     }
 
@@ -142,7 +149,7 @@ public class IronBallEntity extends AbstractArrow {
             entity.igniteForSeconds(5);
         }
         byte pl = getPierceLevel();
-        setPierceLevel((byte) 0);
+        ((IAbstractArrowAccess) this).roundabout$setPierceLevel((byte) 0);
 
         Vec3 between = this.getPosition(1).subtract(entity.getPosition(1f)).normalize();
 
@@ -157,17 +164,11 @@ public class IronBallEntity extends AbstractArrow {
                 LivingEntity livingEntity = (LivingEntity)entity;
 
 
-                if (iarrow.rdbt$knockback() > 0) {
-                    double $$11 = Math.max((double)0.0F, (double)1.0F - livingEntity.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE));
-                    Vec3 $$12 = this.getDeltaMovement().multiply((double)1.0F, (double)0.0F, (double)1.0F).normalize().scale((double)iarrow.rdbt$knockback() * 0.6 * $$11);
-                    if ($$12.lengthSqr() > (double)0.0F) {
-                        livingEntity.push($$12.x, 0.1, $$12.z);
-                    }
-                }
+                this.doKnockback(livingEntity, damageSource);
 
                 if (!this.level().isClientSide && entity2 instanceof LivingEntity) {
-                    EnchantmentHelper.doPostHurtEffects(livingEntity, entity2);
-                    EnchantmentHelper.doPostDamageEffects((LivingEntity)entity2, livingEntity);
+                    EnchantmentHelper.doPostAttackEffectsWithItemSource(
+                            (net.minecraft.server.level.ServerLevel) this.level(), livingEntity, damageSource, this.getWeaponItem());
                 }
 
                 this.doPostHurtEffects(livingEntity);
@@ -207,7 +208,7 @@ public class IronBallEntity extends AbstractArrow {
                     between.z);
 
 
-            setPierceLevel(pl);
+            ((IAbstractArrowAccess) this).roundabout$setPierceLevel(pl);
             if (this.getPierceLevel() <= 0) {
                 this.discard();
             }
@@ -237,7 +238,7 @@ public class IronBallEntity extends AbstractArrow {
             }
         }
         if (!this.isRemoved()){
-            setPierceLevel(pl);
+            ((IAbstractArrowAccess) this).roundabout$setPierceLevel(pl);
         }
     }
 
@@ -325,7 +326,7 @@ public class IronBallEntity extends AbstractArrow {
         this.setRemoved($$0);
     }
     public IronBallEntity(Level $$0, LivingEntity $$1, ItemStack stack) {
-        super(ModEntities.IRON_BALL, $$1, $$0);
+        super(ModEntities.IRON_BALL, $$1, $$0, new ItemStack(Items.IRON_INGOT), null);
         setArrow(stack.copy());
     }
 
@@ -336,6 +337,11 @@ public class IronBallEntity extends AbstractArrow {
         this.entityData.set(IRON_BALL,arrow);
     }
     @Override
+    protected ItemStack getDefaultPickupItem() {
+        return new ItemStack(Items.IRON_INGOT);
+    }
+
+    @Override
     protected ItemStack getPickupItem() {
         return getArrow();
     }
@@ -344,13 +350,13 @@ public class IronBallEntity extends AbstractArrow {
     @Override
     public void addAdditionalSaveData(CompoundTag $$0){
         CompoundTag compoundtag = new CompoundTag();
-        $$0.put("ironBall",this.getPickupItem().save(compoundtag));
+        $$0.put("ironBall",this.getPickupItem().saveOptional(this.registryAccess()));
         super.addAdditionalSaveData($$0);
     }
     @Override
     public void readAdditionalSaveData(CompoundTag $$0){
         CompoundTag compoundtag = $$0.getCompound("ironBall");
-        ItemStack itemstack = ItemStack.of(compoundtag);
+        ItemStack itemstack = ItemStack.parseOptional(this.registryAccess(), compoundtag);
         this.setArrow(itemstack);
         super.readAdditionalSaveData($$0);
     }

@@ -56,13 +56,13 @@ public class HarpoonEntity extends AbstractArrow {
         }
 
     public HarpoonEntity(Level $$0, LivingEntity $$1, ItemStack $$2) {
-            super(ModEntities.THROWN_HARPOON, $$1, $$0);
+            super(ModEntities.THROWN_HARPOON, $$1, $$0, $$2, null);
             this.harpoonItem = $$2.copy();
             this.entityData.set(ID_LOYALTY, (byte) EnchantmentHelper.getLoyalty($$2));
             this.entityData.set(ID_FOIL, $$2.hasFoil());
         }
     public HarpoonEntity(Level $$0, LivingEntity $$1, ItemStack $$2, double p_36862_, double p_36863_, double p_36864_) {
-        super(ModEntities.THROWN_HARPOON, p_36862_, p_36863_, p_36864_, $$0);
+        super(ModEntities.THROWN_HARPOON, p_36862_, p_36863_, p_36864_, $$0, $$2, null);
         this.harpoonItem = $$2.copy();
         this.entityData.set(ID_LOYALTY, (byte) EnchantmentHelper.getLoyalty($$2));
         this.entityData.set(ID_FOIL, $$2.hasFoil());
@@ -179,8 +179,13 @@ public class HarpoonEntity extends AbstractArrow {
             return $$0 == null || !$$0.isAlive() ? false : !($$0 instanceof ServerPlayer) || !$$0.isSpectator();
         }
 
-        @Override
-        protected ItemStack getPickupItem() {
+    @Override
+    protected ItemStack getDefaultPickupItem() {
+        return new ItemStack(net.hydra.jojomod.item.ModItems.HARPOON);
+    }
+
+    @Override
+    protected ItemStack getPickupItem() {
             return this.harpoonItem.copy();
         }
 
@@ -344,7 +349,7 @@ public class HarpoonEntity extends AbstractArrow {
         public void readAdditionalSaveData(CompoundTag $$0) {
             super.readAdditionalSaveData($$0);
             if ($$0.contains("Harpoon", 10)) {
-                this.harpoonItem = ItemStack.of($$0.getCompound("Harpoon"));
+                this.harpoonItem = ItemStack.parseOptional(this.registryAccess(), $$0.getCompound("Harpoon"));
             }
 
             this.dealtDamage = $$0.getBoolean("DealtDamage");
@@ -355,7 +360,7 @@ public class HarpoonEntity extends AbstractArrow {
         public void addAdditionalSaveData(CompoundTag $$0) {
             super.addAdditionalSaveData($$0);
             if (!this.harpoonItem.isEmpty()) {
-                $$0.put("Harpoon", this.harpoonItem.save(new CompoundTag()));
+                $$0.put("Harpoon", this.harpoonItem.saveOptional(this.registryAccess()));
             }
             $$0.putBoolean("DealtDamage", this.dealtDamage);
         }

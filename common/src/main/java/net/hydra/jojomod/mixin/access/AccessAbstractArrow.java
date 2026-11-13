@@ -33,8 +33,10 @@ import java.util.List;
 @Mixin(AbstractArrow.class)
 public abstract class AccessAbstractArrow extends Entity implements IAbstractArrowAccess {
 
-    @Shadow
-    private int knockback;
+    @Override
+    @org.spongepowered.asm.mixin.gen.Invoker("setPierceLevel")
+    public abstract void roundabout$setPierceLevel(byte level);
+
 
     /**Allows access to abstract arrow functions and adds logic for dealing with arrows*/
 
@@ -54,10 +56,6 @@ public abstract class AccessAbstractArrow extends Entity implements IAbstractArr
     @Override
     public List<Entity> rdbt$piercedAndKilledEntities(){
         return piercedAndKilledEntities;
-    }
-    @Override
-    public int rdbt$knockback(){
-        return knockback;
     }
     @Override
     public void rdbt$piercingIgnoreEntityIds(IntOpenHashSet mp){

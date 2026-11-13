@@ -54,29 +54,35 @@ public class KnifeEntity extends AbstractArrow {
         super(entity, world);
     }
     public KnifeEntity(Level world, LivingEntity player, ItemStack itemStack) {
-        super(ModEntities.THROWN_KNIFE, player, world);
+        super(ModEntities.THROWN_KNIFE, player, world, itemStack, null);
         this.knifeItem = itemStack.copy();
         this.entityData.set(ID_FOIL, itemStack.hasFoil());
     }
     public KnifeEntity(Level world, LivingEntity player, ItemStack itemStack, Vec3 pos) {
-        super(ModEntities.THROWN_KNIFE, player, world);
+        super(ModEntities.THROWN_KNIFE, player, world, itemStack, null);
         this.knifeItem = itemStack.copy();
         this.entityData.set(ID_FOIL, itemStack.hasFoil());
         this.setPos(pos);
     }
 
     public KnifeEntity(Level world, double p_36862_, double p_36863_, double p_36864_) {
-        super(ModEntities.THROWN_KNIFE, p_36862_, p_36863_, p_36864_, world);
+        super(ModEntities.THROWN_KNIFE, p_36862_, p_36863_, p_36864_, world, new ItemStack(ModItems.KNIFE), null);
     }
 
     public KnifeEntity(Level world, LivingEntity entity) {
-        super(ModEntities.THROWN_KNIFE, entity, world);
+        super(ModEntities.THROWN_KNIFE, entity, world, new ItemStack(ModItems.KNIFE), null);
     }
 
 
     public void tick() {
         super.tick();
     }
+    @Override
+    protected ItemStack getDefaultPickupItem() {
+        return new ItemStack(net.hydra.jojomod.item.ModItems.KNIFE);
+    }
+
+    @Override
     protected ItemStack getPickupItem() {
          return new ItemStack(ModItems.KNIFE);
     }
@@ -259,7 +265,7 @@ public class KnifeEntity extends AbstractArrow {
     }
 
     public KnifeEntity(EntityType<? extends KnifeEntity> type, Level level, LivingEntity shooter) {
-        super(type, shooter, level);
+        super(type, shooter, level, new ItemStack(ModItems.KNIFE), null);
         this.setBaseDamage(3.0);
     }
 

@@ -390,7 +390,7 @@ public abstract class ZItemInHandRenderer {
                     poseStack.mulPose(Axis.YP.rotationDegrees((float)$$14 * 65.3F));
                     poseStack.mulPose(Axis.ZP.rotationDegrees((float)$$14 * -9.785F));
                     float $$15 = (float)itemStack.getUseDuration(this.minecraft.player) - ((float)this.minecraft.player.getUseItemRemainingTicks() - partialTick + 1.0F);
-                    float $$16 = $$15 / (float)IronBallCrossbowItem.getChargeDuration(itemStack);
+                    float $$16 = $$15 / (float)IronBallCrossbowItem.getChargeDuration(itemStack, this.minecraft.player);
                     if ($$16 > 1.0F) {
                         $$16 = 1.0F;
                     }

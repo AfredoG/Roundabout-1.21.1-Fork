@@ -21,8 +21,8 @@ public interface IAbstractArrowAccess {
     void rdbt$piercingIgnoreEntityIds(IntOpenHashSet mp);
     List<Entity> rdbt$piercedAndKilledEntities();
     void rdbt$piercedAndKilledEntities(List<Entity> ent);
-    int rdbt$knockback();
     byte roundabout$GetPierceLevel();
+    void roundabout$setPierceLevel(byte level);
     ItemStack roundabout$GetPickupItem();
 
     /**Manhattan Transfer Values*/
