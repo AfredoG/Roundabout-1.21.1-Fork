@@ -8,7 +8,7 @@
 - Gradle help: успешно.
 - Подготовка исходников и классов Minecraft/NeoForge: успешно.
 - processResources: успешно; проверены метаданные, access transformer, mixin-конфигурации и 141 рецепт.
-- compileJava: НЕУСПЕШНО, 826 ошибок, 18 предупреждений (последняя полная проверка текущих исходников).
+- compileJava: НЕУСПЕШНО, 805 ошибок, 18 предупреждений (последняя полная проверка текущих исходников).
 - JDK 21 и Gradle восстановлены; подготовка Minecraft/NeoForge и processResources прошли в новой среде.
 - JAR для установки: отсутствует.
 - Запуск клиента и выделенного сервера полного мода: не выполнен (компиляция не проходит).
@@ -22,21 +22,22 @@
 
 | Ошибка | Количество |
 |---|---:|
-| cannot find symbol | 419 |
+| cannot find symbol | 412 |
 | method does not override or implement a method from a supertype | 126 |
 | minecraft has private access in Gui | 11 |
 | method isCorrectToolForDrops in class Item cannot be applied to given types; | 9 |
 | incompatible types: ResourceKey<Enchantment> cannot be converted to Holder<Enchantment> | 7 |
 | constructor LootAdder in class LootAdder cannot be applied to given types; | 7 |
-| <M,U>register(MenuType<? extends M>,ScreenConstructor<M,U>) has private access in MenuScreens | 7 |
 | isCollisionShapeFullBlock(BlockState,BlockGetter,BlockPos) has protected access in BlockBehaviour | 6 |
-| incompatible types: ItemStack cannot be converted to ItemCost | 6 |
 | package minecraft does not exist | 6 |
 | incompatible types: Reference<SoundEvent> cannot be converted to SoundEvent | 5 |
-| incompatible types: EquipmentSlot cannot be converted to ItemStack | 5 |
 | incompatible types: double cannot be converted to LivingEntity | 5 |
-| invalid method reference | 5 |
 | incompatible types: BlockGetter cannot be converted to LevelReader | 5 |
+| incompatible types: EquipmentSlot cannot be converted to ItemStack | 5 |
+| invalid method reference | 5 |
+| method createArrow in class ArrowItem cannot be applied to given types; | 4 |
+| method getDamage in interface IItemExtension cannot be applied to given types; | 4 |
+
 
 ## Что требуется закончить
 
@@ -192,3 +193,15 @@
 - Четыре регистрации спавна используют SpawnPlacementTypes вместо удалённого SpawnPlacements.Type. Сохранены heightmap, предикаты и операция OR.
 - Входная цена пяти торговых предложений переведена на ItemCost; товары, количества, настройки цен и параметры предложений сохранены. В варианте повреждённой стрелы берётся исходный ItemCost предложения вместо его ItemStack-представления.
 - git diff --check проходит. Полная compileJava ожидает восстановления зависимостей; текущий список build-errors.txt пока остаётся результатом предыдущих исходников (826 ошибок).
+
+
+## Проверка двух контрольных точек (13 ноября 2026)
+
+- Полная compileJava на Azul JDK 21.0.6 и Gradle 8.14.3: **805 ошибок, 18 предупреждений**, было 826/18. В ClientForgeEvents, ClientForgeForgeEvents, ForgeEvents, WanderingTrades и WanderingTraderMixin ошибок Java нет.
+- Актуальная диагностика обновлена в port/build-errors.txt; пути нормализованы относительно корня репозитория.
+- Семь экранов регистрируются через RegisterMenuScreensEvent; новые типы спавна, ItemCost/getItemCostA и ModelResourceLocation.id сверены с исходниками/маппингами Minecraft 1.21.1 и NeoForge 21.1.265.
+- Исходники не исключались, обязательность mixin-инъекций не изменялась. Запуск игры и поведение экранов, торговли и спавна ещё не проверены. Игрового JAR нет.
+- Следующие блоки: динамическая регистрация туманных блоков в ForgeBlocks (разделить события BLOCK и ITEM, не менять реестр во время обхода), рендеринг, MobType/зачарования, замена устаревшего события сна.
+- В чистой среде нужен полноценный JDK 21: предустановленная урезанная Java не поддержала --release 21 при подготовке Minecraft. Для Java-загрузок в этой среде требуется прокси из текущих HTTPS_PROXY/HTTP_PROXY; адрес нельзя сохранять между командами, он меняется.
+
+- processResources: успешно на текущих исходниках; git diff --check проходит. Код сохранён коммитами e5aea000 и 1e6d1197 в ветке port/neoforge-1.21.1.
