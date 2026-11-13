@@ -1,6 +1,8 @@
 package net.hydra.jojomod.event.powers.whitesnake;
 
 import net.minecraft.world.effect.MobEffect;
+import net.hydra.jojomod.Roundabout;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.LivingEntity;
@@ -13,18 +15,19 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 public final class OldEffect extends MobEffect {
     public OldEffect() {
         super(MobEffectCategory.HARMFUL, 0xa275c6);
-        addAttributeModifier(Attributes.MOVEMENT_SPEED, "71C37CD8-4B9F-41BE-9A0B-C7D4A83CE10F",
-                -0.1D, AttributeModifier.Operation.MULTIPLY_TOTAL);
+        addAttributeModifier(Attributes.MOVEMENT_SPEED, ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "old_movement_speed"),
+                -0.1D, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL);
     }
 
     @Override
-    public void applyEffectTick(LivingEntity living, int amplifier) {
+    public boolean applyEffectTick(LivingEntity living, int amplifier) {
         living.setSprinting(false);
         makeAdult(living);
+        return true;
     }
 
     @Override
-    public boolean isDurationEffectTick(int duration, int amplifier) {
+    public boolean shouldApplyEffectTickThisTick(int duration, int amplifier) {
         return true;
     }
 
