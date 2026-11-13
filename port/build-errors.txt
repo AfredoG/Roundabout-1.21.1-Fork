@@ -3416,57 +3416,12 @@ forge/src/main/java/net/hydra/jojomod/registry/ForgeItems.java:251: warning: [re
 forge/src/main/java/net/hydra/jojomod/registry/ForgeItems.java:456: warning: [removal] initializeClient(Consumer<IClientItemExtensions>) in Item has been deprecated and marked for removal
                 public void initializeClient(Consumer<IClientItemExtensions> consumer) {
                             ^
-forge/src/main/java/net/hydra/jojomod/registry/ForgeBlocks.java:37: warning: [removal] bus() in EventBusSubscriber has been deprecated and marked for removal
+forge/src/main/java/net/hydra/jojomod/registry/ForgeBlocks.java:38: warning: [removal] bus() in EventBusSubscriber has been deprecated and marked for removal
 @EventBusSubscriber(modid = Roundabout.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
                                                ^
-forge/src/main/java/net/hydra/jojomod/registry/ForgeBlocks.java:37: warning: [removal] Bus in EventBusSubscriber has been deprecated and marked for removal
+forge/src/main/java/net/hydra/jojomod/registry/ForgeBlocks.java:38: warning: [removal] Bus in EventBusSubscriber has been deprecated and marked for removal
 @EventBusSubscriber(modid = Roundabout.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
                                                                        ^
-forge/src/main/java/net/hydra/jojomod/registry/ForgeBlocks.java:480: error: cannot find symbol
-        if(event.getForgeRegistry() == null || genned){
-                ^
-  symbol:   method getForgeRegistry()
-  location: variable event of type RegisterEvent
-forge/src/main/java/net/hydra/jojomod/registry/ForgeBlocks.java:510: error: cannot find symbol
-                BuiltInRegistries.BLOCK.register(
-                                       ^
-  symbol:   method register(ResourceLocation,FogBlock)
-  location: variable BLOCK of type DefaultedRegistry<Block>
-forge/src/main/java/net/hydra/jojomod/registry/ForgeBlocks.java:513: error: cannot find symbol
-                Block fb = BuiltInRegistries.BLOCK.getValue(ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "fog_" + i.getPath()));
-                                                  ^
-  symbol:   method getValue(ResourceLocation)
-  location: variable BLOCK of type DefaultedRegistry<Block>
-forge/src/main/java/net/hydra/jojomod/registry/ForgeBlocks.java:518: error: cannot find symbol
-                    BuiltInRegistries.BLOCK.register(
-                                           ^
-  symbol:   method register(ResourceLocation,FogBlock)
-  location: variable BLOCK of type DefaultedRegistry<Block>
-forge/src/main/java/net/hydra/jojomod/registry/ForgeBlocks.java:521: error: cannot find symbol
-                    Block fc = BuiltInRegistries.BLOCK.getValue(ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"fog_" + i.getPath() + "_coating"));
-                                                      ^
-  symbol:   method getValue(ResourceLocation)
-  location: variable BLOCK of type DefaultedRegistry<Block>
-forge/src/main/java/net/hydra/jojomod/registry/ForgeBlocks.java:524: error: cannot find symbol
-                    BuiltInRegistries.ITEM.register(
-                                          ^
-  symbol:   method register(ResourceLocation,Item)
-  location: variable ITEM of type DefaultedRegistry<Item>
-forge/src/main/java/net/hydra/jojomod/registry/ForgeBlocks.java:528: error: cannot find symbol
-                    gennedFogItems.add(BuiltInRegistries.ITEM.getValue(ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"fog_" + i.getPath() + "_coating")));
-                                                             ^
-  symbol:   method getValue(ResourceLocation)
-  location: variable ITEM of type DefaultedRegistry<Item>
-forge/src/main/java/net/hydra/jojomod/registry/ForgeBlocks.java:532: error: cannot find symbol
-                BuiltInRegistries.ITEM.register(ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"fog_" + i.getPath()),
-                                      ^
-  symbol:   method register(ResourceLocation,Item)
-  location: variable ITEM of type DefaultedRegistry<Item>
-forge/src/main/java/net/hydra/jojomod/registry/ForgeBlocks.java:534: error: cannot find symbol
-                gennedFogItems.add(BuiltInRegistries.ITEM.getValue(ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"fog_" + i.getPath())));
-                                                         ^
-  symbol:   method getValue(ResourceLocation)
-  location: variable ITEM of type DefaultedRegistry<Item>
 forge/src/main/java/net/hydra/jojomod/RoundaboutModForge.java:91: warning: [removal] bus() in EventBusSubscriber has been deprecated and marked for removal
     @EventBusSubscriber(modid = Roundabout.MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
                                                    ^
@@ -3674,6 +3629,6 @@ Note: Recompile with -Xlint:deprecation for details.
 Note: Some input files use unchecked or unsafe operations.
 Note: Recompile with -Xlint:unchecked for details.
 Note: Some messages have been simplified; recompile with -Xdiags:verbose to get full output
-805 errors
+796 errors
 18 warnings
 

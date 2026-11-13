@@ -7,6 +7,9 @@ import net.hydra.jojomod.item.FogBlockItem;
 import net.hydra.jojomod.item.FogCoatBlockItem;
 import net.minecraft.Util;
 import net.minecraft.core.Registry;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.world.level.EmptyBlockGetter;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.datafix.fixes.References;
@@ -22,8 +25,6 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.registries.DeferredRegister;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import net.neoforged.neoforge.registries.RegisterEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
@@ -469,105 +470,76 @@ public class ForgeBlocks {
     //public static final DeferredHolder<net.minecraft.world.level.block.entity.BlockEntityType<?>, BlockEntityType<ChessBoardBlockEntity>> CHESSBOARD_BLOCK_ENTITY = BLOCK_ENTITIES.register("chessboard_block",
     //        () -> BlockEntityType.Builder.of(ChessBoardBlockEntity::new, CHESSBOARD_BLOCK.get()).build(Util.fetchChoiceType(References.BLOCK_ENTITY, "chessboard_block")));
 
-    static boolean genned = false;
+    private static boolean generatedFogBlocks;
+    private static boolean generatedFogItems;
+    private static final List<PendingFogItem> pendingFogItems = new ArrayList<>();
 
-    public static Map<ResourceLocation,Block> fogCoatingBlocks = new HashMap<>();
-    public static Map<ResourceLocation,Block> fogBlocks = new HashMap<>();
+    private record PendingFogItem(ResourceLocation id, Block block, Block original, boolean coating) {}
+
+    public static Map<ResourceLocation, Block> fogCoatingBlocks = new LinkedHashMap<>();
+    public static Map<ResourceLocation, Block> fogBlocks = new LinkedHashMap<>();
+
     @SubscribeEvent
-    public static void registerDynamicFogBlocks(RegisterEvent event)
-    {
+    public static void registerDynamicFogBlocks(RegisterEvent event) {
+        event.register(Registries.BLOCK, helper -> {
+            if (generatedFogBlocks) return;
 
-        if(event.getForgeRegistry() == null || genned){
-            return;
-        }
-
-
-        //Resource location of new fog block + instance of original block.
-
-        // TODO: dynamically generate blockstates and then it's ready for use
-        for (Block b : BuiltInRegistries.BLOCK)
-        {
-            ResourceLocation i = BuiltInRegistries.BLOCK.getKey(b);
-            // fix for not registering our own blocks as fog blocks, would result in a deadlock (or an error tbh)
-            if (!i.getNamespace().equals("minecraft") || BuiltInRegistries.BLOCK.containsKey(ResourceLocation.fromNamespaceAndPath("roundabout", "fog_" + i.getPath())) || blockBlacklist.contains(i.getPath()) || dontGen.contains("fog_"+i.getPath())) {
-                dontGenState.add("fog_" + i.getPath());
-                continue;
-            }
-
-            boolean rightSize = false;
-            try {
-                VoxelShape vshape = b.defaultBlockState().getCollisionShape(null, null);
-                rightSize = !vshape.isEmpty() && vshape.bounds().getYsize() == 1.0;
-            } catch (Exception e) {
-                try{
-                    rightSize = b.defaultBlockState().isCollisionShapeFullBlock(null,null);
-                } catch (Exception ex) {
-                    Roundabout.LOGGER.debug("Couldn't get the shape of " + i.getPath());
-                }
-            }
-            if (b.defaultBlockState().getProperties().isEmpty() && rightSize) {
-
-                BuiltInRegistries.BLOCK.register(
-                        ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "fog_" + i.getPath()),
-                        getFogBlock());
-                Block fb = BuiltInRegistries.BLOCK.getValue(ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "fog_" + i.getPath()));
-                fogBlocks.put(ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"fog_" + i.getPath()), fb);
-
-                if(!blockBlacklist.contains("fog_" + i.getPath() + "_coating")) {
-
-                    BuiltInRegistries.BLOCK.register(
-                            ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "fog_" + i.getPath() + "_coating"),
-                            getFogCoatingBlock());
-                    Block fc = BuiltInRegistries.BLOCK.getValue(ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"fog_" + i.getPath() + "_coating"));
-
-                    fogCoatingBlocks.put(ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"fog_" + i.getPath() + "_coating"),fc);
-                    BuiltInRegistries.ITEM.register(
-                            ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"fog_" + i.getPath() + "_coating"),
-                            (Item) new FogCoatBlockItem(fc, new Item.Properties(), b)
-                    );
-                    gennedFogItems.add(BuiltInRegistries.ITEM.getValue(ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"fog_" + i.getPath() + "_coating")));
-
+            // Registering new blocks must not change the collection being traversed.
+            for (Block original : BuiltInRegistries.BLOCK.stream().toList()) {
+                ResourceLocation sourceId = BuiltInRegistries.BLOCK.getKey(original);
+                if (!sourceId.getNamespace().equals("minecraft")) continue;
+                ResourceLocation fogId = ResourceLocation.fromNamespaceAndPath(
+                        Roundabout.MOD_ID, "fog_" + sourceId.getPath());
+                if (BuiltInRegistries.BLOCK.containsKey(fogId)
+                        || blockBlacklist.contains(sourceId.getPath()) || dontGen.contains(fogId.getPath())) {
+                    dontGenState.add(fogId.getPath());
+                    continue;
                 }
 
-                BuiltInRegistries.ITEM.register(ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"fog_" + i.getPath()),
-                        (Item) new FogBlockItem(fb, new Item.Properties(), b));
-                gennedFogItems.add(BuiltInRegistries.ITEM.getValue(ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"fog_" + i.getPath())));
+                boolean rightSize = false;
+                try {
+                    VoxelShape shape = original.defaultBlockState().getCollisionShape(EmptyBlockGetter.INSTANCE, BlockPos.ZERO);
+                    rightSize = !shape.isEmpty() && shape.bounds().getYsize() == 1.0;
+                } catch (Exception e) {
+                    try {
+                        rightSize = original.defaultBlockState().isCollisionShapeFullBlock(EmptyBlockGetter.INSTANCE, BlockPos.ZERO);
+                    } catch (Exception ex) {
+                        Roundabout.LOGGER.debug("Couldn't get the shape of " + sourceId.getPath());
+                    }
+                }
+                if (!original.defaultBlockState().getProperties().isEmpty() || !rightSize) continue;
 
+                Block fog = getFogBlock();
+                helper.register(fogId, fog);
+                fogBlocks.put(fogId, fog);
 
-            } else {
-                //Roundabout.LOGGER.warn("Skipping block {} as it has unsupported properties", i);
-                continue;
+                ResourceLocation coatingId = ResourceLocation.fromNamespaceAndPath(
+                        Roundabout.MOD_ID, fogId.getPath() + "_coating");
+                if (!blockBlacklist.contains(coatingId.getPath())) {
+                    Block coating = getFogCoatingBlock();
+                    helper.register(coatingId, coating);
+                    fogCoatingBlocks.put(coatingId, coating);
+                    pendingFogItems.add(new PendingFogItem(coatingId, coating, original, true));
+                }
+                // Preserve the creative tab's coating-before-block order.
+                pendingFogItems.add(new PendingFogItem(fogId, fog, original, false));
             }
-        }
-        for (Item i : gennedFogItems){
-            FOG_TAB_ITEMS.add(() -> i);
-        }
-
-        /*
-        event.register(NeoForgeRegistries.Keys.BLOCKS,blockRegisterHelper -> {
-            for(Map.Entry<ResourceLocation,Block> entry : fogBlockOGs.entrySet()){
-                blockRegisterHelper.register(entry.getKey(),getFogBlock());
-                fogBlocks.put(entry.getKey(), (Block) event.getForgeRegistry().getValue(entry.getKey()));
-
-            }
-            for(Map.Entry<ResourceLocation,Block> entry : fogBlockCoatOGs.entrySet()){
-                blockRegisterHelper.register(entry.getKey(),getFogCoatingBlock());
-                fogCoatingBlocks.put(entry.getKey(), (Block) event.getForgeRegistry().getValue(entry.getKey()));
-            }
-        });
-        event.register(NeoForgeRegistries.Keys.ITEMS,helper->{
-            for(Map.Entry<ResourceLocation,Block> entry : fogBlocks.entrySet()){
-                helper.register(entry.getKey(), new FogBlockItem(entry.getValue(), new Item.Properties(), fogBlockOGs.get(entry.getKey())));
-            }
-            for(Map.Entry<ResourceLocation,Block> entry : fogCoatingBlocks.entrySet()){
-                helper.register(entry.getKey(), new FogCoatBlockItem(entry.getValue(), new Item.Properties(), fogBlockCoatOGs.get(entry.getKey())));
-            }
-
+            generatedFogBlocks = true;
         });
 
-         */
-
-
-        genned = true;
+        event.register(Registries.ITEM, helper -> {
+            if (generatedFogItems) return;
+            // NeoForge dispatches the block registry before the item registry.
+            for (PendingFogItem pending : pendingFogItems) {
+                Item item = pending.coating()
+                        ? new FogCoatBlockItem(pending.block(), new Item.Properties(), pending.original())
+                        : new FogBlockItem(pending.block(), new Item.Properties(), pending.original());
+                helper.register(pending.id(), item);
+                gennedFogItems.add(item);
+                FOG_TAB_ITEMS.add(() -> item);
+            }
+            pendingFogItems.clear();
+            generatedFogItems = true;
+        });
     }
 }
