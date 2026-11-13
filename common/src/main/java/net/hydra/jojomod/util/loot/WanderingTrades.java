@@ -6,6 +6,7 @@ import net.hydra.jojomod.util.config.Config;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.trading.MerchantOffer;
+import net.minecraft.world.item.trading.ItemCost;
 import oshi.util.tuples.Pair;
 
 import java.util.ArrayList;
@@ -19,19 +20,19 @@ public class WanderingTrades {
     public static void updateTrades(Config cf) {
             TRADES = new ArrayList<>();
         MerchantOffer BEETLE_ARROW_TRADE = new MerchantOffer(
-                new ItemStack(Items.EMERALD, cf.wanderingTraderSettings.beetleArrowCost),
+                new ItemCost(Items.EMERALD, cf.wanderingTraderSettings.beetleArrowCost),
                 new ItemStack(ModItems.STAND_ARROW)
                 , 1, 1, 1);
             BROKEN_ARROW_TRADE = new MerchantOffer(
-                    new ItemStack(Items.EMERALD,cf.wanderingTraderSettings.brokenArrowCost),
+                    new ItemCost(Items.EMERALD,cf.wanderingTraderSettings.brokenArrowCost),
                     new ItemStack(ModItems.STAND_BEETLE_ARROW)
                     ,1,1,1);
         MerchantOffer ANUBIS_TRADE = new MerchantOffer(
-                new ItemStack(Items.EMERALD, cf.wanderingTraderSettings.anubisTradeCost),
+                new ItemCost(Items.EMERALD, cf.wanderingTraderSettings.anubisTradeCost),
                 new ItemStack(ModItems.ANUBIS_ITEM)
                 , 1, 1, 1);
         MerchantOffer MASK_TRADE = new MerchantOffer(
-                new ItemStack(Items.EMERALD, cf.wanderingTraderSettings.maskTradeCost),
+                new ItemCost(Items.EMERALD, cf.wanderingTraderSettings.maskTradeCost),
                 new ItemStack(ModBlocks.EQUIPPABLE_STONE_MASK_BLOCK)
                 , 1, 1, 1);
 

@@ -118,7 +118,7 @@ public abstract class WanderingTraderMixin
                     if (offer.equals(WanderingTrades.BROKEN_ARROW_TRADE)) {
                         ItemStack arrow = new ItemStack(ModItems.STAND_BEETLE_ARROW);
                         arrow.setDamageValue((int)(2+Math.random()*2));
-                        offer = new MerchantOffer(offer.getBaseCostA(),arrow,1,1,1);
+                        offer = new MerchantOffer(offer.getItemCostA(),arrow,1,1,1);
                     }
                     offers.set(offers.size()-1,offer);
                 }

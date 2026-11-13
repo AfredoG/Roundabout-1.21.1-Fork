@@ -32,7 +32,7 @@ import net.hydra.jojomod.item.MaxStandDiscItem;
 import net.hydra.jojomod.item.ModItems;
 import net.hydra.jojomod.item.StandDiscItem;
 import net.hydra.jojomod.util.config.ConfigManager;
-import net.minecraft.world.entity.SpawnPlacements;
+import net.minecraft.world.entity.SpawnPlacementTypes;
 import net.minecraft.world.entity.ambient.AmbientCreature;
 import net.minecraft.world.entity.ambient.Bat;
 import net.minecraft.world.entity.animal.*;
@@ -42,6 +42,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.item.trading.MerchantOffer;
+import net.minecraft.world.item.trading.ItemCost;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.FireBlock;
 import net.minecraft.world.level.levelgen.Heightmap;
@@ -200,28 +201,28 @@ public class ForgeEvents {
     public static void registerSpawnPlacements(RegisterSpawnPlacementsEvent event) {
         event.register(
                 ForgeEntities.TERRIER_DOG.get(),
-                SpawnPlacements.Type.ON_GROUND,
+                SpawnPlacementTypes.ON_GROUND,
                 Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                 TerrierEntity::canSpawn,
                 RegisterSpawnPlacementsEvent.Operation.OR
         );
         event.register(
                 ForgeEntities.SNAKE.get(),
-                SpawnPlacements.Type.ON_GROUND,
+                SpawnPlacementTypes.ON_GROUND,
                 Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                 Snake::checkMobSpawnRules,
                 RegisterSpawnPlacementsEvent.Operation.OR
         );
         event.register(
                 ForgeEntities.PIRANHA.get(),
-                SpawnPlacements.Type.IN_WATER,
+                SpawnPlacementTypes.IN_WATER,
                 Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                 Piranha::checkSurfaceWaterAnimalSpawnRules,
                 RegisterSpawnPlacementsEvent.Operation.OR
         );
         event.register(
                 ForgeEntities.BUTTERFLY.get(),
-                SpawnPlacements.Type.ON_GROUND,
+                SpawnPlacementTypes.ON_GROUND,
                 Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                 Butterfly::checkMobSpawnRules,
                 RegisterSpawnPlacementsEvent.Operation.OR
@@ -232,7 +233,7 @@ public class ForgeEvents {
     public static void onVillagerTrades(VillagerTradesEvent event) {
         if (event.getType() == VillagerProfession.FISHERMAN) {
             event.getTrades().get(1).add((trader, random) -> new MerchantOffer(
-                    new ItemStack(ModItems.PIRANHA, 6),
+                    new ItemCost(ModItems.PIRANHA, 6),
                     new ItemStack(Items.EMERALD, 1),
                     16, 2, 0.05F
             ));
