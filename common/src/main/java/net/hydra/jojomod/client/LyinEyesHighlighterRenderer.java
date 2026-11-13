@@ -46,7 +46,7 @@ public class LyinEyesHighlighterRenderer {
         ResourceLocation icon = getNextIcon(entity);
         VertexConsumer consumer = bufferSource.getBuffer(RenderType.textSeeThrough(icon));
         Matrix4f matrix = poseStack.last().pose();
-        Matrix3f normal = poseStack.last().normal();
+        com.mojang.blaze3d.vertex.PoseStack.Pose normal = poseStack.last();
 
         // Full brightness
         int light = 15728880;
@@ -55,10 +55,10 @@ public class LyinEyesHighlighterRenderer {
         float pulse = (float) ((Math.sin(entity.tickCount * 0.15F) + 1.0) * 0.5);
         float brightness = isLowHealth ? 0.5F + 0.5F * pulse : 1.0F;
 
-        consumer.vertex(matrix, -radius, -radius, 0.0F).color((int) (r * brightness), (int) (g * brightness), (int) (b * brightness), a).uv(0.0F, 1.0F).overlayCoords(OverlayTexture.NO_OVERLAY).uv2(light).normal(normal, 0, 0, -1).endVertex();
-        consumer.vertex(matrix,  radius, -radius, 0.0F).color((int) (r * brightness), (int) (g * brightness), (int) (b * brightness), a).uv(1.0F, 1.0F).overlayCoords(OverlayTexture.NO_OVERLAY).uv2(light).normal(normal, 0, 0, -1).endVertex();
-        consumer.vertex(matrix,  radius,  radius, 0.0F).color((int) (r * brightness), (int) (g * brightness), (int) (b * brightness), a).uv(1.0F, 0.0F).overlayCoords(OverlayTexture.NO_OVERLAY).uv2(light).normal(normal, 0, 0, -1).endVertex();
-        consumer.vertex(matrix, -radius,  radius, 0.0F).color((int) (r * brightness), (int) (g * brightness), (int) (b * brightness), a).uv(0.0F, 0.0F).overlayCoords(OverlayTexture.NO_OVERLAY).uv2(light).normal(normal, 0, 0, -1).endVertex();
+        consumer.addVertex(matrix, -radius, -radius, 0.0F).setColor((int) (r * brightness), (int) (g * brightness), (int) (b * brightness), a).setUv(0.0F, 1.0F).setOverlay(OverlayTexture.NO_OVERLAY).setLight(light).setNormal(normal, 0, 0, -1);
+        consumer.addVertex(matrix,  radius, -radius, 0.0F).setColor((int) (r * brightness), (int) (g * brightness), (int) (b * brightness), a).setUv(1.0F, 1.0F).setOverlay(OverlayTexture.NO_OVERLAY).setLight(light).setNormal(normal, 0, 0, -1);
+        consumer.addVertex(matrix,  radius,  radius, 0.0F).setColor((int) (r * brightness), (int) (g * brightness), (int) (b * brightness), a).setUv(1.0F, 0.0F).setOverlay(OverlayTexture.NO_OVERLAY).setLight(light).setNormal(normal, 0, 0, -1);
+        consumer.addVertex(matrix, -radius,  radius, 0.0F).setColor((int) (r * brightness), (int) (g * brightness), (int) (b * brightness), a).setUv(0.0F, 0.0F).setOverlay(OverlayTexture.NO_OVERLAY).setLight(light).setNormal(normal, 0, 0, -1);
 
         poseStack.popPose();
     }

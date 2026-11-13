@@ -79,16 +79,16 @@ public class WakeRippleParticle extends TextureSheetParticle {
         int lightColor = this.getLightColor(partialTicks);
 
         // Front face
-        vertexConsumer.vertex(uvList[0].x(), uvList[0].y(), uvList[0].z()).uv(u1, v1).color(this.rCol, this.gCol, this.bCol, this.alpha).uv2(lightColor).endVertex();
-        vertexConsumer.vertex(uvList[1].x(), uvList[1].y(), uvList[1].z()).uv(u1, v0).color(this.rCol, this.gCol, this.bCol, this.alpha).uv2(lightColor).endVertex();
-        vertexConsumer.vertex(uvList[2].x(), uvList[2].y(), uvList[2].z()).uv(u0, v0).color(this.rCol, this.gCol, this.bCol, this.alpha).uv2(lightColor).endVertex();
-        vertexConsumer.vertex(uvList[3].x(), uvList[3].y(), uvList[3].z()).uv(u0, v1).color(this.rCol, this.gCol, this.bCol, this.alpha).uv2(lightColor).endVertex();
+        vertexConsumer.addVertex(uvList[0].x(), uvList[0].y(), uvList[0].z()).setUv(u1, v1).setColor(this.rCol, this.gCol, this.bCol, this.alpha).setLight(lightColor);
+        vertexConsumer.addVertex(uvList[1].x(), uvList[1].y(), uvList[1].z()).setUv(u1, v0).setColor(this.rCol, this.gCol, this.bCol, this.alpha).setLight(lightColor);
+        vertexConsumer.addVertex(uvList[2].x(), uvList[2].y(), uvList[2].z()).setUv(u0, v0).setColor(this.rCol, this.gCol, this.bCol, this.alpha).setLight(lightColor);
+        vertexConsumer.addVertex(uvList[3].x(), uvList[3].y(), uvList[3].z()).setUv(u0, v1).setColor(this.rCol, this.gCol, this.bCol, this.alpha).setLight(lightColor);
 
         // Back face (so ripples are visible from any angle)
-        vertexConsumer.vertex(uvList[3].x(), uvList[3].y(), uvList[3].z()).uv(u0, v1).color(this.rCol, this.gCol, this.bCol, this.alpha).uv2(lightColor).endVertex();
-        vertexConsumer.vertex(uvList[2].x(), uvList[2].y(), uvList[2].z()).uv(u0, v0).color(this.rCol, this.gCol, this.bCol, this.alpha).uv2(lightColor).endVertex();
-        vertexConsumer.vertex(uvList[1].x(), uvList[1].y(), uvList[1].z()).uv(u1, v0).color(this.rCol, this.gCol, this.bCol, this.alpha).uv2(lightColor).endVertex();
-        vertexConsumer.vertex(uvList[0].x(), uvList[0].y(), uvList[0].z()).uv(u1, v1).color(this.rCol, this.gCol, this.bCol, this.alpha).uv2(lightColor).endVertex();
+        vertexConsumer.addVertex(uvList[3].x(), uvList[3].y(), uvList[3].z()).setUv(u0, v1).setColor(this.rCol, this.gCol, this.bCol, this.alpha).setLight(lightColor);
+        vertexConsumer.addVertex(uvList[2].x(), uvList[2].y(), uvList[2].z()).setUv(u0, v0).setColor(this.rCol, this.gCol, this.bCol, this.alpha).setLight(lightColor);
+        vertexConsumer.addVertex(uvList[1].x(), uvList[1].y(), uvList[1].z()).setUv(u1, v0).setColor(this.rCol, this.gCol, this.bCol, this.alpha).setLight(lightColor);
+        vertexConsumer.addVertex(uvList[0].x(), uvList[0].y(), uvList[0].z()).setUv(u1, v1).setColor(this.rCol, this.gCol, this.bCol, this.alpha).setLight(lightColor);
     }
 
     @Override

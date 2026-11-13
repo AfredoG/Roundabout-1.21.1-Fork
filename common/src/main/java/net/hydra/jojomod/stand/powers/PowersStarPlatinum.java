@@ -380,7 +380,7 @@ public class PowersStarPlatinum extends TWAndSPSharedPowers {
             }
             StandEntity stand = getStandEntity(this.self);
             if (!(Objects.nonNull(stand) && stand instanceof StarPlatinumEntity SE && this.self instanceof ServerPlayer PE && SE.getScoping() &&
-                    SE.level().dimensionTypeId() == this.self.level().dimensionTypeId())) {
+                    SE.level().dimensionTypeRegistration().unwrapKey().orElseThrow() == this.self.level().dimensionTypeRegistration().unwrapKey().orElseThrow())) {
                 if (ClientNetworking.getAppropriateConfig().starPlatinumSettings.starPlatinumScopeUsesPotionEffectForNightVision) {
                     MobEffectInstance ME = this.getSelf().getEffect(MobEffects.NIGHT_VISION);
                     if (ME != null && ME.getDuration() >= 100000 && ME.getAmplifier() > 20) {

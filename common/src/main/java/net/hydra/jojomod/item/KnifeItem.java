@@ -50,6 +50,10 @@ public class KnifeItem extends Item{
 
     /**Default 72000*/
     @Override
+    public int getUseDuration(ItemStack $$0, net.minecraft.world.entity.LivingEntity entity) {
+        return getUseDuration($$0);
+    }
+
     public int getUseDuration(ItemStack $$0) {
         return 72000;
     }

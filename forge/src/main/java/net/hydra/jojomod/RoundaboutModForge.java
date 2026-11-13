@@ -24,6 +24,7 @@ import static net.hydra.jojomod.registry.ForgeBlocks.registerDynamicFogBlocks;
 @Mod(Roundabout.MOD_ID)
 public class RoundaboutModForge {
     public RoundaboutModForge(IEventBus bus) {
+        bus.addListener(net.hydra.jojomod.networking.NeoForgeMessages::register);
         bus.addListener(ForgeNetworkHandler::registerPayloads);
         bus.addListener(ForgeJJFNetwork::registerPayloads);
 

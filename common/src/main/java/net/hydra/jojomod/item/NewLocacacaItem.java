@@ -36,6 +36,10 @@ public class NewLocacacaItem extends Item {
 
     /**32 is the default eating duration of a food. New Locaca takes notably longer to eat.*/
     @Override
+    public int getUseDuration(ItemStack $$0, net.minecraft.world.entity.LivingEntity entity) {
+        return getUseDuration($$0);
+    }
+
     public int getUseDuration(ItemStack $$0) {
             return 70;
     }
@@ -154,7 +158,7 @@ public class NewLocacacaItem extends Item {
                             SoundEvent $$6 = ModSounds.LOCACACA_FUSION_EVENT;
                             level.playSound(null,entity,$$6, SoundSource.PLAYERS, 1.0F, 1F);
                             entity.setHealth(health);
-                            List<MobEffect> effects = Lists.newArrayList();
+                            List<net.minecraft.core.Holder<MobEffect>> effects = Lists.newArrayList();
                             Iterator<MobEffectInstance> collection = entity.getActiveEffectsMap().values().iterator();
 
                             while (collection.hasNext()) {

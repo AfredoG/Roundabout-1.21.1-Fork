@@ -41,9 +41,7 @@ public class LuckyLipstickItem extends Item implements Vanishable {
         if (!$$1.getAbilities().instabuild) {
             if (!$$0.isClientSide) {
                 if (!$$1.hasEffect(ModEffects.FACELESS)) {
-                    $$3.hurtAndBreak(1, $$1, ($$1x) -> {
-                        $$1x.broadcastBreakEvent($$2);
-                    });
+                    $$3.hurtAndBreak(1, $$1, net.minecraft.world.entity.LivingEntity.getSlotForHand($$2));
                 }
             }
         }

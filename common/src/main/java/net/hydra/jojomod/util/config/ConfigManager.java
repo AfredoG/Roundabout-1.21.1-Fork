@@ -524,13 +524,13 @@ public abstract class ConfigManager {
                     String[] split = entry.split(":");
                     if (split[0].equals("fallback")){
                         ResourceLocation effectId = ResourceLocation.fromNamespaceAndPath(split[1], split[2]);
-                        MainUtil.pearlJamFallback = BuiltInRegistries.MOB_EFFECT.get(effectId);
+                        MainUtil.pearlJamFallback = BuiltInRegistries.MOB_EFFECT.getHolder(effectId).orElseThrow();
                     } else {
                         ResourceLocation foodId = ResourceLocation.fromNamespaceAndPath(split[0], split[1]);
                         ResourceLocation effectId;
                         Item foodItem = BuiltInRegistries.ITEM.get(foodId);
-                        List<MobEffect> cureEffects = new java.util.ArrayList<>(List.of());
-                        List<MobEffect> addEffects = new java.util.ArrayList<>(List.of());
+                        List<net.minecraft.core.Holder<MobEffect>> cureEffects = new java.util.ArrayList<>(List.of());
+                        List<net.minecraft.core.Holder<MobEffect>> addEffects = new java.util.ArrayList<>(List.of());
                         List<String> conditions = new java.util.ArrayList<>(List.of());
                         for (int i = 2; i < split.length; ) {
                             if (split[i].startsWith("%")) {
@@ -538,11 +538,11 @@ public abstract class ConfigManager {
                                 i++;
                             } else if (split[i + 1].startsWith("!")) {
                                 effectId = ResourceLocation.fromNamespaceAndPath(split[i], split[i + 1].substring(1));
-                                addEffects.add(BuiltInRegistries.MOB_EFFECT.get(effectId));
+                                addEffects.add(BuiltInRegistries.MOB_EFFECT.getHolder(effectId).orElseThrow());
                                 i += 2;
                             } else {
                                 effectId = ResourceLocation.fromNamespaceAndPath(split[i], split[i + 1]);
-                                cureEffects.add(BuiltInRegistries.MOB_EFFECT.get(effectId));
+                                cureEffects.add(BuiltInRegistries.MOB_EFFECT.getHolder(effectId).orElseThrow());
                                 i += 2;
                             }
                         }

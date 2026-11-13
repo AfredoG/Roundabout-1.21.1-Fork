@@ -49,17 +49,17 @@ public class FancyLighterItem extends BlockItem {
     private static final String IS_LIT_TAG = "IsLighterLit";
 
     private boolean getIsLit(ItemStack stack) {
-        return stack.getOrCreateTag().getBoolean(IS_LIT_TAG);
+        return net.hydra.jojomod.util.ItemData.copy(stack).getBoolean(IS_LIT_TAG);
     }
 
     public void setIsNotLit(ItemStack stack, boolean value) {
-        stack.getOrCreateTag().putBoolean(IS_LIT_TAG, value);
+        net.hydra.jojomod.util.ItemData.put(stack, IS_LIT_TAG, net.minecraft.nbt.ByteTag.valueOf(value));
     }
 
     public static ItemStack stuff(ItemStack $$0, Player p){
         Item item = ModItems.FANCY_LIGHTER;
-        if(!$$0.hasTag()){
-             $$0.getOrCreateTagElement("UserIdUUID").putUUID("StuffOther", p.getUUID());
+        if(!net.hydra.jojomod.util.ItemData.has($$0)){
+             net.hydra.jojomod.util.ItemData.putElement($$0, "UserIdUUID", "StuffOther", net.minecraft.nbt.NbtUtils.createUUID(p.getUUID()));
         }
 
         ItemStack itemStack = item.getDefaultInstance();
@@ -107,9 +107,9 @@ public class FancyLighterItem extends BlockItem {
     }
 
     private void blackSabbathGetsMad(Level lv, Player $$0, ItemStack $$1){
-            CompoundTag compoundtag = $$1.getTagElement("UserIdUUID");
+            CompoundTag compoundtag = net.hydra.jojomod.util.ItemData.element($$1, "UserIdUUID");
             if(lv instanceof ServerLevel $$8) {
-                if ($$1.getTag() != null) {
+                if (net.hydra.jojomod.util.ItemData.get($$1) != null) {
                     if (compoundtag != null) {
                         if (compoundtag.hasUUID("StuffOther")) {
                             if(compoundtag.getUUID("StuffOther") != null) {
@@ -211,12 +211,12 @@ public class FancyLighterItem extends BlockItem {
                             if($$2.getBlock() instanceof FancyLighterBlock FB){
                                 if($$4.getBlockEntity($$3) instanceof FancyLighterBlockEntity FLBE){
                                     if($$6.getItem() instanceof FancyLighterItem FI){
-                                        CompoundTag compoundtag = $$6.getTagElement("UserIdUUID");
+                                        CompoundTag compoundtag = net.hydra.jojomod.util.ItemData.element($$6, "UserIdUUID");
                                         if($$4 instanceof ServerLevel $$8) {
-                                            if ($$6.getTag() != null) {
+                                            if (net.hydra.jojomod.util.ItemData.get($$6) != null) {
                                                 if (compoundtag != null) {
                                                     if(compoundtag.hasUUID("StuffOther")) {
-                                                        FLBE.setValue($$6.getTagElement("UserIdUUID").getUUID("StuffOther"));
+                                                        FLBE.setValue(net.hydra.jojomod.util.ItemData.element($$6, "UserIdUUID").getUUID("StuffOther"));
                                                         System.out.println(FLBE.getOwner());
                                                     }
                                                 } else {
@@ -244,19 +244,8 @@ public class FancyLighterItem extends BlockItem {
 
     private BlockState updateBlockStateFromTag(BlockPos $$0, Level $$1, ItemStack $$2, BlockState $$3) {
         BlockState $$4 = $$3;
-        CompoundTag $$5 = $$2.getTag();
-        if ($$5 != null) {
-            CompoundTag $$6 = $$5.getCompound("BlockStateTag");
-            StateDefinition<Block, BlockState> $$7 = $$3.getBlock().getStateDefinition();
-
-            for (String $$8 : $$6.getAllKeys()) {
-                Property<?> $$9 = $$7.getProperty($$8);
-                if ($$9 != null) {
-                    String $$10 = $$6.get($$8).getAsString();
-                    $$4 = updateState($$4, $$9, $$10);
-                }
-            }
-        }
+        var properties = $$2.get(net.minecraft.core.component.DataComponents.BLOCK_STATE);
+        if (properties != null) $$4 = properties.apply($$3);
 
         if ($$4 != $$3) {
             $$1.setBlock($$0, $$4, 2);

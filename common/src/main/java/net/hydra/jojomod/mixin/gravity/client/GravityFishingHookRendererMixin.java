@@ -70,7 +70,7 @@ public abstract class GravityFishingHookRendererMixin extends EntityRenderer<Fis
         matrixStack.mulPose(Axis.YP.rotationDegrees(180.0F));
         PoseStack.Pose entry = matrixStack.last();
         Matrix4f matrix4f = entry.pose();
-        Matrix3f matrix3f = entry.normal();
+        PoseStack.Pose matrix3f = entry;
         VertexConsumer vertexConsumer = vertexConsumerProvider.getBuffer(RENDER_TYPE);
         vertex(vertexConsumer, matrix4f, matrix3f, light, 0.0F, 0, 0, 1);
         vertex(vertexConsumer, matrix4f, matrix3f, light, 1.0F, 0, 1, 1);

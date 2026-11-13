@@ -254,10 +254,10 @@ public class MainUtil {
     public static final Map<Item, Float> GOLD_EXPERIENCE_TRANSFORM_RATE = new HashMap<>();
     public static final Map<Item, Boolean> GOLD_EXPERIENCE_IS_BABY = new HashMap<>();
 
-    public static final Map<Item, List<MobEffect>> foodCuresThat = new HashMap<>();
-    public static final Map<Item, List<MobEffect>> foodAddsThat = new HashMap<>();
+    public static final Map<Item, List<net.minecraft.core.Holder<MobEffect>>> foodCuresThat = new HashMap<>();
+    public static final Map<Item, List<net.minecraft.core.Holder<MobEffect>>> foodAddsThat = new HashMap<>();
     public static final Map<Item, List<String>> specialFoodRemoves = new HashMap<>();
-    public static MobEffect pearlJamFallback;
+    public static net.minecraft.core.Holder<MobEffect> pearlJamFallback;
     public static final Map<Item, Pair<ParticleOptions, String>> foodParticles = new HashMap<>();
     public static Pair<ParticleOptions, String> foodParticleFallback;
 
@@ -346,7 +346,7 @@ public class MainUtil {
     }
 
     public static boolean isEffectBanishable(MobEffectInstance mei) {
-        ResourceLocation rl = BuiltInRegistries.MOB_EFFECT.getKey(mei.getEffect());
+        ResourceLocation rl = BuiltInRegistries.MOB_EFFECT.getKey(mei.getEffect().value());
         if (occultChargeEffectsToBanish != null && !occultChargeEffectsToBanish.isEmpty() && rl != null
                 && occultChargeEffectsToBanish.contains(rl.toString())) {
             return true;
@@ -946,14 +946,13 @@ public class MainUtil {
         if (ent instanceof Player PE && !(stack.getItem() instanceof MaxStandDiscItem)) {
             IPlayerEntity IPE = ((IPlayerEntity) PE);
             if (stack.getItem() instanceof StandDiscItem SD && !SD.standPowers.isSecondaryStand()) {
-                stack.getOrCreateTagElement("Memory").putByte("Level",
-                        (byte) Math.max(IPE.roundabout$getStandLevel() - 1, 0));
-                stack.getOrCreateTagElement("Memory").putInt("Experience", IPE.roundabout$getStandExp());
-                stack.getOrCreateTagElement("Memory").putBoolean("BonusSkin", IPE.roundabout$getUnlockedBonusSkin());
+                net.hydra.jojomod.util.ItemData.putElement(stack, "Memory", "Level", net.minecraft.nbt.ByteTag.valueOf((byte) Math.max(IPE.roundabout$getStandLevel() - 1, 0)));
+                net.hydra.jojomod.util.ItemData.putElement(stack, "Memory", "Experience", net.minecraft.nbt.IntTag.valueOf(IPE.roundabout$getStandExp()));
+                net.hydra.jojomod.util.ItemData.putElement(stack, "Memory", "BonusSkin", net.minecraft.nbt.ByteTag.valueOf(IPE.roundabout$getUnlockedBonusSkin()));
             }
         }
         if (stack.getItem() instanceof StandDiscItem SD) {
-            ((StandUser) ent).roundabout$getStandPowers().addAdditionalSaveData(stack.getOrCreateTagElement("Memory"));
+            net.hydra.jojomod.util.ItemData.updateElement(stack, "Memory", memory -> ((StandUser) ent).roundabout$getStandPowers().addAdditionalSaveData(memory));
         }
         return stack;
     }
@@ -1055,7 +1054,7 @@ public class MainUtil {
                     }
                 }
                 ItemStack stack2 = ModBlocks.BLOODY_STONE_MASK_BLOCK.asItem().getDefaultInstance();
-                stack2.setTag(stack.getTag());
+                stack2.applyComponents(stack.getComponentsPatch());
                 LE.setItemSlot(EquipmentSlot.HEAD, stack2);
             }
         }
@@ -1103,20 +1102,20 @@ public class MainUtil {
             ItemStack stack = LE.getItemBySlot(EquipmentSlot.HEAD);
             if (stack != null && !stack.isEmpty() && stack.is(ModBlocks.BLOODY_STONE_MASK_BLOCK.asItem())) {
                 ItemStack stack2 = ModBlocks.EQUIPPABLE_STONE_MASK_BLOCK.asItem().getDefaultInstance();
-                stack2.setTag(stack.getTag());
+                stack2.applyComponents(stack.getComponentsPatch());
                 LE.setItemSlot(EquipmentSlot.HEAD, stack2);
             }
 
             stack = LE.getItemBySlot(EquipmentSlot.MAINHAND);
             if (stack != null && !stack.isEmpty() && stack.is(ModBlocks.BLOODY_STONE_MASK_BLOCK.asItem())) {
                 ItemStack stack2 = ModBlocks.EQUIPPABLE_STONE_MASK_BLOCK.asItem().getDefaultInstance();
-                stack2.setTag(stack.getTag());
+                stack2.applyComponents(stack.getComponentsPatch());
                 LE.setItemSlot(EquipmentSlot.MAINHAND, stack2);
             }
             stack = LE.getItemBySlot(EquipmentSlot.OFFHAND);
             if (stack != null && !stack.isEmpty() && stack.is(ModBlocks.BLOODY_STONE_MASK_BLOCK.asItem())) {
                 ItemStack stack2 = ModBlocks.EQUIPPABLE_STONE_MASK_BLOCK.asItem().getDefaultInstance();
-                stack2.setTag(stack.getTag());
+                stack2.applyComponents(stack.getComponentsPatch());
                 LE.setItemSlot(EquipmentSlot.OFFHAND, stack2);
             }
         }
@@ -1253,7 +1252,7 @@ public class MainUtil {
 
     public static void extractDiscData(LivingEntity ent, StandDiscItem SD, ItemStack stack) {
         StandUser user = ((StandUser) ent);
-        CompoundTag $$4 = stack.getOrCreateTagElement("Memory");
+        CompoundTag $$4 = net.hydra.jojomod.util.ItemData.elementOrEmpty(stack, "Memory");
         if ($$4 != null) {
             ((StandUser) ent).roundabout$getStandPowers().readAdditionalSaveData($$4);
             if (SD instanceof MaxStandDiscItem) {
@@ -2273,7 +2272,7 @@ public class MainUtil {
             stand.ejectPassengers();
             LivingEntity user = stand.getUser();
             if (user != null && !user.isRemoved()) {
-                if (entity.level().dimensionTypeId() == user.level().dimensionTypeId()) {
+                if (entity.level().dimensionTypeRegistration().unwrapKey().orElseThrow() == user.level().dimensionTypeRegistration().unwrapKey().orElseThrow()) {
                     if (user.position().distanceTo(entity.position()) < 50) {
                         if (entity instanceof Player ent) {
                             ((IEntityAndData) ent)
@@ -2962,7 +2961,7 @@ public class MainUtil {
         return isSpecialEffect(value.getEffect());
     }
 
-    public static boolean isSpecialEffect(MobEffect value) {
+    public static boolean isSpecialEffect(net.minecraft.core.Holder<MobEffect> value) {
         return value.equals(ModEffects.BLEED) || value.equals(ModEffects.FACELESS)
                 || value.equals(ModEffects.BANISH) || value.equals(ModEffects.WARDING) || value.equals(ModEffects.HEX)
                 || value.equals(ModEffects.DOOMED) || value.equals(ModEffects.DOOM_IMMUNITY)
@@ -2974,7 +2973,7 @@ public class MainUtil {
                 || value.equals(ModEffects.MOLD) || value.equals(ModEffects.STITCHED);
     }
 
-    public static boolean hidesPotionEffectSwirl(MobEffect value) {
+    public static boolean hidesPotionEffectSwirl(net.minecraft.core.Holder<MobEffect> value) {
         return value.equals(ModEffects.BLEED) || value.equals(ModEffects.CAPTURING_LOVE)
                 || value.equals(ModEffects.FACELESS)
                 || value.equals(ModEffects.BANISH) || value.equals(ModEffects.WARDING) || value.equals(ModEffects.HEX)

@@ -33,8 +33,9 @@ public class MaskItem extends Item {
         return Component.translatable(this.getDescriptionId() + ".tag");
     }
     @Override
-    public void appendHoverText(ItemStack $$0, @Nullable Level $$1, List<Component> $$2, TooltipFlag $$3) {
-        super.appendHoverText($$0,$$1,$$2,$$3);
+    public void appendHoverText(ItemStack $$0, net.minecraft.world.item.Item.TooltipContext tooltipContext, List<Component> $$2, TooltipFlag $$3) {
+        Level $$1 = tooltipContext.level();
+        super.appendHoverText($$0,tooltipContext,$$2,$$3);
         $$2.add(this.getDisplayName2().withStyle(ChatFormatting.GRAY));
         if (visageData.hasVoices() || $$0.is(ModItems.BLANK_MASK)){
             $$2.add(

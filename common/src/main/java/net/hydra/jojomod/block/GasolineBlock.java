@@ -182,7 +182,7 @@ public class GasolineBlock extends Block {
             Item $$7 = $$6.getItem();
             if (!$$3.isCreative()) {
                 if ($$6.is(Items.FLINT_AND_STEEL)) {
-                    $$6.hurtAndBreak(1, $$3, $$1x -> $$1x.broadcastBreakEvent($$4));
+                    $$6.hurtAndBreak(1, $$3, net.minecraft.world.entity.LivingEntity.getSlotForHand($$4));
                 } else {
                     $$6.shrink(1);
                 }

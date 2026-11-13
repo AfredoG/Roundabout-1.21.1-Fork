@@ -62,24 +62,12 @@ public class JojoNPCCelebrateVillagersSurvivedRaid extends Behavior<JojoNPC> {
 
     private ItemStack getFirework(DyeColor $$0, int $$1) {
         ItemStack $$2 = new ItemStack(Items.FIREWORK_ROCKET, 1);
-        ItemStack $$3 = new ItemStack(Items.FIREWORK_STAR);
-        CompoundTag $$4 = $$3.getOrCreateTagElement("Explosion");
-        List<Integer> $$5 = Lists.newArrayList();
-        $$5.add($$0.getFireworkColor());
-        $$4.putIntArray("Colors", $$5);
-        $$4.putByte("Type", (byte) FireworkRocketItem.Shape.BURST.getId());
-        CompoundTag $$6 = $$2.getOrCreateTagElement("Fireworks");
-        ListTag $$7 = new ListTag();
-        CompoundTag $$8 = $$3.getTagElement("Explosion");
-        if ($$8 != null) {
-            $$7.add($$8);
-        }
-
-        $$6.putByte("Flight", (byte)$$1);
-        if (!$$7.isEmpty()) {
-            $$6.put("Explosions", $$7);
-        }
-
+        var explosion = new net.minecraft.world.item.component.FireworkExplosion(
+                net.minecraft.world.item.component.FireworkExplosion.Shape.BURST,
+                it.unimi.dsi.fastutil.ints.IntList.of($$0.getFireworkColor()),
+                it.unimi.dsi.fastutil.ints.IntList.of(), false, false);
+        $$2.set(net.minecraft.core.component.DataComponents.FIREWORKS,
+                new net.minecraft.world.item.component.Fireworks($$1, java.util.List.of(explosion)));
         return $$2;
     }
 }

@@ -61,8 +61,8 @@ public final class HallucinatoryAcidProjectile extends ThrowableItemProjectile {
 
     private static ItemStack createSkinItem(int skin) {
         ItemStack stack = new ItemStack(ModItems.HALLUCINATORY_ACID_HEIGHT_1);
-        stack.getOrCreateTag().putInt(SKIN_TAG, Mth.clamp(skin,
-                WhitesnakeEntity.ANIME_SKIN, WhitesnakeEntity.FLESHSNAKE_SKIN));
+        net.hydra.jojomod.util.ItemData.put(stack, SKIN_TAG, net.minecraft.nbt.IntTag.valueOf(Mth.clamp(skin,
+                WhitesnakeEntity.ANIME_SKIN, WhitesnakeEntity.FLESHSNAKE_SKIN)));
         return stack;
     }
 

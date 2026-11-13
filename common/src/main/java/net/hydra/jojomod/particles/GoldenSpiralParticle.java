@@ -63,28 +63,28 @@ public class GoldenSpiralParticle extends TextureSheetParticle {
         int $$17 = this.getLightColor($$2);
 
         $$0.vertex( $$9[0].x(),  $$9[0].y(),  $$9[0].z())
-                .uv($$14, $$16)
-                .color(this.rCol, this.gCol, this.bCol, this.alpha)
-                .uv2($$17)
-                .endVertex();
+                .setUv($$14, $$16)
+                .setColor(this.rCol, this.gCol, this.bCol, this.alpha)
+                .setLight($$17)
+                ;
 
         $$0.vertex( $$9[1].x(),  $$9[1].y(),  $$9[1].z())
-                .uv($$14, $$15)
-                .color(this.rCol, this.gCol, this.bCol, this.alpha)
-                .uv2($$17)
-                .endVertex();
+                .setUv($$14, $$15)
+                .setColor(this.rCol, this.gCol, this.bCol, this.alpha)
+                .setLight($$17)
+                ;
 
         $$0.vertex( $$9[2].x(),  $$9[2].y(),  $$9[2].z())
-                .uv($$13, $$15)
-                .color(this.rCol, this.gCol, this.bCol, this.alpha)
-                .uv2($$17)
-                .endVertex();
+                .setUv($$13, $$15)
+                .setColor(this.rCol, this.gCol, this.bCol, this.alpha)
+                .setLight($$17)
+                ;
 
         $$0.vertex( $$9[3].x(),  $$9[3].y(),  $$9[3].z())
-                .uv($$13, $$16)
-                .color(this.rCol, this.gCol, this.bCol, this.alpha)
-                .uv2($$17)
-                .endVertex();
+                .setUv($$13, $$16)
+                .setColor(this.rCol, this.gCol, this.bCol, this.alpha)
+                .setLight($$17)
+                ;
     }
 
     @Override

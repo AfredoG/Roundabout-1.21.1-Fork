@@ -136,7 +136,7 @@ public class StreetSignBlock extends HorizontalDirectionalBlock implements Cance
             if (state.getValue(PART) == StreetSignPart.BOTTOM){
                 List<ItemStack> drops = new ArrayList<>();
                 ItemStack stack = referenceItem.copy();
-                stack.getOrCreateTagElement("BlockStateTag").putInt("damaged",state.getValue(DAMAGED));
+                stack.set(net.minecraft.core.component.DataComponents.BLOCK_STATE, stack.getOrDefault(net.minecraft.core.component.DataComponents.BLOCK_STATE, net.minecraft.world.item.component.BlockItemStateProperties.EMPTY).with(DAMAGED, state));
                 drops.add(stack);
                 return drops;
             }

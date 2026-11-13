@@ -20,7 +20,8 @@ public class HairsprayItem extends Item {
         super($$0);
     }
     @Override
-    public void appendHoverText(ItemStack $$0, @Nullable Level $$1, List<Component> $$2, TooltipFlag $$3) {
+    public void appendHoverText(ItemStack $$0, net.minecraft.world.item.Item.TooltipContext tooltipContext, List<Component> $$2, TooltipFlag $$3) {
+        Level $$1 = tooltipContext.level();
         if (ConfigManager.getClientConfig().showCreativeTextOnWorthinessArrow) {
             $$2.add(
                     Component.translatable("item.roundabout.hairspray.info").withStyle(ChatFormatting.AQUA).withStyle(ChatFormatting.ITALIC)

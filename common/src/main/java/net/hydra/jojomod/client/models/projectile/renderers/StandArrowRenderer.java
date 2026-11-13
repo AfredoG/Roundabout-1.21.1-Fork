@@ -77,7 +77,7 @@ public class StandArrowRenderer<T extends StandArrowEntity> extends EntityRender
         }
         PoseStack.Pose $$19 = $$3.last();
         Matrix4f $$20 = $$19.pose();
-        Matrix3f $$21 = $$19.normal();
+        PoseStack.Pose $$21 = $$19;
         this.vertex($$20, $$21, $$18, -7, -2, -2, 0.0F, 0.15625F, -1, 0, 0, $$5,alpha);
         this.vertex($$20, $$21, $$18, -7, -2, 2, 0.15625F, 0.15625F, -1, 0, 0, $$5,alpha);
         this.vertex($$20, $$21, $$18, -7, 2, 2, 0.15625F, 0.3125F, -1, 0, 0, $$5,alpha);
@@ -99,15 +99,15 @@ public class StandArrowRenderer<T extends StandArrowEntity> extends EntityRender
         super.render($$0, $$1, $$2, $$3, $$4, $$5);
     }
 
-    public void vertex(Matrix4f $$0, Matrix3f $$1, VertexConsumer $$2, int $$3, int $$4, int $$5, float $$6, float $$7, int $$8, int $$9, int $$10, int $$11,
+    public void vertex(Matrix4f $$0, PoseStack.Pose $$1, VertexConsumer $$2, int $$3, int $$4, int $$5, float $$6, float $$7, int $$8, int $$9, int $$10, int $$11,
                        int alpha) {
         $$2.vertex($$0, (float)$$3, (float)$$4, (float)$$5)
-                .color(255, 255, 255, alpha)
-                .uv($$6, $$7)
-                .overlayCoords(OverlayTexture.NO_OVERLAY)
-                .uv2($$11)
-                .normal($$1, (float)$$8, (float)$$10, (float)$$9)
-                .endVertex();
+                .setColor(255, 255, 255, alpha)
+                .setUv($$6, $$7)
+                .setOverlay(OverlayTexture.NO_OVERLAY)
+                .setLight($$11)
+                .setNormal($$1, (float)$$8, (float)$$10, (float)$$9)
+                ;
     }
 
 }

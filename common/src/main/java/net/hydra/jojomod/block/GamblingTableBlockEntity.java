@@ -306,8 +306,8 @@ public class GamblingTableBlockEntity extends BlockEntity implements Container, 
 
     // saves and loads whatever is in storage
     @Override
-    protected void saveAdditional(CompoundTag tag) {
-        super.saveAdditional(tag);
+    protected void saveAdditional(CompoundTag tag, net.minecraft.core.HolderLookup.Provider registries) {
+        super.saveAdditional(tag, registries);
         tag.putInt("SelectedGame", this.selectedGame);
         if (this.activeGame != null) {
             CompoundTag gameTag = new CompoundTag();
@@ -317,8 +317,8 @@ public class GamblingTableBlockEntity extends BlockEntity implements Container, 
     }
 
     @Override
-    public void load(CompoundTag tag) {
-        super.load(tag);
+    public void loadAdditional(CompoundTag tag, net.minecraft.core.HolderLookup.Provider registries) {
+        super.loadAdditional(tag, registries);
         this.selectedGame = tag.getInt("SelectedGame");
         if (tag.contains("ActiveGameData")) {
             startGamble();

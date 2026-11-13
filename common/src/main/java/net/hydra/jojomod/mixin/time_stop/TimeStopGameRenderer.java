@@ -139,11 +139,11 @@ public class TimeStopGameRenderer {
         float $$11 = $$0.getV0();
         float $$12 = $$0.getV1();
         Matrix4f $$13 = $$1.last().pose();
-        $$2.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_COLOR_TEX);
-        $$2.vertex($$13, -1.0F, -1.0F, -0.5F).color(0.1F, 0.1F, 0.1F, 1.0F).uv($$10, $$12).endVertex();
-        $$2.vertex($$13, 1.0F, -1.0F, -0.5F).color(0.1F, 0.1F, 0.1F, 1.0F).uv($$9, $$12).endVertex();
-        $$2.vertex($$13, 1.0F, 1.0F, -0.5F).color(0.1F, 0.1F, 0.1F, 1.0F).uv($$9, $$11).endVertex();
-        $$2.vertex($$13, -1.0F, 1.0F, -0.5F).color(0.1F, 0.1F, 0.1F, 1.0F).uv($$10, $$11).endVertex();
+        $$2.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX_COLOR);
+        $$2.vertex($$13, -1.0F, -1.0F, -0.5F).setColor(0.1F, 0.1F, 0.1F, 1.0F).setUv($$10, $$12);
+        $$2.vertex($$13, 1.0F, -1.0F, -0.5F).setColor(0.1F, 0.1F, 0.1F, 1.0F).setUv($$9, $$12);
+        $$2.vertex($$13, 1.0F, 1.0F, -0.5F).setColor(0.1F, 0.1F, 0.1F, 1.0F).setUv($$9, $$11);
+        $$2.vertex($$13, -1.0F, 1.0F, -0.5F).setColor(0.1F, 0.1F, 0.1F, 1.0F).setUv($$10, $$11);
         BufferUploader.drawWithShader($$2.end());
     }
 

@@ -36,10 +36,10 @@ public class PlayerModifiedRenderer<T extends JojoNPC> extends PlayerLikeRendere
         if (mobEntity.host instanceof AbstractClientPlayer AP && mobEntity instanceof PlayerModifiedNPC pmn) {
             ItemStack stack = ((IPlayerEntity)AP).roundabout$getMaskSlot();
             if (stack != null && !stack.isEmpty() && stack.getItem() instanceof ModificationMaskItem && !pmn.isDisplay){
-                pmn.height = stack.getOrCreateTagElement("modifications").getInt("height");
-                pmn.width = stack.getOrCreateTagElement("modifications").getInt("width");
-                pmn.faceSize = stack.getOrCreateTagElement("modifications").getInt("head");
-                pmn.chestType = stack.getOrCreateTagElement("modifications").getInt("chest");
+                pmn.height = net.hydra.jojomod.util.ItemData.elementOrEmpty(stack, "modifications").getInt("height");
+                pmn.width = net.hydra.jojomod.util.ItemData.elementOrEmpty(stack, "modifications").getInt("width");
+                pmn.faceSize = net.hydra.jojomod.util.ItemData.elementOrEmpty(stack, "modifications").getInt("head");
+                pmn.chestType = net.hydra.jojomod.util.ItemData.elementOrEmpty(stack, "modifications").getInt("chest");
             }
 
             matrixStack.scale(0.798F + (((float) pmn.width)*0.001F), 0.7F+(((float) pmn.height)*0.001F), 0.798F+(((float) pmn.width)*0.001F));

@@ -77,7 +77,7 @@ public class ThrownObjectRenderer<T extends Entity>
             poseStack.rotateAround(new Quaternionf().fromAxisAngleDeg(0,0,1,(entity.tickCount+f)*-20),0,0,0);
 
             ItemStack stack = new ItemStack(ModItems.ANUBIS_ITEM);
-            stack.getOrCreateTag().putFloat("CustomModelData", 1F);
+            stack.set(net.minecraft.core.component.DataComponents.CUSTOM_MODEL_DATA, new net.minecraft.world.item.component.CustomModelData((int) (1F)));
             this.itemRenderer.renderStatic(stack, ItemDisplayContext.GROUND, i, OverlayTexture.NO_OVERLAY, poseStack, multiBufferSource, entity.level(), entity.getId());
         } else {
 

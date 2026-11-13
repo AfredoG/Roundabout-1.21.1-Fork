@@ -157,8 +157,8 @@ public final class HallucinatoryAcidBlockEntityRenderer
     private static void vertex(VertexConsumer vertices, PoseStack.Pose pose, int light, int overlay,
                                float normalX, float normalY, float normalZ,
                                float x, float y, float z, float u, float v, int color) {
-        vertices.vertex(pose.pose(), x, y, z)
-                .color((color >> 16) & 255, (color >> 8) & 255, color & 255, 255).uv(u, v)
-                .overlayCoords(overlay).uv2(light).normal(pose.normal(), normalX, normalY, normalZ).endVertex();
+        vertices.addVertex(pose.pose(), x, y, z)
+                .setColor((color >> 16) & 255, (color >> 8) & 255, color & 255, 255).setUv(u, v)
+                .setOverlay(overlay).setLight(light).setNormal(pose, normalX, normalY, normalZ);
     }
 }

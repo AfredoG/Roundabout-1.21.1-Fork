@@ -45,7 +45,7 @@ public class StandArrowItem extends RoundaboutArrowItem {
         }
 
         if (!player.isCreative()) {
-            CompoundTag tag = stack.isEmpty() ? null : stack.getTagElement("StandDisc");
+            CompoundTag tag = stack.isEmpty() ? null : net.hydra.jojomod.util.ItemData.element(stack, "StandDisc");
             CompoundTag tag2 = tag != null ? tag.getCompound("DiscItem") : null;
             if (tag2 != null) {
                 player.giveExperienceLevels(-ClientNetworking.getAppropriateConfig().itemSettings.levelsToRerollStandWithArrow);
@@ -62,7 +62,7 @@ public class StandArrowItem extends RoundaboutArrowItem {
     public InteractionResultHolder<ItemStack> use(Level $$0, Player $$1, InteractionHand $$2) {
         ItemStack $$3 = $$1.getItemInHand($$2);
         if (!($$3.getDamageValue() >= $$3.getMaxDamage())) {
-            CompoundTag tag = $$3.isEmpty() ? null : $$3.getTagElement("StandDisc");
+            CompoundTag tag = $$3.isEmpty() ? null : net.hydra.jojomod.util.ItemData.element($$3, "StandDisc");
             CompoundTag tag2 = tag != null ? tag.getCompound("DiscItem") : null;
             if (tag2 != null) {
                 if ($$1.isCrouching() && !ConfigManager.getAdvancedConfig().standArrowSecondaryPoolv9.isEmpty()) {
@@ -117,7 +117,7 @@ public class StandArrowItem extends RoundaboutArrowItem {
     public static void rollStand(Level level, Player player, ItemStack itemStack, boolean primary) {
         if (!level.isClientSide()) {
             level.playSound(null, player.blockPosition(), SoundEvents.PLAYER_LEVELUP, SoundSource.PLAYERS, 1.5F, 1.3F);
-            ItemStack stack = rerollStand(itemStack,primary);
+            ItemStack stack = rerollStand(itemStack,primary, level.registryAccess());
             player.awardStat(Stats.ITEM_USED.get(itemStack.getItem()));
             ((ServerLevel) level).sendParticles(ParticleTypes.HAPPY_VILLAGER, player.getX(),
                 player.getY() + player.getEyeHeight(), player.getZ(),
@@ -138,10 +138,10 @@ public class StandArrowItem extends RoundaboutArrowItem {
     }
 
     public boolean isWorthinessType(ItemStack itemStack, LivingEntity LE){
-        CompoundTag tag = itemStack.isEmpty() ? null : itemStack.getTagElement("StandDisc");
+        CompoundTag tag = itemStack.isEmpty() ? null : net.hydra.jojomod.util.ItemData.element(itemStack, "StandDisc");
         CompoundTag tag2 = tag != null ? tag.getCompound("DiscItem") : null;
         if (tag2 != null) {
-            ItemStack itemstack = ItemStack.of(tag2);
+            ItemStack itemstack = ItemStack.parseOptional(LE.registryAccess(), tag2);
             if (itemstack.getItem() instanceof StandDiscItem de) {
                 if (de.standPowers.isWorthinessType(LE)) {
                     return true;
@@ -160,14 +160,14 @@ public class StandArrowItem extends RoundaboutArrowItem {
 
     public static void grantMobStand(ItemStack $$0, Level $$1, LivingEntity live){
         if (!$$1.isClientSide) {
-            CompoundTag tag = $$0.isEmpty() ? null : $$0.getTagElement("StandDisc");
+            CompoundTag tag = $$0.isEmpty() ? null : net.hydra.jojomod.util.ItemData.element($$0, "StandDisc");
             CompoundTag tag2 = tag != null ? tag.getCompound("DiscItem") : null;
             ItemStack itemstack = ItemStack.EMPTY;
             if (tag2 == null){
-                itemstack = rerollStand($$0,true);
+                itemstack = rerollStand($$0,true, $$1.registryAccess());
             }
             if (tag2 != null) {
-                itemstack = ItemStack.of(tag2);
+                itemstack = ItemStack.parseOptional($$1.registryAccess(), tag2);
             }
             if (!itemstack.isEmpty() && itemstack.getItem() instanceof StandDiscItem de) {
                 if (grantStand(itemstack, live)) {
@@ -176,8 +176,8 @@ public class StandArrowItem extends RoundaboutArrowItem {
                     ((ServerLevel) $$1).sendParticles(ParticleTypes.FIREWORK, live.getX(),
                             live.getY() + live.getEyeHeight(), live.getZ(),
                             20, 0, 0, 0, 0.4);
-                    $$0.removeTagKey("StandDisc");
-                    //$$0.removeTagKey("StandDisc");
+                    net.hydra.jojomod.util.ItemData.update($$0, root -> root.remove("StandDisc"));
+                    //net.hydra.jojomod.util.ItemData.update($$0, root -> root.remove("StandDisc"));
                 }
             }
         }
@@ -185,19 +185,19 @@ public class StandArrowItem extends RoundaboutArrowItem {
 
 
     public static void grantMobRejection(ItemStack $$0, Level $$1, LivingEntity live){
-            CompoundTag tag = $$0.isEmpty() ? null : $$0.getTagElement("StandDisc");
+            CompoundTag tag = $$0.isEmpty() ? null : net.hydra.jojomod.util.ItemData.element($$0, "StandDisc");
             CompoundTag tag2 = tag != null ? tag.getCompound("DiscItem") : null;
             ItemStack itemstack = ItemStack.EMPTY;
             if (tag2 == null){
-                itemstack = rerollStand($$0,true);
+                itemstack = rerollStand($$0,true, $$1.registryAccess());
             }
             if (tag2 != null) {
-                itemstack = ItemStack.of(tag2);
+                itemstack = ItemStack.parseOptional($$1.registryAccess(), tag2);
             }
             if (itemstack != null && !itemstack.isEmpty() && itemstack.getItem() instanceof StandDiscItem de) {
                 ((StandUser)live).roundabout$setRejectionStandDisc(itemstack.copy());
                 de.generateStandPowerRejection(live);
-                $$0.removeTagKey("StandDisc");
+                net.hydra.jojomod.util.ItemData.update($$0, root -> root.remove("StandDisc"));
             }
     }
 
@@ -208,6 +208,10 @@ public class StandArrowItem extends RoundaboutArrowItem {
     }
 
     @Override
+    public int getUseDuration(ItemStack $$0, net.minecraft.world.entity.LivingEntity entity) {
+        return getUseDuration($$0);
+    }
+
     public int getUseDuration(ItemStack $$0) {
         return 72000;
     }
@@ -223,17 +227,17 @@ public class StandArrowItem extends RoundaboutArrowItem {
                         if (!((StandUser) $$2).roundabout$getStandDisc().isEmpty()) {
                             if (((StandUser) $$2).roundabout$getStandPowers().canUseStandArrow()) {
                                  if (((StandUser) $$2).roundabout$getStandPowers().onStandArrowUse()) {
-                                     $$0.hurt(1,PE.level().getRandom(),(ServerPlayer) PE);
+                                     net.hydra.jojomod.util.ItemDurability.damageWithoutBreaking($$0, 1, (ServerPlayer) PE);
                                  }
                             }else {
                                 PE.displayClientMessage(Component.translatable("item.roundabout.stand_arrow.haveStand").withStyle(ChatFormatting.RED), true);
                             }
                         } else {
                             int get = ClientNetworking.getAppropriateConfig().itemSettings.levelsToGetStand;
-                            CompoundTag tag = $$0.isEmpty() ? null : $$0.getTagElement("StandDisc");
+                            CompoundTag tag = $$0.isEmpty() ? null : net.hydra.jojomod.util.ItemData.element($$0, "StandDisc");
                             CompoundTag tag2 = tag != null ? tag.getCompound("DiscItem") : null;
                             if (tag2 != null) {
-                                ItemStack itemstack = ItemStack.of(tag2);
+                                ItemStack itemstack = ItemStack.parseOptional($$1.registryAccess(), tag2);
                                 if (itemstack.getItem() instanceof StandDiscItem de) {
                                     if (de.standPowers.isSecondaryStand()){
                                         get = 0;
@@ -249,9 +253,9 @@ public class StandArrowItem extends RoundaboutArrowItem {
                                             if (!PE.isCreative() && get > 0) {
                                                 PE.giveExperienceLevels(-get);
                                             }
-                                            $$0.removeTagKey("StandDisc");
-                                            $$0.hurt(1,PE.level().getRandom(),(ServerPlayer) PE);
-                                            //$$0.removeTagKey("StandDisc");
+                                            net.hydra.jojomod.util.ItemData.update($$0, root -> root.remove("StandDisc"));
+                                            net.hydra.jojomod.util.ItemDurability.damageWithoutBreaking($$0, 1, (ServerPlayer) PE);
+                                            //net.hydra.jojomod.util.ItemData.update($$0, root -> root.remove("StandDisc"));
                                         }
 
                                     } else {
@@ -268,11 +272,11 @@ public class StandArrowItem extends RoundaboutArrowItem {
         }
     }
 
-    public static @Nullable ItemStack rerollStand(ItemStack $$0,boolean primary){
+    public static @Nullable ItemStack rerollStand(ItemStack $$0,boolean primary, net.minecraft.core.HolderLookup.Provider registries){
         if (ModItems.STAND_ARROW_POOL.isEmpty())
             return null;
 
-        CompoundTag tag = $$0.getOrCreateTagElement("StandDisc");
+        CompoundTag tag = net.hydra.jojomod.util.ItemData.elementOrEmpty($$0, "StandDisc");
         int index = (int) (Math.floor(Math.random()* ModItems.STAND_ARROW_POOL.size()));
         Item item = ModItems.STAND_ARROW_POOL.get(index);
         if (!primary){
@@ -282,7 +286,7 @@ public class StandArrowItem extends RoundaboutArrowItem {
         if (tag.get("DiscItem") != null) {
             CompoundTag tag2 = tag != null ? tag.getCompound("DiscItem") : null;
             if (tag2 != null) {
-                ItemStack stack2 = ItemStack.of(tag2);
+                ItemStack stack2 = ItemStack.parseOptional(registries, tag2);
                 if (!stack2.isEmpty()) {
                     if (stack2.is(item)){
                         index += 1;
@@ -303,7 +307,7 @@ public class StandArrowItem extends RoundaboutArrowItem {
         }
         ItemStack itemStack = item.getDefaultInstance();
 
-        $$0.getOrCreateTagElement("StandDisc").put("DiscItem", itemStack.save(new CompoundTag()));
+        net.hydra.jojomod.util.ItemData.putElement($$0, "StandDisc", "DiscItem", itemStack.save(registries));
         return itemStack;
     }
 
@@ -317,7 +321,7 @@ public class StandArrowItem extends RoundaboutArrowItem {
         if (MainUtil.isDiscEntityBlacklisted(target)) return false;
         if (discStack.getItem() instanceof StandDiscItem de){
             if (!target.level().getGameRules().getBoolean(ModGamerules.ROUNDABOUT_STAND_LEVELING)){
-                discStack.getOrCreateTagElement("Memory").putByte("Level",de.standPowers.getMaxLevel());
+                net.hydra.jojomod.util.ItemData.putElement(discStack, "Memory", "Level", net.minecraft.nbt.ByteTag.valueOf(de.standPowers.getMaxLevel()));
             }
 
             ((StandUser) target).roundabout$setStand(null);
@@ -332,12 +336,13 @@ public class StandArrowItem extends RoundaboutArrowItem {
 
 
     @Override
-    public void appendHoverText(ItemStack $$0, @Nullable Level $$1, List<Component> $$2, TooltipFlag $$3) {
+    public void appendHoverText(ItemStack $$0, net.minecraft.world.item.Item.TooltipContext tooltipContext, List<Component> $$2, TooltipFlag $$3) {
+        Level $$1 = tooltipContext.level();
         if (!($$0.getDamageValue() >= $$0.getMaxDamage())) {
-            CompoundTag tag = $$0.isEmpty() ? null : $$0.getTagElement("StandDisc");
+            CompoundTag tag = $$0.isEmpty() ? null : net.hydra.jojomod.util.ItemData.element($$0, "StandDisc");
             CompoundTag tag2 = tag != null ? tag.getCompound("DiscItem") : null;
-            if (tag2 != null) {
-                ItemStack itemstack = ItemStack.of(tag2);
+            if (tag2 != null && tooltipContext.registries() != null) {
+                ItemStack itemstack = ItemStack.parseOptional(tooltipContext.registries(), tag2);
                 if (itemstack.isEmpty()) {
                     $$2.add(
                             Component.translatable("item.roundabout.stand_arrow.roll").withStyle(ChatFormatting.GRAY)

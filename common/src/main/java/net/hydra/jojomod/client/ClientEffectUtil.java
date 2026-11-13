@@ -258,43 +258,43 @@ public class ClientEffectUtil {
             float z1 = z0 + 1.0F;
 
             // Bottom 4 edges
-            bufferBuilder.vertex(matrix, x0, y0, z0).color(r, g, b, a).endVertex();
-            bufferBuilder.vertex(matrix, x1, y0, z0).color(r, g, b, a).endVertex();
+            bufferBuilder.addVertex(matrix, x0, y0, z0).setColor(r, g, b, a);
+            bufferBuilder.addVertex(matrix, x1, y0, z0).setColor(r, g, b, a);
 
-            bufferBuilder.vertex(matrix, x1, y0, z0).color(r, g, b, a).endVertex();
-            bufferBuilder.vertex(matrix, x1, y0, z1).color(r, g, b, a).endVertex();
+            bufferBuilder.addVertex(matrix, x1, y0, z0).setColor(r, g, b, a);
+            bufferBuilder.addVertex(matrix, x1, y0, z1).setColor(r, g, b, a);
 
-            bufferBuilder.vertex(matrix, x1, y0, z1).color(r, g, b, a).endVertex();
-            bufferBuilder.vertex(matrix, x0, y0, z1).color(r, g, b, a).endVertex();
+            bufferBuilder.addVertex(matrix, x1, y0, z1).setColor(r, g, b, a);
+            bufferBuilder.addVertex(matrix, x0, y0, z1).setColor(r, g, b, a);
 
-            bufferBuilder.vertex(matrix, x0, y0, z1).color(r, g, b, a).endVertex();
-            bufferBuilder.vertex(matrix, x0, y0, z0).color(r, g, b, a).endVertex();
+            bufferBuilder.addVertex(matrix, x0, y0, z1).setColor(r, g, b, a);
+            bufferBuilder.addVertex(matrix, x0, y0, z0).setColor(r, g, b, a);
 
             // Top 4 edges
-            bufferBuilder.vertex(matrix, x0, y1, z0).color(r, g, b, a).endVertex();
-            bufferBuilder.vertex(matrix, x1, y1, z0).color(r, g, b, a).endVertex();
+            bufferBuilder.addVertex(matrix, x0, y1, z0).setColor(r, g, b, a);
+            bufferBuilder.addVertex(matrix, x1, y1, z0).setColor(r, g, b, a);
 
-            bufferBuilder.vertex(matrix, x1, y1, z0).color(r, g, b, a).endVertex();
-            bufferBuilder.vertex(matrix, x1, y1, z1).color(r, g, b, a).endVertex();
+            bufferBuilder.addVertex(matrix, x1, y1, z0).setColor(r, g, b, a);
+            bufferBuilder.addVertex(matrix, x1, y1, z1).setColor(r, g, b, a);
 
-            bufferBuilder.vertex(matrix, x1, y1, z1).color(r, g, b, a).endVertex();
-            bufferBuilder.vertex(matrix, x0, y1, z1).color(r, g, b, a).endVertex();
+            bufferBuilder.addVertex(matrix, x1, y1, z1).setColor(r, g, b, a);
+            bufferBuilder.addVertex(matrix, x0, y1, z1).setColor(r, g, b, a);
 
-            bufferBuilder.vertex(matrix, x0, y1, z1).color(r, g, b, a).endVertex();
-            bufferBuilder.vertex(matrix, x0, y1, z0).color(r, g, b, a).endVertex();
+            bufferBuilder.addVertex(matrix, x0, y1, z1).setColor(r, g, b, a);
+            bufferBuilder.addVertex(matrix, x0, y1, z0).setColor(r, g, b, a);
 
             // Vertical 4 edges
-            bufferBuilder.vertex(matrix, x0, y0, z0).color(r, g, b, a).endVertex();
-            bufferBuilder.vertex(matrix, x0, y1, z0).color(r, g, b, a).endVertex();
+            bufferBuilder.addVertex(matrix, x0, y0, z0).setColor(r, g, b, a);
+            bufferBuilder.addVertex(matrix, x0, y1, z0).setColor(r, g, b, a);
 
-            bufferBuilder.vertex(matrix, x1, y0, z0).color(r, g, b, a).endVertex();
-            bufferBuilder.vertex(matrix, x1, y1, z0).color(r, g, b, a).endVertex();
+            bufferBuilder.addVertex(matrix, x1, y0, z0).setColor(r, g, b, a);
+            bufferBuilder.addVertex(matrix, x1, y1, z0).setColor(r, g, b, a);
 
-            bufferBuilder.vertex(matrix, x1, y0, z1).color(r, g, b, a).endVertex();
-            bufferBuilder.vertex(matrix, x1, y1, z1).color(r, g, b, a).endVertex();
+            bufferBuilder.addVertex(matrix, x1, y0, z1).setColor(r, g, b, a);
+            bufferBuilder.addVertex(matrix, x1, y1, z1).setColor(r, g, b, a);
 
-            bufferBuilder.vertex(matrix, x0, y0, z1).color(r, g, b, a).endVertex();
-            bufferBuilder.vertex(matrix, x0, y1, z1).color(r, g, b, a).endVertex();
+            bufferBuilder.addVertex(matrix, x0, y0, z1).setColor(r, g, b, a);
+            bufferBuilder.addVertex(matrix, x0, y1, z1).setColor(r, g, b, a);
         }
 
         tesselator.end();

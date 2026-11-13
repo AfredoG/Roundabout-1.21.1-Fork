@@ -25,15 +25,15 @@ public class ModFirstPersonLayers {
     public static final ResourceLocation BEAM_LOCATION = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/entity/locacaca_layers/locacaca_beam.png");
     public static final RenderType BEAM_RENDER_TYPE = RenderType.entityCutoutNoCull(BEAM_LOCATION);
     private static void vertex(
-            VertexConsumer $$0, Matrix4f $$1, Matrix3f $$2, float $$3, float $$4, float $$5, int $$6, int $$7, int $$8, float $$9, float $$10
+            VertexConsumer $$0, Matrix4f $$1, PoseStack.Pose $$2, float $$3, float $$4, float $$5, int $$6, int $$7, int $$8, float $$9, float $$10
     ) {
         $$0.vertex($$1, $$3, $$4, $$5)
-                .color($$6, $$7, $$8, 255)
-                .uv($$9, $$10)
-                .overlayCoords(OverlayTexture.NO_OVERLAY)
-                .uv2(15728880)
-                .normal($$2, 0.0F, 1.0F, 0.0F)
-                .endVertex();
+                .setColor($$6, $$7, $$8, 255)
+                .setUv($$9, $$10)
+                .setOverlay(OverlayTexture.NO_OVERLAY)
+                .setLight(15728880)
+                .setNormal($$2, 0.0F, 1.0F, 0.0F)
+                ;
     }
 
 
@@ -101,7 +101,7 @@ public class ModFirstPersonLayers {
                 VertexConsumer vertexconsumer = mb.getBuffer(BEAM_RENDER_TYPE);
                 PoseStack.Pose posestack$pose = ps.last();
                 Matrix4f matrix4f = posestack$pose.pose();
-                Matrix3f matrix3f = posestack$pose.normal();
+                PoseStack.Pose matrix3f = posestack$pose;
 
 
                 vertex(vertexconsumer, matrix4f, matrix3f, f19, f4, f20, j, k, l, 0.4999F, f30);

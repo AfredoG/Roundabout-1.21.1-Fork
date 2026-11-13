@@ -452,7 +452,6 @@
     "model_registry.RegisterItemRenderer",
     "model_registry.RegisterModelBakery",
     "model_registry.ZBlockModelShaper",
-    "networking.ZClientGamePacketListener",
     "parallel_mobs.ZIronGolemRenderer",
     "parallel_mobs.ZPigRenderer",
     "parallel_mobs.ZSheepRenderer",

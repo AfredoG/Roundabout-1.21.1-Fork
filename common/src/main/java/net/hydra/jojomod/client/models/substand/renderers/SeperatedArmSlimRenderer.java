@@ -77,8 +77,8 @@ public class SeperatedArmSlimRenderer extends StandRenderer<SeperatedArmSlimEnti
             if (Objects.nonNull(visage)) {
                 if (visage.getItem() instanceof MaskItem MI) {
                     if (MI instanceof ModificationMaskItem MD){
-                        int height = visage.getOrCreateTagElement("modifications").getInt("height");
-                        int width = visage.getOrCreateTagElement("modifications").getInt("width");
+                        int height = net.hydra.jojomod.util.ItemData.elementOrEmpty(visage, "modifications").getInt("height");
+                        int width = net.hydra.jojomod.util.ItemData.elementOrEmpty(visage, "modifications").getInt("width");
                         matrixStack.scale(0.798F + (((float) height)*0.001F), 0.7F+(((float) width)*0.001F), 0.798F+(((float) height)*0.001F));
                     } else {
                         VisageData vd = MI.visageData.generateVisageData(P);

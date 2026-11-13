@@ -24,7 +24,7 @@ public class GasolineBucketItem extends Item {
     public InteractionResultHolder<ItemStack> use(Level $$1, Player $$2, InteractionHand $$3) {
         ItemStack hand = $$2.getItemInHand($$3);
         if (!$$1.isClientSide) {
-            hand.hurtAndBreak(1, $$2, $$1x -> $$1x.broadcastBreakEvent($$2.getUsedItemHand()));
+            hand.hurtAndBreak(1, $$2, net.minecraft.world.entity.LivingEntity.getSlotForHand($$2.getUsedItemHand()));
             GasolineSplatterEntity $$7 = new GasolineSplatterEntity($$2, $$1);
             $$7.shootFromRotation($$2, $$2.getXRot(), $$2.getYRot(), -7, SHOOT_POWER, 1.0F);
 

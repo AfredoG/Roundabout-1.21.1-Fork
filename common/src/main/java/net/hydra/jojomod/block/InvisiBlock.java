@@ -133,7 +133,7 @@ public class InvisiBlock extends BaseEntityBlock {
                 Item $$7 = $$6.getItem();
                 if (!player.isCreative()) {
                     if ($$6.is(Items.FLINT_AND_STEEL)) {
-                        $$6.hurtAndBreak(1, player, $$1x -> $$1x.broadcastBreakEvent(hand));
+                        $$6.hurtAndBreak(1, player, net.minecraft.world.entity.LivingEntity.getSlotForHand(hand));
                     } else {
                         $$6.shrink(1);
                     }

@@ -40,6 +40,10 @@ public class ExperienceBishopItem extends BlockItem implements Vanishable {
     }
     /**Default 72000*/
     @Override
+    public int getUseDuration(ItemStack $$0, net.minecraft.world.entity.LivingEntity entity) {
+        return getUseDuration($$0);
+    }
+
     public int getUseDuration(ItemStack $$0) {
         return 72000;
     }
@@ -94,8 +98,9 @@ public class ExperienceBishopItem extends BlockItem implements Vanishable {
 
         player.giveExperiencePoints(-removedXP);
 
-        CompoundTag tag = stack.getOrCreateTag();
+        CompoundTag tag = net.hydra.jojomod.util.ItemData.copy(stack);
         tag.putInt("StoredXP", tag.getInt("StoredXP") + removedXP);
+        net.hydra.jojomod.util.ItemData.set(stack, tag);
 
 
         player.displayClientMessage(
@@ -134,7 +139,7 @@ public class ExperienceBishopItem extends BlockItem implements Vanishable {
         }
 
 
-        CompoundTag tag = stack.getTag();
+        CompoundTag tag = net.hydra.jojomod.util.ItemData.get(stack);
         if (tag == null) {
             return;
         }
@@ -155,6 +160,7 @@ public class ExperienceBishopItem extends BlockItem implements Vanishable {
         player.giveExperiencePoints(givenXP);
 
         tag.putInt("StoredXP", storedXP - givenXP);
+        net.hydra.jojomod.util.ItemData.set(stack, tag);
 
 
 
@@ -183,9 +189,10 @@ public class ExperienceBishopItem extends BlockItem implements Vanishable {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable Level $$1, List<Component> $$2, TooltipFlag $$3) {
+    public void appendHoverText(ItemStack stack, net.minecraft.world.item.Item.TooltipContext tooltipContext, List<Component> $$2, TooltipFlag $$3) {
+        Level $$1 = tooltipContext.level();
 
-        int stored = stack.getOrCreateTag().getInt("StoredXP");
+        int stored = net.hydra.jojomod.util.ItemData.copy(stack).getInt("StoredXP");
 
         $$2.add(Component.literal("Stored XP: " + stored)
                 .withStyle(ChatFormatting.GREEN));

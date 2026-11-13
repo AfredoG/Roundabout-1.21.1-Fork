@@ -37,19 +37,19 @@ public class D4CPortalBlockEntity extends BlockEntity {
         super(ModBlocks.D4C_PORTAL_BLOCK_ENTITY, $$0, $$1);
     }
     @Override
-    protected void saveAdditional(CompoundTag tag) {
+    protected void saveAdditional(CompoundTag tag, net.minecraft.core.HolderLookup.Provider registries) {
         tag.putInt("TicksLeft", ticksUntilRestore);
         tag.putInt("WorldId", worldId);
         tag.putBoolean("Intialized", initialized);
         if (creator != null){
             tag.putUUID("Creator", creator);
         }
-        super.saveAdditional(tag);
+        super.saveAdditional(tag, registries);
     }
 
     @Override
-    public void load(CompoundTag tag) {
-        super.load(tag);
+    public void loadAdditional(CompoundTag tag, net.minecraft.core.HolderLookup.Provider registries) {
+        super.loadAdditional(tag, registries);
         if (tag.contains("TicksLeft")) {
             ticksUntilRestore = tag.getInt("TicksLeft");
         }

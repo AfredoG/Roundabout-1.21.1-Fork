@@ -224,7 +224,7 @@ public abstract class ZVillager extends AbstractVillager implements ReputationEv
                 at--;
 
                 ItemStack stack = new ItemStack(ModItems.ANUBIS_ITEM);
-                stack.getOrCreateTag().putFloat("CustomModelData",this.roundabout$getAnubisType()+1);
+                stack.set(net.minecraft.core.component.DataComponents.CUSTOM_MODEL_DATA, new net.minecraft.world.item.component.CustomModelData((int) (this.roundabout$getAnubisType()+1)));
 
                 this.setItemSlot(EquipmentSlot.MAINHAND,stack);
                 this.setDropChance(EquipmentSlot.MAINHAND, 1.0F);
@@ -338,8 +338,9 @@ public abstract class ZVillager extends AbstractVillager implements ReputationEv
                 20, 0, 0, 0, 0.4);
         ItemStack stack = new ItemStack(ModItems.STAND_DISC_ANUBIS,1);
         if (roundabout$getAnubisType() != (byte)-1) {
-            CompoundTag $$4 = stack.getOrCreateTagElement("Memory");
+            CompoundTag $$4 = net.hydra.jojomod.util.ItemData.elementOrEmpty(stack, "Memory");
             $$4.putByte("AnubisSkin",roundabout$getAnubisType());
+            net.hydra.jojomod.util.ItemData.setElement(stack, "Memory", $$4);
         }
         roundabout$setAnubisType((byte)-1);
 

@@ -221,8 +221,8 @@ public class TimeStopWorld implements TimeStop {
             if (!this.roundabout$timeStoppingEntities.isEmpty()) {
                 List<LivingEntity> $$1 = Lists.newArrayList(this.roundabout$timeStoppingEntities);
                 for (int i = $$1.size() - 1; i >= 0; --i) {
-                    if ($$1.get(i).isRemoved() || !$$1.get(i).isAlive() || $$1.get(i).level().dimensionTypeId() != this.dimensionTypeId) {
-                        if ($$1.get(i).level().dimensionTypeId() != this.dimensionTypeId &&
+                    if ($$1.get(i).isRemoved() || !$$1.get(i).isAlive() || $$1.get(i).level().dimensionTypeRegistration().unwrapKey().orElseThrow() != this.dimensionTypeId) {
+                        if ($$1.get(i).level().dimensionTypeRegistration().unwrapKey().orElseThrow() != this.dimensionTypeId &&
                                 (((StandUser) $$1.get(i)).roundabout$getStandPowers()) instanceof TWAndSPSharedPowers TP
                         ) {
                             TP.resumeTime(((Level) (Object) this));

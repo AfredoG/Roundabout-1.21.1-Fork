@@ -183,7 +183,7 @@ public class InvisiBlockEntityRenderer implements BlockEntityRenderer<InvisiBloc
 
     private void renderCube(PoseStack poseStack, VertexConsumer buffer, AABB box, Color color, int light) {
         Matrix4f pose = poseStack.last().pose();
-        Matrix3f normal = poseStack.last().normal();
+        com.mojang.blaze3d.vertex.PoseStack.Pose normal = poseStack.last();
 
         float r = color.getRed() / 255f;
         float g = color.getGreen() / 255f;
@@ -201,13 +201,13 @@ public class InvisiBlockEntityRenderer implements BlockEntityRenderer<InvisiBloc
         // Helper function to write a quad
         BiConsumer<Vector3f[], Vector3f> writeQuad = (corners, faceNormal) -> {
             for (Vector3f corner : corners) {
-                buffer.vertex(pose, corner.x(), corner.y(), corner.z())
-                        .color(r, g, b, a)
-                        .uv(0, 0)  // dummy UVs, not using a texture
-                        .overlayCoords(OverlayTexture.NO_OVERLAY)
-                        .uv2(light)
-                        .normal(normal, faceNormal.x(), faceNormal.y(), faceNormal.z())
-                        .endVertex();
+                buffer.addVertex(pose, corner.x(), corner.y(), corner.z())
+                        .setColor(r, g, b, a)
+                        .setUv(0, 0)  // dummy UVs, not using a texture
+                        .setOverlay(OverlayTexture.NO_OVERLAY)
+                        .setLight(light)
+                        .setNormal(normal, faceNormal.x(), faceNormal.y(), faceNormal.z())
+                        ;
             }
         };
 

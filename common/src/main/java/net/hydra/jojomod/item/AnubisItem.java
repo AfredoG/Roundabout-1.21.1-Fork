@@ -87,7 +87,8 @@ public class AnubisItem extends Item {
     }
 
     @Override
-    public void appendHoverText(ItemStack $$0, @Nullable Level $$1, List<Component> $$2, TooltipFlag $$3) {
+    public void appendHoverText(ItemStack $$0, net.minecraft.world.item.Item.TooltipContext tooltipContext, List<Component> $$2, TooltipFlag $$3) {
+        Level $$1 = tooltipContext.level();
         $$2.add(Component.translatable("roundabout.anubis_item.requires_mainhand").withStyle(ChatFormatting.GRAY));
     }
 
@@ -130,6 +131,10 @@ public class AnubisItem extends Item {
     }
 
     @Override
+    public int getUseDuration(ItemStack $$0, net.minecraft.world.entity.LivingEntity entity) {
+        return getUseDuration($$0);
+    }
+
     public int getUseDuration(ItemStack $$0) {
         return 50;
     }

@@ -249,8 +249,8 @@ public class FancyLighterBlock extends BaseEntityBlock implements CancelDataDriv
                 if (!stack.hasTag()) {
                     if(compoundtag == null || !compoundtag.hasUUID("StuffOther")) {
                         if (FE.getOwner() != null) {
-                            stack.getOrCreateTagElement("UserIdUUID").putUUID("StuffOther", FE.getOwner());
-                            System.out.println(stack.getOrCreateTagElement("UserIdUUID").getUUID("StuffOther"));
+                            net.hydra.jojomod.util.ItemData.putElement(stack, "UserIdUUID", "StuffOther", net.minecraft.nbt.NbtUtils.createUUID(FE.getOwner()));
+                            System.out.println(net.hydra.jojomod.util.ItemData.elementOrEmpty(stack, "UserIdUUID").getUUID("StuffOther"));
                         }
                     }
                 }

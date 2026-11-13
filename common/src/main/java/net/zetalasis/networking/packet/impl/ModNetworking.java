@@ -12,8 +12,8 @@ import net.zetalasis.networking.packet.api.args.s2c.AbstractBaseS2CPacket;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.Connection;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.protocol.game.ClientboundCustomPayloadPacket;
-import net.minecraft.network.protocol.game.ServerboundCustomPayloadPacket;
+import net.minecraft.network.protocol.common.ClientboundCustomPayloadPacket;
+import net.minecraft.network.protocol.common.ServerboundCustomPayloadPacket;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
@@ -27,59 +27,13 @@ import java.util.function.BiConsumer;
 import java.util.function.Function;
 
 public class ModNetworking {
-    private static final HashMap<Class<?>, Function<FriendlyByteBuf, Object>> DECODERS = new HashMap<>();
-    public static final Map<Class<?>, BiConsumer<FriendlyByteBuf, Object>> ENCODERS = new HashMap<>();
+    public static final Map<Class<?>, BiConsumer<FriendlyByteBuf, Object>> ENCODERS = MessageArguments.ENCODERS;
     private static final HashMap<ResourceLocation, AbstractBaseC2SPacket> registrarC2S = new HashMap<>();
     private static final HashMap<ResourceLocation, AbstractBaseS2CPacket> registrarS2C = new HashMap<>();
 
     public static void bootstrap() {
         register(new MessageC2S());
         register(new MessageS2C());
-    }
-
-    static {
-        DECODERS.put(Integer.class, FriendlyByteBuf::readInt);
-        DECODERS.put(Long.class, FriendlyByteBuf::readLong);
-        DECODERS.put(Float.class, FriendlyByteBuf::readFloat);
-        DECODERS.put(Double.class, FriendlyByteBuf::readDouble);
-        DECODERS.put(Boolean.class, FriendlyByteBuf::readBoolean);
-        DECODERS.put(Byte.class, FriendlyByteBuf::readByte);
-        DECODERS.put(Short.class, FriendlyByteBuf::readShort);
-        DECODERS.put(String.class, FriendlyByteBuf::readUtf);
-        DECODERS.put(UUID.class, FriendlyByteBuf::readUUID);
-        DECODERS.put(ResourceLocation.class, FriendlyByteBuf::readResourceLocation);
-        DECODERS.put(BlockPos.MutableBlockPos.class, FriendlyByteBuf::readBlockPos);
-        DECODERS.put(BlockPos.class, FriendlyByteBuf::readBlockPos);
-        DECODERS.put(Vector3f.class, FriendlyByteBuf::readVector3f);
-        DECODERS.put(ItemStack.class, FriendlyByteBuf::readItem);
-        DECODERS.put(BlockHitResult.class, FriendlyByteBuf::readBlockHitResult);
-        DECODERS.put(CompoundTag.class, FriendlyByteBuf::readNbt);
-
-        ENCODERS.put(Integer.class, (buf, o) -> buf.writeInt((Integer) o));
-        ENCODERS.put(int.class, (buf, o) -> buf.writeInt((Integer) o));
-        ENCODERS.put(Long.class, (buf, o) -> buf.writeLong((Long) o));
-        ENCODERS.put(long.class, (buf, o) -> buf.writeLong((Long) o));
-        ENCODERS.put(Float.class, (buf, o) -> buf.writeFloat((Float) o));
-        ENCODERS.put(float.class, (buf, o) -> buf.writeFloat((Float) o));
-        ENCODERS.put(Double.class, (buf, o) -> buf.writeDouble((Double) o));
-        ENCODERS.put(double.class, (buf, o) -> buf.writeDouble((Double) o));
-        ENCODERS.put(Boolean.class, (buf, o) -> buf.writeBoolean((Boolean) o));
-        ENCODERS.put(boolean.class, (buf, o) -> buf.writeBoolean((Boolean) o));
-        ENCODERS.put(Byte.class, (buf, o) -> buf.writeByte((Byte) o));
-        ENCODERS.put(byte.class, (buf, o) -> buf.writeByte((Byte) o));
-        ENCODERS.put(Short.class, (buf, o) -> buf.writeShort((Short) o));
-        ENCODERS.put(short.class, (buf, o) -> buf.writeShort((Short) o));
-        ENCODERS.put(Character.class, (buf, o) -> buf.writeChar((Character) o));
-        ENCODERS.put(char.class, (buf, o) -> buf.writeChar((Character) o));
-        ENCODERS.put(String.class, (buf, o) -> buf.writeUtf((String) o));
-        ENCODERS.put(UUID.class, (buf, o) -> buf.writeUUID((UUID) o));
-        ENCODERS.put(ResourceLocation.class, (buf, o) -> buf.writeResourceLocation((ResourceLocation) o));
-        ENCODERS.put(BlockPos.MutableBlockPos.class, (buf, o) -> buf.writeBlockPos((BlockPos) o));
-        ENCODERS.put(BlockPos.class, (buf, o) -> buf.writeBlockPos((BlockPos) o));
-        ENCODERS.put(ItemStack.class, (buf, o) -> buf.writeItem((ItemStack) o));
-        ENCODERS.put(Vector3f.class, (buf, o) -> buf.writeVector3f((Vector3f)o));
-        ENCODERS.put(BlockHitResult.class, (buf, o) -> buf.writeBlockHitResult((BlockHitResult) o));
-        ENCODERS.put(CompoundTag.class, (buf, o) -> buf.writeNbt((CompoundTag) o));
     }
 
     public static @Nullable Connection getC2SConnection()
@@ -116,96 +70,27 @@ public class ModNetworking {
         if (con == null)
             return;
 
-        con.send(new ServerboundCustomPayloadPacket(buildFromClassName(packetType.getClass()), createBufferFromVArgs(args)));
+        con.send(new ServerboundCustomPayloadPacket(new MessagePayload(buildFromClassName(packetType.getClass()), args)));
     }
 
     public static <T extends AbstractBaseS2CPacket> void send(T packetType, ServerPlayer recipient, Object... args) {
-        if (recipient != null && recipient.connection != null && ((IClientNetworking) recipient.connection) != null) {
-            Connection con = ((IClientNetworking) recipient.connection).roundabout$getServer();
-            if (con == null)
-                return;
-
-            con.send(new ClientboundCustomPayloadPacket(
-                    buildFromClassName(packetType.getClass()),
-                    createBufferFromVArgs(args)
-            ));
+        if (recipient != null && recipient.connection != null) {
+            recipient.connection.send(new ClientboundCustomPayloadPacket(
+                    new MessagePayload(buildFromClassName(packetType.getClass()), args)));
         }
     }
 
-    public static void encodeValue(FriendlyByteBuf buf, Object value) {
-        BiConsumer<FriendlyByteBuf, Object> encoder = ENCODERS.get(value.getClass());
-        if (encoder == null) {
-            throw new IllegalArgumentException("No encoder for type: " + value.getClass().getName());
-        }
-        encoder.accept(buf, value);
+    public static Object[] decodeBufferToVArgs(FriendlyByteBuf buffer) {
+        return MessageArguments.decodeBufferToVArgs(buffer);
     }
-
-    public static Object decodeValue(FriendlyByteBuf buf, Class<?> type) {
-        Function<FriendlyByteBuf, Object> decoder = DECODERS.get(type);
-        if (decoder == null) {
-            throw new IllegalArgumentException("No decoder for type: " + type.getName());
-        }
-        return decoder.apply(buf);
+    public static void encodeValue(FriendlyByteBuf buffer, Object value) {
+        MessageArguments.encodeValue(buffer, value);
     }
-
-    private static String generateSignature(Object... args) {
-        if (args.length == 0)
-            return "void";  // special marker for no arguments
-
-        StringBuilder sig = new StringBuilder();
-
-        for (Object arg : args) {
-            Class<?> c = arg.getClass();
-
-            sig.append(c.getName()).append(";");
-        }
-
-        return sig.toString();
+    public static Object decodeValue(FriendlyByteBuf buffer, Class<?> type) {
+        return MessageArguments.decodeValue(buffer, type);
     }
-
-    private static FriendlyByteBuf createBufferFromVArgs(Object... args) {
-        FriendlyByteBuf buf = new FriendlyByteBuf(Unpooled.buffer());
-
-        // type metadata
-        buf.writeUtf(generateSignature(args));
-
-        // actual params
-        for (Object arg : args) {
-            encodeValue(buf, arg);
-        }
-
-        // final buffer looks like:
-        // ["Ljava/lang/String;IJD", "Hello", 42, 10000000000L, 3.14]
-        return buf;
-    }
-
-    public static Object[] decodeBufferToVArgs(FriendlyByteBuf buf) {
-        String sig = buf.readUtf();
-
-        if (sig.equals("void")) {
-            return new Object[0]; // no arguments
-        }
-
-        List<Object> result = new ArrayList<>();
-        String[] sigClasses = sig.split(";");
-
-        for (String className : sigClasses) {
-            if (className.isEmpty()) continue; // skip empty due to trailing ";"
-            try {
-                Class<?> clazz = Class.forName(className);
-                result.add(decodeValue(buf, clazz));
-            } catch (Exception e) {
-                throw new RuntimeException("Failed decoding FriendlyByteBuf to VArgs:\n" +
-                        className + " was not found.\n[" + sig + "]");
-            }
-        }
-
-        if (buf.readableBytes() > 0) {
-            throw new RuntimeException("Warning: extra unread bytes in buffer! Signature: " + sig);
-        }
-
-        return result.toArray();
-    }
+    public static Set<ResourceLocation> clientboundIds() { return Set.copyOf(registrarS2C.keySet()); }
+    public static Set<ResourceLocation> serverboundIds() { return Set.copyOf(registrarC2S.keySet()); }
 
     /** Attempts to find the C2S packet associated with the ResourceLocation ID
      * @return The packet if found. Otherwise, null. */

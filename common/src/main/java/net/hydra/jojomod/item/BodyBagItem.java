@@ -33,12 +33,13 @@ public class BodyBagItem extends Item {
                 return true;
             }
             int bodyCount;
-            CompoundTag $$1 = stack.getOrCreateTagElement("bodies");
+            CompoundTag $$1 = net.hydra.jojomod.util.ItemData.elementOrEmpty(stack, "bodies");
             String str = fm.getData();
             bodyCount = $$1.getInt(str);
             bodyCount++;
             if (bodyCount <= bodyLimit){
                 $$1.putInt(str,bodyCount);
+                net.hydra.jojomod.util.ItemData.setElement(stack, "bodies", $$1);
                 return true;
             }
         }

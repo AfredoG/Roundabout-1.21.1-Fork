@@ -49,7 +49,7 @@ public class ScissorsPumpkinBlock {
                         0.05 * (double)$$8.getStepX() + $$1.random.nextDouble() * 0.02, 0.05, 0.05 * (double)$$8.getStepZ() + $$1.random.nextDouble() * 0.02
                 );
                 $$1.addFreshEntity($$9);
-                $$6.hurtAndBreak(2, $$3, $$1x -> $$1x.broadcastBreakEvent($$4));
+                $$6.hurtAndBreak(2, $$3, net.minecraft.world.entity.LivingEntity.getSlotForHand($$4));
                 $$1.gameEvent($$3, GameEvent.SHEAR, $$2);
                 $$3.awardStat(Stats.ITEM_USED.get(ModItems.SCISSORS));
             }

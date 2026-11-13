@@ -80,7 +80,7 @@ public abstract class GravityLivingEntityMixin extends Entity implements IGravit
     @Shadow
     public abstract float getViewYRot(float tickDelta);
 
-    @Shadow public abstract boolean hasEffect(MobEffect mobEffect);
+    @Shadow public abstract boolean hasEffect(net.minecraft.core.Holder<MobEffect> mobEffect);
 
     @Shadow protected abstract boolean isAffectedByFluids();
 
@@ -101,7 +101,7 @@ public abstract class GravityLivingEntityMixin extends Entity implements IGravit
 
     @Shadow public abstract Vec3 handleRelativeFrictionAndCalculateMovement(Vec3 vec3, float f);
 
-    @Shadow @Nullable public abstract MobEffectInstance getEffect(MobEffect mobEffect);
+    @Shadow @Nullable public abstract MobEffectInstance getEffect(net.minecraft.core.Holder<MobEffect> mobEffect);
 
     @Shadow public abstract boolean shouldDiscardFriction();
 
@@ -111,7 +111,7 @@ public abstract class GravityLivingEntityMixin extends Entity implements IGravit
 
     @Shadow public abstract boolean isBlocking();
 
-    @Shadow @Final private Map<MobEffect, MobEffectInstance> activeEffects;
+    @Shadow @Final private Map<net.minecraft.core.Holder<MobEffect>, MobEffectInstance> activeEffects;
 
     @Shadow protected abstract void onEffectUpdated(MobEffectInstance mobEffectInstance, boolean bl, @Nullable Entity entity);
 
@@ -629,9 +629,9 @@ public abstract class GravityLivingEntityMixin extends Entity implements IGravit
                         ClientUtil.getPlayer()))){
             // tick effects down but don't spawn particles
             try {
-                Iterator<MobEffect> $$0 = this.activeEffects.keySet().iterator();
+                Iterator<net.minecraft.core.Holder<MobEffect>> $$0 = this.activeEffects.keySet().iterator();
                 while ($$0.hasNext()) {
-                    MobEffect $$1 = $$0.next();
+                    net.minecraft.core.Holder<MobEffect> $$1 = $$0.next();
                     MobEffectInstance $$2 = this.activeEffects.get($$1);
                     if (!$$2.tick(rdbt$this(), () -> this.onEffectUpdated($$2, true, null))) {
                         if (!this.level().isClientSide) {
@@ -657,11 +657,11 @@ public abstract class GravityLivingEntityMixin extends Entity implements IGravit
             return;
         }
         ((StandUser)rdbt$this()).rdbt$setRemoveLoveSafety(false);
-        Iterator<MobEffect> $$0 = this.activeEffects.keySet().iterator();
+        Iterator<net.minecraft.core.Holder<MobEffect>> $$0 = this.activeEffects.keySet().iterator();
 
         try {
             while ($$0.hasNext()) {
-                MobEffect $$1 = $$0.next();
+                net.minecraft.core.Holder<MobEffect> $$1 = $$0.next();
                 MobEffectInstance $$2 = this.activeEffects.get($$1);
                 if (!$$2.tick(rdbt$this(), () -> this.onEffectUpdated($$2, true, null))) {
                     if (!this.level().isClientSide) {

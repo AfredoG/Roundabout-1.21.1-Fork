@@ -4924,14 +4924,14 @@ public class PowersKillerQueen extends NewPunchingStand {
                     matrixStack.mulPose(Axis.YP.rotationDegrees(180.0F));
 
                     // Draw flat quad here
-                    VertexConsumer vertexConsumer = bufferSource.getBuffer(RenderType.entityTranslucent(icon)).color(1.0f, 1.0f, 1.0f, 1.0f);
+                    VertexConsumer vertexConsumer = bufferSource.getBuffer(RenderType.entityTranslucent(icon)).setColor(1.0f, 1.0f, 1.0f, 1.0f);
                     Matrix4f matrix = matrixStack.last().pose();
-                    Matrix3f normal = matrixStack.last().normal();
+                    com.mojang.blaze3d.vertex.PoseStack.Pose normal = matrixStack.last();
 
-                    vertexConsumer.vertex(matrix, -size, -size, 0.0f).color(255, 255, 255, 255).uv(0.0f, 1.0f).overlayCoords(OverlayTexture.NO_OVERLAY).uv2(15728880).normal(normal, 0, 0, -1).endVertex();
-                    vertexConsumer.vertex(matrix, size, -size, 0.0f).color(255, 255, 255, 255).uv(1.0f, 1.0f).overlayCoords(OverlayTexture.NO_OVERLAY).uv2(15728880).normal(normal, 0, 0, -1).endVertex();
-                    vertexConsumer.vertex(matrix, size, size, 0.0f).color(255, 255, 255, 255).uv(1.0f, 0.0f).overlayCoords(OverlayTexture.NO_OVERLAY).uv2(15728880).normal(normal, 0, 0, -1).endVertex();
-                    vertexConsumer.vertex(matrix, -size, size, 0.0f).color(255, 255, 255, 255).uv(0.0f, 0.0f).overlayCoords(OverlayTexture.NO_OVERLAY).uv2(15728880).normal(normal, 0, 0, -1).endVertex();
+                    vertexConsumer.addVertex(matrix, -size, -size, 0.0f).setColor(255, 255, 255, 255).setUv(0.0f, 1.0f).setOverlay(OverlayTexture.NO_OVERLAY).setLight(15728880).setNormal(normal, 0, 0, -1);
+                    vertexConsumer.addVertex(matrix, size, -size, 0.0f).setColor(255, 255, 255, 255).setUv(1.0f, 1.0f).setOverlay(OverlayTexture.NO_OVERLAY).setLight(15728880).setNormal(normal, 0, 0, -1);
+                    vertexConsumer.addVertex(matrix, size, size, 0.0f).setColor(255, 255, 255, 255).setUv(1.0f, 0.0f).setOverlay(OverlayTexture.NO_OVERLAY).setLight(15728880).setNormal(normal, 0, 0, -1);
+                    vertexConsumer.addVertex(matrix, -size, size, 0.0f).setColor(255, 255, 255, 255).setUv(0.0f, 0.0f).setOverlay(OverlayTexture.NO_OVERLAY).setLight(15728880).setNormal(normal, 0, 0, -1);
 
 
                     RenderSystem.enableDepthTest();

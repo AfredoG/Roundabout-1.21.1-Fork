@@ -43,8 +43,8 @@ public class DiverLimbBlockEntity extends BlockEntity {
     }
 
     @Override
-    protected void saveAdditional(CompoundTag tag) {
-        super.saveAdditional(tag);
+    protected void saveAdditional(CompoundTag tag, net.minecraft.core.HolderLookup.Provider registries) {
+        super.saveAdditional(tag, registries);
         tag.putInt("Facing", facing.get3DDataValue());
         tag.putInt("LimbIndex", limbIndex);
         tag.putByte("StandSkin", standSkin);
@@ -54,8 +54,8 @@ public class DiverLimbBlockEntity extends BlockEntity {
     }
 
     @Override
-    public void load(CompoundTag tag) {
-        super.load(tag);
+    public void loadAdditional(CompoundTag tag, net.minecraft.core.HolderLookup.Provider registries) {
+        super.loadAdditional(tag, registries);
         if (tag.contains("Facing")) {
             this.facing = Direction.from3DDataValue(tag.getInt("Facing"));
         }

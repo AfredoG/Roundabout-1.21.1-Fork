@@ -38,8 +38,9 @@ public abstract class AnubisDropsMixin {
                             && !((IPlayerEntity) P).roundabout$getUnlockedBonusSkin()) {
                         PA.unlockSkin(SU.roundabout$getStandSkin());
                     } else {
-                        CompoundTag tag = stack.getOrCreateTagElement("SkinType");
+                        CompoundTag tag = net.hydra.jojomod.util.ItemData.elementOrEmpty(stack, "SkinType");
                         tag.putByte("SkinType", SU.roundabout$getStandSkin());
+                        net.hydra.jojomod.util.ItemData.setElement(stack, "SkinType", tag);
 
                         float skin = 0;
                         if (This instanceof Evoker || This instanceof Illusioner) {

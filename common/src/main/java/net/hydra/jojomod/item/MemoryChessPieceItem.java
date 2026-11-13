@@ -86,6 +86,10 @@ public class MemoryChessPieceItem extends BlockItem implements Vanishable {
     }
     /**Default 72000*/
     @Override
+    public int getUseDuration(ItemStack $$0, net.minecraft.world.entity.LivingEntity entity) {
+        return getUseDuration($$0);
+    }
+
     public int getUseDuration(ItemStack $$0) {
         return 72000;
     }
@@ -296,15 +300,16 @@ public class MemoryChessPieceItem extends BlockItem implements Vanishable {
         return stack;
     }
     @Override
-    public void appendHoverText(ItemStack $$0, @Nullable Level $$1, List<Component> $$2, TooltipFlag $$3) {
-        String comp = $$0.getOrCreateTag().getString("vicName");
+    public void appendHoverText(ItemStack $$0, net.minecraft.world.item.Item.TooltipContext tooltipContext, List<Component> $$2, TooltipFlag $$3) {
+        Level $$1 = tooltipContext.level();
+        String comp = net.hydra.jojomod.util.ItemData.copy($$0).getString("vicName");
         boolean comp2 = $$0.getOrCreateTag().hasUUID("victim");
         if (comp != null && !comp.isBlank()){
             ChatFormatting formatting = ChatFormatting.LIGHT_PURPLE;
              $$2.add(Component.literal(comp).withStyle(formatting));
             //$$2.add(Component.translatable("text.roundabout.memory."+
-            //        $$0.getOrCreateTag().getInt("stealType")).withStyle(ChatFormatting.BLUE));
-            if (!$$0.getOrCreateTag().getBoolean("activated")){
+            //        net.hydra.jojomod.util.ItemData.copy($$0).getInt("stealType")).withStyle(ChatFormatting.BLUE));
+            if (!net.hydra.jojomod.util.ItemData.copy($$0).getBoolean("activated")){
                 $$2.add(Component.translatable("text.roundabout.inactive_piece").withStyle(ChatFormatting.AQUA));
             }
         }
@@ -374,7 +379,7 @@ public class MemoryChessPieceItem extends BlockItem implements Vanishable {
                     dmg = multiplyPowerByStandConfigMobs(3);
                 }
                 if (living.hurt(ModDamageTypes.of(living.level(), ModDamageTypes.CHESS_STRIKE, player), dmg) && !living.isAlive()) {
-                    player.getMainHandItem().hurtAndBreak(4, player, $$1x -> $$1x.broadcastBreakEvent(InteractionHand.MAIN_HAND));
+                    player.getMainHandItem().hurtAndBreak(4, player, net.minecraft.world.entity.LivingEntity.getSlotForHand(InteractionHand.MAIN_HAND));
                     if (!player.getMainHandItem().isEmpty() && player.getMainHandItem().getItem() instanceof MemoryChessPieceItem){
                         player.setItemSlot(EquipmentSlot.MAINHAND, ItemStack.EMPTY);
                     }
@@ -384,7 +389,7 @@ public class MemoryChessPieceItem extends BlockItem implements Vanishable {
                         destroy++;
                     }
                     MainUtil.makeBleed(living,0,300,player);
-                    player.getMainHandItem().hurtAndBreak(1, player, $$1x -> $$1x.broadcastBreakEvent(InteractionHand.MAIN_HAND));
+                    player.getMainHandItem().hurtAndBreak(1, player, net.minecraft.world.entity.LivingEntity.getSlotForHand(InteractionHand.MAIN_HAND));
 
                     if (destroy >= 3 && !player.getMainHandItem().isEmpty() && player.getMainHandItem().getItem() instanceof MemoryChessPieceItem){
                         player.setItemSlot(EquipmentSlot.MAINHAND, ItemStack.EMPTY);

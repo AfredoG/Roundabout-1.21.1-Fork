@@ -1159,8 +1159,9 @@ public abstract class ZMob extends LivingEntity implements IMob {
                         $$0.level().playSound(null,$$0.blockPosition(), ModSounds.ANUBIS_EXTRA_EVENT, SoundSource.PLAYERS,3F,1F);
 
                         ItemStack itemStack = new ItemStack(ModItems.STAND_DISC_ANUBIS);
-                        CompoundTag tag = itemStack.getOrCreateTagElement("Special");
+                        CompoundTag tag = net.hydra.jojomod.util.ItemData.elementOrEmpty(itemStack, "Special");
                         tag.putByte("Type",(byte)1);
+                        net.hydra.jojomod.util.ItemData.setElement(itemStack, "Special", tag);
 
 
                         StandArrowItem.grantStand(itemStack, AI);

@@ -46,7 +46,7 @@ public class FogTrapBlockEntity extends BlockEntity {
         }
     }
     @Override
-    protected void saveAdditional(CompoundTag tag) {
+    protected void saveAdditional(CompoundTag tag, net.minecraft.core.HolderLookup.Provider registries) {
         if(owner != null) {
             tag.putUUID("owner", owner);
         }
@@ -55,12 +55,12 @@ public class FogTrapBlockEntity extends BlockEntity {
         }
         tag.putInt("range",range);
 
-        super.saveAdditional(tag);
+        super.saveAdditional(tag, registries);
     }
 
     @Override
-    public void load(CompoundTag tag) {
-        super.load(tag);
+    public void loadAdditional(CompoundTag tag, net.minecraft.core.HolderLookup.Provider registries) {
+        super.loadAdditional(tag, registries);
         if(tag.contains("owner")) {
             owner = tag.getUUID("owner");
         }

@@ -74,17 +74,17 @@ public class ModificationVisageScreen extends Screen {
         slot = slot;
 
         if (stack != null && !stack.isEmpty() && stack.getItem() instanceof ModificationMaskItem){
-            if (stack.getOrCreateTagElement("modifications").contains("height")) {
-                visageHeight = stack.getOrCreateTagElement("modifications").getInt("height");
+            if (net.hydra.jojomod.util.ItemData.elementOrEmpty(stack, "modifications").contains("height")) {
+                visageHeight = net.hydra.jojomod.util.ItemData.elementOrEmpty(stack, "modifications").getInt("height");
             }
-            if (stack.getOrCreateTagElement("modifications").contains("width")) {
-                visageWidth = stack.getOrCreateTagElement("modifications").getInt("width");
+            if (net.hydra.jojomod.util.ItemData.elementOrEmpty(stack, "modifications").contains("width")) {
+                visageWidth = net.hydra.jojomod.util.ItemData.elementOrEmpty(stack, "modifications").getInt("width");
             }
-            if (stack.getOrCreateTagElement("modifications").contains("head")) {
-                visageHeadSize = stack.getOrCreateTagElement("modifications").getInt("head");
+            if (net.hydra.jojomod.util.ItemData.elementOrEmpty(stack, "modifications").contains("head")) {
+                visageHeadSize = net.hydra.jojomod.util.ItemData.elementOrEmpty(stack, "modifications").getInt("head");
             }
-            if (stack.getOrCreateTagElement("modifications").contains("chest")) {
-                chestType = stack.getOrCreateTagElement("modifications").getInt("chest");
+            if (net.hydra.jojomod.util.ItemData.elementOrEmpty(stack, "modifications").contains("chest")) {
+                chestType = net.hydra.jojomod.util.ItemData.elementOrEmpty(stack, "modifications").getInt("chest");
             }
         }
     }
@@ -159,7 +159,7 @@ public class ModificationVisageScreen extends Screen {
         if (isSurelyHovering( this.width / 2-30,  this.height / 2 + 40, 60, 8, mouseX, mouseY)) {
 
             ItemStack delStack = this.visage.copy();
-            if (!delStack.getOrCreateTagElement("modifications").contains("height")){
+            if (!net.hydra.jojomod.util.ItemData.elementOrEmpty(delStack, "modifications").contains("height")){
                 delStack.removeTagKey("modifications");
             }
 
@@ -481,10 +481,10 @@ public class ModificationVisageScreen extends Screen {
 
             ItemStack mask2 = ModItems.MODIFICATION_MASK.getDefaultInstance().copy();
 
-            mask2.getOrCreateTagElement("modifications").putInt("height", visageHeight);
-            mask2.getOrCreateTagElement("modifications").putInt("width", visageWidth);
-            mask2.getOrCreateTagElement("modifications").putInt("head", visageHeadSize);
-            mask2.getOrCreateTagElement("modifications").putInt("chest", chestType);
+            net.hydra.jojomod.util.ItemData.putElement(mask2, "modifications", "height", net.minecraft.nbt.IntTag.valueOf(visageHeight));
+            net.hydra.jojomod.util.ItemData.putElement(mask2, "modifications", "width", net.minecraft.nbt.IntTag.valueOf(visageWidth));
+            net.hydra.jojomod.util.ItemData.putElement(mask2, "modifications", "head", net.minecraft.nbt.IntTag.valueOf(visageHeadSize));
+            net.hydra.jojomod.util.ItemData.putElement(mask2, "modifications", "chest", net.minecraft.nbt.IntTag.valueOf(chestType));
             ipe.roundabout$setMaskSlot(mask2);
 
             float $$7 = (float) Math.atan((double) ($$4 / 40.0F));

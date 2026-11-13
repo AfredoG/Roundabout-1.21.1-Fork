@@ -6,7 +6,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 
 public interface RoundaboutMobEffectFogFunction {
-    MobEffect getMobEffect();
+    net.minecraft.core.Holder<MobEffect> getMobEffect();
 
     default boolean isEnabled(LivingEntity $$0, float $$1) {
         return $$0.hasEffect(this.getMobEffect());

@@ -4461,15 +4461,15 @@ public class PowersDiverDown extends NewPunchingStand {
         boolean hadSlowness = false;
 
         // get all the harmful effects
-        List<MobEffect> negativeEffects = new ArrayList<>();
+        List<net.minecraft.core.Holder<MobEffect>> negativeEffects = new ArrayList<>();
         for (MobEffectInstance instance : targetLiving.getActiveEffects()) {
-            MobEffect effect = instance.getEffect();
-            if (effect.getCategory() == MobEffectCategory.HARMFUL) {
+            net.minecraft.core.Holder<MobEffect> effect = instance.getEffect();
+            if (effect.value().getCategory() == MobEffectCategory.HARMFUL) {
                 if (!ClientNetworking.getAppropriateConfig().diverDownSettings.advancedClearEffect && MainUtil.isSpecialEffect(effect)) {
                     continue;
                 }
                 negativeEffects.add(effect);
-                if (effect == MobEffects.MOVEMENT_SLOWDOWN) {
+                if (effect.is(MobEffects.MOVEMENT_SLOWDOWN)) {
                     hadSlowness = true;
                 }
             }
@@ -4477,7 +4477,7 @@ public class PowersDiverDown extends NewPunchingStand {
         if (negativeEffects.isEmpty()) return;
 
         // Remove all the effects
-        for (MobEffect effect : negativeEffects) {
+        for (net.minecraft.core.Holder<MobEffect> effect : negativeEffects) {
             targetLiving.removeEffect(effect);
         }
 
@@ -4642,8 +4642,8 @@ public class PowersDiverDown extends NewPunchingStand {
         }
 
         for (MobEffectInstance instance : effects) {
-            MobEffect effect = instance.getEffect();
-            if (effect.getCategory() == MobEffectCategory.HARMFUL) {
+            net.minecraft.core.Holder<MobEffect> effect = instance.getEffect();
+            if (effect.value().getCategory() == MobEffectCategory.HARMFUL) {
                 emergeServer();
             }
         }

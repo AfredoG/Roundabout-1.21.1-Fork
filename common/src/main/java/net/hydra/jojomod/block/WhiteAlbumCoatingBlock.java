@@ -208,7 +208,7 @@ public class WhiteAlbumCoatingBlock
                     stack.hurtAndBreak(
                             1,
                             player,
-                            p -> p.broadcastBreakEvent(hand)
+                            net.minecraft.world.entity.LivingEntity.getSlotForHand(hand)
                     );
                 }
 

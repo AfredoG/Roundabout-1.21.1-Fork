@@ -103,18 +103,18 @@ public class InvisiBlockEntity extends BlockEntity {
         super(ModBlocks.INVISIBLE_BLOCK_ENTITY, $$0, $$1);
     }
     @Override
-    protected void saveAdditional(CompoundTag tag) {
+    protected void saveAdditional(CompoundTag tag, net.minecraft.core.HolderLookup.Provider registries) {
         tag.put("OriginalState", NbtUtils.writeBlockState(originalState));
         tag.putInt("TicksLeft", ticksUntilRestore);
         if (originalTag != null) {
             tag.put("OriginalBlockEntity", originalTag);
         }
-        super.saveAdditional(tag);
+        super.saveAdditional(tag, registries);
     }
 
     @Override
-    public void load(CompoundTag tag) {
-        super.load(tag);
+    public void loadAdditional(CompoundTag tag, net.minecraft.core.HolderLookup.Provider registries) {
+        super.loadAdditional(tag, registries);
         if (tag.contains("OriginalState")) {
             originalState = NbtUtils.readBlockState(BuiltInRegistries.BLOCK.asLookup(), tag.getCompound("OriginalState"));
         }

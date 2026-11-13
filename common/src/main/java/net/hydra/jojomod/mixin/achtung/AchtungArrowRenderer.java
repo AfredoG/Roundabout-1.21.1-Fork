@@ -59,7 +59,7 @@ public abstract class AchtungArrowRenderer<T extends AbstractArrow> extends Enti
             VertexConsumer $$18 = $$4.getBuffer(RenderType.entityTranslucentCull(this.getTextureLocation($$0)));
             PoseStack.Pose $$19 = $$3.last();
             Matrix4f $$20 = $$19.pose();
-            Matrix3f $$21 = $$19.normal();
+            PoseStack.Pose $$21 = $$19;
             this.roundabout$vertexAchtung($$20, $$21, $$18, -7, -2, -2, 0.0F, 0.15625F, -1, 0, 0, $$5);
             this.roundabout$vertexAchtung($$20, $$21, $$18, -7, -2, 2, 0.15625F, 0.15625F, -1, 0, 0, $$5);
             this.roundabout$vertexAchtung($$20, $$21, $$18, -7, 2, 2, 0.15625F, 0.3125F, -1, 0, 0, $$5);
@@ -86,12 +86,12 @@ public abstract class AchtungArrowRenderer<T extends AbstractArrow> extends Enti
     @Unique
     public void roundabout$vertexAchtung(Matrix4f $$0, Matrix3f $$1, VertexConsumer $$2, int $$3, int $$4, int $$5, float $$6, float $$7, int $$8, int $$9, int $$10, int $$11) {
         $$2.vertex($$0, (float)$$3, (float)$$4, (float)$$5)
-                .color(255, 255, 255, ClientUtil.getThrowFadeToTheEtherInt())
-                .uv($$6, $$7)
-                .overlayCoords(OverlayTexture.NO_OVERLAY)
-                .uv2($$11)
-                .normal($$1, (float)$$8, (float)$$10, (float)$$9)
-                .endVertex();
+                .setColor(255, 255, 255, ClientUtil.getThrowFadeToTheEtherInt())
+                .setUv($$6, $$7)
+                .setOverlay(OverlayTexture.NO_OVERLAY)
+                .setLight($$11)
+                .setNormal($$1, (float)$$8, (float)$$10, (float)$$9)
+                ;
     }
 
 

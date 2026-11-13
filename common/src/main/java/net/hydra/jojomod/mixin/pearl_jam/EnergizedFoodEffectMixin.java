@@ -38,7 +38,7 @@ public class EnergizedFoodEffectMixin {
     @Inject(method = "addEatEffect", at = @At(value = "TAIL"))
     protected void energizedFoodInject(ItemStack $$0, Level $$1, LivingEntity $$2, CallbackInfo ci) {
         if ($$0.hasTag()) {
-            if ($$0.getOrCreateTag().contains("pearljamfood")) {
+            if (net.hydra.jojomod.util.ItemData.copy($$0).contains("pearljamfood")) {
                 Random random = new Random();
                 Pair<ParticleOptions, String> pair;
                 if (MainUtil.foodParticles.containsKey($$0.getItem())) {
@@ -80,14 +80,14 @@ public class EnergizedFoodEffectMixin {
                 }
                 if (MainUtil.foodCuresThat.containsKey($$0.getItem()) || MainUtil.foodAddsThat.containsKey($$0.getItem()) || MainUtil.specialFoodRemoves.containsKey($$0.getItem())) {
                     if (MainUtil.foodCuresThat.containsKey($$0.getItem())) {
-                        List<MobEffect> effects = MainUtil.foodCuresThat.get($$0.getItem());
-                        for (MobEffect effect : effects) {
+                        List<net.minecraft.core.Holder<MobEffect>> effects = MainUtil.foodCuresThat.get($$0.getItem());
+                        for (net.minecraft.core.Holder<MobEffect> effect : effects) {
                             $$2.removeEffect(effect);
                         }
                     }
                     if (MainUtil.foodAddsThat.containsKey($$0.getItem())) {
-                        List<MobEffect> effects = MainUtil.foodAddsThat.get($$0.getItem());
-                        for (MobEffect effect : effects) {
+                        List<net.minecraft.core.Holder<MobEffect>> effects = MainUtil.foodAddsThat.get($$0.getItem());
+                        for (net.minecraft.core.Holder<MobEffect> effect : effects) {
                             MobEffectInstance effectInstance = new MobEffectInstance(effect, 200);
                             $$2.addEffect(effectInstance);
                         }

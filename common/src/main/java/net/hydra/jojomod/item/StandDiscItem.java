@@ -149,7 +149,8 @@ public class StandDiscItem extends Item {
     }
 
     @Override
-    public void appendHoverText(ItemStack $$0, @Nullable Level $$1, List<Component> $$2, TooltipFlag $$3) {
+    public void appendHoverText(ItemStack $$0, net.minecraft.world.item.Item.TooltipContext tooltipContext, List<Component> $$2, TooltipFlag $$3) {
+        Level $$1 = tooltipContext.level();
 
         if(standPowers != null && this.standPowers.isWip()){
             $$2.add(Component.translatable("leveling.roundabout.disc_wip").withStyle(ChatFormatting.RED).withStyle(ChatFormatting.BOLD));
@@ -163,7 +164,7 @@ public class StandDiscItem extends Item {
                     .append(this.standPowers.ifWipListDev()));
         }
         $$2.add(this.getDisplayName2().withStyle(ChatFormatting.AQUA));
-        CompoundTag $$4 = $$0.getTagElement("Memory");
+        CompoundTag $$4 = net.hydra.jojomod.util.ItemData.element($$0, "Memory");
         // && $$1.getGameRules().getBoolean(ModGamerules.ROUNDABOUT_STAND_LEVELING)
         if ($$4 != null && $$1 != null) {
             if (standPowers != null && !standPowers.isSecondaryStand() && $$4.contains("Level")) {

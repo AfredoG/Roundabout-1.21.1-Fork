@@ -2776,9 +2776,9 @@ public class ClientUtil {
             width = 0.003F;
         }
         RenderSystem.enableBlend();
-        p_174308_.vertex(p_254405_, f5 - p_174319_ - width, f6 + p_174318_ + width - focus, f7 + p_174320_ + width).color(f2, f3, f4, alpha).uv2(k).endVertex();
+        p_174308_.addVertex(p_254405_, f5 - p_174319_ - width, f6 + p_174318_ + width - focus, f7 + p_174320_ + width).setColor(f2, f3, f4, alpha).setLight(k);
         RenderSystem.enableBlend();
-        p_174308_.vertex(p_254405_, f5 + p_174319_ + width, f6 + p_174317_ - p_174318_ - width - focus, f7 - p_174320_ - width).color(f2, f3, f4, alpha).uv2(k).endVertex();
+        p_174308_.addVertex(p_254405_, f5 + p_174319_ + width, f6 + p_174317_ - p_174318_ - width - focus, f7 - p_174320_ - width).setColor(f2, f3, f4, alpha).setLight(k);
     }
 
     public static Vec3 roundabout$getBindColor(Entity binder) {

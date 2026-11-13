@@ -58,6 +58,10 @@ public class HarpoonItem extends Item implements Vanishable {
     }
 
     @Override
+    public int getUseDuration(ItemStack $$0, net.minecraft.world.entity.LivingEntity entity) {
+        return getUseDuration($$0);
+    }
+
     public int getUseDuration(ItemStack $$0) {
         return 72000;
     }
@@ -74,7 +78,7 @@ public class HarpoonItem extends Item implements Vanishable {
             int $$5 = this.getUseDuration($$0) - $$3;
             if ($$5 >= 10) {
                     if (!$$1.isClientSide) {
-                        $$0.hurtAndBreak(1, $$4, $$1x -> $$1x.broadcastBreakEvent($$2.getUsedItemHand()));
+                        $$0.hurtAndBreak(1, $$4, net.minecraft.world.entity.LivingEntity.getSlotForHand($$2.getUsedItemHand()));
                             HarpoonEntity $$7 = new HarpoonEntity($$1, $$4, $$0);
                             $$7.shootFromRotation($$4, $$4.getXRot(), $$4.getYRot(), 0.0F, 2.5F, 1.0F);
                             if ($$4.getAbilities().instabuild) {
@@ -118,14 +122,14 @@ public class HarpoonItem extends Item implements Vanishable {
 
     @Override
     public boolean hurtEnemy(ItemStack $$0, LivingEntity $$1, LivingEntity $$2) {
-        $$0.hurtAndBreak(1, $$2, $$0x -> $$0x.broadcastBreakEvent(EquipmentSlot.MAINHAND));
+        $$0.hurtAndBreak(1, $$2, EquipmentSlot.MAINHAND);
         return true;
     }
 
     @Override
     public boolean mineBlock(ItemStack $$0, Level $$1, BlockState $$2, BlockPos $$3, LivingEntity $$4) {
         if ((double)$$2.getDestroySpeed($$1, $$3) != 0.0) {
-            $$0.hurtAndBreak(2, $$4, $$0x -> $$0x.broadcastBreakEvent(EquipmentSlot.MAINHAND));
+            $$0.hurtAndBreak(2, $$4, EquipmentSlot.MAINHAND);
         }
 
         return true;

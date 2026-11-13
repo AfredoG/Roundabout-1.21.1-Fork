@@ -20,7 +20,7 @@ public abstract class TuskRefreshedMixin {
 
     @Shadow
     @Final
-    private MobEffect effect;
+    private net.minecraft.core.Holder<MobEffect> effect;
 
     @Shadow
     protected abstract int tickDownDuration();

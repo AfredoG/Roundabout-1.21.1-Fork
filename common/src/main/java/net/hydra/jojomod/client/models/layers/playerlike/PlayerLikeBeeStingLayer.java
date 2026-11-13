@@ -49,7 +49,7 @@ public class PlayerLikeBeeStingLayer <T extends JojoNPC, M extends PlayerLikeMod
             $$0.mulPose(Axis.XP.rotationDegrees(90.0F));
             PoseStack.Pose $$18 = $$0.last();
             Matrix4f $$19 = $$18.pose();
-            Matrix3f $$20 = $$18.normal();
+            PoseStack.Pose $$20 = $$18;
             vertex($$16, $$19, $$20, -4.5F, -1, 0.0F, 0.0F, $$2);
             vertex($$16, $$19, $$20, 4.5F, -1, 0.125F, 0.0F, $$2);
             vertex($$16, $$19, $$20, 4.5F, 1, 0.125F, 0.0625F, $$2);
@@ -57,14 +57,14 @@ public class PlayerLikeBeeStingLayer <T extends JojoNPC, M extends PlayerLikeMod
         }
     }
 
-    private static void vertex(VertexConsumer $$0, Matrix4f $$1, Matrix3f $$2, float $$3, int $$4, float $$5, float $$6, int $$7) {
+    private static void vertex(VertexConsumer $$0, Matrix4f $$1, PoseStack.Pose $$2, float $$3, int $$4, float $$5, float $$6, int $$7) {
         $$0.vertex($$1, $$3, (float)$$4, 0.0F)
-                .color(255, 255, 255, 255)
-                .uv($$5, $$6)
-                .overlayCoords(OverlayTexture.NO_OVERLAY)
-                .uv2($$7)
-                .normal($$2, 0.0F, 1.0F, 0.0F)
-                .endVertex();
+                .setColor(255, 255, 255, 255)
+                .setUv($$5, $$6)
+                .setOverlay(OverlayTexture.NO_OVERLAY)
+                .setLight($$7)
+                .setNormal($$2, 0.0F, 1.0F, 0.0F)
+                ;
     }
 }
 

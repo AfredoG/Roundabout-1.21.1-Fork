@@ -737,7 +737,7 @@ public abstract class ZPlayerModel<T extends LivingEntity> extends HumanoidModel
             if (visage != null && !visage.isEmpty()) {
                 if (visage.getItem() instanceof MaskItem MI) {
                     if (MI instanceof ModificationMaskItem MD){
-                        CompoundTag tag = visage.getOrCreateTagElement("modifications");
+                        CompoundTag tag = net.hydra.jojomod.util.ItemData.elementOrEmpty(visage, "modifications");
                         if (tag != null && tag.contains("head")) {
                             int faceSize = tag.getInt("head");
                             float yeah = (float) (0.73F + (faceSize * 0.002));
@@ -781,7 +781,7 @@ public abstract class ZPlayerModel<T extends LivingEntity> extends HumanoidModel
             if (visage != null && !visage.isEmpty()) {
                 if (visage.getItem() instanceof MaskItem MI) {
                     if (MI instanceof ModificationMaskItem MD){
-                        CompoundTag tag = visage.getOrCreateTagElement("modifications");
+                        CompoundTag tag = net.hydra.jojomod.util.ItemData.elementOrEmpty(visage, "modifications");
                         if (tag != null && tag.contains("head")) {
                             int faceSize = tag.getInt("head");
                             float yeah = (float) (0.73F + (faceSize * 0.002));

@@ -112,6 +112,10 @@ public class SacrificialDaggerItem extends TieredItem implements Vanishable {
     }
 
     @Override
+    public int getUseDuration(ItemStack $$0, net.minecraft.world.entity.LivingEntity entity) {
+        return getUseDuration($$0);
+    }
+
     public int getUseDuration(ItemStack $$0) {
         return 72000;
     }
@@ -119,7 +123,7 @@ public class SacrificialDaggerItem extends TieredItem implements Vanishable {
     @Override
     public boolean mineBlock(ItemStack $$0, Level $$1, BlockState $$2, BlockPos $$3, LivingEntity $$4) {
         if (!$$1.isClientSide && !$$2.is(BlockTags.FIRE)) {
-            $$0.hurtAndBreak(1, $$4, $$0x -> $$0x.broadcastBreakEvent(EquipmentSlot.MAINHAND));
+            $$0.hurtAndBreak(1, $$4, EquipmentSlot.MAINHAND);
         }
 
         return !$$2.is(BlockTags.LEAVES)

@@ -181,7 +181,7 @@ public class MetallicaKnifeEntity extends KnifeEntity {
         if (target instanceof LivingEntity livingTarget && owner instanceof LivingEntity) {
             ResourceLocation bleedLoc = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "bleed");
             if (BuiltInRegistries.MOB_EFFECT.containsKey(bleedLoc)) {
-                livingTarget.addEffect(new MobEffectInstance(BuiltInRegistries.MOB_EFFECT.get(bleedLoc), 100, 0), owner);
+                livingTarget.addEffect(new MobEffectInstance(BuiltInRegistries.MOB_EFFECT.getHolder(bleedLoc).orElseThrow(), 100, 0), owner);
             }
             MainUtil.takeKnockbackWithY(livingTarget, 0.5, this.getX() - livingTarget.getX(), 0, this.getZ() - livingTarget.getZ());
         }

@@ -254,22 +254,22 @@ public class AnubisModel extends PsuedoHierarchicalModel {
 
         if (user.roundabout$getPossessor() instanceof AnubisPossessorEntity) {
             skin = (byte)1;
-           /* CompoundTag tag = entity.getMainHandItem().getTag();
+           /* var tag = entity.getMainHandItem().get(net.minecraft.core.component.DataComponents.CUSTOM_MODEL_DATA);
             if (tag != null) {
-                if (tag.getFloat("CustomModelData") == 2F) {
+                if (tag.value() == 2F) {
                     skin = (byte) 17;
-                } else if (tag.getFloat("CustomModelData") == 3F) {
+                } else if (tag.value() == 3F) {
                     skin = (byte) 18;
                 }
             } */
         } else if ( (user.roundabout$getStandPowers() instanceof PowersAnubis && PowerTypes.hasStandActive(entity) ) || (ticks != 0 && !entity.getMainHandItem().is(ModItems.ANUBIS_ITEM)   ) ) {
             skin = MainUtil.getWornStandSkinSafe(user, PowersAnubis.class);
         } else if (entity.getMainHandItem().getItem() instanceof AnubisItem && !user.roundabout$getEffectiveCombatMode()) {
-            CompoundTag tag = entity.getMainHandItem().getTag();
+            var tag = entity.getMainHandItem().get(net.minecraft.core.component.DataComponents.CUSTOM_MODEL_DATA);
             if (tag != null) {
-                if (tag.getFloat("CustomModelData") == 2F) {
+                if (tag.value() == 2F) {
                     skin = (byte) 17;
-                } else if (tag.getFloat("CustomModelData") == 3F) {
+                } else if (tag.value() == 3F) {
                     skin = (byte) 18;
                 }
             }

@@ -282,7 +282,7 @@ public class BaseMinion extends PathfinderMob {
                             }
                             if (!stackk.isEmpty() || !stackk2.isEmpty()) {
                                 this.level().playSound(null, this.blockPosition(), SoundEvents.SHEEP_SHEAR, SoundSource.PLAYERS, 1F, 1);
-                                stack.hurtAndBreak(1, player, ($$1x) -> $$1x.broadcastBreakEvent($$1));
+                                stack.hurtAndBreak(1, player, net.minecraft.world.entity.LivingEntity.getSlotForHand($$1));
                             }
                         }
 
@@ -405,7 +405,7 @@ public class BaseMinion extends PathfinderMob {
         if (yeah){
             if (!level().isClientSide()){
                 if (!getMainHandItem().isEmpty() && getMainHandItem().getCount() > 0) {
-                    getMainHandItem().hurtAndBreak(2, this, $$1x -> $$1x.broadcastBreakEvent(InteractionHand.MAIN_HAND));
+                    getMainHandItem().hurtAndBreak(2, this, net.minecraft.world.entity.LivingEntity.getSlotForHand(InteractionHand.MAIN_HAND));
                 }
             }
         }

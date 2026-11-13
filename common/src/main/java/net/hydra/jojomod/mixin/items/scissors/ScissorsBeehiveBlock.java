@@ -43,7 +43,7 @@ public class ScissorsBeehiveBlock {
             if (i >= 5) {
                     $$1.playSound($$3, $$3.getX(), $$3.getY(), $$3.getZ(), SoundEvents.BEEHIVE_SHEAR, SoundSource.BLOCKS, 1.0f, 1.0f);
                     BeehiveBlock.dropHoneycomb($$1, $$2);
-                    itemStack.hurtAndBreak(2, $$3, player -> player.broadcastBreakEvent($$4));
+                    itemStack.hurtAndBreak(2, $$3, net.minecraft.world.entity.LivingEntity.getSlotForHand($$4));
                     bl = true;
                     $$1.gameEvent((Entity) $$3, GameEvent.SHEAR, $$2);
 

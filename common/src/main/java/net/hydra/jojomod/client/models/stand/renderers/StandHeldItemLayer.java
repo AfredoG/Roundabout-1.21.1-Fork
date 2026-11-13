@@ -84,7 +84,7 @@ public class StandHeldItemLayer <T extends StandEntity, M extends StandModel<T>>
             }
             if (itemStack.getItem() instanceof AnubisItem) {
                 ItemStack stack = new ItemStack(ModItems.ANUBIS_ITEM);
-                stack.getOrCreateTag().putFloat("CustomModelData", 1F);
+                stack.set(net.minecraft.core.component.DataComponents.CUSTOM_MODEL_DATA, new net.minecraft.world.item.component.CustomModelData((int) (1F)));
                 poseStack.rotateAround(new Quaternionf().fromAxisAngleDeg(0,1,0,90),0,0,0);
                 poseStack.scale(1.2F,1.2F,1.2F);
                 this.itemInHandRenderer.renderItem(livingEntity,stack,ItemDisplayContext.GROUND,true,poseStack,bufferSource,p_117191_);

@@ -99,10 +99,10 @@ public class StrayCatEntityRenderer<T extends StrayCatEntity>
             VertexConsumer vertexConsumer = bufferSource.getBuffer(RenderType.entityTranslucent(getBubbleSkin(entity)));
 
             // Use a simple normal (optional, mostly lighting-related)
-            vertexConsumer.vertex(matrix, -size, -size, 0.0f).color(255, 255, 255, 255).uv(0.0f, 1.0f).overlayCoords(OverlayTexture.NO_OVERLAY).uv2(packedLight).normal(coursecorrect.x, coursecorrect.y, coursecorrect.z).endVertex();
-            vertexConsumer.vertex(matrix, size, -size, 0.0f).color(255, 255, 255, 255).uv(1.0f, 1.0f).overlayCoords(OverlayTexture.NO_OVERLAY).uv2(packedLight).normal(coursecorrect.x, coursecorrect.y, coursecorrect.z).endVertex();
-            vertexConsumer.vertex(matrix, size, size, 0.0f).color(255, 255, 255, 255).uv(1.0f, 0.0f).overlayCoords(OverlayTexture.NO_OVERLAY).uv2(packedLight).normal(coursecorrect.x, coursecorrect.y, coursecorrect.z).endVertex();
-            vertexConsumer.vertex(matrix, -size, size, 0.0f).color(255, 255, 255, 255).uv(0.0f, 0.0f).overlayCoords(OverlayTexture.NO_OVERLAY).uv2(packedLight).normal(coursecorrect.x, coursecorrect.y, coursecorrect.z).endVertex();
+            vertexConsumer.addVertex(matrix, -size, -size, 0.0f).setColor(255, 255, 255, 255).setUv(0.0f, 1.0f).setOverlay(OverlayTexture.NO_OVERLAY).setLight(packedLight).setNormal(coursecorrect.x, coursecorrect.y, coursecorrect.z);
+            vertexConsumer.addVertex(matrix, size, -size, 0.0f).setColor(255, 255, 255, 255).setUv(1.0f, 1.0f).setOverlay(OverlayTexture.NO_OVERLAY).setLight(packedLight).setNormal(coursecorrect.x, coursecorrect.y, coursecorrect.z);
+            vertexConsumer.addVertex(matrix, size, size, 0.0f).setColor(255, 255, 255, 255).setUv(1.0f, 0.0f).setOverlay(OverlayTexture.NO_OVERLAY).setLight(packedLight).setNormal(coursecorrect.x, coursecorrect.y, coursecorrect.z);
+            vertexConsumer.addVertex(matrix, -size, size, 0.0f).setColor(255, 255, 255, 255).setUv(0.0f, 0.0f).setOverlay(OverlayTexture.NO_OVERLAY).setLight(packedLight).setNormal(coursecorrect.x, coursecorrect.y, coursecorrect.z);
 
             poseStack.popPose();
         }

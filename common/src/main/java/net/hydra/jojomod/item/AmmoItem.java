@@ -27,7 +27,8 @@ public class AmmoItem extends Item {
 
 
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
+    public void appendHoverText(ItemStack stack, net.minecraft.world.item.Item.TooltipContext tooltipContext, List<Component> tooltip, TooltipFlag flag) {
+        Level level = tooltipContext.level();
         tooltip.add(Component.translatable("leveling.roundabout.disc_wip").withStyle(ChatFormatting.RED));
     }
 }

@@ -151,6 +151,6 @@ public abstract class SethanRenderer {
     }
 
     private static void shadowVertex(PoseStack.Pose p_229091_0_, VertexConsumer p_229091_1_, float p_229091_2_, float p_229091_3_, float p_229091_4_, float p_229091_5_, float p_229091_6_, float p_229091_7_) {
-        p_229091_1_.vertex(p_229091_0_.pose(), p_229091_3_, p_229091_4_, p_229091_5_).color(1.0F, 1.0F, 1.0F, p_229091_2_).uv(p_229091_6_, p_229091_7_).overlayCoords(OverlayTexture.NO_OVERLAY).uv2(15728880).normal(p_229091_0_.normal(), 0.0F, 1.0F, 0.0F).endVertex();
+        p_229091_1_.addVertex(p_229091_0_.pose(), p_229091_3_, p_229091_4_, p_229091_5_).setColor(1.0F, 1.0F, 1.0F, p_229091_2_).setUv(p_229091_6_, p_229091_7_).setOverlay(OverlayTexture.NO_OVERLAY).setLight(15728880).setNormal(p_229091_0_, 0.0F, 1.0F, 0.0F);
     }
 }

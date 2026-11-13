@@ -236,11 +236,11 @@ public class AnubisLayer<T extends LivingEntity, A extends HumanoidModel<T>> ext
                 }
             }
         } else if (entity.getMainHandItem().getItem() instanceof AnubisItem && !user.roundabout$getEffectiveCombatMode()) {
-            CompoundTag tag = entity.getMainHandItem().getTag();
+            var tag = entity.getMainHandItem().get(net.minecraft.core.component.DataComponents.CUSTOM_MODEL_DATA);
             if (tag != null) {
-                if (tag.getFloat("CustomModelData") == 2F) {
+                if (tag.value() == 2F) {
                     skin = (byte) 17;
-                } else if (tag.getFloat("CustomModelData") == 3F) {
+                } else if (tag.value() == 3F) {
                     skin = (byte) 18;
                 }
             }

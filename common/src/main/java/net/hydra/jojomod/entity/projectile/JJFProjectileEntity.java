@@ -854,7 +854,7 @@ public class JJFProjectileEntity extends ThrowableItemProjectile {
                         ItemStack armor = living.getItemBySlot(slot);
                         if (armor.isDamageableItem()) armor.hurtAndBreak(
                                 ammo.is(Items.DIRT) ? 1 : 2, living,
-                                entity -> entity.broadcastBreakEvent(slot));
+                                slot);
                     }
                 }
             }
@@ -1066,7 +1066,7 @@ public class JJFProjectileEntity extends ThrowableItemProjectile {
 
     private void applyEffect(
             Entity target,
-            MobEffect effect,
+            net.minecraft.core.Holder<MobEffect> effect,
             int duration,
             int amplifier
     ) {

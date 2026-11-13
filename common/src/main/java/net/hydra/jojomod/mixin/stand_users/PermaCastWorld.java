@@ -202,7 +202,7 @@ public class PermaCastWorld implements IPermaCasting {
         if (!roundabout$PermaCastingEntities.isEmpty()) {
             List<LivingEntity> $$1 = Lists.newArrayList(roundabout$PermaCastingEntities);
             for (int i = $$1.size() - 1; i >= 0; --i) {
-                if ($$1.get(i).isRemoved() || !$$1.get(i).isAlive() || $$1.get(i).level().dimensionTypeId() != this.dimensionTypeId){
+                if ($$1.get(i).isRemoved() || !$$1.get(i).isAlive() || $$1.get(i).level().dimensionTypeRegistration().unwrapKey().orElseThrow() != this.dimensionTypeId){
                     roundabout$removePermaCastingEntity($$1.get(i));
                 } else if (!((Level) (Object) this).isClientSide) {
                     ((StandUser)$$1.get(i)).roundabout$getStandPowers().tickPermaCast();

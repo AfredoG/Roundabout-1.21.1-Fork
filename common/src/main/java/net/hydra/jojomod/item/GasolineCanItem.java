@@ -35,6 +35,10 @@ public class GasolineCanItem extends Item implements Vanishable {
 
     /**Default 72000*/
     @Override
+    public int getUseDuration(ItemStack $$0, net.minecraft.world.entity.LivingEntity entity) {
+        return getUseDuration($$0);
+    }
+
     public int getUseDuration(ItemStack $$0) {
         return 72000;
     }
@@ -43,7 +47,7 @@ public class GasolineCanItem extends Item implements Vanishable {
     public InteractionResultHolder<ItemStack> use(Level $$1, Player $$2, InteractionHand $$3) {
         ItemStack hand = $$2.getItemInHand($$3);
                 if (!$$1.isClientSide) {
-                    hand.hurtAndBreak(1, $$2, $$1x -> $$1x.broadcastBreakEvent($$2.getUsedItemHand()));
+                    hand.hurtAndBreak(1, $$2, net.minecraft.world.entity.LivingEntity.getSlotForHand($$2.getUsedItemHand()));
                     GasolineCanEntity $$7 = new GasolineCanEntity($$2, $$1);
                     $$7.shootFromRotation($$2, $$2.getXRot(), $$2.getYRot(), -25F, SHOOT_POWER, 1.0F);
 

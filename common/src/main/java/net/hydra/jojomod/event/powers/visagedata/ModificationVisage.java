@@ -23,7 +23,7 @@ public class ModificationVisage extends NonCharacterVisage {
         if (self instanceof Player pl) {
             ItemStack stack = ((IPlayerEntity) pl).roundabout$getMaskSlot();
             if (stack != null && !stack.isEmpty() && stack.getItem() instanceof ModificationMaskItem) {
-                    return stack.getOrCreateTagElement("modifications").getInt("chest") == 2;
+                    return net.hydra.jojomod.util.ItemData.elementOrEmpty(stack, "modifications").getInt("chest") == 2;
             }
         } else if (self instanceof PlayerModifiedNPC jn){
             return jn.chestType == 2;
@@ -34,7 +34,7 @@ public class ModificationVisage extends NonCharacterVisage {
         if (self instanceof Player pl) {
             ItemStack stack = ((IPlayerEntity) pl).roundabout$getMaskSlot();
             if (stack != null && !stack.isEmpty() && stack.getItem() instanceof ModificationMaskItem) {
-                return stack.getOrCreateTagElement("modifications").getInt("chest") == 1;
+                return net.hydra.jojomod.util.ItemData.elementOrEmpty(stack, "modifications").getInt("chest") == 1;
             }
         } else if (self instanceof PlayerModifiedNPC jn){
             return jn.chestType == 1;
@@ -45,7 +45,7 @@ public class ModificationVisage extends NonCharacterVisage {
         if (self instanceof Player pl) {
             ItemStack stack = ((IPlayerEntity) pl).roundabout$getMaskSlot();
             if (stack != null && !stack.isEmpty() && stack.getItem() instanceof ModificationMaskItem) {
-                return stack.getOrCreateTagElement("modifications").getInt("chest") == 3;
+                return net.hydra.jojomod.util.ItemData.elementOrEmpty(stack, "modifications").getInt("chest") == 3;
             }
         } else if (self instanceof PlayerModifiedNPC jn){
             return jn.chestType == 3;
@@ -57,7 +57,7 @@ public class ModificationVisage extends NonCharacterVisage {
      *     public boolean rendersPlayerBreastPart() {
      *         if (self instanceof Player pl) {
      *             return ((IPlayerEntity)pl).roundabout$getModChest() == 2;
-     *             //                //return stack.getOrCreateTagElement("modifications").getInt("chest") == 2;
+     *             //                //return net.hydra.jojomod.util.ItemData.elementOrEmpty(stack, "modifications").getInt("chest") == 2;
      *         }
      *         return false;
      *     }

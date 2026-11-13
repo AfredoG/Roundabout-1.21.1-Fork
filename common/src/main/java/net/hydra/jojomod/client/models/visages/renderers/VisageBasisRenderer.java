@@ -117,8 +117,8 @@ public class VisageBasisRenderer extends LivingEntityRenderer<JojoNPC, PlayerMod
         if (visage != null && !visage.isEmpty()) {
             if (visage.getItem() instanceof MaskItem MI) {
                 if (MI instanceof ModificationMaskItem MD){
-                    int height = visage.getOrCreateTagElement("modifications").getInt("height");
-                    int width = visage.getOrCreateTagElement("modifications").getInt("width");
+                    int height = net.hydra.jojomod.util.ItemData.elementOrEmpty(visage, "modifications").getInt("height");
+                    int width = net.hydra.jojomod.util.ItemData.elementOrEmpty(visage, "modifications").getInt("width");
                     $$1.scale(0.798F + (((float) width)*0.001F), 0.7F+(((float) height)*0.001F), 0.798F+(((float) width)*0.001F));
                 } else {
                     VisageData vd = MI.visageData.generateVisageData($$0);

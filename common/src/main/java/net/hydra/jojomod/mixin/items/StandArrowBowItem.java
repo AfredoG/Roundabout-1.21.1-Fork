@@ -56,7 +56,7 @@ public class StandArrowBowItem {
                                 $$11.igniteForSeconds(100);
                             }
 
-                            $$0.hurtAndBreak(1, $$4, $$1x -> $$1x.broadcastBreakEvent($$4.getUsedItemHand()));
+                            $$0.hurtAndBreak(1, $$4, net.minecraft.world.entity.LivingEntity.getSlotForHand($$4.getUsedItemHand()));
                             if ($$4.getAbilities().instabuild) {
                                 $$11.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
                             }

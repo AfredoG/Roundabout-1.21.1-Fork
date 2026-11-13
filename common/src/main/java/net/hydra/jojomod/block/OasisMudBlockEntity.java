@@ -57,8 +57,8 @@ public class OasisMudBlockEntity extends BlockEntity {
 
 
     @Override
-    public void load(CompoundTag tag) {
-        super.load(tag);
+    public void loadAdditional(CompoundTag tag, net.minecraft.core.HolderLookup.Provider registries) {
+        super.loadAdditional(tag, registries);
 
         if (tag.contains("CopiedState")) {
             this.copiedState = NbtUtils.readBlockState(BuiltInRegistries.BLOCK.asLookup(), tag.getCompound("CopiedState"));
@@ -69,8 +69,8 @@ public class OasisMudBlockEntity extends BlockEntity {
     }
 
     @Override
-    protected void saveAdditional(CompoundTag tag) {
-        super.saveAdditional(tag);
+    protected void saveAdditional(CompoundTag tag, net.minecraft.core.HolderLookup.Provider registries) {
+        super.saveAdditional(tag, registries);
         tag.put("CopiedState", NbtUtils.writeBlockState(this.copiedState));
         tag.putInt("TicksRemaining", this.ticksRemaining);
     }

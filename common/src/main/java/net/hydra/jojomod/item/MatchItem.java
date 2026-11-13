@@ -37,6 +37,10 @@ public class MatchItem extends Item implements Vanishable {
 
     /**Default 72000*/
     @Override
+    public int getUseDuration(ItemStack $$0, net.minecraft.world.entity.LivingEntity entity) {
+        return getUseDuration($$0);
+    }
+
     public int getUseDuration(ItemStack $$0) {
         return 72000;
     }
@@ -49,7 +53,7 @@ public class MatchItem extends Item implements Vanishable {
             if ($$0.is(ModItems.MATCH)){itemTime=5;}
             if ($$5 >= itemTime) {
                 if (!$$1.isClientSide) {
-                    $$0.hurtAndBreak(1, $$4, $$1x -> $$1x.broadcastBreakEvent($$2.getUsedItemHand()));
+                    $$0.hurtAndBreak(1, $$4, net.minecraft.world.entity.LivingEntity.getSlotForHand($$2.getUsedItemHand()));
                     int knifeCount = 1;
                     boolean bundle = $$0.is(ModItems.MATCH_BUNDLE);
                     if (bundle){knifeCount=4;}

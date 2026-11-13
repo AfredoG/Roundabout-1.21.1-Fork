@@ -32,7 +32,7 @@ public class UltravioletBlasterItem extends Item implements Vanishable {
             $$0.playSound((Player) null, $$1.getX(), $$1.getY(), $$1.getZ(), ModSounds.UV_BLAST_EVENT, SoundSource.NEUTRAL, 1F, (float) (0.96F + Math.random() * 0.08f));
             $$1.getCooldowns().addCooldown(this, 20);
             if (!$$0.isClientSide) {
-                $$3.hurtAndBreak(1, $$1, ($$1x) -> $$1x.broadcastBreakEvent($$2));
+                $$3.hurtAndBreak(1, $$1, net.minecraft.world.entity.LivingEntity.getSlotForHand($$2));
                 UltravioletProjectile bubble = new UltravioletProjectile($$1, $$1.level());
                 bubble.absMoveTo($$1.getX(), $$1.getY(), $$1.getZ());
                 bubble.setUser($$1);

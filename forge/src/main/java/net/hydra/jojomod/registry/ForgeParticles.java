@@ -355,10 +355,14 @@ public class ForgeParticles {
     );
 
     public static final DeferredHolder<net.minecraft.core.particles.ParticleType<?>, ParticleType<HazeColorParticleOptions>> PURPLE_HAZE_SMOKE =
-            PARTICLES.register("purple_haze_smoke", () -> new ParticleType<>(false, HazeColorParticleOptions.DESERIALIZER) {
+            PARTICLES.register("purple_haze_smoke", () -> new ParticleType<HazeColorParticleOptions>(false) {
                 @Override
-                public com.mojang.serialization.Codec<HazeColorParticleOptions> codec() {
+                public com.mojang.serialization.MapCodec<HazeColorParticleOptions> codec() {
                     return HazeColorParticleOptions.codec(this);
+                }
+                @Override
+                public net.minecraft.network.codec.StreamCodec<net.minecraft.network.RegistryFriendlyByteBuf, HazeColorParticleOptions> streamCodec() {
+                    return HazeColorParticleOptions.streamCodec(this);
                 }
             });
 
@@ -367,10 +371,14 @@ public class ForgeParticles {
             () -> new SimpleParticleType(true)
     );
     public static final DeferredHolder<net.minecraft.core.particles.ParticleType<?>, ParticleType<HazeColorParticleOptions>> PURPLE_HAZE_BLASTWAVE =
-            PARTICLES.register("purple_haze_blastwave", () -> new ParticleType<>(false, HazeColorParticleOptions.DESERIALIZER) {
+            PARTICLES.register("purple_haze_blastwave", () -> new ParticleType<HazeColorParticleOptions>(false) {
                 @Override
-                public com.mojang.serialization.Codec<HazeColorParticleOptions> codec() {
+                public com.mojang.serialization.MapCodec<HazeColorParticleOptions> codec() {
                     return HazeColorParticleOptions.codec(this);
+                }
+                @Override
+                public net.minecraft.network.codec.StreamCodec<net.minecraft.network.RegistryFriendlyByteBuf, HazeColorParticleOptions> streamCodec() {
+                    return HazeColorParticleOptions.streamCodec(this);
                 }
             });
     public static final DeferredHolder<net.minecraft.core.particles.ParticleType<?>, SimpleParticleType> RAGING_LIGHT = PARTICLES.register(

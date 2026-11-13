@@ -42,10 +42,10 @@ public class StereoBlockEntity extends BlockEntity implements Clearable, Contain
     }
 
     @Override
-    public void load(CompoundTag $$0) {
-        super.load($$0);
+    public void loadAdditional(CompoundTag $$0, net.minecraft.core.HolderLookup.Provider registries) {
+        super.loadAdditional($$0, registries);
         if ($$0.contains("RecordItem", 10)) {
-            this.items.set(0, ItemStack.of($$0.getCompound("RecordItem")));
+            this.items.set(0, ItemStack.parseOptional(registries, $$0.getCompound("RecordItem")));
         }
 
         this.isPlaying = $$0.getBoolean("IsPlaying");
@@ -54,10 +54,10 @@ public class StereoBlockEntity extends BlockEntity implements Clearable, Contain
     }
 
     @Override
-    protected void saveAdditional(CompoundTag $$0) {
-        super.saveAdditional($$0);
+    protected void saveAdditional(CompoundTag $$0, net.minecraft.core.HolderLookup.Provider registries) {
+        super.saveAdditional($$0, registries);
         if (!this.getFirstItem().isEmpty()) {
-            $$0.put("RecordItem", this.getFirstItem().save(new CompoundTag()));
+            $$0.put("RecordItem", this.getFirstItem().save(registries, new CompoundTag()));
         }
 
         $$0.putBoolean("IsPlaying", this.isPlaying);

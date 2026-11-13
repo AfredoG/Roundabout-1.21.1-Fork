@@ -64,7 +64,7 @@ public class CustomPaintingRenderer extends EntityRenderer<RoundaboutPainting> {
                                 MultiBufferSource source) {
         PoseStack.Pose last = stack.last();
         Matrix4f pose = last.pose();
-        Matrix3f normal = last.normal();
+        PoseStack.Pose normal = last;
         float x0 = -width / 2.0F;
         float y0 = -height / 2.0F;
 
@@ -174,15 +174,15 @@ public class CustomPaintingRenderer extends EntityRenderer<RoundaboutPainting> {
         }
     }
 
-    private void vertex(Matrix4f pose, Matrix3f normal, VertexConsumer consumer,
+    private void vertex(Matrix4f pose, PoseStack.Pose normal, VertexConsumer consumer,
                         float x, float y, float u, float v,
                         float zOffset, int nx, int ny, int nz, int light) {
-        consumer.vertex(pose, x, y, zOffset)
-                .color(255, 255, 255, 255)
-                .uv(u, v)
-                .overlayCoords(OverlayTexture.NO_OVERLAY)
-                .uv2(light)
-                .normal(normal, nx, ny, nz)
-                .endVertex();
+        consumer.addVertex(pose, x, y, zOffset)
+                .setColor(255, 255, 255, 255)
+                .setUv(u, v)
+                .setOverlay(OverlayTexture.NO_OVERLAY)
+                .setLight(light)
+                .setNormal(normal, nx, ny, nz)
+                ;
     }
 }

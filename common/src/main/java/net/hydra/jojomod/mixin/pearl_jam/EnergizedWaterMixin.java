@@ -46,15 +46,15 @@ public class EnergizedWaterMixin {
             if ($$0.getTag().contains("pearljamfood")) {
                 if (MainUtil.foodCuresThat.containsKey($$0.getItem()) || MainUtil.foodAddsThat.containsKey($$0.getItem()) || MainUtil.specialFoodRemoves.containsKey($$0.getItem())) {
                     if (MainUtil.foodCuresThat.containsKey($$0.getItem())) {
-                        List<MobEffect> effects = MainUtil.foodCuresThat.get($$0.getItem());
-                        for (MobEffect effect : effects) {
-                            $$2.add(Component.translatable("text.roundabout.pearl_jam.cure_lore", Component.translatable(effect.getDescriptionId()).withStyle(ChatFormatting.GOLD)));
+                        List<net.minecraft.core.Holder<MobEffect>> effects = MainUtil.foodCuresThat.get($$0.getItem());
+                        for (net.minecraft.core.Holder<MobEffect> effect : effects) {
+                            $$2.add(Component.translatable("text.roundabout.pearl_jam.cure_lore", Component.translatable(effect.value().getDescriptionId()).withStyle(ChatFormatting.GOLD)));
                         }
                     }
                     if (MainUtil.foodAddsThat.containsKey($$0.getItem())) {
-                        List<MobEffect> effects = MainUtil.foodAddsThat.get($$0.getItem());
-                        for (MobEffect effect : effects) {
-                            $$2.add(Component.translatable("text.roundabout.pearl_jam.add_lore", Component.translatable(effect.getDescriptionId()).withStyle(ChatFormatting.GOLD)));
+                        List<net.minecraft.core.Holder<MobEffect>> effects = MainUtil.foodAddsThat.get($$0.getItem());
+                        for (net.minecraft.core.Holder<MobEffect> effect : effects) {
+                            $$2.add(Component.translatable("text.roundabout.pearl_jam.add_lore", Component.translatable(effect.value().getDescriptionId()).withStyle(ChatFormatting.GOLD)));
                         }
                     }
                     if (MainUtil.specialFoodRemoves.containsKey($$0.getItem())) {
@@ -74,7 +74,7 @@ public class EnergizedWaterMixin {
     @Inject(method = "finishUsingItem", at = @At("HEAD"))
     public void energizedWaterEffect(ItemStack $$0, Level $$1, LivingEntity $$2, CallbackInfoReturnable<ItemStack> cir){
         if ($$0.hasTag()) {
-            if ($$0.getOrCreateTag().contains("pearljamfood")) {
+            if (net.hydra.jojomod.util.ItemData.copy($$0).contains("pearljamfood")) {
                 Random random = new Random();
                 Pair<ParticleOptions, String> pair;
                 if (MainUtil.foodParticles.containsKey($$0.getItem())) {
@@ -131,14 +131,14 @@ public class EnergizedWaterMixin {
                 }
                 if (MainUtil.foodCuresThat.containsKey($$0.getItem()) || MainUtil.foodAddsThat.containsKey($$0.getItem()) || MainUtil.specialFoodRemoves.containsKey($$0.getItem())) {
                     if (MainUtil.foodCuresThat.containsKey($$0.getItem())) {
-                        List<MobEffect> effects = MainUtil.foodCuresThat.get($$0.getItem());
-                        for (MobEffect effect : effects) {
+                        List<net.minecraft.core.Holder<MobEffect>> effects = MainUtil.foodCuresThat.get($$0.getItem());
+                        for (net.minecraft.core.Holder<MobEffect> effect : effects) {
                             $$2.removeEffect(effect);
                         }
                     }
                     if (MainUtil.foodAddsThat.containsKey($$0.getItem())) {
-                        List<MobEffect> effects = MainUtil.foodAddsThat.get($$0.getItem());
-                        for (MobEffect effect : effects) {
+                        List<net.minecraft.core.Holder<MobEffect>> effects = MainUtil.foodAddsThat.get($$0.getItem());
+                        for (net.minecraft.core.Holder<MobEffect> effect : effects) {
                             MobEffectInstance effectInstance = new MobEffectInstance(effect, 200);
                             $$2.addEffect(effectInstance);
                         }

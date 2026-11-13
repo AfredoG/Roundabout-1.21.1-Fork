@@ -55,28 +55,28 @@ public class ColdCrackleParticle extends TextureSheetParticle {
             int $$17 = this.getLightColor($$2);
 
             $$0.vertex((double) $$9[0].x(), (double) $$9[0].y(), (double) $$9[0].z())
-                    .uv($$14, $$16)
-                    .color(this.rCol, this.gCol, this.bCol, this.alpha)
-                    .uv2($$17)
-                    .endVertex();
+                    .setUv($$14, $$16)
+                    .setColor(this.rCol, this.gCol, this.bCol, this.alpha)
+                    .setLight($$17)
+                    ;
 
             $$0.vertex((double) $$9[1].x(), (double) $$9[1].y(), (double) $$9[1].z())
-                    .uv($$14, $$15)
-                    .color(this.rCol, this.gCol, this.bCol, this.alpha)
-                    .uv2($$17)
-                    .endVertex();
+                    .setUv($$14, $$15)
+                    .setColor(this.rCol, this.gCol, this.bCol, this.alpha)
+                    .setLight($$17)
+                    ;
 
             $$0.vertex((double) $$9[2].x(), (double) $$9[2].y(), (double) $$9[2].z())
-                    .uv($$13, $$15)
-                    .color(this.rCol, this.gCol, this.bCol, this.alpha)
-                    .uv2($$17)
-                    .endVertex();
+                    .setUv($$13, $$15)
+                    .setColor(this.rCol, this.gCol, this.bCol, this.alpha)
+                    .setLight($$17)
+                    ;
 
             $$0.vertex((double) $$9[3].x(), (double) $$9[3].y(), (double) $$9[3].z())
-                    .uv($$13, $$16)
-                    .color(this.rCol, this.gCol, this.bCol, this.alpha)
-                    .uv2($$17)
-                    .endVertex();
+                    .setUv($$13, $$16)
+                    .setColor(this.rCol, this.gCol, this.bCol, this.alpha)
+                    .setLight($$17)
+                    ;
     }
 
     @Override

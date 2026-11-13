@@ -21,7 +21,7 @@ public class SavedSecondAbstractArrow extends SavedSecond {
     }
     @Override
     public void loadTime(Entity ent){
-        if (ent != null && dimensionTypeId != ent.level().dimensionTypeId())
+        if (ent != null && dimensionTypeId != ent.level().dimensionTypeRegistration().unwrapKey().orElseThrow())
             return;
         super.loadTime(ent);
 

@@ -44,7 +44,10 @@ bash gradlew compileJava processResources
 - Отдельная сборка ModDevGradle с зафиксированными версиями и Java 21.
 - Метаданные NeoForge, access transformer с официальными именами, mixin-конфигурации Java 21.
 - Перенос конструкторов ResourceLocation и части API регистрации на DeferredHolder.
-- Перенос двух дополнительных каналов Black Sabbath / Jumpin' Jack Flash на payload API.
+- Перенос основного транспорта MessageC2S/MessageS2C и дополнительных каналов Black Sabbath / Jumpin' Jack Flash на payload API.
+- Компоненты данных предметов с явным сохранением NBT, штатные компоненты моделей, состояния блоков и фейерверков.
+- Перенос VertexConsumer, подсказок, части сериализации BlockEntity и износа предметов.
+- Кодеки цветных частиц Purple Haze.
 - Начат перенос моделей на ARGB-цвет и синхронизируемых полей сущностей на Builder.
 - Обновлены ссылки на зарегистрированные эффекты до Holder.
 - Преобразование путей ресурсов и формата результатов рецептов при упаковке.

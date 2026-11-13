@@ -13,7 +13,6 @@ import net.zetalasis.networking.packet.api.args.c2s.PacketArgsC2S;
 import net.zetalasis.networking.packet.impl.ModNetworking;
 import net.minecraft.network.Connection;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.protocol.game.ServerboundCustomPayloadPacket;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.network.ServerGamePacketListenerImpl;
@@ -30,8 +29,7 @@ import java.util.Arrays;
 
 // C2S Networking
 @Mixin(ServerGamePacketListenerImpl.class)
-public class ZServerGamePacketListenerImpl implements IClientNetworking {
-    @Shadow @Final private Connection connection;
+public class ZServerGamePacketListenerImpl {
     @Shadow public ServerPlayer player;
 
     @Inject(method = "handlePlayerAction", at = @At("HEAD"), cancellable = true)
@@ -57,44 +55,4 @@ public class ZServerGamePacketListenerImpl implements IClientNetworking {
     }
 
 
-    @Unique
-    public ServerGamePacketListenerImpl rdbt$thisX(){
-        return ((ServerGamePacketListenerImpl)(Object)this);
-    }
-    @Inject(method = "handleCustomPayload", at = @At("HEAD"))
-    private void roundabout$handlePayload(ServerboundCustomPayloadPacket packet, CallbackInfo ci)
-    {
-        boolean rdbt = packet.getIdentifier().getNamespace().equals("roundabout");
-
-        if (!rdbt)
-            return;
-
-        Object[] threadTest = ModNetworking.decodeBufferToVArgs(new FriendlyByteBuf(packet.getData().duplicate()));
-
-        if (threadTest.length == 0 || !(threadTest[0] instanceof String messageName)) {
-            Roundabout.LOGGER.warn("Invalid message data received: {}", Arrays.toString(threadTest));
-            return;
-        }
-        if (!messageName.contains("thread_hop")){
-            PacketUtils.ensureRunningOnSameThread(packet, rdbt$thisX(), this.player.serverLevel());
-        }
-
-        AbstractBaseC2SPacket p = ModNetworking.getC2S(packet.getIdentifier());
-
-        if (p != null)
-        {
-
-            ServerGamePacketListenerImpl handler = (ServerGamePacketListenerImpl) (Object) this;
-            ServerPlayer sender = handler.player;
-            MinecraftServer server = sender.server;
-
-            PacketArgsC2S args = new PacketArgsC2S(server, sender, handler, ModNetworking.decodeBufferToVArgs(packet.getData()));
-            p.handle(args, packet.getData());
-        }
-    }
-
-    @Override
-    public @Nullable Connection roundabout$getServer() {
-        return this.connection;
-    }
 }

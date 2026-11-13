@@ -59,6 +59,10 @@ public class GlaiveItem extends SwordItem {
     }
 
     @Override
+    public int getUseDuration(ItemStack $$0, net.minecraft.world.entity.LivingEntity entity) {
+        return getUseDuration($$0);
+    }
+
     public int getUseDuration(ItemStack $$0) {
         return 72000;
     }
@@ -133,7 +137,7 @@ public class GlaiveItem extends SwordItem {
                 if (target.hurt(ModDamageTypes.of($$1, ModDamageTypes.GLAIVE, player), power)) {
                     if (!player.isCreative()) {
                         ItemStack item = player.getInventory().getItem((player.getInventory().findSlotMatchingItem($$0)));
-                        item.hurtAndBreak(1, player, $$1x -> $$1x.broadcastBreakEvent(player.getUsedItemHand()));
+                        item.hurtAndBreak(1, player, net.minecraft.world.entity.LivingEntity.getSlotForHand(player.getUsedItemHand()));
                     }
                     if (target instanceof LivingEntity) {
                         ((LivingEntity) target).knockback(0.35f, player.getX() - target.getX(), player.getZ() - target.getZ());

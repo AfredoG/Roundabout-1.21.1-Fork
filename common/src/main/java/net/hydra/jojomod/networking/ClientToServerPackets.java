@@ -302,8 +302,7 @@ public class ClientToServerPackets {
                         ItemStack stack = sender.getMainHandItem();
                         if (stack != null && stack.getItem() instanceof WarhammerItem wi){
                             if (!sender.isCreative()) {
-                                stack.hurtAndBreak(1, sender, ($$1x) ->
-                                        $$1x.broadcastBreakEvent(InteractionHand.MAIN_HAND));
+                                stack.hurtAndBreak(1, sender, net.minecraft.world.entity.LivingEntity.getSlotForHand(InteractionHand.MAIN_HAND));
                             }
                             sender.level().playSound(null, b, ModSounds.HAMMER_CLINK_EVENT, SoundSource.PLAYERS,
                                     1F, (float) (0.99F+Math.random()*0.02F));
@@ -366,7 +365,7 @@ public class ClientToServerPackets {
                                 } else {
                                     item = sender.getInventory().getItem((sender.getInventory().findSlotMatchingItem(stack)));
                                 }
-                                CompoundTag $$1 = item.getOrCreateTagElement("bodies");
+                                CompoundTag $$1 = net.hydra.jojomod.util.ItemData.elementOrEmpty(item, "bodies");
                                 zombies = $$1.getInt("zombie");
                                 skeletons = $$1.getInt("skeleton");
                                 spiders = $$1.getInt("spider");
@@ -426,17 +425,17 @@ public class ClientToServerPackets {
                                     }
                                     if (!sender.isCreative()) {
                                         if (context == Corpses.ZOMBIE.id) {
-                                            item.getOrCreateTagElement("bodies").putInt("zombie", zombies);
+                                            net.hydra.jojomod.util.ItemData.putElement(item, "bodies", "zombie", net.minecraft.nbt.IntTag.valueOf(zombies));
                                         } else if (context == Corpses.SKELETON.id) {
-                                            item.getOrCreateTagElement("bodies").putInt("skeleton", skeletons);
+                                            net.hydra.jojomod.util.ItemData.putElement(item, "bodies", "skeleton", net.minecraft.nbt.IntTag.valueOf(skeletons));
                                         } else if (context == Corpses.SPIDER.id) {
-                                            item.getOrCreateTagElement("bodies").putInt("spider", spiders);
+                                            net.hydra.jojomod.util.ItemData.putElement(item, "bodies", "spider", net.minecraft.nbt.IntTag.valueOf(spiders));
                                         } else if (context == Corpses.VILLAGER.id) {
-                                            item.getOrCreateTagElement("bodies").putInt("villager", villagers);
+                                            net.hydra.jojomod.util.ItemData.putElement(item, "bodies", "villager", net.minecraft.nbt.IntTag.valueOf(villagers));
                                         } else if (context == Corpses.CREEPER.id) {
-                                            item.getOrCreateTagElement("bodies").putInt("creeper", creepers);
+                                            net.hydra.jojomod.util.ItemData.putElement(item, "bodies", "creeper", net.minecraft.nbt.IntTag.valueOf(creepers));
                                         } else if (context == Corpses.PHANTOM.id) {
-                                            item.getOrCreateTagElement("bodies").putInt("phantom", phantoms);
+                                            net.hydra.jojomod.util.ItemData.putElement(item, "bodies", "phantom", net.minecraft.nbt.IntTag.valueOf(phantoms));
                                         }
                                     }
                                 }
@@ -453,10 +452,10 @@ public class ClientToServerPackets {
                         ItemStack stack = sender.getMainHandItem();
 
                         if (stack.getItem() instanceof ModificationMaskItem) {
-                            stack.getOrCreateTagElement("modifications").putInt("height", (int) vec.x);
-                            stack.getOrCreateTagElement("modifications").putInt("width", (int) vec.y);
-                            stack.getOrCreateTagElement("modifications").putInt("head", (int) vec.z);
-                            stack.getOrCreateTagElement("modifications").putInt("chest", chest);
+                            net.hydra.jojomod.util.ItemData.putElement(stack, "modifications", "height", net.minecraft.nbt.IntTag.valueOf((int) vec.x));
+                            net.hydra.jojomod.util.ItemData.putElement(stack, "modifications", "width", net.minecraft.nbt.IntTag.valueOf((int) vec.y));
+                            net.hydra.jojomod.util.ItemData.putElement(stack, "modifications", "head", net.minecraft.nbt.IntTag.valueOf((int) vec.z));
+                            net.hydra.jojomod.util.ItemData.putElement(stack, "modifications", "chest", net.minecraft.nbt.IntTag.valueOf(chest));
                         }
                     });
                 }

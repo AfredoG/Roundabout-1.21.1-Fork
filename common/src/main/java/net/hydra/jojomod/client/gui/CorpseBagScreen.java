@@ -90,7 +90,7 @@ public class CorpseBagScreen extends Screen {
         zHeld = true;
         Player pl = Minecraft.getInstance().player;
         if (stack != null && !stack.isEmpty()){
-            CompoundTag $$1 = stack.getOrCreateTagElement("bodies");
+            CompoundTag $$1 = net.hydra.jojomod.util.ItemData.elementOrEmpty(stack, "bodies");
             zombies = $$1.getInt("zombie");
             skeletons = $$1.getInt("skeleton");
             spiders = $$1.getInt("spider");

@@ -28,7 +28,7 @@ public abstract class ScissorsSheep extends Animal implements Shearable {
             if (!this.level().isClientSide && this.readyForShearing()) {
                 this.shear(SoundSource.PLAYERS);
                 this.gameEvent(GameEvent.SHEAR, $$0);
-                $$2.hurtAndBreak(2, $$0, $$1x -> $$1x.broadcastBreakEvent($$1));
+                $$2.hurtAndBreak(2, $$0, net.minecraft.world.entity.LivingEntity.getSlotForHand($$1));
                 cir.setReturnValue(InteractionResult.SUCCESS);
             }
         }

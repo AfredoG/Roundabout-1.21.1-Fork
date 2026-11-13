@@ -39,14 +39,15 @@ public class BloodyStoneMaskBlockItem extends BlockItem {
             if (entity.isInWater() && entity instanceof LivingEntity LE &&
                     !(FateTypes.isTransforming(LE))){
                 ItemStack stack2 = ModBlocks.EQUIPPABLE_STONE_MASK_BLOCK.asItem().getDefaultInstance();
-                stack2.setTag(stack.getTag());
+                stack2.applyComponents(stack.getComponentsPatch());
                 LE.getSlot($$3).set(stack2);
             }
         }
     }
 
     @Override
-    public void appendHoverText(ItemStack $$0, @org.jetbrains.annotations.Nullable Level $$1, List<Component> $$2, TooltipFlag $$3) {
+    public void appendHoverText(ItemStack $$0, net.minecraft.world.item.Item.TooltipContext tooltipContext, List<Component> $$2, TooltipFlag $$3) {
+        Level $$1 = tooltipContext.level();
 
     }
 }

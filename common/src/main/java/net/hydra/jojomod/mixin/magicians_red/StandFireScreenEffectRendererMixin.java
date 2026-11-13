@@ -74,11 +74,11 @@ public abstract class StandFireScreenEffectRendererMixin {
                 pose.mulPose(Axis.YP.rotationDegrees((float) (i * 2 - 1) * 10.0F));
                 Matrix4f matrix4f = pose.last().pose();
 
-                bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_COLOR_TEX);
-                bufferbuilder.vertex(matrix4f, -0.5F, -0.5F, -0.5F).color(1.0F, 1.0F, 1.0F, 0.9F).uv(u0, v1).endVertex();
-                bufferbuilder.vertex(matrix4f,  0.5F, -0.5F, -0.5F).color(1.0F, 1.0F, 1.0F, 0.9F).uv(u1, v1).endVertex();
-                bufferbuilder.vertex(matrix4f,  0.5F,  0.5F, -0.5F).color(1.0F, 1.0F, 1.0F, 0.9F).uv(u1, v0).endVertex();
-                bufferbuilder.vertex(matrix4f, -0.5F,  0.5F, -0.5F).color(1.0F, 1.0F, 1.0F, 0.9F).uv(u0, v0).endVertex();
+                bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX_COLOR);
+                bufferbuilder.addVertex(matrix4f, -0.5F, -0.5F, -0.5F).setColor(1.0F, 1.0F, 1.0F, 0.9F).setUv(u0, v1);
+                bufferbuilder.addVertex(matrix4f,  0.5F, -0.5F, -0.5F).setColor(1.0F, 1.0F, 1.0F, 0.9F).setUv(u1, v1);
+                bufferbuilder.addVertex(matrix4f,  0.5F,  0.5F, -0.5F).setColor(1.0F, 1.0F, 1.0F, 0.9F).setUv(u1, v0);
+                bufferbuilder.addVertex(matrix4f, -0.5F,  0.5F, -0.5F).setColor(1.0F, 1.0F, 1.0F, 0.9F).setUv(u0, v0);
                 BufferUploader.drawWithShader(bufferbuilder.end());
                 ClientUtil.popPoseAndCooperate(pose,20);
             }

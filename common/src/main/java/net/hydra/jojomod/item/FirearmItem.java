@@ -238,6 +238,10 @@ public abstract class FirearmItem extends Item {
 
     // getters and setters overrides
     @Override
+    public int getUseDuration(ItemStack stack, net.minecraft.world.entity.LivingEntity entity) {
+        return getUseDuration(stack);
+    }
+
     public int getUseDuration(ItemStack stack) { return 72000; }
     @Override
     public boolean isEnchantable(ItemStack p_41456_) { return false; }
@@ -246,7 +250,8 @@ public abstract class FirearmItem extends Item {
 
     // for ammo count
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
+    public void appendHoverText(ItemStack stack, net.minecraft.world.item.Item.TooltipContext tooltipContext, List<Component> tooltip, TooltipFlag flag) {
+        Level level = tooltipContext.level();
         tooltip.add(Component.literal("Ammo: " + getAmmo(stack) + " / " + getMaxAmmo()).withStyle(ChatFormatting.GRAY));
     }
 
@@ -269,10 +274,10 @@ public abstract class FirearmItem extends Item {
     public abstract boolean canWhitesnakeUse();
 
     // getters and setters
-    public int getAmmo(ItemStack stack) { return stack.getOrCreateTag().getInt(AMMO_COUNT_TAG); }
-    public void setAmmo(ItemStack stack, int count) { stack.getOrCreateTag().putInt(AMMO_COUNT_TAG, count); }
-    public boolean getReloading(ItemStack stack) { return stack.getOrCreateTag().getBoolean(RELOADING_TAG); }
-    public void setReloading(ItemStack stack, boolean value) { stack.getOrCreateTag().putBoolean(RELOADING_TAG, value); }
-    public boolean isReloading(ItemStack stack) { return stack.getOrCreateTag().getBoolean(RELOADING_TAG); }
+    public int getAmmo(ItemStack stack) { return net.hydra.jojomod.util.ItemData.copy(stack).getInt(AMMO_COUNT_TAG); }
+    public void setAmmo(ItemStack stack, int count) { net.hydra.jojomod.util.ItemData.put(stack, AMMO_COUNT_TAG, net.minecraft.nbt.IntTag.valueOf(count)); }
+    public boolean getReloading(ItemStack stack) { return net.hydra.jojomod.util.ItemData.copy(stack).getBoolean(RELOADING_TAG); }
+    public void setReloading(ItemStack stack, boolean value) { net.hydra.jojomod.util.ItemData.put(stack, RELOADING_TAG, net.minecraft.nbt.ByteTag.valueOf(value)); }
+    public boolean isReloading(ItemStack stack) { return net.hydra.jojomod.util.ItemData.copy(stack).getBoolean(RELOADING_TAG); }
     public boolean isCrouchingOrSomething(Player player, ItemStack stack){ return (player.isCrouching() && player.getUseItem() != stack) || cycleReload; }
 }

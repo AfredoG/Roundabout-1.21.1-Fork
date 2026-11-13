@@ -64,7 +64,7 @@ public class SavedSecond {
                     PL.getPosition(1),
                     PL.getDeltaMovement(),
                     ent.fallDistance,
-                    ent.level().dimensionTypeId(),
+                    ent.level().dimensionTypeRegistration().unwrapKey().orElseThrow(),
                     ((IGravityEntity)ent).roundabout$getGravityDirection(),
                     PL.getActiveEffects(),
                     PL.getHealth(),
@@ -88,7 +88,7 @@ public class SavedSecond {
                     CE.getPosition(1),
                     CE.getDeltaMovement(),
                     ent.fallDistance,
-                    ent.level().dimensionTypeId(),
+                    ent.level().dimensionTypeRegistration().unwrapKey().orElseThrow(),
                     ((IGravityEntity)ent).roundabout$getGravityDirection(),
                     CE.getActiveEffects(),
                     CE.getHealth(),
@@ -110,7 +110,7 @@ public class SavedSecond {
                     TN.getPosition(1),
                     TN.getDeltaMovement(),
                     ent.fallDistance,
-                    ent.level().dimensionTypeId(),
+                    ent.level().dimensionTypeRegistration().unwrapKey().orElseThrow(),
                     ((IGravityEntity)ent).roundabout$getGravityDirection(),
                     TN.getFuse()
             );
@@ -121,7 +121,7 @@ public class SavedSecond {
                     LE.getPosition(1),
                     LE.getDeltaMovement(),
                     ent.fallDistance,
-                    ent.level().dimensionTypeId(),
+                    ent.level().dimensionTypeRegistration().unwrapKey().orElseThrow(),
                     ((IGravityEntity)ent).roundabout$getGravityDirection(),
                     LE.getActiveEffects(),
                     LE.getHealth(),
@@ -142,7 +142,7 @@ public class SavedSecond {
                     LE.getPosition(1),
                     LE.getDeltaMovement(),
                     ent.fallDistance,
-                    ent.level().dimensionTypeId(),
+                    ent.level().dimensionTypeRegistration().unwrapKey().orElseThrow(),
                     ((IGravityEntity)ent).roundabout$getGravityDirection(),
                     ((IAbstractArrowAccess)LE).roundabout$GetInGround()
             );
@@ -153,7 +153,7 @@ public class SavedSecond {
                     ent.getPosition(1),
                     ent.getDeltaMovement(),
                     ent.fallDistance,
-                    ent.level().dimensionTypeId(),
+                    ent.level().dimensionTypeRegistration().unwrapKey().orElseThrow(),
                     ((IGravityEntity)ent).roundabout$getGravityDirection()
             );
         }
@@ -161,7 +161,7 @@ public class SavedSecond {
     }
 
     public void loadTime(Entity ent){
-        if (ent == null || (dimensionTypeId != ent.level().dimensionTypeId()))
+        if (ent == null || (dimensionTypeId != ent.level().dimensionTypeRegistration().unwrapKey().orElseThrow()))
             return;
 
         if (ent instanceof LivingEntity LE){

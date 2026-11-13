@@ -161,8 +161,8 @@ public final class HallucinatoryAcidBlockEntity extends BlockEntity {
     }
 
     @Override
-    protected void saveAdditional(CompoundTag tag) {
-        super.saveAdditional(tag);
+    protected void saveAdditional(CompoundTag tag, net.minecraft.core.HolderLookup.Provider registries) {
+        super.saveAdditional(tag, registries);
         if (owner != null) tag.putUUID("Owner", owner);
         tag.putLong("ExpiresAt", expiresAt);
         tag.putBoolean("AcidTossAlwaysExpires", acidTossAlwaysExpires);
@@ -172,8 +172,8 @@ public final class HallucinatoryAcidBlockEntity extends BlockEntity {
     }
 
     @Override
-    public void load(CompoundTag tag) {
-        super.load(tag);
+    public void loadAdditional(CompoundTag tag, net.minecraft.core.HolderLookup.Provider registries) {
+        super.loadAdditional(tag, registries);
         owner = tag.hasUUID("Owner") ? tag.getUUID("Owner") : null;
         expiresAt = tag.getLong("ExpiresAt");
         acidTossAlwaysExpires = tag.getBoolean("AcidTossAlwaysExpires");

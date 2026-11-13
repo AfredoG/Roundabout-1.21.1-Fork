@@ -90,27 +90,27 @@ public class HandBlockEntity extends BlockEntity {
                 (float) (1.00f + Math.random() * 0.01f));*/
     }
 
-    protected void saveAdditional(CompoundTag $$0) {
-        super.saveAdditional($$0);
+    protected void saveAdditional(CompoundTag $$0, net.minecraft.core.HolderLookup.Provider registries) {
+        super.saveAdditional($$0, registries);
 
         if (this.noteBlockSound != null) {
             $$0.putString("note_block_sound", this.noteBlockSound.toString());
         }
 
         if (!storedStack.isEmpty()) {
-            $$0.put("StoredStack", storedStack.save(new CompoundTag()));
+            $$0.put("StoredStack", storedStack.save(registries, new CompoundTag()));
         }
 
     }
-    public void load(CompoundTag $$0) {
-        super.load($$0);
+    public void loadAdditional(CompoundTag $$0, net.minecraft.core.HolderLookup.Provider registries) {
+        super.loadAdditional($$0, registries);
         if ($$0.contains("note_block_sound", 8)) {
             this.noteBlockSound = ResourceLocation.tryParse($$0.getString("note_block_sound"));
         }
 
         if ($$0.contains("StoredStack")) {
             synchronized (this) {
-                storedStack = ItemStack.of($$0.getCompound("StoredStack"));
+                storedStack = ItemStack.parseOptional(registries, $$0.getCompound("StoredStack"));
             }
         } else {
             storedStack = ItemStack.EMPTY;

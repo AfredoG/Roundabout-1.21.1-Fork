@@ -115,7 +115,7 @@ public abstract class GravityCrossbowItemMixin extends ProjectileWeaponItem impl
                 $$11.shoot((double)$$17.x(), (double)$$17.y(), (double)$$17.z(), $$7, $$8);
             }
 
-            $$3.hurtAndBreak($$10 ? 3 : 1, $$1, $$1x -> $$1x.broadcastBreakEvent($$2));
+            $$3.hurtAndBreak($$10 ? 3 : 1, $$1, net.minecraft.world.entity.LivingEntity.getSlotForHand($$2));
             $$0.addFreshEntity($$11);
             $$0.playSound(null, $$1.getX(), $$1.getY(), $$1.getZ(), SoundEvents.CROSSBOW_SHOOT, SoundSource.PLAYERS, 1.0F, $$5);
         }

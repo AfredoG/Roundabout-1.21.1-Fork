@@ -31,7 +31,8 @@ public class MaxStandDiscItem extends StandDiscItem{
     }
 
     @Override
-    public void appendHoverText(ItemStack $$0, @Nullable Level $$1, List<Component> $$2, TooltipFlag $$3) {
+    public void appendHoverText(ItemStack $$0, net.minecraft.world.item.Item.TooltipContext tooltipContext, List<Component> $$2, TooltipFlag $$3) {
+        Level $$1 = tooltipContext.level();
 
         if(this.standPowers != null && this.standPowers.isWip()){
             $$2.add(Component.translatable("leveling.roundabout.disc_wip").withStyle(ChatFormatting.RED).withStyle(ChatFormatting.BOLD));
@@ -48,7 +49,7 @@ public class MaxStandDiscItem extends StandDiscItem{
             $$2.add(this.getDisplayName2().withStyle(ChatFormatting.AQUA));
             $$2.add(Component.translatable("leveling.roundabout.disc_maxed").withStyle(ChatFormatting.GRAY));
         }
-        CompoundTag $$4 = $$0.getTagElement("Memory");
+        CompoundTag $$4 = net.hydra.jojomod.util.ItemData.element($$0, "Memory");
         if ($$4 != null && $$1 != null) {
             if ($$4.contains("Skin")) {
                 byte skin = ($$4.getByte("Skin"));

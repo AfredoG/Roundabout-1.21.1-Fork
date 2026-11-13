@@ -67,6 +67,10 @@ public class ScissorItem extends TieredItem implements Vanishable {
     }
 
     @Override
+    public int getUseDuration(ItemStack $$0, net.minecraft.world.entity.LivingEntity entity) {
+        return getUseDuration($$0);
+    }
+
     public int getUseDuration(ItemStack $$0) {
         return 72000;
     }
@@ -74,7 +78,7 @@ public class ScissorItem extends TieredItem implements Vanishable {
     @Override
     public boolean mineBlock(ItemStack $$0, Level $$1, BlockState $$2, BlockPos $$3, LivingEntity $$4) {
         if (!$$1.isClientSide && !$$2.is(BlockTags.FIRE)) {
-            $$0.hurtAndBreak(1, $$4, $$0x -> $$0x.broadcastBreakEvent(EquipmentSlot.MAINHAND));
+            $$0.hurtAndBreak(1, $$4, EquipmentSlot.MAINHAND);
         }
 
         return !$$2.is(BlockTags.LEAVES)
@@ -125,7 +129,7 @@ public class ScissorItem extends TieredItem implements Vanishable {
             $$1.setBlockAndUpdate($$2, $$8);
             $$1.gameEvent(GameEvent.BLOCK_CHANGE, $$2, GameEvent.Context.of($$0.getPlayer(), $$8));
             if ($$6 != null) {
-                $$7.hurtAndBreak(1, $$6, $$1x -> $$1x.broadcastBreakEvent($$0.getHand()));
+                $$7.hurtAndBreak(1, $$6, net.minecraft.world.entity.LivingEntity.getSlotForHand($$0.getHand()));
             }
 
             return InteractionResult.sidedSuccess($$1.isClientSide);

@@ -80,8 +80,9 @@ public abstract class RegisterItemRenderer implements IItemRenderer {
                 return this.itemModelShaper.getModelManager().getModel(ModItemModels.DREAD_BOOK);
             }
         } if ($$0.is(ModItems.STREET_SIGN_DIO_BLOCK_ITEM)){
-            CompoundTag ct = $$0.getOrCreateTagElement("BlockStateTag");
-            int ctd = ct.getInt("damaged");
+            var ct = $$0.getOrDefault(net.minecraft.core.component.DataComponents.BLOCK_STATE, net.minecraft.world.item.component.BlockItemStateProperties.EMPTY);
+            Integer damage = ct.get(net.hydra.jojomod.block.StreetSignBlock.DAMAGED);
+            int ctd = damage == null ? 0 : damage;
             if (ctd == 1){
                 return this.itemModelShaper.getModelManager().getModel(ModItemModels.STREET_SIGN_DIO_D);
             }
@@ -89,8 +90,9 @@ public abstract class RegisterItemRenderer implements IItemRenderer {
                 return this.itemModelShaper.getModelManager().getModel(ModItemModels.STREET_SIGN_DIO_D2);
             }
         } if ($$0.is(ModItems.STREET_SIGN_RIGHT_BLOCK_ITEM)){
-            CompoundTag ct = $$0.getOrCreateTagElement("BlockStateTag");
-            int ctd = ct.getInt("damaged");
+            var ct = $$0.getOrDefault(net.minecraft.core.component.DataComponents.BLOCK_STATE, net.minecraft.world.item.component.BlockItemStateProperties.EMPTY);
+            Integer damage = ct.get(net.hydra.jojomod.block.StreetSignBlock.DAMAGED);
+            int ctd = damage == null ? 0 : damage;
             if (ctd == 1){
                 return this.itemModelShaper.getModelManager().getModel(ModItemModels.STREET_SIGN_RIGHT_D);
             }
@@ -98,8 +100,9 @@ public abstract class RegisterItemRenderer implements IItemRenderer {
                 return this.itemModelShaper.getModelManager().getModel(ModItemModels.STREET_SIGN_RIGHT_D2);
             }
         } if ($$0.is(ModItems.STREET_SIGN_STOP_BLOCK_ITEM)){
-            CompoundTag ct = $$0.getOrCreateTagElement("BlockStateTag");
-            int ctd = ct.getInt("damaged");
+            var ct = $$0.getOrDefault(net.minecraft.core.component.DataComponents.BLOCK_STATE, net.minecraft.world.item.component.BlockItemStateProperties.EMPTY);
+            Integer damage = ct.get(net.hydra.jojomod.block.StreetSignBlock.DAMAGED);
+            int ctd = damage == null ? 0 : damage;
             if (ctd == 1){
                 return this.itemModelShaper.getModelManager().getModel(ModItemModels.STREET_SIGN_STOP_D);
             }
@@ -107,8 +110,9 @@ public abstract class RegisterItemRenderer implements IItemRenderer {
                 return this.itemModelShaper.getModelManager().getModel(ModItemModels.STREET_SIGN_STOP_D2);
             }
         } if ($$0.is(ModItems.STREET_SIGN_YIELD_BLOCK_ITEM)){
-            CompoundTag ct = $$0.getOrCreateTagElement("BlockStateTag");
-            int ctd = ct.getInt("damaged");
+            var ct = $$0.getOrDefault(net.minecraft.core.component.DataComponents.BLOCK_STATE, net.minecraft.world.item.component.BlockItemStateProperties.EMPTY);
+            Integer damage = ct.get(net.hydra.jojomod.block.StreetSignBlock.DAMAGED);
+            int ctd = damage == null ? 0 : damage;
             if (ctd == 1){
                 return this.itemModelShaper.getModelManager().getModel(ModItemModels.STREET_SIGN_YIELD_D);
             }
@@ -116,8 +120,9 @@ public abstract class RegisterItemRenderer implements IItemRenderer {
                 return this.itemModelShaper.getModelManager().getModel(ModItemModels.STREET_SIGN_YIELD_D2);
             }
         } if ($$0.is(ModItems.STREET_SIGN_DANGER_BLOCK_ITEM)){
-            CompoundTag ct = $$0.getOrCreateTagElement("BlockStateTag");
-            int ctd = ct.getInt("damaged");
+            var ct = $$0.getOrDefault(net.minecraft.core.component.DataComponents.BLOCK_STATE, net.minecraft.world.item.component.BlockItemStateProperties.EMPTY);
+            Integer damage = ct.get(net.hydra.jojomod.block.StreetSignBlock.DAMAGED);
+            int ctd = damage == null ? 0 : damage;
             if (ctd == 1){
                 return this.itemModelShaper.getModelManager().getModel(ModItemModels.STREET_SIGN_DANGER_D);
             }
@@ -176,8 +181,9 @@ public abstract class RegisterItemRenderer implements IItemRenderer {
                     getModel(ModItemModels.BERETTA_PISTOL_IN_HAND);
         } if (stack.is(ModItems.STREET_SIGN_DIO_BLOCK_ITEM) && renderMode != ItemDisplayContext.GUI) {
 
-            CompoundTag ct = stack.getOrCreateTagElement("BlockStateTag");
-            int ctd = ct.getInt("damaged");
+            var ct = stack.getOrDefault(net.minecraft.core.component.DataComponents.BLOCK_STATE, net.minecraft.world.item.component.BlockItemStateProperties.EMPTY);
+            Integer damage = ct.get(net.hydra.jojomod.block.StreetSignBlock.DAMAGED);
+            int ctd = damage == null ? 0 : damage;
             if (ctd == 1){
                 return this.itemModelShaper.getModelManager().
                         getModel(ModItemModels.STREET_SIGN_DIO_HELD_D);
@@ -189,8 +195,9 @@ public abstract class RegisterItemRenderer implements IItemRenderer {
                     getModel(ModItemModels.STREET_SIGN_DIO_HELD);
         } if (stack.is(ModItems.STREET_SIGN_RIGHT_BLOCK_ITEM) && renderMode != ItemDisplayContext.GUI) {
 
-            CompoundTag ct = stack.getOrCreateTagElement("BlockStateTag");
-            int ctd = ct.getInt("damaged");
+            var ct = stack.getOrDefault(net.minecraft.core.component.DataComponents.BLOCK_STATE, net.minecraft.world.item.component.BlockItemStateProperties.EMPTY);
+            Integer damage = ct.get(net.hydra.jojomod.block.StreetSignBlock.DAMAGED);
+            int ctd = damage == null ? 0 : damage;
             if (ctd == 1){
                 return this.itemModelShaper.getModelManager().
                         getModel(ModItemModels.STREET_SIGN_RIGHT_HELD_D);
@@ -202,8 +209,9 @@ public abstract class RegisterItemRenderer implements IItemRenderer {
                     getModel(ModItemModels.STREET_SIGN_RIGHT_HELD);
         } if (stack.is(ModItems.STREET_SIGN_STOP_BLOCK_ITEM) && renderMode != ItemDisplayContext.GUI) {
 
-            CompoundTag ct = stack.getOrCreateTagElement("BlockStateTag");
-            int ctd = ct.getInt("damaged");
+            var ct = stack.getOrDefault(net.minecraft.core.component.DataComponents.BLOCK_STATE, net.minecraft.world.item.component.BlockItemStateProperties.EMPTY);
+            Integer damage = ct.get(net.hydra.jojomod.block.StreetSignBlock.DAMAGED);
+            int ctd = damage == null ? 0 : damage;
             if (ctd == 1){
                 return this.itemModelShaper.getModelManager().
                         getModel(ModItemModels.STREET_SIGN_STOP_HELD_D);
@@ -215,8 +223,9 @@ public abstract class RegisterItemRenderer implements IItemRenderer {
                     getModel(ModItemModels.STREET_SIGN_STOP_HELD);
         } if (stack.is(ModItems.STREET_SIGN_YIELD_BLOCK_ITEM) && renderMode != ItemDisplayContext.GUI) {
 
-            CompoundTag ct = stack.getOrCreateTagElement("BlockStateTag");
-            int ctd = ct.getInt("damaged");
+            var ct = stack.getOrDefault(net.minecraft.core.component.DataComponents.BLOCK_STATE, net.minecraft.world.item.component.BlockItemStateProperties.EMPTY);
+            Integer damage = ct.get(net.hydra.jojomod.block.StreetSignBlock.DAMAGED);
+            int ctd = damage == null ? 0 : damage;
             if (ctd == 1){
                 return this.itemModelShaper.getModelManager().
                         getModel(ModItemModels.STREET_SIGN_YIELD_HELD_D);
@@ -228,8 +237,9 @@ public abstract class RegisterItemRenderer implements IItemRenderer {
                     getModel(ModItemModels.STREET_SIGN_YIELD_HELD);
         } if (stack.is(ModItems.STREET_SIGN_DANGER_BLOCK_ITEM) && renderMode != ItemDisplayContext.GUI) {
 
-            CompoundTag ct = stack.getOrCreateTagElement("BlockStateTag");
-            int ctd = ct.getInt("damaged");
+            var ct = stack.getOrDefault(net.minecraft.core.component.DataComponents.BLOCK_STATE, net.minecraft.world.item.component.BlockItemStateProperties.EMPTY);
+            Integer damage = ct.get(net.hydra.jojomod.block.StreetSignBlock.DAMAGED);
+            int ctd = damage == null ? 0 : damage;
             if (ctd == 1){
                 return this.itemModelShaper.getModelManager().
                         getModel(ModItemModels.STREET_SIGN_DANGER_HELD_D);

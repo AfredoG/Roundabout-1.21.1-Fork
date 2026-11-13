@@ -118,12 +118,12 @@ public class TrailRenderer {
     }
 
     private static void vertex(PoseStack.Pose pose, VertexConsumer consumer, int packedLight, float x, float y, float z, Vector3f c, float a) {
-        consumer.vertex(pose.pose(), x, y, z)
-                .color(c.x, c.y, c.z, a)
-                .uv(0.0f, 0.0f)
-                .overlayCoords(OverlayTexture.NO_OVERLAY)
-                .uv2(packedLight)
-                .normal(pose.normal(), 0.0f, 0.0f, 1.0f)
-                .endVertex();
+        consumer.addVertex(pose.pose(), x, y, z)
+                .setColor(c.x, c.y, c.z, a)
+                .setUv(0.0f, 0.0f)
+                .setOverlay(OverlayTexture.NO_OVERLAY)
+                .setLight(packedLight)
+                .setNormal(pose, 0.0f, 0.0f, 1.0f)
+                ;
     }
 }

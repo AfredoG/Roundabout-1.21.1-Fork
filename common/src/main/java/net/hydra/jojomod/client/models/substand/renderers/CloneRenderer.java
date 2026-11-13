@@ -443,10 +443,10 @@ public class CloneRenderer<T extends CloneEntity> extends LivingEntityRenderer<T
             if (visage.getItem() instanceof MaskItem MI) {
                 if (MI instanceof ModificationMaskItem MD){
                     if (visage.getTag() != null) {
-                        CompoundTag tag = visage.getOrCreateTagElement("modifications");
+                        CompoundTag tag = net.hydra.jojomod.util.ItemData.elementOrEmpty(visage, "modifications");
                         if (tag.contains("height") || tag.contains("width")) {
-                            int height = visage.getOrCreateTagElement("modifications").getInt("height");
-                            int width = visage.getOrCreateTagElement("modifications").getInt("width");
+                            int height = net.hydra.jojomod.util.ItemData.elementOrEmpty(visage, "modifications").getInt("height");
+                            int width = net.hydra.jojomod.util.ItemData.elementOrEmpty(visage, "modifications").getInt("width");
                             $$1.scale(0.798F + (((float) width) * 0.001F), 0.7F + (((float) height) * 0.001F), 0.798F + (((float) width) * 0.001F));
 
                         }

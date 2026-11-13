@@ -16,7 +16,8 @@ public class SnubnoseAmmoItem extends AmmoItem {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
+    public void appendHoverText(ItemStack stack, net.minecraft.world.item.Item.TooltipContext tooltipContext, List<Component> tooltip, TooltipFlag flag) {
+        Level level = tooltipContext.level();
         tooltip.add(Component.translatable("text.roundabout.bullets.revolver").withStyle(ChatFormatting.YELLOW));
     }
 }

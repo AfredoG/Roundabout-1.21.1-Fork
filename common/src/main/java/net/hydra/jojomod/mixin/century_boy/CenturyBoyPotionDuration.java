@@ -17,9 +17,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(MobEffectInstance.class)
 public abstract class CenturyBoyPotionDuration{
 
-    @Shadow public abstract MobEffect getEffect();
+    @Shadow public abstract net.minecraft.core.Holder<MobEffect> getEffect();
 
-    @Shadow @Final private MobEffect effect;
+    @Shadow @Final private net.minecraft.core.Holder<MobEffect> effect;
 
     @Inject(method = "tick", at=@At("HEAD"), cancellable = true)
     private void pauseDuration(LivingEntity entity, Runnable run, CallbackInfoReturnable<Boolean> cir){

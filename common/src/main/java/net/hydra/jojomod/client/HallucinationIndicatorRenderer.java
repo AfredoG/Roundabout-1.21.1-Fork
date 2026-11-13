@@ -91,11 +91,11 @@ public final class HallucinationIndicatorRenderer {
 
         VertexConsumer vertexConsumer = bufferSource.getBuffer(RenderType.text(icon));
         Matrix4f matrix = poseStack.last().pose();
-        Matrix3f normal = poseStack.last().normal();
-        vertexConsumer.vertex(matrix, -size, -size, 0.0F).color(255, 255, 255, 255).uv(0.0F, 1.0F).overlayCoords(OverlayTexture.NO_OVERLAY).uv2(15728880).normal(normal, 0, 0, -1).endVertex();
-        vertexConsumer.vertex(matrix, size, -size, 0.0F).color(255, 255, 255, 255).uv(1.0F, 1.0F).overlayCoords(OverlayTexture.NO_OVERLAY).uv2(15728880).normal(normal, 0, 0, -1).endVertex();
-        vertexConsumer.vertex(matrix, size, size, 0.0F).color(255, 255, 255, 255).uv(1.0F, 0.0F).overlayCoords(OverlayTexture.NO_OVERLAY).uv2(15728880).normal(normal, 0, 0, -1).endVertex();
-        vertexConsumer.vertex(matrix, -size, size, 0.0F).color(255, 255, 255, 255).uv(0.0F, 0.0F).overlayCoords(OverlayTexture.NO_OVERLAY).uv2(15728880).normal(normal, 0, 0, -1).endVertex();
+        com.mojang.blaze3d.vertex.PoseStack.Pose normal = poseStack.last();
+        vertexConsumer.addVertex(matrix, -size, -size, 0.0F).setColor(255, 255, 255, 255).setUv(0.0F, 1.0F).setOverlay(OverlayTexture.NO_OVERLAY).setLight(15728880).setNormal(normal, 0, 0, -1);
+        vertexConsumer.addVertex(matrix, size, -size, 0.0F).setColor(255, 255, 255, 255).setUv(1.0F, 1.0F).setOverlay(OverlayTexture.NO_OVERLAY).setLight(15728880).setNormal(normal, 0, 0, -1);
+        vertexConsumer.addVertex(matrix, size, size, 0.0F).setColor(255, 255, 255, 255).setUv(1.0F, 0.0F).setOverlay(OverlayTexture.NO_OVERLAY).setLight(15728880).setNormal(normal, 0, 0, -1);
+        vertexConsumer.addVertex(matrix, -size, size, 0.0F).setColor(255, 255, 255, 255).setUv(0.0F, 0.0F).setOverlay(OverlayTexture.NO_OVERLAY).setLight(15728880).setNormal(normal, 0, 0, -1);
 
         RenderSystem.enableDepthTest();
         poseStack.popPose();

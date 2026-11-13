@@ -60,7 +60,8 @@ public abstract class AbstractBodyDiscItem extends Item {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> lines, TooltipFlag flag) {
+    public void appendHoverText(ItemStack stack, net.minecraft.world.item.Item.TooltipContext tooltipContext, List<Component> lines, TooltipFlag flag) {
+        Level level = tooltipContext.level();
         DiscItemData.addOwnerTooltip(stack, lines, showPersonality());
     }
 }

@@ -89,10 +89,10 @@ public class BubbleScaffoldBlockEntityRenderer implements BlockEntityRenderer<Bu
                 float scaleIt = 0.23f;
 
                 float size = (float) Math.min(scaleIt, (((float) bubbleScaffoldBlockEntity.getTickCount()) + partialTick) * (scaleIt * 0.1)); // Adjust to your needs
-                vertexConsumer.vertex(matrix, -size, -size, 0.0f).color(255, 255, 255, 255).uv(0.0f, 1.0f).overlayCoords(OverlayTexture.NO_OVERLAY).uv2(packedLight).normal(coursecorrect.x, coursecorrect.y, coursecorrect.z).endVertex();
-                vertexConsumer.vertex(matrix, size, -size, 0.0f).color(255, 255, 255, 255).uv(1.0f, 1.0f).overlayCoords(OverlayTexture.NO_OVERLAY).uv2(packedLight).normal(coursecorrect.x, coursecorrect.y, coursecorrect.z).endVertex();
-                vertexConsumer.vertex(matrix, size, size, 0.0f).color(255, 255, 255, 255).uv(1.0f, 0.0f).overlayCoords(OverlayTexture.NO_OVERLAY).uv2(packedLight).normal(coursecorrect.x, coursecorrect.y, coursecorrect.z).endVertex();
-                vertexConsumer.vertex(matrix, -size, size, 0.0f).color(255, 255, 255, 255).uv(0.0f, 0.0f).overlayCoords(OverlayTexture.NO_OVERLAY).uv2(packedLight).normal(coursecorrect.x, coursecorrect.y, coursecorrect.z).endVertex();
+                vertexConsumer.addVertex(matrix, -size, -size, 0.0f).setColor(255, 255, 255, 255).setUv(0.0f, 1.0f).setOverlay(OverlayTexture.NO_OVERLAY).setLight(packedLight).setNormal(coursecorrect.x, coursecorrect.y, coursecorrect.z);
+                vertexConsumer.addVertex(matrix, size, -size, 0.0f).setColor(255, 255, 255, 255).setUv(1.0f, 1.0f).setOverlay(OverlayTexture.NO_OVERLAY).setLight(packedLight).setNormal(coursecorrect.x, coursecorrect.y, coursecorrect.z);
+                vertexConsumer.addVertex(matrix, size, size, 0.0f).setColor(255, 255, 255, 255).setUv(1.0f, 0.0f).setOverlay(OverlayTexture.NO_OVERLAY).setLight(packedLight).setNormal(coursecorrect.x, coursecorrect.y, coursecorrect.z);
+                vertexConsumer.addVertex(matrix, -size, size, 0.0f).setColor(255, 255, 255, 255).setUv(0.0f, 0.0f).setOverlay(OverlayTexture.NO_OVERLAY).setLight(packedLight).setNormal(coursecorrect.x, coursecorrect.y, coursecorrect.z);
 
 
                 ClientUtil.popPoseAndCooperate(poseStack,6);

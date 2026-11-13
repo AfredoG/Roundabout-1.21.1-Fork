@@ -76,7 +76,8 @@ public class StoneMaskBlockItem extends BlockItem {
 
 
     @Override
-    public void appendHoverText(ItemStack $$0, @org.jetbrains.annotations.Nullable Level $$1, List<Component> $$2, TooltipFlag $$3) {
+    public void appendHoverText(ItemStack $$0, net.minecraft.world.item.Item.TooltipContext tooltipContext, List<Component> $$2, TooltipFlag $$3) {
+        Level $$1 = tooltipContext.level();
 
     }
 }

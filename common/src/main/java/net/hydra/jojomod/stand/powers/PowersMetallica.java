@@ -743,7 +743,7 @@ public class PowersMetallica extends NewDashPreset {
 
         ResourceLocation bleedLoc = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "bleed");
         if (BuiltInRegistries.MOB_EFFECT.containsKey(bleedLoc)) {
-            net.minecraft.world.effect.MobEffect bleedEffect = BuiltInRegistries.MOB_EFFECT.get(bleedLoc);
+            net.minecraft.core.Holder<net.minecraft.world.effect.MobEffect> bleedEffect = BuiltInRegistries.MOB_EFFECT.getHolder(bleedLoc).orElseThrow();
 
             if (getMetalMode() != NAILS) {
                 int amp = 0;
@@ -786,8 +786,8 @@ public class PowersMetallica extends NewDashPreset {
         if (dmg <= 0) dmg = 6.0f; if (dmg > 40.0f) dmg = 40.0f;
         self.heal(dmg);
         ((IEntityAndData)self).roundabout$setLastDamageTaken(0);
-        if (net.minecraft.core.registries.BuiltInRegistries.MOB_EFFECT.containsKey(new net.minecraft.resources.ResourceLocation(net.hydra.jojomod.Roundabout.MOD_ID, "bleed"))) {
-            self.removeEffect(net.minecraft.core.registries.BuiltInRegistries.MOB_EFFECT.get(new net.minecraft.resources.ResourceLocation(net.hydra.jojomod.Roundabout.MOD_ID, "bleed")));
+        if (net.minecraft.core.registries.BuiltInRegistries.MOB_EFFECT.containsKey(net.minecraft.resources.ResourceLocation.fromNamespaceAndPath(net.hydra.jojomod.Roundabout.MOD_ID, "bleed"))) {
+            self.removeEffect(net.minecraft.core.registries.BuiltInRegistries.MOB_EFFECT.getHolder(net.minecraft.resources.ResourceLocation.fromNamespaceAndPath(net.hydra.jojomod.Roundabout.MOD_ID, "bleed")).orElseThrow());
         }
         playSoundIfPossible(self.level(),null, self.getX(), self.getY(), self.getZ(), net.minecraft.sounds.SoundEvents.IRON_GOLEM_REPAIR, net.minecraft.sounds.SoundSource.PLAYERS, 1.0f, 1.5f);
         return true;

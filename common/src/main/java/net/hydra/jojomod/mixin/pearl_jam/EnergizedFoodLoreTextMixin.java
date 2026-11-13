@@ -24,15 +24,15 @@ public class EnergizedFoodLoreTextMixin {
             if ($$0.getTag().contains("pearljamfood")){
                 if (MainUtil.foodCuresThat.containsKey($$0.getItem()) || MainUtil.foodAddsThat.containsKey($$0.getItem()) || MainUtil.specialFoodRemoves.containsKey($$0.getItem())){
                     if (MainUtil.foodCuresThat.containsKey($$0.getItem())) {
-                        List<MobEffect> effects = MainUtil.foodCuresThat.get($$0.getItem());
-                        for (MobEffect effect : effects) {
-                            $$2.add(Component.translatable("text.roundabout.pearl_jam.cure_lore", Component.translatable(effect.getDescriptionId()).withStyle(ChatFormatting.GOLD)));
+                        List<net.minecraft.core.Holder<MobEffect>> effects = MainUtil.foodCuresThat.get($$0.getItem());
+                        for (net.minecraft.core.Holder<MobEffect> effect : effects) {
+                            $$2.add(Component.translatable("text.roundabout.pearl_jam.cure_lore", Component.translatable(effect.value().getDescriptionId()).withStyle(ChatFormatting.GOLD)));
                         }
                     }
                     if (MainUtil.foodAddsThat.containsKey($$0.getItem())) {
-                        List<MobEffect> effects = MainUtil.foodAddsThat.get($$0.getItem());
-                        for (MobEffect effect : effects) {
-                            $$2.add(Component.translatable("text.roundabout.pearl_jam.add_lore", Component.translatable(effect.getDescriptionId()).withStyle(ChatFormatting.GOLD)));
+                        List<net.minecraft.core.Holder<MobEffect>> effects = MainUtil.foodAddsThat.get($$0.getItem());
+                        for (net.minecraft.core.Holder<MobEffect> effect : effects) {
+                            $$2.add(Component.translatable("text.roundabout.pearl_jam.add_lore", Component.translatable(effect.value().getDescriptionId()).withStyle(ChatFormatting.GOLD)));
                         }
                     }
                     if (MainUtil.specialFoodRemoves.containsKey($$0.getItem())) {

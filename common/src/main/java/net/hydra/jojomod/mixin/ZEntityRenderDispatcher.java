@@ -238,7 +238,7 @@ public abstract class ZEntityRenderDispatcher {
                     RenderSystem.setShaderTexture(0, Roundabout.location("textures/block/stand_fire_0.png"));
                 }
 
-                bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_COLOR_TEX);
+                bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX_COLOR);
                 fireVertex(vertexConsumer, matrices, $$6 - 0.0F, 0.0F - $$9, $$10, u0, v1);
                 fireVertex(vertexConsumer, matrices,-$$6 - 0.0F, 0.0F - $$9, $$10, u1, v1);
                 fireVertex(vertexConsumer, matrices, -$$6 - 0.0F, 1.4F - $$9, $$10, u1, v0);
@@ -273,13 +273,13 @@ public abstract class ZEntityRenderDispatcher {
     @Shadow public abstract <E extends Entity> void render(E $$0, double $$1, double $$2, double $$3, float $$4, float $$5, PoseStack $$6, MultiBufferSource $$7, int $$8);
 
     private static void fireVertex(VertexConsumer vertexConsumer, PoseStack.Pose matrices, float x, float y, float z, float u, float v) {
-        vertexConsumer.vertex(matrices.pose(), x, y, z)
-                .color(255, 255, 255, 255)
-                .uv(u, v)
-                .overlayCoords(OverlayTexture.NO_OVERLAY)
-                .uv2(15728880)
-                .normal(matrices.normal(), 0.0F, 1.0F, 0.0F)
-                .endVertex();
+        vertexConsumer.addVertex(matrices.pose(), x, y, z)
+                .setColor(255, 255, 255, 255)
+                .setUv(u, v)
+                .setOverlay(OverlayTexture.NO_OVERLAY)
+                .setLight(15728880)
+                .setNormal(matrices, 0.0F, 1.0F, 0.0F)
+                ;
     }
 
     @Inject(method = "renderShadow", at = @At("HEAD"), cancellable = true)

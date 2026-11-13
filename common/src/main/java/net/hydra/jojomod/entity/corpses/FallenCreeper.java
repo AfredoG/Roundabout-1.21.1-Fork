@@ -116,7 +116,7 @@ public class FallenCreeper extends FallenMob implements PowerableMob {
                 if (!$$2.isDamageableItem()) {
                     $$2.shrink(1);
                 } else {
-                    $$2.hurtAndBreak(1, $$0, $$1x -> $$1x.broadcastBreakEvent($$1));
+                    $$2.hurtAndBreak(1, $$0, net.minecraft.world.entity.LivingEntity.getSlotForHand($$1));
                 }
             }
 

@@ -497,10 +497,10 @@ public abstract class ZLevelRenderer implements ILevelRenderer {
 
                         Matrix4f stack = $$0.last().pose();
                         bufferBuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX_COLOR);
-                        bufferBuilder.vertex(stack, -100.0F, -100.0F, -100.0F).uv(0.0F, 0.0F).color(1F, 1F, 1F, alpha).endVertex();
-                        bufferBuilder.vertex(stack, -100.0F, -100.0F, 100.0F).uv(0.0F, 1).color(1F, 1F, 1F, alpha).endVertex();
-                        bufferBuilder.vertex(stack, 100.0F, -100.0F, 100.0F).uv(1, 1).color(1F, 1F, 1F, alpha).endVertex();
-                        bufferBuilder.vertex(stack, 100.0F, -100.0F, -100.0F).uv(1, 0.0F).color(1F, 1F, 1F, alpha).endVertex();
+                        bufferBuilder.addVertex(stack, -100.0F, -100.0F, -100.0F).setUv(0.0F, 0.0F).setColor(1F, 1F, 1F, alpha);
+                        bufferBuilder.addVertex(stack, -100.0F, -100.0F, 100.0F).setUv(0.0F, 1).setColor(1F, 1F, 1F, alpha);
+                        bufferBuilder.addVertex(stack, 100.0F, -100.0F, 100.0F).setUv(1, 1).setColor(1F, 1F, 1F, alpha);
+                        bufferBuilder.addVertex(stack, 100.0F, -100.0F, -100.0F).setUv(1, 0.0F).setColor(1F, 1F, 1F, alpha);
                         BufferUploader.drawWithShader(bufferBuilder.end());
                         $$0.popPose();
                     }

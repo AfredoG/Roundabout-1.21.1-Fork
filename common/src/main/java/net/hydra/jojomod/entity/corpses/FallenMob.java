@@ -388,7 +388,7 @@ public class FallenMob extends PathfinderMob implements NeutralMob {
             }
 
             if (!level().isClientSide() && !getMainHandItem().isEmpty() && getMainHandItem().getCount() > 0) {
-                getMainHandItem().hurtAndBreak(2, this, $$1x -> $$1x.broadcastBreakEvent(InteractionHand.MAIN_HAND));
+                getMainHandItem().hurtAndBreak(2, this, net.minecraft.world.entity.LivingEntity.getSlotForHand(InteractionHand.MAIN_HAND));
             }
             return $$4;
         } else {

@@ -143,10 +143,10 @@ public abstract class StandUserEntity extends Entity implements StandUser {
     protected abstract float getFrictionInfluencedSpeed(float $$0);
 
     @Shadow
-    public abstract Map<MobEffect, MobEffectInstance> getActiveEffectsMap();
+    public abstract Map<net.minecraft.core.Holder<MobEffect>, MobEffectInstance> getActiveEffectsMap();
 
     @Shadow
-    public abstract boolean removeEffect(MobEffect $$0);
+    public abstract boolean removeEffect(net.minecraft.core.Holder<MobEffect> $$0);
 
     @Shadow
     public abstract boolean addEffect(MobEffectInstance $$0);
@@ -203,7 +203,7 @@ public abstract class StandUserEntity extends Entity implements StandUser {
 
     @Shadow
     @javax.annotation.Nullable
-    public abstract MobEffectInstance getEffect(MobEffect $$0);
+    public abstract MobEffectInstance getEffect(net.minecraft.core.Holder<MobEffect> $$0);
 
     @Shadow
     protected boolean jumping;
@@ -234,7 +234,7 @@ public abstract class StandUserEntity extends Entity implements StandUser {
 
     @Shadow
     @Final
-    private Map<MobEffect, MobEffectInstance> activeEffects;
+    private Map<net.minecraft.core.Holder<MobEffect>, MobEffectInstance> activeEffects;
 
     /**
      * If you are stand guarding, this controls you blocking enemy atttacks.
@@ -242,7 +242,7 @@ public abstract class StandUserEntity extends Entity implements StandUser {
      * damageShield
      */
     @Shadow
-    public boolean hasEffect(MobEffect $$0) {
+    public boolean hasEffect(net.minecraft.core.Holder<MobEffect> $$0) {
         return this.activeEffects.containsKey($$0);
     }
 
@@ -645,9 +645,9 @@ public abstract class StandUserEntity extends Entity implements StandUser {
 
             boolean onlyBleeding = true;
             if (!this.activeEffects.isEmpty()) {
-                Iterator<MobEffect> $$0 = this.activeEffects.keySet().iterator();
+                Iterator<net.minecraft.core.Holder<MobEffect>> $$0 = this.activeEffects.keySet().iterator();
                 while ($$0.hasNext()) {
-                    MobEffect $$1 = $$0.next();
+                    net.minecraft.core.Holder<MobEffect> $$1 = $$0.next();
                     MobEffectInstance $$2 = this.activeEffects.get($$1);
                     if ($$2.isVisible() && !MainUtil.hidesPotionEffectSwirl($$2.getEffect())) {
                         onlyBleeding = false;
@@ -839,9 +839,9 @@ public abstract class StandUserEntity extends Entity implements StandUser {
                         ClientUtil.getPlayer()))) {
             // tick effects down but don't spawn particles
             try {
-                Iterator<MobEffect> $$0 = this.activeEffects.keySet().iterator();
+                Iterator<net.minecraft.core.Holder<MobEffect>> $$0 = this.activeEffects.keySet().iterator();
                 while ($$0.hasNext()) {
-                    MobEffect $$1 = $$0.next();
+                    net.minecraft.core.Holder<MobEffect> $$1 = $$0.next();
                     MobEffectInstance $$2 = this.activeEffects.get($$1);
                     if (!$$2.tick(rdbt$this(), () -> this.onEffectUpdated($$2, true, null))) {
                         if (!this.level().isClientSide) {
@@ -1771,7 +1771,7 @@ public abstract class StandUserEntity extends Entity implements StandUser {
             if (PowerTypes.hasStandActive(rdbt$this()) && this.roundabout$getStandPowers().canSummonStand()
                     && this.roundabout$getStandPowers().canSummonStandAsEntity()
                     && (this.roundabout$getStand() == null ||
-                            (this.roundabout$getStand().level().dimensionTypeId() != this.level().dimensionTypeId() &&
+                            (this.roundabout$getStand().level().dimensionTypeRegistration().unwrapKey().orElseThrow() != this.level().dimensionTypeRegistration().unwrapKey().orElseThrow() &&
                                     this.roundabout$getStand() instanceof FollowingStandEntity FE
                                     && OffsetIndex.OffsetStyle(FE.getOffsetType()) == OffsetIndex.FOLLOW_STYLE))) {
                 this.roundabout$summonStand(this.level(), true, false);
@@ -3530,7 +3530,7 @@ public abstract class StandUserEntity extends Entity implements StandUser {
                     roundabout$itemParityClient = standDisc;
 
                     if (this.roundabout$Powers != null) {
-                        CompoundTag $$4 = standDisc.getOrCreateTagElement("Memory");
+                        CompoundTag $$4 = net.hydra.jojomod.util.ItemData.elementOrEmpty(standDisc, "Memory");
                         if ($$4 != null) {
                             this.roundabout$Powers.readAdditionalSaveData($$4);
                         }
@@ -3553,7 +3553,7 @@ public abstract class StandUserEntity extends Entity implements StandUser {
                 }
                 if (this.level().isClientSide()) {
                     if (this.roundabout$Powers != null) {
-                        CompoundTag $$4 = StandDisc.getOrCreateTagElement("Memory");
+                        CompoundTag $$4 = net.hydra.jojomod.util.ItemData.elementOrEmpty(StandDisc, "Memory");
                         if ($$4 != null) {
                             this.roundabout$Powers.readAdditionalSaveData($$4);
                         }
@@ -5188,7 +5188,7 @@ public abstract class StandUserEntity extends Entity implements StandUser {
                         if (MainUtil.getMobBleed(this)) {
                             MainUtil.makeBleed(this, 0, 400, LE);
                         }
-                        stack.hurtAndBreak(1, LE, $$0x -> $$0x.broadcastBreakEvent(EquipmentSlot.MAINHAND));
+                        stack.hurtAndBreak(1, LE, EquipmentSlot.MAINHAND);
                     }
 
                     if (stack.is(ModItems.SACRIFICIAL_DAGGER)
@@ -5196,7 +5196,7 @@ public abstract class StandUserEntity extends Entity implements StandUser {
                         if (MainUtil.getMobBleed(this)) {
                             MainUtil.makeBleed(this, 0, 400, LE);
                         }
-                        stack.hurtAndBreak(1, LE, $$0x -> $$0x.broadcastBreakEvent(EquipmentSlot.MAINHAND));
+                        stack.hurtAndBreak(1, LE, EquipmentSlot.MAINHAND);
                     }
 
                     if (stack.getItem() instanceof SignBlockItem
@@ -5205,8 +5205,9 @@ public abstract class StandUserEntity extends Entity implements StandUser {
                             if (MainUtil.getMobBleed(rdbt$this())) {
                                 MainUtil.makeBleed(rdbt$this(), 1, 100, zent);
                             }
-                            CompoundTag ct = stack.getOrCreateTagElement("BlockStateTag");
-                            int ctd = ct.getInt("damaged");
+                            var ct = stack.getOrDefault(net.minecraft.core.component.DataComponents.BLOCK_STATE, net.minecraft.world.item.component.BlockItemStateProperties.EMPTY);
+            Integer damage = ct.get(net.hydra.jojomod.block.StreetSignBlock.DAMAGED);
+            int ctd = damage == null ? 0 : damage;
                             ctd++;
                             if (ctd > 2) {
                                 level().playSound(null, blockPosition(), SoundEvents.ITEM_BREAK, SoundSource.PLAYERS,
@@ -5215,7 +5216,7 @@ public abstract class StandUserEntity extends Entity implements StandUser {
                             } else {
                                 level().playSound(null, blockPosition(), ModSounds.SIGN_HIT_EVENT, SoundSource.PLAYERS,
                                         1F, 1);
-                                ct.putInt("damaged", ctd);
+                                stack.set(net.minecraft.core.component.DataComponents.BLOCK_STATE, ct.with(net.hydra.jojomod.block.StreetSignBlock.DAMAGED, ctd));
                             }
                         }
                     }
@@ -6158,13 +6159,13 @@ public abstract class StandUserEntity extends Entity implements StandUser {
         if (this.activeEffects.isEmpty())
             return;
 
-        List<MobEffect> toRemove = new ArrayList<>();
+        List<net.minecraft.core.Holder<MobEffect>> toRemove = new ArrayList<>();
 
-        for (Map.Entry<MobEffect, MobEffectInstance> entry : new ArrayList<>(this.activeEffects.entrySet())) {
-            MobEffect effect = entry.getKey();
+        for (Map.Entry<net.minecraft.core.Holder<MobEffect>, MobEffectInstance> entry : new ArrayList<>(this.activeEffects.entrySet())) {
+            net.minecraft.core.Holder<MobEffect> effect = entry.getKey();
 
             boolean skip = false;
-            for (MobEffect ex : exclude) {
+            for (net.minecraft.core.Holder<MobEffect> ex : exclude) {
                 if (effect.equals(ex)) {
                     skip = true;
                     break;
@@ -6193,7 +6194,7 @@ public abstract class StandUserEntity extends Entity implements StandUser {
             }
         }
 
-        for (MobEffect effect : toRemove) {
+        for (net.minecraft.core.Holder<MobEffect> effect : toRemove) {
             this.removeEffect(effect);
         }
     }

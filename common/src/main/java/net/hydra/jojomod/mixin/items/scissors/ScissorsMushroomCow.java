@@ -30,7 +30,7 @@ public abstract class ScissorsMushroomCow extends Animal implements Shearable {
             this.shear(SoundSource.PLAYERS);
             this.gameEvent(GameEvent.SHEAR, $$0);
             if (!this.level().isClientSide) {
-                $$2.hurtAndBreak(2, $$0, $$1x -> $$1x.broadcastBreakEvent($$1));
+                $$2.hurtAndBreak(2, $$0, net.minecraft.world.entity.LivingEntity.getSlotForHand($$1));
             }
 
             cir.setReturnValue(InteractionResult.sidedSuccess(this.level().isClientSide));

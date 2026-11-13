@@ -57,7 +57,7 @@ public class BoneProjectileRenderer extends EntityRenderer<BoneProjectileEntity>
 
                 PoseStack.Pose lastPose = poseStack.last();
                 Matrix4f poseMatrix = lastPose.pose();
-                Matrix3f normalMatrix = lastPose.normal();
+                PoseStack.Pose normalMatrix = lastPose;
 
                 // Front side
                 drawVertex(poseMatrix, normalMatrix, vertexConsumer, -length, -width, 0, 1.0F, 0.0F, packedLight);
@@ -77,14 +77,14 @@ public class BoneProjectileRenderer extends EntityRenderer<BoneProjectileEntity>
         }
     }
 
-    private void drawVertex(Matrix4f pose, Matrix3f normal, VertexConsumer consumer, float x, float y, float z, float u, float v, int light) {
-        consumer.vertex(pose, x, y, z)
-                .color(255, 255, 255, 255)
-                .uv(u, v)
-                .overlayCoords(OverlayTexture.NO_OVERLAY)
-                .uv2(light)
-                .normal(normal, 0.0F, 1.0F, 0.0F)
-                .endVertex();
+    private void drawVertex(Matrix4f pose, PoseStack.Pose normal, VertexConsumer consumer, float x, float y, float z, float u, float v, int light) {
+        consumer.addVertex(pose, x, y, z)
+                .setColor(255, 255, 255, 255)
+                .setUv(u, v)
+                .setOverlay(OverlayTexture.NO_OVERLAY)
+                .setLight(light)
+                .setNormal(normal, 0.0F, 1.0F, 0.0F)
+                ;
     }
 
     @Override

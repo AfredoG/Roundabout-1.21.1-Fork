@@ -34,7 +34,7 @@ public class SavedSecondCreeper extends SavedSecondLiving {
 
     @Override
     public void loadTime(Entity ent) {
-        if (ent != null && dimensionTypeId != ent.level().dimensionTypeId())
+        if (ent != null && dimensionTypeId != ent.level().dimensionTypeRegistration().unwrapKey().orElseThrow())
             return;
         super.loadTime(ent);
         if (ent instanceof Creeper CE) {

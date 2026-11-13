@@ -1769,7 +1769,7 @@ public class BlackSabbathEntity extends StandEntity implements HasCustomInventor
                     bs.level().addFreshEntity($$7);
                     bs.level().playSound(null, bs.getX(), bs.getY(), bs.getZ(), SoundEvents.EGG_THROW, SoundSource.NEUTRAL, 0.5F, 0.4F / (bs.getRandom().nextFloat() * 0.4F + 0.8F));
                 } else if (item.getItem() instanceof TridentItem || item.getItem() instanceof HarpoonItem) {
-                    item.hurtAndBreak(1, bs, $$1x -> $$1x.broadcastBreakEvent(InteractionHand.MAIN_HAND));
+                    item.hurtAndBreak(1, bs, net.minecraft.world.entity.LivingEntity.getSlotForHand(InteractionHand.MAIN_HAND));
                         if (item.getItem() instanceof TridentItem) {
                             ThrownTrident $$7 = new ThrownTrident(bs.getUser().level(), bs.getUser(), item);
                             $$7.setPos(bs.position().x, bs.getEyeY() - 0.1, bs.position().z);
@@ -2041,9 +2041,9 @@ public class BlackSabbathEntity extends StandEntity implements HasCustomInventor
                                         swordHit(itemDamage, e, this.getUser(), i);
                                     }
                                     if (i.getItem() instanceof WarhammerItem) {
-                                        i.hurtAndBreak(2, this, $$1x -> $$1x.broadcastBreakEvent(InteractionHand.MAIN_HAND));
+                                        i.hurtAndBreak(2, this, net.minecraft.world.entity.LivingEntity.getSlotForHand(InteractionHand.MAIN_HAND));
                                     } else {
-                                        i.hurtAndBreak(1, this, $$1x -> $$1x.broadcastBreakEvent(InteractionHand.MAIN_HAND));
+                                        i.hurtAndBreak(1, this, net.minecraft.world.entity.LivingEntity.getSlotForHand(InteractionHand.MAIN_HAND));
                                     }
                                 }
                             }

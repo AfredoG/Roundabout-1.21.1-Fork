@@ -52,8 +52,8 @@ public final class DiscItemData {
     private DiscItemData() {
     }
 
-    public static CompoundTag data(ItemStack stack) {
-        return stack.getOrCreateTagElement(DATA_TAG);
+    private static CompoundTag data(ItemStack stack) {
+        return net.hydra.jojomod.util.ItemData.elementOrEmpty(stack, DATA_TAG);
     }
 
     public static String ownerName(LivingEntity owner) {
@@ -65,12 +65,14 @@ public final class DiscItemData {
         tag.putString(OWNER_ID, owner.getUUID().toString());
         tag.putString(OWNER_NAME, ownerName(owner));
         tag.putString(OWNER_TYPE, BuiltInRegistries.ENTITY_TYPE.getKey(owner.getType()).toString());
+        net.hydra.jojomod.util.ItemData.setElement(stack, DATA_TAG, tag);
     }
 
     public static void setOwner(ItemStack stack, String id, String name) {
         CompoundTag tag = data(stack);
         tag.putString(OWNER_ID, id);
         tag.putString(OWNER_NAME, name);
+        net.hydra.jojomod.util.ItemData.setElement(stack, DATA_TAG, tag);
     }
 
     public static void setOwnerIfMissing(ItemStack stack, LivingEntity owner) {
@@ -80,41 +82,41 @@ public final class DiscItemData {
     }
 
     public static boolean hasOwner(ItemStack stack) {
-        CompoundTag tag = stack.getTagElement(DATA_TAG);
+        CompoundTag tag = net.hydra.jojomod.util.ItemData.element(stack, DATA_TAG);
         return tag != null && tag.contains(OWNER_NAME) && !tag.getString(OWNER_NAME).isEmpty();
     }
 
     public static String getOwnerId(ItemStack stack) {
-        CompoundTag tag = stack.getTagElement(DATA_TAG);
+        CompoundTag tag = net.hydra.jojomod.util.ItemData.element(stack, DATA_TAG);
         return tag == null ? "" : tag.getString(OWNER_ID);
     }
 
     public static String getOwnerName(ItemStack stack) {
-        CompoundTag tag = stack.getTagElement(DATA_TAG);
+        CompoundTag tag = net.hydra.jojomod.util.ItemData.element(stack, DATA_TAG);
         return tag == null ? "" : tag.getString(OWNER_NAME);
     }
 
     public static String getOwnerType(ItemStack stack) {
-        CompoundTag tag = stack.getTagElement(DATA_TAG);
+        CompoundTag tag = net.hydra.jojomod.util.ItemData.element(stack, DATA_TAG);
         return tag == null ? "" : tag.getString(OWNER_TYPE);
     }
 
     public static byte getPersonality(ItemStack stack) {
-        CompoundTag tag = stack.getTagElement(DATA_TAG);
+        CompoundTag tag = net.hydra.jojomod.util.ItemData.element(stack, DATA_TAG);
         return tag == null ? MemoryPersonality.PASSIVE : tag.getByte(PERSONALITY);
     }
 
     public static void setPersonality(ItemStack stack, byte personality) {
-        data(stack).putByte(PERSONALITY, personality);
+        net.hydra.jojomod.util.ItemData.putElement(stack, DATA_TAG, PERSONALITY, net.minecraft.nbt.ByteTag.valueOf(personality));
     }
 
     public static String getTameOwnerId(ItemStack stack) {
-        CompoundTag tag = stack.getTagElement(DATA_TAG);
+        CompoundTag tag = net.hydra.jojomod.util.ItemData.element(stack, DATA_TAG);
         return tag == null ? "" : tag.getString(TAME_OWNER_ID);
     }
 
     public static String getTameOwnerName(ItemStack stack) {
-        CompoundTag tag = stack.getTagElement(DATA_TAG);
+        CompoundTag tag = net.hydra.jojomod.util.ItemData.element(stack, DATA_TAG);
         return tag == null ? "" : tag.getString(TAME_OWNER_NAME);
     }
 
@@ -122,6 +124,7 @@ public final class DiscItemData {
         CompoundTag tag = data(stack);
         tag.putString(TAME_OWNER_ID, id == null ? "" : id);
         tag.putString(TAME_OWNER_NAME, name == null ? "" : name);
+        net.hydra.jojomod.util.ItemData.setElement(stack, DATA_TAG, tag);
     }
 
     public static void copyTameOwner(ItemStack stack, LivingEntity source) {
@@ -150,7 +153,7 @@ public final class DiscItemData {
     }
 
     public static CompoundTag getMemoryReading(ItemStack stack) {
-        CompoundTag tag = stack.getTagElement(DATA_TAG);
+        CompoundTag tag = net.hydra.jojomod.util.ItemData.element(stack, DATA_TAG);
         return tag != null && tag.contains(MEMORY_READING, Tag.TAG_COMPOUND)
                 ? tag.getCompound(MEMORY_READING).copy() : new CompoundTag();
     }
@@ -159,6 +162,7 @@ public final class DiscItemData {
         CompoundTag tag = data(stack);
         if (reading == null || reading.isEmpty()) tag.remove(MEMORY_READING);
         else tag.put(MEMORY_READING, reading.copy());
+        net.hydra.jojomod.util.ItemData.setElement(stack, DATA_TAG, tag);
     }
 
     public static void captureMemoryReading(ItemStack stack, LivingEntity source) {
@@ -216,25 +220,26 @@ public final class DiscItemData {
     private static ListTag captureInventory(Inventory inventory) {
         ListTag list = new ListTag();
         for (int slot = 0; slot < inventory.items.size(); slot++) {
-            addSnapshotStack(list, slot, inventory.items.get(slot));
+            addSnapshotStack(list, slot, inventory.items.get(slot), inventory.player.registryAccess());
         }
         for (int slot = 0; slot < inventory.armor.size(); slot++) {
-            addSnapshotStack(list, 36 + slot, inventory.armor.get(slot));
+            addSnapshotStack(list, 36 + slot, inventory.armor.get(slot), inventory.player.registryAccess());
         }
         for (int slot = 0; slot < inventory.offhand.size(); slot++) {
-            addSnapshotStack(list, 40 + slot, inventory.offhand.get(slot));
+            addSnapshotStack(list, 40 + slot, inventory.offhand.get(slot), inventory.player.registryAccess());
         }
         return list;
     }
 
-    private static void addSnapshotStack(ListTag list, int slot, ItemStack source) {
+    private static void addSnapshotStack(ListTag list, int slot, ItemStack source, net.minecraft.core.HolderLookup.Provider registries) {
         if (source.isEmpty()) return;
         ItemStack copy = source.copy();
-        CompoundTag stackTag = copy.getTag();
+        CompoundTag stackTag = net.hydra.jojomod.util.ItemData.get(copy);
         if (stackTag != null && stackTag.contains(DATA_TAG, Tag.TAG_COMPOUND)) {
             stackTag.getCompound(DATA_TAG).remove(MEMORY_READING);
+            net.hydra.jojomod.util.ItemData.set(copy, stackTag);
         }
-        CompoundTag saved = copy.save(new CompoundTag());
+        CompoundTag saved = (CompoundTag) copy.save(registries, new CompoundTag());
         saved.putInt(READING_SLOT, slot);
         list.add(saved);
     }
@@ -243,7 +248,7 @@ public final class DiscItemData {
         if (hasOwner(stack)) {
             lines.add(Component.literal("Owner: " + getOwnerName(stack)).withStyle(ChatFormatting.GRAY));
         }
-        if (showPersonality && stack.getTagElement(DATA_TAG) != null) {
+        if (showPersonality && net.hydra.jojomod.util.ItemData.element(stack, DATA_TAG) != null) {
             lines.add(Component.literal("Memory: " + MemoryPersonality.name(getPersonality(stack)))
                     .withStyle(ChatFormatting.DARK_PURPLE));
             String tameOwner = getTameOwnerName(stack);

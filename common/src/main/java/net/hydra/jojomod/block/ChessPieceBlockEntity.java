@@ -67,20 +67,20 @@ public class ChessPieceBlockEntity extends BlockEntity {
     private static Direction getNeighbourDirection(BedPart $$0, Direction $$1) {
         return $$0 == BedPart.FOOT ? $$1 : $$1.getOpposite();
     }
-    protected void saveAdditional(CompoundTag tag) {
-        super.saveAdditional(tag);
+    protected void saveAdditional(CompoundTag tag, net.minecraft.core.HolderLookup.Provider registries) {
+        super.saveAdditional(tag, registries);
 
         if (!storedStack.isEmpty()) {
-            tag.put("StoredStack", storedStack.save(new CompoundTag()));
+            tag.put("StoredStack", storedStack.save(registries, new CompoundTag()));
         }
     }
 
     @Override
-    public void load(CompoundTag tag) {
-        super.load(tag);
+    public void loadAdditional(CompoundTag tag, net.minecraft.core.HolderLookup.Provider registries) {
+        super.loadAdditional(tag, registries);
 
         if (tag.contains("StoredStack")) {
-            storedStack = ItemStack.of(tag.getCompound("StoredStack"));
+            storedStack = ItemStack.parseOptional(registries, tag.getCompound("StoredStack"));
         } else {
             storedStack = ItemStack.EMPTY;
         }
