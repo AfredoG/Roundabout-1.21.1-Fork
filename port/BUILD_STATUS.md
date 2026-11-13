@@ -8,7 +8,7 @@
 - Gradle help: успешно.
 - Подготовка исходников и классов Minecraft/NeoForge: успешно.
 - processResources: успешно; проверены метаданные, access transformer, mixin-конфигурации и 141 рецепт.
-- compileJava: НЕУСПЕШНО, 796 ошибок, 18 предупреждений (последняя полная проверка текущих исходников).
+- compileJava: НЕУСПЕШНО, 775 ошибок, 18 предупреждений (последняя полная проверка текущих исходников).
 - JDK 21 и Gradle восстановлены; подготовка Minecraft/NeoForge и processResources прошли в новой среде.
 - JAR для установки: отсутствует.
 - Запуск клиента и выделенного сервера полного мода: не выполнен (компиляция не проходит).
@@ -22,19 +22,19 @@
 
 | Ошибка | Количество |
 |---|---:|
-| cannot find symbol | 403 |
-| method does not override or implement a method from a supertype | 126 |
+| cannot find symbol | 388 |
+| method does not override or implement a method from a supertype | 122 |
 | minecraft has private access in Gui | 11 |
 | method isCorrectToolForDrops in class Item cannot be applied to given types; | 9 |
 | incompatible types: ResourceKey<Enchantment> cannot be converted to Holder<Enchantment> | 7 |
 | constructor LootAdder in class LootAdder cannot be applied to given types; | 7 |
 | isCollisionShapeFullBlock(BlockState,BlockGetter,BlockPos) has protected access in BlockBehaviour | 6 |
 | package minecraft does not exist | 6 |
-| incompatible types: Reference<SoundEvent> cannot be converted to SoundEvent | 5 |
-| incompatible types: double cannot be converted to LivingEntity | 5 |
 | incompatible types: BlockGetter cannot be converted to LevelReader | 5 |
-| incompatible types: EquipmentSlot cannot be converted to ItemStack | 5 |
+| incompatible types: Reference<SoundEvent> cannot be converted to SoundEvent | 5 |
 | invalid method reference | 5 |
+| incompatible types: EquipmentSlot cannot be converted to ItemStack | 5 |
+| incompatible types: double cannot be converted to LivingEntity | 5 |
 | method createArrow in class ArrowItem cannot be applied to given types; | 4 |
 | method getDamage in interface IItemExtension cannot be applied to given types; | 4 |
 
@@ -238,3 +238,12 @@
 - OldEffect и ReconstructionEffect используют shouldApplyEffectTickThisTick и boolean applyEffectTick. Возврат true сохраняет эффект до истечения срока; старение по-прежнему применяется каждый тик, лечение — раз в 20 тиков.
 - Модификатор скорости старения переведён на roundabout:old_movement_speed и ADD_MULTIPLIED_TOTAL, значение -0.1 сохранено.
 - Сигнатуры и значение результата проверены по MobEffect/MobEffectInstance из подготовленных исходников 1.21.1. Полная проверка текущего набора изменений ещё идёт.
+
+
+## Проверка платформенных хуков, добычи и эффектов (13 ноября 2026)
+
+- Полная compileJava завершена: **775 ошибок, 18 предупреждений**, было 796/18. ForgePlatformHelper, ForgePlayer, ForgeEffects, OldEffect и ReconstructionEffect не имеют ошибок Java. PlayerEntity всё ещё имеет ошибки в других, пока не перенесённых участках.
+- Подготовка Minecraft/NeoForge восстановлена и прошла; компиляция выполнялась на Azul JDK 21.0.6 и Gradle 8.14.3. Ресурсы не изменялись. git diff --check проходит.
+- Код сохранён отдельными коммитами faec840, 6ff6c7b и fb0e18e; здесь сохранена обновлённая диагностика.
+- В этой среде GRADLE_USER_HOME теперь размещён в build-tools/gradle-cache рядом с проектом; используются актуальный прокси из окружения и системный Java trustStore /etc/ssl/certs/java/cacerts. Эти параметры окружения не добавлены в конфигурацию проекта.
+- Полный мод по-прежнему не компилируется; игровой запуск и работа модификаторов/защиты территорий не проверены. Следующие блоки: HallucinationEffect (новый жизненный цикл эффектов), сон, рендеринг, MobType/зачарования.
