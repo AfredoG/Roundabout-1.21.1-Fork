@@ -24,7 +24,7 @@ import net.minecraft.world.entity.LivingEntity;
 
 public class AnubisHumanoidModel<T extends AnubisEntity> extends StandModel<T> {
 	// This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
-	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation("modid", "unknown"), "main");
+	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath("modid", "unknown"), "main");
 
     public AnubisHumanoidModel(ModelPart root) {
         this.stand = root.getChild("stand");
@@ -102,7 +102,7 @@ public class AnubisHumanoidModel<T extends AnubisEntity> extends StandModel<T> {
         return LayerDefinition.create(meshdefinition, 128, 128);
     }
 
-    public static final ResourceLocation texture = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/anubis/anime_human.png");
+    public static final ResourceLocation texture = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/anubis/anime_human.png");
     public ResourceLocation getTextureLocation(Entity context) {
         return texture;
     }
@@ -122,7 +122,7 @@ public class AnubisHumanoidModel<T extends AnubisEntity> extends StandModel<T> {
             VertexConsumer consumer = bufferSource.getBuffer(RenderType.entityTranslucent(getTextureLocation(context)));
 
 
-                root().render(poseStack, consumer, light, OverlayTexture.NO_OVERLAY, r, g, b, alpha);
+                root().render(poseStack, consumer, light, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, r, g, b));
         }
     }
 

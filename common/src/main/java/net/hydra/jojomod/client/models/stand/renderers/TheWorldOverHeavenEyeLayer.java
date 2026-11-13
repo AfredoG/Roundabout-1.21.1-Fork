@@ -18,7 +18,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.LivingEntity;
 
 public class TheWorldOverHeavenEyeLayer <T extends TheWorldEntity, M extends StandModel<T>> extends EyesLayer<T, M> {
-    private static final RenderType SPIDER_EYES = RenderType.eyes(new ResourceLocation(Roundabout.MOD_ID,"textures/stand/the_world/over_heaven_eyes.png"));
+    private static final RenderType SPIDER_EYES = RenderType.eyes(ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/the_world/over_heaven_eyes.png"));
 
     public TheWorldOverHeavenEyeLayer(RenderLayerParent<T, M> $$0) {
         super($$0);
@@ -36,7 +36,7 @@ public class TheWorldOverHeavenEyeLayer <T extends TheWorldEntity, M extends Sta
         if ($$3.getSkin()== TheWorldEntity.OVER_HEAVEN && Minecraft.getInstance().player != null &&
                 ClientUtil.canSeeStands(Minecraft.getInstance().player)){
             VertexConsumer $$10 = $$1.getBuffer(this.renderType());
-            this.getParentModel().renderToBuffer($$0, $$10, 15728640, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
+            this.getParentModel().renderToBuffer($$0, $$10, 15728640, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(1.0F, 1.0F, 1.0F, 1.0F));
         }
     }
 

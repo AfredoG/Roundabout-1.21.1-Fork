@@ -15,16 +15,16 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.monster.Spider;
 
 public class FallenSpiderRenderer<T extends Spider> extends MobRenderer<FallenSpider, FallenSpiderModel<FallenSpider>> {
-    private static final ResourceLocation SPIDER_LOCATION = new ResourceLocation("textures/entity/spider/spider.png");
-    private static final ResourceLocation FALLEN_SPIDER_LOCATION = new ResourceLocation(Roundabout.MOD_ID,
+    private static final ResourceLocation SPIDER_LOCATION = ResourceLocation.parse("textures/entity/spider/spider.png");
+    private static final ResourceLocation FALLEN_SPIDER_LOCATION = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/justice_corpses/justice_spider.png");
-    private static final ResourceLocation FALLEN_SPIDER_LOCATION_2 = new ResourceLocation(Roundabout.MOD_ID,
+    private static final ResourceLocation FALLEN_SPIDER_LOCATION_2 = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/justice_corpses/justice_spider_holes.png");
-    private static final ResourceLocation FALLEN_SPIDER_LOCATION_B = new ResourceLocation(Roundabout.MOD_ID,
+    private static final ResourceLocation FALLEN_SPIDER_LOCATION_B = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/justice_corpses/justice_spider_blue.png");
-    private static final ResourceLocation FALLEN_SPIDER_LOCATION_R = new ResourceLocation(Roundabout.MOD_ID,
+    private static final ResourceLocation FALLEN_SPIDER_LOCATION_R = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/justice_corpses/justice_spider_red.png");
-    private static final ResourceLocation FALLEN_SPIDER_LOCATION_G = new ResourceLocation(Roundabout.MOD_ID,
+    private static final ResourceLocation FALLEN_SPIDER_LOCATION_G = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/justice_corpses/justice_spider_green.png");
 
 

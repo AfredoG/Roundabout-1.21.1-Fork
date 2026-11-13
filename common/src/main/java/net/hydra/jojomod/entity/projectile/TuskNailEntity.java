@@ -83,12 +83,12 @@ public class TuskNailEntity extends AbstractArrow {
     private static final EntityDataAccessor<Byte> ROUNDABOUT$BONUS = SynchedEntityData.defineId(TuskNailEntity.class, EntityDataSerializers.BYTE);
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        if (!this.entityData.hasItem(ROUNDABOUT$ACT)) {
-            this.entityData.define(ROUNDABOUT$ACT, 1);
-            this.entityData.define(ROUNDABOUT$BONUS, NONE);
-        }
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+
+            builder.define(ROUNDABOUT$ACT, 1);
+            builder.define(ROUNDABOUT$BONUS, NONE);
+
     }
     @Override
     public void readAdditionalSaveData(CompoundTag $$0) {

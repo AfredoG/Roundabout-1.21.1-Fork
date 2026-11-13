@@ -40,11 +40,11 @@ public class BCSoldier extends BCTroop implements RangedAttackMob {
             SHOOT_GUN = 2;
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(BUNDLE, false);
-        this.entityData.define(PARACHUTE_STATUS, false);
-        this.entityData.define(CURRENT_ANIM, IDLE_GUN);
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(BUNDLE, false);
+        builder.define(PARACHUTE_STATUS, false);
+        builder.define(CURRENT_ANIM, IDLE_GUN);
     }
 
     public void setBundle(boolean value) {

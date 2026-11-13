@@ -158,7 +158,7 @@ public class UltravioletProjectile extends RoundaboutGeneralProjectile{
                     lv.addEffect(new MobEffectInstance(ModEffects.SINGE, 100, 0));
                 }
             } else if ((lv instanceof Zombie zb && !(zb instanceof Husk)) || lv instanceof Phantom || lv instanceof Skeleton || lv instanceof BlackSabbathEntity bs && bs.isAttackable() && ClientNetworking.getAppropriateConfig().blackSabbathSettings.uvCanDamageStand){
-                lv.setSecondsOnFire(8);
+                lv.igniteForSeconds(8);
             }
         }
         alreadyHitEntities.add(entity);

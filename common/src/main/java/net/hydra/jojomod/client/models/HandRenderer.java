@@ -44,8 +44,8 @@ public class HandRenderer <T extends BlockEntity> implements BlockEntityRenderer
     private final ModelPart hand;
     private final ModelPart hand_slim;
 
-    private static final ResourceLocation WIDE_BASE = new ResourceLocation("textures/entity/player/wide/steve.png");
-    private static final ResourceLocation SLIM_BASE = new ResourceLocation("textures/entity/player/slim/alex.png");
+    private static final ResourceLocation WIDE_BASE = ResourceLocation.parse("textures/entity/player/wide/steve.png");
+    private static final ResourceLocation SLIM_BASE = ResourceLocation.parse("textures/entity/player/slim/alex.png");
 
     public HandRenderer(BlockEntityRendererProvider.Context $$0) {
         ModelPart $$2 = $$0.bakeLayer(ModEntityRendererClient.HAND_BLOCK_LAYER);

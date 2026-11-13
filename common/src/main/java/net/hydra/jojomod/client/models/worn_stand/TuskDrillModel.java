@@ -27,7 +27,7 @@ public class TuskDrillModel extends PsuedoHierarchicalModel {
     public ResourceLocation getTextureLocation(Entity context){
         if (drills[0] == null) {
             for(int i=0;i<drills.length-1;i++) {
-                drills[i] = new ResourceLocation(Roundabout.MOD_ID,
+                drills[i] = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
                         "textures/stand/tusk/projectiles/drill_spin_" + (i+1) + ".png");
             }
         }
@@ -43,7 +43,7 @@ public class TuskDrillModel extends PsuedoHierarchicalModel {
         return drills[state];
     }
 
-    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(Roundabout.MOD_ID, "tusk_drill_spin"), "main");
+    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "tusk_drill_spin"), "main");
     private final ModelPart armAddon;
     private final ModelPart Root;
 
@@ -61,8 +61,13 @@ public class TuskDrillModel extends PsuedoHierarchicalModel {
 
 
     @Override
-    public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
-        armAddon.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+    public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, int argbColor) {
+        float red = net.minecraft.util.FastColor.ARGB32.red(argbColor) / 255.0F;
+        float green = net.minecraft.util.FastColor.ARGB32.green(argbColor) / 255.0F;
+        float blue = net.minecraft.util.FastColor.ARGB32.blue(argbColor) / 255.0F;
+        float alpha = net.minecraft.util.FastColor.ARGB32.alpha(argbColor) / 255.0F;
+
+        armAddon.render(poseStack, vertexConsumer, packedLight, packedOverlay, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, red, green, blue));
     }
 
     @Override
@@ -89,7 +94,7 @@ public class TuskDrillModel extends PsuedoHierarchicalModel {
             float r = PT.getNailColor().x;
             float g = PT.getNailColor().y;
             float b = PT.getNailColor().z;
-            root().render(poseStack, consumer, 15728880, OverlayTexture.NO_OVERLAY, r, g, b, alpha);
+            root().render(poseStack, consumer, 15728880, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, r, g, b));
         }
     }
 

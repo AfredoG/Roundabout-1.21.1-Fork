@@ -33,7 +33,7 @@ public class KnifeRenderer extends EntityRenderer<KnifeEntity> {
             $$3.mulPose(Axis.ZP.rotationDegrees(Mth.lerp($$2, $$0.xRotO, $$0.getXRot()) + 90.0F));
             $$3.scale(1.1f, 1.1f, 1.1f);
             VertexConsumer $$6 = ItemRenderer.getFoilBufferDirect($$4, this.model.renderType(RL), false, $$0.isFoil());
-            this.model.renderToBuffer($$3, $$6, $$5, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
+            this.model.renderToBuffer($$3, $$6, $$5, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(1.0F, 1.0F, 1.0F, 1.0F));
             $$3.popPose();
             super.render($$0, $$1, $$2, $$3, $$4, $$5);
         }

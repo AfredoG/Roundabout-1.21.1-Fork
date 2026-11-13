@@ -61,7 +61,7 @@ public class FacelessLayer<T extends LivingEntity, M extends HumanoidModel<T>, A
 
             ((IHumanoidModelAccess) $$4).roundabout$getBodyParts().forEach($$8x -> $$8x.xScale += 0.04F);
             ((IHumanoidModelAccess) $$4).roundabout$getBodyParts().forEach($$8x -> $$8x.zScale += 0.04F);
-            $$4.renderToBuffer(poseStack, $$10, integ, OverlayTexture.NO_OVERLAY, $$6, $$7, $$8, 1.0F);
+            $$4.renderToBuffer(poseStack, $$10, integ, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(1.0F, $$6, $$7, $$8));
             ((IHumanoidModelAccess) $$4).roundabout$getBodyParts().forEach($$8x -> $$8x.xScale -= 0.04F);
             ((IHumanoidModelAccess) $$4).roundabout$getBodyParts().forEach($$8x -> $$8x.zScale -= 0.04F);
         }

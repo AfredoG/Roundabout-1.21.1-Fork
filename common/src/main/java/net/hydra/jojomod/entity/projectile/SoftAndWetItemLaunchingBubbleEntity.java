@@ -89,11 +89,11 @@ public class SoftAndWetItemLaunchingBubbleEntity extends SoftAndWetBubbleEntity{
         this.entityData.set(HELD_ITEM, stack);
     }
     @Override
-    protected void defineSynchedData() {
-        if (!this.entityData.hasItem(HELD_ITEM)){
-            super.defineSynchedData();
-            this.entityData.define(HELD_ITEM, ItemStack.EMPTY);
-        }
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+
+            super.defineSynchedData(builder);
+            builder.define(HELD_ITEM, ItemStack.EMPTY);
+
     }
     public void tick(){
         if (!this.level().isClientSide()) {

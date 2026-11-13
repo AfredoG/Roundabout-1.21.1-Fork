@@ -22,47 +22,47 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.LivingEntity;
 
 public class LifeTrackerRenderer extends EntityRenderer<LifeTrackerEntity> {
-    private static final ResourceLocation MAIN_TRACKER_1 = new ResourceLocation(Roundabout.MOD_ID,
+    private static final ResourceLocation MAIN_TRACKER_1 = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/life_detector/life_detector.png");
-    private static final ResourceLocation MAIN_TRACKER_2 = new ResourceLocation(Roundabout.MOD_ID,
+    private static final ResourceLocation MAIN_TRACKER_2 = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/life_detector/life_detector_2.png");
-    private static final ResourceLocation MAIN_TRACKER_3 = new ResourceLocation(Roundabout.MOD_ID,
+    private static final ResourceLocation MAIN_TRACKER_3 = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/life_detector/life_detector_3.png");
-    private static final ResourceLocation BLUE_TRACKER_1 = new ResourceLocation(Roundabout.MOD_ID,
+    private static final ResourceLocation BLUE_TRACKER_1 = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/life_detector/blue_detector.png");
-    private static final ResourceLocation BLUE_TRACKER_2 = new ResourceLocation(Roundabout.MOD_ID,
+    private static final ResourceLocation BLUE_TRACKER_2 = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/life_detector/blue_detector_2.png");
-    private static final ResourceLocation BLUE_TRACKER_3 = new ResourceLocation(Roundabout.MOD_ID,
+    private static final ResourceLocation BLUE_TRACKER_3 = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/life_detector/blue_detector_3.png");
-    private static final ResourceLocation PURPLE_TRACKER_1 = new ResourceLocation(Roundabout.MOD_ID,
+    private static final ResourceLocation PURPLE_TRACKER_1 = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/life_detector/purple_detector.png");
-    private static final ResourceLocation PURPLE_TRACKER_2 = new ResourceLocation(Roundabout.MOD_ID,
+    private static final ResourceLocation PURPLE_TRACKER_2 = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/life_detector/purple_detector_2.png");
-    private static final ResourceLocation PURPLE_TRACKER_3 = new ResourceLocation(Roundabout.MOD_ID,
+    private static final ResourceLocation PURPLE_TRACKER_3 = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/life_detector/purple_detector_3.png");
-    private static final ResourceLocation GREEN_TRACKER_1 = new ResourceLocation(Roundabout.MOD_ID,
+    private static final ResourceLocation GREEN_TRACKER_1 = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/life_detector/green_detector.png");
-    private static final ResourceLocation GREEN_TRACKER_2 = new ResourceLocation(Roundabout.MOD_ID,
+    private static final ResourceLocation GREEN_TRACKER_2 = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/life_detector/green_detector_2.png");
-    private static final ResourceLocation GREEN_TRACKER_3 = new ResourceLocation(Roundabout.MOD_ID,
+    private static final ResourceLocation GREEN_TRACKER_3 = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/life_detector/green_detector_3.png");
-    private static final ResourceLocation DREAD_TRACKER_1 = new ResourceLocation(Roundabout.MOD_ID,
+    private static final ResourceLocation DREAD_TRACKER_1 = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/life_detector/dread_detector.png");
-    private static final ResourceLocation DREAD_TRACKER_2 = new ResourceLocation(Roundabout.MOD_ID,
+    private static final ResourceLocation DREAD_TRACKER_2 = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/life_detector/dread_detector_2.png");
-    private static final ResourceLocation DREAD_TRACKER_3 = new ResourceLocation(Roundabout.MOD_ID,
+    private static final ResourceLocation DREAD_TRACKER_3 = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/life_detector/dread_detector_3.png");
-    private static final ResourceLocation CREAM_TRACKER_1 = new ResourceLocation(Roundabout.MOD_ID,
+    private static final ResourceLocation CREAM_TRACKER_1 = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/life_detector/cream_detector.png");
-    private static final ResourceLocation CREAM_TRACKER_2 = new ResourceLocation(Roundabout.MOD_ID,
+    private static final ResourceLocation CREAM_TRACKER_2 = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/life_detector/cream_detector_2.png");
-    private static final ResourceLocation CREAM_TRACKER_3 = new ResourceLocation(Roundabout.MOD_ID,
+    private static final ResourceLocation CREAM_TRACKER_3 = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/life_detector/cream_detector_3.png");
-    private static final ResourceLocation MANGA_TRACKER_1 = new ResourceLocation(Roundabout.MOD_ID,
+    private static final ResourceLocation MANGA_TRACKER_1 = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/life_detector/manga_detector.png");
-    private static final ResourceLocation MANGA_TRACKER_2 = new ResourceLocation(Roundabout.MOD_ID,
+    private static final ResourceLocation MANGA_TRACKER_2 = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/life_detector/manga_detector_2.png");
-    private static final ResourceLocation MANGA_TRACKER_3 = new ResourceLocation(Roundabout.MOD_ID,
+    private static final ResourceLocation MANGA_TRACKER_3 = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/life_detector/manga_detector_3.png");
     private final LifeTrackerModel<LifeTrackerEntity> model;
 
@@ -83,7 +83,7 @@ public class LifeTrackerRenderer extends EntityRenderer<LifeTrackerEntity> {
             //p_114531_.scale(0.5F, 0.5F, 0.5F);
             this.model.setupAnim(p_114528_, f, 0.0F, 0.0F, p_114528_.getYRot(), p_114528_.getXRot());
             VertexConsumer vertexconsumer = p_114532_.getBuffer(RenderType.entityTranslucent(getTextureLocation(p_114528_)));
-            this.model.renderToBuffer(p_114531_, vertexconsumer, 15728880, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 0.6F);
+            this.model.renderToBuffer(p_114531_, vertexconsumer, 15728880, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(0.6F, 1.0F, 1.0F, 1.0F));
             p_114531_.popPose();
         }
     }

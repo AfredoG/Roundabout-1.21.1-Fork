@@ -43,7 +43,7 @@ import java.util.*;
 import java.util.function.Predicate;
 
 public class FogInventoryScreen extends EffectRenderingInventoryScreen<FogInventoryScreen.ItemPickerMenu> {
-    private static final ResourceLocation CREATIVE_TABS_LOCATION = new ResourceLocation("textures/gui/container/creative_inventory/tabs.png");
+    private static final ResourceLocation CREATIVE_TABS_LOCATION = ResourceLocation.parse("textures/gui/container/creative_inventory/tabs.png");
 
     private static final int NUM_ROWS = 5;
     private static final int NUM_COLS = 9;
@@ -211,7 +211,7 @@ public class FogInventoryScreen extends EffectRenderingInventoryScreen<FogInvent
                     return;
                 }
 
-                if (!$$8.isEmpty() && !$$9.isEmpty() && ItemStack.isSameItemSameTags($$8, $$9)) {
+                if (!$$8.isEmpty() && !$$9.isEmpty() && ItemStack.isSameItemSameComponents($$8, $$9)) {
                     if ($$2 == 0) {
                         if (flag) {
                             $$8.setCount($$8.getMaxStackSize());
@@ -665,7 +665,7 @@ public class FogInventoryScreen extends EffectRenderingInventoryScreen<FogInvent
     protected void renderBg(GuiGraphics drawContext, float partialTick, int mouseX, int mouseY) {
 
         drawContext.blit(
-                new ResourceLocation(Roundabout.MOD_ID,"textures/gui/tab_inventory.png"),
+                ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/gui/tab_inventory.png"),
                 this.leftPos,
                 this.topPos,
                 0,

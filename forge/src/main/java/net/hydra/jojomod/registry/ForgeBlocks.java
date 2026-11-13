@@ -18,12 +18,14 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegisterEvent;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.registries.DeferredRegister;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.neoforged.neoforge.registries.NeoForgeRegistries;
+import net.neoforged.neoforge.registries.RegisterEvent;
+import net.neoforged.neoforge.registries.DeferredHolder;
 
 import java.util.*;
 
@@ -32,439 +34,439 @@ import static net.hydra.jojomod.registry.ForgeCreativeTab.FOG_TAB_ITEMS;
 import static net.hydra.jojomod.registry.ForgeCreativeTab.addToFogTab;
 import static net.hydra.jojomod.registry.ForgeItems.ITEMS;
 
-@Mod.EventBusSubscriber(modid = Roundabout.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = Roundabout.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
 public class ForgeBlocks {
-    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, Roundabout.MOD_ID);
-    public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, Roundabout.MOD_ID);
-    public static final RegistryObject<HallucinatoryAcidBlock> HALLUCINATORY_ACID = BLOCKS.register(
+    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(BuiltInRegistries.BLOCK, Roundabout.MOD_ID);
+    public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(BuiltInRegistries.BLOCK_ENTITY_TYPE, Roundabout.MOD_ID);
+    public static final DeferredHolder<net.minecraft.world.level.block.Block, HallucinatoryAcidBlock> HALLUCINATORY_ACID = BLOCKS.register(
             "hallucinatory_acid", () -> new HallucinatoryAcidBlock(BlockBehaviour.Properties.of()
                     .noCollission().noOcclusion().strength(1.0F, 6.0F).noLootTable().randomTicks()
                     .sound(SoundType.MUD).pushReaction(PushReaction.BLOCK)));
-    public static final RegistryObject<HallucinatoryAcidWallBlock> HALLUCINATORY_ACID_WALL = BLOCKS.register(
+    public static final DeferredHolder<net.minecraft.world.level.block.Block, HallucinatoryAcidWallBlock> HALLUCINATORY_ACID_WALL = BLOCKS.register(
             "hallucinatory_acid_wall", () -> new HallucinatoryAcidWallBlock(BlockBehaviour.Properties.of()
                     .noCollission().noOcclusion().strength(1.0F, 6.0F).noLootTable().randomTicks()
                     .sound(SoundType.MUD).pushReaction(PushReaction.BLOCK)));
-    public static final RegistryObject<BlockEntityType<HallucinatoryAcidBlockEntity>> HALLUCINATORY_ACID_BLOCK_ENTITY =
+    public static final DeferredHolder<net.minecraft.world.level.block.entity.BlockEntityType<?>, BlockEntityType<HallucinatoryAcidBlockEntity>> HALLUCINATORY_ACID_BLOCK_ENTITY =
             BLOCK_ENTITIES.register("hallucinatory_acid", () -> BlockEntityType.Builder.of(
                     HallucinatoryAcidBlockEntity::new, HALLUCINATORY_ACID.get(), HALLUCINATORY_ACID_WALL.get())
                     .build(null));
 
-    public static final RegistryObject<Block> ANCIENT_METEOR = BLOCKS.register("ancient_meteor",
+    public static final DeferredHolder<Block, Block> ANCIENT_METEOR = BLOCKS.register("ancient_meteor",
             () -> ModBlocks.ANCIENT_METEOR_PROPERTIES
     );
-    public static final RegistryObject<Block> AJA_ORE = BLOCKS.register("aja_ore",
+    public static final DeferredHolder<Block, Block> AJA_ORE = BLOCKS.register("aja_ore",
             () -> ModBlocks.AJA_ORE_PROPERTIES
     );
-    public static final RegistryObject<Block> DEEPSLATE_AJA_ORE = BLOCKS.register("deepslate_aja_ore",
+    public static final DeferredHolder<Block, Block> DEEPSLATE_AJA_ORE = BLOCKS.register("deepslate_aja_ore",
             () -> ModBlocks.DEEPSLATE_AJA_ORE_PROPERTIES
     );
-    public static final RegistryObject<Block> AJA_BLOCK = BLOCKS.register("aja_block",
+    public static final DeferredHolder<Block, Block> AJA_BLOCK = BLOCKS.register("aja_block",
             () -> AJA_BLOCK_PROPERTIES
     );
 
-    public static final RegistryObject<Block> CHESS_PIECE = BLOCKS.register("chess_piece",
+    public static final DeferredHolder<Block, Block> CHESS_PIECE = BLOCKS.register("chess_piece",
             () -> ModBlocks.getChessBlock()
     );
-    public static final RegistryObject<Block> CLIMBING_WIRE = BLOCKS.register("climbing_wire",
+    public static final DeferredHolder<Block, Block> CLIMBING_WIRE = BLOCKS.register("climbing_wire",
             () -> CLIMBING_WIRE_PROPERTIES
     );
-    public static final RegistryObject<Block> FROZEN_DIRT = BLOCKS.register("frozen_dirt",
+    public static final DeferredHolder<Block, Block> FROZEN_DIRT = BLOCKS.register("frozen_dirt",
             () -> FROZEN_DIRT_PROPERTIES
     );
-    public static final RegistryObject<Block> FROZEN_STONE = BLOCKS.register("frozen_stone",
+    public static final DeferredHolder<Block, Block> FROZEN_STONE = BLOCKS.register("frozen_stone",
             () -> FROZEN_STONE_PROPERTIES
     );
-    public static final RegistryObject<Block> FROZEN_COBBLESTONE = BLOCKS.register("frozen_cobblestone",
+    public static final DeferredHolder<Block, Block> FROZEN_COBBLESTONE = BLOCKS.register("frozen_cobblestone",
             () -> FROZEN_COBBLESTONE_PROPERTIES
     );
-    public static final RegistryObject<Block> FROZEN_DIORITE = BLOCKS.register("frozen_diorite",
+    public static final DeferredHolder<Block, Block> FROZEN_DIORITE = BLOCKS.register("frozen_diorite",
             () -> FROZEN_DIORITE_PROPERTIES
     );
-    public static final RegistryObject<Block> FROZEN_ANDESITE = BLOCKS.register("frozen_andesite",
+    public static final DeferredHolder<Block, Block> FROZEN_ANDESITE = BLOCKS.register("frozen_andesite",
             () -> FROZEN_ANDESITE_PROPERTIES
     );
-    public static final RegistryObject<Block> FROZEN_GRANITE = BLOCKS.register("frozen_granite",
+    public static final DeferredHolder<Block, Block> FROZEN_GRANITE = BLOCKS.register("frozen_granite",
             () -> FROZEN_GRANITE_PROPERTIES
     );
-    public static final RegistryObject<Block> FROZEN_DEEPSLATE = BLOCKS.register("frozen_deepslate",
+    public static final DeferredHolder<Block, Block> FROZEN_DEEPSLATE = BLOCKS.register("frozen_deepslate",
             () -> FROZEN_DEEPSLATE_PROPERTIES
     );
-    public static final RegistryObject<Block> FROZEN_COBBLED_DEEPSLATE =
+    public static final DeferredHolder<Block, Block> FROZEN_COBBLED_DEEPSLATE =
             BLOCKS.register("frozen_cobbled_deepslate",
             () -> FROZEN_COBBLED_DEEPSLATE_PROPERTIES
     );
-    public static final RegistryObject<Block> FROZEN_STONE_BRICKS =
+    public static final DeferredHolder<Block, Block> FROZEN_STONE_BRICKS =
             BLOCKS.register("frozen_stone_bricks",
                     () -> FROZEN_STONE_BRICKS_PROPERTIES
             );
-    public static final RegistryObject<Block> FROZEN_SAND =
+    public static final DeferredHolder<Block, Block> FROZEN_SAND =
             BLOCKS.register("frozen_sand",
                     () -> FROZEN_SAND_PROPERTIES
             );
-    public static final RegistryObject<Block> FROZEN_SANDSTONE =
+    public static final DeferredHolder<Block, Block> FROZEN_SANDSTONE =
             BLOCKS.register("frozen_sandstone",
                     () -> FROZEN_SANDSTONE_PROPERTIES
             );
-    public static final RegistryObject<Block> FROZEN_RED_SAND =
+    public static final DeferredHolder<Block, Block> FROZEN_RED_SAND =
             BLOCKS.register("frozen_red_sand",
                     () -> FROZEN_RED_SAND_PROPERTIES
             );
-    public static final RegistryObject<Block> FROZEN_RED_SANDSTONE =
+    public static final DeferredHolder<Block, Block> FROZEN_RED_SANDSTONE =
             BLOCKS.register("frozen_red_sandstone",
                     () -> FROZEN_RED_SANDSTONE_PROPERTIES
             );
-    public static final RegistryObject<Block> FROZEN_GRAVEL =
+    public static final DeferredHolder<Block, Block> FROZEN_GRAVEL =
             BLOCKS.register("frozen_gravel",
                     () -> FROZEN_GRAVEL_PROPERTIES
             );
-    public static final RegistryObject<Block> FROZEN_OBSIDIAN =
+    public static final DeferredHolder<Block, Block> FROZEN_OBSIDIAN =
             BLOCKS.register("frozen_obsidian",
                     () -> FROZEN_OBSIDIAN_PROPERTIES
             );
-    public static final RegistryObject<Block> FROZEN_NETHERRACK =
+    public static final DeferredHolder<Block, Block> FROZEN_NETHERRACK =
             BLOCKS.register("frozen_netherrack",
                     () -> FROZEN_NETHERRACK_PROPERTIES
             );
-    public static final RegistryObject<Block> FROZEN_NETHER_BRICKS =
+    public static final DeferredHolder<Block, Block> FROZEN_NETHER_BRICKS =
             BLOCKS.register("frozen_nether_bricks",
                     () -> FROZEN_NETHER_BRICKS_PROPERTIES
             );
-    public static final RegistryObject<Block> FROZEN_END_STONE =
+    public static final DeferredHolder<Block, Block> FROZEN_END_STONE =
             BLOCKS.register("frozen_end_stone",
                     () -> FROZEN_END_STONE_PROPERTIES
             );
-    public static final RegistryObject<Block> COLD_AIR =
+    public static final DeferredHolder<Block, Block> COLD_AIR =
             BLOCKS.register("cold_air",
                     () -> COLD_AIR_PROPERTIES
             );
-    public static final RegistryObject<Block> FREEZING_AIR =
+    public static final DeferredHolder<Block, Block> FREEZING_AIR =
             BLOCKS.register("freezing_air",
                     () -> FREEZING_AIR_PROPERTIES
             );
-    public static final RegistryObject<Block> METEOR_BLOCK = BLOCKS.register("meteor_block",
+    public static final DeferredHolder<Block, Block> METEOR_BLOCK = BLOCKS.register("meteor_block",
             () -> ModBlocks.METEOR_BLOCK_PROPERTIES
             );
-    public static final RegistryObject<Block> SHINY_QUARTZ = BLOCKS.register("shiny_quartz",
+    public static final DeferredHolder<Block, Block> SHINY_QUARTZ = BLOCKS.register("shiny_quartz",
             () -> SHINY_QUARTZ_PROPERTIES
     );
-    public static final RegistryObject<Block> WHITE_ALBUM_ICE = BLOCKS.register("white_album_ice",
+    public static final DeferredHolder<Block, Block> WHITE_ALBUM_ICE = BLOCKS.register("white_album_ice",
             () -> WHITE_ALBUM_ICE_BLOCK_PROPERTIES
     );
-    public static final RegistryObject<Block> WHITE_ALBUM_ICE_WALL = BLOCKS.register("white_album_ice_wall",
+    public static final DeferredHolder<Block, Block> WHITE_ALBUM_ICE_WALL = BLOCKS.register("white_album_ice_wall",
             () -> WHITE_ALBUM_ICE_WALL_BLOCK_PROPERTIES
     );
-    public static final RegistryObject<Block> WHITE_ALBUM_ICE_SLAB = BLOCKS.register("white_album_coating",
+    public static final DeferredHolder<Block, Block> WHITE_ALBUM_ICE_SLAB = BLOCKS.register("white_album_coating",
             () -> WHITE_ALBUM_COATING_PROPERTIES
     );
-    public static final RegistryObject<Block> STICKY_ICE_BLOCK = BLOCKS.register("sticky_ice",
+    public static final DeferredHolder<Block, Block> STICKY_ICE_BLOCK = BLOCKS.register("sticky_ice",
             () -> STICKY_ICE_PROPERTIES
     );
-    public static final RegistryObject<Block> ICE_SPIKE = BLOCKS.register("ice_spike",
+    public static final DeferredHolder<Block, Block> ICE_SPIKE = BLOCKS.register("ice_spike",
             () -> ICE_SPIKE_PROPERTIES
     );
-    public static final RegistryObject<Block> SHINY_QUARTZ_TILES = BLOCKS.register("shiny_quartz_tiles",
+    public static final DeferredHolder<Block, Block> SHINY_QUARTZ_TILES = BLOCKS.register("shiny_quartz_tiles",
             () -> SHINY_QUARTZ_TILES_PROPERTIES
     );
-    public static final RegistryObject<Block> IMPACT_MOUND = BLOCKS.register("impact_mound",
+    public static final DeferredHolder<Block, Block> IMPACT_MOUND = BLOCKS.register("impact_mound",
             () -> IMPACT_MOUND_PROPERTIES
     );
-    public static final RegistryObject<Block> EQUIPPABLE_STONE_MASK_BLOCK = BLOCKS.register("stone_mask",
+    public static final DeferredHolder<Block, Block> EQUIPPABLE_STONE_MASK_BLOCK = BLOCKS.register("stone_mask",
             () -> ModBlocks.EQUIPPABLE_STONE_MASK_PROPERTIES
     );
-    public static final RegistryObject<Block> BLOODY_STONE_MASK_BLOCK = BLOCKS.register("bloody_stone_mask",
+    public static final DeferredHolder<Block, Block> BLOODY_STONE_MASK_BLOCK = BLOCKS.register("bloody_stone_mask",
             () -> BLOODY_STONE_MASK_PROPERTIES
     );
-    public static final RegistryObject<Block> COFFIN_BLOCK = BLOCKS.register("coffin_block",
+    public static final DeferredHolder<Block, Block> COFFIN_BLOCK = BLOCKS.register("coffin_block",
             () -> COFFIN_BLOCK_PROPERTIES
     );
-    public static final RegistryObject<Block> KING_BED_BLOCK = BLOCKS.register("king_bed_block",
+    public static final DeferredHolder<Block, Block> KING_BED_BLOCK = BLOCKS.register("king_bed_block",
             () -> KING_BED_BLOCK_PROPERTIES
     );
-    /*public static final RegistryObject<Block> CHESSBOARD_BLOCK = BLOCKS.register("chessboard_block",
+    /*public static final DeferredHolder<Block, Block> CHESSBOARD_BLOCK = BLOCKS.register("chessboard_block",
             () -> CHESSBOARD_BLOCK_PROPERTIES
     );*/
-    public static final RegistryObject<Block> REGAL_WALL = BLOCKS.register("regal_wall",
+    public static final DeferredHolder<Block, Block> REGAL_WALL = BLOCKS.register("regal_wall",
             () -> ModBlocks.REGAL_WALL_PROPERTIES
     );
-    public static final RegistryObject<Block> REGAL_FLOOR = BLOCKS.register("regal_floor",
+    public static final DeferredHolder<Block, Block> REGAL_FLOOR = BLOCKS.register("regal_floor",
             () -> ModBlocks.REGAL_FLOOR_PROPERTIES
     );
-    public static final RegistryObject<Block> WOODEN_MANOR_TABLE = BLOCKS.register("wooden_manor_table",
+    public static final DeferredHolder<Block, Block> WOODEN_MANOR_TABLE = BLOCKS.register("wooden_manor_table",
             () -> ModBlocks.WOODEN_MANOR_TABLE_PROPERTIES
     );
-    public static final RegistryObject<Block> WOODEN_MANOR_CHAIR = BLOCKS.register("wooden_manor_chair",
+    public static final DeferredHolder<Block, Block> WOODEN_MANOR_CHAIR = BLOCKS.register("wooden_manor_chair",
             () -> ModBlocks.WOODEN_MANOR_CHAIR_PROPERTIES
     );
-    public static final RegistryObject<Block> WOOL_SLAB_WHITE = BLOCKS.register("wool_slab_white",
+    public static final DeferredHolder<Block, Block> WOOL_SLAB_WHITE = BLOCKS.register("wool_slab_white",
             () -> ModBlocks.WOOL_SLAB_WHITE_PROPERTIES
     );
-    public static final RegistryObject<Block> WOOL_SLAB_BLACK = BLOCKS.register("wool_slab_black",
+    public static final DeferredHolder<Block, Block> WOOL_SLAB_BLACK = BLOCKS.register("wool_slab_black",
             () -> ModBlocks.WOOL_SLAB_BLACK_PROPERTIES
     );
-    public static final RegistryObject<Block> WOOL_SLAB_RED = BLOCKS.register("wool_slab_red",
+    public static final DeferredHolder<Block, Block> WOOL_SLAB_RED = BLOCKS.register("wool_slab_red",
             () -> ModBlocks.WOOL_SLAB_RED_PROPERTIES
     );
-    public static final RegistryObject<Block> WOOL_SLAB_LIGHT_GREY = BLOCKS.register("wool_slab_light_grey",
+    public static final DeferredHolder<Block, Block> WOOL_SLAB_LIGHT_GREY = BLOCKS.register("wool_slab_light_grey",
             () -> ModBlocks.WOOL_SLAB_LIGHT_GREY_PROPERTIES
     );
-    public static final RegistryObject<Block> WOOL_SLAB_BROWN = BLOCKS.register("wool_slab_brown",
+    public static final DeferredHolder<Block, Block> WOOL_SLAB_BROWN = BLOCKS.register("wool_slab_brown",
             () -> ModBlocks.WOOL_SLAB_BROWN_PROPERTIES
     );
-    public static final RegistryObject<Block> WOOL_SLAB_BLUE = BLOCKS.register("wool_slab_blue",
+    public static final DeferredHolder<Block, Block> WOOL_SLAB_BLUE = BLOCKS.register("wool_slab_blue",
             () -> ModBlocks.WOOL_SLAB_BLUE_PROPERTIES
     );
-    public static final RegistryObject<Block> WOOL_SLAB_CYAN = BLOCKS.register("wool_slab_cyan",
+    public static final DeferredHolder<Block, Block> WOOL_SLAB_CYAN = BLOCKS.register("wool_slab_cyan",
             () -> ModBlocks.WOOL_SLAB_CYAN_PROPERTIES
     );
-    public static final RegistryObject<Block> WOOL_SLAB_DARK_GREEN = BLOCKS.register("wool_slab_dark_green",
+    public static final DeferredHolder<Block, Block> WOOL_SLAB_DARK_GREEN = BLOCKS.register("wool_slab_dark_green",
             () -> ModBlocks.WOOL_SLAB_DARK_GREEN_PROPERTIES
     );
-    public static final RegistryObject<Block> WOOL_SLAB_DARK_GREY = BLOCKS.register("wool_slab_dark_grey",
+    public static final DeferredHolder<Block, Block> WOOL_SLAB_DARK_GREY = BLOCKS.register("wool_slab_dark_grey",
             () -> ModBlocks.WOOL_SLAB_DARK_GREY_PROPERTIES
     );
-    public static final RegistryObject<Block> WOOL_SLAB_GREEN = BLOCKS.register("wool_slab_green",
+    public static final DeferredHolder<Block, Block> WOOL_SLAB_GREEN = BLOCKS.register("wool_slab_green",
             () -> ModBlocks.WOOL_SLAB_GREEN_PROPERTIES
     );
-    public static final RegistryObject<Block> WOOL_SLAB_LIGHT_BLUE = BLOCKS.register("wool_slab_light_blue",
+    public static final DeferredHolder<Block, Block> WOOL_SLAB_LIGHT_BLUE = BLOCKS.register("wool_slab_light_blue",
             () -> ModBlocks.WOOL_SLAB_LIGHT_BLUE_PROPERTIES
     );
-    public static final RegistryObject<Block> WOOL_SLAB_MAGENTA = BLOCKS.register("wool_slab_magenta",
+    public static final DeferredHolder<Block, Block> WOOL_SLAB_MAGENTA = BLOCKS.register("wool_slab_magenta",
             () -> ModBlocks.WOOL_SLAB_MAGENTA_PROPERTIES
     );
-    public static final RegistryObject<Block> WOOL_SLAB_ORANGE = BLOCKS.register("wool_slab_orange",
+    public static final DeferredHolder<Block, Block> WOOL_SLAB_ORANGE = BLOCKS.register("wool_slab_orange",
             () -> ModBlocks.WOOL_SLAB_ORANGE_PROPERTIES
     );
-    public static final RegistryObject<Block> WOOL_SLAB_PURPLE = BLOCKS.register("wool_slab_purple",
+    public static final DeferredHolder<Block, Block> WOOL_SLAB_PURPLE = BLOCKS.register("wool_slab_purple",
             () -> ModBlocks.WOOL_SLAB_PURPLE_PROPERTIES
     );
-    public static final RegistryObject<Block> WOOL_SLAB_PINK = BLOCKS.register("wool_slab_pink",
+    public static final DeferredHolder<Block, Block> WOOL_SLAB_PINK = BLOCKS.register("wool_slab_pink",
             () -> ModBlocks.WOOL_SLAB_PINK_PROPERTIES
     );
-    public static final RegistryObject<Block> WOOL_SLAB_YELLOW = BLOCKS.register("wool_slab_yellow",
+    public static final DeferredHolder<Block, Block> WOOL_SLAB_YELLOW = BLOCKS.register("wool_slab_yellow",
             () -> ModBlocks.WOOL_SLAB_YELLOW_PROPERTIES
     );
-    public static final RegistryObject<Block> WOOL_STAIRS_WHITE = BLOCKS.register("wool_stairs_white",
+    public static final DeferredHolder<Block, Block> WOOL_STAIRS_WHITE = BLOCKS.register("wool_stairs_white",
             () -> ModBlocks.WOOL_STAIRS_WHITE_PROPERTIES
     );
-    public static final RegistryObject<Block> WOOL_STAIRS_BLUE = BLOCKS.register("wool_stairs_blue",
+    public static final DeferredHolder<Block, Block> WOOL_STAIRS_BLUE = BLOCKS.register("wool_stairs_blue",
             () -> ModBlocks.WOOL_STAIRS_BLUE_PROPERTIES
     );
-    public static final RegistryObject<Block> WOOL_STAIRS_CYAN = BLOCKS.register("wool_stairs_cyan",
+    public static final DeferredHolder<Block, Block> WOOL_STAIRS_CYAN = BLOCKS.register("wool_stairs_cyan",
             () -> ModBlocks.WOOL_STAIRS_CYAN_PROPERTIES
     );
-    public static final RegistryObject<Block> WOOL_STAIRS_DARK_GREEN = BLOCKS.register("wool_stairs_dark_green",
+    public static final DeferredHolder<Block, Block> WOOL_STAIRS_DARK_GREEN = BLOCKS.register("wool_stairs_dark_green",
             () -> ModBlocks.WOOL_STAIRS_DARK_GREEN_PROPERTIES
     );
-    public static final RegistryObject<Block> WOOL_STAIRS_DARK_GREY = BLOCKS.register("wool_stairs_dark_grey",
+    public static final DeferredHolder<Block, Block> WOOL_STAIRS_DARK_GREY = BLOCKS.register("wool_stairs_dark_grey",
             () -> ModBlocks.WOOL_STAIRS_DARK_GREY_PROPERTIES
     );
-    public static final RegistryObject<Block> WOOL_STAIRS_GREEN = BLOCKS.register("wool_stairs_green",
+    public static final DeferredHolder<Block, Block> WOOL_STAIRS_GREEN = BLOCKS.register("wool_stairs_green",
             () -> ModBlocks.WOOL_STAIRS_GREEN_PROPERTIES
     );
-    public static final RegistryObject<Block> WOOL_STAIRS_LIGHT_BLUE = BLOCKS.register("wool_stairs_light_blue",
+    public static final DeferredHolder<Block, Block> WOOL_STAIRS_LIGHT_BLUE = BLOCKS.register("wool_stairs_light_blue",
             () -> ModBlocks.WOOL_STAIRS_LIGHT_BLUE_PROPERTIES
     );
-    public static final RegistryObject<Block> WOOL_STAIRS_MAGENTA = BLOCKS.register("wool_stairs_magenta",
+    public static final DeferredHolder<Block, Block> WOOL_STAIRS_MAGENTA = BLOCKS.register("wool_stairs_magenta",
             () -> ModBlocks.WOOL_STAIRS_MAGENTA_PROPERTIES
     );
-    public static final RegistryObject<Block> WOOL_STAIRS_ORANGE = BLOCKS.register("wool_stairs_orange",
+    public static final DeferredHolder<Block, Block> WOOL_STAIRS_ORANGE = BLOCKS.register("wool_stairs_orange",
             () -> ModBlocks.WOOL_STAIRS_ORANGE_PROPERTIES
     );
-    public static final RegistryObject<Block> WOOL_STAIRS_PURPLE = BLOCKS.register("wool_stairs_purple",
+    public static final DeferredHolder<Block, Block> WOOL_STAIRS_PURPLE = BLOCKS.register("wool_stairs_purple",
             () -> ModBlocks.WOOL_STAIRS_PURPLE_PROPERTIES
     );
-    public static final RegistryObject<Block> WOOL_STAIRS_PINK = BLOCKS.register("wool_stairs_pink",
+    public static final DeferredHolder<Block, Block> WOOL_STAIRS_PINK = BLOCKS.register("wool_stairs_pink",
             () -> ModBlocks.WOOL_STAIRS_PINK_PROPERTIES
     );
-    public static final RegistryObject<Block> WOOL_STAIRS_RED = BLOCKS.register("wool_stairs_red",
+    public static final DeferredHolder<Block, Block> WOOL_STAIRS_RED = BLOCKS.register("wool_stairs_red",
             () -> ModBlocks.WOOL_STAIRS_RED_PROPERTIES
     );
-    public static final RegistryObject<Block> WOOL_STAIRS_YELLOW = BLOCKS.register("wool_stairs_yellow",
+    public static final DeferredHolder<Block, Block> WOOL_STAIRS_YELLOW = BLOCKS.register("wool_stairs_yellow",
             () -> ModBlocks.WOOL_STAIRS_YELLOW_PROPERTIES
     );
-    public static final RegistryObject<Block> WOOL_STAIRS_LIGHT_GREY = BLOCKS.register("wool_stairs_light_grey",
+    public static final DeferredHolder<Block, Block> WOOL_STAIRS_LIGHT_GREY = BLOCKS.register("wool_stairs_light_grey",
             () -> ModBlocks.WOOL_STAIRS_LIGHT_GREY_PROPERTIES
     );
-    public static final RegistryObject<Block> WOOL_STAIRS_BLACK = BLOCKS.register("wool_stairs_black",
+    public static final DeferredHolder<Block, Block> WOOL_STAIRS_BLACK = BLOCKS.register("wool_stairs_black",
             () -> ModBlocks.WOOL_STAIRS_BLACK_PROPERTIES
     );
-    public static final RegistryObject<Block> WOOL_STAIRS_BROWN = BLOCKS.register("wool_stairs_brown",
+    public static final DeferredHolder<Block, Block> WOOL_STAIRS_BROWN = BLOCKS.register("wool_stairs_brown",
             () -> ModBlocks.WOOL_STAIRS_BROWN_PROPERTIES
     );
 
-    public static final RegistryObject<Block> WALL_LANTERN = BLOCKS.register("wall_lantern",
+    public static final DeferredHolder<Block, Block> WALL_LANTERN = BLOCKS.register("wall_lantern",
             () -> ModBlocks.WALL_LANTERN_PROPERTIES
     );
-    public static final RegistryObject<Block> GLASS_DOOR = BLOCKS.register("glass_door",
+    public static final DeferredHolder<Block, Block> GLASS_DOOR = BLOCKS.register("glass_door",
             () -> ModBlocks.GLASS_DOOR_PROPERTIES
     );
 
-    public static final RegistryObject<Block> CULTIVATION_POT = BLOCKS.register("cultivation_pot",
+    public static final DeferredHolder<Block, Block> CULTIVATION_POT = BLOCKS.register("cultivation_pot",
             () -> ModBlocks.cultivationPot(Blocks.AIR)
     );
-    public static final RegistryObject<Block> CULTIVATED_CHERRY_SAPLING = BLOCKS.register("cultivated_cherry_sapling",
+    public static final DeferredHolder<Block, Block> CULTIVATED_CHERRY_SAPLING = BLOCKS.register("cultivated_cherry_sapling",
             () -> ModBlocks.cultivationPot(Blocks.CHERRY_SAPLING)
     );
-    public static final RegistryObject<Block> CULTIVATED_OAK_SAPLING = BLOCKS.register("cultivated_oak_sapling",
+    public static final DeferredHolder<Block, Block> CULTIVATED_OAK_SAPLING = BLOCKS.register("cultivated_oak_sapling",
             () -> ModBlocks.cultivationPot(Blocks.OAK_SAPLING)
     );
 
-    public static final RegistryObject<Block> MELON_PARFAIT = BLOCKS.register("melon_parfait",
+    public static final DeferredHolder<Block, Block> MELON_PARFAIT = BLOCKS.register("melon_parfait",
             () -> MELON_PARFAIT_PROPERTIES);
 
-    public static final RegistryObject<Block> CHAMOMILE = BLOCKS.register("chamomile",
+    public static final DeferredHolder<Block, Block> CHAMOMILE = BLOCKS.register("chamomile",
             () -> CHAMOMILE_PROPERTIES);
-    public static final RegistryObject<Block> MINT = BLOCKS.register("mint",
+    public static final DeferredHolder<Block, Block> MINT = BLOCKS.register("mint",
             () -> MINT_PROPERTIES);
 
 
-    public static final RegistryObject<Block> LOCACACA_CACTUS = BLOCKS.register("locacaca_cactus",
+    public static final DeferredHolder<Block, Block> LOCACACA_CACTUS = BLOCKS.register("locacaca_cactus",
             () -> ModBlocks.LOCACACA_CACTUS_PROPERTIES
     );
-    public static final RegistryObject<Block> LOCACACA_BLOCK = BLOCKS.register("locacaca_plant",
+    public static final DeferredHolder<Block, Block> LOCACACA_BLOCK = BLOCKS.register("locacaca_plant",
             () -> ModBlocks.LOCACACA_BLOCK_PROPERTIES);
-    public static final RegistryObject<Block> NEW_LOCACACA_BLOCK = BLOCKS.register("new_locacaca_plant",
+    public static final DeferredHolder<Block, Block> NEW_LOCACACA_BLOCK = BLOCKS.register("new_locacaca_plant",
             () -> ModBlocks.NEW_LOCACACA_BLOCK_PROPERTIES);
-    public static final RegistryObject<Block> CULTIVATED_LOCACACA = BLOCKS.register("cultivated_locacaca",
+    public static final DeferredHolder<Block, Block> CULTIVATED_LOCACACA = BLOCKS.register("cultivated_locacaca",
             () -> ModBlocks.cultivationPot(NEW_LOCACACA_BLOCK.get()));
 
-    public static final RegistryObject<Block> GASOLINE_SPLATTER = BLOCKS.register("gasoline_splatter",
+    public static final DeferredHolder<Block, Block> GASOLINE_SPLATTER = BLOCKS.register("gasoline_splatter",
             () -> ModBlocks.GASOLINE_SPLATTER_PROPERTIES);
-    public static final RegistryObject<Block> BLOOD_SPLATTER = BLOCKS.register("blood_splatter",
+    public static final DeferredHolder<Block, Block> BLOOD_SPLATTER = BLOCKS.register("blood_splatter",
             () -> ModBlocks.BLOOD_SPLATTER_PROPERTIES);
-    public static final RegistryObject<Block> VIRUS_SPIT_SPLATTER = BLOCKS.register("virus_spit_splatter",
+    public static final DeferredHolder<Block, Block> VIRUS_SPIT_SPLATTER = BLOCKS.register("virus_spit_splatter",
             () -> ModBlocks.VIRUS_SPIT_SPLATTER_PROPERTIES);
-    public static final RegistryObject<Block> ACID_PUDDLE = BLOCKS.register("acid_puddle",
+    public static final DeferredHolder<Block, Block> ACID_PUDDLE = BLOCKS.register("acid_puddle",
             () -> ModBlocks.ACID_PUDDLE_PROPERTIES);
-    public static final RegistryObject<Block> POISON_TRAIL_MUSHROOM = BLOCKS.register("poison_trail_mushroom",
+    public static final DeferredHolder<Block, Block> POISON_TRAIL_MUSHROOM = BLOCKS.register("poison_trail_mushroom",
             () -> ModBlocks.POISON_TRAIL_MUSHROOM_PROPERTIES);
-    public static final RegistryObject<Block> BLUE_BLOOD_SPLATTER = BLOCKS.register("blue_blood_splatter",
+    public static final DeferredHolder<Block, Block> BLUE_BLOOD_SPLATTER = BLOCKS.register("blue_blood_splatter",
             () -> ModBlocks.BLUE_BLOOD_SPLATTER_PROPERTIES);
-    public static final RegistryObject<Block> ENDER_BLOOD_SPLATTER = BLOCKS.register("ender_blood_splatter",
+    public static final DeferredHolder<Block, Block> ENDER_BLOOD_SPLATTER = BLOCKS.register("ender_blood_splatter",
             () -> ModBlocks.ENDER_BLOOD_SPLATTER_PROPERTIES);
-    public static final RegistryObject<Block> WIRE_TRAP = BLOCKS.register("wire_trap",
+    public static final DeferredHolder<Block, Block> WIRE_TRAP = BLOCKS.register("wire_trap",
             () -> ModBlocks.WIRE_TRAP_PROPERTIES);
-    public static final RegistryObject<Block> BARBED_WIRE = BLOCKS.register("barbed_wire",
+    public static final DeferredHolder<Block, Block> BARBED_WIRE = BLOCKS.register("barbed_wire",
             () -> ModBlocks.BARBED_WIRE_BLOCK_PROPERTIES);
-    public static final RegistryObject<Block> BARBED_WIRE_BUNDLE = BLOCKS.register("barbed_wire_bundle",
+    public static final DeferredHolder<Block, Block> BARBED_WIRE_BUNDLE = BLOCKS.register("barbed_wire_bundle",
             () -> ModBlocks.BARBED_WIRE_BUNDLE_PROPERTIES);
-    public static final RegistryObject<Block> GODDESS_STATUE_BLOCK = BLOCKS.register("goddess_statue",
+    public static final DeferredHolder<Block, Block> GODDESS_STATUE_BLOCK = BLOCKS.register("goddess_statue",
             () -> ModBlocks.GODDESS_STATUE_BLOCK_PROPERTIES);
-    public static final RegistryObject<Block> MAGICIANS_STATUE_BLOCK = BLOCKS.register("magicians_statue",
+    public static final DeferredHolder<Block, Block> MAGICIANS_STATUE_BLOCK = BLOCKS.register("magicians_statue",
             () -> MAGICIANS_STATUE_BLOCK_PROPERTIES);
-    public static final RegistryObject<Block> STREET_SIGN_DIO = BLOCKS.register("street_sign_dio",
+    public static final DeferredHolder<Block, Block> STREET_SIGN_DIO = BLOCKS.register("street_sign_dio",
             ModBlocks::getStreetSignBlockProperties);
-    public static final RegistryObject<Block> STREET_SIGN_RIGHT = BLOCKS.register("street_sign_right",
+    public static final DeferredHolder<Block, Block> STREET_SIGN_RIGHT = BLOCKS.register("street_sign_right",
             ModBlocks::getStreetSignBlockProperties);
-    public static final RegistryObject<Block> STREET_SIGN_STOP = BLOCKS.register("street_sign_stop",
+    public static final DeferredHolder<Block, Block> STREET_SIGN_STOP = BLOCKS.register("street_sign_stop",
             ModBlocks::getStreetSignBlockProperties);
-    public static final RegistryObject<Block> STREET_SIGN_YIELD = BLOCKS.register("street_sign_yield",
+    public static final DeferredHolder<Block, Block> STREET_SIGN_YIELD = BLOCKS.register("street_sign_yield",
             ModBlocks::getStreetSignBlockProperties);
-    public static final RegistryObject<Block> STREET_SIGN_DANGER = BLOCKS.register("street_sign_danger",
+    public static final DeferredHolder<Block, Block> STREET_SIGN_DANGER = BLOCKS.register("street_sign_danger",
             ModBlocks::getStreetSignBlockProperties);
 
-    public static final RegistryObject<Block> WALL_STREET_SIGN_DIO = BLOCKS.register("wall_street_sign_dio",
+    public static final DeferredHolder<Block, Block> WALL_STREET_SIGN_DIO = BLOCKS.register("wall_street_sign_dio",
             ModBlocks::getWallStreetSignBlockProperties);
-    public static final RegistryObject<Block> WALL_STREET_SIGN_RIGHT = BLOCKS.register("wall_street_sign_right",
+    public static final DeferredHolder<Block, Block> WALL_STREET_SIGN_RIGHT = BLOCKS.register("wall_street_sign_right",
             ModBlocks::getWallStreetSignBlockProperties);
-    public static final RegistryObject<Block> WALL_STREET_SIGN_STOP = BLOCKS.register("wall_street_sign_stop",
+    public static final DeferredHolder<Block, Block> WALL_STREET_SIGN_STOP = BLOCKS.register("wall_street_sign_stop",
             ModBlocks::getWallStreetSignBlockProperties);
-    public static final RegistryObject<Block> WALL_STREET_SIGN_YIELD = BLOCKS.register("wall_street_sign_yield",
+    public static final DeferredHolder<Block, Block> WALL_STREET_SIGN_YIELD = BLOCKS.register("wall_street_sign_yield",
             ModBlocks::getWallStreetSignBlockProperties);
-    public static final RegistryObject<Block> WALL_STREET_SIGN_DANGER = BLOCKS.register("wall_street_sign_danger",
+    public static final DeferredHolder<Block, Block> WALL_STREET_SIGN_DANGER = BLOCKS.register("wall_street_sign_danger",
             ModBlocks::getWallStreetSignBlockProperties);
-    public static final RegistryObject<Block> CEILING_LIGHT = BLOCKS.register("ceiling_light",
+    public static final DeferredHolder<Block, Block> CEILING_LIGHT = BLOCKS.register("ceiling_light",
             () -> ModBlocks.CEILING_LIGHT_BLOCK_PROPERTIES);
-    public static final RegistryObject<Block> MIRROR = BLOCKS.register("mirror",
+    public static final DeferredHolder<Block, Block> MIRROR = BLOCKS.register("mirror",
             ModBlocks::getMirrorBlockProperties);
-    public static final RegistryObject<Block> MINING_ALERT_BLOCK = BLOCKS.register("mining_alert_block",
+    public static final DeferredHolder<Block, Block> MINING_ALERT_BLOCK = BLOCKS.register("mining_alert_block",
             () -> ModBlocks.MINING_ALERT_BLOCK_PROPERTIES);
-    public static final RegistryObject<Block> FLESH_BLOCK = BLOCKS.register("flesh_block",
+    public static final DeferredHolder<Block, Block> FLESH_BLOCK = BLOCKS.register("flesh_block",
             () -> ModBlocks.FLESH_BLOCK_PROPERTIES);
-    public static final RegistryObject<Block> FOG_DIRT_COATING = BLOCKS.register("fog_dirt_coating",
+    public static final DeferredHolder<Block, Block> FOG_DIRT_COATING = BLOCKS.register("fog_dirt_coating",
             ModBlocks::getFogCoatingBlock);
-    public static final RegistryObject<Block> FOG_DIRT = BLOCKS.register("fog_dirt",
+    public static final DeferredHolder<Block, Block> FOG_DIRT = BLOCKS.register("fog_dirt",
             ModBlocks::getFogBlock);
-    public static final RegistryObject<Block> FOG_TRAP = BLOCKS.register("fog_trap",ModBlocks::getFogTrapBlock);
-    public static final RegistryObject<Block> STEREO = BLOCKS.register("stereo",
+    public static final DeferredHolder<Block, Block> FOG_TRAP = BLOCKS.register("fog_trap",ModBlocks::getFogTrapBlock);
+    public static final DeferredHolder<Block, Block> STEREO = BLOCKS.register("stereo",
             () -> ModBlocks.STEREO_PROPERTIES);
-    public static final RegistryObject<Block> HAND_BLOCK = BLOCKS.register("hand_block",
+    public static final DeferredHolder<Block, Block> HAND_BLOCK = BLOCKS.register("hand_block",
             () -> ModBlocks.HAND_PROPERTIES);
-    public static final RegistryObject<Block> STAND_FIRE = BLOCKS.register("stand_fire",
+    public static final DeferredHolder<Block, Block> STAND_FIRE = BLOCKS.register("stand_fire",
             () -> ModBlocks.STAND_FIRE_PROPERTIES);
-    public static final RegistryObject<Block> BUBBLE_SCAFFOLD = BLOCKS.register("bubble_scaffold",
+    public static final DeferredHolder<Block, Block> BUBBLE_SCAFFOLD = BLOCKS.register("bubble_scaffold",
             () -> ModBlocks.BUBBLE_SCAFFOLD_BLOCK_PROPERTIES);
-    public static final RegistryObject<Block> DIVER_LIMB = BLOCKS.register("diver_limb",
+    public static final DeferredHolder<Block, Block> DIVER_LIMB = BLOCKS.register("diver_limb",
             () -> ModBlocks.DIVER_LIMB_BLOCK_PROPERTIES);
-    public static final RegistryObject<Block> SC_RAPIER_PLATFORM = BLOCKS.register("sc_rapier_platform",
+    public static final DeferredHolder<Block, Block> SC_RAPIER_PLATFORM = BLOCKS.register("sc_rapier_platform",
             () -> ModBlocks.SC_RAPIER_PLATFORM_BLOCK_PROPERTIES);
-    public static final RegistryObject<Block> GE_BUSH = BLOCKS.register("ge_bush",
+    public static final DeferredHolder<Block, Block> GE_BUSH = BLOCKS.register("ge_bush",
             () -> ModBlocks.GE_BUSH_BLOCK_PROPERTIES);
-    public static final RegistryObject<Block> GE_VINE = BLOCKS.register("ge_vine",
+    public static final DeferredHolder<Block, Block> GE_VINE = BLOCKS.register("ge_vine",
             () -> ModBlocks.GE_VINE_PROPERTIES);
-    public static final RegistryObject<Block> INVISIBLOCK = BLOCKS.register("invisible_block",
+    public static final DeferredHolder<Block, Block> INVISIBLOCK = BLOCKS.register("invisible_block",
             () -> ModBlocks.INVISIBLE_BLOCK_PROPERTIES);
-    public static final RegistryObject<Block> D4C_PORTAL = BLOCKS.register("d4c_portal",
+    public static final DeferredHolder<Block, Block> D4C_PORTAL = BLOCKS.register("d4c_portal",
             () -> ModBlocks.D4C_PORTAL_PROPERTIES);
-    public static final RegistryObject<Block> OASIS_MUD_BLOCK = BLOCKS.register("oasis_mud_block",
+    public static final DeferredHolder<Block, Block> OASIS_MUD_BLOCK = BLOCKS.register("oasis_mud_block",
             () -> ModBlocks.OASIS_MUD_BLOCK_PROPERTIES);
-    public static final RegistryObject<Block> ORANGE_FIRE = BLOCKS.register("colored_fire_orange",
+    public static final DeferredHolder<Block, Block> ORANGE_FIRE = BLOCKS.register("colored_fire_orange",
             () -> ModBlocks.ORANGE_FIRE_PROPERTIES);
-    public static final RegistryObject<Block> BLUE_FIRE = BLOCKS.register("colored_fire_blue",
+    public static final DeferredHolder<Block, Block> BLUE_FIRE = BLOCKS.register("colored_fire_blue",
             () -> ModBlocks.BLUE_FIRE_PROPERTIES);
-    public static final RegistryObject<Block> PURPLE_FIRE = BLOCKS.register("colored_fire_purple",
+    public static final DeferredHolder<Block, Block> PURPLE_FIRE = BLOCKS.register("colored_fire_purple",
             () -> ModBlocks.PURPLE_FIRE_PROPERTIES);
-    public static final RegistryObject<Block> GREEN_FIRE = BLOCKS.register("colored_fire_green",
+    public static final DeferredHolder<Block, Block> GREEN_FIRE = BLOCKS.register("colored_fire_green",
             () -> ModBlocks.GREEN_FIRE_PROPERTIES);
-    public static final RegistryObject<Block> DREAD_FIRE = BLOCKS.register("colored_fire_dread",
+    public static final DeferredHolder<Block, Block> DREAD_FIRE = BLOCKS.register("colored_fire_dread",
             () -> ModBlocks.DREAD_FIRE_PROPERTIES);
-    public static final RegistryObject<Block> CREAM_FIRE = BLOCKS.register("colored_fire_cream",
+    public static final DeferredHolder<Block, Block> CREAM_FIRE = BLOCKS.register("colored_fire_cream",
             () -> ModBlocks.CREAM_FIRE_PROPERTIES);
-    public static final RegistryObject<Block> FANCY_LIGHTER_BLOCK = BLOCKS.register("fancy_lighter_block",
+    public static final DeferredHolder<Block, Block> FANCY_LIGHTER_BLOCK = BLOCKS.register("fancy_lighter_block",
             () -> ModBlocks.FANCY_LIGHTER_PROPRETIES);
-    public static final RegistryObject<Block> GAMBLING_TABLE = BLOCKS.register("gambling_table",
+    public static final DeferredHolder<Block, Block> GAMBLING_TABLE = BLOCKS.register("gambling_table",
             () -> ModBlocks.GAMBLING_TABLE_PROPERTIES);
-    public static final RegistryObject<BlockEntityType<GamblingTableBlockEntity>> GAMBLING_TABLE_BLOCK_ENTITY =
+    public static final DeferredHolder<net.minecraft.world.level.block.entity.BlockEntityType<?>, BlockEntityType<GamblingTableBlockEntity>> GAMBLING_TABLE_BLOCK_ENTITY =
             BLOCK_ENTITIES.register("gambling_table", () -> BlockEntityType.Builder.of(GamblingTableBlockEntity::new, GAMBLING_TABLE.get()).build(null));
 
-    public static final RegistryObject<BlockEntityType<OasisMudBlockEntity>> OASIS_MUD_BLOCK_ENTITY = BLOCK_ENTITIES.register("oasis_mud_block",
+    public static final DeferredHolder<net.minecraft.world.level.block.entity.BlockEntityType<?>, BlockEntityType<OasisMudBlockEntity>> OASIS_MUD_BLOCK_ENTITY = BLOCK_ENTITIES.register("oasis_mud_block",
             () -> BlockEntityType.Builder.of(OasisMudBlockEntity::new, OASIS_MUD_BLOCK.get()).build(Util.fetchChoiceType(References.BLOCK_ENTITY, "oasis_mud_block")));
-    public static final RegistryObject<BlockEntityType<MirrorBlockEntity>> MIRROR_BLOCK_ENTITY = BLOCK_ENTITIES.register("mirror",
+    public static final DeferredHolder<net.minecraft.world.level.block.entity.BlockEntityType<?>, BlockEntityType<MirrorBlockEntity>> MIRROR_BLOCK_ENTITY = BLOCK_ENTITIES.register("mirror",
             () -> BlockEntityType.Builder.of(MirrorBlockEntity::new, MIRROR.get()).build(Util.fetchChoiceType(References.BLOCK_ENTITY, "mirror")));
-    public static final RegistryObject<BlockEntityType<StereoBlockEntity>> STEREO_BLOCK_ENTITY = BLOCK_ENTITIES.register("stereo",
+    public static final DeferredHolder<net.minecraft.world.level.block.entity.BlockEntityType<?>, BlockEntityType<StereoBlockEntity>> STEREO_BLOCK_ENTITY = BLOCK_ENTITIES.register("stereo",
             () -> BlockEntityType.Builder.of(StereoBlockEntity::new, STEREO.get()).build(Util.fetchChoiceType(References.BLOCK_ENTITY, "stereo")));
-    public static final RegistryObject<BlockEntityType<HandBlockEntity>> HAND_BLOCK_ENTITY = BLOCK_ENTITIES.register("hand_block",
+    public static final DeferredHolder<net.minecraft.world.level.block.entity.BlockEntityType<?>, BlockEntityType<HandBlockEntity>> HAND_BLOCK_ENTITY = BLOCK_ENTITIES.register("hand_block",
             () -> BlockEntityType.Builder.of(HandBlockEntity::new, HAND_BLOCK.get()).build(Util.fetchChoiceType(References.BLOCK_ENTITY, "hand_block")));
-    public static final RegistryObject<BlockEntityType<StandFireBlockEntity>> STAND_FIRE_BLOCK_ENTITY = BLOCK_ENTITIES.register("stand_fire",
+    public static final DeferredHolder<net.minecraft.world.level.block.entity.BlockEntityType<?>, BlockEntityType<StandFireBlockEntity>> STAND_FIRE_BLOCK_ENTITY = BLOCK_ENTITIES.register("stand_fire",
             () -> BlockEntityType.Builder.of(StandFireBlockEntity::new, STAND_FIRE.get()).build(Util.fetchChoiceType(References.BLOCK_ENTITY, "stand_fire")));
-    public static final RegistryObject<BlockEntityType<BubbleScaffoldBlockEntity>> BUBBLE_SCAFFOLD_BLOCK_ENTITY = BLOCK_ENTITIES.register("block_scaffold",
+    public static final DeferredHolder<net.minecraft.world.level.block.entity.BlockEntityType<?>, BlockEntityType<BubbleScaffoldBlockEntity>> BUBBLE_SCAFFOLD_BLOCK_ENTITY = BLOCK_ENTITIES.register("block_scaffold",
             () -> BlockEntityType.Builder.of(BubbleScaffoldBlockEntity::new, BUBBLE_SCAFFOLD.get()).build(Util.fetchChoiceType(References.BLOCK_ENTITY, "block_scaffold")));
-    public static final RegistryObject<BlockEntityType<DiverLimbBlockEntity>> DIVER_LIMB_BLOCK_ENTITY = BLOCK_ENTITIES.register("diver_limb",
+    public static final DeferredHolder<net.minecraft.world.level.block.entity.BlockEntityType<?>, BlockEntityType<DiverLimbBlockEntity>> DIVER_LIMB_BLOCK_ENTITY = BLOCK_ENTITIES.register("diver_limb",
             () -> BlockEntityType.Builder.of(DiverLimbBlockEntity::new, DIVER_LIMB.get()).build(Util.fetchChoiceType(References.BLOCK_ENTITY, "diver_limb")));
-    public static final RegistryObject<BlockEntityType<SilverChariotRapierPlatformBlockEntity>> SC_RAPIER_PLATFORM_BLOCK_ENTITY = BLOCK_ENTITIES.register("sc_rapier_platform",
+    public static final DeferredHolder<net.minecraft.world.level.block.entity.BlockEntityType<?>, BlockEntityType<SilverChariotRapierPlatformBlockEntity>> SC_RAPIER_PLATFORM_BLOCK_ENTITY = BLOCK_ENTITIES.register("sc_rapier_platform",
             () -> BlockEntityType.Builder.of(SilverChariotRapierPlatformBlockEntity::new, SC_RAPIER_PLATFORM.get()).build(Util.fetchChoiceType(References.BLOCK_ENTITY, "sc_rapier_platform")));
-    public static final RegistryObject<BlockEntityType<GEBushBlockEntity>> GE_BUSH_BLOCK_ENTITY = BLOCK_ENTITIES.register("ge_bush",
+    public static final DeferredHolder<net.minecraft.world.level.block.entity.BlockEntityType<?>, BlockEntityType<GEBushBlockEntity>> GE_BUSH_BLOCK_ENTITY = BLOCK_ENTITIES.register("ge_bush",
             () -> BlockEntityType.Builder.of(GEBushBlockEntity::new, GE_BUSH.get()).build(Util.fetchChoiceType(References.BLOCK_ENTITY, "ge_bush")));
-    public static final RegistryObject<BlockEntityType<InvisiBlockEntity>> INVISIBLE_BLOCK_ENTITY = BLOCK_ENTITIES.register("invisible_block",
+    public static final DeferredHolder<net.minecraft.world.level.block.entity.BlockEntityType<?>, BlockEntityType<InvisiBlockEntity>> INVISIBLE_BLOCK_ENTITY = BLOCK_ENTITIES.register("invisible_block",
             () -> BlockEntityType.Builder.of(InvisiBlockEntity::new, INVISIBLOCK.get()).build(Util.fetchChoiceType(References.BLOCK_ENTITY, "invisible_block")));
-    public static final RegistryObject<BlockEntityType<D4CPortalBlockEntity>> D4C_PORTAL_BLOCK_ENTITY = BLOCK_ENTITIES.register("d4c_portal",
+    public static final DeferredHolder<net.minecraft.world.level.block.entity.BlockEntityType<?>, BlockEntityType<D4CPortalBlockEntity>> D4C_PORTAL_BLOCK_ENTITY = BLOCK_ENTITIES.register("d4c_portal",
             () -> BlockEntityType.Builder.of(D4CPortalBlockEntity::new, D4C_PORTAL.get()).build(Util.fetchChoiceType(References.BLOCK_ENTITY, "d4c_portal")));
-    public static final RegistryObject<BlockEntityType<FogTrapBlockEntity>> FOG_TRAP_BLOCK_ENTITY = BLOCK_ENTITIES.register("fog_trap",
+    public static final DeferredHolder<net.minecraft.world.level.block.entity.BlockEntityType<?>, BlockEntityType<FogTrapBlockEntity>> FOG_TRAP_BLOCK_ENTITY = BLOCK_ENTITIES.register("fog_trap",
             () -> BlockEntityType.Builder.of(FogTrapBlockEntity::new, FOG_TRAP.get()).build(Util.fetchChoiceType(References.BLOCK_ENTITY, "fog_trap")));
-    public static final RegistryObject<BlockEntityType<CoffinBlockEntity>> COFFIN_BLOCK_ENTITY = BLOCK_ENTITIES.register("coffin_block",
+    public static final DeferredHolder<net.minecraft.world.level.block.entity.BlockEntityType<?>, BlockEntityType<CoffinBlockEntity>> COFFIN_BLOCK_ENTITY = BLOCK_ENTITIES.register("coffin_block",
             () -> BlockEntityType.Builder.of(CoffinBlockEntity::new, COFFIN_BLOCK.get()).build(Util.fetchChoiceType(References.BLOCK_ENTITY, "coffin_block")));
-    public static final RegistryObject<BlockEntityType<ChessPieceBlockEntity>> CHESS_PIECE_BLOCK_ENTITY =
+    public static final DeferredHolder<net.minecraft.world.level.block.entity.BlockEntityType<?>, BlockEntityType<ChessPieceBlockEntity>> CHESS_PIECE_BLOCK_ENTITY =
             BLOCK_ENTITIES.register("chess_piece",
                     () -> BlockEntityType.Builder.of(ChessPieceBlockEntity::new, CHESS_PIECE.get()).
                             build(Util.fetchChoiceType(References.BLOCK_ENTITY, "chess_piece")));
 
 
 
-    public static final RegistryObject<BlockEntityType<KingBedBlockEntity>> KING_BED_BLOCK_ENTITY = BLOCK_ENTITIES.register("king_bed_block",
+    public static final DeferredHolder<net.minecraft.world.level.block.entity.BlockEntityType<?>, BlockEntityType<KingBedBlockEntity>> KING_BED_BLOCK_ENTITY = BLOCK_ENTITIES.register("king_bed_block",
             () -> BlockEntityType.Builder.of(KingBedBlockEntity::new, KING_BED_BLOCK.get()).build(Util.fetchChoiceType(References.BLOCK_ENTITY, "king_bed_block")));
-    public static final RegistryObject<BlockEntityType<FancyLighterBlockEntity>> FANCY_LIGHTER_BLOCK_ENTITY = BLOCK_ENTITIES.register("fancy_lighter_block",
+    public static final DeferredHolder<net.minecraft.world.level.block.entity.BlockEntityType<?>, BlockEntityType<FancyLighterBlockEntity>> FANCY_LIGHTER_BLOCK_ENTITY = BLOCK_ENTITIES.register("fancy_lighter_block",
             () -> BlockEntityType.Builder.of(FancyLighterBlockEntity::new, FANCY_LIGHTER_BLOCK.get()).build(Util.fetchChoiceType(References.BLOCK_ENTITY, "fancy_lighter_block")));
-    //public static final RegistryObject<BlockEntityType<ChessBoardBlockEntity>> CHESSBOARD_BLOCK_ENTITY = BLOCK_ENTITIES.register("chessboard_block",
+    //public static final DeferredHolder<net.minecraft.world.level.block.entity.BlockEntityType<?>, BlockEntityType<ChessBoardBlockEntity>> CHESSBOARD_BLOCK_ENTITY = BLOCK_ENTITIES.register("chessboard_block",
     //        () -> BlockEntityType.Builder.of(ChessBoardBlockEntity::new, CHESSBOARD_BLOCK.get()).build(Util.fetchChoiceType(References.BLOCK_ENTITY, "chessboard_block")));
 
     static boolean genned = false;
@@ -483,11 +485,11 @@ public class ForgeBlocks {
         //Resource location of new fog block + instance of original block.
 
         // TODO: dynamically generate blockstates and then it's ready for use
-        for (Block b : ForgeRegistries.BLOCKS)
+        for (Block b : BuiltInRegistries.BLOCK)
         {
-            ResourceLocation i = ForgeRegistries.BLOCKS.getKey(b);
+            ResourceLocation i = BuiltInRegistries.BLOCK.getKey(b);
             // fix for not registering our own blocks as fog blocks, would result in a deadlock (or an error tbh)
-            if (!i.getNamespace().equals("minecraft") || ForgeRegistries.BLOCKS.containsKey(new ResourceLocation("roundabout", "fog_" + i.getPath())) || blockBlacklist.contains(i.getPath()) || dontGen.contains("fog_"+i.getPath())) {
+            if (!i.getNamespace().equals("minecraft") || BuiltInRegistries.BLOCK.containsKey(ResourceLocation.fromNamespaceAndPath("roundabout", "fog_" + i.getPath())) || blockBlacklist.contains(i.getPath()) || dontGen.contains("fog_"+i.getPath())) {
                 dontGenState.add("fog_" + i.getPath());
                 continue;
             }
@@ -505,31 +507,31 @@ public class ForgeBlocks {
             }
             if (b.defaultBlockState().getProperties().isEmpty() && rightSize) {
 
-                ForgeRegistries.BLOCKS.register(
-                        new ResourceLocation(Roundabout.MOD_ID, "fog_" + i.getPath()),
+                BuiltInRegistries.BLOCK.register(
+                        ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "fog_" + i.getPath()),
                         getFogBlock());
-                Block fb = ForgeRegistries.BLOCKS.getValue(new ResourceLocation(Roundabout.MOD_ID, "fog_" + i.getPath()));
-                fogBlocks.put(new ResourceLocation(Roundabout.MOD_ID,"fog_" + i.getPath()), fb);
+                Block fb = BuiltInRegistries.BLOCK.getValue(ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "fog_" + i.getPath()));
+                fogBlocks.put(ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"fog_" + i.getPath()), fb);
 
                 if(!blockBlacklist.contains("fog_" + i.getPath() + "_coating")) {
 
-                    ForgeRegistries.BLOCKS.register(
-                            new ResourceLocation(Roundabout.MOD_ID, "fog_" + i.getPath() + "_coating"),
+                    BuiltInRegistries.BLOCK.register(
+                            ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "fog_" + i.getPath() + "_coating"),
                             getFogCoatingBlock());
-                    Block fc = ForgeRegistries.BLOCKS.getValue(new ResourceLocation(Roundabout.MOD_ID,"fog_" + i.getPath() + "_coating"));
+                    Block fc = BuiltInRegistries.BLOCK.getValue(ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"fog_" + i.getPath() + "_coating"));
 
-                    fogCoatingBlocks.put(new ResourceLocation(Roundabout.MOD_ID,"fog_" + i.getPath() + "_coating"),fc);
-                    ForgeRegistries.ITEMS.register(
-                            new ResourceLocation(Roundabout.MOD_ID,"fog_" + i.getPath() + "_coating"),
+                    fogCoatingBlocks.put(ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"fog_" + i.getPath() + "_coating"),fc);
+                    BuiltInRegistries.ITEM.register(
+                            ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"fog_" + i.getPath() + "_coating"),
                             (Item) new FogCoatBlockItem(fc, new Item.Properties(), b)
                     );
-                    gennedFogItems.add(ForgeRegistries.ITEMS.getValue(new ResourceLocation(Roundabout.MOD_ID,"fog_" + i.getPath() + "_coating")));
+                    gennedFogItems.add(BuiltInRegistries.ITEM.getValue(ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"fog_" + i.getPath() + "_coating")));
 
                 }
 
-                ForgeRegistries.ITEMS.register(new ResourceLocation(Roundabout.MOD_ID,"fog_" + i.getPath()),
+                BuiltInRegistries.ITEM.register(ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"fog_" + i.getPath()),
                         (Item) new FogBlockItem(fb, new Item.Properties(), b));
-                gennedFogItems.add(ForgeRegistries.ITEMS.getValue(new ResourceLocation(Roundabout.MOD_ID,"fog_" + i.getPath())));
+                gennedFogItems.add(BuiltInRegistries.ITEM.getValue(ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"fog_" + i.getPath())));
 
 
             } else {
@@ -542,7 +544,7 @@ public class ForgeBlocks {
         }
 
         /*
-        event.register(ForgeRegistries.Keys.BLOCKS,blockRegisterHelper -> {
+        event.register(NeoForgeRegistries.Keys.BLOCKS,blockRegisterHelper -> {
             for(Map.Entry<ResourceLocation,Block> entry : fogBlockOGs.entrySet()){
                 blockRegisterHelper.register(entry.getKey(),getFogBlock());
                 fogBlocks.put(entry.getKey(), (Block) event.getForgeRegistry().getValue(entry.getKey()));
@@ -553,7 +555,7 @@ public class ForgeBlocks {
                 fogCoatingBlocks.put(entry.getKey(), (Block) event.getForgeRegistry().getValue(entry.getKey()));
             }
         });
-        event.register(ForgeRegistries.Keys.ITEMS,helper->{
+        event.register(NeoForgeRegistries.Keys.ITEMS,helper->{
             for(Map.Entry<ResourceLocation,Block> entry : fogBlocks.entrySet()){
                 helper.register(entry.getKey(), new FogBlockItem(entry.getValue(), new Item.Properties(), fogBlockOGs.get(entry.getKey())));
             }

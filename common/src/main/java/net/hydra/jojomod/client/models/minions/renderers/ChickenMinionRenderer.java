@@ -14,7 +14,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 
 public class ChickenMinionRenderer extends MobRenderer<ChickenMinion, ChickenMinionModel<ChickenMinion>> {
-    private static final ResourceLocation VINDICATOR = new ResourceLocation(Roundabout.MOD_ID,"textures/entity/minions/chicken.png");
+    private static final ResourceLocation VINDICATOR = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/entity/minions/chicken.png");
 
     public ChickenMinionRenderer(EntityRendererProvider.Context $$0) {
         super($$0, new ChickenMinionModel<>($$0.bakeLayer(ModEntityRendererClient.CHICKEN_MINION_LAYER)), 0.3F);

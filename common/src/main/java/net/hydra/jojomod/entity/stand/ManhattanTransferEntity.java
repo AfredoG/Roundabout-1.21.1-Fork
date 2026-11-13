@@ -177,13 +177,13 @@ public class ManhattanTransferEntity extends StandEntity {
     }
 
     @Override
-    protected void defineSynchedData() {
-        if (!this.entityData.hasItem(HELD_ITEM_MANHATTAN)) {
-            super.defineSynchedData();
-            this.entityData.define(HELD_ITEM_MANHATTAN, ItemStack.EMPTY);
-            this.entityData.define(HELD_ITEM_MANHATTAN_FULL, ItemStack.EMPTY);
-            this.entityData.define(MANHATTAN_TARGET, 0);
-        }
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+
+            super.defineSynchedData(builder);
+            builder.define(HELD_ITEM_MANHATTAN, ItemStack.EMPTY);
+            builder.define(HELD_ITEM_MANHATTAN_FULL, ItemStack.EMPTY);
+            builder.define(MANHATTAN_TARGET, 0);
+
     }
 
     protected static final EntityDataAccessor<ItemStack> HELD_ITEM_MANHATTAN_FULL = SynchedEntityData.defineId(ManhattanTransferEntity.class,

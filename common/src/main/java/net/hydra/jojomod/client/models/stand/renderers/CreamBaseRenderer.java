@@ -14,7 +14,7 @@ import org.jetbrains.annotations.Nullable;
 
 public class CreamBaseRenderer<T extends StandEntity> extends StandRenderer<CreamEntity> {
 
-    private static final ResourceLocation PART_3_SKIN = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/cream/anime.png");
+    private static final ResourceLocation PART_3_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/cream/anime.png");
     public CreamBaseRenderer(EntityRendererProvider.Context context, StandModel<CreamEntity> entityModel, float f) {
         super(context, entityModel,f);
     }

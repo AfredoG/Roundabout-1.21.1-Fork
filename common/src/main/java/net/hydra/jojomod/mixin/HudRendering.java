@@ -129,7 +129,7 @@ public abstract class HudRendering implements IHudAccess {
             if (ClientUtil.timeSkipTicker > -1){
                 if (ClientUtil.canSeeStands(this.minecraft.player)) {
                     RenderSystem.enableBlend();
-                    roundabout$renderTextureOverlay($$1, new ResourceLocation(Roundabout.MOD_ID,
+                    roundabout$renderTextureOverlay($$1, ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
                                     "textures/misc/king_crimson/frame_" + ClientUtil.timeSkipTicker + ".png"),
                             ConfigManager.getClientConfig().generalSettings.timeSkipOpacity, 1F, 1F, 1F);
                 }
@@ -137,7 +137,7 @@ public abstract class HudRendering implements IHudAccess {
             if (ClientUtil.bitesTheDustTicker > -1){
                 if (ClientUtil.canSeeStands(this.minecraft.player)) {
                     RenderSystem.enableBlend();
-                    roundabout$renderTextureOverlay($$1, new ResourceLocation(Roundabout.MOD_ID,
+                    roundabout$renderTextureOverlay($$1, ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
                                     "textures/misc/bites_the_dust/frame_" + ClientUtil.bitesTheDustTicker + ".png"),
                             ConfigManager.getClientConfig().generalSettings.bitesTheDustOpacity, 1F, 1F, 1F);
                 }
@@ -237,14 +237,14 @@ public abstract class HudRendering implements IHudAccess {
                 if (MainUtil.isInPurpleHaze(this.minecraft.player)) {
                     RenderSystem.enableBlend();
                     float[] roundabout$hazeTint = roundabout$getPurpleHazeTint(MainUtil.getPurpleHazeSkin(this.minecraft.player));
-                    roundabout$renderTextureOverlay($$1, new ResourceLocation(Roundabout.MOD_ID,
+                    roundabout$renderTextureOverlay($$1, ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
                                     "textures/misc/purple_overlay/purple_overlay" + (minecraft.player.tickCount / 3 % 10) + ".png"),
                             0.7F, roundabout$hazeTint[0], roundabout$hazeTint[1], roundabout$hazeTint[2]);
                 }
                 //Distortion Haze overlay
                 if (MainUtil.isInDistortionHaze(this.minecraft.player)) {
                     RenderSystem.enableBlend();
-                    roundabout$renderTextureOverlay($$1, new ResourceLocation(Roundabout.MOD_ID,
+                    roundabout$renderTextureOverlay($$1, ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
                             "textures/misc/distortion_overlay/distortion_overlay" + (minecraft.player.tickCount / 3 % 10) + ".png"), 0.7F, 1F, 1F, 1F);
                 }
                 //Vampire freeze overlay
@@ -296,13 +296,13 @@ public abstract class HudRendering implements IHudAccess {
                         // idle anim
                         int idleFrameCount = 4;
                         int idleFrame = 1 + ((lyinEyes.getIdleOverlayTicks() / 3) % idleFrameCount);
-                        texture = new ResourceLocation(Roundabout.MOD_ID,
+                        texture = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
                                 "textures/misc/lyin_eyes/idle_f" + idleFrame + ".png");
                     } else {
                         // need to stop the thing from reaching 0, so i put an extra math method to clamp it.
                         int frame = Math.max(1, Math.min(lyinEyes.getSummonOverlayTicks() / 2, 6));
                         // this copies PH distortion gui formatting since this is also an animation
-                        texture = new ResourceLocation(Roundabout.MOD_ID,
+                        texture = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
                                 "textures/misc/lyin_eyes/lyin_eyes_" + frame + ".png");
                     }
                     RenderSystem.enableBlend();
@@ -317,7 +317,7 @@ public abstract class HudRendering implements IHudAccess {
                         // need to stop the thing from reaching 0, so i put an extra math method to clamp it.
                         int frame = Math.max(1, Math.min(lyinEyes.getGatherOverlayTicks(), 5));
                         // this copies PH distortion gui formatting since this is also an animation
-                        ResourceLocation texture = new ResourceLocation(Roundabout.MOD_ID,
+                        ResourceLocation texture = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
                                 "textures/misc/lyin_eyes/pileup_f" + frame + ".png");
                         RenderSystem.enableBlend();
                         gatherOpacity *= ConfigManager.getClientConfig().lyinEyesSettings.nematodeOpacity;
@@ -359,7 +359,7 @@ public abstract class HudRendering implements IHudAccess {
 
                 if (vp.isFast()){
                         RenderSystem.enableBlend();
-                        roundabout$renderTextureOverlay($$1, new ResourceLocation(Roundabout.MOD_ID,
+                        roundabout$renderTextureOverlay($$1, ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
                                 "textures/misc/vamp_speed/frame_" + (minecraft.player.tickCount % 10) + ".png"), 0.2F, 1F, 1F, 1F);
                 }
             }

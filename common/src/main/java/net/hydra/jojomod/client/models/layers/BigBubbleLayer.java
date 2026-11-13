@@ -39,7 +39,7 @@ public class BigBubbleLayer<T extends LivingEntity, A extends EntityModel<T>> ex
     }
 
     float scale = 1;
-    private static final ResourceLocation TEXTURE = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/soft_and_wet/projectiles/large_bubble.png");
+    private static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/soft_and_wet/projectiles/large_bubble.png");
     @Override
     public void render(PoseStack poseStack, MultiBufferSource buffer, int packedLight, T entity, float var5, float var6, float var7, float partialTicks, float var9, float var10) {
         if (ClientUtil.canSeeStands(ClientUtil.getPlayer())) {

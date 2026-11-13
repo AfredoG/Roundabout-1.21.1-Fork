@@ -16,7 +16,7 @@ import net.minecraft.resources.ResourceLocation;
 
 public class CreamModel<T extends CreamEntity> extends StandModel<T> {
 	// This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
-	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation("modid", "unknown"), "main");
+	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath("modid", "unknown"), "main");
 
     public final ModelPart voidBone;
     public final ModelPart void1;

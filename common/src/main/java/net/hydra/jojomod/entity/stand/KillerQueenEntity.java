@@ -30,13 +30,13 @@ public class KillerQueenEntity extends FollowingStandEntity {
 
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        if (!this.entityData.hasItem(PLANTED_BITES_THE_DUST)) {
-            this.entityData.define(PLANTED_BITES_THE_DUST, false);
-        }
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+
+            builder.define(PLANTED_BITES_THE_DUST, false);
+
         if (!this.entityData.hasItem(BUBBLE_SHIELD_ACTIVE)) {
-            this.entityData.define(BUBBLE_SHIELD_ACTIVE, false);
+            builder.define(BUBBLE_SHIELD_ACTIVE, false);
         }
     }
 

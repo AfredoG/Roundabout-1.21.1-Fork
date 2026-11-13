@@ -18,50 +18,50 @@ import org.jetbrains.annotations.Nullable;
 
 public class SurvivorRenderer<M extends StandEntity> extends StandRenderer<SurvivorEntity> {
 
-    private static final ResourceLocation BASE = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/survivor/base.png");
-    private static final ResourceLocation BASE_ACTIVATED = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/survivor/activated/base.png");
+    private static final ResourceLocation BASE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/survivor/base.png");
+    private static final ResourceLocation BASE_ACTIVATED = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/survivor/activated/base.png");
 
-    private static final ResourceLocation RED = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/survivor/red.png");
-    private static final ResourceLocation RED_ACTIVATED = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/survivor/activated/red.png");
+    private static final ResourceLocation RED = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/survivor/red.png");
+    private static final ResourceLocation RED_ACTIVATED = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/survivor/activated/red.png");
 
-    private static final ResourceLocation BLUE = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/survivor/blue.png");
-    private static final ResourceLocation BLUE_ACTIVATED = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/survivor/activated/blue.png");
+    private static final ResourceLocation BLUE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/survivor/blue.png");
+    private static final ResourceLocation BLUE_ACTIVATED = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/survivor/activated/blue.png");
 
-    private static final ResourceLocation PURPLE = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/survivor/purple.png");
-    private static final ResourceLocation PURPLE_ACTIVATED = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/survivor/activated/purple.png");
+    private static final ResourceLocation PURPLE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/survivor/purple.png");
+    private static final ResourceLocation PURPLE_ACTIVATED = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/survivor/activated/purple.png");
 
-    private static final ResourceLocation SILVER = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/survivor/silver.png");
-    private static final ResourceLocation SILVER_ACTIVATED = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/survivor/activated/silver.png");
+    private static final ResourceLocation SILVER = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/survivor/silver.png");
+    private static final ResourceLocation SILVER_ACTIVATED = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/survivor/activated/silver.png");
 
-    private static final ResourceLocation GREEN = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/survivor/green.png");
-    private static final ResourceLocation GREEN_ACTIVATED = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/survivor/activated/green.png");
+    private static final ResourceLocation GREEN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/survivor/green.png");
+    private static final ResourceLocation GREEN_ACTIVATED = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/survivor/activated/green.png");
 
-    private static final ResourceLocation GHAST = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/survivor/ghast.png");
-    private static final ResourceLocation GHAST_ACTIVATED = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/survivor/activated/ghast.png");
+    private static final ResourceLocation GHAST = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/survivor/ghast.png");
+    private static final ResourceLocation GHAST_ACTIVATED = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/survivor/activated/ghast.png");
 
-    private static final ResourceLocation ENDER = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/survivor/ender.png");
-    private static final ResourceLocation ENDER_ACTIVATED = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/survivor/activated/ender.png");
+    private static final ResourceLocation ENDER = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/survivor/ender.png");
+    private static final ResourceLocation ENDER_ACTIVATED = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/survivor/activated/ender.png");
 
-    private static final ResourceLocation CONDUIT = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/survivor/conduit.png");
-    private static final ResourceLocation CONDUIT_ACTIVATED = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/survivor/activated/conduit.png");
+    private static final ResourceLocation CONDUIT = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/survivor/conduit.png");
+    private static final ResourceLocation CONDUIT_ACTIVATED = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/survivor/activated/conduit.png");
 
-    private static final ResourceLocation CAKE = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/survivor/cake.png");
-    private static final ResourceLocation CAKE_ACTIVATED = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/survivor/activated/cake.png");
+    private static final ResourceLocation CAKE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/survivor/cake.png");
+    private static final ResourceLocation CAKE_ACTIVATED = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/survivor/activated/cake.png");
 
-    private static final ResourceLocation SCULK = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/survivor/sculk.png");
-    private static final ResourceLocation SCULK_ACTIVATED = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/survivor/activated/sculk.png");
+    private static final ResourceLocation SCULK = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/survivor/sculk.png");
+    private static final ResourceLocation SCULK_ACTIVATED = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/survivor/activated/sculk.png");
 
-    private static final ResourceLocation CENTURIAN = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/survivor/centurian.png");
-    private static final ResourceLocation CENTURIAN_ACTIVATED = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/survivor/activated/centurian.png");
+    private static final ResourceLocation CENTURIAN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/survivor/centurian.png");
+    private static final ResourceLocation CENTURIAN_ACTIVATED = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/survivor/activated/centurian.png");
 
-    private static final ResourceLocation BLOB = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/survivor/blob.png");
-    private static final ResourceLocation BLOB_ACTIVATED = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/survivor/activated/blob.png");
+    private static final ResourceLocation BLOB = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/survivor/blob.png");
+    private static final ResourceLocation BLOB_ACTIVATED = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/survivor/activated/blob.png");
 
-    private static final ResourceLocation SPONGE = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/survivor/sponge.png");
-    private static final ResourceLocation SPONGE_ACTIVATED = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/survivor/activated/sponge.png");
+    private static final ResourceLocation SPONGE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/survivor/sponge.png");
+    private static final ResourceLocation SPONGE_ACTIVATED = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/survivor/activated/sponge.png");
 
-    private static final ResourceLocation REDSTONE = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/survivor/redstone.png");
-    private static final ResourceLocation REDSTONE_ACTIVATED = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/survivor/activated/redstone.png");
+    private static final ResourceLocation REDSTONE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/survivor/redstone.png");
+    private static final ResourceLocation REDSTONE_ACTIVATED = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/survivor/activated/redstone.png");
 
     public SurvivorRenderer(EntityRendererProvider.Context context) {
         super(context, new SurvivorModel<>(context.bakeLayer(ModEntityRendererClient.SURVIVOR_LAYER)),0f);

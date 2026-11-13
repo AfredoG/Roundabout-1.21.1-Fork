@@ -56,9 +56,9 @@ public class SoftAndWetExplosiveBubbleEntity extends SoftAndWetBubbleEntity {
     public int getDistanceUntilPopping() {
         return ClientNetworking.getAppropriateConfig().softAndWetSettings.maxExplosiveBubbleTravelDistanceBeforePopping;
     }
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(READY, false);
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(READY, false);
     }
     public boolean getReady() {
         return this.getEntityData().get(READY);

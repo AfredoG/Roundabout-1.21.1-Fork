@@ -40,7 +40,7 @@ public abstract class ForgeServerPlayer extends Player {
         MainUtil.onDeath(this,$$0);
     }
     @Inject(method = "changeDimension", at = @At(value = "HEAD"), cancellable = true, remap = false)
-    private void roundabout$changeDim(ServerLevel p_9180_, net.minecraftforge.common.util.ITeleporter teleporter, CallbackInfoReturnable<Entity> cir) {
+    private void roundabout$changeDim(ServerLevel p_9180_, net.neoforged.neoforge.common.util.ITeleporter teleporter, CallbackInfoReturnable<Entity> cir) {
         if (((Entity)(Object)this) instanceof LivingEntity LE){
             if (((StandUser)this).roundabout$getStand() != null){
                 StandEntity stand = ((StandUser)this).roundabout$getStand();

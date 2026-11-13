@@ -125,14 +125,14 @@ public class CloneEntity extends PathfinderMob {
         super.remove(reason);
     }
     @Override
-    protected void defineSynchedData() {
-        if (!this.entityData.hasItem(PLAYER)) {
-            super.defineSynchedData();
-            this.entityData.define(PLAYER, Optional.empty());
-            this.entityData.define(VISAGE, ItemStack.EMPTY);
-            this.entityData.define(DISGUISE_NAME, "Player");
-            this.entityData.define(ROUNDABOUT$WIDTH_FACTOR, (byte)0);
-        }
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+
+            super.defineSynchedData(builder);
+            builder.define(PLAYER, Optional.empty());
+            builder.define(VISAGE, ItemStack.EMPTY);
+            builder.define(DISGUISE_NAME, "Player");
+            builder.define(ROUNDABOUT$WIDTH_FACTOR, (byte)0);
+
     }
 
     public void roundabout$setWidthFactor(byte level){

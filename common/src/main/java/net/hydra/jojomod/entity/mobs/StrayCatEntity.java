@@ -73,14 +73,14 @@ public class StrayCatEntity extends TamableAnimal implements RangedAttackMob {
     }
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(BREED, (byte) 0);
-        this.entityData.define(ANIM, (byte) 0);
-        this.entityData.define(POTTED, false);
-        this.entityData.define(INTERESTED, false);
-        this.entityData.define(SLEEPING, false);
-        this.entityData.define(GUARD_BUBBLE, false);
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(BREED, (byte) 0);
+        builder.define(ANIM, (byte) 0);
+        builder.define(POTTED, false);
+        builder.define(INTERESTED, false);
+        builder.define(SLEEPING, false);
+        builder.define(GUARD_BUBBLE, false);
     }
 
     public void setBubbleShield(boolean b) { this.entityData.set(GUARD_BUBBLE, b); }

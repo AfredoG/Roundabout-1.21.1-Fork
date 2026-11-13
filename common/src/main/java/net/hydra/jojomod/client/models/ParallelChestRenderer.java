@@ -54,9 +54,9 @@ public class ParallelChestRenderer extends EntityRenderer<ParallelChestEntity> {
     private void render(PoseStack $$0, VertexConsumer $$1, ModelPart $$2, ModelPart $$3, ModelPart $$4, float $$5, int $$6, int $$7, float opacity) {
         $$2.xRot = -($$5 * (float) (Math.PI / 2));
         $$3.xRot = $$2.xRot;
-        $$2.render($$0, $$1, $$6, $$7, 1.0F, 1.0F, 1.0F, opacity);
-        $$3.render($$0, $$1, $$6, $$7, 1.0F, 1.0F, 1.0F, opacity);
-        $$4.render($$0, $$1, $$6, $$7, 1.0F, 1.0F, 1.0F, opacity);
+        $$2.render($$0, $$1, $$6, $$7, net.minecraft.util.FastColor.ARGB32.colorFromFloat(opacity, 1.0F, 1.0F, 1.0F));
+        $$3.render($$0, $$1, $$6, $$7, net.minecraft.util.FastColor.ARGB32.colorFromFloat(opacity, 1.0F, 1.0F, 1.0F));
+        $$4.render($$0, $$1, $$6, $$7, net.minecraft.util.FastColor.ARGB32.colorFromFloat(opacity, 1.0F, 1.0F, 1.0F));
     }
     public void render(ParallelChestEntity entity, float $$1, float $$2, PoseStack $$3, MultiBufferSource $$4, int $$5) {
 
@@ -101,7 +101,7 @@ public class ParallelChestRenderer extends EntityRenderer<ParallelChestEntity> {
         }
 
     }
-    private static final ResourceLocation CHEST = new ResourceLocation(Roundabout.MOD_ID, "textures/entity/chest.png");
+    private static final ResourceLocation CHEST = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/entity/chest.png");
     protected boolean getRenderT(boolean $$1, boolean $$2, boolean $$3) {
         if ($$2 || $$1) {
             return true;

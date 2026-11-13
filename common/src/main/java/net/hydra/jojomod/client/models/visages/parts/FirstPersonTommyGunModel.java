@@ -24,7 +24,7 @@ import net.minecraft.world.entity.player.Player;
 
 public class FirstPersonTommyGunModel<T extends Entity> extends HierarchicalModel<T> {
     // This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
-    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation("modid", "tommy_gun"), "main");
+    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath("modid", "tommy_gun"), "main");
     private final ModelPart TommyGun;
     private final ModelPart Root;
 
@@ -54,8 +54,13 @@ public class FirstPersonTommyGunModel<T extends Entity> extends HierarchicalMode
     }
 
     @Override
-    public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
-        TommyGun.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+    public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, int argbColor) {
+        float red = net.minecraft.util.FastColor.ARGB32.red(argbColor) / 255.0F;
+        float green = net.minecraft.util.FastColor.ARGB32.green(argbColor) / 255.0F;
+        float blue = net.minecraft.util.FastColor.ARGB32.blue(argbColor) / 255.0F;
+        float alpha = net.minecraft.util.FastColor.ARGB32.alpha(argbColor) / 255.0F;
+
+        TommyGun.render(poseStack, vertexConsumer, packedLight, packedOverlay, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, red, green, blue));
     }
 
     @Override
@@ -69,7 +74,7 @@ public class FirstPersonTommyGunModel<T extends Entity> extends HierarchicalMode
     }
 
     public ResourceLocation getTextureLocation(Entity entity){
-        return new ResourceLocation(Roundabout.MOD_ID, "textures/item/tommy_gun.png");
+        return ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/item/tommy_gun.png");
     }
 
     public void render(Entity context, float partialTicks, PoseStack poseStack, MultiBufferSource bufferSource, int light, float r, float g, float b, float heyFull) {

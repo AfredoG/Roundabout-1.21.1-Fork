@@ -16,7 +16,7 @@ import net.minecraft.world.entity.player.Player;
 import java.util.List;
 
 public class LyinEyesMapOverlay {
-    private static final ResourceLocation MAP_ICONS = new ResourceLocation(Roundabout.MOD_ID, "textures/gui/nematode_map.png");
+    private static final ResourceLocation MAP_ICONS = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/gui/nematode_map.png");
 
     private static final int RADIUS = 20;
     private static final int TEX_ICON_SIZE = 8;

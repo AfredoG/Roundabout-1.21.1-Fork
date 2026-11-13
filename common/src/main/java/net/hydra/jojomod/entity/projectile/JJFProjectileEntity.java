@@ -265,7 +265,7 @@ public class JJFProjectileEntity extends ThrowableItemProjectile {
 
         if (isLava()) {
             hurtTarget(target, 1.5F);
-            target.setSecondsOnFire(7);
+            target.igniteForSeconds(7);
             spawnLavaParticles();
             dropItem(new ItemStack(Items.BUCKET), 0.10D);
             discard();
@@ -374,7 +374,7 @@ public class JJFProjectileEntity extends ThrowableItemProjectile {
 
         if (isBlazePowder()) {
             hurtTarget(target, 1.0F);
-            target.setSecondsOnFire(5);
+            target.igniteForSeconds(5);
             igniteNearby(2.5D, 3);
             spawnFlameParticles();
             discard();
@@ -383,7 +383,7 @@ public class JJFProjectileEntity extends ThrowableItemProjectile {
 
         if (isMagmaCream()) {
             hurtTarget(target, 1.0F);
-            target.setSecondsOnFire(4);
+            target.igniteForSeconds(4);
             spawnFlameParticles();
             bounceFromEntity();
             return;
@@ -535,7 +535,7 @@ public class JJFProjectileEntity extends ThrowableItemProjectile {
 
         if (isFireCharge()) {
             hurtTarget(target, FIRE_CHARGE_DAMAGE);
-            target.setSecondsOnFire(6);
+            target.igniteForSeconds(6);
             spawnFlameParticles();
             discard();
             return;
@@ -866,7 +866,7 @@ public class JJFProjectileEntity extends ThrowableItemProjectile {
         } else if (ammo.is(Items.BRICK) || ammo.is(Items.NETHER_BRICK)) {
             hurtTarget(target, 2.5F);
             pushTarget(target, 0.55D);
-            if (ammo.is(Items.NETHER_BRICK)) target.setSecondsOnFire(2);
+            if (ammo.is(Items.NETHER_BRICK)) target.igniteForSeconds(2);
         } else if (ammo.is(Items.BONE)) {
             hurtTarget(target, target.getType().getCategory() == net.minecraft.world.entity.MobCategory.MONSTER ? 2.5F : 1.0F);
             pushTarget(target, 0.40D);
@@ -1170,7 +1170,7 @@ public class JJFProjectileEntity extends ThrowableItemProjectile {
                 LivingEntity.class,
                 area
         )) {
-            living.setSecondsOnFire(seconds);
+            living.igniteForSeconds(seconds);
         }
     }
 

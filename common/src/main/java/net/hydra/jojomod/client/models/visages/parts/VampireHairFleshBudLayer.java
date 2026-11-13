@@ -73,8 +73,13 @@ public class VampireHairFleshBudLayer extends PsuedoHierarchicalModel {
         return LayerDefinition.create(meshdefinition, 48, 26);
     }
     @Override
-    public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
-        hair.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+    public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, int argbColor) {
+        float red = net.minecraft.util.FastColor.ARGB32.red(argbColor) / 255.0F;
+        float green = net.minecraft.util.FastColor.ARGB32.green(argbColor) / 255.0F;
+        float blue = net.minecraft.util.FastColor.ARGB32.blue(argbColor) / 255.0F;
+        float alpha = net.minecraft.util.FastColor.ARGB32.alpha(argbColor) / 255.0F;
+
+        hair.render(poseStack, vertexConsumer, packedLight, packedOverlay, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, red, green, blue));
     }
 
     @Override
@@ -91,7 +96,7 @@ public class VampireHairFleshBudLayer extends PsuedoHierarchicalModel {
 
 
     public ResourceLocation getTextureLocation(Entity context, int poggers){
-        return new ResourceLocation(Roundabout.MOD_ID, "textures/entity/hair/vampire_3/vampire_hair_white_"+(poggers)+".png");
+        return ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/entity/hair/vampire_3/vampire_hair_white_"+(poggers)+".png");
     }
 
     public boolean getAlternateStyle(Player pl){
@@ -149,7 +154,7 @@ public class VampireHairFleshBudLayer extends PsuedoHierarchicalModel {
                         left_bud.visible = true;
                     }
 
-                    root().render(poseStack, consumer, light, OverlayTexture.NO_OVERLAY, r, g, b, alpha);
+                    root().render(poseStack, consumer, light, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, r, g, b));
                 }
             }
         }

@@ -93,7 +93,7 @@ public class FakeItemEntity extends Entity implements TraceableEntity {
     }
 
     @Override
-    protected void defineSynchedData() {
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
         this.getEntityData().define(DATA_ITEM, ItemStack.EMPTY);
     }
 

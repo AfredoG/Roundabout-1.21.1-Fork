@@ -15,6 +15,6 @@ public class DiverDownLoomScreenMixin {
         if ((Object) this instanceof DiverDownLoomScreen) {
             return DiverDownLoomScreen.TEXTURE;
         }
-        return new ResourceLocation("textures/gui/container/loom.png");
+        return ResourceLocation.parse("textures/gui/container/loom.png");
     }
 }

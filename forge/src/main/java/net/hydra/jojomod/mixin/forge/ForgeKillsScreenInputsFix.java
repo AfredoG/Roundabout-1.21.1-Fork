@@ -3,12 +3,12 @@ package net.hydra.jojomod.mixin.forge;
 import net.hydra.jojomod.client.gui.NoCancelInputScreen;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
-import net.minecraftforge.client.extensions.IForgeKeyMapping;
+import net.neoforged.neoforge.client.extensions.IKeyMappingExtension;
 import org.spongepowered.asm.mixin.Mixin;
 
 
 @Mixin(KeyMapping.class)
-public abstract class ForgeKillsScreenInputsFix implements IForgeKeyMapping {
+public abstract class ForgeKillsScreenInputsFix implements IKeyMappingExtension {
     @Override
     public boolean isConflictContextAndModifierActive() {
         // (neo)forge does extra checks that make some keys not work in inventories
@@ -17,7 +17,7 @@ public abstract class ForgeKillsScreenInputsFix implements IForgeKeyMapping {
         if (Minecraft.getInstance().screen instanceof NoCancelInputScreen) {
             return true;
         } else {
-            return IForgeKeyMapping.super.isConflictContextAndModifierActive();
+            return IKeyMappingExtension.super.isConflictContextAndModifierActive();
         }
     }
 }

@@ -32,7 +32,7 @@ import org.joml.Quaternionf;
 import org.joml.Vector3f;
 
 public class EncasementBubbleRenderer extends EntityRenderer<EncasementBubbleEntity> {
-    private static final ResourceLocation TEXTURE = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/soft_and_wet/projectiles/large_bubble.png");
+    private static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/soft_and_wet/projectiles/large_bubble.png");
 
     private final float scale;
     private final ItemRenderer itemRenderer;

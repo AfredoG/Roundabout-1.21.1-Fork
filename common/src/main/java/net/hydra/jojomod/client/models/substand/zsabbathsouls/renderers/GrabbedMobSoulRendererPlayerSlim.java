@@ -35,7 +35,7 @@ public class GrabbedMobSoulRendererPlayerSlim<T extends GrabbedMobSoulPlayerSlim
         super(context, new GrabbedPlayerSoulAlexModel<>(context.bakeLayer(ModEntityRendererClient.GRABBED_MOB_SOUL_PLAYER_SLIM_LAYER)), 0f);
     }
 
-    private static final ResourceLocation NULL = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/achtung_baby/very_badass_texture.png");
+    private static final ResourceLocation NULL = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/achtung_baby/very_badass_texture.png");
     @Override
     public ResourceLocation getTextureLocation(GrabbedMobSoulPlayerSlim entity) {
         Player P =((Player)entity.getUser());

@@ -78,11 +78,11 @@ public class GroundPathfindingStandAttackEntity extends PathfinderMob {
         this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.0, false));
     }
     @Override
-    protected void defineSynchedData() {
-        if (!this.entityData.hasItem(USER_ID)) {
-            super.defineSynchedData();
-            this.entityData.define(USER_ID, -1);
-        }
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+
+            super.defineSynchedData(builder);
+            builder.define(USER_ID, -1);
+
     }
     @Override
     public boolean hurt(DamageSource source, float amount) {

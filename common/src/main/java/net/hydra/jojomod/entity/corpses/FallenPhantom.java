@@ -292,11 +292,11 @@ public class FallenPhantom extends FallenMob implements PlayerRideableJumping {
     }
 
     @Override
-    protected void defineSynchedData() {
-        if (!this.entityData.hasItem(DATA_FLAGS_ID)) {
-            super.defineSynchedData();
-            this.entityData.define(DATA_FLAGS_ID, (byte) 0);
-        }
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+
+            super.defineSynchedData(builder);
+            builder.define(DATA_FLAGS_ID, (byte) 0);
+
     }
 
 

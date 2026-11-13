@@ -45,16 +45,17 @@ import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.FireBlock;
 import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
-import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
-import net.minecraftforge.event.entity.SpawnPlacementRegisterEvent;
-import net.minecraftforge.event.village.VillagerTradesEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.common.brewing.BrewingRecipeRegistry;
+import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
+import net.neoforged.neoforge.event.entity.SpawnPlacementRegisterEvent;
+import net.neoforged.neoforge.event.village.VillagerTradesEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 
-@Mod.EventBusSubscriber(modid = Roundabout.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = Roundabout.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
 public class ForgeEvents {
 
     @SubscribeEvent
@@ -880,39 +881,39 @@ public class ForgeEvents {
         FireBlock fire = (FireBlock) Blocks.FIRE;
         ((IFireBlock) fire).roundabout$bootstrap();
 
-        ModEffects.BLEED = ForgeEffects.BLEED.get();
-        ModEffects.STITCHED = ForgeEffects.STITCHED.get();
-        ModEffects.HEX = ForgeEffects.HEX.get();
-        ModEffects.BANISH = ForgeEffects.BANISH.get();
-        ModEffects.DOOMED = ForgeEffects.DOOMED.get();
-        ModEffects.DOOM_IMMUNITY = ForgeEffects.DOOM_IMMUNITY.get();
-        ModEffects.STAND_VIRUS = ForgeEffects.STAND_VIRUS.get();
-        ModEffects.CAPTURING_LOVE = ForgeEffects.CAPTURING_LOVE.get();
-        ModEffects.FACELESS = ForgeEffects.FACELESS.get();
-        ModEffects.MELTING = ForgeEffects.MELTING.get();
-        ModEffects.STAND_MELTING = ForgeEffects.STAND_MELTING.get();
-        ModEffects.GRAVITY_FLIP = ForgeEffects.GRAVITY_FLIP.get();
-        ModEffects.WARDING = ForgeEffects.WARDING.get();
-        ModEffects.SINGE = ForgeEffects.SINGE.get();
-        ModEffects.VAMPIRE_BLOOD = ForgeEffects.VAMPIRE_BLOOD.get();
-        ModEffects.UNBALANCED = ForgeEffects.UNBALANCED.get();
-        ModEffects.SWITCH = ForgeEffects.SWITCH.get();
-        ModEffects.MOLD = ForgeEffects.MOLD.get();
-        ModEffects.CRIPPLED = ForgeEffects.CRIPPLED.get();
-        ModEffects.HALLUCINATION = ForgeEffects.HALLUCINATION.get();
-        ModEffects.OLD = ForgeEffects.OLD.get();
-        ModEffects.SLEEPING = ForgeEffects.SLEEPING.get();
-        ModEffects.REFRESHED = ForgeEffects.REFRESHED.get();
-        ModEffects.INFINITE_SPIN = ForgeEffects.INFINITE_SPIN.get();
-        ModEffects.IMPRINTING = ForgeEffects.IMPRINTING.get();
-        ModEffects.SWAPPED = ForgeEffects.SWAPPED.get();
-        ModEffects.FORTIFICATION = ForgeEffects.FORTIFICATION.get();
+        ModEffects.BLEED = ForgeEffects.BLEED;
+        ModEffects.STITCHED = ForgeEffects.STITCHED;
+        ModEffects.HEX = ForgeEffects.HEX;
+        ModEffects.BANISH = ForgeEffects.BANISH;
+        ModEffects.DOOMED = ForgeEffects.DOOMED;
+        ModEffects.DOOM_IMMUNITY = ForgeEffects.DOOM_IMMUNITY;
+        ModEffects.STAND_VIRUS = ForgeEffects.STAND_VIRUS;
+        ModEffects.CAPTURING_LOVE = ForgeEffects.CAPTURING_LOVE;
+        ModEffects.FACELESS = ForgeEffects.FACELESS;
+        ModEffects.MELTING = ForgeEffects.MELTING;
+        ModEffects.STAND_MELTING = ForgeEffects.STAND_MELTING;
+        ModEffects.GRAVITY_FLIP = ForgeEffects.GRAVITY_FLIP;
+        ModEffects.WARDING = ForgeEffects.WARDING;
+        ModEffects.SINGE = ForgeEffects.SINGE;
+        ModEffects.VAMPIRE_BLOOD = ForgeEffects.VAMPIRE_BLOOD;
+        ModEffects.UNBALANCED = ForgeEffects.UNBALANCED;
+        ModEffects.SWITCH = ForgeEffects.SWITCH;
+        ModEffects.MOLD = ForgeEffects.MOLD;
+        ModEffects.CRIPPLED = ForgeEffects.CRIPPLED;
+        ModEffects.HALLUCINATION = ForgeEffects.HALLUCINATION;
+        ModEffects.OLD = ForgeEffects.OLD;
+        ModEffects.SLEEPING = ForgeEffects.SLEEPING;
+        ModEffects.REFRESHED = ForgeEffects.REFRESHED;
+        ModEffects.INFINITE_SPIN = ForgeEffects.INFINITE_SPIN;
+        ModEffects.IMPRINTING = ForgeEffects.IMPRINTING;
+        ModEffects.SWAPPED = ForgeEffects.SWAPPED;
+        ModEffects.FORTIFICATION = ForgeEffects.FORTIFICATION;
 
-        ModEffects.HAZE_VIRUS = ForgeEffects.HAZE_VIRUS.get();
-        ModEffects.DISTORTION_VIRUS = ForgeEffects.DISTORTION_VIRUS.get();
-        ModEffects.VIRUS_IMMUNITY = ForgeEffects.VIRUS_IMMUNITY.get();
+        ModEffects.HAZE_VIRUS = ForgeEffects.HAZE_VIRUS;
+        ModEffects.DISTORTION_VIRUS = ForgeEffects.DISTORTION_VIRUS;
+        ModEffects.VIRUS_IMMUNITY = ForgeEffects.VIRUS_IMMUNITY;
 
-        ModEffects.RECONSTRUCTION = ForgeEffects.RECONSTRUCTION.get();
+        ModEffects.RECONSTRUCTION = ForgeEffects.RECONSTRUCTION;
 
 
         ModEntities.VAN_GOUGH_PAINTING = ForgeEntities.VAN_GOUGH_PAINTING.get();
@@ -1125,7 +1126,7 @@ public class ForgeEvents {
         ConfigManager.loadBlacklists2();
         ConfigManager.loadFoodClear();
         ConfigManager.foodParticleParser();
-        MinecraftForge.EVENT_BUS.addListener(ForgeEvents::onVillagerTrades);
+        NeoForge.EVENT_BUS.addListener(ForgeEvents::onVillagerTrades);
     }
 
     /**

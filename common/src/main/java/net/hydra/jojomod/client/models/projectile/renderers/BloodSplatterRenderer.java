@@ -17,17 +17,17 @@ import org.joml.Matrix4f;
 import org.joml.Vector3f;
 
 public class BloodSplatterRenderer extends EntityRenderer<BloodSplatterEntity> {
-    private static final ResourceLocation ITEM_1 = new ResourceLocation(Roundabout.MOD_ID,
+    private static final ResourceLocation ITEM_1 = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/projectile/blood_1.png");
-    private static final ResourceLocation ITEM_2 = new ResourceLocation(Roundabout.MOD_ID,
+    private static final ResourceLocation ITEM_2 = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/projectile/blood_2.png");
-    private static final ResourceLocation ITEM_3 = new ResourceLocation(Roundabout.MOD_ID,
+    private static final ResourceLocation ITEM_3 = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/projectile/blood_3.png");
-    private static final ResourceLocation ITEM_4 = new ResourceLocation(Roundabout.MOD_ID,
+    private static final ResourceLocation ITEM_4 = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/projectile/blood_4.png");
-    private static final ResourceLocation ITEM_5 = new ResourceLocation(Roundabout.MOD_ID,
+    private static final ResourceLocation ITEM_5 = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/projectile/blood_5.png");
-    private static final ResourceLocation ITEM_6 = new ResourceLocation(Roundabout.MOD_ID,
+    private static final ResourceLocation ITEM_6 = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/projectile/blood_6.png");
 
     private final float scale;

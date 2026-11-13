@@ -35,8 +35,13 @@ public class ChairRattShoulderModel extends PsuedoHierarchicalModel {
         return ChairRattModel.getTexturedModelData();
     }
     @Override
-    public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
-        stand.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+    public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, int argbColor) {
+        float red = net.minecraft.util.FastColor.ARGB32.red(argbColor) / 255.0F;
+        float green = net.minecraft.util.FastColor.ARGB32.green(argbColor) / 255.0F;
+        float blue = net.minecraft.util.FastColor.ARGB32.blue(argbColor) / 255.0F;
+        float alpha = net.minecraft.util.FastColor.ARGB32.alpha(argbColor) / 255.0F;
+
+        stand.render(poseStack, vertexConsumer, packedLight, packedOverlay, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, red, green, blue));
     }
 
     @Override
@@ -48,11 +53,11 @@ public class ChairRattShoulderModel extends PsuedoHierarchicalModel {
     public void setupAnim(Entity var1, float pAgeInTicks) {
     }
 
-    public static ResourceLocation chair = new ResourceLocation(Roundabout.MOD_ID,
+    public static ResourceLocation chair = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/stand/ratt/chair.png");
-    public static ResourceLocation king_chair = new ResourceLocation(Roundabout.MOD_ID,
+    public static ResourceLocation king_chair = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/stand/ratt/king_chair.png");
-    public static ResourceLocation mech_chair = new ResourceLocation(Roundabout.MOD_ID,
+    public static ResourceLocation mech_chair = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/stand/ratt/mech_chair.png");
 
 
@@ -79,7 +84,7 @@ public class ChairRattShoulderModel extends PsuedoHierarchicalModel {
             StandUser user = ((StandUser) LE);
             VertexConsumer consumer = bufferSource.getBuffer(RenderType.entityTranslucent(getTextureLocation(context, skin)));
 
-            root().render(poseStack, consumer, light, OverlayTexture.NO_OVERLAY, r, g, b, alpha);
+            root().render(poseStack, consumer, light, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, r, g, b));
         }
     }
 

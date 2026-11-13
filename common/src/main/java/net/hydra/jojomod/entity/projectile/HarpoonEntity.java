@@ -70,12 +70,12 @@ public class HarpoonEntity extends AbstractArrow {
 
 
         @Override
-        protected void defineSynchedData() {
-            if (!this.entityData.hasItem(ID_LOYALTY)) {
-                super.defineSynchedData();
-                this.entityData.define(ID_LOYALTY, (byte) 0);
-                this.entityData.define(ID_FOIL, false);
-            }
+        protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+
+                super.defineSynchedData(builder);
+                builder.define(ID_LOYALTY, (byte) 0);
+                builder.define(ID_FOIL, false);
+
         }
 
         int maxAccel = 0;

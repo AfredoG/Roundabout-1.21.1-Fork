@@ -9,7 +9,7 @@ import net.minecraft.world.inventory.LoomMenu;
 
 public class DiverDownLoomScreen extends LoomScreen {
     public static final ResourceLocation TEXTURE =
-            new ResourceLocation(Roundabout.MOD_ID, "textures/gui/diver_down/workbench_ui/loom.png");
+            ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/gui/diver_down/workbench_ui/loom.png");
 
     public DiverDownLoomScreen(LoomMenu menu, Inventory inventory, Component title) {
         super(menu, inventory, title);

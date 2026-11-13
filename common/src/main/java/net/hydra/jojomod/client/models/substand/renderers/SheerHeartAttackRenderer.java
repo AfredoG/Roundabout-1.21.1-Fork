@@ -21,30 +21,30 @@ import net.minecraft.world.entity.LivingEntity;
 
 public class SheerHeartAttackRenderer extends StandRenderer<SheerHeartAttackEntity> {
 
-    private static final ResourceLocation PART_4_SKIN = new ResourceLocation(Roundabout.MOD_ID,"textures/entity/sheer_heart_attack/anime.png");
-    private static final ResourceLocation MANGA_SKIN = new ResourceLocation(Roundabout.MOD_ID,"textures/entity/sheer_heart_attack/manga.png");
-    private static final ResourceLocation GOGO_SKIN = new ResourceLocation(Roundabout.MOD_ID,"textures/entity/sheer_heart_attack/gogo.png");
-    private static final ResourceLocation DEADLY_SKIN = new ResourceLocation(Roundabout.MOD_ID,"textures/entity/sheer_heart_attack/deadly.png");
-    private static final ResourceLocation STRAY_SKIN = new ResourceLocation(Roundabout.MOD_ID,"textures/entity/sheer_heart_attack/stray.png");
-    private static final ResourceLocation JOJOLION_SKIN = new ResourceLocation(Roundabout.MOD_ID,"textures/entity/sheer_heart_attack/jojolion.png");
-    private static final ResourceLocation GUNPOWDER_SKIN = new ResourceLocation(Roundabout.MOD_ID,"textures/entity/sheer_heart_attack/gunpowder.png");
-    private static final ResourceLocation FINALSHOWDOWN_SKIN = new ResourceLocation(Roundabout.MOD_ID,"textures/entity/sheer_heart_attack/final.png");
-    private static final ResourceLocation ARTWORK_SKIN = new ResourceLocation(Roundabout.MOD_ID,"textures/entity/sheer_heart_attack/artwork.png");
-    private static final ResourceLocation LIMBUSMORTIS_SKIN = new ResourceLocation(Roundabout.MOD_ID,"textures/entity/sheer_heart_attack/limbus_mortis.png");
-    private static final ResourceLocation CRACKED_SKIN = new ResourceLocation(Roundabout.MOD_ID,"textures/entity/sheer_heart_attack/cracked.png");
-    private static final ResourceLocation YELLOW_SKIN = new ResourceLocation(Roundabout.MOD_ID,"textures/entity/sheer_heart_attack/yellow.png");
-    private static final ResourceLocation UMBRA_SKIN = new ResourceLocation(Roundabout.MOD_ID,"textures/entity/sheer_heart_attack/umbra.png");
+    private static final ResourceLocation PART_4_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/entity/sheer_heart_attack/anime.png");
+    private static final ResourceLocation MANGA_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/entity/sheer_heart_attack/manga.png");
+    private static final ResourceLocation GOGO_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/entity/sheer_heart_attack/gogo.png");
+    private static final ResourceLocation DEADLY_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/entity/sheer_heart_attack/deadly.png");
+    private static final ResourceLocation STRAY_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/entity/sheer_heart_attack/stray.png");
+    private static final ResourceLocation JOJOLION_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/entity/sheer_heart_attack/jojolion.png");
+    private static final ResourceLocation GUNPOWDER_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/entity/sheer_heart_attack/gunpowder.png");
+    private static final ResourceLocation FINALSHOWDOWN_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/entity/sheer_heart_attack/final.png");
+    private static final ResourceLocation ARTWORK_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/entity/sheer_heart_attack/artwork.png");
+    private static final ResourceLocation LIMBUSMORTIS_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/entity/sheer_heart_attack/limbus_mortis.png");
+    private static final ResourceLocation CRACKED_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/entity/sheer_heart_attack/cracked.png");
+    private static final ResourceLocation YELLOW_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/entity/sheer_heart_attack/yellow.png");
+    private static final ResourceLocation UMBRA_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/entity/sheer_heart_attack/umbra.png");
     //private static final ResourceLocation NIGHTMARE_SKIN = new ResourceLocation(Roundabout.MOD_ID,"textures/entity/sheer_heart_attack/nightmare.png");
-    private static final ResourceLocation CREEPER_SKIN = new ResourceLocation(Roundabout.MOD_ID,"textures/entity/sheer_heart_attack/cart.png");
-    private static final ResourceLocation TAMA_SKIN = new ResourceLocation(Roundabout.MOD_ID,"textures/entity/sheer_heart_attack/loaf.png");
-    private static final ResourceLocation MINESWEEPER_SKIN = new ResourceLocation(Roundabout.MOD_ID,"textures/entity/sheer_heart_attack/trap.png");
-    private static final ResourceLocation NOTW_SKIN = new ResourceLocation(Roundabout.MOD_ID,"textures/entity/sheer_heart_attack/notw.png");
+    private static final ResourceLocation CREEPER_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/entity/sheer_heart_attack/cart.png");
+    private static final ResourceLocation TAMA_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/entity/sheer_heart_attack/loaf.png");
+    private static final ResourceLocation MINESWEEPER_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/entity/sheer_heart_attack/trap.png");
+    private static final ResourceLocation NOTW_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/entity/sheer_heart_attack/notw.png");
     //private static final ResourceLocation MEMENTO_SKIN = new ResourceLocation(Roundabout.MOD_ID,"textures/entity/sheer_heart_attack/mementomorioh.png");
-    private static final ResourceLocation STARDUST_SKIN = new ResourceLocation(Roundabout.MOD_ID,"textures/entity/sheer_heart_attack/stardust.png");
-    private static final ResourceLocation BROWN_SKIN = new ResourceLocation(Roundabout.MOD_ID,"textures/entity/sheer_heart_attack/brown.png");
-    private static final ResourceLocation GREY_SKIN = new ResourceLocation(Roundabout.MOD_ID,"textures/entity/sheer_heart_attack/grey.png");
-    private static final ResourceLocation TEAPOT_SKIN = new ResourceLocation(Roundabout.MOD_ID,"textures/entity/sheer_heart_attack/teapot.png");
-    private static final ResourceLocation SPIRIT_SKIN = new ResourceLocation(Roundabout.MOD_ID,"textures/entity/sheer_heart_attack/spirit.png");
+    private static final ResourceLocation STARDUST_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/entity/sheer_heart_attack/stardust.png");
+    private static final ResourceLocation BROWN_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/entity/sheer_heart_attack/brown.png");
+    private static final ResourceLocation GREY_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/entity/sheer_heart_attack/grey.png");
+    private static final ResourceLocation TEAPOT_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/entity/sheer_heart_attack/teapot.png");
+    private static final ResourceLocation SPIRIT_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/entity/sheer_heart_attack/spirit.png");
 
     public SheerHeartAttackRenderer(EntityRendererProvider.Context context) {
         super(context, new SheerHeartAttackModel<>(context.bakeLayer(ModEntityRendererClient.SHEER_HEART_ATTACK_LAYER)), 0f);

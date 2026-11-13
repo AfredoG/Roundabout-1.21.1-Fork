@@ -98,11 +98,11 @@ public class RoundaboutBulletEntity extends AbstractArrow {
     private static final EntityDataAccessor<Boolean> DEFLECTED = SynchedEntityData.defineId(RoundaboutBulletEntity.class, EntityDataSerializers.BOOLEAN);
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(ROUNDABOUT$SUPER_THROWN, false);
-        this.entityData.define(AMMO_TYPE, (byte) 0);
-        this.entityData.define(DEFLECTED, false);
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(ROUNDABOUT$SUPER_THROWN, false);
+        builder.define(AMMO_TYPE, (byte) 0);
+        builder.define(DEFLECTED, false);
     }
 
     public boolean getSuperThrown() {

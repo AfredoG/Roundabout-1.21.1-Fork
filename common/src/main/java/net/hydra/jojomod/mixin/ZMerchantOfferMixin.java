@@ -29,11 +29,11 @@ public abstract class ZMerchantOfferMixin {
             }
 
             boolean validA = (inputAIsSnakeOil && playerInputA.getCount() >= 1)
-                    || (this.getBaseCostA().isEmpty() || ItemStack.isSameItemSameTags(playerInputA, this.getBaseCostA()) && playerInputA.getCount() >= this.getBaseCostA().getCount());
+                    || (this.getBaseCostA().isEmpty() || ItemStack.isSameItemSameComponents(playerInputA, this.getBaseCostA()) && playerInputA.getCount() >= this.getBaseCostA().getCount());
 
             boolean validB = this.getCostB().isEmpty()
                     || (inputBIsSnakeOil && playerInputB.getCount() >= 1)
-                    || (ItemStack.isSameItemSameTags(playerInputB, this.getCostB()) && playerInputB.getCount() >= this.getCostB().getCount());
+                    || (ItemStack.isSameItemSameComponents(playerInputB, this.getCostB()) && playerInputB.getCount() >= this.getCostB().getCount());
 
             if (validA && validB) {
                 cir.setReturnValue(true);

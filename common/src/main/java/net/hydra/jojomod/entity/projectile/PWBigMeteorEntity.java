@@ -639,7 +639,7 @@ public class PWBigMeteorEntity extends AbstractHurtingProjectile implements Unbu
                     PPW.addEXP(15, LE);
                     MainUtil.makeBleed(LE, 2, 100, gotten);
 
-                    LE.setSecondsOnFire(5);
+                    LE.igniteForSeconds(5);
                 }
             }
         }
@@ -667,11 +667,11 @@ public class PWBigMeteorEntity extends AbstractHurtingProjectile implements Unbu
 
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
 
-        this.entityData.define(USER_ID, -1);
-        this.entityData.define(BIG_METEOR_SCALE, 1.0F);
+        builder.define(USER_ID, -1);
+        builder.define(BIG_METEOR_SCALE, 1.0F);
     }
 
     @Override

@@ -5,1705 +5,1705 @@ import net.hydra.jojomod.sound.ModSounds;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.registries.DeferredRegister;
+import net.neoforged.neoforge.registries.DeferredHolder;
 
 public class ForgeSounds {
     public static final DeferredRegister<SoundEvent> SOUNDS =
             DeferredRegister.create(Registries.SOUND_EVENT, Roundabout.MOD_ID);
-    public static final RegistryObject<SoundEvent> SUMMON_SOUND_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> SUMMON_SOUND_EVENT =
             register(ModSounds.SUMMON_SOUND, ModSounds.SUMMON_SOUND_ID);
-    public static final RegistryObject<SoundEvent> STAND_ARROW_CHARGE_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> STAND_ARROW_CHARGE_EVENT =
             register(ModSounds.STAND_ARROW_CHARGE, ModSounds.STAND_ARROW_CHARGE_ID);
-    public static final RegistryObject<SoundEvent> STAND_ARROW_USE_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> STAND_ARROW_USE_EVENT =
             register(ModSounds.STAND_ARROW_USE, ModSounds.STAND_ARROW_USE_ID);
-    public static final RegistryObject<SoundEvent> INHALE_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> INHALE_EVENT =
             register(ModSounds.INHALE, ModSounds.INHALE_ID);
-    public static final RegistryObject<SoundEvent> SIGN_HIT_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> SIGN_HIT_EVENT =
             register(ModSounds.SIGN_HIT, ModSounds.SIGN_HIT_ID);
-    public static final RegistryObject<SoundEvent> BONE_CHOMP_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> BONE_CHOMP_EVENT =
             register(ModSounds.BONE_CHOMP, ModSounds.BONE_CHOMP_ID);
-    public static final RegistryObject<SoundEvent> SKIP_TIME_1 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> SKIP_TIME_1 =
             register(ModSounds.SKIP_TIME_1, ModSounds.SKIP_TIME_1_ID);
-    public static final RegistryObject<SoundEvent> SKIP_TIME_2 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> SKIP_TIME_2 =
             register(ModSounds.SKIP_TIME_2, ModSounds.SKIP_TIME_2_ID);
-    public static final RegistryObject<SoundEvent> TIME_ERASE_FULL =
+    public static final DeferredHolder<SoundEvent, SoundEvent> TIME_ERASE_FULL =
             register(ModSounds.TIME_ERASE_FULL, ModSounds.TIME_ERASE_FULL_ID);
-    public static final RegistryObject<SoundEvent> TIME_ERASE_END =
+    public static final DeferredHolder<SoundEvent, SoundEvent> TIME_ERASE_END =
             register(ModSounds.TIME_ERASE_END, ModSounds.TIME_ERASE_END_ID);
-    public static final RegistryObject<SoundEvent> HOLOGRAM_START =
+    public static final DeferredHolder<SoundEvent, SoundEvent> HOLOGRAM_START =
             register(ModSounds.HOLOGRAM_START, ModSounds.HOLOGRAM_START_ID);
-    public static final RegistryObject<SoundEvent> HOLOGRAM_END =
+    public static final DeferredHolder<SoundEvent, SoundEvent> HOLOGRAM_END =
             register(ModSounds.HOLOGRAM_END, ModSounds.HOLOGRAM_END_ID);
-    public static final RegistryObject<SoundEvent> KING_BLOOD_SPLASH =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KING_BLOOD_SPLASH =
             register(ModSounds.KING_BLOOD_SPLASH, ModSounds.KING_BLOOD_SPLASH_ID);
-    public static final RegistryObject<SoundEvent> BLOOD_SLICE =
+    public static final DeferredHolder<SoundEvent, SoundEvent> BLOOD_SLICE =
             register(ModSounds.BLOOD_SLICE, ModSounds.BLOOD_SLICE_ID);
-    public static final RegistryObject<SoundEvent> TERRIER_SOUND_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> TERRIER_SOUND_EVENT =
             register(ModSounds.TERRIER_SOUND, ModSounds.TERRIER_SOUND_ID);
-    public static final RegistryObject<SoundEvent> SNAKE_IDLE_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> SNAKE_IDLE_EVENT =
             register(ModSounds.SNAKE_IDLE, ModSounds.SNAKE_IDLE_ID);
-    public static final RegistryObject<SoundEvent> SNAKE_HURT_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> SNAKE_HURT_EVENT =
             register(ModSounds.SNAKE_HURT, ModSounds.SNAKE_HURT_ID);
-    public static final RegistryObject<SoundEvent> SNAKE_ATTACK_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> SNAKE_ATTACK_EVENT =
             register(ModSounds.SNAKE_ATTACK, ModSounds.SNAKE_ATTACK_ID);
-    public static final RegistryObject<SoundEvent> SNAKE_DIE_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> SNAKE_DIE_EVENT =
             register(ModSounds.SNAKE_DIE, ModSounds.SNAKE_DIE_ID);
-    public static final RegistryObject<SoundEvent> SNAKE_STEP_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> SNAKE_STEP_EVENT =
             register(ModSounds.SNAKE_STEP, ModSounds.SNAKE_STEP_ID);
-    public static final RegistryObject<SoundEvent> PIRANHA_DIES_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> PIRANHA_DIES_EVENT =
             register(ModSounds.PIRANHA_DIES, ModSounds.PIRANHA_DIES_ID);
-    public static final RegistryObject<SoundEvent> PIRANHA_HURT_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> PIRANHA_HURT_EVENT =
             register(ModSounds.PIRANHA_HURT, ModSounds.PIRANHA_HURT_ID);
-    public static final RegistryObject<SoundEvent> PIRANHA_FLOP_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> PIRANHA_FLOP_EVENT =
             register(ModSounds.PIRANHA_FLOP, ModSounds.PIRANHA_FLOP_ID);
-    public static final RegistryObject<SoundEvent> WORLD_SUMMON_SOUND_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> WORLD_SUMMON_SOUND_EVENT =
             register(ModSounds.WORLD_SUMMON_SOUND, ModSounds.WORLD_SUMMON_SOUND_ID);
-    public static final RegistryObject<SoundEvent> J_ANUBIS_HIT_1_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> J_ANUBIS_HIT_1_EVENT =
             register(ModSounds.J_ANUBIS_HIT_1, ModSounds.J_ANUBIS_HIT_1_ID);
-    public static final RegistryObject<SoundEvent> J_ANUBIS_HIT_2_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> J_ANUBIS_HIT_2_EVENT =
             register(ModSounds.J_ANUBIS_HIT_2, ModSounds.J_ANUBIS_HIT_2_ID);
-    public static final RegistryObject<SoundEvent> J_ANUBIS_HIT_3_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> J_ANUBIS_HIT_3_EVENT =
             register(ModSounds.J_ANUBIS_HIT_3, ModSounds.J_ANUBIS_HIT_3_ID);
-    public static final RegistryObject<SoundEvent> J_ANUBIS_MISS_1_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> J_ANUBIS_MISS_1_EVENT =
             register(ModSounds.J_ANUBIS_MISS_1, ModSounds.J_ANUBIS_MISS_1_ID);
-    public static final RegistryObject<SoundEvent> J_ANUBIS_MISS_2_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> J_ANUBIS_MISS_2_EVENT =
             register(ModSounds.J_ANUBIS_MISS_2, ModSounds.J_ANUBIS_MISS_2_ID);
-    public static final RegistryObject<SoundEvent> J_ANUBIS_MISS_3_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> J_ANUBIS_MISS_3_EVENT =
             register(ModSounds.J_ANUBIS_MISS_3, ModSounds.J_ANUBIS_MISS_3_ID);
-    public static final RegistryObject<SoundEvent> SUMMON_D4C_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> SUMMON_D4C_EVENT =
             register(ModSounds.SUMMON_D4C, ModSounds.SUMMON_D4C_ID);
-    public static final RegistryObject<SoundEvent> D4C_CLONE =
+    public static final DeferredHolder<SoundEvent, SoundEvent> D4C_CLONE =
             register(ModSounds.D4C_CLONE, ModSounds.D4C_CLONE_ID);
-    public static final RegistryObject<SoundEvent> SPECIAL_CHEST_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> SPECIAL_CHEST_EVENT =
             register(ModSounds.SPECIAL_CHEST, ModSounds.SPECIAL_CHEST_ID);
-    public static final RegistryObject<SoundEvent> DISC_INSERT_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> DISC_INSERT_EVENT =
             register(ModSounds.DISC_INSERT, ModSounds.DISC_INSERT_ID);
-    public static final RegistryObject<SoundEvent> D4C_PORTAL =
+    public static final DeferredHolder<SoundEvent, SoundEvent> D4C_PORTAL =
             register(ModSounds.D4C_PORTAL, ModSounds.D4C_PORTAL_ID);
-    public static final RegistryObject<SoundEvent> BLOCK_ATTRACT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> BLOCK_ATTRACT =
             register(ModSounds.BLOCK_ATTRACT, ModSounds.BLOCK_ATTRACT_ID);
-    public static final RegistryObject<SoundEvent> D4C_COPY_BLOCK =
+    public static final DeferredHolder<SoundEvent, SoundEvent> D4C_COPY_BLOCK =
             register(ModSounds.D4C_COPY_BLOCK, ModSounds.D4C_COPY_BLOCK_ID);
-    public static final RegistryObject<SoundEvent> DOJYAN_1 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> DOJYAN_1 =
             register(ModSounds.DOJYAN_1, ModSounds.DOJYAN_1_ID);
-    public static final RegistryObject<SoundEvent> DOJYAN_2 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> DOJYAN_2 =
             register(ModSounds.DOJYAN_2, ModSounds.DOJYAN_2_ID);
-    public static final RegistryObject<SoundEvent> D4C_FUSE =
+    public static final DeferredHolder<SoundEvent, SoundEvent> D4C_FUSE =
             register(ModSounds.D4C_FUSE, ModSounds.D4C_FUSE_ID);
-    public static final RegistryObject<SoundEvent> D4C_FUSION_START =
+    public static final DeferredHolder<SoundEvent, SoundEvent> D4C_FUSION_START =
             register(ModSounds.D4C_FUSION_START, ModSounds.D4C_FUSION_START_ID);
-    public static final RegistryObject<SoundEvent> DISC_REMOVE_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> DISC_REMOVE_EVENT =
             register(ModSounds.DISC_REMOVE, ModSounds.DISC_REMOVE_ID);
-    public static final RegistryObject<SoundEvent> STAR_SUMMON_SOUND_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> STAR_SUMMON_SOUND_EVENT =
             register(ModSounds.STAR_SUMMON_SOUND, ModSounds.STAR_SUMMON_SOUND_ID);
-    public static final RegistryObject<SoundEvent> SUMMON_MANDOM_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> SUMMON_MANDOM_EVENT =
             register(ModSounds.SUMMON_MANDOM, ModSounds.SUMMON_MANDOM_ID);
-    public static final RegistryObject<SoundEvent> WHITE_ALBUM_SUMMON_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> WHITE_ALBUM_SUMMON_EVENT =
             register(ModSounds.WHITE_ALBUM_SUMMON, ModSounds.WHITE_ALBUM_SUMMON_ID);
-    public static final RegistryObject<SoundEvent> SKATE_EQUIP_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> SKATE_EQUIP_EVENT =
             register(ModSounds.SKATE_EQUIP, ModSounds.SKATE_EQUIP_ID);
-    public static final RegistryObject<SoundEvent> SKATE_RETRACT_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> SKATE_RETRACT_EVENT =
             register(ModSounds.SKATE_RETRACT, ModSounds.SKATE_RETRACT_ID);
-    public static final RegistryObject<SoundEvent> MANDOM_REWIND_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> MANDOM_REWIND_EVENT =
             register(ModSounds.MANDOM_REWIND, ModSounds.MANDOM_REWIND_ID);
-    public static final RegistryObject<SoundEvent> KNIFE_THROW_SOUND_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KNIFE_THROW_SOUND_EVENT =
             register(ModSounds.KNIFE_THROW_SOUND, ModSounds.KNIFE_THROW_SOUND_ID);
-    public static final RegistryObject<SoundEvent> KNIFE_BUNDLE_THROW_SOUND_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KNIFE_BUNDLE_THROW_SOUND_EVENT =
             register(ModSounds.KNIFE_BUNDLE_THROW_SOUND, ModSounds.KNIFE_BUNDLE_THROW_SOUND_ID);
-    public static final RegistryObject<SoundEvent> KNIFE_IMPACT_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KNIFE_IMPACT_EVENT =
             register(ModSounds.KNIFE_IMPACT, ModSounds.KNIFE_IMPACT_ID);
-    public static final RegistryObject<SoundEvent> KNIFE_IMPACT_GROUND_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KNIFE_IMPACT_GROUND_EVENT =
             register(ModSounds.KNIFE_IMPACT_GROUND, ModSounds.KNIFE_IMPACT_GROUND_ID);
-    public static final RegistryObject<SoundEvent> FOG_MORPH_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> FOG_MORPH_EVENT =
             register(ModSounds.FOG_MORPH, ModSounds.FOG_MORPH_ID);
-    public static final RegistryObject<SoundEvent> CACKLE_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> CACKLE_EVENT =
             register(ModSounds.CACKLE, ModSounds.CACKLE_ID);
-    public static final RegistryObject<SoundEvent> AIR_BUBBLE_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> AIR_BUBBLE_EVENT =
             register(ModSounds.AIR_BUBBLE, ModSounds.AIR_BUBBLE_ID);
-    public static final RegistryObject<SoundEvent> BUBBLE_HOVERED_OVER_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> BUBBLE_HOVERED_OVER_EVENT =
             register(ModSounds.BUBBLE_HOVERED_OVER, ModSounds.BUBBLE_HOVERED_OVER_ID);
-    public static final RegistryObject<SoundEvent> GO_BEYOND_LAUNCH_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> GO_BEYOND_LAUNCH_EVENT =
             register(ModSounds.GO_BEYOND_LAUNCH, ModSounds.GO_BEYOND_LAUNCH_ID);
-    public static final RegistryObject<SoundEvent> GO_BEYOND_HIT_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> GO_BEYOND_HIT_EVENT =
             register(ModSounds.GO_BEYOND_HIT, ModSounds.GO_BEYOND_HIT_ID);
-    public static final RegistryObject<SoundEvent> HAMMER_CLINK_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> HAMMER_CLINK_EVENT =
             register(ModSounds.HAMMER_CLINK, ModSounds.HAMMER_CLINK_ID);
-    public static final RegistryObject<SoundEvent> BUBBLE_CREATE_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> BUBBLE_CREATE_EVENT =
             register(ModSounds.BUBBLE_CREATE, ModSounds.BUBBLE_CREATE_ID);
-    public static final RegistryObject<SoundEvent> BIG_BUBBLE_CREATE_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> BIG_BUBBLE_CREATE_EVENT =
             register(ModSounds.BIG_BUBBLE_CREATE, ModSounds.BIG_BUBBLE_CREATE_ID);
-    public static final RegistryObject<SoundEvent> BUBBLE_PLUNDER_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> BUBBLE_PLUNDER_EVENT =
             register(ModSounds.BUBBLE_PLUNDER, ModSounds.BUBBLE_PLUNDER_ID);
-    public static final RegistryObject<SoundEvent> SOFT_AND_WET_BARRAGE_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> SOFT_AND_WET_BARRAGE_EVENT =
             register(ModSounds.SOFT_AND_WET_BARRAGE, ModSounds.SOFT_AND_WET_BARRAGE_ID);
-    public static final RegistryObject<SoundEvent> SOFT_AND_WET_BARRAGE_2_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> SOFT_AND_WET_BARRAGE_2_EVENT =
             register(ModSounds.SOFT_AND_WET_BARRAGE_2, ModSounds.SOFT_AND_WET_BARRAGE_2_ID);
-    public static final RegistryObject<SoundEvent> WATER_ENCASE_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> WATER_ENCASE_EVENT =
             register(ModSounds.WATER_ENCASE, ModSounds.WATER_ENCASE_ID);
-    public static final RegistryObject<SoundEvent> SOFT_AND_WET_KICK_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> SOFT_AND_WET_KICK_EVENT =
             register(ModSounds.SOFT_AND_WET_KICK, ModSounds.SOFT_AND_WET_KICK_ID);
-    public static final RegistryObject<SoundEvent> BUBBLE_POP_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> BUBBLE_POP_EVENT =
             register(ModSounds.BUBBLE_POP, ModSounds.BUBBLE_POP_ID);
-    public static final RegistryObject<SoundEvent> ICE_SKATING_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ICE_SKATING_EVENT =
             register(ModSounds.ICE_SKATING, ModSounds.ICE_SKATING_ID);
-    public static final RegistryObject<SoundEvent> SKATING_LAND_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> SKATING_LAND_EVENT =
             register(ModSounds.SKATING_LAND, ModSounds.SKATING_LAND_ID);
-    public static final RegistryObject<SoundEvent> ICE_RISES_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ICE_RISES_EVENT =
             register(ModSounds.ICE_RISES, ModSounds.ICE_RISES_ID);
-    public static final RegistryObject<SoundEvent> MELT_DODGE_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> MELT_DODGE_EVENT =
             register(ModSounds.MELT_DODGE, ModSounds.MELT_DODGE_ID);
-    public static final RegistryObject<SoundEvent> BLOCK_FREEZE_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> BLOCK_FREEZE_EVENT =
             register(ModSounds.BLOCK_FREEZE, ModSounds.BLOCK_FREEZE_ID);
-    public static final RegistryObject<SoundEvent> ICE_BLAST_CHARGE_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ICE_BLAST_CHARGE_EVENT =
             register(ModSounds.ICE_BLAST_CHARGE, ModSounds.ICE_BLAST_CHARGE_ID);
-    public static final RegistryObject<SoundEvent> COLD_SHOT_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> COLD_SHOT_EVENT =
             register(ModSounds.COLD_SHOT, ModSounds.COLD_SHOT_ID);
-    public static final RegistryObject<SoundEvent> GENTLY_WEEPS_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> GENTLY_WEEPS_EVENT =
             register(ModSounds.GENTLY_WEEPS, ModSounds.GENTLY_WEEPS_ID);
-    public static final RegistryObject<SoundEvent> DING_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> DING_EVENT =
             register(ModSounds.DING, ModSounds.DING_ID);
-    public static final RegistryObject<SoundEvent> BANISH_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> BANISH_EVENT =
             register(ModSounds.BANISH, ModSounds.BANISH_ID);
-    public static final RegistryObject<SoundEvent> IRON_BALL_BOUNCE_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> IRON_BALL_BOUNCE_EVENT =
             register(ModSounds.IRON_BALL_BOUNCE, ModSounds.IRON_BALL_BOUNCE_ID);
-    public static final RegistryObject<SoundEvent> IRON_BALL_IMPACT_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> IRON_BALL_IMPACT_EVENT =
             register(ModSounds.IRON_BALL_IMPACT, ModSounds.IRON_BALL_IMPACT_ID);
-    public static final RegistryObject<SoundEvent> UV_BLAST_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> UV_BLAST_EVENT =
             register(ModSounds.UV_BLAST, ModSounds.UV_BLAST_ID);
-    public static final RegistryObject<SoundEvent> EXPLOSIVE_BUBBLE_POP_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> EXPLOSIVE_BUBBLE_POP_EVENT =
             register(ModSounds.EXPLOSIVE_BUBBLE_POP, ModSounds.EXPLOSIVE_BUBBLE_POP_ID);
-    public static final RegistryObject<SoundEvent> EXPLOSIVE_BUBBLE_SHOT_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> EXPLOSIVE_BUBBLE_SHOT_EVENT =
             register(ModSounds.EXPLOSIVE_BUBBLE_SHOT, ModSounds.EXPLOSIVE_BUBBLE_SHOT_ID);
-    public static final RegistryObject<SoundEvent> EXPLOSIVE_BUBBLE_SWITCH_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> EXPLOSIVE_BUBBLE_SWITCH_EVENT =
             register(ModSounds.EXPLOSIVE_BUBBLE_SWITCH, ModSounds.EXPLOSIVE_BUBBLE_SWITCH_ID);
-    public static final RegistryObject<SoundEvent> EXPLOSIVE_SPIN_MODE_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> EXPLOSIVE_SPIN_MODE_EVENT =
             register(ModSounds.EXPLOSIVE_SPIN_MODE, ModSounds.EXPLOSIVE_SPIN_MODE_ID);
-    public static final RegistryObject<SoundEvent> EXPLOSIVE_BUBBLE_SWITCH_OFF_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> EXPLOSIVE_BUBBLE_SWITCH_OFF_EVENT =
             register(ModSounds.EXPLOSIVE_BUBBLE_SWITCH_OFF, ModSounds.EXPLOSIVE_BUBBLE_SWITCH_OFF_ID);
-    public static final RegistryObject<SoundEvent> LOCACACA_PETRIFY_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> LOCACACA_PETRIFY_EVENT =
             register(ModSounds.LOCACACA_PETRIFY, ModSounds.LOCACACA_PETRIFY_ID);
-    public static final RegistryObject<SoundEvent> LOCACACA_FUSION_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> LOCACACA_FUSION_EVENT =
             register(ModSounds.LOCACACA_FUSION, ModSounds.LOCACACA_FUSION_ID);
-    public static final RegistryObject<SoundEvent> PUNCH_1_SOUND_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> PUNCH_1_SOUND_EVENT =
             register(ModSounds.PUNCH_1_SOUND, ModSounds.PUNCH_1_SOUND_ID);
-    public static final RegistryObject<SoundEvent> PUNCH_2_SOUND_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> PUNCH_2_SOUND_EVENT =
             register(ModSounds.PUNCH_2_SOUND, ModSounds.PUNCH_2_SOUND_ID);
-    public static final RegistryObject<SoundEvent> PUNCH_3_SOUND_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> PUNCH_3_SOUND_EVENT =
             register(ModSounds.PUNCH_3_SOUND, ModSounds.PUNCH_3_SOUND_ID);
-    public static final RegistryObject<SoundEvent> PUNCH_4_SOUND_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> PUNCH_4_SOUND_EVENT =
             register(ModSounds.PUNCH_4_SOUND, ModSounds.PUNCH_4_SOUND_ID);
-    public static final RegistryObject<SoundEvent> BODY_BAG_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> BODY_BAG_EVENT =
             register(ModSounds.BODY_BAG, ModSounds.BODY_BAG_ID);
 
-    public static final RegistryObject<SoundEvent> SUMMON_OASIS_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> SUMMON_OASIS_EVENT =
             register(ModSounds.SUMMON_OASIS, ModSounds.SUMMON_OASIS_ID);
-    public static final RegistryObject<SoundEvent> OASIS_MUD_HIT_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> OASIS_MUD_HIT_EVENT =
             register(ModSounds.OASIS_MUD_HIT, ModSounds.OASIS_MUD_HIT_ID);
 
-    public static final RegistryObject<SoundEvent> CREAM_SUMMON_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> CREAM_SUMMON_EVENT =
             register(ModSounds.CREAM_SUMMON, ModSounds.CREAM_SUMMON_ID);
-    public static final RegistryObject<SoundEvent> CREAM_VOID_ATTACK_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> CREAM_VOID_ATTACK_EVENT =
             register(ModSounds.CREAM_VOID_ATTACK, ModSounds.CREAM_VOID_ATTACK_ID);
 
-    public static final RegistryObject<SoundEvent> MANHATTAN_SUMMON_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> MANHATTAN_SUMMON_EVENT =
             register(ModSounds.MANHATTAN_SUMMON, ModSounds.MANHATTAN_SUMMON_ID);
-    public static final RegistryObject<SoundEvent> MANHATTAN_DODGING_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> MANHATTAN_DODGING_EVENT =
             register(ModSounds.MANHATTAN_DODGING, ModSounds.MANHATTAN_DODGING_ID);
-    public static final RegistryObject<SoundEvent> MANHATTAN_VISION_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> MANHATTAN_VISION_EVENT =
             register(ModSounds.MANHATTAN_VISION, ModSounds.MANHATTAN_VISION_ID);
 
-    public static final RegistryObject<SoundEvent> BLACK_SABBATH_SUMMON_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> BLACK_SABBATH_SUMMON_EVENT =
             register(ModSounds.BLACK_SABBATH_SUMMON, ModSounds.BLACK_SABBATH_SUMMON_ID);
-    public static final RegistryObject<SoundEvent> TURNING_ON_LIGHTER_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> TURNING_ON_LIGHTER_EVENT =
             register(ModSounds.TURNING_ON_LIGHTER, ModSounds.TURNING_ON_LIGHTER_ID);
-    public static final RegistryObject<SoundEvent> OPEN_CHEST_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> OPEN_CHEST_EVENT =
             register(ModSounds.OPEN_BLACK_SABBATH_CHEST, ModSounds.OPEN_BLACK_SABBATH_CHEST_ID);
-    public static final RegistryObject<SoundEvent> BLACK_SABBATH_EMERGE_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> BLACK_SABBATH_EMERGE_EVENT =
             register(ModSounds.BLACK_SABBATH_EMERGE, ModSounds.BLACK_SABBATH_EMERGE_ID);
-    public static final RegistryObject<SoundEvent> BLACK_SABBATH_SELECT_ADD_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> BLACK_SABBATH_SELECT_ADD_EVENT =
             register(ModSounds.BLACK_SABBATH_SELECT_ADD, ModSounds.BLACK_SABBATH_SELECT_ADD_ID);
-    public static final RegistryObject<SoundEvent> BLACK_SABBATH_SELECT_REMOVE_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> BLACK_SABBATH_SELECT_REMOVE_EVENT =
             register(ModSounds.BLACK_SABBATH_SELECT_REMOVE, ModSounds.BLACK_SABBATH_SELECT_REMOVE_ID);
-    public static final RegistryObject<SoundEvent> BLACK_SABBATH_SELECT_CANCEL_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> BLACK_SABBATH_SELECT_CANCEL_EVENT =
             register(ModSounds.BLACK_SABBATH_SELECT_CANCEL, ModSounds.BLACK_SABBATH_SELECT_CANCEL_ID);
-    public static final RegistryObject<SoundEvent> BLACK_SABBATH_SELECT_CONFIRM_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> BLACK_SABBATH_SELECT_CONFIRM_EVENT =
             register(ModSounds.BLACK_SABBATH_SELECT_CONFIRM, ModSounds.BLACK_SABBATH_SELECT_CONFIRM_ID);
 
 
-    public static final RegistryObject<SoundEvent> CENTURY_BOY_SUMMON_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> CENTURY_BOY_SUMMON_EVENT =
             register(ModSounds.CENTURY_BOY_SUMMON, ModSounds.CENTURY_BOY_SUMMON_ID);
-    public static final RegistryObject<SoundEvent> CENTURY_BOY_HIT_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> CENTURY_BOY_HIT_EVENT =
             register(ModSounds.CENTURY_BOY_HIT, ModSounds.CENTURY_BOY_HIT_ID);
-    public static final RegistryObject<SoundEvent> CENTURY_BOY_HIT_2_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> CENTURY_BOY_HIT_2_EVENT =
             register(ModSounds.CENTURY_BOY_HIT_2, ModSounds.CENTURY_BOY_HIT_2_ID);
-    public static final RegistryObject<SoundEvent> CENTURY_BOY_NORMAL_STANCE =
+    public static final DeferredHolder<SoundEvent, SoundEvent> CENTURY_BOY_NORMAL_STANCE =
             register(ModSounds.CENTURY_BOY_NORMAL_STANCE, ModSounds.CENTURY_BOY_NORMAL_STANCE_ID);
-    public static final RegistryObject<SoundEvent> CENTURY_BOY_PROPEL_STANCE =
+    public static final DeferredHolder<SoundEvent, SoundEvent> CENTURY_BOY_PROPEL_STANCE =
             register(ModSounds.CENTURY_BOY_PROPEL_STANCE, ModSounds.CENTURY_BOY_PROPEL_STANCE_ID);
-    public static final RegistryObject<SoundEvent> CENTURY_BOY_OUTPUT_STANCE =
+    public static final DeferredHolder<SoundEvent, SoundEvent> CENTURY_BOY_OUTPUT_STANCE =
             register(ModSounds.CENTURY_BOY_OUTPUT_STANCE, ModSounds.CENTURY_BOY_OUTPUT_STANCE_ID);
-    public static final RegistryObject<SoundEvent> CENTURY_BOY_GROUND_STANCE =
+    public static final DeferredHolder<SoundEvent, SoundEvent> CENTURY_BOY_GROUND_STANCE =
             register(ModSounds.CENTURY_BOY_GROUND_STANCE, ModSounds.CENTURY_BOY_GROUND_STANCE_ID);
 
 
-    public static final RegistryObject<SoundEvent> SNUBNOSE_FIRE_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> SNUBNOSE_FIRE_EVENT =
             register(ModSounds.SNUBNOSE_FIRE, ModSounds.SNUBNOSE_FIRE_ID);
-    public static final RegistryObject<SoundEvent> SNUBNOSE_DRY_FIRE_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> SNUBNOSE_DRY_FIRE_EVENT =
             register(ModSounds.SNUBNOSE_DRY_FIRE, ModSounds.SNUBNOSE_DRY_FIRE_ID);
-    public static final RegistryObject<SoundEvent> SNUBNOSE_RELOAD_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> SNUBNOSE_RELOAD_EVENT =
             register(ModSounds.SNUBNOSE_RELOAD, ModSounds.SNUBNOSE_RELOAD_ID);
 
-    public static final RegistryObject<SoundEvent> TOMMY_FIRE_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> TOMMY_FIRE_EVENT =
             register(ModSounds.TOMMY_FIRE, ModSounds.TOMMY_FIRE_ID);
-    public static final RegistryObject<SoundEvent> TOMMY_RELOAD_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> TOMMY_RELOAD_EVENT =
             register(ModSounds.TOMMY_RELOAD, ModSounds.TOMMY_RELOAD_ID);
 
-    public static final RegistryObject<SoundEvent> COLT_FIRE_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> COLT_FIRE_EVENT =
             register(ModSounds.COLT_FIRE, ModSounds.COLT_FIRE_ID);
-    public static final RegistryObject<SoundEvent> COLT_RELOAD_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> COLT_RELOAD_EVENT =
             register(ModSounds.COLT_RELOAD, ModSounds.COLT_RELOAD_ID);
 
-    public static final RegistryObject<SoundEvent> JACKAL_FIRE_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> JACKAL_FIRE_EVENT =
             register(ModSounds.JACKAL_FIRE, ModSounds.JACKAL_FIRE_ID);
-    public static final RegistryObject<SoundEvent> JACKAL_RELOAD_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> JACKAL_RELOAD_EVENT =
             register(ModSounds.JACKAL_RELOAD, ModSounds.JACKAL_RELOAD_ID);
 
-    public static final RegistryObject<SoundEvent> BERETTA_FIRE_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> BERETTA_FIRE_EVENT =
             register(ModSounds.BERETTA_FIRE, ModSounds.BERETTA_FIRE_ID);
-    public static final RegistryObject<SoundEvent> BERETTA_RELOAD_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> BERETTA_RELOAD_EVENT =
             register(ModSounds.BERETTA_RELOAD, ModSounds.BERETTA_RELOAD_ID);
 
-    public static final RegistryObject<SoundEvent> BULLET_PENTRATION_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> BULLET_PENTRATION_EVENT =
             register(ModSounds.BULLET_PENTRATION, ModSounds.BULLET_PENTRATION_ID);
-    public static final RegistryObject<SoundEvent> BULLET_RICOCHET_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> BULLET_RICOCHET_EVENT =
             register(ModSounds.BULLET_RICOCHET, ModSounds.BULLET_RICOCHET_ID);
-    public static final RegistryObject<SoundEvent> MAGIC_DING_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> MAGIC_DING_EVENT =
             register(ModSounds.MAGIC_DING, ModSounds.MAGIC_DING_ID);
 
-    public static final RegistryObject<SoundEvent> ROAD_ROLLER_AMBIENT_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ROAD_ROLLER_AMBIENT_EVENT =
             register(ModSounds.ROAD_ROLLER_AMBIENT, ModSounds.ROAD_ROLLER_AMBIENT_ID);
-    public static final RegistryObject<SoundEvent> ROAD_ROLLER_EXPLOSION_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ROAD_ROLLER_EXPLOSION_EVENT =
             register(ModSounds.ROAD_ROLLER_EXPLOSION, ModSounds.ROAD_ROLLER_EXPLOSION_ID);
-    public static final RegistryObject<SoundEvent> ROAD_ROLLER_MIXING_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ROAD_ROLLER_MIXING_EVENT =
             register(ModSounds.ROAD_ROLLER_MIXING, ModSounds.ROAD_ROLLER_MIXING_ID);
-    public static final RegistryObject<SoundEvent> ANUBIS_UNSHEATHE_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ANUBIS_UNSHEATHE_EVENT =
             register(ModSounds.ANUBIS_UNSHEATHE, ModSounds.ANUBIS_UNSHEATHE_ID);
-    public static final RegistryObject<SoundEvent> SUMMON_ANUBIS_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> SUMMON_ANUBIS_EVENT =
             register(ModSounds.SUMMON_ANUBIS, ModSounds.ANUBIS_SUMMON_ID);
 
-    public static final RegistryObject<SoundEvent> BLOOD_SUCK_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> BLOOD_SUCK_EVENT =
             register(ModSounds.BLOOD_SUCK, ModSounds.BLOOD_SUCK_ID);
-    public static final RegistryObject<SoundEvent> BLOOD_SPEED_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> BLOOD_SPEED_EVENT =
             register(ModSounds.BLOOD_SPEED, ModSounds.BLOOD_SPEED_ID);
-    public static final RegistryObject<SoundEvent> BLOOD_SUCK_DRAIN_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> BLOOD_SUCK_DRAIN_EVENT =
             register(ModSounds.BLOOD_SUCK_DRAIN, ModSounds.BLOOD_SUCK_DRAIN_ID);
-    public static final RegistryObject<SoundEvent> JUSTICE_SELECT_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> JUSTICE_SELECT_EVENT =
             register(ModSounds.JUSTICE_SELECT, ModSounds.JUSTICE_SELECT_ID);
-    public static final RegistryObject<SoundEvent> JUSTICE_SELECT_ATTACK_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> JUSTICE_SELECT_ATTACK_EVENT =
             register(ModSounds.JUSTICE_SELECT_ATTACK, ModSounds.JUSTICE_SELECT_ATTACK_ID);
-    public static final RegistryObject<SoundEvent> DODGE_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> DODGE_EVENT =
             register(ModSounds.DODGE, ModSounds.DODGE_ID);
-    public static final RegistryObject<SoundEvent> IMPALE_CHARGE =
+    public static final DeferredHolder<SoundEvent, SoundEvent> IMPALE_CHARGE =
             register(ModSounds.IMPALE_CHARGE, ModSounds.IMPALE_CHARGE_ID);
-    public static final RegistryObject<SoundEvent> IMPALE_HIT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> IMPALE_HIT =
             register(ModSounds.IMPALE_HIT, ModSounds.IMPALE_HIT_ID);
-    public static final RegistryObject<SoundEvent> STAND_LEAP_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> STAND_LEAP_EVENT =
             register(ModSounds.STAND_LEAP, ModSounds.STAND_LEAP_ID);
-    public static final RegistryObject<SoundEvent> FALL_BRACE_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> FALL_BRACE_EVENT =
             register(ModSounds.FALL_BRACE, ModSounds.FALL_BRACE_ID);
-    public static final RegistryObject<SoundEvent> FLUFF_BRACE_INIT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> FLUFF_BRACE_INIT =
             register(ModSounds.FLUFF_BRACE_INIT, ModSounds.FLUFF_BRACE_INIT_ID);
-    public static final RegistryObject<SoundEvent> FLUFF_FALL_BRACE =
+    public static final DeferredHolder<SoundEvent, SoundEvent> FLUFF_FALL_BRACE =
             register(ModSounds.FLUFF_FALL_BRACE, ModSounds.FLUFF_FALL_BRACE_ID);
-    public static final RegistryObject<SoundEvent> TIME_SNAP_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> TIME_SNAP_EVENT =
             register(ModSounds.TIME_SNAP, ModSounds.TIME_SNAP_ID);
-    public static final RegistryObject<SoundEvent> THE_WORLD_ASSAULT_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> THE_WORLD_ASSAULT_EVENT =
             register(ModSounds.THE_WORLD_ASSAULT, ModSounds.THE_WORLD_ASSAULT_ID);
-    public static final RegistryObject<SoundEvent> THE_WORLD_WRY_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> THE_WORLD_WRY_EVENT =
             register(ModSounds.THE_WORLD_WRY, ModSounds.THE_WORLD_WRY_ID);
-    public static final RegistryObject<SoundEvent> SUMMON_SOFT_AND_WET_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> SUMMON_SOFT_AND_WET_EVENT =
             register(ModSounds.SUMMON_SOFT_AND_WET, ModSounds.SUMMON_SOFT_AND_WET_ID);
-    public static final RegistryObject<SoundEvent> THE_WORLD_MUDA_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> THE_WORLD_MUDA_EVENT =
             register(ModSounds.THE_WORLD_MUDA, ModSounds.THE_WORLD_MUDA_ID);
-    public static final RegistryObject<SoundEvent> SUMMON_JUSTICE =
+    public static final DeferredHolder<SoundEvent, SoundEvent> SUMMON_JUSTICE =
             register(ModSounds.SUMMON_JUSTICE, ModSounds.SUMMON_JUSTICE_ID);
-    public static final RegistryObject<SoundEvent> SUMMON_JUSTICE_2 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> SUMMON_JUSTICE_2 =
             register(ModSounds.SUMMON_JUSTICE_2, ModSounds.SUMMON_JUSTICE_2_ID);
-    public static final RegistryObject<SoundEvent> STAND_THEWORLD_MUDA1_SOUND_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> STAND_THEWORLD_MUDA1_SOUND_EVENT =
             register(ModSounds.STAND_THEWORLD_MUDA1_SOUND, ModSounds.STAND_THEWORLD_MUDA1_SOUND_ID);
-    public static final RegistryObject<SoundEvent> STAND_THEWORLD_MUDA2_SOUND_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> STAND_THEWORLD_MUDA2_SOUND_EVENT =
             register(ModSounds.STAND_THEWORLD_MUDA2_SOUND, ModSounds.STAND_THEWORLD_MUDA2_SOUND_ID);
-    public static final RegistryObject<SoundEvent> STAND_THEWORLD_MUDA3_SOUND_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> STAND_THEWORLD_MUDA3_SOUND_EVENT =
             register(ModSounds.STAND_THEWORLD_MUDA3_SOUND, ModSounds.STAND_THEWORLD_MUDA3_SOUND_ID);
-    public static final RegistryObject<SoundEvent> STAND_THEWORLD_MUDA4_SOUND_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> STAND_THEWORLD_MUDA4_SOUND_EVENT =
             register(ModSounds.STAND_THEWORLD_MUDA4_SOUND, ModSounds.STAND_THEWORLD_MUDA4_SOUND_ID);
-    public static final RegistryObject<SoundEvent> STAND_THEWORLD_MUDA5_SOUND_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> STAND_THEWORLD_MUDA5_SOUND_EVENT =
             register(ModSounds.STAND_THEWORLD_MUDA5_SOUND, ModSounds.STAND_THEWORLD_MUDA5_SOUND_ID);
-    public static final RegistryObject<SoundEvent> STAR_FINGER =
+    public static final DeferredHolder<SoundEvent, SoundEvent> STAR_FINGER =
             register(ModSounds.STAR_FINGER, ModSounds.STAR_FINGER_ID);
-    public static final RegistryObject<SoundEvent> STAR_FINGER_2 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> STAR_FINGER_2 =
             register(ModSounds.STAR_FINGER_2, ModSounds.STAR_FINGER_2_ID);
-    public static final RegistryObject<SoundEvent> STAR_FINGER_SILENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> STAR_FINGER_SILENT =
             register(ModSounds.STAR_FINGER_SILENT, ModSounds.STAR_FINGER_SILENT_ID);
-    public static final RegistryObject<SoundEvent> STAR_PLATINUM_ORA_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> STAR_PLATINUM_ORA_EVENT =
             register(ModSounds.STAR_PLATINUM_ORA, ModSounds.STAR_PLATINUM_ORA_ID);
-    public static final RegistryObject<SoundEvent> STAR_PLATINUM_ORA_RUSH_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> STAR_PLATINUM_ORA_RUSH_EVENT =
             register(ModSounds.STAR_PLATINUM_ORA_RUSH, ModSounds.STAR_PLATINUM_ORA_RUSH_ID);
-    public static final RegistryObject<SoundEvent> STAR_PLATINUM_SCOPE_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> STAR_PLATINUM_SCOPE_EVENT =
             register(ModSounds.STAR_PLATINUM_SCOPE, ModSounds.STAR_PLATINUM_SCOPE_ID);
-    public static final RegistryObject<SoundEvent> STAR_PLATINUM_ORA_RUSH_2_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> STAR_PLATINUM_ORA_RUSH_2_EVENT =
             register(ModSounds.STAR_PLATINUM_ORA_RUSH_2, ModSounds.STAR_PLATINUM_ORA_RUSH_2_ID);
-    public static final RegistryObject<SoundEvent> STAR_PLATINUM_TIMESTOP =
+    public static final DeferredHolder<SoundEvent, SoundEvent> STAR_PLATINUM_TIMESTOP =
             register(ModSounds.STAR_PLATINUM_TIMESTOP, ModSounds.STAR_PLATINUM_TIMESTOP_ID);
-    public static final RegistryObject<SoundEvent> STAR_PLATINUM_TIMESTOP_2 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> STAR_PLATINUM_TIMESTOP_2 =
             register(ModSounds.STAR_PLATINUM_TIMESTOP_2, ModSounds.STAR_PLATINUM_TIMESTOP_2_ID);
-    public static final RegistryObject<SoundEvent> STAND_BARRAGE_WINDUP_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> STAND_BARRAGE_WINDUP_EVENT =
             register(ModSounds.STAND_BARRAGE_WINDUP, ModSounds.STAND_BARRAGE_WINDUP_ID);
-    public static final RegistryObject<SoundEvent> STAND_BARRAGE_MISS_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> STAND_BARRAGE_MISS_EVENT =
             register(ModSounds.STAND_BARRAGE_MISS, ModSounds.STAND_BARRAGE_MISS_ID);
-    public static final RegistryObject<SoundEvent> STAND_BARRAGE_BLOCK_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> STAND_BARRAGE_BLOCK_EVENT =
             register(ModSounds.STAND_BARRAGE_BLOCK, ModSounds.STAND_BARRAGE_BLOCK_ID);
-    public static final RegistryObject<SoundEvent> STAND_BARRAGE_HIT_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> STAND_BARRAGE_HIT_EVENT =
             register(ModSounds.STAND_BARRAGE_HIT, ModSounds.STAND_BARRAGE_HIT_ID);
-    public static final RegistryObject<SoundEvent> STAND_BARRAGE_END_BLOCK_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> STAND_BARRAGE_END_BLOCK_EVENT =
             register(ModSounds.STAND_BARRAGE_END_BLOCK, ModSounds.STAND_BARRAGE_END_BLOCK_ID);
-    public static final RegistryObject<SoundEvent> KILLER_QUEEN_IMPALE_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KILLER_QUEEN_IMPALE_EVENT =
             register(ModSounds.KILLER_QUEEN_IMPALE, ModSounds.KILLER_QUEEN_IMPALE_ID);
-    public static final RegistryObject<SoundEvent> KILLER_QUEEN_BARRAGE_HIT_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KILLER_QUEEN_BARRAGE_HIT_EVENT =
             register(ModSounds.KILLER_QUEEN_BARRAGE_HIT, ModSounds.KILLER_QUEEN_BARRAGE_HIT_ID);
-    public static final RegistryObject<SoundEvent> KILLER_QUEEN_PUNCH_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KILLER_QUEEN_PUNCH_EVENT =
             register(ModSounds.KILLER_QUEEN_PUNCH, ModSounds.KILLER_QUEEN_PUNCH_ID);
-    public static final RegistryObject<SoundEvent> KILLER_QUEEN_HEAVY_PUNCH_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KILLER_QUEEN_HEAVY_PUNCH_EVENT =
             register(ModSounds.KILLER_QUEEN_HEAVY_PUNCH, ModSounds.KILLER_QUEEN_HEAVY_PUNCH_ID);
-    public static final RegistryObject<SoundEvent> KILLER_QUEEN_PUNCH_1_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KILLER_QUEEN_PUNCH_1_EVENT =
             register(ModSounds.KILLER_QUEEN_PUNCH_1, ModSounds.KILLER_QUEEN_PUNCH_1_ID);
-    public static final RegistryObject<SoundEvent> KILLER_QUEEN_PUNCH_2_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KILLER_QUEEN_PUNCH_2_EVENT =
             register(ModSounds.KILLER_QUEEN_PUNCH_2, ModSounds.KILLER_QUEEN_PUNCH_2_ID);
-    public static final RegistryObject<SoundEvent> KILLER_QUEEN_SHIBA_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KILLER_QUEEN_SHIBA_EVENT =
             register(ModSounds.KILLER_QUEEN_SHIBA, ModSounds.KILLER_QUEEN_SHIBA_ID);
-    public static final RegistryObject<SoundEvent> KILLER_QUEEN_SHIBABA_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KILLER_QUEEN_SHIBABA_EVENT =
             register(ModSounds.KILLER_QUEEN_SHIBABA, ModSounds.KILLER_QUEEN_SHIBABA_ID);
-    public static final RegistryObject<SoundEvent> KILLER_QUEEN_SHA_MOVING_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KILLER_QUEEN_SHA_MOVING_EVENT =
             register(ModSounds.KILLER_QUEEN_SHA_MOVING, ModSounds.KILLER_QUEEN_SHA_MOVING_ID);
-    public static final RegistryObject<SoundEvent> SHA_JUMP_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> SHA_JUMP_EVENT =
             register(ModSounds.SHA_JUMP, ModSounds.SHA_JUMP_ID);
 
-    public static final RegistryObject<SoundEvent> KILLER_QUEEN_SHA_KOCCHI_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KILLER_QUEEN_SHA_KOCCHI_EVENT =
             register(ModSounds.KILLER_QUEEN_SHA_KOCCHI, ModSounds.KILLER_QUEEN_SHA_KOCCHI_ID);
-    public static final RegistryObject<SoundEvent> KILLER_QUEEN_SHA_ALT_KOCCHI_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KILLER_QUEEN_SHA_ALT_KOCCHI_EVENT =
             register(ModSounds.KILLER_QUEEN_SHA_ALT_KOCCHI, ModSounds.KILLER_QUEEN_SHA_ALT_KOCCHI_ID);
-    public static final RegistryObject<SoundEvent> KILLER_QUEEN_SHA_ALT_CRACKED_KOCCHI_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KILLER_QUEEN_SHA_ALT_CRACKED_KOCCHI_EVENT =
             register(ModSounds.KILLER_QUEEN_SHA_ALT_CRACKED_KOCCHI, ModSounds.KILLER_QUEEN_SHA_ALT_CRACKED_KOCCHI_ID);
-    public static final RegistryObject<SoundEvent> KILLER_QUEEN_SHA_ALT_DEDE_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KILLER_QUEEN_SHA_ALT_DEDE_EVENT =
             register(ModSounds.KILLER_QUEEN_SHA_ALT_DEDE, ModSounds.KILLER_QUEEN_SHA_ALT_DEDE_ID);
-    public static final RegistryObject<SoundEvent> KILLER_QUEEN_SHA_DEDEDEDE_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KILLER_QUEEN_SHA_DEDEDEDE_EVENT =
             register(ModSounds.KILLER_QUEEN_SHA_DEDEDEDE, ModSounds.KILLER_QUEEN_SHA_DEDEDEDE_ID);
-    public static final RegistryObject<SoundEvent> KILLER_QUEEN_BTD_NOISE_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KILLER_QUEEN_BTD_NOISE_EVENT =
             register(ModSounds.KILLER_QUEEN_BTD_NOISE, ModSounds.KILLER_QUEEN_BTD_NOISE_ID);
-    public static final RegistryObject<SoundEvent> KILLER_QUEEN_BTD_DETONATE_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KILLER_QUEEN_BTD_DETONATE_EVENT =
             register(ModSounds.KILLER_QUEEN_BTD_DETONATE, ModSounds.KILLER_QUEEN_BTD_DETONATE_ID);
-    public static final RegistryObject<SoundEvent> KILLER_QUEEN_BTD_PLANTED_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KILLER_QUEEN_BTD_PLANTED_EVENT =
             register(ModSounds.KILLER_QUEEN_BTD_PLANTED, ModSounds.KILLER_QUEEN_BTD_PLANTED_ID);
-    public static final RegistryObject<SoundEvent> KILLER_QUEEN_SHA_CRACKED_DEDE_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KILLER_QUEEN_SHA_CRACKED_DEDE_EVENT =
             register(ModSounds.KILLER_QUEEN_SHA_CRACKED_DEDE, ModSounds.KILLER_QUEEN_SHA_CRACKED_DEDE_ID);
-    public static final RegistryObject<SoundEvent> KILLER_QUEEN_SHA_CRACKED_KOCCHI_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KILLER_QUEEN_SHA_CRACKED_KOCCHI_EVENT =
             register(ModSounds.KILLER_QUEEN_SHA_CRACKED_KOCCHI, ModSounds.KILLER_QUEEN_SHA_CRACKED_KOCCHI_ID);
 
-    public static final RegistryObject<SoundEvent> KILLER_QUEEN_SHA_SUMMON_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KILLER_QUEEN_SHA_SUMMON_EVENT =
             register(ModSounds.KILLER_QUEEN_SHA_SUMMON, ModSounds.KILLER_QUEEN_SHA_SUMMON_ID);
-    public static final RegistryObject<SoundEvent> KILLER_QUEEN_BARRAGE_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KILLER_QUEEN_BARRAGE_EVENT =
             register(ModSounds.KILLER_QUEEN_BARRAGE, ModSounds.KILLER_QUEEN_BARRAGE_ID);
-    public static final RegistryObject<SoundEvent> KILLER_QUEEN_SUMMON_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KILLER_QUEEN_SUMMON_EVENT =
             register(ModSounds.KILLER_QUEEN_SUMMON, ModSounds.KILLER_QUEEN_SUMMON_ID);
-    public static final RegistryObject<SoundEvent> KILLER_QUEEN_BUBBLE_SELECT_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KILLER_QUEEN_BUBBLE_SELECT_EVENT =
             register(ModSounds.KILLER_QUEEN_BUBBLE_SELECT, ModSounds.KILLER_QUEEN_BUBBLE_SELECT_ID);
-    public static final RegistryObject<SoundEvent> BITES_THE_DUST_COMBAT_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> BITES_THE_DUST_COMBAT_EVENT =
             register(ModSounds.BITES_THE_DUST_COMBAT, ModSounds.BITES_THE_DUST_COMBAT_ID);
-    public static final RegistryObject<SoundEvent> BITES_THE_DUST_DAY_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> BITES_THE_DUST_DAY_EVENT =
         register(ModSounds.BITES_THE_DUST_DAY, ModSounds.BITES_THE_DUST_DAY_ID);
-    public static final RegistryObject<SoundEvent> BITES_THE_DUST_ARROW =
+    public static final DeferredHolder<SoundEvent, SoundEvent> BITES_THE_DUST_ARROW =
         register(ModSounds.BITES_THE_DUST_ARROW, ModSounds.BITES_THE_DUST_ARROW_ID);
-    public static final RegistryObject<SoundEvent> KQ_MOB_PLANT_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KQ_MOB_PLANT_EVENT =
         register(ModSounds.KQ_MOB_PLANT, ModSounds.KQ_MOB_PLANT_ID);
-    public static final RegistryObject<SoundEvent> KQ_BLOCK_PLANT_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KQ_BLOCK_PLANT_EVENT =
         register(ModSounds.KQ_BLOCK_PLANT, ModSounds.KQ_BLOCK_PLANT_ID);
-    public static final RegistryObject<SoundEvent> KQ_PLANT_WINDUP_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KQ_PLANT_WINDUP_EVENT =
         register(ModSounds.KQ_PLANT_WINDUP, ModSounds.KQ_PLANT_WINDUP_ID);
-    public static final RegistryObject<SoundEvent> KQ_BTD_WINDUP_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KQ_BTD_WINDUP_EVENT =
         register(ModSounds.KQ_BTD_WINDUP, ModSounds.KQ_BTD_WINDUP_ID);
-    public static final RegistryObject<SoundEvent> KQ_BTD_WINDUP_LINE_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KQ_BTD_WINDUP_LINE_EVENT =
         register(ModSounds.KQ_BTD_WINDUP_LINE, ModSounds.KQ_BTD_WINDUP_LINE_ID);
-    public static final RegistryObject<SoundEvent> KIRA4_BTD_ACTIVATION_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KIRA4_BTD_ACTIVATION_EVENT =
         register(ModSounds.KIRA4_BTD_ACTIVATION, ModSounds.KIRA4_BTD_ACTIVATION_ID);
-    public static final RegistryObject<SoundEvent> ADD_STRAY_CAT_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ADD_STRAY_CAT_EVENT =
         register(ModSounds.ADD_STRAY_CAT, ModSounds.ADD_STRAY_CAT_ID);
 
-    public static final RegistryObject<SoundEvent> KQ_MINESWEEPER_PUNCH_1_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KQ_MINESWEEPER_PUNCH_1_EVENT =
             register(ModSounds.KQ_MINESWEEPER_PUNCH_1, ModSounds.KQ_MINESWEEPER_PUNCH_1_ID);
-    public static final RegistryObject<SoundEvent> KQ_MINESWEEPER_PUNCH_2_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KQ_MINESWEEPER_PUNCH_2_EVENT =
             register(ModSounds.KQ_MINESWEEPER_PUNCH_2, ModSounds.KQ_MINESWEEPER_PUNCH_2_ID);
-    public static final RegistryObject<SoundEvent> KQ_MINESWEEPER_HEAVY_PUNCH_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KQ_MINESWEEPER_HEAVY_PUNCH_EVENT =
             register(ModSounds.KQ_MINESWEEPER_HEAVY_PUNCH, ModSounds.KQ_MINESWEEPER_HEAVY_PUNCH_ID);
-    public static final RegistryObject<SoundEvent> KQ_MINESWEEPER_KICK_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KQ_MINESWEEPER_KICK_EVENT =
             register(ModSounds.KQ_MINESWEEPER_KICK, ModSounds.KQ_MINESWEEPER_KICK_ID);
-    public static final RegistryObject<SoundEvent> KQ_MINESWEEPER_AIRBUBBLE_SEND_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KQ_MINESWEEPER_AIRBUBBLE_SEND_EVENT =
             register(ModSounds.KQ_MINESWEEPER_AIRBUBBLE_SEND, ModSounds.KQ_MINESWEEPER_AIRBUBBLE_SEND_ID);
-    public static final RegistryObject<SoundEvent> KQ_MINESWEEPER_AIRBUBBLE_REDIRECT_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KQ_MINESWEEPER_AIRBUBBLE_REDIRECT_EVENT =
             register(ModSounds.KQ_MINESWEEPER_AIRBUBBLE_REDIRECT, ModSounds.KQ_MINESWEEPER_AIRBUBBLE_REDIRECT_ID);
-    public static final RegistryObject<SoundEvent> KQ_MINESWEEPER_BARRAGE_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KQ_MINESWEEPER_BARRAGE_EVENT =
             register(ModSounds.KQ_MINESWEEPER_BARRAGE, ModSounds.KQ_MINESWEEPER_BARRAGE_ID);
-    public static final RegistryObject<SoundEvent> KQ_MINESWEEPER_IMPALE_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KQ_MINESWEEPER_IMPALE_EVENT =
             register(ModSounds.KQ_MINESWEEPER_IMPALE, ModSounds.KQ_MINESWEEPER_IMPALE_ID);
-    public static final RegistryObject<SoundEvent> KQ_MINESWEEPER_SHIBABA_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KQ_MINESWEEPER_SHIBABA_EVENT =
             register(ModSounds.KQ_MINESWEEPER_SHIBABA, ModSounds.KQ_MINESWEEPER_SHIBABA_ID);
-    public static final RegistryObject<SoundEvent> KQ_MINESWEEPER_SHIBA_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KQ_MINESWEEPER_SHIBA_EVENT =
             register(ModSounds.KQ_MINESWEEPER_SHIBA, ModSounds.KQ_MINESWEEPER_SHIBA_ID);
 
-    public static final RegistryObject<SoundEvent> KQ_MINESWEEPER_START_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KQ_MINESWEEPER_START_EVENT =
             register(ModSounds.KQ_MINESWEEPER_START, ModSounds.KQ_MINESWEEPER_START_ID);
-    public static final RegistryObject<SoundEvent> KQ_MINESWEEPER_DETONATE_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KQ_MINESWEEPER_DETONATE_EVENT =
             register(ModSounds.KQ_MINESWEEPER_DETONATE, ModSounds.KQ_MINESWEEPER_DETONATE_ID);
-    public static final RegistryObject<SoundEvent> KQ_MINESWEEPER_BTD_DETONATE_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KQ_MINESWEEPER_BTD_DETONATE_EVENT =
             register(ModSounds.KQ_MINESWEEPER_BTD_DETONATE, ModSounds.KQ_MINESWEEPER_BTD_DETONATE_ID);
-    public static final RegistryObject<SoundEvent> KQ_MINESWEEPER_EXPLOSION_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KQ_MINESWEEPER_EXPLOSION_EVENT =
             register(ModSounds.KQ_MINESWEEPER_EXPLOSION, ModSounds.KQ_MINESWEEPER_EXPLOSION_ID);
-    public static final RegistryObject<SoundEvent> KQ_MINESWEEPER_BTD_PLANT_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KQ_MINESWEEPER_BTD_PLANT_EVENT =
             register(ModSounds.KQ_MINESWEEPER_BTD_PLANT, ModSounds.KQ_MINESWEEPER_BTD_PLANT_ID);
-    public static final RegistryObject<SoundEvent> KQ_MINESWEEPER_BTD_NOISE_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KQ_MINESWEEPER_BTD_NOISE_EVENT =
             register(ModSounds.KQ_MINESWEEPER_BTD_NOISE, ModSounds.KQ_MINESWEEPER_BTD_NOISE_ID);
-    public static final RegistryObject<SoundEvent> KILLER_QUEEN_SUMMON_DARK_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KILLER_QUEEN_SUMMON_DARK_EVENT =
             register(ModSounds.KILLER_QUEEN_SUMMON_DARK, ModSounds.KILLER_QUEEN_SUMMON_DARK_ID);
-    public static final RegistryObject<SoundEvent> KILLER_QUEEN_EXPLOSION_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KILLER_QUEEN_EXPLOSION_EVENT =
             register(ModSounds.KILLER_QUEEN_EXPLOSION, ModSounds.KILLER_QUEEN_EXPLOSION_ID);
 
-    public static final RegistryObject<SoundEvent> KILLER_QUEEN_DETONATE_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KILLER_QUEEN_DETONATE_EVENT =
             register(ModSounds.KILLER_QUEEN_DETONATE, ModSounds.KILLER_QUEEN_DETONATE_ID);
-    public static final RegistryObject<SoundEvent> KILLER_QUEEN_BUBBLE_LAUNCH_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KILLER_QUEEN_BUBBLE_LAUNCH_EVENT =
             register(ModSounds.KILLER_QUEEN_BUBBLE_LAUNCH, ModSounds.KILLER_QUEEN_BUBBLE_LAUNCH_ID);
 
-    public static final RegistryObject<SoundEvent> STRAY_CAT_BUBBLE_POP_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> STRAY_CAT_BUBBLE_POP_EVENT =
             register(ModSounds.STRAY_CAT_BUBBLE_POP, ModSounds.STRAY_CAT_BUBBLE_POP_ID);
-    public static final RegistryObject<SoundEvent> STRAY_CAT_BUBBLE_SOUND_1_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> STRAY_CAT_BUBBLE_SOUND_1_EVENT =
             register(ModSounds.STRAY_CAT_BUBBLE_SOUND_1, ModSounds.STRAY_CAT_BUBBLE_SOUND_1_ID);
-    public static final RegistryObject<SoundEvent> STRAY_CAT_BUBBLE_SOUND_2_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> STRAY_CAT_BUBBLE_SOUND_2_EVENT =
             register(ModSounds.STRAY_CAT_BUBBLE_SOUND_2, ModSounds.STRAY_CAT_BUBBLE_SOUND_2_ID);
-    public static final RegistryObject<SoundEvent> STRAY_CAT_BUBBLE_REDIRECT_1_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> STRAY_CAT_BUBBLE_REDIRECT_1_EVENT =
             register(ModSounds.STRAY_CAT_BUBBLE_REDIRECT_1, ModSounds.STRAY_CAT_BUBBLE_REDIRECT_1_ID);
-    public static final RegistryObject<SoundEvent> STRAY_CAT_BUBBLE_REDIRECT_2_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> STRAY_CAT_BUBBLE_REDIRECT_2_EVENT =
             register(ModSounds.STRAY_CAT_BUBBLE_REDIRECT_2, ModSounds.STRAY_CAT_BUBBLE_REDIRECT_2_ID);
 
-    public static final RegistryObject<SoundEvent> KQ_SAMURAI_SUMMON_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KQ_SAMURAI_SUMMON_EVENT =
             register(ModSounds.KQ_SAMURAI_SUMMON, ModSounds.KQ_SAMURAI_SUMMON_ID);
-    public static final RegistryObject<SoundEvent> KQ_SAMURAI_BLOCK_PLANT_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KQ_SAMURAI_BLOCK_PLANT_EVENT =
             register(ModSounds.KQ_SAMURAI_BLOCK_PLANT, ModSounds.KQ_SAMURAI_BLOCK_PLANT_ID);
-    public static final RegistryObject<SoundEvent> KQ_SAMURAI_MOB_PLANT_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KQ_SAMURAI_MOB_PLANT_EVENT =
             register(ModSounds.KQ_SAMURAI_MOB_PLANT, ModSounds.KQ_SAMURAI_MOB_PLANT_ID);
-    public static final RegistryObject<SoundEvent> KQ_SAMURAI_BTD_NOISE_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KQ_SAMURAI_BTD_NOISE_EVENT =
             register(ModSounds.KQ_SAMURAI_BTD_NOISE, ModSounds.KQ_SAMURAI_BTD_NOISE_ID);
-    public static final RegistryObject<SoundEvent> KQ_SAMURAI_STAB_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KQ_SAMURAI_STAB_EVENT =
             register(ModSounds.KQ_SAMURAI_STAB, ModSounds.KQ_SAMURAI_STAB_ID);
-    public static final RegistryObject<SoundEvent> KQ_SAMURAI_SLASH_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KQ_SAMURAI_SLASH_EVENT =
             register(ModSounds.KQ_SAMURAI_SLASH, ModSounds.KQ_SAMURAI_SLASH_ID);
-    public static final RegistryObject<SoundEvent> KQ_SAMURAI_WHOOSH_1_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KQ_SAMURAI_WHOOSH_1_EVENT =
             register(ModSounds.KQ_SAMURAI_WHOOSH_1, ModSounds.KQ_SAMURAI_WHOOSH_1_ID);
-    public static final RegistryObject<SoundEvent> KQ_SAMURAI_WHOOSH_2_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KQ_SAMURAI_WHOOSH_2_EVENT =
             register(ModSounds.KQ_SAMURAI_WHOOSH_2, ModSounds.KQ_SAMURAI_WHOOSH_2_ID);
-    public static final RegistryObject<SoundEvent> KQ_SAMURAI_TEAPOT_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KQ_SAMURAI_TEAPOT_EVENT =
             register(ModSounds.KQ_SAMURAI_TEAPOT, ModSounds.KQ_SAMURAI_TEAPOT_ID);
-    public static final RegistryObject<SoundEvent> KQ_SAMURAI_SHEATHE_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KQ_SAMURAI_SHEATHE_EVENT =
             register(ModSounds.KQ_SAMURAI_SHEATHE, ModSounds.KQ_SAMURAI_SHEATHE_ID);
 
-    public static final RegistryObject<SoundEvent> KIRA4_DAMAGE_1_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KIRA4_DAMAGE_1_EVENT =
             register(ModSounds.KIRA4_DAMAGE_1, ModSounds.KIRA4_DAMAGE_1_ID);
-    public static final RegistryObject<SoundEvent> KIRA4_DAMAGE_2_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KIRA4_DAMAGE_2_EVENT =
             register(ModSounds.KIRA4_DAMAGE_2, ModSounds.KIRA4_DAMAGE_2_ID);
-    public static final RegistryObject<SoundEvent> KIRA4_DAMAGE_3_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KIRA4_DAMAGE_3_EVENT =
             register(ModSounds.KIRA4_DAMAGE_3, ModSounds.KIRA4_DAMAGE_3_ID);
-    public static final RegistryObject<SoundEvent> KIRA4_DAMAGE_4_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KIRA4_DAMAGE_4_EVENT =
             register(ModSounds.KIRA4_DAMAGE_4, ModSounds.KIRA4_DAMAGE_4_ID);
-    public static final RegistryObject<SoundEvent> KIRA4_DAMAGE_5_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KIRA4_DAMAGE_5_EVENT =
             register(ModSounds.KIRA4_DAMAGE_5, ModSounds.KIRA4_DAMAGE_5_ID);
-    public static final RegistryObject<SoundEvent> KIRA4_DAMAGE_6_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KIRA4_DAMAGE_6_EVENT =
             register(ModSounds.KIRA4_DAMAGE_6, ModSounds.KIRA4_DAMAGE_6_ID);
-    public static final RegistryObject<SoundEvent> KIRA4_DAMAGE_7_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KIRA4_DAMAGE_7_EVENT =
             register(ModSounds.KIRA4_DAMAGE_7, ModSounds.KIRA4_DAMAGE_7_ID);
 
-    public static final RegistryObject<SoundEvent> KIRA4_DEATH_1_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KIRA4_DEATH_1_EVENT =
             register(ModSounds.KIRA4_DEATH_1, ModSounds.KIRA4_DEATH_1_ID);
-    public static final RegistryObject<SoundEvent> KIRA4_DEATH_2_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KIRA4_DEATH_2_EVENT =
             register(ModSounds.KIRA4_DEATH_2, ModSounds.KIRA4_DEATH_2_ID);
-    public static final RegistryObject<SoundEvent> KIRA4_DEATH_3_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KIRA4_DEATH_3_EVENT =
             register(ModSounds.KIRA4_DEATH_3, ModSounds.KIRA4_DEATH_3_ID);
 
-    public static final RegistryObject<SoundEvent> KIRA4_LIVE_HAPPY_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KIRA4_LIVE_HAPPY_EVENT =
             register(ModSounds.KIRA4_LIVE_HAPPY, ModSounds.KIRA4_LIVE_HAPPY_ID);
-    public static final RegistryObject<SoundEvent> KIRA4_I_BEAT_THEM_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KIRA4_I_BEAT_THEM_EVENT =
             register(ModSounds.KIRA4_I_BEAT_THEM, ModSounds.KIRA4_I_BEAT_THEM_ID);
-    public static final RegistryObject<SoundEvent> KIRA4_ATTACK_1_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KIRA4_ATTACK_1_EVENT =
             register(ModSounds.KIRA4_ATTACK_1, ModSounds.KIRA4_ATTACK_1_ID);
-    public static final RegistryObject<SoundEvent> KIRA4_ATTACK_2_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KIRA4_ATTACK_2_EVENT =
             register(ModSounds.KIRA4_ATTACK_2, ModSounds.KIRA4_ATTACK_2_ID);
-    public static final RegistryObject<SoundEvent> KIRA4_ATTACK_3_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KIRA4_ATTACK_3_EVENT =
             register(ModSounds.KIRA4_ATTACK_3, ModSounds.KIRA4_ATTACK_3_ID);
-    public static final RegistryObject<SoundEvent> KIRA4_ATTACK_4_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KIRA4_ATTACK_4_EVENT =
             register(ModSounds.KIRA4_ATTACK_4, ModSounds.KIRA4_ATTACK_4_ID);
-    public static final RegistryObject<SoundEvent> KIRA4_SHIBO_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KIRA4_SHIBO_EVENT =
             register(ModSounds.KIRA4_SHIBO, ModSounds.KIRA4_SHIBO_ID);
 
-    public static final RegistryObject<SoundEvent> KIRA4_KILLER_QUEEN_1_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KIRA4_KILLER_QUEEN_1_EVENT =
             register(ModSounds.KIRA4_KILLER_QUEEN_1, ModSounds.KIRA4_KILLER_QUEEN_1_ID);
-    public static final RegistryObject<SoundEvent> KIRA4_KILLER_QUEEN_2_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KIRA4_KILLER_QUEEN_2_EVENT =
             register(ModSounds.KIRA4_KILLER_QUEEN_2, ModSounds.KIRA4_KILLER_QUEEN_2_ID);
-    public static final RegistryObject<SoundEvent> KIRA4_KILLER_QUEEN_3_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KIRA4_KILLER_QUEEN_3_EVENT =
             register(ModSounds.KIRA4_KILLER_QUEEN_3, ModSounds.KIRA4_KILLER_QUEEN_3_ID);
-    public static final RegistryObject<SoundEvent> KIRA4_KILLER_QUEEN_4_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KIRA4_KILLER_QUEEN_4_EVENT =
             register(ModSounds.KIRA4_KILLER_QUEEN_4, ModSounds.KIRA4_KILLER_QUEEN_4_ID);
 
-    public static final RegistryObject<SoundEvent> KIRA4_MONOLOGUE_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KIRA4_MONOLOGUE_EVENT =
             register(ModSounds.KIRA4_MONOLOGUE, ModSounds.KIRA4_MONOLOGUE_ID);
-    public static final RegistryObject<SoundEvent> KIRA4_HAYATO_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KIRA4_HAYATO_EVENT =
             register(ModSounds.KIRA4_HAYATO, ModSounds.KIRA4_HAYATO_ID);
-    public static final RegistryObject<SoundEvent> KIRA4_JOTARO_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KIRA4_JOTARO_EVENT =
             register(ModSounds.KIRA4_JOTARO, ModSounds.KIRA4_JOTARO_ID);
-    public static final RegistryObject<SoundEvent> KIRA4_KOICHI_1_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KIRA4_KOICHI_1_EVENT =
             register(ModSounds.KIRA4_KOICHI_1, ModSounds.KIRA4_KOICHI_1_ID);
-    public static final RegistryObject<SoundEvent> KIRA4_KOICHI_2_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KIRA4_KOICHI_2_EVENT =
             register(ModSounds.KIRA4_KOICHI_2, ModSounds.KIRA4_KOICHI_2_ID);
-    public static final RegistryObject<SoundEvent> KIRA4_JOTARO_SEE_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KIRA4_JOTARO_SEE_EVENT =
             register(ModSounds.KIRA4_JOTARO_SEE, ModSounds.KIRA4_JOTARO_SEE_ID);
-    public static final RegistryObject<SoundEvent> KIRA4_JOTARO_STAND_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KIRA4_JOTARO_STAND_EVENT =
             register(ModSounds.KIRA4_JOTARO_STAND, ModSounds.KIRA4_JOTARO_STAND_ID);
-    public static final RegistryObject<SoundEvent> KIRA4_JOTARO_WATCH_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KIRA4_JOTARO_WATCH_EVENT =
             register(ModSounds.KIRA4_JOTARO_WATCH, ModSounds.KIRA4_JOTARO_WATCH_ID);
-    public static final RegistryObject<SoundEvent> KIRA4_PRIMARY_BOMB_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KIRA4_PRIMARY_BOMB_EVENT =
             register(ModSounds.KIRA4_PRIMARY_BOMB, ModSounds.KIRA4_PRIMARY_BOMB_ID);
 
-    public static final RegistryObject<SoundEvent> KIRA4_SHA_1_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KIRA4_SHA_1_EVENT =
             register(ModSounds.KIRA4_SHA_1, ModSounds.KIRA4_SHA_1_ID);
-    public static final RegistryObject<SoundEvent> KIRA4_SHA_2_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KIRA4_SHA_2_EVENT =
             register(ModSounds.KIRA4_SHA_2, ModSounds.KIRA4_SHA_2_ID);
-    public static final RegistryObject<SoundEvent> KIRA4_SHA_3_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KIRA4_SHA_3_EVENT =
             register(ModSounds.KIRA4_SHA_3, ModSounds.KIRA4_SHA_3_ID);
-    public static final RegistryObject<SoundEvent> KIRA4_BTD_1_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KIRA4_BTD_1_EVENT =
             register(ModSounds.KIRA4_BTD_1, ModSounds.KIRA4_BTD_1_ID);
-    public static final RegistryObject<SoundEvent> KIRA4_PRIMARY_BOMB_2_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KIRA4_PRIMARY_BOMB_2_EVENT =
             register(ModSounds.KIRA4_PRIMARY_BOMB_2, ModSounds.KIRA4_PRIMARY_BOMB_2_ID);
-    public static final RegistryObject<SoundEvent> KIRA4_BTD_RANGE_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KIRA4_BTD_RANGE_EVENT =
             register(ModSounds.KIRA4_BTD_RANGE, ModSounds.KIRA4_BTD_RANGE_ID);
 
 
-    public static final RegistryObject<SoundEvent> EXPLOSIVE_PUNCH_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> EXPLOSIVE_PUNCH_EVENT =
             register(ModSounds.EXPLOSIVE_PUNCH, ModSounds.EXPLOSIVE_PUNCH_ID);
-    public static final RegistryObject<SoundEvent> FIRE_BLAST_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> FIRE_BLAST_EVENT =
             register(ModSounds.FIRE_BLAST, ModSounds.FIRE_BLAST_ID);
-    public static final RegistryObject<SoundEvent> FIRESTORM_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> FIRESTORM_EVENT =
             register(ModSounds.FIRESTORM, ModSounds.FIRESTORM_ID);
-    public static final RegistryObject<SoundEvent> FIRE_WHOOSH_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> FIRE_WHOOSH_EVENT =
             register(ModSounds.FIRE_WHOOSH, ModSounds.FIRE_WHOOSH_ID);
-    public static final RegistryObject<SoundEvent> CROSSFIRE_SHOOT_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> CROSSFIRE_SHOOT_EVENT =
             register(ModSounds.CROSSFIRE_SHOOT, ModSounds.CROSSFIRE_SHOOT_ID);
-    public static final RegistryObject<SoundEvent> CROSSFIRE_EXPLODE_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> CROSSFIRE_EXPLODE_EVENT =
             register(ModSounds.CROSSFIRE_EXPLODE, ModSounds.CROSSFIRE_EXPLODE_ID);
-    public static final RegistryObject<SoundEvent> MAGICIANS_RED_CRY_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> MAGICIANS_RED_CRY_EVENT =
             register(ModSounds.MAGICIANS_RED_CRY, ModSounds.MAGICIANS_RED_CRY_ID);
-    public static final RegistryObject<SoundEvent> MAGICIANS_RED_CRY_2_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> MAGICIANS_RED_CRY_2_EVENT =
             register(ModSounds.MAGICIANS_RED_CRY_2, ModSounds.MAGICIANS_RED_CRY_2_ID);
-    public static final RegistryObject<SoundEvent> MAGICIANS_RED_CRY_3_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> MAGICIANS_RED_CRY_3_EVENT =
             register(ModSounds.MAGICIANS_RED_CRY_3, ModSounds.MAGICIANS_RED_CRY_3_ID);
-    public static final RegistryObject<SoundEvent> MAGICIANS_RED_CHARGE_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> MAGICIANS_RED_CHARGE_EVENT =
             register(ModSounds.MAGICIANS_RED_CHARGE, ModSounds.MAGICIANS_RED_CHARGE_ID);
-    public static final RegistryObject<SoundEvent> FLAMETHROWER_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> FLAMETHROWER_EVENT =
             register(ModSounds.FLAMETHROWER, ModSounds.FLAMETHROWER_ID);
-    public static final RegistryObject<SoundEvent> STAND_FLAME_HIT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> STAND_FLAME_HIT =
             register(ModSounds.STAND_FLAME_HIT, ModSounds.STAND_FLAME_HIT_ID);
-    public static final RegistryObject<SoundEvent> STAND_FIREBALL_SHOOT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> STAND_FIREBALL_SHOOT =
             register(ModSounds.FIREBALL_SHOOT, ModSounds.FIREBALL_SHOOT_ID);
-    public static final RegistryObject<SoundEvent> STAND_FIREBALL_HIT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> STAND_FIREBALL_HIT =
             register(ModSounds.FIREBALL_HIT, ModSounds.FIREBALL_HIT_ID);
-    public static final RegistryObject<SoundEvent> LASSO =
+    public static final DeferredHolder<SoundEvent, SoundEvent> LASSO =
             register(ModSounds.LASSO, ModSounds.LASSO_ID);
-    public static final RegistryObject<SoundEvent> FIRE_STRIKE_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> FIRE_STRIKE_EVENT =
             register(ModSounds.FIRE_STRIKE, ModSounds.FIRE_STRIKE_ID);
-    public static final RegistryObject<SoundEvent> FIRE_STRIKE_LAST_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> FIRE_STRIKE_LAST_EVENT =
             register(ModSounds.FIRE_STRIKE_LAST, ModSounds.FIRE_STRIKE_LAST_ID);
-    public static final RegistryObject<SoundEvent> TWAU_BARRAGE_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> TWAU_BARRAGE_EVENT =
             register(ModSounds.TWAU_BARRAGE, ModSounds.TWAU_BARRAGE_ID);
-    public static final RegistryObject<SoundEvent> TWAU_BARRAGE_2_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> TWAU_BARRAGE_2_EVENT =
             register(ModSounds.TWAU_BARRAGE_2, ModSounds.TWAU_BARRAGE_2_ID);
-    public static final RegistryObject<SoundEvent> TWAU_MUDA_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> TWAU_MUDA_EVENT =
             register(ModSounds.TWAU_MUDA, ModSounds.TWAU_MUDA_ID);
-    public static final RegistryObject<SoundEvent> TWAU_MUDA_2_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> TWAU_MUDA_2_EVENT =
             register(ModSounds.TWAU_MUDA_2, ModSounds.TWAU_MUDA_2_ID);
-    public static final RegistryObject<SoundEvent> TWAU_MUDA_3_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> TWAU_MUDA_3_EVENT =
             register(ModSounds.TWAU_MUDA_3, ModSounds.TWAU_MUDA_3_ID);
-    public static final RegistryObject<SoundEvent> TWAU_WRY_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> TWAU_WRY_EVENT =
             register(ModSounds.TWAU_WRY, ModSounds.TWAU_WRY_ID);
-    public static final RegistryObject<SoundEvent> TWAU_THE_WORLD_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> TWAU_THE_WORLD_EVENT =
             register(ModSounds.TWAU_THE_WORLD, ModSounds.TWAU_THE_WORLD_ID);
-    public static final RegistryObject<SoundEvent> TWAU_HEY_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> TWAU_HEY_EVENT =
             register(ModSounds.TWAU_HEY, ModSounds.TWAU_HEY_ID);
-    public static final RegistryObject<SoundEvent> TWAU_TIMESTOP_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> TWAU_TIMESTOP_EVENT =
             register(ModSounds.TWAU_TIMESTOP, ModSounds.TWAU_TIMESTOP_ID);
-    public static final RegistryObject<SoundEvent> TWAU_TIMESTOP_2_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> TWAU_TIMESTOP_2_EVENT =
             register(ModSounds.TWAU_TIMESTOP_2, ModSounds.TWAU_TIMESTOP_2_ID);
-    public static final RegistryObject<SoundEvent> TWAU_USHA_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> TWAU_USHA_EVENT =
             register(ModSounds.TWAU_USHA, ModSounds.TWAU_USHA_ID);
-    public static final RegistryObject<SoundEvent> DSP_SUMMON_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> DSP_SUMMON_EVENT =
             register(ModSounds.DSP_SUMMON, ModSounds.DSP_SUMMON_ID);
-    public static final RegistryObject<SoundEvent> SUMMON_CALIFORNIA_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> SUMMON_CALIFORNIA_EVENT =
             register(ModSounds.SUMMON_CALIFORNIA, ModSounds.SUMMON_CALIFORNIA_ID);
-    public static final RegistryObject<SoundEvent> CKB_STEAL =
+    public static final DeferredHolder<SoundEvent, SoundEvent> CKB_STEAL =
             register(ModSounds.CKB_STEAL, ModSounds.CKB_STEAL_ID);
-    public static final RegistryObject<SoundEvent> CKB_YES =
+    public static final DeferredHolder<SoundEvent, SoundEvent> CKB_YES =
             register(ModSounds.CKB_YES, ModSounds.CKB_YES_ID);
-    public static final RegistryObject<SoundEvent> CKB_NO =
+    public static final DeferredHolder<SoundEvent, SoundEvent> CKB_NO =
             register(ModSounds.CKB_NO, ModSounds.CKB_NO_ID);
-    public static final RegistryObject<SoundEvent> CKB_ATTACK =
+    public static final DeferredHolder<SoundEvent, SoundEvent> CKB_ATTACK =
             register(ModSounds.CKB_ATTACK, ModSounds.CKB_ATTACK_ID);
-    public static final RegistryObject<SoundEvent> CKB_TILE =
+    public static final DeferredHolder<SoundEvent, SoundEvent> CKB_TILE =
             register(ModSounds.CKB_TILE, ModSounds.CKB_TILE_ID);
-    public static final RegistryObject<SoundEvent> CKB_PLACE =
+    public static final DeferredHolder<SoundEvent, SoundEvent> CKB_PLACE =
             register(ModSounds.CKB_PLACE, ModSounds.CKB_PLACE_ID);
-    public static final RegistryObject<SoundEvent> CHESS_PIECE =
+    public static final DeferredHolder<SoundEvent, SoundEvent> CHESS_PIECE =
             register(ModSounds.CHESS_PIECE, ModSounds.CHESS_PIECE_ID);
-    public static final RegistryObject<SoundEvent> CHESS_PLACE =
+    public static final DeferredHolder<SoundEvent, SoundEvent> CHESS_PLACE =
             register(ModSounds.CHESS_PLACE, ModSounds.CHESS_PLACE_ID);
-    public static final RegistryObject<SoundEvent> CHESS_BREAK =
+    public static final DeferredHolder<SoundEvent, SoundEvent> CHESS_BREAK =
             register(ModSounds.CHESS_BREAK, ModSounds.CHESS_BREAK_ID);
-    public static final RegistryObject<SoundEvent> HEART_SPARKLE =
+    public static final DeferredHolder<SoundEvent, SoundEvent> HEART_SPARKLE =
             register(ModSounds.HEART_SPARKLE, ModSounds.HEART_SPARKLE_ID);
-    public static final RegistryObject<SoundEvent> OVA_PLATINUM_BARRAGE_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> OVA_PLATINUM_BARRAGE_EVENT =
             register(ModSounds.OVA_PLATINUM_BARRAGE, ModSounds.OVA_PLATINUM_BARRAGE_ID);
-    public static final RegistryObject<SoundEvent> OVA_PLATINUM_ORA =
+    public static final DeferredHolder<SoundEvent, SoundEvent> OVA_PLATINUM_ORA =
             register(ModSounds.OVA_PLATINUM_ORA, ModSounds.OVA_PLATINUM_ORA_ID);
-    public static final RegistryObject<SoundEvent> OVA_PLATINUM_ORA_2 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> OVA_PLATINUM_ORA_2 =
             register(ModSounds.OVA_PLATINUM_ORA_2, ModSounds.OVA_PLATINUM_ORA_2_ID);
-    public static final RegistryObject<SoundEvent> OVA_PLATINUM_ORA_3 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> OVA_PLATINUM_ORA_3 =
             register(ModSounds.OVA_PLATINUM_ORA_3, ModSounds.OVA_PLATINUM_ORA_3_ID);
-    public static final RegistryObject<SoundEvent> OVA_PLATINUM_ORA_4 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> OVA_PLATINUM_ORA_4 =
             register(ModSounds.OVA_PLATINUM_ORA_4, ModSounds.OVA_PLATINUM_ORA_4_ID);
-    public static final RegistryObject<SoundEvent> OVA_MUDA_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> OVA_MUDA_EVENT =
             register(ModSounds.OVA_MUDA, ModSounds.OVA_MUDA_ID);
-    public static final RegistryObject<SoundEvent> OVA_MUDA_2_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> OVA_MUDA_2_EVENT =
             register(ModSounds.OVA_MUDA_2, ModSounds.OVA_MUDA_2_ID);
-    public static final RegistryObject<SoundEvent> OVA_BARRAGE_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> OVA_BARRAGE_EVENT =
             register(ModSounds.OVA_BARRAGE, ModSounds.OVA_BARRAGE_ID);
-    public static final RegistryObject<SoundEvent> OVA_BARRAGE_2_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> OVA_BARRAGE_2_EVENT =
             register(ModSounds.OVA_BARRAGE_2, ModSounds.OVA_BARRAGE_2_ID);
-    public static final RegistryObject<SoundEvent> OVA_THE_WORLD_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> OVA_THE_WORLD_EVENT =
             register(ModSounds.OVA_THE_WORLD, ModSounds.OVA_THE_WORLD_ID);
-    public static final RegistryObject<SoundEvent> OVA_THE_WORLD_2_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> OVA_THE_WORLD_2_EVENT =
             register(ModSounds.OVA_THE_WORLD_2, ModSounds.OVA_THE_WORLD_2_ID);
-    public static final RegistryObject<SoundEvent> OVA_SHORT_TS_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> OVA_SHORT_TS_EVENT =
             register(ModSounds.OVA_SHORT_TS, ModSounds.OVA_SHORT_TS_ID);
-    public static final RegistryObject<SoundEvent> OVA_LONG_TS_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> OVA_LONG_TS_EVENT =
             register(ModSounds.OVA_LONG_TS, ModSounds.OVA_LONG_TS_ID);
-    public static final RegistryObject<SoundEvent> OVA_SP_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> OVA_SP_EVENT =
             register(ModSounds.OVA_SP_TS, ModSounds.OVA_SP_TS_ID);
-    public static final RegistryObject<SoundEvent> OVA_TIME_RESUME_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> OVA_TIME_RESUME_EVENT =
             register(ModSounds.OVA_TIME_RESUME, ModSounds.OVA_TIME_RESUME_ID);
-    public static final RegistryObject<SoundEvent> OVA_SUMMON_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> OVA_SUMMON_EVENT =
             register(ModSounds.OVA_SUMMON, ModSounds.OVA_SUMMON_ID);
-    public static final RegistryObject<SoundEvent> SUMMON_MAGICIAN_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> SUMMON_MAGICIAN_EVENT =
             register(ModSounds.SUMMON_MAGICIAN, ModSounds.SUMMON_MAGICIAN_ID);
-    public static final RegistryObject<SoundEvent> SNAP_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> SNAP_EVENT =
             register(ModSounds.SNAP, ModSounds.SNAP_ID);
-    public static final RegistryObject<SoundEvent> OVA_SUMMON_THE_WORLD_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> OVA_SUMMON_THE_WORLD_EVENT =
             register(ModSounds.OVA_SUMMON_THE_WORLD, ModSounds.OVA_SUMMON_THE_WORLD_ID);
-    public static final RegistryObject<SoundEvent> LEVELUP_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> LEVELUP_EVENT =
             register(ModSounds.LEVELUP, ModSounds.LEVELUP_ID);
-    public static final RegistryObject<SoundEvent> UNLOCK_SKIN_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> UNLOCK_SKIN_EVENT =
             register(ModSounds.UNLOCK_SKIN, ModSounds.UNLOCK_SKIN_ID);
 
-    public static final RegistryObject<SoundEvent> HYPNOSIS_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> HYPNOSIS_EVENT =
             register(ModSounds.HYPNOSIS, ModSounds.HYPNOSIS_ID);
-    public static final RegistryObject<SoundEvent> VAMPIRE_AWAKEN_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> VAMPIRE_AWAKEN_EVENT =
             register(ModSounds.VAMPIRE_AWAKEN, ModSounds.VAMPIRE_AWAKEN_ID);
 
-    public static final RegistryObject<SoundEvent> ARCADE_TIMESTOP_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ARCADE_TIMESTOP_EVENT =
             register(ModSounds.ARCADE_TIMESTOP, ModSounds.ARCADE_TIMESTOP_ID);
-    public static final RegistryObject<SoundEvent> ARCADE_TIMESTOP_2_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ARCADE_TIMESTOP_2_EVENT =
             register(ModSounds.ARCADE_TIMESTOP_2, ModSounds.ARCADE_TIMESTOP_2_ID);
-    public static final RegistryObject<SoundEvent> ARCADE_MUDA_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ARCADE_MUDA_EVENT =
             register(ModSounds.ARCADE_MUDA, ModSounds.ARCADE_MUDA_ID);
-    public static final RegistryObject<SoundEvent> ARCADE_MUDA_2_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ARCADE_MUDA_2_EVENT =
             register(ModSounds.ARCADE_MUDA_2, ModSounds.ARCADE_MUDA_2_ID);
-    public static final RegistryObject<SoundEvent> ARCADE_MUDA_3_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ARCADE_MUDA_3_EVENT =
             register(ModSounds.ARCADE_MUDA_3, ModSounds.ARCADE_MUDA_3_ID);
-    public static final RegistryObject<SoundEvent> ARCADE_URI_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ARCADE_URI_EVENT =
             register(ModSounds.ARCADE_URI, ModSounds.ARCADE_URI_ID);
-    public static final RegistryObject<SoundEvent> ARCADE_IMPALE_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ARCADE_IMPALE_EVENT =
             register(ModSounds.ARCADE_IMPALE, ModSounds.ARCADE_IMPALE_ID);
-    public static final RegistryObject<SoundEvent> ARCADE_TIME_RESUME_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ARCADE_TIME_RESUME_EVENT =
             register(ModSounds.ARCADE_TIME_RESUME, ModSounds.ARCADE_TIME_RESUME_ID);
-    public static final RegistryObject<SoundEvent> ARCADE_LONG_TS_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ARCADE_LONG_TS_EVENT =
             register(ModSounds.ARCADE_LONG_TS, ModSounds.ARCADE_LONG_TS_ID);
-    public static final RegistryObject<SoundEvent> ARCADE_SHORT_TS_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ARCADE_SHORT_TS_EVENT =
             register(ModSounds.ARCADE_SHORT_TS, ModSounds.ARCADE_SHORT_TS_ID);
-    public static final RegistryObject<SoundEvent> ARCADE_ORA_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ARCADE_ORA_EVENT =
             register(ModSounds.ARCADE_ORA, ModSounds.ARCADE_ORA_ID);
-    public static final RegistryObject<SoundEvent> ARCADE_ORA_2_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ARCADE_ORA_2_EVENT =
             register(ModSounds.ARCADE_ORA_2, ModSounds.ARCADE_ORA_2_ID);
-    public static final RegistryObject<SoundEvent> ARCADE_ORA_3_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ARCADE_ORA_3_EVENT =
             register(ModSounds.ARCADE_ORA_3, ModSounds.ARCADE_ORA_3_ID);
-    public static final RegistryObject<SoundEvent> ARCADE_STAR_PLATINUM_BARRAGE_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ARCADE_STAR_PLATINUM_BARRAGE_EVENT =
             register(ModSounds.ARCADE_STAR_PLATINUM_BARRAGE, ModSounds.ARCADE_STAR_PLATINUM_BARRAGE_ID);
-    public static final RegistryObject<SoundEvent> ARCADE_STAR_PLATINUM_TIME_STOP_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ARCADE_STAR_PLATINUM_TIME_STOP_EVENT =
             register(ModSounds.ARCADE_STAR_PLATINUM_TIME_STOP, ModSounds.ARCADE_STAR_PLATINUM_TIME_STOP_ID);
-    public static final RegistryObject<SoundEvent> ARCADE_STAR_PLATINUM_SHORT_TS_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ARCADE_STAR_PLATINUM_SHORT_TS_EVENT =
             register(ModSounds.ARCADE_STAR_PLATINUM_SHORT_TS, ModSounds.ARCADE_STAR_PLATINUM_SHORT_TS_ID);
-    public static final RegistryObject<SoundEvent> ARCADE_STAR_FINGER_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ARCADE_STAR_FINGER_EVENT =
             register(ModSounds.ARCADE_STAR_FINGER, ModSounds.ARCADE_STAR_FINGER_ID);
-    public static final RegistryObject<SoundEvent> CINDERELLA_SUMMON_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> CINDERELLA_SUMMON_EVENT =
             register(ModSounds.CINDERELLA_SUMMON, ModSounds.CINDERELLA_SUMMON_ID);
-    public static final RegistryObject<SoundEvent> CINDERELLA_ATTACK_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> CINDERELLA_ATTACK_EVENT =
             register(ModSounds.CINDERELLA_ATTACK, ModSounds.CINDERELLA_ATTACK_ID);
-    public static final RegistryObject<SoundEvent> CINDERELLA_SPARKLE_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> CINDERELLA_SPARKLE_EVENT =
             register(ModSounds.CINDERELLA_SPARKLE, ModSounds.CINDERELLA_SPARKLE_ID);
-    public static final RegistryObject<SoundEvent> CINDERELLA_FAIL_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> CINDERELLA_FAIL_EVENT =
             register(ModSounds.CINDERELLA_FAIL, ModSounds.CINDERELLA_FAIL_ID);
-    public static final RegistryObject<SoundEvent> CINDERELLA_VISAGE_CREATION_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> CINDERELLA_VISAGE_CREATION_EVENT =
             register(ModSounds.CINDERELLA_VISAGE_CREATION, ModSounds.CINDERELLA_VISAGE_CREATION_ID);
 
-    public static final RegistryObject<SoundEvent> RATT_SUMMON_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> RATT_SUMMON_EVENT =
             register(ModSounds.RATT_SUMMON, ModSounds.RATT_SUMMON_ID);
-    public static final RegistryObject<SoundEvent> RATT_PLACE_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> RATT_PLACE_EVENT =
             register(ModSounds.RATT_PLACE, ModSounds.RATT_PLACE_ID);
-    public static final RegistryObject<SoundEvent> RATT_SCOPE_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> RATT_SCOPE_EVENT =
             register(ModSounds.RATT_SCOPE, ModSounds.RATT_SCOPE_ID);
-    public static final RegistryObject<SoundEvent> RATT_DESCOPE_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> RATT_DESCOPE_EVENT =
             register(ModSounds.RATT_DESCOPE, ModSounds.RATT_DESCOPE_ID);
-    public static final RegistryObject<SoundEvent> RATT_THUNK_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> RATT_THUNK_EVENT =
             register(ModSounds.RATT_DART_THUNK, ModSounds.RATT_DART_THUNK_ID);
-    public static final RegistryObject<SoundEvent> RATT_IMPACT_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> RATT_IMPACT_EVENT =
             register(ModSounds.RATT_DART_IMPACT, ModSounds.RATT_DART_IMPACT_ID);
-    public static final RegistryObject<SoundEvent> RATT_LOADING_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> RATT_LOADING_EVENT =
             register(ModSounds.RATT_LOADING, ModSounds.RATT_LOADING_ID);
-    public static final RegistryObject<SoundEvent> RATT_FIRING_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> RATT_FIRING_EVENT =
             register(ModSounds.RATT_FIRING, ModSounds.RATT_FIRING_ID);
-    public static final RegistryObject<SoundEvent> RATT_LEAP_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> RATT_LEAP_EVENT =
             register(ModSounds.RATT_LEAP, ModSounds.RATT_LEAP_ID);
-    public static final RegistryObject<SoundEvent> RATT_MODE_CHANGE =
+    public static final DeferredHolder<SoundEvent, SoundEvent> RATT_MODE_CHANGE =
             register(ModSounds.RATT_MODE_CHANGE, ModSounds.RATT_MODE_CHANGE_ID);
-    public static final RegistryObject<SoundEvent> RATT_BOUNCE =
+    public static final DeferredHolder<SoundEvent, SoundEvent> RATT_BOUNCE =
             register(ModSounds.RATT_BOUNCE, ModSounds.RATT_BOUNCE_ID);
 
-    public static final RegistryObject<SoundEvent> STRAY_CAT_SOUND_1 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> STRAY_CAT_SOUND_1 =
             register(ModSounds.STRAY_CAT_SOUND_1, ModSounds.STRAY_CAT_SOUND_1_ID);
-    public static final RegistryObject<SoundEvent> STRAY_CAT_SOUND_2 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> STRAY_CAT_SOUND_2 =
             register(ModSounds.STRAY_CAT_SOUND_2, ModSounds.STRAY_CAT_SOUND_2_ID);
-    public static final RegistryObject<SoundEvent> STRAY_CAT_SOUND_3 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> STRAY_CAT_SOUND_3 =
             register(ModSounds.STRAY_CAT_SOUND_3, ModSounds.STRAY_CAT_SOUND_3_ID);
 
-    public static final RegistryObject<SoundEvent> ANUBIS_POSSESSION =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ANUBIS_POSSESSION =
             register(ModSounds.ANUBIS_POSSESSION, ModSounds.ANUBIS_POSSESSION_ID);
-    public static final RegistryObject<SoundEvent> ANUBIS_SUMMON =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ANUBIS_SUMMON =
             register(ModSounds.ANUBIS_SUMMON, ModSounds.ANUBIS_SUMMON_ID);
-    public static final RegistryObject<SoundEvent> ANUBIS_ALLURING=
+    public static final DeferredHolder<SoundEvent, SoundEvent> ANUBIS_ALLURING=
             register(ModSounds.ANUBIS_ALLURING, ModSounds.ANUBIS_ALLURING_ID);
-    public static final RegistryObject<SoundEvent> ANUBIS_RAGING=
+    public static final DeferredHolder<SoundEvent, SoundEvent> ANUBIS_RAGING=
             register(ModSounds.ANUBIS_RAGING, ModSounds.ANUBIS_RAGING_ID);
-    public static final RegistryObject<SoundEvent> ANUBIS_BACKFLIP=
+    public static final DeferredHolder<SoundEvent, SoundEvent> ANUBIS_BACKFLIP=
             register(ModSounds.ANUBIS_BACKFLIP, ModSounds.ANUBIS_BACKFLIP_ID);
-    public static final RegistryObject<SoundEvent> ANUBIS_POGO_LAUNCH =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ANUBIS_POGO_LAUNCH =
             register(ModSounds.ANUBIS_POGO_LAUNCH, ModSounds.ANUBIS_POGO_LAUNCH_ID);
-    public static final RegistryObject<SoundEvent> ANUBIS_POGO_HIT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ANUBIS_POGO_HIT =
             register(ModSounds.ANUBIS_POGO_HIT, ModSounds.ANUBIS_POGO_HIT_ID);
-    public static final RegistryObject<SoundEvent> ANUBIS_BARRAGE_1 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ANUBIS_BARRAGE_1 =
             register(ModSounds.ANUBIS_BARRAGE_1, ModSounds.ANUBIS_BARRAGE_1_ID);
-    public static final RegistryObject<SoundEvent> ANUBIS_BARRAGE_1_HIT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ANUBIS_BARRAGE_1_HIT =
             register(ModSounds.ANUBIS_BARRAGE_1_HIT, ModSounds.ANUBIS_BARRAGE_1_HIT_ID);
-    public static final RegistryObject<SoundEvent> ANUBIS_BARRAGE_END =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ANUBIS_BARRAGE_END =
             register(ModSounds.ANUBIS_BARRAGE_END, ModSounds.ANUBIS_BARRAGE_END_ID);
-    public static final RegistryObject<SoundEvent> ANUBIS_SWING =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ANUBIS_SWING =
             register(ModSounds.ANUBIS_SWING, ModSounds.ANUBIS_SWING_ID);
-    public static final RegistryObject<SoundEvent> ANUBIS_CROUCH_SWING =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ANUBIS_CROUCH_SWING =
             register(ModSounds.ANUBIS_CROUCH_SWING, ModSounds.ANUBIS_CROUCH_SWING_ID);
-    public static final RegistryObject<SoundEvent> ANUBIS_DOUBLE_CUT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ANUBIS_DOUBLE_CUT =
             register(ModSounds.ANUBIS_DOUBLE_CUT, ModSounds.ANUBIS_DOUBLE_CUT_ID);
-    public static final RegistryObject<SoundEvent> ANUBIS_THRUST_CUT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ANUBIS_THRUST_CUT =
             register(ModSounds.ANUBIS_THRUST_CUT, ModSounds.ANUBIS_THRUST_CUT_ID);
-    public static final RegistryObject<SoundEvent> ANUBIS_THRUST_MISS =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ANUBIS_THRUST_MISS =
             register(ModSounds.ANUBIS_THRUST_MISS, ModSounds.ANUBIS_THRUST_MISS_ID);
-    public static final RegistryObject<SoundEvent> ANUBIS_UPPERCUT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ANUBIS_UPPERCUT =
             register(ModSounds.ANUBIS_UPPERCUT, ModSounds.ANUBIS_UPPERCUT_ID);
-    public static final RegistryObject<SoundEvent> ANUBIS_SHIELDBREAK =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ANUBIS_SHIELDBREAK =
             register(ModSounds.ANUBIS_SHIELDBREAK, ModSounds.ANUBIS_SHIELDBREAK_ID);
-    public static final RegistryObject<SoundEvent> ANUBIS_EXTRA =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ANUBIS_EXTRA =
             register(ModSounds.ANUBIS_EXTRA, ModSounds.ANUBIS_EXTRA_ID);
-    public static final RegistryObject<SoundEvent> ANUBIS_EMPOWER =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ANUBIS_EMPOWER =
             register(ModSounds.ANUBIS_EMPOWER, ModSounds.ANUBIS_EMPOWER_ID);
 
-    public static final RegistryObject<SoundEvent> TUSK_SAW_MINE =
+    public static final DeferredHolder<SoundEvent, SoundEvent> TUSK_SAW_MINE =
             register(ModSounds.TUSK_SAW_MINE, ModSounds.TUSK_SAW_MINE_ID);
-    public static final RegistryObject<SoundEvent> TUSK_LEAP =
+    public static final DeferredHolder<SoundEvent, SoundEvent> TUSK_LEAP =
             register(ModSounds.TUSK_LEAP, ModSounds.TUSK_LEAP_ID);
-    public static final RegistryObject<SoundEvent> TUSK_SHOCKWAVE =
+    public static final DeferredHolder<SoundEvent, SoundEvent> TUSK_SHOCKWAVE =
             register(ModSounds.TUSK_SHOCKWAVE, ModSounds.TUSK_SHOCKWAVE_ID);
-    public static final RegistryObject<SoundEvent> TUSK_SPIN_THROW =
+    public static final DeferredHolder<SoundEvent, SoundEvent> TUSK_SPIN_THROW =
             register(ModSounds.TUSK_SPIN_THROW, ModSounds.TUSK_SPIN_THROW_ID);
-    public static final RegistryObject<SoundEvent> TUSK_1_SUMMON =
+    public static final DeferredHolder<SoundEvent, SoundEvent> TUSK_1_SUMMON =
             register(ModSounds.TUSK_1_SUMMON, ModSounds.TUSK_1_SUMMON_ID);
-    public static final RegistryObject<SoundEvent> TUSK_2_SUMMON =
+    public static final DeferredHolder<SoundEvent, SoundEvent> TUSK_2_SUMMON =
             register(ModSounds.TUSK_2_SUMMON, ModSounds.TUSK_2_SUMMON_ID);
-    public static final RegistryObject<SoundEvent> TUSK_3_SUMMON =
+    public static final DeferredHolder<SoundEvent, SoundEvent> TUSK_3_SUMMON =
             register(ModSounds.TUSK_3_SUMMON, ModSounds.TUSK_3_SUMMON_ID);
-    public static final RegistryObject<SoundEvent> TUSK_FLATTEN =
+    public static final DeferredHolder<SoundEvent, SoundEvent> TUSK_FLATTEN =
             register(ModSounds.TUSK_FLATTEN, ModSounds.TUSK_FLATTEN_ID);
-    public static final RegistryObject<SoundEvent> TUSK_WARP =
+    public static final DeferredHolder<SoundEvent, SoundEvent> TUSK_WARP =
             register(ModSounds.TUSK_WARP, ModSounds.TUSK_WARP_ID);
-    public static final RegistryObject<SoundEvent> TUSK_4_SUMMON =
+    public static final DeferredHolder<SoundEvent, SoundEvent> TUSK_4_SUMMON =
             register(ModSounds.TUSK_4_SUMMON, ModSounds.TUSK_4_SUMMON_ID);
-    public static final RegistryObject<SoundEvent> TUSK_2_SHOOT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> TUSK_2_SHOOT =
             register(ModSounds.TUSK_2_SHOOT, ModSounds.TUSK_2_SHOOT_ID);
-    public static final RegistryObject<SoundEvent> TUSK_2_CHARGE =
+    public static final DeferredHolder<SoundEvent, SoundEvent> TUSK_2_CHARGE =
             register(ModSounds.TUSK_2_CHARGE, ModSounds.TUSK_2_CHARGE_ID);
-    public static final RegistryObject<SoundEvent> TUSK_1_CHARGE =
+    public static final DeferredHolder<SoundEvent, SoundEvent> TUSK_1_CHARGE =
             register(ModSounds.TUSK_1_CHARGE, ModSounds.TUSK_1_CHARGE_ID);
-    public static final RegistryObject<SoundEvent> TUSK_1_SHOOT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> TUSK_1_SHOOT =
             register(ModSounds.TUSK_1_SHOOT, ModSounds.TUSK_1_SHOOT_ID);
-    public static final RegistryObject<SoundEvent> TUSK_HOLE_MOVE =
+    public static final DeferredHolder<SoundEvent, SoundEvent> TUSK_HOLE_MOVE =
             register(ModSounds.TUSK_HOLE_MOVE, ModSounds.TUSK_HOLE_MOVE_ID);
-    public static final RegistryObject<SoundEvent> TUSK_GRAB =
+    public static final DeferredHolder<SoundEvent, SoundEvent> TUSK_GRAB =
             register(ModSounds.TUSK_GRAB, ModSounds.TUSK_GRAB_ID);
-    public static final RegistryObject<SoundEvent> TUSK_HOLE_IMPACT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> TUSK_HOLE_IMPACT =
             register(ModSounds.TUSK_HOLE_IMPACT, ModSounds.TUSK_HOLE_IMPACT_ID);
-    public static final RegistryObject<SoundEvent> TUSK_REVERSE =
+    public static final DeferredHolder<SoundEvent, SoundEvent> TUSK_REVERSE =
             register(ModSounds.TUSK_REVERSE, ModSounds.TUSK_REVERSE_ID);
-    public static final RegistryObject<SoundEvent> TUSK_ORA_RUSH =
+    public static final DeferredHolder<SoundEvent, SoundEvent> TUSK_ORA_RUSH =
             register(ModSounds.TUSK_ORA_RUSH, ModSounds.TUSK_ORA_RUSH_ID);
-    public static final RegistryObject<SoundEvent> TUSK_FINAL_ORA =
+    public static final DeferredHolder<SoundEvent, SoundEvent> TUSK_FINAL_ORA =
             register(ModSounds.TUSK_FINAL_ORA, ModSounds.TUSK_FINAL_ORA_ID);
-    public static final RegistryObject<SoundEvent> TUSK_WALL_BREAK =
+    public static final DeferredHolder<SoundEvent, SoundEvent> TUSK_WALL_BREAK =
             register(ModSounds.TUSK_WALL_BREAK, ModSounds.TUSK_WALL_BREAK_ID);
-    public static final RegistryObject<SoundEvent> TUSK_ADVANCE =
+    public static final DeferredHolder<SoundEvent, SoundEvent> TUSK_ADVANCE =
             register(ModSounds.TUSK_ADVANCE, ModSounds.TUSK_ADVANCE_ID);
 
 
-    public static final RegistryObject<SoundEvent> SUMMON_PEARL_JAM =
+    public static final DeferredHolder<SoundEvent, SoundEvent> SUMMON_PEARL_JAM =
             register(ModSounds.SUMMON_PEARL_JAM, ModSounds.SUMMON_PEARL_JAM_ID);
-    public static final RegistryObject<SoundEvent> PEARL_JAM_PALM_READ =
+    public static final DeferredHolder<SoundEvent, SoundEvent> PEARL_JAM_PALM_READ =
             register(ModSounds.PEARL_JAM_PALM_READ, ModSounds.PEARL_JAM_PALM_READ_ID);
 
-    public static final RegistryObject<SoundEvent> WH_PUSH =
+    public static final DeferredHolder<SoundEvent, SoundEvent> WH_PUSH =
             register(ModSounds.WH_PUSH, ModSounds.WH_PUSH_ID);
-    public static final RegistryObject<SoundEvent> WH_PULL =
+    public static final DeferredHolder<SoundEvent, SoundEvent> WH_PULL =
             register(ModSounds.WH_PULL, ModSounds.WH_PULL_ID);
 
 
-    public static final RegistryObject<SoundEvent> D4C_MENU_BLOCK_END =
+    public static final DeferredHolder<SoundEvent, SoundEvent> D4C_MENU_BLOCK_END =
             register(ModSounds.D4C_MENU_BLOCK_END, ModSounds.D4C_MENU_BLOCK_END_ID);
-    public static final RegistryObject<SoundEvent> D4C_MENU_BLOCK_START =
+    public static final DeferredHolder<SoundEvent, SoundEvent> D4C_MENU_BLOCK_START =
             register(ModSounds.D4C_MENU_BLOCK_START, ModSounds.D4C_MENU_BLOCK_START_ID);
-    public static final RegistryObject<SoundEvent> D4C_MENU_CLONE_SELECT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> D4C_MENU_CLONE_SELECT =
             register(ModSounds.D4C_MENU_CLONE_SELECT, ModSounds.D4C_MENU_CLONE_SELECT_ID);
-    public static final RegistryObject<SoundEvent> D4C_MENU_CLONE_DESELECT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> D4C_MENU_CLONE_DESELECT =
             register(ModSounds.D4C_MENU_CLONE_DESELECT, ModSounds.D4C_MENU_CLONE_DESELECT_ID);
-    public static final RegistryObject<SoundEvent> D4C_MENU_MASS_SELECT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> D4C_MENU_MASS_SELECT =
             register(ModSounds.D4C_MENU_CLONE_MASS_SELECT, ModSounds.D4C_MENU_CLONE_MASS_SELECT_ID);
-    public static final RegistryObject<SoundEvent> D4C_MENU_CLONE_TASK =
+    public static final DeferredHolder<SoundEvent, SoundEvent> D4C_MENU_CLONE_TASK =
             register(ModSounds.D4C_MENU_CLONE_TASK, ModSounds.D4C_MENU_CLONE_TASK_ID);
-    public static final RegistryObject<SoundEvent> D4C_MENU_TOGGLE_ON =
+    public static final DeferredHolder<SoundEvent, SoundEvent> D4C_MENU_TOGGLE_ON =
             register(ModSounds.D4C_MENU_TOGGLE_ON, ModSounds.D4C_MENU_TOGGLE_ON_ID);
 
-    public static final RegistryObject<SoundEvent> THE_WORLD_OVER_HEAVEN_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> THE_WORLD_OVER_HEAVEN_EVENT =
             register(ModSounds.THE_WORLD_OVER_HEAVEN, ModSounds.THE_WORLD_OVER_HEAVEN_ID);
-    public static final RegistryObject<SoundEvent> EXPLOSIVE_BAT_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> EXPLOSIVE_BAT_EVENT =
             register(ModSounds.EXPLOSIVE_BAT, ModSounds.EXPLOSIVE_BAT_ID);
-    public static final RegistryObject<SoundEvent> FINAL_KICK_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> FINAL_KICK_EVENT =
             register(ModSounds.FINAL_KICK, ModSounds.FINAL_KICK_ID);
-    public static final RegistryObject<SoundEvent> DREAD_SUMMON_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> DREAD_SUMMON_EVENT =
             register(ModSounds.DREAD_SUMMON, ModSounds.DREAD_SUMMON_ID);
-    public static final RegistryObject<SoundEvent> STAND_BARRAGE_HIT2_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> STAND_BARRAGE_HIT2_EVENT =
             register(ModSounds.STAND_BARRAGE_HIT2, ModSounds.STAND_BARRAGE_HIT2_ID);
-    public static final RegistryObject<SoundEvent> STAND_BARRAGE_END_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> STAND_BARRAGE_END_EVENT =
             register(ModSounds.STAND_BARRAGE_END, ModSounds.STAND_BARRAGE_END_ID);
-    public static final RegistryObject<SoundEvent> STAND_GUARD_SOUND_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> STAND_GUARD_SOUND_EVENT =
             register(ModSounds.STAND_GUARD_SOUND, ModSounds.STAND_GUARD_SOUND_ID);
-    public static final RegistryObject<SoundEvent> MELEE_GUARD_SOUND_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> MELEE_GUARD_SOUND_EVENT =
             register(ModSounds.MELEE_GUARD_SOUND, ModSounds.MELEE_GUARD_SOUND_ID);
-    public static final RegistryObject<SoundEvent> HIT_1_SOUND_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> HIT_1_SOUND_EVENT =
             register(ModSounds.HIT_1_SOUND, ModSounds.HIT_1_SOUND_ID);
-    public static final RegistryObject<SoundEvent> TIME_STOP_THE_WORLD_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> TIME_STOP_THE_WORLD_EVENT =
             register(ModSounds.TIME_STOP_THE_WORLD, ModSounds.TIME_STOP_THE_WORLD_ID);
-    public static final RegistryObject<SoundEvent> TIME_STOP_THE_WORLD2_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> TIME_STOP_THE_WORLD2_EVENT =
             register(ModSounds.TIME_STOP_THE_WORLD2, ModSounds.TIME_STOP_THE_WORLD2_ID);
-    public static final RegistryObject<SoundEvent> TIME_STOP_THE_WORLD3_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> TIME_STOP_THE_WORLD3_EVENT =
             register(ModSounds.TIME_STOP_THE_WORLD3, ModSounds.TIME_STOP_THE_WORLD3_ID);
-    public static final RegistryObject<SoundEvent> TIME_STOP_RESUME_THE_WORLD_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> TIME_STOP_RESUME_THE_WORLD_EVENT =
             register(ModSounds.TIME_STOP_RESUME_THE_WORLD, ModSounds.TIME_STOP_RESUME_THE_WORLD_ID);
-    public static final RegistryObject<SoundEvent> TIME_STOP_RESUME_THE_WORLD2_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> TIME_STOP_RESUME_THE_WORLD2_EVENT =
             register(ModSounds.TIME_STOP_RESUME_THE_WORLD2, ModSounds.TIME_STOP_RESUME_THE_WORLD2_ID);
-    public static final RegistryObject<SoundEvent> TIME_STOP_VOICE_THE_WORLD_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> TIME_STOP_VOICE_THE_WORLD_EVENT =
             register(ModSounds.TIME_STOP_VOICE_THE_WORLD, ModSounds.TIME_STOP_VOICE_THE_WORLD_ID);
-    public static final RegistryObject<SoundEvent> TIME_STOP_VOICE_THE_WORLD2_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> TIME_STOP_VOICE_THE_WORLD2_EVENT =
             register(ModSounds.TIME_STOP_VOICE_THE_WORLD2, ModSounds.TIME_STOP_VOICE_THE_WORLD2_ID);
-    public static final RegistryObject<SoundEvent> TIME_STOP_VOICE_THE_WORLD3_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> TIME_STOP_VOICE_THE_WORLD3_EVENT =
             register(ModSounds.TIME_STOP_VOICE_THE_WORLD3, ModSounds.TIME_STOP_VOICE_THE_WORLD3_ID);
-    public static final RegistryObject<SoundEvent> TIME_STOP_CHARGE_THE_WORLD_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> TIME_STOP_CHARGE_THE_WORLD_EVENT =
             register(ModSounds.TIME_STOP_CHARGE_THE_WORLD, ModSounds.TIME_STOP_CHARGE_THE_WORLD_ID);
-    public static final RegistryObject<SoundEvent> TIME_STOP_STAR_PLATINUM_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> TIME_STOP_STAR_PLATINUM_EVENT =
             register(ModSounds.TIME_STOP_STAR_PLATINUM, ModSounds.TIME_STOP_STAR_PLATINUM_ID);
-    public static final RegistryObject<SoundEvent> TIME_RESUME_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> TIME_RESUME_EVENT =
             register(ModSounds.TIME_RESUME, ModSounds.TIME_RESUME_ID);
-    public static final RegistryObject<SoundEvent> TIME_STOP_IMPACT_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> TIME_STOP_IMPACT_EVENT =
             register(ModSounds.TIME_STOP_IMPACT, ModSounds.TIME_STOP_IMPACT_ID);
-    public static final RegistryObject<SoundEvent> TIME_STOP_IMPACT2_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> TIME_STOP_IMPACT2_EVENT =
             register(ModSounds.TIME_STOP_IMPACT2, ModSounds.TIME_STOP_IMPACT2_ID);
-    public static final RegistryObject<SoundEvent> TIME_STOP_TICKING =
+    public static final DeferredHolder<SoundEvent, SoundEvent> TIME_STOP_TICKING =
             register(ModSounds.TIME_STOP_TICKING, ModSounds.TIME_STOP_TICKING_ID);
-    public static final RegistryObject<SoundEvent> CAN_BOUNCE =
+    public static final DeferredHolder<SoundEvent, SoundEvent> CAN_BOUNCE =
             register(ModSounds.CAN_BOUNCE, ModSounds.CAN_BOUNCE_ID);
-    public static final RegistryObject<SoundEvent> CAN_BOUNCE_END =
+    public static final DeferredHolder<SoundEvent, SoundEvent> CAN_BOUNCE_END =
             register(ModSounds.CAN_BOUNCE_END, ModSounds.CAN_BOUNCE_END_ID);
-    public static final RegistryObject<SoundEvent> GASOLINE_EXPLOSION =
+    public static final DeferredHolder<SoundEvent, SoundEvent> GASOLINE_EXPLOSION =
             register(ModSounds.GASOLINE_EXPLOSION, ModSounds.GASOLINE_EXPLOSION_ID);
-    public static final RegistryObject<SoundEvent> GAS_CAN_THROW =
+    public static final DeferredHolder<SoundEvent, SoundEvent> GAS_CAN_THROW =
             register(ModSounds.GAS_CAN_THROW, ModSounds.GAS_CAN_THROW_ID);
-    public static final RegistryObject<SoundEvent> MATCH_THROW =
+    public static final DeferredHolder<SoundEvent, SoundEvent> MATCH_THROW =
             register(ModSounds.MATCH_THROW, ModSounds.MATCH_THROW_ID);
-    public static final RegistryObject<SoundEvent> HARPOON_THROW =
+    public static final DeferredHolder<SoundEvent, SoundEvent> HARPOON_THROW =
             register(ModSounds.HARPOON_THROW, ModSounds.HARPOON_THROW_ID);
-    public static final RegistryObject<SoundEvent> BLOOD_REGEN =
+    public static final DeferredHolder<SoundEvent, SoundEvent> BLOOD_REGEN =
             register(ModSounds.BLOOD_REGEN, ModSounds.BLOOD_REGEN_ID);
-    public static final RegistryObject<SoundEvent> BLOOD_REGEN_FINISH =
+    public static final DeferredHolder<SoundEvent, SoundEvent> BLOOD_REGEN_FINISH =
             register(ModSounds.BLOOD_REGEN_FINISH, ModSounds.BLOOD_REGEN_FINISH_ID);
-    public static final RegistryObject<SoundEvent> HARPOON_HIT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> HARPOON_HIT =
             register(ModSounds.HARPOON_HIT, ModSounds.HARPOON_HIT_ID);
-    public static final RegistryObject<SoundEvent> HARPOON_CRIT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> HARPOON_CRIT =
             register(ModSounds.HARPOON_CRIT, ModSounds.HARPOON_CRIT_ID);
-    public static final RegistryObject<SoundEvent> HARPOON_GROUND =
+    public static final DeferredHolder<SoundEvent, SoundEvent> HARPOON_GROUND =
             register(ModSounds.HARPOON_GROUND, ModSounds.HARPOON_GROUND_ID);
-    public static final RegistryObject<SoundEvent> HARPOON_RETURN =
+    public static final DeferredHolder<SoundEvent, SoundEvent> HARPOON_RETURN =
             register(ModSounds.HARPOON_RETURN, ModSounds.HARPOON_RETURN_ID);
-    public static final RegistryObject<SoundEvent> BOWLER_HAT_AIM =
+    public static final DeferredHolder<SoundEvent, SoundEvent> BOWLER_HAT_AIM =
             register(ModSounds.BOWLER_HAT_AIM_SOUND, ModSounds.BOWLER_HAT_AIM_ID);
-    public static final RegistryObject<SoundEvent> VAMPIRE_DASH =
+    public static final DeferredHolder<SoundEvent, SoundEvent> VAMPIRE_DASH =
             register(ModSounds.VAMPIRE_DASH, ModSounds.VAMPIRE_DASH_ID);
-    public static final RegistryObject<SoundEvent> ICY_WIND =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ICY_WIND =
             register(ModSounds.ICY_WIND, ModSounds.ICY_WIND_ID);
-    public static final RegistryObject<SoundEvent> VAMPIRE_GLEAM =
+    public static final DeferredHolder<SoundEvent, SoundEvent> VAMPIRE_GLEAM =
             register(ModSounds.VAMPIRE_GLEAM, ModSounds.VAMPIRE_GLEAM_ID);
-    public static final RegistryObject<SoundEvent> BOWLER_HAT_FLY =
+    public static final DeferredHolder<SoundEvent, SoundEvent> BOWLER_HAT_FLY =
             register(ModSounds.BOWLER_HAT_FLY_SOUND, ModSounds.BOWLER_HAT_FLY_ID);
-    public static final RegistryObject<SoundEvent> GLAIVE_CHARGE =
+    public static final DeferredHolder<SoundEvent, SoundEvent> GLAIVE_CHARGE =
             register(ModSounds.GLAIVE_CHARGE, ModSounds.GLAIVE_CHARGE_ID);
-    public static final RegistryObject<SoundEvent> GLAIVE_ATTACK =
+    public static final DeferredHolder<SoundEvent, SoundEvent> GLAIVE_ATTACK =
             register(ModSounds.GLAIVE_ATTACK, ModSounds.GLAIVE_ATTACK_ID);
-    public static final RegistryObject<SoundEvent> FOG_CLONE =
+    public static final DeferredHolder<SoundEvent, SoundEvent> FOG_CLONE =
             register(ModSounds.FOG_CLONE, ModSounds.FOG_CLONE_ID);
-    public static final RegistryObject<SoundEvent> POP =
+    public static final DeferredHolder<SoundEvent, SoundEvent> POP =
             register(ModSounds.POP, ModSounds.POP_ID);
-    public static final RegistryObject<SoundEvent> BLOCK_GRAB =
+    public static final DeferredHolder<SoundEvent, SoundEvent> BLOCK_GRAB =
             register(ModSounds.BLOCK_GRAB, ModSounds.BLOCK_GRAB_ID);
-    public static final RegistryObject<SoundEvent> BLOCK_THROW =
+    public static final DeferredHolder<SoundEvent, SoundEvent> BLOCK_THROW =
             register(ModSounds.BLOCK_THROW, ModSounds.BLOCK_THROW_ID);
-    public static final RegistryObject<SoundEvent> ITEM_CATCH =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ITEM_CATCH =
             register(ModSounds.ITEM_CATCH, ModSounds.ITEM_CATCH_ID);
-    public static final RegistryObject<SoundEvent> BALL_BEARING_SHOT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> BALL_BEARING_SHOT =
             register(ModSounds.BALL_BEARING_SHOT, ModSounds.BALL_BEARING_SHOT_ID);
-    public static final RegistryObject<SoundEvent> EVIL_AURA_BLAST =
+    public static final DeferredHolder<SoundEvent, SoundEvent> EVIL_AURA_BLAST =
             register(ModSounds.EVIL_AURA_BLAST, ModSounds.EVIL_AURA_BLAST_ID);
-    public static final RegistryObject<SoundEvent> AURA_IMPACT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> AURA_IMPACT =
             register(ModSounds.AURA_IMPACT, ModSounds.AURA_IMPACT_ID);
-    public static final RegistryObject<SoundEvent> VAMPIRE_CAMO =
+    public static final DeferredHolder<SoundEvent, SoundEvent> VAMPIRE_CAMO =
             register(ModSounds.VAMPIRE_CAMO, ModSounds.VAMPIRE_CAMO_ID);
-    public static final RegistryObject<SoundEvent> HEY_YA_1 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> HEY_YA_1 =
             register(ModSounds.HEY_YA_1, ModSounds.HEY_YA_1_ID);
-    public static final RegistryObject<SoundEvent> HEY_YA_2 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> HEY_YA_2 =
             register(ModSounds.HEY_YA_2, ModSounds.HEY_YA_2_ID);
-    public static final RegistryObject<SoundEvent> HEY_YA_3 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> HEY_YA_3 =
             register(ModSounds.HEY_YA_3, ModSounds.HEY_YA_3_ID);
-    public static final RegistryObject<SoundEvent> HEY_YA_4 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> HEY_YA_4 =
             register(ModSounds.HEY_YA_4, ModSounds.HEY_YA_4_ID);
-    public static final RegistryObject<SoundEvent> HEY_YA_5 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> HEY_YA_5 =
             register(ModSounds.HEY_YA_5, ModSounds.HEY_YA_5_ID);
-    public static final RegistryObject<SoundEvent> HEY_YA_6 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> HEY_YA_6 =
             register(ModSounds.HEY_YA_6, ModSounds.HEY_YA_6_ID);
-    public static final RegistryObject<SoundEvent> HEY_YA_7 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> HEY_YA_7 =
             register(ModSounds.HEY_YA_7, ModSounds.HEY_YA_7_ID);
-    public static final RegistryObject<SoundEvent> HEY_YA_SUMMON =
+    public static final DeferredHolder<SoundEvent, SoundEvent> HEY_YA_SUMMON =
             register(ModSounds.HEY_YA_SUMMON, ModSounds.HEY_YA_SUMMON_ID);
-    public static final RegistryObject<SoundEvent> SURVIVOR_SUMMON =
+    public static final DeferredHolder<SoundEvent, SoundEvent> SURVIVOR_SUMMON =
             register(ModSounds.SURVIVOR_SUMMON, ModSounds.SURVIVOR_SUMMON_ID);
-    public static final RegistryObject<SoundEvent> SURVIVOR_SHOCK =
+    public static final DeferredHolder<SoundEvent, SoundEvent> SURVIVOR_SHOCK =
             register(ModSounds.SURVIVOR_SHOCK, ModSounds.SURVIVOR_SHOCK_ID);
-    public static final RegistryObject<SoundEvent> SURVIVOR_PLACE =
+    public static final DeferredHolder<SoundEvent, SoundEvent> SURVIVOR_PLACE =
             register(ModSounds.SURVIVOR_PLACE, ModSounds.SURVIVOR_PLACE_ID);
-    public static final RegistryObject<SoundEvent> ACHTUNG_BURST =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ACHTUNG_BURST =
             register(ModSounds.ACHTUNG_BURST, ModSounds.ACHTUNG_BURST_ID);
-    public static final RegistryObject<SoundEvent> RIPPER_EYES_BEAM =
+    public static final DeferredHolder<SoundEvent, SoundEvent> RIPPER_EYES_BEAM =
             register(ModSounds.RIPPER_EYES_BEAM, ModSounds.RIPPER_EYES_BEAM_ID);
-    public static final RegistryObject<SoundEvent> RIPPER_EYES_CHARGE =
+    public static final DeferredHolder<SoundEvent, SoundEvent> RIPPER_EYES_CHARGE =
             register(ModSounds.RIPPER_EYES_CHARGE, ModSounds.RIPPER_EYES_CHARGE_ID);
-    public static final RegistryObject<SoundEvent> RIPPER_EYES_SHORT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> RIPPER_EYES_SHORT =
             register(ModSounds.RIPPER_EYES_SHORT, ModSounds.RIPPER_EYES_SHORT_ID);
-    public static final RegistryObject<SoundEvent> EXTEND_SPIKES =
+    public static final DeferredHolder<SoundEvent, SoundEvent> EXTEND_SPIKES =
             register(ModSounds.EXTEND_SPIKES, ModSounds.EXTEND_SPIKES_ID);
-    public static final RegistryObject<SoundEvent> WALL_LATCH =
+    public static final DeferredHolder<SoundEvent, SoundEvent> WALL_LATCH =
             register(ModSounds.WALL_LATCH, ModSounds.WALL_LATCH_ID);
-    public static final RegistryObject<SoundEvent> STONE_MASK_ACTIVATE =
+    public static final DeferredHolder<SoundEvent, SoundEvent> STONE_MASK_ACTIVATE =
             register(ModSounds.STONE_MASK_ACTIVATE, ModSounds.STONE_MASK_ACTIVATE_ID);
-    public static final RegistryObject<SoundEvent> SUMMON_ACHTUNG =
+    public static final DeferredHolder<SoundEvent, SoundEvent> SUMMON_ACHTUNG =
             register(ModSounds.SUMMON_ACHTUNG, ModSounds.SUMMON_ACHTUNG_ID);
-    public static final RegistryObject<SoundEvent> SURVIVOR_REMOVE =
+    public static final DeferredHolder<SoundEvent, SoundEvent> SURVIVOR_REMOVE =
             register(ModSounds.SURVIVOR_REMOVE, ModSounds.SURVIVOR_REMOVE_ID);
 
-        public static final RegistryObject<SoundEvent> SUMMON_DIVER_DOWN =
+        public static final DeferredHolder<SoundEvent, SoundEvent> SUMMON_DIVER_DOWN =
             register(ModSounds.SUMMON_DIVER_DOWN, ModSounds.SUMMON_DIVER_DOWN_ID);
-        public static final RegistryObject<SoundEvent> DIVER_DOWN_HIT =
+        public static final DeferredHolder<SoundEvent, SoundEvent> DIVER_DOWN_HIT =
             register(ModSounds.DIVER_DOWN_HIT, ModSounds.DIVER_DOWN_HIT_ID);
-        public static final RegistryObject<SoundEvent> DIVER_DOWN_HIT_HEAVY =
+        public static final DeferredHolder<SoundEvent, SoundEvent> DIVER_DOWN_HIT_HEAVY =
             register(ModSounds.DIVER_DOWN_HIT_HEAVY, ModSounds.DIVER_DOWN_HIT_HEAVY_ID);
-        public static final RegistryObject<SoundEvent> DIVER_DOWN_UI_SELECT =
+        public static final DeferredHolder<SoundEvent, SoundEvent> DIVER_DOWN_UI_SELECT =
             register(ModSounds.DIVER_DOWN_UI_SELECT, ModSounds.DIVER_DOWN_UI_SELECT_ID);
-        public static final RegistryObject<SoundEvent> DIVER_DOWN_CHARGE =
+        public static final DeferredHolder<SoundEvent, SoundEvent> DIVER_DOWN_CHARGE =
             register(ModSounds.DIVER_DOWN_CHARGE, ModSounds.DIVER_DOWN_CHARGE_ID);
-        public static final RegistryObject<SoundEvent> DIVER_DOWN_DIVE =
+        public static final DeferredHolder<SoundEvent, SoundEvent> DIVER_DOWN_DIVE =
             register(ModSounds.DIVER_DOWN_DIVE, ModSounds.DIVER_DOWN_DIVE_ID);
-        public static final RegistryObject<SoundEvent> DIVER_DOWN_DIVE2 =
+        public static final DeferredHolder<SoundEvent, SoundEvent> DIVER_DOWN_DIVE2 =
             register(ModSounds.DIVER_DOWN_DIVE2, ModSounds.DIVER_DOWN_DIVE2_ID);
-    public static final RegistryObject<SoundEvent> DIVER_DOWN_BARRAGE =
+    public static final DeferredHolder<SoundEvent, SoundEvent> DIVER_DOWN_BARRAGE =
             register(ModSounds.DIVER_DOWN_BARRAGE, ModSounds.DIVER_DOWN_BARRAGE_ID);
-    public static final RegistryObject<SoundEvent> DIVER_DOWN_GROUND_BARRAGE =
+    public static final DeferredHolder<SoundEvent, SoundEvent> DIVER_DOWN_GROUND_BARRAGE =
             register(ModSounds.DIVER_DOWN_GROUND_BARRAGE, ModSounds.DIVER_DOWN_GROUND_BARRAGE_ID);
-    public static final RegistryObject<SoundEvent> DIVER_DOWN_GROUND_DIVE =
+    public static final DeferredHolder<SoundEvent, SoundEvent> DIVER_DOWN_GROUND_DIVE =
             register(ModSounds.DIVER_DOWN_GROUND_DIVE, ModSounds.DIVER_DOWN_GROUND_DIVE_ID);
-    public static final RegistryObject<SoundEvent> DIVER_DOWN_BUBBLING =
+    public static final DeferredHolder<SoundEvent, SoundEvent> DIVER_DOWN_BUBBLING =
             register(ModSounds.DIVER_DOWN_BUBBLING, ModSounds.DIVER_DOWN_BUBBLING_ID);
-    public static final RegistryObject<SoundEvent> DIVER_DOWN_ZIP =
+    public static final DeferredHolder<SoundEvent, SoundEvent> DIVER_DOWN_ZIP =
             register(ModSounds.DIVER_DOWN_ZIP, ModSounds.DIVER_DOWN_ZIP_ID);
-    public static final RegistryObject<SoundEvent> DIVER_DOWN_TRANSFER =
+    public static final DeferredHolder<SoundEvent, SoundEvent> DIVER_DOWN_TRANSFER =
             register(ModSounds.DIVER_DOWN_TRANSFER, ModSounds.DIVER_DOWN_TRANSFER_ID);
-    public static final RegistryObject<SoundEvent> DIVER_DOWN_SPRING =
+    public static final DeferredHolder<SoundEvent, SoundEvent> DIVER_DOWN_SPRING =
             register(ModSounds.DIVER_DOWN_SPRING, ModSounds.DIVER_DOWN_SPRING_ID);
-    public static final RegistryObject<SoundEvent> DIVER_DOWN_RIBCAGE =
+    public static final DeferredHolder<SoundEvent, SoundEvent> DIVER_DOWN_RIBCAGE =
             register(ModSounds.DIVER_DOWN_RIBCAGE, ModSounds.DIVER_DOWN_RIBCAGE_ID);
-    public static final RegistryObject<SoundEvent> DIVER_DOWN_BOMB =
+    public static final DeferredHolder<SoundEvent, SoundEvent> DIVER_DOWN_BOMB =
             register(ModSounds.DIVER_DOWN_BOMB, ModSounds.DIVER_DOWN_BOMB_ID);
-    public static final RegistryObject<SoundEvent> ANASUI_VISAGE_EQUIP =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ANASUI_VISAGE_EQUIP =
             register(ModSounds.ANASUI_VISAGE_EQUIP, ModSounds.ANASUI_VISAGE_EQUIP_ID);
-    public static final RegistryObject<SoundEvent> ANASUI_HURT_1 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ANASUI_HURT_1 =
             register(ModSounds.ANASUI_HURT_1, ModSounds.ANASUI_HURT_1_ID);
-    public static final RegistryObject<SoundEvent> ANASUI_HURT_2 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ANASUI_HURT_2 =
             register(ModSounds.ANASUI_HURT_2, ModSounds.ANASUI_HURT_2_ID);
-    public static final RegistryObject<SoundEvent> ANASUI_HURT_3 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ANASUI_HURT_3 =
             register(ModSounds.ANASUI_HURT_3, ModSounds.ANASUI_HURT_3_ID);
-    public static final RegistryObject<SoundEvent> ANASUI_STAND_SUMMON_1 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ANASUI_STAND_SUMMON_1 =
             register(ModSounds.ANASUI_STAND_SUMMON_1, ModSounds.ANASUI_HURT_1_ID);
-    public static final RegistryObject<SoundEvent> ANASUI_STAND_SUMMON_2 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ANASUI_STAND_SUMMON_2 =
             register(ModSounds.ANASUI_STAND_SUMMON_2, ModSounds.ANASUI_STAND_SUMMON_2_ID);
-    public static final RegistryObject<SoundEvent> ANASUI_KILL_1 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ANASUI_KILL_1 =
             register(ModSounds.ANASUI_KILL_1, ModSounds.ANASUI_KILL_1_ID);
-    public static final RegistryObject<SoundEvent> ANASUI_KILL_2 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ANASUI_KILL_2 =
             register(ModSounds.ANASUI_KILL_2, ModSounds.ANASUI_KILL_2_ID);
-    public static final RegistryObject<SoundEvent> ANASUI_KILL_3 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ANASUI_KILL_3 =
             register(ModSounds.ANASUI_KILL_3, ModSounds.ANASUI_KILL_3_ID);
-    public static final RegistryObject<SoundEvent> ANASUI_KILL_4 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ANASUI_KILL_4 =
             register(ModSounds.ANASUI_KILL_4, ModSounds.ANASUI_KILL_4_ID);
-    public static final RegistryObject<SoundEvent> ANASUI_KILL_5 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ANASUI_KILL_5 =
             register(ModSounds.ANASUI_KILL_5, ModSounds.ANASUI_KILL_5_ID);
-    public static final RegistryObject<SoundEvent> ANASUI_KILL_6 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ANASUI_KILL_6 =
             register(ModSounds.ANASUI_KILL_6, ModSounds.ANASUI_KILL_6_ID);
-    public static final RegistryObject<SoundEvent> ANASUI_IDLE_1 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ANASUI_IDLE_1 =
             register(ModSounds.ANASUI_IDLE_1, ModSounds.ANASUI_IDLE_1_ID);
-    public static final RegistryObject<SoundEvent> ANASUI_IDLE_2 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ANASUI_IDLE_2 =
             register(ModSounds.ANASUI_IDLE_2, ModSounds.ANASUI_IDLE_2_ID);
-    public static final RegistryObject<SoundEvent> ANASUI_IDLE_3 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ANASUI_IDLE_3 =
             register(ModSounds.ANASUI_IDLE_3, ModSounds.ANASUI_IDLE_3_ID);
-    public static final RegistryObject<SoundEvent> ANASUI_IDLE_4 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ANASUI_IDLE_4 =
             register(ModSounds.ANASUI_IDLE_4, ModSounds.ANASUI_IDLE_4_ID);
-    public static final RegistryObject<SoundEvent> ANASUI_IDLE_5 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ANASUI_IDLE_5 =
             register(ModSounds.ANASUI_IDLE_5, ModSounds.ANASUI_IDLE_5_ID);
-    public static final RegistryObject<SoundEvent> ANASUI_IDLE_6 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ANASUI_IDLE_6 =
             register(ModSounds.ANASUI_IDLE_6, ModSounds.ANASUI_IDLE_6_ID);
-    public static final RegistryObject<SoundEvent> ANASUI_IDLE_7 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ANASUI_IDLE_7 =
             register(ModSounds.ANASUI_IDLE_7, ModSounds.ANASUI_IDLE_7_ID);
-    public static final RegistryObject<SoundEvent> ANASUI_DEATH_1 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ANASUI_DEATH_1 =
             register(ModSounds.ANASUI_DEATH_1, ModSounds.ANASUI_DEATH_1_ID);
-    public static final RegistryObject<SoundEvent> ANASUI_DEATH_2=
+    public static final DeferredHolder<SoundEvent, SoundEvent> ANASUI_DEATH_2=
             register(ModSounds.ANASUI_DEATH_2, ModSounds.ANASUI_DEATH_2_ID);
-    public static final RegistryObject<SoundEvent> ANASUI_PHASE_PUNCH=
+    public static final DeferredHolder<SoundEvent, SoundEvent> ANASUI_PHASE_PUNCH=
             register(ModSounds.ANASUI_PHASE_PUNCH, ModSounds.ANASUI_PHASE_PUNCH_ID);
-    public static final RegistryObject<SoundEvent> ANASUI_ZIP_1 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ANASUI_ZIP_1 =
             register(ModSounds.ANASUI_ZIP_1, ModSounds.ANASUI_ZIP_1_ID);
-    public static final RegistryObject<SoundEvent> ANASUI_ZIP_2 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ANASUI_ZIP_2 =
             register(ModSounds.ANASUI_ZIP_2, ModSounds.ANASUI_ZIP_2_ID);
-    public static final RegistryObject<SoundEvent> ANASUI_ZIP_3 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ANASUI_ZIP_3 =
             register(ModSounds.ANASUI_ZIP_3, ModSounds.ANASUI_IDLE_3_ID);
-    public static final RegistryObject<SoundEvent> ANASUI_SUBMERGE =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ANASUI_SUBMERGE =
             register(ModSounds.ANASUI_SUBMERGE, ModSounds.ANASUI_SUBMERGE_ID);
-    public static final RegistryObject<SoundEvent> ANASUI_TRAP_TRIGGER_1 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ANASUI_TRAP_TRIGGER_1 =
             register(ModSounds.ANASUI_TRAP_TRIGGER_1, ModSounds.ANASUI_TRAP_TRIGGER_1_ID);
-    public static final RegistryObject<SoundEvent> ANASUI_TRAP_TRIGGER_2 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ANASUI_TRAP_TRIGGER_2 =
             register(ModSounds.ANASUI_TRAP_TRIGGER_2, ModSounds.ANASUI_TRAP_TRIGGER_2_ID);
-    public static final RegistryObject<SoundEvent> ANASUI_TRAP =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ANASUI_TRAP =
             register(ModSounds.ANASUI_TRAP, ModSounds.ANASUI_TRAP_ID);
-    public static final RegistryObject<SoundEvent> ANASUI_GROUND_DIVE_1 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ANASUI_GROUND_DIVE_1 =
             register(ModSounds.ANASUI_GROUND_DIVE_1, ModSounds.ANASUI_GROUND_DIVE_1_ID);
-    public static final RegistryObject<SoundEvent> ANASUI_GROUND_DIVE_2 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ANASUI_GROUND_DIVE_2 =
             register(ModSounds.ANASUI_GROUND_DIVE_2, ModSounds.ANASUI_GROUND_DIVE_2_ID);
-    public static final RegistryObject<SoundEvent> ANASUI_JOTARO_1 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ANASUI_JOTARO_1 =
             register(ModSounds.ANASUI_JOTARO_1, ModSounds.ANASUI_JOTARO_1_ID);
-    public static final RegistryObject<SoundEvent> ANASUI_JOTARO_2 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ANASUI_JOTARO_2 =
             register(ModSounds.ANASUI_JOTARO_2, ModSounds.ANASUI_JOTARO_2_ID);
-    public static final RegistryObject<SoundEvent> ANASUI_PUCCI_1 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ANASUI_PUCCI_1 =
             register(ModSounds.ANASUI_PUCCI_1, ModSounds.ANASUI_PUCCI_1_ID);
-    public static final RegistryObject<SoundEvent> ANASUI_PUCCI_2 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ANASUI_PUCCI_2 =
             register(ModSounds.ANASUI_PUCCI_2, ModSounds.ANASUI_PUCCI_2_ID);
 
-    public static final RegistryObject<SoundEvent> LYIN_EYES_SUMMON =
+    public static final DeferredHolder<SoundEvent, SoundEvent> LYIN_EYES_SUMMON =
             register(ModSounds.LYIN_EYES_SUMMON, ModSounds.LYIN_EYES_SUMMON_ID);
-    public static final RegistryObject<SoundEvent> VILLAGER_CALLED_OUT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> VILLAGER_CALLED_OUT =
             register(ModSounds.VILLAGER_CALLED_OUT, ModSounds.VILLAGER_CALLED_OUT_ID);
-    public static final RegistryObject<SoundEvent> LYIN_EYES_VISION =
+    public static final DeferredHolder<SoundEvent, SoundEvent> LYIN_EYES_VISION =
             register(ModSounds.LYIN_EYES_VISION, ModSounds.LYIN_EYES_VISION_ID);
-    public static final RegistryObject<SoundEvent> LYIN_EYES_GATHER =
+    public static final DeferredHolder<SoundEvent, SoundEvent> LYIN_EYES_GATHER =
             register(ModSounds.LYIN_EYES_GATHER, ModSounds.LYIN_EYES_GATHER_ID);
 
-    public static final RegistryObject<SoundEvent> SUMMON_GOLD_EXPERIENCE =
+    public static final DeferredHolder<SoundEvent, SoundEvent> SUMMON_GOLD_EXPERIENCE =
             register(ModSounds.SUMMON_GOLD_EXPERIENCE, ModSounds.SUMMON_GOLD_EXPERIENCE_ID);
-    public static final RegistryObject<SoundEvent> GOLD_EXPERIENCE_HIT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> GOLD_EXPERIENCE_HIT =
             register(ModSounds.GOLD_EXPERIENCE_HIT, ModSounds.GOLD_EXPERIENCE_HIT_ID);
-    public static final RegistryObject<SoundEvent> GOLD_EXPERIENCE_LIFE_CREATION =
+    public static final DeferredHolder<SoundEvent, SoundEvent> GOLD_EXPERIENCE_LIFE_CREATION =
             register(ModSounds.GOLD_EXPERIENCE_LIFE_CREATION, ModSounds.GOLD_EXPERIENCE_LIFE_CREATION_ID);
-    public static final RegistryObject<SoundEvent> GOLD_EXPERIENCE_LIFE_PUNCH_WINDUP =
+    public static final DeferredHolder<SoundEvent, SoundEvent> GOLD_EXPERIENCE_LIFE_PUNCH_WINDUP =
             register(ModSounds.GOLD_EXPERIENCE_LIFE_PUNCH_WINDUP, ModSounds.GOLD_EXPERIENCE_LIFE_PUNCH_WINDUP_ID);
-    public static final RegistryObject<SoundEvent> GOLD_EXPERIENCE_LIFE_PUNCH =
+    public static final DeferredHolder<SoundEvent, SoundEvent> GOLD_EXPERIENCE_LIFE_PUNCH =
             register(ModSounds.GOLD_EXPERIENCE_LIFE_PUNCH, ModSounds.GOLD_EXPERIENCE_LIFE_PUNCH_ID);
 
-    public static final RegistryObject<SoundEvent> SUMMON_GREEN_DAY =
+    public static final DeferredHolder<SoundEvent, SoundEvent> SUMMON_GREEN_DAY =
             register(ModSounds.SUMMON_GREEN_DAY, ModSounds.SUMMON_GREEN_DAY_ID);
-    public static final RegistryObject<SoundEvent> GREEN_DAY_SPIN =
+    public static final DeferredHolder<SoundEvent, SoundEvent> GREEN_DAY_SPIN =
             register(ModSounds.GREEN_DAY_ARM_SPIN, ModSounds.GREEN_DAY_ARM_SPIN_ID);
-    public static final RegistryObject<SoundEvent> GREEN_DAY_PUNCH =
+    public static final DeferredHolder<SoundEvent, SoundEvent> GREEN_DAY_PUNCH =
             register(ModSounds.GREEN_DAY_PUNCH, ModSounds.GREEN_DAY_PUNCH_ID);
-    public static final RegistryObject<SoundEvent> GREEN_DAY_HEAVY_PUNCH =
+    public static final DeferredHolder<SoundEvent, SoundEvent> GREEN_DAY_HEAVY_PUNCH =
             register(ModSounds.GREEN_DAY_HEAVY_PUNCH, ModSounds.GREEN_DAY_HEAVY_PUNCH_ID);
-    public static final RegistryObject<SoundEvent> GREEN_DAY_BARRAGE_HIT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> GREEN_DAY_BARRAGE_HIT =
             register(ModSounds.GREEN_DAY_BARRAGE_HIT, ModSounds.GREEN_DAY_BARRAGE_HIT_ID);
-    public static final RegistryObject<SoundEvent> GREEN_DAY_SPLIT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> GREEN_DAY_SPLIT =
             register(ModSounds.GREEN_DAY_SPLIT, ModSounds.GREEN_DAY_SPLIT_ID);
-    public static final RegistryObject<SoundEvent> GREEN_DAY_MOLD_SPREAD =
+    public static final DeferredHolder<SoundEvent, SoundEvent> GREEN_DAY_MOLD_SPREAD =
             register(ModSounds.GREEN_DAY_MOLD_SPREAD, ModSounds.GREEN_DAY_MOLD_SPREAD_ID);
-    public static final RegistryObject<SoundEvent> GREEN_DAY_MOLD_STITCH =
+    public static final DeferredHolder<SoundEvent, SoundEvent> GREEN_DAY_MOLD_STITCH =
             register(ModSounds.GREEN_DAY_STITCH, ModSounds.GREEN_DAY_STITCH_ID);
-    public static final RegistryObject<SoundEvent> SUMMON_KING_CRIMSON =
+    public static final DeferredHolder<SoundEvent, SoundEvent> SUMMON_KING_CRIMSON =
             register(ModSounds.SUMMON_KING_CRIMSON, ModSounds.SUMMON_KING_CRIMSON_ID);
-    public static final RegistryObject<SoundEvent> EPITAPH_ACTIVATE =
+    public static final DeferredHolder<SoundEvent, SoundEvent> EPITAPH_ACTIVATE =
             register(ModSounds.EPITAPH_ACTIVATE, ModSounds.EPITAPH_ACTIVATE_ID);
-    public static final RegistryObject<SoundEvent> EPITAPH_FADE =
+    public static final DeferredHolder<SoundEvent, SoundEvent> EPITAPH_FADE =
             register(ModSounds.EPITAPH_FADE, ModSounds.EPITAPH_FADE_ID);
-    public static final RegistryObject<SoundEvent> D4C_EXPLOSION =
+    public static final DeferredHolder<SoundEvent, SoundEvent> D4C_EXPLOSION =
             register(ModSounds.D4C_EXPLOSION, ModSounds.D4C_EXPLOSION_ID);
-    public static final RegistryObject<SoundEvent> KING_CRIMSON_IMPALE =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KING_CRIMSON_IMPALE =
             register(ModSounds.KING_CRIMSON_IMPALE, ModSounds.KING_CRIMSON_IMPALE_ID);
-    public static final RegistryObject<SoundEvent> KING_CRIMSON_PUNCH =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KING_CRIMSON_PUNCH =
             register(ModSounds.KING_CRIMSON_PUNCH, ModSounds.KING_CRIMSON_PUNCH_ID);
-    public static final RegistryObject<SoundEvent> KING_CRIMSON_PUNCH_2 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KING_CRIMSON_PUNCH_2 =
             register(ModSounds.KING_CRIMSON_PUNCH_2, ModSounds.KING_CRIMSON_PUNCH_2_ID);
-    public static final RegistryObject<SoundEvent> KING_CRIMSON_PUNCH_3 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KING_CRIMSON_PUNCH_3 =
             register(ModSounds.KING_CRIMSON_PUNCH_3, ModSounds.KING_CRIMSON_PUNCH_3_ID);
-    public static final RegistryObject<SoundEvent> KING_CRIMSON_PUNCH_4 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KING_CRIMSON_PUNCH_4 =
             register(ModSounds.KING_CRIMSON_PUNCH_4, ModSounds.KING_CRIMSON_PUNCH_4_ID);
-    public static final RegistryObject<SoundEvent> KING_CRIMSON_PUNCH_5 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> KING_CRIMSON_PUNCH_5 =
             register(ModSounds.KING_CRIMSON_PUNCH_5, ModSounds.KING_CRIMSON_PUNCH_5_ID);
-    public static final RegistryObject<SoundEvent> D4C_PUNCH =
+    public static final DeferredHolder<SoundEvent, SoundEvent> D4C_PUNCH =
             register(ModSounds.D4C_PUNCH, ModSounds.D4C_PUNCH_ID);
-    public static final RegistryObject<SoundEvent> D4C_PUNCH_2 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> D4C_PUNCH_2 =
             register(ModSounds.D4C_PUNCH_2, ModSounds.D4C_PUNCH_2_ID);
-    public static final RegistryObject<SoundEvent> ZOMBIE_CHARGE =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ZOMBIE_CHARGE =
             register(ModSounds.ZOMBIE_CHARGE, ModSounds.ZOMBIE_CHARGE_ID);
-    public static final RegistryObject<SoundEvent> GOAT_CHARGE =
+    public static final DeferredHolder<SoundEvent, SoundEvent> GOAT_CHARGE =
             register(ModSounds.GOAT_CHARGE, ModSounds.GOAT_CHARGE_ID);
-    public static final RegistryObject<SoundEvent> GOAT_DASH =
+    public static final DeferredHolder<SoundEvent, SoundEvent> GOAT_DASH =
             register(ModSounds.GOAT_DASH, ModSounds.GOAT_DASH_ID);
-    public static final RegistryObject<SoundEvent> SUMMON_WALKING =
+    public static final DeferredHolder<SoundEvent, SoundEvent> SUMMON_WALKING =
             register(ModSounds.SUMMON_WALKING, ModSounds.SUMMON_WALKING_ID);
-    public static final RegistryObject<SoundEvent> HEEL_RAISE =
+    public static final DeferredHolder<SoundEvent, SoundEvent> HEEL_RAISE =
             register(ModSounds.HEEL_RAISE, ModSounds.HEEL_RAISE_ID);
-    public static final RegistryObject<SoundEvent> HEEL_STOMP =
+    public static final DeferredHolder<SoundEvent, SoundEvent> HEEL_STOMP =
             register(ModSounds.HEEL_STOMP, ModSounds.HEEL_STOMP_ID);
-    public static final RegistryObject<SoundEvent> SPIKE_HIT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> SPIKE_HIT =
             register(ModSounds.SPIKE_HIT, ModSounds.SPIKE_HIT_ID);
-    public static final RegistryObject<SoundEvent> SPIKE_MISS =
+    public static final DeferredHolder<SoundEvent, SoundEvent> SPIKE_MISS =
             register(ModSounds.SPIKE_MISS, ModSounds.SPIKE_MISS_ID);
-    public static final RegistryObject<SoundEvent> VAMPIRE_DRAIN =
+    public static final DeferredHolder<SoundEvent, SoundEvent> VAMPIRE_DRAIN =
             register(ModSounds.VAMPIRE_DRAIN, ModSounds.VAMPIRE_DRAIN_ID);
-    public static final RegistryObject<SoundEvent> VAMPIRE_CRUMBLE =
+    public static final DeferredHolder<SoundEvent, SoundEvent> VAMPIRE_CRUMBLE =
             register(ModSounds.VAMPIRE_CRUMBLE, ModSounds.VAMPIRE_CRUMBLE_ID);
-    public static final RegistryObject<SoundEvent> VAMPIRE_WALL_GRIP =
+    public static final DeferredHolder<SoundEvent, SoundEvent> VAMPIRE_WALL_GRIP =
             register(ModSounds.VAMPIRE_WALL_GRIP, ModSounds.VAMPIRE_WALL_GRIP_ID);
-    public static final RegistryObject<SoundEvent> HEARTBEAT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> HEARTBEAT =
             register(ModSounds.HEARTBEAT, ModSounds.HEARTBEAT_ID);
-    public static final RegistryObject<SoundEvent> HEARTBEAT2 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> HEARTBEAT2 =
             register(ModSounds.HEARTBEAT2, ModSounds.HEARTBEAT2_ID);
-    public static final RegistryObject<SoundEvent> HEARTBEAT3 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> HEARTBEAT3 =
             register(ModSounds.HEARTBEAT3, ModSounds.HEARTBEAT3_ID);
-    public static final RegistryObject<SoundEvent> VAMPIRE_MESSAGE =
+    public static final DeferredHolder<SoundEvent, SoundEvent> VAMPIRE_MESSAGE =
             register(ModSounds.VAMPIRE_MESSAGE, ModSounds.VAMPIRE_MESSAGE_ID);
-    public static final RegistryObject<SoundEvent> VSONG_SILENT_REVERIES =
+    public static final DeferredHolder<SoundEvent, SoundEvent> VSONG_SILENT_REVERIES =
             register(ModSounds.VSONG_SILENT_REVERIES, ModSounds.VSONG_SILENT_REVERIES_ID);
-    public static final RegistryObject<SoundEvent> VSONG_TWISTED =
+    public static final DeferredHolder<SoundEvent, SoundEvent> VSONG_TWISTED =
             register(ModSounds.VSONG_TWISTED, ModSounds.VSONG_TWISTED_ID);
-    public static final RegistryObject<SoundEvent> VSONG_GOTHIC_ORGAN =
+    public static final DeferredHolder<SoundEvent, SoundEvent> VSONG_GOTHIC_ORGAN =
             register(ModSounds.VSONG_GOTHIC_ORGAN, ModSounds.VSONG_GOTHIC_ORGAN_ID);
-    public static final RegistryObject<SoundEvent> VSONG_BLOODCURDLING_MOMENTS =
+    public static final DeferredHolder<SoundEvent, SoundEvent> VSONG_BLOODCURDLING_MOMENTS =
             register(ModSounds.VSONG_BLOODCURDLING_MOMENTS, ModSounds.VSONG_BLOODCURDLING_MOMENTS_ID);
-    public static final RegistryObject<SoundEvent> VSONG_DAMNABLE_CEREMONY =
+    public static final DeferredHolder<SoundEvent, SoundEvent> VSONG_DAMNABLE_CEREMONY =
             register(ModSounds.VSONG_DAMNABLE_CEREMONY, ModSounds.VSONG_DAMNABLE_CEREMONY_ID);
 
-    public static final RegistryObject<SoundEvent> LAUNCHER_BURST =
+    public static final DeferredHolder<SoundEvent, SoundEvent> LAUNCHER_BURST =
             register(ModSounds.LAUNCHER_BURST, ModSounds.LAUNCHER_BURST_ID);
-    public static final RegistryObject<SoundEvent> LAUNCHER_SHOOT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> LAUNCHER_SHOOT =
             register(ModSounds.LAUNCHER_SHOOT, ModSounds.LAUNCHER_SHOOT_ID);
-    public static final RegistryObject<SoundEvent> SUCTION_LAUNCH =
+    public static final DeferredHolder<SoundEvent, SoundEvent> SUCTION_LAUNCH =
             register(ModSounds.SUCTION_LAUNCH, ModSounds.SUCTION_LAUNCH_ID);
-    public static final RegistryObject<SoundEvent> JUMPIN_JACK_FLASH_SUMMON =
+    public static final DeferredHolder<SoundEvent, SoundEvent> JUMPIN_JACK_FLASH_SUMMON =
             register(ModSounds.JUMPIN_JACK_FLASH_SUMMON, ModSounds.JUMPIN_JACK_FLASH_SUMMON_ID);
 
-    public static final RegistryObject<SoundEvent> BC_UI_SELECT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> BC_UI_SELECT =
             register(ModSounds.BC_UI_SELECT, ModSounds.BC_UI_SELECT_ID);
-    public static final RegistryObject<SoundEvent> BC_SUMMON =
+    public static final DeferredHolder<SoundEvent, SoundEvent> BC_SUMMON =
             register(ModSounds.BC_SUMMON, ModSounds.BC_SUMMON_ID);
-    public static final RegistryObject<SoundEvent> BC_TROOP_SUMMON =
+    public static final DeferredHolder<SoundEvent, SoundEvent> BC_TROOP_SUMMON =
             register(ModSounds.BC_TROOP_SUMMON, ModSounds.BC_TROOP_SUMMON_ID);
-    public static final RegistryObject<SoundEvent> BC_BUNDLE_SUMMON =
+    public static final DeferredHolder<SoundEvent, SoundEvent> BC_BUNDLE_SUMMON =
             register(ModSounds.BC_BUNDLE_SUMMON, ModSounds.BC_BUNDLE_SUMMON_ID);
-    public static final RegistryObject<SoundEvent> BC_HELICOPTER_SUMMON =
+    public static final DeferredHolder<SoundEvent, SoundEvent> BC_HELICOPTER_SUMMON =
             register(ModSounds.BC_HELICOPTER_SUMMON, ModSounds.BC_HELICOPTER_SUMMON_ID);
-    public static final RegistryObject<SoundEvent> BC_TANK_SUMMON =
+    public static final DeferredHolder<SoundEvent, SoundEvent> BC_TANK_SUMMON =
             register(ModSounds.BC_TANK_SUMMON, ModSounds.BC_TANK_SUMMON_ID);
-    public static final RegistryObject<SoundEvent> BC_PARACHUTE_OPEN =
+    public static final DeferredHolder<SoundEvent, SoundEvent> BC_PARACHUTE_OPEN =
             register(ModSounds.BC_PARACHUTE_OPEN, ModSounds.BC_PARACHUTE_OPEN_ID);
-    public static final RegistryObject<SoundEvent> BC_PARACHUTE_LOOP =
+    public static final DeferredHolder<SoundEvent, SoundEvent> BC_PARACHUTE_LOOP =
             register(ModSounds.BC_PARACHUTE_LOOP, ModSounds.BC_PARACHUTE_LOOP_ID);
 
-    public static final RegistryObject<SoundEvent> PLANET_WAVES_SUMMON =
+    public static final DeferredHolder<SoundEvent, SoundEvent> PLANET_WAVES_SUMMON =
             register(ModSounds.PLANET_WAVES_SUMMON, ModSounds.PLANET_WAVES_SUMMON_ID);
-    public static final RegistryObject<SoundEvent> PLANET_WAVES_METEOR_SHOWER =
+    public static final DeferredHolder<SoundEvent, SoundEvent> PLANET_WAVES_METEOR_SHOWER =
             register(ModSounds.PLANET_WAVES_METEOR_SHOWER, ModSounds.PLANET_WAVES_METEOR_SHOWER_ID);
-    public static final RegistryObject<SoundEvent> PLANET_WAVES_BIG_METEOR=
+    public static final DeferredHolder<SoundEvent, SoundEvent> PLANET_WAVES_BIG_METEOR=
             register(ModSounds.PLANET_WAVES_BIG_METEOR, ModSounds.PLANET_WAVES_BIG_METEOR_ID);
-    public static final RegistryObject<SoundEvent> PLANET_WAVES_DISINTEGRTATION=
+    public static final DeferredHolder<SoundEvent, SoundEvent> PLANET_WAVES_DISINTEGRTATION=
             register(ModSounds.PLANET_WAVES_DISINTEGRATION, ModSounds.PLANET_WAVES_DISINTEGRATION_ID);
-    public static final RegistryObject<SoundEvent> PLANET_WAVES_TARGET=
+    public static final DeferredHolder<SoundEvent, SoundEvent> PLANET_WAVES_TARGET=
             register(ModSounds.PLANET_WAVES_TARGET, ModSounds.PLANET_WAVES_TARGET_ID);
 
-    public static final RegistryObject<SoundEvent> PURPLE_HAZE_SUMMON =
+    public static final DeferredHolder<SoundEvent, SoundEvent> PURPLE_HAZE_SUMMON =
             register(ModSounds.PURPLE_HAZE_SUMMON, ModSounds.PURPLE_HAZE_SUMMON_ID);
-    public static final RegistryObject<SoundEvent> PURPLE_HAZE_BARRAGE_CRY =
+    public static final DeferredHolder<SoundEvent, SoundEvent> PURPLE_HAZE_BARRAGE_CRY =
             register(ModSounds.PURPLE_HAZE_BARRAGE_CRY, ModSounds.PURPLE_HAZE_BARRAGE_CRY_ID);
-    public static final RegistryObject<SoundEvent> PURPLE_HAZE_KICK_BARRAGE_CRY =
+    public static final DeferredHolder<SoundEvent, SoundEvent> PURPLE_HAZE_KICK_BARRAGE_CRY =
             register(ModSounds.PURPLE_HAZE_KICK_BARRAGE_CRY, ModSounds.PURPLE_HAZE_KICK_BARRAGE_CRY_ID);
-    public static final RegistryObject<SoundEvent> PURPLE_HAZE_HEAVY_PUNCH =
+    public static final DeferredHolder<SoundEvent, SoundEvent> PURPLE_HAZE_HEAVY_PUNCH =
             register(ModSounds.PURPLE_HAZE_HEAVY_PUNCH, ModSounds.PURPLE_HAZE_HEAVY_PUNCH_ID);
-    public static final RegistryObject<SoundEvent> PURPLE_HAZE_PUNCH =
+    public static final DeferredHolder<SoundEvent, SoundEvent> PURPLE_HAZE_PUNCH =
             register(ModSounds.PURPLE_HAZE_PUNCH, ModSounds.PURPLE_HAZE_PUNCH_ID);
-    public static final RegistryObject<SoundEvent> PURPLE_HAZE_BARRAGE_HIT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> PURPLE_HAZE_BARRAGE_HIT =
             register(ModSounds.PURPLE_HAZE_BARRAGE_HIT, ModSounds.PURPLE_HAZE_BARRAGE_HIT_ID);
-    public static final RegistryObject<SoundEvent> PURPLE_HAZE_BARRAGE_FINISHER =
+    public static final DeferredHolder<SoundEvent, SoundEvent> PURPLE_HAZE_BARRAGE_FINISHER =
             register(ModSounds.PURPLE_HAZE_BARRAGE_FINISHER, ModSounds.PURPLE_HAZE_BARRAGE_FINISHER_ID);
-    public static final RegistryObject<SoundEvent> PURPLE_HAZE_SMOKE=
+    public static final DeferredHolder<SoundEvent, SoundEvent> PURPLE_HAZE_SMOKE=
             register(ModSounds.PURPLE_HAZE_SMOKE, ModSounds.PURPLE_HAZE_SMOKE_ID);
-    public static final RegistryObject<SoundEvent> PURPLE_HAZE_DISTORTION_SMOKE =
+    public static final DeferredHolder<SoundEvent, SoundEvent> PURPLE_HAZE_DISTORTION_SMOKE =
             register(ModSounds.PURPLE_HAZE_DISTORTION_SMOKE, ModSounds.PURPLE_HAZE_DISTORTION_SMOKE_ID);
-    public static final RegistryObject<SoundEvent> PURPLE_HAZE_POD_BITE =
+    public static final DeferredHolder<SoundEvent, SoundEvent> PURPLE_HAZE_POD_BITE =
             register(ModSounds.PURPLE_HAZE_POD_BITE, ModSounds.PURPLE_HAZE_POD_BITE_ID);
-    public static final RegistryObject<SoundEvent> PURPLE_HAZE_POD_LAUNCH =
+    public static final DeferredHolder<SoundEvent, SoundEvent> PURPLE_HAZE_POD_LAUNCH =
                 register(ModSounds.PURPLE_HAZE_POD_LAUNCH, ModSounds.PURPLE_HAZE_POD_LAUNCH_ID);
-    public static final RegistryObject<SoundEvent> PURPLE_HAZE_SWITCH_POD =
+    public static final DeferredHolder<SoundEvent, SoundEvent> PURPLE_HAZE_SWITCH_POD =
                 register(ModSounds.PURPLE_HAZE_SWITCH_POD, ModSounds.PURPLE_HAZE_SWITCH_POD_ID);
-    public static final RegistryObject<SoundEvent> PURPLE_HAZE_STRANGLE_START =
+    public static final DeferredHolder<SoundEvent, SoundEvent> PURPLE_HAZE_STRANGLE_START =
                 register(ModSounds.PURPLE_HAZE_STRANGLE_START, ModSounds.PURPLE_HAZE_STRANGLE_START_ID);
-    public static final RegistryObject<SoundEvent> PURPLE_HAZE_STRANGLE_GRAB =
+    public static final DeferredHolder<SoundEvent, SoundEvent> PURPLE_HAZE_STRANGLE_GRAB =
                 register(ModSounds.PURPLE_HAZE_STRANGLE_GRAB, ModSounds.PURPLE_HAZE_STRANGLE_GRAB_ID);
-    public static final RegistryObject<SoundEvent> PURPLE_HAZE_STRANGLE_RUN =
+    public static final DeferredHolder<SoundEvent, SoundEvent> PURPLE_HAZE_STRANGLE_RUN =
                 register(ModSounds.PURPLE_HAZE_STRANGLE_RUN, ModSounds.PURPLE_HAZE_STRANGLE_RUN_ID);
-    public static final RegistryObject<SoundEvent> PURPLE_HAZE_KICK =
+    public static final DeferredHolder<SoundEvent, SoundEvent> PURPLE_HAZE_KICK =
             register(ModSounds.PURPLE_HAZE_KICK, ModSounds.PURPLE_HAZE_KICK_ID);
-    public static final RegistryObject<SoundEvent> PURPLE_HAZE_PHASE1 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> PURPLE_HAZE_PHASE1 =
             register(ModSounds.PURPLE_HAZE_PHASE_1, ModSounds.PURPLE_HAZE_PHASE_1_ID);
-    public static final RegistryObject<SoundEvent> PURPLE_HAZE_PHASE2 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> PURPLE_HAZE_PHASE2 =
             register(ModSounds.PURPLE_HAZE_PHASE_2, ModSounds.PURPLE_HAZE_PHASE_2_ID);
-    public static final RegistryObject<SoundEvent> PURPLE_HAZE_PHASE_3 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> PURPLE_HAZE_PHASE_3 =
             register(ModSounds.PURPLE_HAZE_PHASE_3, ModSounds.PURPLE_HAZE_PHASE_3_ID);
-    public static final RegistryObject<SoundEvent> PURPLE_HAZE_SPIT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> PURPLE_HAZE_SPIT =
             register(ModSounds.PURPLE_HAZE_SPIT, ModSounds.PURPLE_HAZE_SPIT_ID);
 
-    public static final RegistryObject<SoundEvent> POLNAREFF_SC_ARMOR_OFF =
+    public static final DeferredHolder<SoundEvent, SoundEvent> POLNAREFF_SC_ARMOR_OFF =
                 register(ModSounds.POLNAREFF_SC_ARMOR_OFF, ModSounds.POLNAREFF_SC_ARMOR_OFF_ID);
-    public static final RegistryObject<SoundEvent> POLNAREFF_SC_SUMMON_1 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> POLNAREFF_SC_SUMMON_1 =
                 register(ModSounds.POLNAREFF_SC_SUMMON_1, ModSounds.POLNAREFF_SC_SUMMON_1_ID);
-    public static final RegistryObject<SoundEvent> POLNAREFF_SC_SUMMON_2 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> POLNAREFF_SC_SUMMON_2 =
                 register(ModSounds.POLNAREFF_SC_SUMMON_2, ModSounds.POLNAREFF_SC_SUMMON_2_ID);
-    public static final RegistryObject<SoundEvent> POLNAREFF_SC_HURT_1 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> POLNAREFF_SC_HURT_1 =
                 register(ModSounds.POLNAREFF_SC_HURT_1, ModSounds.POLNAREFF_SC_HURT_1_ID);
-    public static final RegistryObject<SoundEvent> POLNAREFF_SC_HURT_2 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> POLNAREFF_SC_HURT_2 =
                 register(ModSounds.POLNAREFF_SC_HURT_2, ModSounds.POLNAREFF_SC_HURT_2_ID);
-    public static final RegistryObject<SoundEvent> POLNAREFF_SC_IDLE_1 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> POLNAREFF_SC_IDLE_1 =
                 register(ModSounds.POLNAREFF_SC_IDLE_1, ModSounds.POLNAREFF_SC_IDLE_1_ID);
-    public static final RegistryObject<SoundEvent> POLNAREFF_SC_DIE_1 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> POLNAREFF_SC_DIE_1 =
                 register(ModSounds.POLNAREFF_SC_DIE_1, ModSounds.POLNAREFF_SC_DIE_1_ID);
 
-    public static final RegistryObject<SoundEvent> SILVER_CHARIOT_SUMMON =
+    public static final DeferredHolder<SoundEvent, SoundEvent> SILVER_CHARIOT_SUMMON =
             register(ModSounds.SILVER_CHARIOT_SUMMON, ModSounds.SILVER_CHARIOT_SUMMON_ID);
-    public static final RegistryObject<SoundEvent> SILVER_CHARIOT_BARRAGE =
+    public static final DeferredHolder<SoundEvent, SoundEvent> SILVER_CHARIOT_BARRAGE =
             register(ModSounds.SILVER_CHARIOT_BARRAGE, ModSounds.SILVER_CHARIOT_BARRAGE_ID);
-    public static final RegistryObject<SoundEvent> SILVER_CHARIOT_BARRAGE_CRY =
+    public static final DeferredHolder<SoundEvent, SoundEvent> SILVER_CHARIOT_BARRAGE_CRY =
             register(ModSounds.SILVER_CHARIOT_BARRAGE_CRY, ModSounds.SILVER_CHARIOT_BARRAGE_CRY_ID);
-    public static final RegistryObject<SoundEvent> SILVER_CHARIOT_RAPIER_SLASH =
+    public static final DeferredHolder<SoundEvent, SoundEvent> SILVER_CHARIOT_RAPIER_SLASH =
             register(ModSounds.SILVER_CHARIOT_RAPIER_SLASH, ModSounds.SILVER_CHARIOT_RAPIER_SLASH_ID);
-    public static final RegistryObject<SoundEvent> SILVER_CHARIOT_RAPIER_SHOT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> SILVER_CHARIOT_RAPIER_SHOT =
             register(ModSounds.SILVER_CHARIOT_RAPIER_SHOT, ModSounds.SILVER_CHARIOT_RAPIER_SHOT_ID);
-    public static final RegistryObject<SoundEvent> SILVER_CHARIOT_ARMOR_SHED =
+    public static final DeferredHolder<SoundEvent, SoundEvent> SILVER_CHARIOT_ARMOR_SHED =
             register(ModSounds.SILVER_CHARIOT_ARMOR_SHED, ModSounds.SILVER_CHARIOT_ARMOR_SHED_ID);
-    public static final RegistryObject<SoundEvent> SILVER_CHARIOT_OFFHAND_WEAPON =
+    public static final DeferredHolder<SoundEvent, SoundEvent> SILVER_CHARIOT_OFFHAND_WEAPON =
             register(ModSounds.SILVER_CHARIOT_OFFHAND_WEAPON_HIT, ModSounds.SILVER_CHARIOT_OFFHAND_WEAPON_HIT_ID);
-    public static final RegistryObject<SoundEvent> SILVER_CHARIOT_FINAL_HIT_CRY =
+    public static final DeferredHolder<SoundEvent, SoundEvent> SILVER_CHARIOT_FINAL_HIT_CRY =
             register(ModSounds.SILVER_CHARIOT_FINAL_HIT_CRY, ModSounds.SILVER_CHARIOT_FINAL_HIT_CRY_ID);
-    public static final RegistryObject<SoundEvent> SILVER_CHARIOT_HIT_1 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> SILVER_CHARIOT_HIT_1 =
             register(ModSounds.SILVER_CHARIOT_HIT_1, ModSounds.SILVER_CHARIOT_HIT_1_ID);
-    public static final RegistryObject<SoundEvent> SILVER_CHARIOT_HIT_2 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> SILVER_CHARIOT_HIT_2 =
             register(ModSounds.SILVER_CHARIOT_HIT_2, ModSounds.SILVER_CHARIOT_HIT_2_ID);
-    public static final RegistryObject<SoundEvent> SILVER_CHARIOT_HIT_3 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> SILVER_CHARIOT_HIT_3 =
             register(ModSounds.SILVER_CHARIOT_HIT_3, ModSounds.SILVER_CHARIOT_HIT_3_ID);
-    public static final RegistryObject<SoundEvent> SILVER_CHARIOT_HIT_4 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> SILVER_CHARIOT_HIT_4 =
             register(ModSounds.SILVER_CHARIOT_HIT_4, ModSounds.SILVER_CHARIOT_HIT_4_ID);
-    public static final RegistryObject<SoundEvent> SILVER_CHARIOT_AFTERIMAGE =
+    public static final DeferredHolder<SoundEvent, SoundEvent> SILVER_CHARIOT_AFTERIMAGE =
             register(ModSounds.SILVER_CHARIOT_AFTERIMAGE, ModSounds.SILVER_CHARIOT_AFTERIMAGE_ID);
-    public static final RegistryObject<SoundEvent> SILVER_CHARIOT_RAPIER_SHOT_REDIRECT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> SILVER_CHARIOT_RAPIER_SHOT_REDIRECT =
             register(ModSounds.SILVER_CHARIOT_RAPIER_SHOT_REDIRECT, ModSounds.SILVER_CHARIOT_RAPIER_SHOT_REDIRECT_ID);
-    public static final RegistryObject<SoundEvent> SILVER_CHARIOT_RAPIER_SHOT_BLOCK_IMPACT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> SILVER_CHARIOT_RAPIER_SHOT_BLOCK_IMPACT =
             register(ModSounds.SILVER_CHARIOT_RAPIER_SHOT_BLOCK_IMPACT, ModSounds.SILVER_CHARIOT_RAPIER_SHOT_BLOCK_IMPACT_ID);
-    public static final RegistryObject<SoundEvent> SILVER_CHARIOT_RAPIER_SHOT_ENTITY_IMPACT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> SILVER_CHARIOT_RAPIER_SHOT_ENTITY_IMPACT =
             register(ModSounds.SILVER_CHARIOT_RAPIER_SHOT_ENTITY_IMPACT, ModSounds.SILVER_CHARIOT_RAPIER_SHOT_ENTITY_IMPACT_ID);
-    public static final RegistryObject<SoundEvent> SILVER_CHARIOT_STATUE_CUTTING =
+    public static final DeferredHolder<SoundEvent, SoundEvent> SILVER_CHARIOT_STATUE_CUTTING =
             register(ModSounds.SILVER_CHARIOT_STATUE_CUTTING, ModSounds.SILVER_CHARIOT_STATUE_CUTTING_ID);
-    public static final RegistryObject<SoundEvent> SILVER_CHARIOT_SLAB_CUTTING =
+    public static final DeferredHolder<SoundEvent, SoundEvent> SILVER_CHARIOT_SLAB_CUTTING =
             register(ModSounds.SILVER_CHARIOT_SLAB_CUTTING, ModSounds.SILVER_CHARIOT_SLAB_CUTTING_ID);
-    public static final RegistryObject<SoundEvent> SILVER_CHARIOT_SELF_GRAB =
+    public static final DeferredHolder<SoundEvent, SoundEvent> SILVER_CHARIOT_SELF_GRAB =
             register(ModSounds.SILVER_CHARIOT_SELF_GRAB, ModSounds.SILVER_CHARIOT_SELF_GRAB_ID);
-    public static final RegistryObject<SoundEvent> SILVER_CHARIOT_SELF_THROW =
+    public static final DeferredHolder<SoundEvent, SoundEvent> SILVER_CHARIOT_SELF_THROW =
             register(ModSounds.SILVER_CHARIOT_SELF_THROW, ModSounds.SILVER_CHARIOT_SELF_THROW_ID);
-    public static final RegistryObject<SoundEvent> SILVER_CHARIOT_RAPIER_SPIN =
+    public static final DeferredHolder<SoundEvent, SoundEvent> SILVER_CHARIOT_RAPIER_SPIN =
             register(ModSounds.SILVER_CHARIOT_RAPIER_SPIN, ModSounds.SILVER_CHARIOT_RAPIER_SPIN_ID);
-    public static final RegistryObject<SoundEvent> SILVER_CHARIOT_VAULT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> SILVER_CHARIOT_VAULT =
             register(ModSounds.SILVER_CHARIOT_VAULT, ModSounds.SILVER_CHARIOT_VAULT_ID);
-    public static final RegistryObject<SoundEvent> SILVER_CHARIOT_REBOUND =
+    public static final DeferredHolder<SoundEvent, SoundEvent> SILVER_CHARIOT_REBOUND =
             register(ModSounds.SILVER_CHARIOT_REBOUND, ModSounds.SILVER_CHARIOT_REBOUND_ID);
 
-    public static final RegistryObject<SoundEvent> EMPEROR_SUMMON =
+    public static final DeferredHolder<SoundEvent, SoundEvent> EMPEROR_SUMMON =
             register(ModSounds.EMPEROR_SUMMON, ModSounds.EMPEROR_SUMMON_ID);
-    public static final RegistryObject<SoundEvent> EMPEROR_IMPACT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> EMPEROR_IMPACT =
             register(ModSounds.EMPEROR_IMPACT, ModSounds.EMPEROR_IMPACT_ID);
-    public static final RegistryObject<SoundEvent> EMPEROR_SHOOT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> EMPEROR_SHOOT =
             register(ModSounds.EMPEROR_SHOOT, ModSounds.EMPEROR_SHOOT_ID);
-    public static final RegistryObject<SoundEvent> EMPEROR_HEADSHOT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> EMPEROR_HEADSHOT =
             register(ModSounds.EMPEROR_HEADSHOT, ModSounds.EMPEROR_HEADSHOT_ID);
-    public static final RegistryObject<SoundEvent> EMPEROR_METAL =
+    public static final DeferredHolder<SoundEvent, SoundEvent> EMPEROR_METAL =
             register(ModSounds.EMPEROR_METAL, ModSounds.EMPEROR_METAL_ID);
-    public static final RegistryObject<SoundEvent> EMPEROR_NON_BLEED =
+    public static final DeferredHolder<SoundEvent, SoundEvent> EMPEROR_NON_BLEED =
             register(ModSounds.EMPEROR_NON_BLEED, ModSounds.EMPEROR_NON_BLEED_ID);
-    public static final RegistryObject<SoundEvent> EMPEROR_SQUINT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> EMPEROR_SQUINT =
             register(ModSounds.EMPEROR_SQUINT, ModSounds.EMPEROR_SQUINT_ID);
 
 
-    public static final RegistryObject<SoundEvent> DIO_HOHO =
+    public static final DeferredHolder<SoundEvent, SoundEvent> DIO_HOHO =
             register(ModSounds.DIO_HOHO, ModSounds.DIO_HOHO_ID);
-    public static final RegistryObject<SoundEvent> DIO_DEATH =
+    public static final DeferredHolder<SoundEvent, SoundEvent> DIO_DEATH =
             register(ModSounds.DIO_DEATH, ModSounds.DIO_DEATH_ID);
-    public static final RegistryObject<SoundEvent> DIO_HOHO_2 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> DIO_HOHO_2 =
             register(ModSounds.DIO_HOHO_2, ModSounds.DIO_HOHO_2_ID);
-    public static final RegistryObject<SoundEvent> DIO_DEATH_2 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> DIO_DEATH_2 =
             register(ModSounds.DIO_DEATH_2, ModSounds.DIO_DEATH_2_ID);
-    public static final RegistryObject<SoundEvent> DIO_KUREI =
+    public static final DeferredHolder<SoundEvent, SoundEvent> DIO_KUREI =
             register(ModSounds.DIO_KUREI, ModSounds.DIO_KUREI_ID);
-    public static final RegistryObject<SoundEvent> DIO_HURT_1 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> DIO_HURT_1 =
             register(ModSounds.DIO_HURT_1, ModSounds.DIO_HURT_1_ID);
-    public static final RegistryObject<SoundEvent> DIO_HURT_2 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> DIO_HURT_2 =
             register(ModSounds.DIO_HURT_2, ModSounds.DIO_HURT_2_ID);
-    public static final RegistryObject<SoundEvent> DIO_HURT_3 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> DIO_HURT_3 =
             register(ModSounds.DIO_HURT_3, ModSounds.DIO_HURT_3_ID);
-    public static final RegistryObject<SoundEvent> DIO_HURT_4 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> DIO_HURT_4 =
             register(ModSounds.DIO_HURT_4, ModSounds.DIO_HURT_4_ID);
-    public static final RegistryObject<SoundEvent> DIO_LAUGH =
+    public static final DeferredHolder<SoundEvent, SoundEvent> DIO_LAUGH =
             register(ModSounds.DIO_LAUGH, ModSounds.DIO_LAUGH_ID);
-    public static final RegistryObject<SoundEvent> DIO_SUBERASHI =
+    public static final DeferredHolder<SoundEvent, SoundEvent> DIO_SUBERASHI =
             register(ModSounds.DIO_SUBERASHI, ModSounds.DIO_SUBERASHI_ID);
-    public static final RegistryObject<SoundEvent> DIO_APPROACHING_ME =
+    public static final DeferredHolder<SoundEvent, SoundEvent> DIO_APPROACHING_ME =
             register(ModSounds.DIO_APPROACHING_ME, ModSounds.DIO_APPROACHING_ME_ID);
-    public static final RegistryObject<SoundEvent> DIO_WRY =
+    public static final DeferredHolder<SoundEvent, SoundEvent> DIO_WRY =
             register(ModSounds.DIO_WRY, ModSounds.DIO_WRY_ID);
-    public static final RegistryObject<SoundEvent> DIO_SHINE =
+    public static final DeferredHolder<SoundEvent, SoundEvent> DIO_SHINE =
             register(ModSounds.DIO_SHINE, ModSounds.DIO_SHINE_ID);
-    public static final RegistryObject<SoundEvent> DIO_CHECKMATE =
+    public static final DeferredHolder<SoundEvent, SoundEvent> DIO_CHECKMATE =
             register(ModSounds.DIO_CHECKMATE, ModSounds.DIO_CHECKMATE_ID);
-    public static final RegistryObject<SoundEvent> DIO_NANI =
+    public static final DeferredHolder<SoundEvent, SoundEvent> DIO_NANI =
             register(ModSounds.DIO_NANI, ModSounds.DIO_NANI_ID);
-    public static final RegistryObject<SoundEvent> DIO_KONO_DIO =
+    public static final DeferredHolder<SoundEvent, SoundEvent> DIO_KONO_DIO =
             register(ModSounds.DIO_KONO_DIO, ModSounds.DIO_KONO_DIO_ID);
-    public static final RegistryObject<SoundEvent> DIO_NO_WAY =
+    public static final DeferredHolder<SoundEvent, SoundEvent> DIO_NO_WAY =
             register(ModSounds.DIO_NO_WAY, ModSounds.DIO_NO_WAY_ID);
-    public static final RegistryObject<SoundEvent> DIO_ATTACK =
+    public static final DeferredHolder<SoundEvent, SoundEvent> DIO_ATTACK =
             register(ModSounds.DIO_ATTACK, ModSounds.DIO_ATTACK_ID);
-    public static final RegistryObject<SoundEvent> DIO_ATTACK_2 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> DIO_ATTACK_2 =
             register(ModSounds.DIO_ATTACK_2, ModSounds.DIO_ATTACK_2_ID);
-    public static final RegistryObject<SoundEvent> DIO_THE_WORLD =
+    public static final DeferredHolder<SoundEvent, SoundEvent> DIO_THE_WORLD =
             register(ModSounds.DIO_THE_WORLD, ModSounds.DIO_THE_WORLD_ID);
-    public static final RegistryObject<SoundEvent> DIO_THE_WORLD_2 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> DIO_THE_WORLD_2 =
             register(ModSounds.DIO_THE_WORLD_2, ModSounds.DIO_THE_WORLD_2_ID);
-    public static final RegistryObject<SoundEvent> DIO_THE_WORLD_3 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> DIO_THE_WORLD_3 =
             register(ModSounds.DIO_THE_WORLD_3, ModSounds.DIO_THE_WORLD_3_ID);
-    public static final RegistryObject<SoundEvent> DIO_THE_WORLD_4 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> DIO_THE_WORLD_4 =
             register(ModSounds.DIO_THE_WORLD_4, ModSounds.DIO_THE_WORLD_4_ID);
-    public static final RegistryObject<SoundEvent> DIO_TAUNT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> DIO_TAUNT =
             register(ModSounds.DIO_TAUNT, ModSounds.DIO_TAUNT_ID);
-    public static final RegistryObject<SoundEvent> DIO_INTERESTING =
+    public static final DeferredHolder<SoundEvent, SoundEvent> DIO_INTERESTING =
             register(ModSounds.DIO_INTERESTING, ModSounds.DIO_INTERESTING_ID);
-    public static final RegistryObject<SoundEvent> DIO_JOTARO =
+    public static final DeferredHolder<SoundEvent, SoundEvent> DIO_JOTARO =
             register(ModSounds.DIO_JOTARO, ModSounds.DIO_JOTARO_ID);
-    public static final RegistryObject<SoundEvent> DIO_JOTARO_2 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> DIO_JOTARO_2 =
             register(ModSounds.DIO_JOTARO_2, ModSounds.DIO_JOTARO_2_ID);
 
 
-    public static final RegistryObject<SoundEvent> DIEGO_HOHO =
+    public static final DeferredHolder<SoundEvent, SoundEvent> DIEGO_HOHO =
             register(ModSounds.DIEGO_HO, ModSounds.DIEGO_HO_ID);
-    public static final RegistryObject<SoundEvent> DIEGO_DEATH =
+    public static final DeferredHolder<SoundEvent, SoundEvent> DIEGO_DEATH =
             register(ModSounds.DIEGO_DEATH, ModSounds.DIEGO_DEATH_ID);
-    public static final RegistryObject<SoundEvent> DIEGO_HOHO_2 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> DIEGO_HOHO_2 =
             register(ModSounds.DIEGO_HO_2, ModSounds.DIEGO_HO_2_ID);
-    public static final RegistryObject<SoundEvent> DIEGO_DEATH_2 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> DIEGO_DEATH_2 =
             register(ModSounds.DIEGO_DEATH_2, ModSounds.DIEGO_DEATH_2_ID);
-    public static final RegistryObject<SoundEvent> DIEGO_KUREI =
+    public static final DeferredHolder<SoundEvent, SoundEvent> DIEGO_KUREI =
             register(ModSounds.DIEGO_KUREI, ModSounds.DIEGO_KUREI_ID);
-    public static final RegistryObject<SoundEvent> DIEGO_HURT_1 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> DIEGO_HURT_1 =
             register(ModSounds.DIEGO_HURT_1, ModSounds.DIEGO_HURT_1_ID);
-    public static final RegistryObject<SoundEvent> DIEGO_HURT_2 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> DIEGO_HURT_2 =
             register(ModSounds.DIEGO_HURT_2, ModSounds.DIEGO_HURT_2_ID);
-    public static final RegistryObject<SoundEvent> DIEGO_HURT_3 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> DIEGO_HURT_3 =
             register(ModSounds.DIEGO_HURT_3, ModSounds.DIEGO_HURT_3_ID);
-    public static final RegistryObject<SoundEvent> DIEGO_HURT_4 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> DIEGO_HURT_4 =
             register(ModSounds.DIEGO_HURT_4, ModSounds.DIEGO_HURT_4_ID);
-    public static final RegistryObject<SoundEvent> DIEGO_LAUGH =
+    public static final DeferredHolder<SoundEvent, SoundEvent> DIEGO_LAUGH =
             register(ModSounds.DIEGO_LAUGH, ModSounds.DIEGO_LAUGH_ID);
-    public static final RegistryObject<SoundEvent> DIEGO_WRY =
+    public static final DeferredHolder<SoundEvent, SoundEvent> DIEGO_WRY =
             register(ModSounds.DIEGO_WRY, ModSounds.DIEGO_WRY_ID);
-    public static final RegistryObject<SoundEvent> DIEGO_SHINE =
+    public static final DeferredHolder<SoundEvent, SoundEvent> DIEGO_SHINE =
             register(ModSounds.DIEGO_SHINE, ModSounds.DIEGO_SHINE_ID);
-    public static final RegistryObject<SoundEvent> DIEGO_CHECKMATE =
+    public static final DeferredHolder<SoundEvent, SoundEvent> DIEGO_CHECKMATE =
             register(ModSounds.DIEGO_CHECKMATE, ModSounds.DIEGO_CHECKMATE_ID);
-    public static final RegistryObject<SoundEvent> DIEGO_NANI =
+    public static final DeferredHolder<SoundEvent, SoundEvent> DIEGO_NANI =
             register(ModSounds.DIEGO_NANI, ModSounds.DIEGO_NANI_ID);
-    public static final RegistryObject<SoundEvent> DIEGO_KONO_DIO =
+    public static final DeferredHolder<SoundEvent, SoundEvent> DIEGO_KONO_DIO =
             register(ModSounds.DIEGO_KONO_DIO, ModSounds.DIEGO_KONO_DIEGO_ID);
-    public static final RegistryObject<SoundEvent> DIEGO_NO_WAY =
+    public static final DeferredHolder<SoundEvent, SoundEvent> DIEGO_NO_WAY =
             register(ModSounds.DIEGO_NO_WAY, ModSounds.DIEGO_NO_WAY_ID);
-    public static final RegistryObject<SoundEvent> DIEGO_ATTACK =
+    public static final DeferredHolder<SoundEvent, SoundEvent> DIEGO_ATTACK =
             register(ModSounds.DIEGO_ATTACK, ModSounds.DIEGO_ATTACK_ID);
-    public static final RegistryObject<SoundEvent> DIEGO_ATTACK_2 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> DIEGO_ATTACK_2 =
             register(ModSounds.DIEGO_ATTACK_2, ModSounds.DIEGO_ATTACK_2_ID);
-    public static final RegistryObject<SoundEvent> DIEGO_THE_WORLD =
+    public static final DeferredHolder<SoundEvent, SoundEvent> DIEGO_THE_WORLD =
             register(ModSounds.DIEGO_THE_WORLD, ModSounds.DIEGO_THE_WORLD_ID);
-    public static final RegistryObject<SoundEvent> DIEGO_THE_WORLD_2 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> DIEGO_THE_WORLD_2 =
             register(ModSounds.DIEGO_THE_WORLD_2, ModSounds.DIEGO_THE_WORLD_2_ID);
-    public static final RegistryObject<SoundEvent> DIEGO_THE_WORLD_3 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> DIEGO_THE_WORLD_3 =
             register(ModSounds.DIEGO_THE_WORLD_3, ModSounds.DIEGO_THE_WORLD_3_ID);
-    public static final RegistryObject<SoundEvent> DIEGO_THE_WORLD_4 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> DIEGO_THE_WORLD_4 =
             register(ModSounds.DIEGO_THE_WORLD_4, ModSounds.DIEGO_THE_WORLD_4_ID);
-    public static final RegistryObject<SoundEvent> DIEGO_TAUNT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> DIEGO_TAUNT =
             register(ModSounds.DIEGO_TAUNT, ModSounds.DIEGO_TAUNT_ID);
-    public static final RegistryObject<SoundEvent> DIEGO_INTERESTING =
+    public static final DeferredHolder<SoundEvent, SoundEvent> DIEGO_INTERESTING =
             register(ModSounds.DIEGO_INTERESTING, ModSounds.DIEGO_INTERESTING_ID);
 
-    public static final RegistryObject<SoundEvent> VAMPIRE_DIVE =
+    public static final DeferredHolder<SoundEvent, SoundEvent> VAMPIRE_DIVE =
             register(ModSounds.VAMPIRE_DIVE, ModSounds.VAMPIRE_DIVE_ID);
 
-    public static final RegistryObject<SoundEvent> JOTARO_HURT_1 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> JOTARO_HURT_1 =
             register(ModSounds.JOTARO_HURT_1, ModSounds.JOTARO_HURT_1_ID);
-    public static final RegistryObject<SoundEvent> JOTARO_HURT_2 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> JOTARO_HURT_2 =
             register(ModSounds.JOTARO_HURT_2, ModSounds.JOTARO_HURT_2_ID);
-    public static final RegistryObject<SoundEvent> JOTARO_HURT_3 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> JOTARO_HURT_3 =
             register(ModSounds.JOTARO_HURT_3, ModSounds.JOTARO_HURT_3_ID);
-    public static final RegistryObject<SoundEvent> JOTARO_HURT_4 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> JOTARO_HURT_4 =
             register(ModSounds.JOTARO_HURT_4, ModSounds.JOTARO_HURT_4_ID);
-    public static final RegistryObject<SoundEvent> JOTARO_HURT_5 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> JOTARO_HURT_5 =
             register(ModSounds.JOTARO_HURT_5, ModSounds.JOTARO_HURT_5_ID);
-    public static final RegistryObject<SoundEvent> JOTARO_DEATH_1 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> JOTARO_DEATH_1 =
             register(ModSounds.JOTARO_DEATH_1, ModSounds.JOTARO_DEATH_1_ID);
-    public static final RegistryObject<SoundEvent> JOTARO_DEATH_2 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> JOTARO_DEATH_2 =
             register(ModSounds.JOTARO_DEATH_2, ModSounds.JOTARO_DEATH_2_ID);
-    public static final RegistryObject<SoundEvent> JOTARO_GRUNT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> JOTARO_GRUNT =
             register(ModSounds.JOTARO_GRUNT, ModSounds.JOTARO_GRUNT_ID);
-    public static final RegistryObject<SoundEvent> JOTARO_OI_OI =
+    public static final DeferredHolder<SoundEvent, SoundEvent> JOTARO_OI_OI =
             register(ModSounds.JOTARO_OI_OI, ModSounds.JOTARO_OI_OI_ID);
-    public static final RegistryObject<SoundEvent> JOTARO_STAR_PLATINUM_1 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> JOTARO_STAR_PLATINUM_1 =
             register(ModSounds.JOTARO_STAR_PLATINUM_1, ModSounds.JOTARO_STAR_PLATINUM_1_ID);
-    public static final RegistryObject<SoundEvent> JOTARO_STAR_PLATINUM_2 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> JOTARO_STAR_PLATINUM_2 =
             register(ModSounds.JOTARO_STAR_PLATINUM_2, ModSounds.JOTARO_STAR_PLATINUM_2_ID);
-    public static final RegistryObject<SoundEvent> JOTARO_STAR_PLATINUM_3 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> JOTARO_STAR_PLATINUM_3 =
             register(ModSounds.JOTARO_STAR_PLATINUM_3, ModSounds.JOTARO_STAR_PLATINUM_3_ID);
-    public static final RegistryObject<SoundEvent> JOTARO_STAR_PLATINUM_4 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> JOTARO_STAR_PLATINUM_4 =
             register(ModSounds.JOTARO_STAR_PLATINUM_4, ModSounds.JOTARO_STAR_PLATINUM_4_ID);
-    public static final RegistryObject<SoundEvent> JOTARO_PISSED_OFF =
+    public static final DeferredHolder<SoundEvent, SoundEvent> JOTARO_PISSED_OFF =
             register(ModSounds.JOTARO_PISSED_OFF, ModSounds.JOTARO_PISSED_OFF_ID);
-    public static final RegistryObject<SoundEvent> JOTARO_JUDGEMENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> JOTARO_JUDGEMENT =
             register(ModSounds.JOTARO_JUDGEMENT, ModSounds.JOTARO_JUDGEMENT_ID);
-    public static final RegistryObject<SoundEvent> JOTARO_YARE_YARE =
+    public static final DeferredHolder<SoundEvent, SoundEvent> JOTARO_YARE_YARE =
             register(ModSounds.JOTARO_YARE_YARE, ModSounds.JOTARO_YARE_YARE_ID);
-    public static final RegistryObject<SoundEvent> JOTARO_YARE_YARE_2 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> JOTARO_YARE_YARE_2 =
             register(ModSounds.JOTARO_YARE_YARE_2, ModSounds.JOTARO_YARE_YARE_2_ID);
-    public static final RegistryObject<SoundEvent> JOTARO_YARE_YARE_3 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> JOTARO_YARE_YARE_3 =
             register(ModSounds.JOTARO_YARE_YARE_3, ModSounds.JOTARO_YARE_YARE_3_ID);
-    public static final RegistryObject<SoundEvent> JOTARO_YARE_YARE_4 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> JOTARO_YARE_YARE_4 =
             register(ModSounds.JOTARO_YARE_YARE_4, ModSounds.JOTARO_YARE_YARE_4_ID);
-    public static final RegistryObject<SoundEvent> JOTARO_YARE_YARE_5 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> JOTARO_YARE_YARE_5 =
             register(ModSounds.JOTARO_YARE_YARE_5, ModSounds.JOTARO_YARE_YARE_5_ID);
-    public static final RegistryObject<SoundEvent> JOTARO_FINISHER =
+    public static final DeferredHolder<SoundEvent, SoundEvent> JOTARO_FINISHER =
             register(ModSounds.JOTARO_FINISHER, ModSounds.JOTARO_FINISHER_ID);
-    public static final RegistryObject<SoundEvent> JOTARO_YAMERO =
+    public static final DeferredHolder<SoundEvent, SoundEvent> JOTARO_YAMERO =
             register(ModSounds.JOTARO_YAMERO, ModSounds.JOTARO_YAMERO_ID);
-    public static final RegistryObject<SoundEvent> JOTARO_YARO =
+    public static final DeferredHolder<SoundEvent, SoundEvent> JOTARO_YARO =
             register(ModSounds.JOTARO_YARO, ModSounds.JOTARO_YARO_ID);
-    public static final RegistryObject<SoundEvent> JOTARO_ATTACK_1 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> JOTARO_ATTACK_1 =
             register(ModSounds.JOTARO_ATTACK_1, ModSounds.JOTARO_ATTACK_1_ID);
-    public static final RegistryObject<SoundEvent> JOTARO_ATTACK_2 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> JOTARO_ATTACK_2 =
             register(ModSounds.JOTARO_ATTACK_2, ModSounds.JOTARO_ATTACK_2_ID);
-    public static final RegistryObject<SoundEvent> JOTARO_ATTACK_3 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> JOTARO_ATTACK_3 =
             register(ModSounds.JOTARO_ATTACK_3, ModSounds.JOTARO_ATTACK_3_ID);
-    public static final RegistryObject<SoundEvent> JOTARO_DIO =
+    public static final DeferredHolder<SoundEvent, SoundEvent> JOTARO_DIO =
             register(ModSounds.JOTARO_DIO, ModSounds.JOTARO_DIO_ID);
-    public static final RegistryObject<SoundEvent> JOTARO_GETTING_CLOSER =
+    public static final DeferredHolder<SoundEvent, SoundEvent> JOTARO_GETTING_CLOSER =
             register(ModSounds.JOTARO_GETING_CLOSER, ModSounds.JOTARO_GETING_CLOSER_ID);
-    public static final RegistryObject<SoundEvent> JOTARO_RESPONSE_ANASUI_1 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> JOTARO_RESPONSE_ANASUI_1 =
             register(ModSounds.JOTARO_RESPONSE_ANASUI_1, ModSounds.JOTARO_RESPONSE_ANASUI_1_ID);
-    public static final RegistryObject<SoundEvent> JOTARO_RESPONSE_ANASUI_2 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> JOTARO_RESPONSE_ANASUI_2 =
             register(ModSounds.JOTARO_RESPONSE_ANASUI_2, ModSounds.JOTARO_RESPONSE_ANASUI_2_ID);
-    public static final RegistryObject<SoundEvent> FEMALE_ZOMBIE_HURT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> FEMALE_ZOMBIE_HURT =
             register(ModSounds.FEMALE_ZOMBIE_HURT, ModSounds.FEMALE_ZOMBIE_HURT_ID);
-    public static final RegistryObject<SoundEvent> FEMALE_ZOMBIE_DEATH =
+    public static final DeferredHolder<SoundEvent, SoundEvent> FEMALE_ZOMBIE_DEATH =
             register(ModSounds.FEMALE_ZOMBIE_DEATH, ModSounds.FEMALE_ZOMBIE_DEATH_ID);
-    public static final RegistryObject<SoundEvent> FEMALE_ZOMBIE_AMBIENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> FEMALE_ZOMBIE_AMBIENT =
             register(ModSounds.FEMALE_ZOMBIE_AMBIENT, ModSounds.FEMALE_ZOMBIE_AMBIENT_ID);
-    public static final RegistryObject<SoundEvent> AESTHETICIAN_EXHALE =
+    public static final DeferredHolder<SoundEvent, SoundEvent> AESTHETICIAN_EXHALE =
             register(ModSounds.AESTHETICIAN_EXHALE, ModSounds.AESTHETICIAN_EXHALE_ID);
-    public static final RegistryObject<SoundEvent> FLESH_BUD =
+    public static final DeferredHolder<SoundEvent, SoundEvent> FLESH_BUD =
             register(ModSounds.FLESH_BUD, ModSounds.FLESH_BUD_ID);
-    public static final RegistryObject<SoundEvent> FLESH_BUD_REMOVAL =
+    public static final DeferredHolder<SoundEvent, SoundEvent> FLESH_BUD_REMOVAL =
             register(ModSounds.FLESH_BUD_REMOVAL, ModSounds.FLESH_BUD_REMOVAL_ID);
-    public static final RegistryObject<SoundEvent> HAIR_TOGGLE =
+    public static final DeferredHolder<SoundEvent, SoundEvent> HAIR_TOGGLE =
             register(ModSounds.HAIR_TOGGLE, ModSounds.HAIR_TOGGLE_ID);
-    public static final RegistryObject<SoundEvent> HAIR_SHARPEN =
+    public static final DeferredHolder<SoundEvent, SoundEvent> HAIR_SHARPEN =
             register(ModSounds.HAIR_SHARPEN, ModSounds.HAIR_SHARPEN_ID);
-    public static final RegistryObject<SoundEvent> FULL_FREEZE =
+    public static final DeferredHolder<SoundEvent, SoundEvent> FULL_FREEZE =
             register(ModSounds.FULL_FREEZE, ModSounds.FULL_FREEZE_ID);
-    public static final RegistryObject<SoundEvent> SOFT_HIT_1 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> SOFT_HIT_1 =
             register(ModSounds.SOFT_HIT_1, ModSounds.SOFT_HIT_1_ID);
-    public static final RegistryObject<SoundEvent> SOFT_HIT_2 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> SOFT_HIT_2 =
             register(ModSounds.SOFT_HIT_2, ModSounds.SOFT_HIT_2_ID);
-    public static final RegistryObject<SoundEvent> SOFT_HIT_3 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> SOFT_HIT_3 =
             register(ModSounds.SOFT_HIT_3, ModSounds.SOFT_HIT_3_ID);
-    public static final RegistryObject<SoundEvent> SOFT_HIT_4 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> SOFT_HIT_4 =
             register(ModSounds.SOFT_HIT_4, ModSounds.SOFT_HIT_4_ID);
-    public static final RegistryObject<SoundEvent> STAND_BARRAGE_HIT_SOFT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> STAND_BARRAGE_HIT_SOFT =
             register(ModSounds.STAND_BARRAGE_HIT_SOFT, ModSounds.STAND_BARRAGE_HIT_SOFT_ID);
-    public static final RegistryObject<SoundEvent> ICE_BREAKER =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ICE_BREAKER =
             register(ModSounds.ICE_BREAKER, ModSounds.ICE_BREAKER_ID);
-    public static final RegistryObject<SoundEvent> HALLELUJAH =
+    public static final DeferredHolder<SoundEvent, SoundEvent> HALLELUJAH =
             register(ModSounds.HALLELUJAH, ModSounds.HALLELUJAH_ID);
-    public static final RegistryObject<SoundEvent> TORTURE_DANCE =
+    public static final DeferredHolder<SoundEvent, SoundEvent> TORTURE_DANCE =
             register(ModSounds.TORTURE_DANCE, ModSounds.TORTURE_DANCE_ID);
-    public static final RegistryObject<SoundEvent> CHAKA_HFTF =
+    public static final DeferredHolder<SoundEvent, SoundEvent> CHAKA_HFTF =
             register(ModSounds.CHAKA_HFTF, ModSounds.CHAKA_HFTF_ID);
-    public static final RegistryObject<SoundEvent> WHITESNAKE_SUMMON =
+    public static final DeferredHolder<SoundEvent, SoundEvent> WHITESNAKE_SUMMON =
             register(ModSounds.WHITESNAKE_SUMMON, ModSounds.WHITESNAKE_SUMMON_ID);
-    public static final RegistryObject<SoundEvent> WHITESNAKE_PUNCH_HIT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> WHITESNAKE_PUNCH_HIT =
             register(ModSounds.WHITESNAKE_PUNCH_HIT, ModSounds.WHITESNAKE_PUNCH_HIT_ID);
-    public static final RegistryObject<SoundEvent> WHITESNAKE_PUNCH_HIT_2 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> WHITESNAKE_PUNCH_HIT_2 =
             register(ModSounds.WHITESNAKE_PUNCH_HIT_2, ModSounds.WHITESNAKE_PUNCH_HIT_2_ID);
-    public static final RegistryObject<SoundEvent> WHITESNAKE_PUNCH_FINAL_HIT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> WHITESNAKE_PUNCH_FINAL_HIT =
             register(ModSounds.WHITESNAKE_PUNCH_FINAL_HIT, ModSounds.WHITESNAKE_PUNCH_FINAL_HIT_ID);
-    public static final RegistryObject<SoundEvent> WHITESNAKE_BARRAGE_HIT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> WHITESNAKE_BARRAGE_HIT =
             register(ModSounds.WHITESNAKE_BARRAGE_HIT, ModSounds.WHITESNAKE_BARRAGE_HIT_ID);
-    public static final RegistryObject<SoundEvent> WSVOICE_IMPALE =
+    public static final DeferredHolder<SoundEvent, SoundEvent> WSVOICE_IMPALE =
             register(ModSounds.WSVOICE_IMPALE, ModSounds.WSVOICE_IMPALE_ID);
-    public static final RegistryObject<SoundEvent> WHITESNAKE_DISC_STEAL_CHARGE =
+    public static final DeferredHolder<SoundEvent, SoundEvent> WHITESNAKE_DISC_STEAL_CHARGE =
             register(ModSounds.WHITESNAKE_DISC_STEAL_CHARGE, ModSounds.WHITESNAKE_DISC_STEAL_CHARGE_ID);
-    public static final RegistryObject<SoundEvent> WSVOICE_DISC_STEAL =
+    public static final DeferredHolder<SoundEvent, SoundEvent> WSVOICE_DISC_STEAL =
             register(ModSounds.WSVOICE_DISC_STEAL, ModSounds.WSVOICE_DISC_STEAL_ID);
-    public static final RegistryObject<SoundEvent> WSVOICE_ACID_TOSS =
+    public static final DeferredHolder<SoundEvent, SoundEvent> WSVOICE_ACID_TOSS =
             register(ModSounds.WSVOICE_ACID_TOSS, ModSounds.WSVOICE_ACID_TOSS_ID);
-    public static final RegistryObject<SoundEvent> WHITESNAKE_COMMAND_DISC_CREATE =
+    public static final DeferredHolder<SoundEvent, SoundEvent> WHITESNAKE_COMMAND_DISC_CREATE =
             register(ModSounds.WHITESNAKE_COMMAND_DISC_CREATE, ModSounds.WHITESNAKE_COMMAND_DISC_CREATE_ID);
-    public static final RegistryObject<SoundEvent> WHITESNAKE_DISC_INSERT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> WHITESNAKE_DISC_INSERT =
             register(ModSounds.WHITESNAKE_DISC_INSERT, ModSounds.WHITESNAKE_DISC_INSERT_ID);
-    public static final RegistryObject<SoundEvent> WHITESNAKE_DISC_EJECT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> WHITESNAKE_DISC_EJECT =
             register(ModSounds.WHITESNAKE_DISC_EJECT, ModSounds.WHITESNAKE_DISC_EJECT_ID);
-    public static final RegistryObject<SoundEvent> WHITESNAKE_GOO_DRIP_1 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> WHITESNAKE_GOO_DRIP_1 =
             register(ModSounds.WHITESNAKE_GOO_DRIP_1, ModSounds.WHITESNAKE_GOO_DRIP_1_ID);
-    public static final RegistryObject<SoundEvent> WHITESNAKE_GOO_DRIP_2 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> WHITESNAKE_GOO_DRIP_2 =
             register(ModSounds.WHITESNAKE_GOO_DRIP_2, ModSounds.WHITESNAKE_GOO_DRIP_2_ID);
-    public static final RegistryObject<SoundEvent> WHITESNAKE_CONTROL_MODE_ENTER =
+    public static final DeferredHolder<SoundEvent, SoundEvent> WHITESNAKE_CONTROL_MODE_ENTER =
             register(ModSounds.WHITESNAKE_CONTROL_MODE_ENTER, ModSounds.WHITESNAKE_CONTROL_MODE_ENTER_ID);
-    public static final RegistryObject<SoundEvent> WHITESNAKE_CONTROL_MODE_EXIT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> WHITESNAKE_CONTROL_MODE_EXIT =
             register(ModSounds.WHITESNAKE_CONTROL_MODE_EXIT, ModSounds.WHITESNAKE_CONTROL_MODE_EXIT_ID);
-    public static final RegistryObject<SoundEvent> WHITESNAKE_HALLUCINATION_DISGUISE =
+    public static final DeferredHolder<SoundEvent, SoundEvent> WHITESNAKE_HALLUCINATION_DISGUISE =
             register(ModSounds.WHITESNAKE_HALLUCINATION_DISGUISE, ModSounds.WHITESNAKE_HALLUCINATION_DISGUISE_ID);
-    public static final RegistryObject<SoundEvent> WHITESNAKE_TIME_SPARK =
+    public static final DeferredHolder<SoundEvent, SoundEvent> WHITESNAKE_TIME_SPARK =
             register(ModSounds.WHITESNAKE_TIME_SPARK, ModSounds.WHITESNAKE_TIME_SPARK_ID);
-    public static final RegistryObject<SoundEvent> WHITESNAKE_INVENTORY_OPEN =
+    public static final DeferredHolder<SoundEvent, SoundEvent> WHITESNAKE_INVENTORY_OPEN =
             register(ModSounds.WHITESNAKE_INVENTORY_OPEN, ModSounds.WHITESNAKE_INVENTORY_OPEN_ID);
-    public static final RegistryObject<SoundEvent> WHITESNAKE_INVENTORY_CLOSE =
+    public static final DeferredHolder<SoundEvent, SoundEvent> WHITESNAKE_INVENTORY_CLOSE =
             register(ModSounds.WHITESNAKE_INVENTORY_CLOSE, ModSounds.WHITESNAKE_INVENTORY_CLOSE_ID);
-    public static final RegistryObject<SoundEvent> PUCCI_STAND_SUMMON_1 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> PUCCI_STAND_SUMMON_1 =
             register(ModSounds.PUCCI_STAND_SUMMON_1, ModSounds.PUCCI_STAND_SUMMON_1_ID);
-    public static final RegistryObject<SoundEvent> PUCCI_STAND_SUMMON_2 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> PUCCI_STAND_SUMMON_2 =
             register(ModSounds.PUCCI_STAND_SUMMON_2, ModSounds.PUCCI_STAND_SUMMON_2_ID);
-    public static final RegistryObject<SoundEvent> PUCCI_VISAGE_WHITESNAKE_DISC_TOSS =
+    public static final DeferredHolder<SoundEvent, SoundEvent> PUCCI_VISAGE_WHITESNAKE_DISC_TOSS =
             register(ModSounds.PUCCI_VISAGE_WHITESNAKE_DISC_TOSS, ModSounds.PUCCI_VISAGE_WHITESNAKE_DISC_TOSS_ID);
-    public static final RegistryObject<SoundEvent> PUCCI_VISAGE_EQUIP_1 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> PUCCI_VISAGE_EQUIP_1 =
             register(ModSounds.PUCCI_VISAGE_EQUIP_1, ModSounds.PUCCI_VISAGE_EQUIP_1_ID);
-    public static final RegistryObject<SoundEvent> PUCCI_VISAGE_EQUIP_2 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> PUCCI_VISAGE_EQUIP_2 =
             register(ModSounds.PUCCI_VISAGE_EQUIP_2, ModSounds.PUCCI_VISAGE_EQUIP_2_ID);
-    public static final RegistryObject<SoundEvent> PUCCI_VISAGE_EQUIP_3 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> PUCCI_VISAGE_EQUIP_3 =
             register(ModSounds.PUCCI_VISAGE_EQUIP_3, ModSounds.PUCCI_VISAGE_EQUIP_3_ID);
-    public static final RegistryObject<SoundEvent> PUCCI_HURT_1 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> PUCCI_HURT_1 =
             register(ModSounds.PUCCI_HURT_1, ModSounds.PUCCI_HURT_1_ID);
-    public static final RegistryObject<SoundEvent> PUCCI_HURT_2 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> PUCCI_HURT_2 =
             register(ModSounds.PUCCI_HURT_2, ModSounds.PUCCI_HURT_2_ID);
-    public static final RegistryObject<SoundEvent> PUCCI_HURT_3 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> PUCCI_HURT_3 =
             register(ModSounds.PUCCI_HURT_3, ModSounds.PUCCI_HURT_3_ID);
-    public static final RegistryObject<SoundEvent> PUCCI_HURT_4 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> PUCCI_HURT_4 =
             register(ModSounds.PUCCI_HURT_4, ModSounds.PUCCI_HURT_4_ID);
-    public static final RegistryObject<SoundEvent> PUCCI_RESPONSE_ANASUI_1 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> PUCCI_RESPONSE_ANASUI_1 =
             register(ModSounds.PUCCI_RESPONSE_ANASUI_1, ModSounds.PUCCI_RESPONSE_ANASUI_1_ID);
-    public static final RegistryObject<SoundEvent> PUCCI_RESPONSE_ANASUI_2 =
+    public static final DeferredHolder<SoundEvent, SoundEvent> PUCCI_RESPONSE_ANASUI_2 =
             register(ModSounds.PUCCI_RESPONSE_ANASUI_2, ModSounds.PUCCI_RESPONSE_ANASUI_2_ID);
 
-    public static final RegistryObject<SoundEvent> CTR_SUMMON_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> CTR_SUMMON_EVENT =
             register(ModSounds.CTR_SUMMON, ModSounds.CTR_SUMMON_ID);
-    public static final RegistryObject<SoundEvent> CTR_HEAL_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> CTR_HEAL_EVENT =
             register(ModSounds.CTR_HEAL, ModSounds.CTR_HEAL_ID);
-    public static final RegistryObject<SoundEvent> CTR_LIFE_CLUTCH_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> CTR_LIFE_CLUTCH_EVENT =
             register(ModSounds.CTR_LIFE_CLUTCH, ModSounds.CTR_LIFE_CLUTCH_ID);
-    public static final RegistryObject<SoundEvent> CTR_RAIN_STABILIZING_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> CTR_RAIN_STABILIZING_EVENT =
             register(ModSounds.CTR_RAIN_STABILIZING, ModSounds.CTR_RAIN_STABILIZING_ID);
-    public static final RegistryObject<SoundEvent> CTR_DETACH_1_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> CTR_DETACH_1_EVENT =
             register(ModSounds.CTR_DETACH_1, ModSounds.CTR_DETACH_1_ID);
-    public static final RegistryObject<SoundEvent> CTR_DETACH_2_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> CTR_DETACH_2_EVENT =
             register(ModSounds.CTR_DETACH_2, ModSounds.CTR_DETACH_2_ID);
-    public static final RegistryObject<SoundEvent> CTR_RAIN_STEP_1_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> CTR_RAIN_STEP_1_EVENT =
             register(ModSounds.CTR_RAIN_STEP_1, ModSounds.CTR_RAIN_STEP_1_ID);
-    public static final RegistryObject<SoundEvent> CTR_RAIN_STEP_2_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> CTR_RAIN_STEP_2_EVENT =
             register(ModSounds.CTR_RAIN_STEP_2, ModSounds.CTR_RAIN_STEP_2_ID);
-    public static final RegistryObject<SoundEvent> CTR_RAIN_STEP_3_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> CTR_RAIN_STEP_3_EVENT =
             register(ModSounds.CTR_RAIN_STEP_3, ModSounds.CTR_RAIN_STEP_3_ID);
 
-    public static final RegistryObject<SoundEvent> ZOMBIEHORSE_STITCHING_EVENT =
+    public static final DeferredHolder<SoundEvent, SoundEvent> ZOMBIEHORSE_STITCHING_EVENT =
             register(ModSounds.ZOMBIEHORSE_STITCHING, ModSounds.ZOMBIEHORSE_STITCHING_ID);
 
-    public static RegistryObject<SoundEvent> register(String id, ResourceLocation id2){
+    public static DeferredHolder<SoundEvent, SoundEvent> register(String id, ResourceLocation id2){
         return SOUNDS.register(id, () -> SoundEvent.createVariableRangeEvent(id2));
     }
 }

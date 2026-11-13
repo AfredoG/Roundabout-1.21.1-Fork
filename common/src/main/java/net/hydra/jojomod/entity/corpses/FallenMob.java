@@ -252,7 +252,7 @@ public class FallenMob extends PathfinderMob implements NeutralMob {
     @Override
     public void lavaHurt() {
         if (!this.fireImmune()) {
-            this.setSecondsOnFire(15);
+            this.igniteForSeconds(15);
         }
     }
     public void setPhasesFull(boolean bool){
@@ -356,7 +356,7 @@ public class FallenMob extends PathfinderMob implements NeutralMob {
 
         int $$3 = EnchantmentHelper.getFireAspect(this);
         if ($$3 > 0) {
-            $$0.setSecondsOnFire($$3 * 4);
+            $$0.igniteForSeconds($$3 * 4);
         }
 
         Entity ent2 = this;
@@ -772,20 +772,20 @@ public class FallenMob extends PathfinderMob implements NeutralMob {
     }
 
     @Override
-    protected void defineSynchedData() {
-        if (!this.entityData.hasItem(CONTROLLER)) {
-            super.defineSynchedData();
-            this.entityData.define(CONTROLLER, -1);
-            this.entityData.define(TICKS_THROUGH_PLACER, false);
-            this.entityData.define(PHASES_FULL, false);
-            this.entityData.define(IS_ACTIVATED, false);
-            this.entityData.define(IS_TURNED, false);
-            this.entityData.define(FORCED_ROTATION, 0F);
-            this.entityData.define(SELECTED, false);
-            this.entityData.define(TARGET_TACTIC, (byte) 0);
-            this.entityData.define(MOVEMENT_TACTIC, (byte) 0);
-            this.entityData.define(TEAM_COLOR, (byte) 0);
-        }
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+
+            super.defineSynchedData(builder);
+            builder.define(CONTROLLER, -1);
+            builder.define(TICKS_THROUGH_PLACER, false);
+            builder.define(PHASES_FULL, false);
+            builder.define(IS_ACTIVATED, false);
+            builder.define(IS_TURNED, false);
+            builder.define(FORCED_ROTATION, 0F);
+            builder.define(SELECTED, false);
+            builder.define(TARGET_TACTIC, (byte) 0);
+            builder.define(MOVEMENT_TACTIC, (byte) 0);
+            builder.define(TEAM_COLOR, (byte) 0);
+
     }
     protected FallenMob(EntityType<? extends PathfinderMob> $$0, Level $$1) {
         super($$0, $$1);

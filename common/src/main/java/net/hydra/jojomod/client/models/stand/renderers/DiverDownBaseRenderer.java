@@ -26,28 +26,28 @@ import static net.hydra.jojomod.entity.stand.DiverDownEntity.TRANSFER;
 import static net.hydra.jojomod.stand.powers.PowersDiverDown.GROUND_DIVE_BARRAGE;
 
 public class DiverDownBaseRenderer extends StandRenderer<DiverDownEntity> {
-    public static final ResourceLocation PART_6 = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/diver_down/base.png");
-    public static final ResourceLocation BETA_DIVER = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/diver_down/beta.png");
-    public static final ResourceLocation WORLD_DIVER = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/diver_down/world.png");
-    public static final ResourceLocation KELP = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/diver_down/kelp.png");
-    public static final ResourceLocation GRAY = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/diver_down/gray_diver.png");
-    public static final ResourceLocation WHITE = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/diver_down/white_diver.png");
-    public static final ResourceLocation PURPLE = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/diver_down/purple_diver.png");
-    public static final ResourceLocation KHAKI = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/diver_down/khaki_diver.png");
-    public static final ResourceLocation YELLOW = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/diver_down/yellow_diver.png");
-    public static final ResourceLocation BLUE = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/diver_down/blue_diver.png");
-    public static final ResourceLocation ORANGE = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/diver_down/orange_diver.png");
-    public static final ResourceLocation PINK = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/diver_down/pink_diver.png");
-    public static final ResourceLocation INVERSION = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/diver_down/inversion.png");
-    public static final ResourceLocation FIGURE = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/diver_down/figure.png");
-    public static final ResourceLocation EYECATCH = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/diver_down/eyecatch.png");
-    public static final ResourceLocation ARTWORK = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/diver_down/artwork.png");
-    public static final ResourceLocation MANGA = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/diver_down/manga.png");
-    public static final ResourceLocation VOLUME_4 = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/diver_down/volume_4.png");
-    public static final ResourceLocation SPINE_ART = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/diver_down/spine_art.png");
-    public static final ResourceLocation DIVER_DROWNED = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/diver_down/diver_drowned.png");
-    public static final ResourceLocation VAN_HALEN = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/diver_down/van_halen.png");
-    public static final ResourceLocation SCUBA_DIVER = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/diver_down/scuba_diver.png");
+    public static final ResourceLocation PART_6 = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/diver_down/base.png");
+    public static final ResourceLocation BETA_DIVER = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/diver_down/beta.png");
+    public static final ResourceLocation WORLD_DIVER = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/diver_down/world.png");
+    public static final ResourceLocation KELP = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/diver_down/kelp.png");
+    public static final ResourceLocation GRAY = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/diver_down/gray_diver.png");
+    public static final ResourceLocation WHITE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/diver_down/white_diver.png");
+    public static final ResourceLocation PURPLE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/diver_down/purple_diver.png");
+    public static final ResourceLocation KHAKI = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/diver_down/khaki_diver.png");
+    public static final ResourceLocation YELLOW = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/diver_down/yellow_diver.png");
+    public static final ResourceLocation BLUE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/diver_down/blue_diver.png");
+    public static final ResourceLocation ORANGE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/diver_down/orange_diver.png");
+    public static final ResourceLocation PINK = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/diver_down/pink_diver.png");
+    public static final ResourceLocation INVERSION = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/diver_down/inversion.png");
+    public static final ResourceLocation FIGURE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/diver_down/figure.png");
+    public static final ResourceLocation EYECATCH = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/diver_down/eyecatch.png");
+    public static final ResourceLocation ARTWORK = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/diver_down/artwork.png");
+    public static final ResourceLocation MANGA = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/diver_down/manga.png");
+    public static final ResourceLocation VOLUME_4 = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/diver_down/volume_4.png");
+    public static final ResourceLocation SPINE_ART = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/diver_down/spine_art.png");
+    public static final ResourceLocation DIVER_DROWNED = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/diver_down/diver_drowned.png");
+    public static final ResourceLocation VAN_HALEN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/diver_down/van_halen.png");
+    public static final ResourceLocation SCUBA_DIVER = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/diver_down/scuba_diver.png");
 
     /*UPDATE THE FOLLOWING FILES AS WELL WHENEVER ADDING NEW MODELS:
     DiverKickEntityRenderer

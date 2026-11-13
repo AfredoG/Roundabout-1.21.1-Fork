@@ -19,7 +19,7 @@ import net.minecraft.world.entity.LivingEntity;
 
 public class RoadRollerStrayModel<T extends Entity> extends PsuedoHierarchicalModel {
 	// This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
-	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation("modid", "road_roller_layer"), "main");
+	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath("modid", "road_roller_layer"), "main");
     private final ModelPart front_wheel;
     private final ModelPart back_wheel;
     private final ModelPart bb_main;
@@ -65,10 +65,15 @@ public class RoadRollerStrayModel<T extends Entity> extends PsuedoHierarchicalMo
 	} */
 
 	@Override
-	public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
-        front_wheel.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
-        back_wheel.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
-        bb_main.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+	public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, int argbColor) {
+        float red = net.minecraft.util.FastColor.ARGB32.red(argbColor) / 255.0F;
+        float green = net.minecraft.util.FastColor.ARGB32.green(argbColor) / 255.0F;
+        float blue = net.minecraft.util.FastColor.ARGB32.blue(argbColor) / 255.0F;
+        float alpha = net.minecraft.util.FastColor.ARGB32.alpha(argbColor) / 255.0F;
+
+        front_wheel.render(poseStack, vertexConsumer, packedLight, packedOverlay, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, red, green, blue));
+        back_wheel.render(poseStack, vertexConsumer, packedLight, packedOverlay, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, red, green, blue));
+        bb_main.render(poseStack, vertexConsumer, packedLight, packedOverlay, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, red, green, blue));
 	}
 
     @Override
@@ -80,7 +85,7 @@ public class RoadRollerStrayModel<T extends Entity> extends PsuedoHierarchicalMo
     public void setupAnim(Entity var1, float pAgeInTicks) {
     }
     public ResourceLocation getTextureLocation(){
-        return new ResourceLocation(Roundabout.MOD_ID,
+        return ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
                 "textures/entity/road_roller.png");
     }
 
@@ -94,7 +99,7 @@ public class RoadRollerStrayModel<T extends Entity> extends PsuedoHierarchicalMo
             this.root().getAllParts().forEach(ModelPart::resetPose);
             VertexConsumer consumer = bufferSource.getBuffer(RenderType.entityTranslucent(getTextureLocation()));
             //r = bufferSource.getBuffer(RenderType.entityTranslucent(getTextureLocation(context, skin)));
-            root().render(poseStack, consumer, light, OverlayTexture.NO_OVERLAY, r, g, b, alpha);
+            root().render(poseStack, consumer, light, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, r, g, b));
         }
     }
 }

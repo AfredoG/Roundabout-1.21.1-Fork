@@ -408,9 +408,9 @@ public class ThrownObjectEntity extends ThrowableItemProjectile {
     }
 
     @Override
-    protected void defineSynchedData() {
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
         if (!this.getEntityData().hasItem(ROUNDABOUT$SUPER_THROWN)) {
-            super.defineSynchedData();
+            super.defineSynchedData(builder);
             this.getEntityData().define(ROUNDABOUT$SUPER_THROWN, false);
             this.getEntityData().define(ROUNDABOUT$STYLE, (byte)0);
         }
@@ -814,16 +814,16 @@ private void bridgePlace(BlockHitResult $$0,Player P) {
         if (!this.getItem().isEmpty()) {
             int ench = EnchantmentHelper.getItemEnchantmentLevel(Enchantments.FIRE_ASPECT, this.getItem());
             if (ench >= 1) {
-                $$1.setSecondsOnFire((ench) * 4);
+                $$1.igniteForSeconds((ench) * 4);
                 fire = true;
             } else if (this.getItem().getItem() instanceof FlintAndSteelItem
                     || this.getItem().is(Items.MAGMA_BLOCK)
                     || this.getItem().is(Items.CAMPFIRE)
                     || this.getItem().getItem() instanceof FireChargeItem) {
-                $$1.setSecondsOnFire(4);
+                $$1.igniteForSeconds(4);
                 fire = true;
             } else if (this.getItem().is(Items.LAVA_BUCKET)) {
-                $$1.setSecondsOnFire(8);
+                $$1.igniteForSeconds(8);
                 fire = true;
             }
         }

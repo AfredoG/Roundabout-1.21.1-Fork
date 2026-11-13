@@ -63,7 +63,7 @@ public class PWBigMeteorRenderer extends EntityRenderer<PWBigMeteorEntity> {
         float alpha = (texture == PW_BIG_METEOR_COSMIC_TEXTURE) ? 1.0F : 0.4F;
 
         VertexConsumer consumer = buffer.getBuffer(RenderType.entityTranslucent(texture));
-        this.model.renderToBuffer(poseStack, consumer, 15728880, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, alpha);
+        this.model.renderToBuffer(poseStack, consumer, 15728880, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, 1.0F, 1.0F, 1.0F));
 
         poseStack.popPose();
 
@@ -72,11 +72,11 @@ public class PWBigMeteorRenderer extends EntityRenderer<PWBigMeteorEntity> {
 
 
     public static final ResourceLocation PW_BIG_METEOR_TEXTURE =
-            new ResourceLocation(Roundabout.MOD_ID, "textures/entity/projectile/pw_big_meteor.png");
+            ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/entity/projectile/pw_big_meteor.png");
     public static final ResourceLocation PW_BIG_METEOR_COSMIC_TEXTURE =
-            new ResourceLocation(Roundabout.MOD_ID, "textures/entity/projectile/pw_big_meteor_cosmic.png");
+            ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/entity/projectile/pw_big_meteor_cosmic.png");
     public static final ResourceLocation PW_BIG_METEOR_GRAPE_TEXTURE =
-            new ResourceLocation(Roundabout.MOD_ID, "textures/entity/projectile/pw_big_meteor_grape.png");
+            ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/entity/projectile/pw_big_meteor_grape.png");
 
 
 

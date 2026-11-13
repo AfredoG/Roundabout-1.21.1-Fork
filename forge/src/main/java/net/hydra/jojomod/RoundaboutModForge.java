@@ -7,24 +7,25 @@ import net.hydra.jojomod.networking.ForgeNetworkHandler;
 import net.hydra.jojomod.networking.ForgeJJFNetwork;
 import net.hydra.jojomod.registry.*;
 import net.hydra.jojomod.util.config.ConfigManager;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.server.ServerStartedEvent;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.FMLLoadCompleteEvent;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.fml.loading.FMLPaths;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.event.server.ServerStartedEvent;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
+import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.fml.event.lifecycle.FMLLoadCompleteEvent;
+import net.neoforged.fml.loading.FMLPaths;
 
 import static net.hydra.jojomod.registry.ForgeBlocks.registerDynamicFogBlocks;
 
 @Mod(Roundabout.MOD_ID)
 public class RoundaboutModForge {
-    public RoundaboutModForge() {
-        IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
+    public RoundaboutModForge(IEventBus bus) {
+        bus.addListener(ForgeNetworkHandler::registerPayloads);
+        bus.addListener(ForgeJJFNetwork::registerPayloads);
 
         ConfigManager.loadConfigs(FMLPaths.CONFIGDIR.get().resolve(Roundabout.MOD_ID + ".json"),
                 //FMLPaths.CONFIGDIR.get().resolve(Roundabout.MOD_ID + "-server.json"),
@@ -60,7 +61,7 @@ public class RoundaboutModForge {
         bus.addListener(this::clientSetup);
         bus.addListener(this::commonSetup);
         bus.addListener(this::loadComplete);
-        MinecraftForge.EVENT_BUS.addListener(this::entityLifeCycle);
+        NeoForge.EVENT_BUS.addListener(this::entityLifeCycle);
 
 
         Roundabout.LOGGER.info("Hello Forge world!");
@@ -74,18 +75,17 @@ public class RoundaboutModForge {
     }
 
     private void loadComplete(final FMLLoadCompleteEvent event) {
-        MinecraftForge.EVENT_BUS.register(new ForgeCommandRegistry());
+        NeoForge.EVENT_BUS.register(new ForgeCommandRegistry());
     }
 
     private void commonSetup(final FMLCommonSetupEvent event){
         event.enqueueWork(() -> {
-            ForgeNetworkHandler.register();
             ForgeJJFNetwork.register();
             ForgeMenus.initialize();
         });
     }
 
-    @Mod.EventBusSubscriber(modid = Roundabout.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+    @EventBusSubscriber(modid = Roundabout.MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class ClientModEvents {
         @SubscribeEvent
         public static void onClientSetup(FMLCommonSetupEvent event) {

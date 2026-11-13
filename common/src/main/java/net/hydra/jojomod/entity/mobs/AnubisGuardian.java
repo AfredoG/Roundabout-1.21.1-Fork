@@ -47,11 +47,11 @@ public class AnubisGuardian extends AbstractIllager implements RangedAttackMob {
     private static final EntityDataAccessor<Boolean> HAS_POPPED = SynchedEntityData.defineId(AnubisGuardian.class, EntityDataSerializers.BOOLEAN);
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(SUMMONER_ID, -1);
-        this.entityData.define(CHOSEN_ACTION, (byte)0);
-        this.entityData.define(HAS_POPPED, false);
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(SUMMONER_ID, -1);
+        builder.define(CHOSEN_ACTION, (byte)0);
+        builder.define(HAS_POPPED, false);
     }
 
     @Override

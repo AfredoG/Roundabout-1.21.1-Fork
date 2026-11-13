@@ -80,8 +80,13 @@ public class AnubisModel extends PsuedoHierarchicalModel {
     // z axis:
 
     @Override
-    public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
-        sword.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+    public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, int argbColor) {
+        float red = net.minecraft.util.FastColor.ARGB32.red(argbColor) / 255.0F;
+        float green = net.minecraft.util.FastColor.ARGB32.green(argbColor) / 255.0F;
+        float blue = net.minecraft.util.FastColor.ARGB32.blue(argbColor) / 255.0F;
+        float alpha = net.minecraft.util.FastColor.ARGB32.alpha(argbColor) / 255.0F;
+
+        sword.render(poseStack, vertexConsumer, packedLight, packedOverlay, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, red, green, blue));
     }
 
     @Override
@@ -94,38 +99,38 @@ public class AnubisModel extends PsuedoHierarchicalModel {
 
     }
 
-    public static ResourceLocation item = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/anubis/anime_item.png");
-    public static ResourceLocation anime = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/anubis/anime.png");
-    public static ResourceLocation raging = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/anubis/raging_katana.png");
-    public static ResourceLocation alluring = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/anubis/alluring_katana.png");
-    public static ResourceLocation evil = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/anubis/evil.png");
-    public static ResourceLocation wooden = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/anubis/wooden.png");
-    public static ResourceLocation stone = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/anubis/stone.png");
-    public static ResourceLocation grass = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/anubis/grass.png");
-    public static ResourceLocation aquamarine = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/anubis/aquamarine.png");
-    public static ResourceLocation gray_wagon = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/anubis/gray_wagon.png");
-    public static ResourceLocation timekeeper = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/anubis/timekeeper.png");
-    public static ResourceLocation diamond = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/anubis/diamond.png");
-    public static ResourceLocation chorus = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/anubis/ender.png");
-    public static ResourceLocation ancient = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/anubis/ancient.png");
-    public static ResourceLocation khopesh = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/anubis/khopesh.png");
-    public static ResourceLocation cleaver = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/anubis/cleaver.png");
-    public static ResourceLocation cleaver_sheathed = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/anubis/cleaver_sheathed.png");
-    public static ResourceLocation illusory = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/anubis/illusory.png");
-    public static ResourceLocation illusory_sheathed = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/anubis/illusory_sheathed.png");
-    public static ResourceLocation bloodstained = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/anubis/bloodstained.png");
-    public static ResourceLocation brilliance = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/anubis/brilliance.png");
-    public static ResourceLocation chainblade_1 = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/anubis/chainblade_1.png");
-    public static ResourceLocation chainblade_2 = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/anubis/chainblade_2.png");
-    public static ResourceLocation chef = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/anubis/chef.png");
-    public static ResourceLocation serpent = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/anubis/serpent.png");
-    public static ResourceLocation[] soul = {new ResourceLocation(Roundabout.MOD_ID, "textures/stand/anubis/soul.png"),
-                                            new ResourceLocation(Roundabout.MOD_ID, "textures/stand/anubis/soul_2.png"),
-                                            new ResourceLocation(Roundabout.MOD_ID, "textures/stand/anubis/soul_3.png")};
-    public static ResourceLocation boneblade = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/anubis/boneblade.png");
+    public static ResourceLocation item = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/anubis/anime_item.png");
+    public static ResourceLocation anime = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/anubis/anime.png");
+    public static ResourceLocation raging = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/anubis/raging_katana.png");
+    public static ResourceLocation alluring = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/anubis/alluring_katana.png");
+    public static ResourceLocation evil = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/anubis/evil.png");
+    public static ResourceLocation wooden = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/anubis/wooden.png");
+    public static ResourceLocation stone = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/anubis/stone.png");
+    public static ResourceLocation grass = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/anubis/grass.png");
+    public static ResourceLocation aquamarine = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/anubis/aquamarine.png");
+    public static ResourceLocation gray_wagon = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/anubis/gray_wagon.png");
+    public static ResourceLocation timekeeper = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/anubis/timekeeper.png");
+    public static ResourceLocation diamond = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/anubis/diamond.png");
+    public static ResourceLocation chorus = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/anubis/ender.png");
+    public static ResourceLocation ancient = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/anubis/ancient.png");
+    public static ResourceLocation khopesh = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/anubis/khopesh.png");
+    public static ResourceLocation cleaver = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/anubis/cleaver.png");
+    public static ResourceLocation cleaver_sheathed = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/anubis/cleaver_sheathed.png");
+    public static ResourceLocation illusory = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/anubis/illusory.png");
+    public static ResourceLocation illusory_sheathed = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/anubis/illusory_sheathed.png");
+    public static ResourceLocation bloodstained = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/anubis/bloodstained.png");
+    public static ResourceLocation brilliance = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/anubis/brilliance.png");
+    public static ResourceLocation chainblade_1 = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/anubis/chainblade_1.png");
+    public static ResourceLocation chainblade_2 = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/anubis/chainblade_2.png");
+    public static ResourceLocation chef = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/anubis/chef.png");
+    public static ResourceLocation serpent = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/anubis/serpent.png");
+    public static ResourceLocation[] soul = {ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/anubis/soul.png"),
+                                            ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/anubis/soul_2.png"),
+                                            ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/anubis/soul_3.png")};
+    public static ResourceLocation boneblade = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/anubis/boneblade.png");
 
-    public static ResourceLocation emissive_chainblade_1 = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/anubis/emissive/chainblade_1.png");
-    public static ResourceLocation emissive_chainblade_2 = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/anubis/emissive/chainblade_2.png");
+    public static ResourceLocation emissive_chainblade_1 = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/anubis/emissive/chainblade_1.png");
+    public static ResourceLocation emissive_chainblade_2 = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/anubis/emissive/chainblade_2.png");
 
 
 
@@ -212,12 +217,12 @@ public class AnubisModel extends PsuedoHierarchicalModel {
             }
             VertexConsumer consumer = bufferSource.getBuffer(RenderType.entityTranslucent(getTextureLocation(context, skin)));
 
-            root().render(poseStack, consumer, light, OverlayTexture.NO_OVERLAY, r, g, b, alpha);
+            root().render(poseStack, consumer, light, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, r, g, b));
             StandUser SU = (StandUser) context;
             if (SU.roundabout$getStandPowers() instanceof PowersAnubis) {
                 if (skin == PowersAnubis.CHAINBLADE || skin == PowersAnubis.BRILLIANCE || skin == PowersAnubis.ILLUSORY ) {
                     VertexConsumer Consumer = bufferSource.getBuffer(RenderType.entityTranslucent(getEmissive(context, skin)));
-                    root().render(poseStack, Consumer, 15728880, OverlayTexture.NO_OVERLAY, 1, 1, 1, alpha);
+                    root().render(poseStack, Consumer, 15728880, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, 1, 1, 1));
                 }
             }
         }
@@ -381,12 +386,12 @@ public class AnubisModel extends PsuedoHierarchicalModel {
             return;
         }
         VertexConsumer consumer = bufferSource.getBuffer(RenderType.entityTranslucent(getTextureLocation(entity, skin )));
-        root().render(poseStack,consumer,packedLight,OverlayTexture.NO_OVERLAY,1,1,1,alpha);
+        root().render(poseStack, consumer, packedLight, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, 1, 1, 1));
         StandUser SU = (StandUser) entity;
         if (SU.roundabout$getStandPowers() instanceof PowersAnubis && PowerTypes.isUsingStand(entity)) {
             if (skin == PowersAnubis.CHAINBLADE || skin == PowersAnubis.BRILLIANCE || skin == PowersAnubis.ILLUSORY ) {
                 VertexConsumer Consumer = bufferSource.getBuffer(RenderType.entityTranslucent(getEmissive(entity, skin)));
-                root().render(poseStack, Consumer, 15728880, OverlayTexture.NO_OVERLAY, 1, 1, 1, alpha);
+                root().render(poseStack, Consumer, 15728880, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, 1, 1, 1));
             }
         }
     }

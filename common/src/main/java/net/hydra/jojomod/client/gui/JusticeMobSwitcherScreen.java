@@ -32,7 +32,7 @@ import net.minecraft.world.entity.player.Player;
 
 public class JusticeMobSwitcherScreen extends Screen {
     //Check out GamemodeSwitcherScreen
-    static final ResourceLocation MOB_SWITCHER_LOCATION = new ResourceLocation(Roundabout.MOD_ID,
+    static final ResourceLocation MOB_SWITCHER_LOCATION = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/mob_switcher.png");
     private static final int SPRITE_SHEET_WIDTH = 128;
     private static final int SPRITE_SHEET_HEIGHT = 128;
@@ -219,23 +219,23 @@ public class JusticeMobSwitcherScreen extends Screen {
     }
 
     public enum MobIcon {
-        PLAYER(Component.translatable("justice.morph.player"), new ResourceLocation(Roundabout.MOD_ID,
+        PLAYER(Component.translatable("justice.morph.player"), ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
                 "textures/gui/icons/justice/disguise_1.png"),ShapeShifts.PLAYER.id),
-        VILLAGER(Component.translatable("justice.morph.villager"), new ResourceLocation(Roundabout.MOD_ID,
+        VILLAGER(Component.translatable("justice.morph.villager"), ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
                 "textures/gui/icons/justice/disguise_2.png"),ShapeShifts.VILLAGER.id),
 
-        OVA(Component.translatable("justice.morph.ova"), new ResourceLocation(Roundabout.MOD_ID,
+        OVA(Component.translatable("justice.morph.ova"), ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
                         "textures/gui/icons/justice/disguise_ova.png"),ShapeShifts.OVA.id),
-        ZOMBIE(Component.translatable("justice.morph.zombie"), new ResourceLocation(Roundabout.MOD_ID,
+        ZOMBIE(Component.translatable("justice.morph.zombie"), ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
                 "textures/gui/icons/justice/disguise_3.png"),ShapeShifts.ZOMBIE.id),
 
-        SKELETON(Component.translatable("justice.morph.skeleton"), new ResourceLocation(Roundabout.MOD_ID,
+        SKELETON(Component.translatable("justice.morph.skeleton"), ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
                 "textures/gui/icons/justice/disguise_4.png"),ShapeShifts.SKELETON.id),
-        WITHER_SKELETON(Component.translatable("justice.morph.wither_skeleton"), new ResourceLocation(Roundabout.MOD_ID,
+        WITHER_SKELETON(Component.translatable("justice.morph.wither_skeleton"), ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
                 "textures/gui/icons/justice/disguise_wither.png"),ShapeShifts.WITHER_SKELETON.id),
-        STRAY(Component.translatable("justice.morph.stray"), new ResourceLocation(Roundabout.MOD_ID,
+        STRAY(Component.translatable("justice.morph.stray"), ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
                 "textures/gui/icons/justice/disguise_stray.png"),ShapeShifts.STRAY.id),
-        EERIE(Component.translatable("justice.morph.eerie"), new ResourceLocation(Roundabout.MOD_ID,
+        EERIE(Component.translatable("justice.morph.eerie"), ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
                 "textures/gui/icons/justice/disguise_eerie.png"),ShapeShifts.EERIE.id),
         LOCKED(Component.translatable("ability.roundabout.locked.ctrl"), StandIcons.LOCKED,ShapeShifts.PLAYER.id);
 

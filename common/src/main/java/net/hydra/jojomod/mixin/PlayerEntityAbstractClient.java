@@ -143,15 +143,15 @@ public abstract class PlayerEntityAbstractClient extends Player implements IPlay
                     if (vd.isCharacterVisage()) {
                         if (FateTypes.isUndisguisedZombie(this)) {
                             // 37 67 -34
-                            cir.setReturnValue(new ResourceLocation(Roundabout.MOD_ID, "textures/entity/visage/zombie_skins/" + vd.getSkinPath() + ".png"));
+                            cir.setReturnValue(ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/entity/visage/zombie_skins/" + vd.getSkinPath() + ".png"));
 
                         } else {
-                            cir.setReturnValue(new ResourceLocation(Roundabout.MOD_ID, "textures/entity/visage/player_skins/" + vd.getSkinPath() + ".png"));
+                            cir.setReturnValue(ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/entity/visage/player_skins/" + vd.getSkinPath() + ".png"));
 
                         }
                         return;
                     } else if (visage.is(ModItems.RAT_MASK) && !isSpectator()){
-                        cir.setReturnValue(new ResourceLocation(Roundabout.MOD_ID, "textures/entity/visage/rat/rat_skin.png"));
+                        cir.setReturnValue(ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/entity/visage/rat/rat_skin.png"));
                         return;
                     }
                 }
@@ -188,9 +188,9 @@ public abstract class PlayerEntityAbstractClient extends Player implements IPlay
                     if (vd.isCharacterVisage()) {
                         if (FateTypes.isUndisguisedZombie(this)) {
                             // 37 67 -34
-                            return (new ResourceLocation(Roundabout.MOD_ID, "textures/entity/visage/zombie_skins/" + vd.getSkinPath() + ".png"));
+                            return (ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/entity/visage/zombie_skins/" + vd.getSkinPath() + ".png"));
                         } else {
-                            return (new ResourceLocation(Roundabout.MOD_ID, "textures/entity/visage/player_skins/" + vd.getSkinPath() + ".png"));
+                            return (ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/entity/visage/player_skins/" + vd.getSkinPath() + ".png"));
 
                         }
                     }

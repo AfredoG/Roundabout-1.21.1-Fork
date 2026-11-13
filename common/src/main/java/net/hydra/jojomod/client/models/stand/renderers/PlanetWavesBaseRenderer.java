@@ -16,18 +16,18 @@ import net.minecraft.util.Mth;
 
 public class PlanetWavesBaseRenderer<M extends StandEntity> extends StandRenderer<PlanetWavesEntity> {
 
-    private static final ResourceLocation PART_6_SKIN = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/planet_waves/anime.png");
-    private static final ResourceLocation MANGA_SKIN = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/planet_waves/manga.png");
-    private static final ResourceLocation BLUE_SKIN = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/planet_waves/blue.png");
-    private static final ResourceLocation PURPLE_SKIN = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/planet_waves/purple.png");
-    private static final ResourceLocation GREEN_SKIN = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/planet_waves/green.png");
-    private static final ResourceLocation OCEAN_WAVES = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/planet_waves/ocean_waves.png");
-    private static final ResourceLocation SYMPHONY_WAVES = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/planet_waves/symphony_waves.png");
-    private static final ResourceLocation SPARTA = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/planet_waves/sparta.png");
-    private static final ResourceLocation SPARTA2 = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/planet_waves/sparta2.png");
-    private static final ResourceLocation HALLOWEEN = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/planet_waves/halloween.png");
-    private static final ResourceLocation COSMIC = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/planet_waves/cosmic_waves.png");
-    private static final ResourceLocation GRAPESODA = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/planet_waves/grapesoda.png");
+    private static final ResourceLocation PART_6_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/planet_waves/anime.png");
+    private static final ResourceLocation MANGA_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/planet_waves/manga.png");
+    private static final ResourceLocation BLUE_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/planet_waves/blue.png");
+    private static final ResourceLocation PURPLE_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/planet_waves/purple.png");
+    private static final ResourceLocation GREEN_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/planet_waves/green.png");
+    private static final ResourceLocation OCEAN_WAVES = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/planet_waves/ocean_waves.png");
+    private static final ResourceLocation SYMPHONY_WAVES = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/planet_waves/symphony_waves.png");
+    private static final ResourceLocation SPARTA = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/planet_waves/sparta.png");
+    private static final ResourceLocation SPARTA2 = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/planet_waves/sparta2.png");
+    private static final ResourceLocation HALLOWEEN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/planet_waves/halloween.png");
+    private static final ResourceLocation COSMIC = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/planet_waves/cosmic_waves.png");
+    private static final ResourceLocation GRAPESODA = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/planet_waves/grapesoda.png");
 
     private final StandModel<PlanetWavesEntity> baseModel;
     private final StandModel<PlanetWavesEntity> spartaModel;

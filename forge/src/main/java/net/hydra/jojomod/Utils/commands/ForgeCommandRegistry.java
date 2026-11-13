@@ -2,11 +2,12 @@ package net.hydra.jojomod.Utils.commands;
 
 import net.hydra.jojomod.event.commands.RoundaboutCom;
 import net.hydra.jojomod.event.commands.RoundaboutDiscCommand;
-import net.minecraftforge.event.RegisterCommandsEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.neoforge.event.RegisterCommandsEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.common.EventBusSubscriber;
 
-@Mod.EventBusSubscriber
+@EventBusSubscriber
 public class ForgeCommandRegistry{
     @SubscribeEvent
     public void registerCommands(RegisterCommandsEvent e) {

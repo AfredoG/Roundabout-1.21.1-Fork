@@ -444,21 +444,21 @@ public class JojoNPC extends AgeableMob implements InventoryCarrier, Npc, Reputa
     protected static final EntityDataAccessor<Byte> DATA_PLAYER_MAIN_HAND = SynchedEntityData.defineId(JojoNPC.class, EntityDataSerializers.BYTE);
     protected static final EntityDataAccessor<CompoundTag> DATA_SHOULDER_LEFT = SynchedEntityData.defineId(JojoNPC.class, EntityDataSerializers.COMPOUND_TAG);
     protected static final EntityDataAccessor<CompoundTag> DATA_SHOULDER_RIGHT = SynchedEntityData.defineId(JojoNPC.class, EntityDataSerializers.COMPOUND_TAG);
-    protected void defineSynchedData() {
-        if (!this.entityData.hasItem(ROUNDABOUT$SKIN_NUMBER)) {
-            super.defineSynchedData();
-            this.entityData.define(DATA_UNHAPPY_COUNTER, 0);
-            this.entityData.define(ROUNDABOUT$POS, (byte) 0);
-            this.entityData.define(DATA_PLAYER_ABSORPTION_ID, 0.0F);
-            this.entityData.define(DATA_SCORE_ID, 0);
-            this.entityData.define(DATA_PLAYER_MODE_CUSTOMISATION, (byte) 0);
-            this.entityData.define(ROUNDABOUT$DODGE_TIME, -1);
-            this.entityData.define(ROUNDABOUT$SKIN_NUMBER, 1);
-            this.entityData.define(ROUNDABOUT$DATA_KNIFE_COUNT_ID, (byte) 0);
-            this.entityData.define(DATA_PLAYER_MAIN_HAND, (byte) 1);
-            this.entityData.define(DATA_SHOULDER_LEFT, new CompoundTag());
-            this.entityData.define(DATA_SHOULDER_RIGHT, new CompoundTag());
-        }
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+
+            super.defineSynchedData(builder);
+            builder.define(DATA_UNHAPPY_COUNTER, 0);
+            builder.define(ROUNDABOUT$POS, (byte) 0);
+            builder.define(DATA_PLAYER_ABSORPTION_ID, 0.0F);
+            builder.define(DATA_SCORE_ID, 0);
+            builder.define(DATA_PLAYER_MODE_CUSTOMISATION, (byte) 0);
+            builder.define(ROUNDABOUT$DODGE_TIME, -1);
+            builder.define(ROUNDABOUT$SKIN_NUMBER, 1);
+            builder.define(ROUNDABOUT$DATA_KNIFE_COUNT_ID, (byte) 0);
+            builder.define(DATA_PLAYER_MAIN_HAND, (byte) 1);
+            builder.define(DATA_SHOULDER_LEFT, new CompoundTag());
+            builder.define(DATA_SHOULDER_RIGHT, new CompoundTag());
+
     }
 
     public void addAdditionalSaveData(CompoundTag p_35481_) {

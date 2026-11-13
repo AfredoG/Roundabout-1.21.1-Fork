@@ -65,7 +65,7 @@ public abstract class AchtungModelPart {
                     }
 
                     for (ModelPart $$8 : this.children.values()) {
-                        $$8.render($$0, newConsumer, $$2, $$3, $$4, $$5, $$6, originalAlpha);
+                        $$8.render($$0, newConsumer, $$2, $$3, net.minecraft.util.FastColor.ARGB32.colorFromFloat(originalAlpha, $$4, $$5, $$6));
                     }
 
                     ClientUtil.popPoseAndCooperate($$0,13);

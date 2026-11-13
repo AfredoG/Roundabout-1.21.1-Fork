@@ -88,10 +88,10 @@ public abstract class ConfigManager {
                     }
 
                     ResourceLocation sourceId =
-                            new ResourceLocation(split[0], split[1]);
+                            ResourceLocation.fromNamespaceAndPath(split[0], split[1]);
 
                     ResourceLocation targetId =
-                            new ResourceLocation(split[2], split[3]);
+                            ResourceLocation.fromNamespaceAndPath(split[2], split[3]);
 
                     Block sourceBlock = BuiltInRegistries.BLOCK.get(sourceId);
                     Block targetBlock = BuiltInRegistries.BLOCK.get(targetId);
@@ -118,10 +118,10 @@ public abstract class ConfigManager {
                     }
 
                     ResourceLocation sourceId =
-                            new ResourceLocation(split[0], split[1]);
+                            ResourceLocation.fromNamespaceAndPath(split[0], split[1]);
 
                     ResourceLocation targetId =
-                            new ResourceLocation(split[2], split[3]);
+                            ResourceLocation.fromNamespaceAndPath(split[2], split[3]);
 
                     Block sourceBlock = BuiltInRegistries.BLOCK.get(sourceId);
                     Block targetBlock = BuiltInRegistries.BLOCK.get(targetId);
@@ -148,8 +148,8 @@ public abstract class ConfigManager {
                         Roundabout.LOGGER.warn("Invalid whole block to slab block entry: {}", entry);
                         continue;
                     }
-                    ResourceLocation sourceId = new ResourceLocation(split[0], split[1]);
-                    ResourceLocation targetId = new ResourceLocation(split[2], split[3]);
+                    ResourceLocation sourceId = ResourceLocation.fromNamespaceAndPath(split[0], split[1]);
+                    ResourceLocation targetId = ResourceLocation.fromNamespaceAndPath(split[2], split[3]);
                     Block sourceBlock = BuiltInRegistries.BLOCK.get(sourceId);
                     Block targetBlock = BuiltInRegistries.BLOCK.get(targetId);
 
@@ -179,7 +179,7 @@ public abstract class ConfigManager {
                         Roundabout.LOGGER.warn("Invalid statue material block: {}", entry);
                         continue;
                     }
-                    ResourceLocation sourceId = new ResourceLocation(split[0], split[1]);
+                    ResourceLocation sourceId = ResourceLocation.fromNamespaceAndPath(split[0], split[1]);
                     Block sourceBlock = BuiltInRegistries.BLOCK.get(sourceId);
 
                     if (
@@ -204,8 +204,8 @@ public abstract class ConfigManager {
                         Roundabout.LOGGER.warn("Invalid Purple Haze block decay entry: {}", entry);
                         continue;
                     }
-                    ResourceLocation sourceId = new ResourceLocation(split[0],split[1]);
-                    ResourceLocation targetId = new ResourceLocation(split[2],split[3]);
+                    ResourceLocation sourceId = ResourceLocation.fromNamespaceAndPath(split[0],split[1]);
+                    ResourceLocation targetId = ResourceLocation.fromNamespaceAndPath(split[2],split[3]);
                     Float decayRate = Float.parseFloat(split[4]);
                     Block sourceBlock = BuiltInRegistries.BLOCK.get(sourceId);
                     Block targetBlock = BuiltInRegistries.BLOCK.get(targetId);
@@ -229,8 +229,8 @@ public abstract class ConfigManager {
                         Roundabout.LOGGER.warn("Invalid Gold Experience DNA entry: {}", entry);
                         continue;
                     }
-                    ResourceLocation sourceId = new ResourceLocation(split[0],split[1]);
-                    ResourceLocation targetId = new ResourceLocation(split[2],split[3]);
+                    ResourceLocation sourceId = ResourceLocation.fromNamespaceAndPath(split[0],split[1]);
+                    ResourceLocation targetId = ResourceLocation.fromNamespaceAndPath(split[2],split[3]);
                     Float transformRate = Float.parseFloat(split[4]);
                     boolean isBaby = split[5].equalsIgnoreCase("baby");
                     Item sourceItem = BuiltInRegistries.ITEM.get(sourceId);
@@ -416,7 +416,7 @@ public abstract class ConfigManager {
                 if (split.length != 2)
                     continue;
 
-                ResourceLocation identifier = new ResourceLocation(split[0], split[1]);
+                ResourceLocation identifier = ResourceLocation.fromNamespaceAndPath(split[0], split[1]);
 
                 Item i = BuiltInRegistries.ITEM.get(identifier);
 
@@ -441,7 +441,7 @@ public abstract class ConfigManager {
                 if (split.length != 2)
                     continue;
 
-                ResourceLocation identifier = new ResourceLocation(split[0], split[1]);
+                ResourceLocation identifier = ResourceLocation.fromNamespaceAndPath(split[0], split[1]);
 
                 Item i = BuiltInRegistries.ITEM.get(identifier);
 
@@ -470,7 +470,7 @@ public abstract class ConfigManager {
                 if (split.length != 2)
                     continue;
 
-                ResourceLocation identifier = new ResourceLocation(split[0], split[1]);
+                ResourceLocation identifier = ResourceLocation.fromNamespaceAndPath(split[0], split[1]);
 
                 Item i = BuiltInRegistries.ITEM.get(identifier);
 
@@ -497,7 +497,7 @@ public abstract class ConfigManager {
                 if (split.length != 2)
                     continue;
 
-                ResourceLocation identifier = new ResourceLocation(split[0], split[1]);
+                ResourceLocation identifier = ResourceLocation.fromNamespaceAndPath(split[0], split[1]);
 
                 Item i = BuiltInRegistries.ITEM.get(identifier);
 
@@ -523,10 +523,10 @@ public abstract class ConfigManager {
                 try {
                     String[] split = entry.split(":");
                     if (split[0].equals("fallback")){
-                        ResourceLocation effectId = new ResourceLocation(split[1], split[2]);
+                        ResourceLocation effectId = ResourceLocation.fromNamespaceAndPath(split[1], split[2]);
                         MainUtil.pearlJamFallback = BuiltInRegistries.MOB_EFFECT.get(effectId);
                     } else {
-                        ResourceLocation foodId = new ResourceLocation(split[0], split[1]);
+                        ResourceLocation foodId = ResourceLocation.fromNamespaceAndPath(split[0], split[1]);
                         ResourceLocation effectId;
                         Item foodItem = BuiltInRegistries.ITEM.get(foodId);
                         List<MobEffect> cureEffects = new java.util.ArrayList<>(List.of());
@@ -537,11 +537,11 @@ public abstract class ConfigManager {
                                 conditions.add(split[i].substring(1));
                                 i++;
                             } else if (split[i + 1].startsWith("!")) {
-                                effectId = new ResourceLocation(split[i], split[i + 1].substring(1));
+                                effectId = ResourceLocation.fromNamespaceAndPath(split[i], split[i + 1].substring(1));
                                 addEffects.add(BuiltInRegistries.MOB_EFFECT.get(effectId));
                                 i += 2;
                             } else {
-                                effectId = new ResourceLocation(split[i], split[i + 1]);
+                                effectId = ResourceLocation.fromNamespaceAndPath(split[i], split[i + 1]);
                                 cureEffects.add(BuiltInRegistries.MOB_EFFECT.get(effectId));
                                 i += 2;
                             }
@@ -564,12 +564,12 @@ public abstract class ConfigManager {
                 try {
                     String[] split = entry.split(":");
                     if (split[0].equals("fallback")){
-                        ResourceLocation particleId = new ResourceLocation(split[1], split[2]);
+                        ResourceLocation particleId = ResourceLocation.fromNamespaceAndPath(split[1], split[2]);
                         ParticleOptions particleOptions = (SimpleParticleType) BuiltInRegistries.PARTICLE_TYPE.get(particleId);
                         MainUtil.foodParticleFallback = Pair.of(particleOptions, split[3]);
                     } else {
-                        ResourceLocation foodId = new ResourceLocation(split[0], split[1]);
-                        ResourceLocation particleId = new ResourceLocation(split[2], split[3]);
+                        ResourceLocation foodId = ResourceLocation.fromNamespaceAndPath(split[0], split[1]);
+                        ResourceLocation particleId = ResourceLocation.fromNamespaceAndPath(split[2], split[3]);
                         Item foodItem = BuiltInRegistries.ITEM.get(foodId);
                         ParticleOptions particleOptions = (SimpleParticleType) BuiltInRegistries.PARTICLE_TYPE.get(particleId);
                         Pair<ParticleOptions, String> pair = Pair.of(particleOptions, split[4]);

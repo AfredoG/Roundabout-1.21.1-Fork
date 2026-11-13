@@ -322,9 +322,9 @@ public class DiverDownEntity extends FollowingStandEntity {
             DiverDownEntity.class, EntityDataSerializers.BOOLEAN);
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(SUBMERGED, false);
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(SUBMERGED, false);
     }
 
     public void setSubmerged(boolean submerged) {

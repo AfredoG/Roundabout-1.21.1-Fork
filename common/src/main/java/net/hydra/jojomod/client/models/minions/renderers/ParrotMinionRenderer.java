@@ -18,7 +18,7 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.entity.animal.Parrot;
 
 public class ParrotMinionRenderer extends MobRenderer<ParrotMinion, ParrotMinionModel> {
-    private static final ResourceLocation VINDICATOR = new ResourceLocation(Roundabout.MOD_ID,"textures/entity/minions/parrot.png");
+    private static final ResourceLocation VINDICATOR = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/entity/minions/parrot.png");
 
     public ParrotMinionRenderer(EntityRendererProvider.Context $$0) {
         super($$0, new ParrotMinionModel($$0.bakeLayer(ModEntityRendererClient.PARROT_MINION_LAYER)), 0.3F);

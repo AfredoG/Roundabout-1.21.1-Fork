@@ -29,7 +29,7 @@ public class ForgeHumanoidArmorLayer {
                 return;
             }
             VertexConsumer vertexconsumer = p_289689_.getBuffer(RenderType.entityTranslucentCull(armorResource));
-            p_289658_.renderToBuffer(p_289664_, vertexconsumer, p_289681_, OverlayTexture.NO_OVERLAY, p_289678_, p_289674_, p_289693_, 1.0F);
+            p_289658_.renderToBuffer(p_289664_, vertexconsumer, p_289681_, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(1.0F, p_289678_, p_289674_, p_289693_));
             ci.cancel();
         }
     }

@@ -14,8 +14,8 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemConditionType;
 import net.minecraft.world.level.storage.loot.predicates.LootItemConditions;
 import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
-import net.minecraftforge.common.data.GlobalLootModifierProvider;
-import net.minecraftforge.common.loot.LootTableIdCondition;
+import net.neoforged.neoforge.common.data.GlobalLootModifierProvider;
+import net.neoforged.neoforge.common.loot.LootTableIdCondition;
 
 public class GlobalLootModProvider extends GlobalLootModifierProvider {
     public GlobalLootModProvider(PackOutput output) {
@@ -28,7 +28,7 @@ public class GlobalLootModProvider extends GlobalLootModifierProvider {
 
 
         add("shipwreck_locacaca_pit", new ForgeItemModifiers(new LootItemCondition[] {
-                new LootTableIdCondition.Builder(new ResourceLocation("chests/shipwreck_treasure")).build(),
+                new LootTableIdCondition.Builder(ResourceLocation.parse("chests/shipwreck_treasure")).build(),
                 LootItemRandomChanceCondition.randomChance(0.15F).build()
         }, ForgeItems.LOCACACA_PIT.get()));
     }

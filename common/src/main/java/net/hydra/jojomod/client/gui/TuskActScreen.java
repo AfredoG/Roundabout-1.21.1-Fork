@@ -28,7 +28,7 @@ import net.minecraft.world.entity.player.Player;
 import java.util.List;
 
 public class TuskActScreen extends Screen implements NoCancelInputScreen {
-    static final ResourceLocation MEMORY_LOCATION = new ResourceLocation(Roundabout.MOD_ID,
+    static final ResourceLocation MEMORY_LOCATION = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/tusk_acts.png");
 
     public int currentlyHovered;

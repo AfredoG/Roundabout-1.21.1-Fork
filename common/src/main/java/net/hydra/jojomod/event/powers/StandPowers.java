@@ -2139,7 +2139,7 @@ public class StandPowers extends AbilityScapeBasis {
 
             if (surpassesFire()) {
                 if (self.isOnFire()) {
-                    self.setSecondsOnFire(0);
+                    self.igniteForSeconds(0);
                 } if (getStandUserSelf().roundabout$isOnStandFire()) {
                     getStandUserSelf().roundabout$setSecondsOnStandFire((byte) 0);
                     getStandUserSelf().roundabout$setOnStandFire((byte) 0);

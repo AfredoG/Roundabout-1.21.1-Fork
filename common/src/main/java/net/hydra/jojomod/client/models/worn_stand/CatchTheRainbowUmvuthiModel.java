@@ -26,7 +26,7 @@ import net.minecraft.world.entity.LivingEntity;
 
 public class CatchTheRainbowUmvuthiModel extends PsuedoHierarchicalModel {
 	// This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
-	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation("modid", "catchtherainbowumvuthimodel"), "main");
+	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath("modid", "catchtherainbowumvuthimodel"), "main");
 	private final ModelPart stand;
 	private final ModelPart mask;
 	private final ModelPart halo;
@@ -76,16 +76,21 @@ public class CatchTheRainbowUmvuthiModel extends PsuedoHierarchicalModel {
 	}
 
 	@Override
-	public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
-		stand.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+	public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, int argbColor) {
+        float red = net.minecraft.util.FastColor.ARGB32.red(argbColor) / 255.0F;
+        float green = net.minecraft.util.FastColor.ARGB32.green(argbColor) / 255.0F;
+        float blue = net.minecraft.util.FastColor.ARGB32.blue(argbColor) / 255.0F;
+        float alpha = net.minecraft.util.FastColor.ARGB32.alpha(argbColor) / 255.0F;
+
+		stand.render(poseStack, vertexConsumer, packedLight, packedOverlay, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, red, green, blue));
 	}
 
 	@Override
 	public ModelPart root() {return Root;}
 
-	public static ResourceLocation umvuthi_on = new ResourceLocation(Roundabout.MOD_ID,
+	public static ResourceLocation umvuthi_on = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
 			"textures/stand/catch_the_rainbow/umvuthi_on.png");
-	public static ResourceLocation umvuthi_off = new ResourceLocation(Roundabout.MOD_ID,
+	public static ResourceLocation umvuthi_off = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
 			"textures/stand/catch_the_rainbow/umvuthi_off.png");
 
 	public ResourceLocation getTextureLocation(Entity context, byte skin) {
@@ -135,7 +140,7 @@ public class CatchTheRainbowUmvuthiModel extends PsuedoHierarchicalModel {
 				this.animate(user.roundabout$getWornStandIdleAnimation(), CatchTheRainbowAnimations.umvuthileft, partialTicks, 1f);
 			}
 
-			root().render(poseStack, consumer, light, OverlayTexture.NO_OVERLAY, r, g, b, alpha);
+			root().render(poseStack, consumer, light, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, r, g, b));
 		}
 	}
 }

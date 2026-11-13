@@ -110,10 +110,15 @@ public class TuskAct2Model<T extends TuskEntity> extends StandModel<T> {
     }
 
     @Override
-    public void renderToBuffer(PoseStack matrices, VertexConsumer vertexConsumer, int light, int overlay, float red, float green, float blue, float alpha) {
+    public void renderToBuffer(PoseStack matrices, VertexConsumer vertexConsumer, int light, int overlay, int argbColor) {
+        float red = net.minecraft.util.FastColor.ARGB32.red(argbColor) / 255.0F;
+        float green = net.minecraft.util.FastColor.ARGB32.green(argbColor) / 255.0F;
+        float blue = net.minecraft.util.FastColor.ARGB32.blue(argbColor) / 255.0F;
+        float alpha = net.minecraft.util.FastColor.ARGB32.alpha(argbColor) / 255.0F;
+
         matrices.scale(0.75F,0.75F,0.75F);
         matrices.translate(0,1,0);
-        super.renderToBuffer(matrices, vertexConsumer, light, overlay, red, green, blue, alpha);
+        super.renderToBuffer(matrices, vertexConsumer, light, overlay, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, red, green, blue));
     }
 
     @Override

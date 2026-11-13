@@ -19,7 +19,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(Gui.class)
 public abstract class WhitesnakeHotbarMixin {
     @Unique private static final ResourceLocation WHITESNAKE_WIDGETS =
-            new ResourceLocation("textures/gui/widgets.png");
+            ResourceLocation.parse("textures/gui/widgets.png");
     @Shadow private int screenWidth;
     @Shadow private int screenHeight;
 

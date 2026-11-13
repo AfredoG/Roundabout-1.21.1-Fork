@@ -41,8 +41,13 @@ public class VillagerHeadPart extends PsuedoHierarchicalModel {
         return LayerDefinition.create($$0, 64, 64);
     }
     @Override
-    public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
-        head.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+    public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, int argbColor) {
+        float red = net.minecraft.util.FastColor.ARGB32.red(argbColor) / 255.0F;
+        float green = net.minecraft.util.FastColor.ARGB32.green(argbColor) / 255.0F;
+        float blue = net.minecraft.util.FastColor.ARGB32.blue(argbColor) / 255.0F;
+        float alpha = net.minecraft.util.FastColor.ARGB32.alpha(argbColor) / 255.0F;
+
+        head.render(poseStack, vertexConsumer, packedLight, packedOverlay, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, red, green, blue));
     }
 
     @Override
@@ -59,7 +64,7 @@ public class VillagerHeadPart extends PsuedoHierarchicalModel {
 
 
     public ResourceLocation getTextureLocation(){
-        return new ResourceLocation(Roundabout.MOD_ID, "textures/entity/minions/villager.png");
+        return ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/entity/minions/villager.png");
     }
 
     public void render(Entity context, PoseStack poseStack, MultiBufferSource bufferSource, int light) {
@@ -99,7 +104,7 @@ public class VillagerHeadPart extends PsuedoHierarchicalModel {
             }
             VertexConsumer consumer = bufferSource.getBuffer(RenderType.entityTranslucent(getTextureLocation()));
             //The number at the end is inversely proportional so 2 is half speed
-            root().render(poseStack, consumer, light, OverlayTexture.NO_OVERLAY, r, g, b, alpha);
+            root().render(poseStack, consumer, light, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, r, g, b));
         }
     }
 

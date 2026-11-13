@@ -178,14 +178,14 @@ public class CinderellaVisageDisplayEntity extends ThrowableItemProjectile imple
         this.getEntityData().set(CROSS_NUMBER, idd);
     }
     @Override
-    protected void defineSynchedData() {
-        if (!this.entityData.hasItem(SIZE)) {
-            super.defineSynchedData();
-            this.entityData.define(SIZE, 0);
-            this.entityData.define(USER_ID, -1);
-            this.entityData.define(CROSS_NUMBER, 0);
-            this.entityData.define(MAX_SIZE, 0);
-        }
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+
+            super.defineSynchedData(builder);
+            builder.define(SIZE, 0);
+            builder.define(USER_ID, -1);
+            builder.define(CROSS_NUMBER, 0);
+            builder.define(MAX_SIZE, 0);
+
     }
     @Override
     protected Item getDefaultItem() {

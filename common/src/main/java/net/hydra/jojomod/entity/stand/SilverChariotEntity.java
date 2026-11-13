@@ -670,16 +670,16 @@ public class SilverChariotEntity extends FollowingStandEntity {
     }
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        entityData.define(REMOTE_MODE, REMOTE_MODE_NONE);
-        entityData.define(IS_ARMOURED, true);
-        entityData.define(HAS_RAPIER, true);
-        entityData.define(ACTIVE_HAND, RIGHT_HAND);
-        // entityData.define(IS_FAKE, false);
-        entityData.define(IS_DUAL_WIELDING, false);
-        entityData.define(IS_CARRYING_USER, false);
-        entityData.define(HELD_ITEM_SILVER_CHARIOT, ItemStack.EMPTY);
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(REMOTE_MODE, REMOTE_MODE_NONE);
+        builder.define(IS_ARMOURED, true);
+        builder.define(HAS_RAPIER, true);
+        builder.define(ACTIVE_HAND, RIGHT_HAND);
+        // builder.define(IS_FAKE, false);
+        builder.define(IS_DUAL_WIELDING, false);
+        builder.define(IS_CARRYING_USER, false);
+        builder.define(HELD_ITEM_SILVER_CHARIOT, ItemStack.EMPTY);
     }
 
     @Override

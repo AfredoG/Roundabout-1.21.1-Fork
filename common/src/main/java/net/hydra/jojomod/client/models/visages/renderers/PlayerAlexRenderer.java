@@ -16,7 +16,7 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
 
 public class PlayerAlexRenderer<T extends JojoNPC> extends PlayerLikeRenderer<JojoNPCPlayer> {
-    private static final ResourceLocation ALEX_SKIN = new ResourceLocation(Roundabout.MOD_ID,"textures/entity/visage/alex.png");
+    private static final ResourceLocation ALEX_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/entity/visage/alex.png");
     public PlayerAlexRenderer(EntityRendererProvider.Context context) {
         super(context, new PlayerAlexModel<>(context.bakeLayer(ModEntityRendererClient.ALEX_LAYER)),0f);
         if (ConfigManager.getClientConfig().renderArmorOnPlayerCloneAbilities) {

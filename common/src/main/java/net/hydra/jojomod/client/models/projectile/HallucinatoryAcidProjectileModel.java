@@ -41,18 +41,18 @@ public class HallucinatoryAcidProjectileModel extends Model {
 
     public void renderInner(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight,
                             int packedOverlay, float red, float green, float blue) {
-        inner.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, 1.0F);
+        inner.render(poseStack, vertexConsumer, packedLight, packedOverlay, net.minecraft.util.FastColor.ARGB32.colorFromFloat(1.0F, red, green, blue));
     }
 
     public void renderOuter(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight,
                             int packedOverlay, float red, float green, float blue) {
-        outer.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, 1.0F);
+        outer.render(poseStack, vertexConsumer, packedLight, packedOverlay, net.minecraft.util.FastColor.ARGB32.colorFromFloat(1.0F, red, green, blue));
     }
 
     @Override
     public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight,
                                int packedOverlay, float red, float green, float blue, float alpha) {
-        inner.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
-        outer.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+        inner.render(poseStack, vertexConsumer, packedLight, packedOverlay, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, red, green, blue));
+        outer.render(poseStack, vertexConsumer, packedLight, packedOverlay, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, red, green, blue));
     }
 }

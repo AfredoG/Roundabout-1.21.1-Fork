@@ -11,7 +11,7 @@ public class JumpinJackFlashRenderer
         extends StandRenderer<JumpinJackFlashEntity> {
 
     public static final ResourceLocation TEXTURE =
-            new ResourceLocation(
+            ResourceLocation.fromNamespaceAndPath(
                     Roundabout.MOD_ID,
                     "textures/stand/jjf/jumpin_jack_flash.png"
             );

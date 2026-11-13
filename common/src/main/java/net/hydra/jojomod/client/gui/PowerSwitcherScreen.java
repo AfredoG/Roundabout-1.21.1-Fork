@@ -25,7 +25,7 @@ import java.util.List;
 
 public class PowerSwitcherScreen extends Screen {
     //Check out GamemodeSwitcherScreen
-    static final ResourceLocation MOB_SWITCHER_LOCATION = new ResourceLocation(Roundabout.MOD_ID,
+    static final ResourceLocation MOB_SWITCHER_LOCATION = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/pose_switcher.png");
    private posIcon currentlyHovered;
     private int firstMouseX;
@@ -149,12 +149,12 @@ public class PowerSwitcherScreen extends Screen {
     }
 
     public enum posIcon {
-        STAND(Component.translatable("text.roundabout.powers.stand_select"), new ResourceLocation(Roundabout.MOD_ID,
+        STAND(Component.translatable("text.roundabout.powers.stand_select"), ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
                 "textures/gui/icons/powers/stand/stand_summon.png"),(byte) PowerTypes.STAND.ordinal(),0,0),
-        VAMPIRE(Component.translatable("text.roundabout.powers.vampire_select"), new ResourceLocation(Roundabout.MOD_ID,
+        VAMPIRE(Component.translatable("text.roundabout.powers.vampire_select"), ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
                 "textures/gui/icons/powers/vampire/blood_clutch.png"),(byte) PowerTypes.VAMPIRE.ordinal(),0,62),
 
-        NONE(Component.translatable("text.roundabout.powers.none"), new ResourceLocation(Roundabout.MOD_ID,
+        NONE(Component.translatable("text.roundabout.powers.none"), ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
                 "textures/gui/pose_icons/jonathan.png"),(byte) PowerTypes.NONE.ordinal(),0,31);
 
         static PowerSwitcherScreen.posIcon getByte(PowerTypes pose) {

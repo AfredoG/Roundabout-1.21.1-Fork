@@ -262,12 +262,12 @@ public class SurvivorEntity extends MultipleTypeStand {
 
 
     @Override
-    protected void defineSynchedData() {
-        if (!this.entityData.hasItem(RANDOM_SIZE)) {
-            super.defineSynchedData();
-            this.entityData.define(RANDOM_SIZE, 0F);
-            this.entityData.define(ACTIVATED, false);
-        }
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+
+            super.defineSynchedData(builder);
+            builder.define(RANDOM_SIZE, 0F);
+            builder.define(ACTIVATED, false);
+
     }
 
     @Override

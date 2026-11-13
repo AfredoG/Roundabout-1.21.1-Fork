@@ -50,11 +50,11 @@ public class StepRuleEntity extends Entity {
     private static final EntityDataAccessor<Boolean> TURNED_BAD =
             SynchedEntityData.defineId(StepRuleEntity.class, EntityDataSerializers.BOOLEAN);
     @Override
-    protected void defineSynchedData() {
-        if (!this.entityData.hasItem(TURNED_BAD)) {
-            this.entityData.define(DATA_START_POS, BlockPos.ZERO);
-            this.entityData.define(TURNED_BAD, false);
-        }
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+
+            builder.define(DATA_START_POS, BlockPos.ZERO);
+            builder.define(TURNED_BAD, false);
+
     }
 
     public static final float dimensions = 1F;

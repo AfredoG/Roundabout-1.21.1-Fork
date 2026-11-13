@@ -55,12 +55,12 @@ public class JusticeEntity extends FollowingStandEntity {
     }
 
     @Override
-    protected void defineSynchedData() {
-        if (!this.entityData.hasItem(JUSTICE_SZ)) {
-            super.defineSynchedData();
-            this.entityData.define(JUSTICE_SZ, 100);
-            this.entityData.define(JUSTICE_TEAM, (byte) 0);
-        }
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+
+            super.defineSynchedData(builder);
+            builder.define(JUSTICE_SZ, 100);
+            builder.define(JUSTICE_TEAM, (byte) 0);
+
     }
     @Override
     public boolean isNoGravity() {

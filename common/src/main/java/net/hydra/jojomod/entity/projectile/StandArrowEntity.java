@@ -112,7 +112,7 @@ public class StandArrowEntity extends AbstractArrow {
         boolean $$8 = $$1.getType() == EntityType.ENDERMAN;
         int $$9 = $$1.getRemainingFireTicks();
         if (this.isOnFire() && !$$8) {
-            $$1.setSecondsOnFire(5);
+            $$1.igniteForSeconds(5);
         }
         boolean worthy = false;
         float X = $$3;
@@ -263,8 +263,8 @@ public class StandArrowEntity extends AbstractArrow {
         super.readAdditionalSaveData($$0);
     }
 
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(STAND_ARROW, ItemStack.EMPTY);
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(STAND_ARROW, ItemStack.EMPTY);
     }
 }

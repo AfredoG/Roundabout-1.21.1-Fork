@@ -23,12 +23,9 @@ import org.joml.Matrix3f;
 import org.joml.Matrix4f;
 
 public class StandArrowRenderer<T extends StandArrowEntity> extends EntityRenderer<T> {
-    public static final ResourceLocation STAND_ARROW_LOCATION = new ResourceLocation
-            (Roundabout.MOD_ID, "textures/entity/projectile/stand_arrow.png");
-    public static final ResourceLocation STAND_BEETLE_ARROW_LOCATION = new ResourceLocation
-            (Roundabout.MOD_ID, "textures/entity/projectile/stand_beetle_arrow.png");
-    public static final ResourceLocation WORTHY_ARROW_LOCATION = new ResourceLocation
-            (Roundabout.MOD_ID, "textures/entity/projectile/worthy_arrow.png");
+    public static final ResourceLocation STAND_ARROW_LOCATION = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/entity/projectile/stand_arrow.png");
+    public static final ResourceLocation STAND_BEETLE_ARROW_LOCATION = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/entity/projectile/stand_beetle_arrow.png");
+    public static final ResourceLocation WORTHY_ARROW_LOCATION = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/entity/projectile/worthy_arrow.png");
     //register(EntityType.ARROW, TippableArrowRenderer::new);
 
     public StandArrowRenderer(EntityRendererProvider.Context p_174422_) {

@@ -4,10 +4,11 @@ import net.hydra.jojomod.datagen.RoundaboutBlockModelProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.data.event.GatherDataEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.data.event.GatherDataEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.zetalasis.hjson.JsonObject;
 import net.zetalasis.hjson.JsonValue;
 
@@ -15,7 +16,7 @@ import java.io.InputStreamReader;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
-@Mod.EventBusSubscriber(modid = Roundabout.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = Roundabout.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
 public class DataGenerators {
     public static Optional<InputStreamReader> getJsonResourceStream(String resource){
 

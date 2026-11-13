@@ -15,8 +15,8 @@ import net.minecraft.resources.ResourceLocation;
 
 public class GoldExperienceLifePunchLayer extends RenderLayer<GoldExperienceEntity, StandModel<GoldExperienceEntity>> {
 
-    private static final ResourceLocation CORE_TEXTURE = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/gold_experience/life_punch_core.png");
-    private static final ResourceLocation SOFT_AURA_TEXTURE = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/gold_experience/life_punch_aura.png");
+    private static final ResourceLocation CORE_TEXTURE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/gold_experience/life_punch_core.png");
+    private static final ResourceLocation SOFT_AURA_TEXTURE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/gold_experience/life_punch_aura.png");
 
     public GoldExperienceLifePunchLayer(RenderLayerParent<GoldExperienceEntity, StandModel<GoldExperienceEntity>> renderer) {
         super(renderer);
@@ -32,22 +32,10 @@ public class GoldExperienceLifePunchLayer extends RenderLayer<GoldExperienceEnti
             model.left_arm.visible = false;
 
             VertexConsumer coreConsumer = bufferSource.getBuffer(RenderType.entityTranslucentEmissive(CORE_TEXTURE));
-            model.renderToBuffer(
-                    poseStack,
-                    coreConsumer,
-                    15728880,
-                    OverlayTexture.NO_OVERLAY,
-                    1.0F, 1.0F, 1.0F, 0.55F
-            );
+            model.renderToBuffer(poseStack, coreConsumer, 15728880, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(0.55F, 1.0F, 1.0F, 1.0F));
 
             VertexConsumer auraConsumer = bufferSource.getBuffer(RenderType.energySwirl(SOFT_AURA_TEXTURE, 0.0F, 0.0F));
-            model.renderToBuffer(
-                    poseStack,
-                    auraConsumer,
-                    15728880,
-                    OverlayTexture.NO_OVERLAY,
-                    0.4F, 0.4F, 0.2F, 0.3F
-            );
+            model.renderToBuffer(poseStack, auraConsumer, 15728880, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(0.3F, 0.4F, 0.4F, 0.2F));
 
             model.left_arm.visible = true;
         }

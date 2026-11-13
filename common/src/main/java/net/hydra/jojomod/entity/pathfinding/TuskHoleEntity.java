@@ -54,12 +54,12 @@ public class TuskHoleEntity extends GroundPathfindingStandAttackEntity {
     private static final EntityDataAccessor<Boolean> VORTEX = SynchedEntityData.defineId(TuskHoleEntity.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Direction> CLINGING = SynchedEntityData.defineId(TuskHoleEntity.class, EntityDataSerializers.DIRECTION);
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        if (!this.entityData.hasItem(VORTEX)) {
-            this.entityData.define(VORTEX, false);
-            this.entityData.define(CLINGING, Direction.DOWN);
-        }
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+
+            builder.define(VORTEX, false);
+            builder.define(CLINGING, Direction.DOWN);
+
     }
 
     int lifespan = 100;

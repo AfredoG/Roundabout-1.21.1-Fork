@@ -11,7 +11,7 @@ import net.minecraft.world.inventory.CraftingMenu;
 
 public class DiverDownCraftingScreen extends CraftingScreen {
     private static final ResourceLocation TEXTURE =
-            new ResourceLocation(Roundabout.MOD_ID, "textures/gui/diver_down/workbench_ui/crafting_table.png");
+            ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/gui/diver_down/workbench_ui/crafting_table.png");
 
     public DiverDownCraftingScreen(CraftingMenu menu, Inventory inventory, Component title) {
         super(menu, inventory, title);

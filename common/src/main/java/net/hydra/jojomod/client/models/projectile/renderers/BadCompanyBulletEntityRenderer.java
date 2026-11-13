@@ -47,7 +47,7 @@ public class BadCompanyBulletEntityRenderer extends EntityRenderer<BadCompanyBul
             $$3.mulPose(Axis.XP.rotationDegrees(-Mth.lerp($$2, $$0.xRotO, $$0.getXRot())));
             $$3.scale(1.1f, 1.1f, 1.1f);
             VertexConsumer $$6 = ItemRenderer.getFoilBufferDirect($$4, this.model.renderType(this.getTextureLocation($$0)), false, false);
-            this.model.renderToBuffer($$3, $$6, $$5, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
+            this.model.renderToBuffer($$3, $$6, $$5, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(1.0F, 1.0F, 1.0F, 1.0F));
             $$3.popPose();
 
             // for rendering the bullet trail

@@ -219,12 +219,12 @@ public class StarPlatinumEntity extends FollowingStandEntity {
         return this.entityData.get(IS_SCOPING);
     }
     @Override
-    protected void defineSynchedData() {
-        if (!this.entityData.hasItem(FINGER_LENGTH)) {
-            super.defineSynchedData();
-            this.entityData.define(FINGER_LENGTH, 1F);
-            this.entityData.define(IS_SCOPING, false);
-        }
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+
+            super.defineSynchedData(builder);
+            builder.define(FINGER_LENGTH, 1F);
+            builder.define(IS_SCOPING, false);
+
     }
 
     public int tsReleaseTime = 0;

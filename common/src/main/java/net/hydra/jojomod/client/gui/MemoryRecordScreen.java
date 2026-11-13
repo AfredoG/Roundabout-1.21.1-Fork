@@ -30,7 +30,7 @@ import java.util.List;
 
 public class MemoryRecordScreen extends Screen implements NoCancelInputScreen {
     //Check out GamemodeSwitcherScreen
-    static final ResourceLocation MEMORY_LOCATION = new ResourceLocation(Roundabout.MOD_ID,
+    static final ResourceLocation MEMORY_LOCATION = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/anubis_memory.png");
 
     public byte currentlyHovered;

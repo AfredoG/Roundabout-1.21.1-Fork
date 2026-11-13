@@ -21,7 +21,7 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 
 public class PlayerLikeSpinAttackLayer <T extends JojoNPC> extends RenderLayer<T, PlayerLikeModel<T>> {
-    public static final ResourceLocation TEXTURE = new ResourceLocation("textures/entity/trident_riptide.png");
+    public static final ResourceLocation TEXTURE = ResourceLocation.parse("textures/entity/trident_riptide.png");
     public static final String BOX = "box";
     private final ModelPart box;
 

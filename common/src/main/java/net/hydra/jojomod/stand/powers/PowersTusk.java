@@ -2822,7 +2822,7 @@ public class PowersTusk extends NewDashPreset {
         for(int i=0;i<PowersTusk.skinLoader.length;i++) {
             ResourceLocation[] skins = new ResourceLocation[4];
             for (int n=0;n<4;n++){
-                skins[n] = new ResourceLocation(Roundabout.MOD_ID,location+(n+1)+ "/" + skinLoader[i] + ".png");
+                skins[n] = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,location+(n+1)+ "/" + skinLoader[i] + ".png");
             }
             SKINS.put((byte)(i+1),skins);
         }

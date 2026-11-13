@@ -24,8 +24,8 @@ public class GrabbedMobSoulBaseRenderer<T extends GrabbedMobSoul, P extends Huma
         super(context, entityModel, f);
     }
 
-    private static final ResourceLocation BLUE_SOUL = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/black_sabbath/souls/blue.png");
-    private static final ResourceLocation NULL = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/achtung_baby/very_badass_texture.png");
+    private static final ResourceLocation BLUE_SOUL = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/black_sabbath/souls/blue.png");
+    private static final ResourceLocation NULL = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/achtung_baby/very_badass_texture.png");
     @Override
     public ResourceLocation getTextureLocation(GrabbedMobSoul entity) {
             return BLUE_SOUL;

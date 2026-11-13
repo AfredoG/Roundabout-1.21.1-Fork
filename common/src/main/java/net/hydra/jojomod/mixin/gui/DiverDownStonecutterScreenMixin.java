@@ -15,7 +15,7 @@ public class DiverDownStonecutterScreenMixin {
         if ((Object) this instanceof DiverDownStonecutterScreen) {
             return DiverDownStonecutterScreen.TEXTURE;
         }
-        return new ResourceLocation("textures/gui/container/stonecutter.png");
+        return ResourceLocation.parse("textures/gui/container/stonecutter.png");
     }
 
     @Redirect(method = "renderButtons", at = @At(value = "FIELD", target = "Lnet/minecraft/client/gui/screens/inventory/StonecutterScreen;BG_LOCATION:Lnet/minecraft/resources/ResourceLocation;"))
@@ -23,6 +23,6 @@ public class DiverDownStonecutterScreenMixin {
         if ((Object) this instanceof DiverDownStonecutterScreen) {
             return DiverDownStonecutterScreen.TEXTURE;
         }
-        return new ResourceLocation("textures/gui/container/stonecutter.png");
+        return ResourceLocation.parse("textures/gui/container/stonecutter.png");
     }
 }

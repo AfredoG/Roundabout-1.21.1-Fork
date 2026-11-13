@@ -5,39 +5,39 @@ import net.minecraft.world.effect.MobEffects;
 
 public class ModEffects {
 
-    public static MobEffect BLEED;
-    public static MobEffect STITCHED;
-    public static MobEffect HEX;
-    public static MobEffect BANISH;
-    public static MobEffect DOOMED;
-    public static MobEffect DOOM_IMMUNITY;
-    public static MobEffect STAND_VIRUS;
-    public static MobEffect CAPTURING_LOVE;
-    public static MobEffect FACELESS;
-    public static MobEffect MELTING;
-    public static MobEffect STAND_MELTING;
-    public static MobEffect GRAVITY_FLIP;
-    public static MobEffect WARDING;
-    public static MobEffect SINGE;
-    public static MobEffect VAMPIRE_BLOOD;
-    public static MobEffect UNBALANCED;
-    public static MobEffect MOLD;
-    public static MobEffect SWITCH;
-    public static MobEffect CRIPPLED;
-    public static MobEffect HALLUCINATION;
-    public static MobEffect OLD;
-    public static MobEffect SLEEPING;
-    public static MobEffect REFRESHED;
-    public static MobEffect INFINITE_SPIN;
-    public static MobEffect FORTIFICATION;
+    public static net.minecraft.core.Holder<MobEffect> BLEED;
+    public static net.minecraft.core.Holder<MobEffect> STITCHED;
+    public static net.minecraft.core.Holder<MobEffect> HEX;
+    public static net.minecraft.core.Holder<MobEffect> BANISH;
+    public static net.minecraft.core.Holder<MobEffect> DOOMED;
+    public static net.minecraft.core.Holder<MobEffect> DOOM_IMMUNITY;
+    public static net.minecraft.core.Holder<MobEffect> STAND_VIRUS;
+    public static net.minecraft.core.Holder<MobEffect> CAPTURING_LOVE;
+    public static net.minecraft.core.Holder<MobEffect> FACELESS;
+    public static net.minecraft.core.Holder<MobEffect> MELTING;
+    public static net.minecraft.core.Holder<MobEffect> STAND_MELTING;
+    public static net.minecraft.core.Holder<MobEffect> GRAVITY_FLIP;
+    public static net.minecraft.core.Holder<MobEffect> WARDING;
+    public static net.minecraft.core.Holder<MobEffect> SINGE;
+    public static net.minecraft.core.Holder<MobEffect> VAMPIRE_BLOOD;
+    public static net.minecraft.core.Holder<MobEffect> UNBALANCED;
+    public static net.minecraft.core.Holder<MobEffect> MOLD;
+    public static net.minecraft.core.Holder<MobEffect> SWITCH;
+    public static net.minecraft.core.Holder<MobEffect> CRIPPLED;
+    public static net.minecraft.core.Holder<MobEffect> HALLUCINATION;
+    public static net.minecraft.core.Holder<MobEffect> OLD;
+    public static net.minecraft.core.Holder<MobEffect> SLEEPING;
+    public static net.minecraft.core.Holder<MobEffect> REFRESHED;
+    public static net.minecraft.core.Holder<MobEffect> INFINITE_SPIN;
+    public static net.minecraft.core.Holder<MobEffect> FORTIFICATION;
 
 
-    public static MobEffect IMPRINTING;
-    public static MobEffect SWAPPED;
+    public static net.minecraft.core.Holder<MobEffect> IMPRINTING;
+    public static net.minecraft.core.Holder<MobEffect> SWAPPED;
 
-    public static MobEffect HAZE_VIRUS;
-    public static MobEffect DISTORTION_VIRUS;
-    public static MobEffect VIRUS_IMMUNITY;
+    public static net.minecraft.core.Holder<MobEffect> HAZE_VIRUS;
+    public static net.minecraft.core.Holder<MobEffect> DISTORTION_VIRUS;
+    public static net.minecraft.core.Holder<MobEffect> VIRUS_IMMUNITY;
 
-    public static MobEffect RECONSTRUCTION;
+    public static net.minecraft.core.Holder<MobEffect> RECONSTRUCTION;
 }

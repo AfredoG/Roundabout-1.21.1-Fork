@@ -34,7 +34,7 @@ import java.util.StringTokenizer;
 
 public class PlunderScreen extends Screen implements NoCancelInputScreen {
     //Check out GamemodeSwitcherScreen
-    static final ResourceLocation MOB_SWITCHER_LOCATION = new ResourceLocation(Roundabout.MOD_ID,
+    static final ResourceLocation MOB_SWITCHER_LOCATION = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/pose_switcher.png");
     private static final int SPRITE_SHEET_WIDTH = 256;
     private static final int SPRITE_SHEET_HEIGHT = 256;
@@ -266,24 +266,24 @@ public class PlunderScreen extends Screen implements NoCancelInputScreen {
     }
 
     public enum standRerollIcon {
-        ITEM_PLUNDER(Component.translatable("roundabout.soft_and_wet_plunder.items"), new ResourceLocation(Roundabout.MOD_ID,
+        ITEM_PLUNDER(Component.translatable("roundabout.soft_and_wet_plunder.items"), ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
                 "textures/gui/plunder_icons/item.png"),PlunderTypes.ITEM.id,-43,31, Component.translatable("roundabout.soft_and_wet_plunder.items.desc")),
-        SOUND_PLUNDER(Component.translatable("roundabout.soft_and_wet_plunder.sound"), new ResourceLocation(Roundabout.MOD_ID,
+        SOUND_PLUNDER(Component.translatable("roundabout.soft_and_wet_plunder.sound"), ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
                 "textures/gui/plunder_icons/sound.png"),PlunderTypes.SOUND.id,-28,1, Component.translatable("roundabout.soft_and_wet_plunder.sound.desc")),
-        FRICTION_PLUNDER(Component.translatable("roundabout.soft_and_wet_plunder.friction"), new ResourceLocation(Roundabout.MOD_ID,
+        FRICTION_PLUNDER(Component.translatable("roundabout.soft_and_wet_plunder.friction"), ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
                 "textures/gui/plunder_icons/friction.png"),PlunderTypes.FRICTION.id,42,31, Component.translatable("roundabout.soft_and_wet_plunder.friction.desc")),
-        SIGHT_PLUNDER(Component.translatable("roundabout.soft_and_wet_plunder.sight"), new ResourceLocation(Roundabout.MOD_ID,
+        SIGHT_PLUNDER(Component.translatable("roundabout.soft_and_wet_plunder.sight"), ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
                 "textures/gui/plunder_icons/sight.png"),PlunderTypes.SIGHT.id,0,-16, Component.translatable("roundabout.soft_and_wet_plunder.sight.desc")),
-        OXYGEN_PLUNDER(Component.translatable("roundabout.soft_and_wet_plunder.oxygen"), new ResourceLocation(Roundabout.MOD_ID,
+        OXYGEN_PLUNDER(Component.translatable("roundabout.soft_and_wet_plunder.oxygen"), ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
                 "textures/gui/plunder_icons/oxygen.png"),PlunderTypes.OXYGEN.id,28,1, Component.translatable("roundabout.soft_and_wet_plunder.oxygen.desc")),
-        MOB_PLUNDER(Component.translatable("roundabout.soft_and_wet_plunder.mobs"), new ResourceLocation(Roundabout.MOD_ID,
+        MOB_PLUNDER(Component.translatable("roundabout.soft_and_wet_plunder.mobs"), ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
                 "textures/gui/plunder_icons/mobs.png"),PlunderTypes.MOBS.id,28,61, Component.translatable("roundabout.soft_and_wet_plunder.mobs.desc")),
-        POTION_EFFECT_PLUNDER(Component.translatable("roundabout.soft_and_wet_plunder.potion_effects"), new ResourceLocation(Roundabout.MOD_ID,
+        POTION_EFFECT_PLUNDER(Component.translatable("roundabout.soft_and_wet_plunder.potion_effects"), ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
                 "textures/gui/plunder_icons/effects.png"),PlunderTypes.POTION_EFFECTS.id,-28,61, Component.translatable("roundabout.soft_and_wet_plunder.potion_effects.desc")),
-        MOISTURE_PLUNDER(Component.translatable("roundabout.soft_and_wet_plunder.moisture"), new ResourceLocation(Roundabout.MOD_ID,
+        MOISTURE_PLUNDER(Component.translatable("roundabout.soft_and_wet_plunder.moisture"), ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
                 "textures/gui/plunder_icons/moisture.png"),PlunderTypes.MOISTURE.id,0,78, Component.translatable("roundabout.soft_and_wet_plunder.moisture.desc")),
 
-        NONE(Component.translatable("roundabout.soft_and_wet_plunder.none"), new ResourceLocation(Roundabout.MOD_ID,
+        NONE(Component.translatable("roundabout.soft_and_wet_plunder.none"), ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
                 "textures/gui/plunder_icons/main_stand.png"),(byte)0,0,31, Component.translatable("roundabout.stand_switch.main.desc"));
 
         static standRerollIcon getByte(PlunderTypes pose) {

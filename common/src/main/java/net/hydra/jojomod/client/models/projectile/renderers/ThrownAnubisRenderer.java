@@ -64,7 +64,7 @@ public class ThrownAnubisRenderer extends EntityRenderer<ThrownAnubisEntity> {
 
 
             VertexConsumer $$6 = $$4.getBuffer(RenderType.entityTranslucent(getTextureLocation($$0)));
-            this.model.renderToBuffer(poseStack, $$6, $$5, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
+            this.model.renderToBuffer(poseStack, $$6, $$5, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(1.0F, 1.0F, 1.0F, 1.0F));
             poseStack.popPose();
             super.render($$0, $$1, $$2, poseStack, $$4, $$5);
         }

@@ -21,7 +21,7 @@ import net.minecraft.world.entity.animal.horse.AbstractHorse;
 import net.minecraft.world.entity.player.Player;
 
 public class HorseVampireEyeLayer <T extends AbstractHorse, M extends HorseModel<T>> extends EyesLayer<T, M> {
-    private static final ResourceLocation SPIDER_EYES = new ResourceLocation(Roundabout.MOD_ID,"textures/entity/vampire/horse_eyes.png");
+    private static final ResourceLocation SPIDER_EYES = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/entity/vampire/horse_eyes.png");
 
     public HorseVampireEyeLayer(RenderLayerParent<T, M> $$0) {
         super($$0);
@@ -42,7 +42,7 @@ public class HorseVampireEyeLayer <T extends AbstractHorse, M extends HorseModel
                 float distanceTo = mc.distanceTo($$3)*0.1F-0.2F;
                 float transdist = Math.min(1F,distanceTo);
                 transdist = Math.max(0,transdist);
-                this.getParentModel().renderToBuffer($$0, $$10, 15728640, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, transdist);
+                this.getParentModel().renderToBuffer($$0, $$10, 15728640, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(transdist, 1.0F, 1.0F, 1.0F));
             }
         }
 

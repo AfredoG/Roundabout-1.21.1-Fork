@@ -56,8 +56,7 @@ public class CTRbarrierRenderer extends EntityRenderer<CTRbarrierEntity> {
             double dz = motion.z;
             // Horizontal distance (XZ plane)
             double horizontal = Math.sqrt(dx * dx + dz * dz);
-            this.model.renderToBuffer($$3, $$6, $$5, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F,
-                    Math.min((((float) $$0.followTimer) / 10) + ($$2 * 0.1F), 1f));
+            this.model.renderToBuffer($$3, $$6, $$5, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(Math.min((((float) $$0.followTimer) / 10) + ($$2 * 0.1F), 1f), 1.0F, 1.0F, 1.0F));
             $$3.popPose();
             super.render($$0, $$1, $$2, $$3, $$4, $$5);
         }
@@ -66,7 +65,7 @@ public class CTRbarrierRenderer extends EntityRenderer<CTRbarrierEntity> {
 
     @Override
     public ResourceLocation getTextureLocation(CTRbarrierEntity ctrbarrierEntity) {
-        return new ResourceLocation(Roundabout.MOD_ID,
+        return ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
                 "textures/stand/white_album/projectiles/gently_weeps.png");
     }
 }

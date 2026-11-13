@@ -638,17 +638,13 @@ public class VisagePartLayer<T extends LivingEntity, A extends HumanoidModel<T>>
                         }
                         VertexConsumer consumer = bufferSource.getBuffer(RenderType.entityTranslucent(ClientUtil.getChangedArmTexture(entity)));
                         ClientUtil.pushPoseAndCooperate(poseStack, 46);
-                        pm.rightArm.render(poseStack, consumer, packedLight, OverlayTexture.NO_OVERLAY, r,
-                                g, b, 1);
-                        pm.rightSleeve.render(poseStack, consumer, packedLight, OverlayTexture.NO_OVERLAY, r,
-                                g, b, 1);
+                        pm.rightArm.render(poseStack, consumer, packedLight, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(1, r, g, b));
+                        pm.rightSleeve.render(poseStack, consumer, packedLight, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(1, r, g, b));
                         ClientUtil.popPoseAndCooperate(poseStack, 46);
 
                         ClientUtil.pushPoseAndCooperate(poseStack, 46);
-                        pm.leftArm.render(poseStack, consumer, packedLight, OverlayTexture.NO_OVERLAY, r,
-                                g, b, 1);
-                        pm.leftSleeve.render(poseStack, consumer, packedLight, OverlayTexture.NO_OVERLAY, r,
-                                g, b, 1);
+                        pm.leftArm.render(poseStack, consumer, packedLight, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(1, r, g, b));
+                        pm.leftSleeve.render(poseStack, consumer, packedLight, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(1, r, g, b));
                         ClientUtil.popPoseAndCooperate(poseStack, 46);
                     }
                 }
@@ -662,16 +658,12 @@ public class VisagePartLayer<T extends LivingEntity, A extends HumanoidModel<T>>
                         pm.rightLeg.visible = true;
                         VertexConsumer consumer = bufferSource.getBuffer(RenderType.entityTranslucent(ClientUtil.getChangedLegTexture(entity)));
                         ClientUtil.pushPoseAndCooperate(poseStack, 46);
-                        pm.rightLeg.render(poseStack, consumer, packedLight, OverlayTexture.NO_OVERLAY, r,
-                                g, b, 1);
-                        pm.rightPants.render(poseStack, consumer, packedLight, OverlayTexture.NO_OVERLAY, r,
-                                g, b, 1);
+                        pm.rightLeg.render(poseStack, consumer, packedLight, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(1, r, g, b));
+                        pm.rightPants.render(poseStack, consumer, packedLight, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(1, r, g, b));
                         ClientUtil.popPoseAndCooperate(poseStack, 46);
                         ClientUtil.pushPoseAndCooperate(poseStack, 46);
-                        pm.leftLeg.render(poseStack, consumer, packedLight, OverlayTexture.NO_OVERLAY, r,
-                                g, b, 1);
-                        pm.leftPants.render(poseStack, consumer, packedLight, OverlayTexture.NO_OVERLAY, r,
-                                g, b, 1);
+                        pm.leftLeg.render(poseStack, consumer, packedLight, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(1, r, g, b));
+                        pm.leftPants.render(poseStack, consumer, packedLight, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(1, r, g, b));
                         ClientUtil.popPoseAndCooperate(poseStack, 46);
                     }
                 }
@@ -681,10 +673,8 @@ public class VisagePartLayer<T extends LivingEntity, A extends HumanoidModel<T>>
                         pm.jacket.visible = true;
                         VertexConsumer consumer = bufferSource.getBuffer(RenderType.entityTranslucent(ClientUtil.getChangedBodyTexture(entity)));
                         ClientUtil.pushPoseAndCooperate(poseStack, 46);
-                        pm.body.render(poseStack, consumer, packedLight, OverlayTexture.NO_OVERLAY, r,
-                                g, b, 1);
-                        pm.jacket.render(poseStack, consumer, packedLight, OverlayTexture.NO_OVERLAY, r,
-                                g, b, 1);
+                        pm.body.render(poseStack, consumer, packedLight, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(1, r, g, b));
+                        pm.jacket.render(poseStack, consumer, packedLight, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(1, r, g, b));
                         ClientUtil.popPoseAndCooperate(poseStack, 46);
                     }
                 }
@@ -694,10 +684,8 @@ public class VisagePartLayer<T extends LivingEntity, A extends HumanoidModel<T>>
                         pm.hat.visible = true;
                         VertexConsumer consumer = bufferSource.getBuffer(RenderType.entityTranslucent(ClientUtil.getChangedHeadTexture(entity)));
                         ClientUtil.pushPoseAndCooperate(poseStack, 46);
-                        pm.head.render(poseStack, consumer, packedLight, OverlayTexture.NO_OVERLAY, r,
-                                g, b, 1);
-                        pm.hat.render(poseStack, consumer, packedLight, OverlayTexture.NO_OVERLAY, r,
-                                g, b, 1);
+                        pm.head.render(poseStack, consumer, packedLight, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(1, r, g, b));
+                        pm.hat.render(poseStack, consumer, packedLight, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(1, r, g, b));
                         ClientUtil.popPoseAndCooperate(poseStack, 46);
                     }
                 }

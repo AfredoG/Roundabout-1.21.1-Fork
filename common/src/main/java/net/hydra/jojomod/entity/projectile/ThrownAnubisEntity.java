@@ -33,7 +33,7 @@ public class ThrownAnubisEntity extends AbstractHurtingProjectile {
 
 
     @Override
-    protected void defineSynchedData() {}
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {}
 
     private int lifetime = 200;
 

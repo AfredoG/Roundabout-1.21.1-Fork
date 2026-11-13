@@ -16,7 +16,7 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.entity.AnimationState;
 
 public class DiverDownBetaModel<T extends DiverDownEntity> extends StandModel<T>{
-    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation("modid", "diver_down_beta"), "main");
+    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath("modid", "diver_down_beta"), "main");
     private final ModelPart stand2;
     private final ModelPart head2;
     private final ModelPart extra_details;

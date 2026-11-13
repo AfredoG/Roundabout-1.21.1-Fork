@@ -18,7 +18,7 @@ import net.hydra.jojomod.client.models.projectile.animations.road_roller_wheels;
 import net.hydra.jojomod.client.models.projectile.animations.road_roller_explosion;
 
 public class RoadRollerModel <T extends LivingEntity> extends HierarchicalModel<T> {
-    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation("roundabout", "road_roller_layer"), "main");
+    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath("roundabout", "road_roller_layer"), "main");
     private final ModelPart front_wheel;
     private final ModelPart back_wheel;
     private final ModelPart bb_main;
@@ -64,8 +64,13 @@ public class RoadRollerModel <T extends LivingEntity> extends HierarchicalModel<
 	}
 
 	@Override
-	public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
-        road_roller.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+	public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, int argbColor) {
+        float red = net.minecraft.util.FastColor.ARGB32.red(argbColor) / 255.0F;
+        float green = net.minecraft.util.FastColor.ARGB32.green(argbColor) / 255.0F;
+        float blue = net.minecraft.util.FastColor.ARGB32.blue(argbColor) / 255.0F;
+        float alpha = net.minecraft.util.FastColor.ARGB32.alpha(argbColor) / 255.0F;
+
+        road_roller.render(poseStack, vertexConsumer, packedLight, packedOverlay, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, red, green, blue));
 	}
 
     @Override

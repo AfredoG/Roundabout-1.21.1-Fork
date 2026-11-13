@@ -306,11 +306,11 @@ public class Zombiefish extends PathfinderMob {
     }
 
     @Override
-    protected void defineSynchedData() {
-        if (!this.entityData.hasItem(CONTROLLER)) {
-            super.defineSynchedData();
-            this.entityData.define(CONTROLLER, -1);
-        }
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+
+            super.defineSynchedData(builder);
+            builder.define(CONTROLLER, -1);
+
     }
 
     @Override

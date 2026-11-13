@@ -122,15 +122,15 @@ public class RattEntity extends StandEntity {
             EntityDataSerializers.INT);
 
     @Override
-    protected void defineSynchedData() {
-        if (!this.entityData.hasItem(SAVED_SKIN)) {
-            super.defineSynchedData();
-            this.entityData.define(SAVED_SKIN,(byte)0);
-            this.entityData.define(SAFE_TICKS, ConfigManager.getConfig().rattSettings.rattSafetyTicks);
-            this.entityData.define(AUTO_MINING,false);
-            this.entityData.define(MINING_COORDS,Vec3.ZERO.toVector3f());
-            this.entityData.define(RATT_TARGET,0);
-        }
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+
+            super.defineSynchedData(builder);
+            builder.define(SAVED_SKIN,(byte)0);
+            builder.define(SAFE_TICKS, ConfigManager.getConfig().rattSettings.rattSafetyTicks);
+            builder.define(AUTO_MINING,false);
+            builder.define(MINING_COORDS,Vec3.ZERO.toVector3f());
+            builder.define(RATT_TARGET,0);
+
     }
 
     @Override

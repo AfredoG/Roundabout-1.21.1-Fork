@@ -68,7 +68,7 @@ public class WhiteAlbumFreezingEntity extends Entity {
         }
     }
     @Override
-    protected void defineSynchedData() {
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
 
     }
 

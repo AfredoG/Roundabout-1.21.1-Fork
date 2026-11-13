@@ -10,10 +10,11 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.client.model.generators.BlockModelBuilder;
-import net.minecraftforge.client.model.generators.BlockStateProvider;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.neoforge.client.model.generators.BlockModelBuilder;
+import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import net.zetalasis.hjson.JsonValue;
 import net.zetalasis.hjson.Stringify;
 
@@ -63,7 +64,7 @@ public class RoundaboutBlockModelProvider extends BlockStateProvider {
 			main = new JsonObject();
 			Roundabout.LOGGER.info("blockstates/" + i.getPath().replace("fog_", ""));
 			main.addProperty("parent",getModelFromBStateStream(getJsonResourceStream("blockstates/" + i.getPath().replace("fog_", "")).get()).get());
-			itemModels().generatedModels.put(i,new GennedItemModel(new ResourceLocation(Roundabout.MOD_ID,"item/"+i.getPath()),itemModels().existingFileHelper,main));
+			itemModels().generatedModels.put(i,new GennedItemModel(ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"item/"+i.getPath()),itemModels().existingFileHelper,main));
 
 
 
@@ -91,7 +92,7 @@ public class RoundaboutBlockModelProvider extends BlockStateProvider {
 				textures.addProperty("texture","minecraft:block/"+ OGPath);
 				main.add("textures", textures);
 			}
-			models().generatedModels.put(i,new GennedBlockModel(new ResourceLocation(Roundabout.MOD_ID,"block/"+i.getPath()),models().existingFileHelper,main));
+			models().generatedModels.put(i,new GennedBlockModel(ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"block/"+i.getPath()),models().existingFileHelper,main));
 
 			Roundabout.LOGGER.info("Generating blockstate for " + i.getPath());
 			String name = i.getPath();
@@ -134,7 +135,7 @@ public class RoundaboutBlockModelProvider extends BlockStateProvider {
 
 
 			Roundabout.LOGGER.info("Generating item model for " + i.getPath());
-			itemModels().generatedModels.put(i,new GennedItemModel(new ResourceLocation(Roundabout.MOD_ID,"item/"+i.getPath()),itemModels().existingFileHelper,JsonParser.parseString("""
+			itemModels().generatedModels.put(i,new GennedItemModel(ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"item/"+i.getPath()),itemModels().existingFileHelper,JsonParser.parseString("""
 						{
 							"parent": "roundabout:item/fog_coating",
 							"textures": {

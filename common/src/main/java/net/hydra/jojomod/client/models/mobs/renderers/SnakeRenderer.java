@@ -9,11 +9,11 @@ import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 
 public class SnakeRenderer extends MobRenderer<Snake, SnakeModel<Snake>> {
-    private static final ResourceLocation TEXTURE_DEFAULT = new ResourceLocation(Roundabout.MOD_ID, "textures/entity/snake/snake_default.png");
-    private static final ResourceLocation TEXTURE_DESERT  = new ResourceLocation(Roundabout.MOD_ID, "textures/entity/snake/snake_desert.png");
-    private static final ResourceLocation TEXTURE_TROPICAL = new ResourceLocation(Roundabout.MOD_ID, "textures/entity/snake/snake_tropical.png");
-    private static final ResourceLocation TEXTURE_COLD = new ResourceLocation(Roundabout.MOD_ID, "textures/entity/snake/snake_cold.png");
-    private static final ResourceLocation TEXTURE_WARM = new ResourceLocation(Roundabout.MOD_ID, "textures/entity/snake/snake_warm.png");
+    private static final ResourceLocation TEXTURE_DEFAULT = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/entity/snake/snake_default.png");
+    private static final ResourceLocation TEXTURE_DESERT  = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/entity/snake/snake_desert.png");
+    private static final ResourceLocation TEXTURE_TROPICAL = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/entity/snake/snake_tropical.png");
+    private static final ResourceLocation TEXTURE_COLD = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/entity/snake/snake_cold.png");
+    private static final ResourceLocation TEXTURE_WARM = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/entity/snake/snake_warm.png");
 
     public SnakeRenderer(EntityRendererProvider.Context context) {
         super(context, new SnakeModel<>(context.bakeLayer(ModEntityRendererClient.SNAKE_LAYER)), 0.3F);

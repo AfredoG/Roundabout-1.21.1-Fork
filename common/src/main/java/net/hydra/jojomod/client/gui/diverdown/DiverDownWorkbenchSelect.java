@@ -50,7 +50,7 @@ public class DiverDownWorkbenchSelect extends Screen implements NoCancelInputScr
     private byte selectedWorkbench = 0;
 
     //Check out GamemodeSwitcherScreen
-    static final private ResourceLocation WORKBENCH_SELECT_GUI = new ResourceLocation(Roundabout.MOD_ID,
+    static final private ResourceLocation WORKBENCH_SELECT_GUI = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/diver_down/diver_gui.png");
     private WorkbenchType currentlyHovered;
     private int firstMouseX;
@@ -312,18 +312,18 @@ public class DiverDownWorkbenchSelect extends Screen implements NoCancelInputScr
      * is for the description box.
      */
     public enum WorkbenchType {
-        CRAFTING_TABLE_ID(Component.translatable("roundabout.diver_workbench.crafting"), new ResourceLocation(Roundabout.MOD_ID,
+        CRAFTING_TABLE_ID(Component.translatable("roundabout.diver_workbench.crafting"), ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/diver_down/workbench_icons/crafting_table.png"),CRAFTING_TABLE,0,-11, Component.translatable("roundabout.diver_workbench.crafting.desc")),
-        LOOM_ID(Component.translatable("roundabout.diver_workbench.loom"), new ResourceLocation(Roundabout.MOD_ID,
+        LOOM_ID(Component.translatable("roundabout.diver_workbench.loom"), ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/diver_down/workbench_icons/loom.png"),LOOM,40,18, Component.translatable("roundabout.diver_workbench.loom.desc")),
-        STONECUTTER_ID(Component.translatable("roundabout.diver_workbench.stonecutter"), new ResourceLocation(Roundabout.MOD_ID,
+        STONECUTTER_ID(Component.translatable("roundabout.diver_workbench.stonecutter"), ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/diver_down/workbench_icons/stonecutter.png"),STONECUTTER,25,65, Component.translatable("roundabout.diver_workbench.stonecutter.desc")),
-        SMITHING_TABLE_ID(Component.translatable("roundabout.diver_workbench.smithing"), new ResourceLocation(Roundabout.MOD_ID,
+        SMITHING_TABLE_ID(Component.translatable("roundabout.diver_workbench.smithing"), ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
                 "textures/gui/diver_down/workbench_icons/smithing_table.png"),SMITHING_TABLE,-25,65, Component.translatable("roundabout.diver_workbench.smithing.desc")),
-        ANVIL_ID(Component.translatable("roundabout.diver_workbench.anvil"), new ResourceLocation(Roundabout.MOD_ID,
+        ANVIL_ID(Component.translatable("roundabout.diver_workbench.anvil"), ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/diver_down/workbench_icons/anvil.png"),ANVIL,-40,18, Component.translatable("roundabout.diver_workbench.anvil.desc")),
 
-        NONE(Component.translatable("roundabout.diver_workbench.none"), new ResourceLocation(Roundabout.MOD_ID,
+        NONE(Component.translatable("roundabout.diver_workbench.none"), ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
                 "textures/gui/plunder_icons/main_stand.png"),(byte)0,0,75, Component.translatable("roundabout.stand_switch.main.desc"));
 
         protected static final WorkbenchType[] VALUES;

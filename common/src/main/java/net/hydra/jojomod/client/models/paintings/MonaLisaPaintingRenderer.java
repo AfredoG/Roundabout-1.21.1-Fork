@@ -20,6 +20,6 @@ public class MonaLisaPaintingRenderer extends CustomPaintingRenderer {
 
     @Override
     public ResourceLocation getTexture() {
-        return new ResourceLocation(Roundabout.MOD_ID,"textures/entity/painting/mona_lisa.png");
+        return ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/entity/painting/mona_lisa.png");
     }
 }

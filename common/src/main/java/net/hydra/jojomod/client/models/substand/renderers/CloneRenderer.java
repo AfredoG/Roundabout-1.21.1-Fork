@@ -121,13 +121,13 @@ public class CloneRenderer<T extends CloneEntity> extends LivingEntityRenderer<T
                     if (vd.isCharacterVisage()) {
                         if (FateTypes.isUndisguisedZombie(thisr)) {
                             // 37 67 -34
-                            return (new ResourceLocation(Roundabout.MOD_ID, "textures/entity/visage/zombie_skins/" + vd.getSkinPath() + ".png"));
+                            return (ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/entity/visage/zombie_skins/" + vd.getSkinPath() + ".png"));
                         } else {
-                            return (new ResourceLocation(Roundabout.MOD_ID, "textures/entity/visage/player_skins/" + vd.getSkinPath() + ".png"));
+                            return (ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/entity/visage/player_skins/" + vd.getSkinPath() + ".png"));
 
                         }
                     } else if (visage.is(ModItems.RAT_MASK)){
-                        return (new ResourceLocation(Roundabout.MOD_ID, "textures/entity/visage/rat/rat_skin.png"));
+                        return (ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/entity/visage/rat/rat_skin.png"));
                     }
                 }
             }

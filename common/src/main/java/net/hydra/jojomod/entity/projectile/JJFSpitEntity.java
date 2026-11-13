@@ -41,7 +41,7 @@ public class JJFSpitEntity extends ThrowableProjectile {
     }
 
     @Override
-    protected void defineSynchedData() {
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
     }
 
     @Override

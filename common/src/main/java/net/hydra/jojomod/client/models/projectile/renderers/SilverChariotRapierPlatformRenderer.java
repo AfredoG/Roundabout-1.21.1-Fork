@@ -33,27 +33,27 @@ public class SilverChariotRapierPlatformRenderer extends EntityRenderer<SilverCh
 
     // private static final ResourceLocation ANIME_PART_3 = new ResourceLocation(Roundabout.MOD_ID, "textures/entity/projectile/anime_part_3_rapier.png");
 
-    private static final ResourceLocation PART_3 = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/silver_chariot/silver_chariot.png");
-    private static final ResourceLocation PART_3_GREY = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/silver_chariot/anime_silver_chariot.png");
-    private static final ResourceLocation PART_3_MANGA = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/silver_chariot/manga_silver_chariot.png");
-    private static final ResourceLocation PART_5 = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/silver_chariot/part_5_silver_chariot.png");
-    private static final ResourceLocation AQUA = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/silver_chariot/aqua_silver_chariot.png");
-    private static final ResourceLocation AZURE = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/silver_chariot/azure_silver_chariot.png");
-    private static final ResourceLocation BLUE = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/silver_chariot/blue_silver_chariot.png");
-    private static final ResourceLocation CRYSTAL = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/silver_chariot/crystal_silver_chariot.png");
-    private static final ResourceLocation END_OF_THE_WORLD = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/silver_chariot/end_of_the_world_silver_chariot.png");
-    private static final ResourceLocation GENESIS_OF_THE_UNIVERSE = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/silver_chariot/genesis_of_the_universe_silver_chariot.png");
-    private static final ResourceLocation JOJONIUM_A = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/silver_chariot/jojonium_a_silver_chariot.png");
-    private static final ResourceLocation JOJONIUM_B = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/silver_chariot/jojonium_b_silver_chariot.png");
-    private static final ResourceLocation JOJONIUM_C = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/silver_chariot/jojonium_c_silver_chariot.png");
-    private static final ResourceLocation NIGHTMARE = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/silver_chariot/nightmare_silver_chariot.png");
-    private static final ResourceLocation ORANGE = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/silver_chariot/orange_silver_chariot.png");
-    private static final ResourceLocation PASSIONE = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/silver_chariot/passione_silver_chariot.png");
-    private static final ResourceLocation PURPLE = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/silver_chariot/purple_silver_chariot.png");
-    private static final ResourceLocation SANDY = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/silver_chariot/sandy_silver_chariot.png");
-    private static final ResourceLocation TURQUOISE = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/silver_chariot/turquoise_silver_chariot.png");
-    private static final ResourceLocation YELLOW = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/silver_chariot/yellow_silver_chariot.png");
-    private static final ResourceLocation PHARAOH = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/silver_chariot/pharaoh_silver_chariot.png");
+    private static final ResourceLocation PART_3 = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/silver_chariot/silver_chariot.png");
+    private static final ResourceLocation PART_3_GREY = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/silver_chariot/anime_silver_chariot.png");
+    private static final ResourceLocation PART_3_MANGA = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/silver_chariot/manga_silver_chariot.png");
+    private static final ResourceLocation PART_5 = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/silver_chariot/part_5_silver_chariot.png");
+    private static final ResourceLocation AQUA = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/silver_chariot/aqua_silver_chariot.png");
+    private static final ResourceLocation AZURE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/silver_chariot/azure_silver_chariot.png");
+    private static final ResourceLocation BLUE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/silver_chariot/blue_silver_chariot.png");
+    private static final ResourceLocation CRYSTAL = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/silver_chariot/crystal_silver_chariot.png");
+    private static final ResourceLocation END_OF_THE_WORLD = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/silver_chariot/end_of_the_world_silver_chariot.png");
+    private static final ResourceLocation GENESIS_OF_THE_UNIVERSE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/silver_chariot/genesis_of_the_universe_silver_chariot.png");
+    private static final ResourceLocation JOJONIUM_A = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/silver_chariot/jojonium_a_silver_chariot.png");
+    private static final ResourceLocation JOJONIUM_B = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/silver_chariot/jojonium_b_silver_chariot.png");
+    private static final ResourceLocation JOJONIUM_C = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/silver_chariot/jojonium_c_silver_chariot.png");
+    private static final ResourceLocation NIGHTMARE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/silver_chariot/nightmare_silver_chariot.png");
+    private static final ResourceLocation ORANGE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/silver_chariot/orange_silver_chariot.png");
+    private static final ResourceLocation PASSIONE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/silver_chariot/passione_silver_chariot.png");
+    private static final ResourceLocation PURPLE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/silver_chariot/purple_silver_chariot.png");
+    private static final ResourceLocation SANDY = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/silver_chariot/sandy_silver_chariot.png");
+    private static final ResourceLocation TURQUOISE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/silver_chariot/turquoise_silver_chariot.png");
+    private static final ResourceLocation YELLOW = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/silver_chariot/yellow_silver_chariot.png");
+    private static final ResourceLocation PHARAOH = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/silver_chariot/pharaoh_silver_chariot.png");
 
     public static ResourceLocation getSkin(byte bt) {
         switch (bt) {
@@ -149,7 +149,7 @@ public class SilverChariotRapierPlatformRenderer extends EntityRenderer<SilverCh
             RenderType $$6 = RenderType.entityTranslucent(this.getTextureLocation($$0));
             // VertexConsumer $$7 = ItemRenderer.getFoilBufferDirect($$4, this.model.renderType(this.getTextureLocation($$0)), false, false);// $$0.isFoil());
             VertexConsumer $$7 = ItemRenderer.getFoilBufferDirect($$4, $$6, false, false);// $$0.isFoil());
-            this.model.renderToBuffer($$3, $$7, $$5, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
+            this.model.renderToBuffer($$3, $$7, $$5, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(1.0F, 1.0F, 1.0F, 1.0F));
             $$3.popPose();
             // super.render($$0, $$1, $$2, $$3, $$4, $$5);
         }

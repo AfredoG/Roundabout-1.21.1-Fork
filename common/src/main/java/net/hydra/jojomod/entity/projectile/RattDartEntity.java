@@ -131,8 +131,8 @@ public class RattDartEntity extends AbstractArrow {
                 CHARGED = (byte) 4;
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
         if (!this.getEntityData().hasItem(ROUNDABOUT$SUPER_THROWN)) {
             this.getEntityData().define(ROUNDABOUT$SUPER_THROWN, 0);
             this.getEntityData().define(ROUNDABOUT$BOUNCES, 0);

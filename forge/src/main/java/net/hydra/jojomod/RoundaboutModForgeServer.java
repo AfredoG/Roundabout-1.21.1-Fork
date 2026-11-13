@@ -1,6 +1,6 @@
 package net.hydra.jojomod;
 
-import net.minecraftforge.event.server.ServerStartedEvent;
+import net.neoforged.neoforge.event.server.ServerStartedEvent;
 
 public class RoundaboutModForgeServer {
 

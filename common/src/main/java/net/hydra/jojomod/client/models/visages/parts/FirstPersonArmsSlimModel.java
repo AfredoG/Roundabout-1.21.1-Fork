@@ -52,7 +52,7 @@ import org.joml.Quaternionf;
 
 public class FirstPersonArmsSlimModel<T extends Entity> extends PsuedoHierarchicalModel {
     // This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
-    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation("modid", "actualplayerarms"), "main");
+    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath("modid", "actualplayerarms"), "main");
     private final ModelPart transform;
     private final ModelPart rform;
     private final ModelPart right_arm;
@@ -101,8 +101,13 @@ public class FirstPersonArmsSlimModel<T extends Entity> extends PsuedoHierarchic
     }
 
     @Override
-    public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
-        transform.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+    public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, int argbColor) {
+        float red = net.minecraft.util.FastColor.ARGB32.red(argbColor) / 255.0F;
+        float green = net.minecraft.util.FastColor.ARGB32.green(argbColor) / 255.0F;
+        float blue = net.minecraft.util.FastColor.ARGB32.blue(argbColor) / 255.0F;
+        float alpha = net.minecraft.util.FastColor.ARGB32.alpha(argbColor) / 255.0F;
+
+        transform.render(poseStack, vertexConsumer, packedLight, packedOverlay, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, red, green, blue));
     }
 
     public static Player player;
@@ -245,21 +250,9 @@ public class FirstPersonArmsSlimModel<T extends Entity> extends PsuedoHierarchic
                 if (rightSleeve != null) {
                     rightSleeve.visible = renderRight;
                 }
-                rightArm.render(
-                        poseStack,
-                        consumer,
-                        light,
-                        OverlayTexture.NO_OVERLAY,
-                        r, g, b, 1.0F
-                );
+                rightArm.render(poseStack, consumer, light, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(1.0F, r, g, b));
                 if (rightSleeve != null) {
-                    rightSleeve.render(
-                            poseStack,
-                            consumer,
-                            light,
-                            OverlayTexture.NO_OVERLAY,
-                            r, g, b, 1.0F
-                    );
+                    rightSleeve.render(poseStack, consumer, light, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(1.0F, r, g, b));
                 }
                 poseStack.popPose();
 
@@ -279,21 +272,9 @@ public class FirstPersonArmsSlimModel<T extends Entity> extends PsuedoHierarchic
                 if (leftSleeve != null) {
                     leftSleeve.visible = renderLeft;
                 }
-                leftArm.render(
-                        poseStack,
-                        consumer,
-                        light,
-                        OverlayTexture.NO_OVERLAY,
-                        r, g, b, 1.0F
-                );
+                leftArm.render(poseStack, consumer, light, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(1.0F, r, g, b));
                 if (leftSleeve != null) {
-                    leftSleeve.render(
-                            poseStack,
-                            consumer,
-                            light,
-                            OverlayTexture.NO_OVERLAY,
-                            r, g, b, 1.0F
-                    );
+                    leftSleeve.render(poseStack, consumer, light, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(1.0F, r, g, b));
                 }
                 poseStack.popPose();
 
@@ -430,13 +411,7 @@ public class FirstPersonArmsSlimModel<T extends Entity> extends PsuedoHierarchic
                                 (RenderType.entityTranslucent(StandIcons.STONE_RIGHT_ARM));
                         rightSleeve.xScale += 0.04f;
                         rightSleeve.zScale += 0.04f;
-                        rightSleeve.render(
-                                poseStack,
-                                consumerX,
-                                light,
-                                OverlayTexture.NO_OVERLAY,
-                                r, g, b, 1.0F
-                        );
+                        rightSleeve.render(poseStack, consumerX, light, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(1.0F, r, g, b));
                         rightSleeve.xScale -= 0.04f;
                         rightSleeve.zScale -= 0.04f;
                         poseStack.popPose();
@@ -462,13 +437,7 @@ public class FirstPersonArmsSlimModel<T extends Entity> extends PsuedoHierarchic
                                     consumerX = bufferSource.getBuffer
                                             (RenderType.entityTranslucent(StandIcons.MUSCLE));
                                 }
-                                rightSleeve.render(
-                                        poseStack,
-                                        consumerX,
-                                        light,
-                                        OverlayTexture.NO_OVERLAY,
-                                        r, g, b, alpha
-                                );
+                                rightSleeve.render(poseStack, consumerX, light, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, r, g, b));
                                 rightSleeve.xScale -= 0.04f;
                                 rightSleeve.zScale -= 0.04f;
                                 poseStack.popPose();
@@ -562,13 +531,7 @@ public class FirstPersonArmsSlimModel<T extends Entity> extends PsuedoHierarchic
                                 (RenderType.entityTranslucent(StandIcons.STONE_LEFT_ARM));
                         leftSleeve.xScale += 0.04f;
                         leftSleeve.zScale += 0.04f;
-                        leftSleeve.render(
-                                poseStack,
-                                consumerX,
-                                light,
-                                OverlayTexture.NO_OVERLAY,
-                                r, g, b, 1.0F
-                        );
+                        leftSleeve.render(poseStack, consumerX, light, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(1.0F, r, g, b));
                         leftSleeve.xScale -= 0.04f;
                         leftSleeve.zScale -= 0.04f;
                         poseStack.popPose();
@@ -594,13 +557,7 @@ public class FirstPersonArmsSlimModel<T extends Entity> extends PsuedoHierarchic
                                     consumerX = bufferSource.getBuffer
                                             (RenderType.entityTranslucent(StandIcons.MUSCLE));
                                 }
-                                rightSleeve.render(
-                                        poseStack,
-                                        consumerX,
-                                        light,
-                                        OverlayTexture.NO_OVERLAY,
-                                        r, g, b, alpha
-                                );
+                                rightSleeve.render(poseStack, consumerX, light, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, r, g, b));
                                 rightSleeve.xScale -= 0.04f;
                                 rightSleeve.zScale -= 0.04f;
                                 poseStack.popPose();

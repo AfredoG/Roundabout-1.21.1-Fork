@@ -32,8 +32,8 @@ import org.joml.Vector3f;
 import java.util.ArrayList;
 
 public class BubbleScaffoldBlockEntityRenderer implements BlockEntityRenderer<BubbleScaffoldBlockEntity> {
-    private static final ResourceLocation TEXTURE = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/soft_and_wet/projectiles/bubble_plunder.png");
-    private static final ResourceLocation HEART_ATTACK_MINI = new ResourceLocation(Roundabout.MOD_ID, "textures/particle/heart_attack_mini.png");
+    private static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/soft_and_wet/projectiles/bubble_plunder.png");
+    private static final ResourceLocation HEART_ATTACK_MINI = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/particle/heart_attack_mini.png");
     public BubbleScaffoldBlockEntityRenderer(BlockEntityRendererProvider.Context context) {
         super();
         this.scale = 0.55f;

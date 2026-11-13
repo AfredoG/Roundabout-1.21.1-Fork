@@ -61,7 +61,7 @@ public class UVBeamRenderer extends EntityRenderer<UltravioletProjectile> {
 
             this.model.root().xRot = (float) Math.toRadians(pitch);
             this.model.root().yRot = (float) Math.toRadians(Mth.wrapDegrees(yaw*-1) %360);
-            this.model.renderToBuffer($$3, $$6, 15728880, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 0.4f);
+            this.model.renderToBuffer($$3, $$6, 15728880, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(0.4f, 1.0F, 1.0F, 1.0F));
             $$3.popPose();
             super.render($$0, $$1, $$2, $$3, $$4, 15728880);
 
@@ -69,7 +69,7 @@ public class UVBeamRenderer extends EntityRenderer<UltravioletProjectile> {
 
     @Override
     public ResourceLocation getTextureLocation(UltravioletProjectile var1) {
-        return new ResourceLocation(Roundabout.MOD_ID, "textures/entity/projectile/uv.png");
+        return ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/entity/projectile/uv.png");
     }
 
 }

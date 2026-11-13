@@ -24,7 +24,7 @@ import net.minecraft.world.entity.player.Player;
 
 public class FirstPersonJackalRifleModel<T extends Entity> extends PsuedoHierarchicalModel {
     // This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
-    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation("modid", "jackal_rifle"), "main");
+    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath("modid", "jackal_rifle"), "main");
     private final ModelPart JackalRifle;
     private final ModelPart structure;
     private final ModelPart barrel;
@@ -80,12 +80,17 @@ public class FirstPersonJackalRifleModel<T extends Entity> extends PsuedoHierarc
     }
 
     @Override
-    public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
-        JackalRifle.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+    public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, int argbColor) {
+        float red = net.minecraft.util.FastColor.ARGB32.red(argbColor) / 255.0F;
+        float green = net.minecraft.util.FastColor.ARGB32.green(argbColor) / 255.0F;
+        float blue = net.minecraft.util.FastColor.ARGB32.blue(argbColor) / 255.0F;
+        float alpha = net.minecraft.util.FastColor.ARGB32.alpha(argbColor) / 255.0F;
+
+        JackalRifle.render(poseStack, vertexConsumer, packedLight, packedOverlay, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, red, green, blue));
     }
 
     public static ResourceLocation getTextureLocation(Entity entity){
-        return new ResourceLocation(Roundabout.MOD_ID, "textures/item/jackal_rifle.png");
+        return ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/item/jackal_rifle.png");
     }
 
     public void render(Entity context, float partialTicks, PoseStack poseStack, MultiBufferSource bufferSource, int light, float r, float g, float b, float heyFull) {

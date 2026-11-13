@@ -20,6 +20,6 @@ public class VanGoghPaintingRenderer extends CustomPaintingRenderer {
 
     @Override
     public ResourceLocation getTexture() {
-        return new ResourceLocation(Roundabout.MOD_ID,"textures/entity/painting/van_gogh.png");
+        return ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/entity/painting/van_gogh.png");
     }
 }

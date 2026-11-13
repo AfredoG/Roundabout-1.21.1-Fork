@@ -84,7 +84,7 @@ public class FallingBannerRenderer extends EntityRenderer<FallingBannerEntity> {
 
     @Override
     public ResourceLocation getTextureLocation(FallingBannerEntity var1) {
-        return new ResourceLocation(Roundabout.MOD_ID,
+        return ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
                 "textures/stand/white_album/projectiles/ice_twister.png");
     }
 

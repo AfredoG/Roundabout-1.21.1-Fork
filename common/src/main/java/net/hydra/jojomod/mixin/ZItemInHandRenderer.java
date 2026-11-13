@@ -125,7 +125,7 @@ public abstract class ZItemInHandRenderer {
                 poseStack.mulPose(Axis.YP.rotationDegrees(135.0F));
                 poseStack.mulPose(Axis.ZP.rotationDegrees(-30.0F));
                 poseStack.scale(0.9F, 0.9F, 0.9F);
-                ModStrayModels.EMPEROR_MODEL.renderToBuffer(poseStack, bufferSource.getBuffer(RenderType.entityCutoutNoCull(new ResourceLocation(Roundabout.MOD_ID, "textures/stand/emperor/emperor_anime.png"))), light, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
+                ModStrayModels.EMPEROR_MODEL.renderToBuffer(poseStack, bufferSource.getBuffer(RenderType.entityCutoutNoCull(ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/emperor/emperor_anime.png"))), light, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(1.0F, 1.0F, 1.0F, 1.0F));
                 poseStack.popPose();
 
                 poseStack.scale(0.0F, 0.0F, 0.0F);

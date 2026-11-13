@@ -30,8 +30,8 @@ import org.joml.Matrix4f;
 public class PearlJamRenderer extends StandRenderer<PearlJamEntity> {
 
 
-    private static final ResourceLocation ANIME = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/pearl_jam/anime.png");
-    private static final ResourceLocation MANGA = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/pearl_jam/manga.png");
+    private static final ResourceLocation ANIME = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/pearl_jam/anime.png");
+    private static final ResourceLocation MANGA = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/pearl_jam/manga.png");
 
     public PearlJamRenderer(EntityRendererProvider.Context context) {
         super(context, new PearlJamModel<>(context.bakeLayer(ModEntityRendererClient.PEARL_JAM_LAYER)), 0f);

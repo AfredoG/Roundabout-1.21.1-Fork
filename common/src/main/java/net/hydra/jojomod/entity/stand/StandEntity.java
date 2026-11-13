@@ -709,19 +709,19 @@ public abstract class StandEntity extends Mob implements NoVibrationEntity {
      * It would be nice if move forward were to be less packet intensive.
      */
     @Override
-    protected void defineSynchedData() {
-        if (!this.entityData.hasItem(FADE_OUT)) {
-            super.defineSynchedData();
-            this.entityData.define(FADE_OUT, (byte) 0);
-            this.entityData.define(FADE_PERCENT, 100);
-            this.entityData.define(USER_ID, -1);
-            this.entityData.define(ANIMATION, (byte) 0);
-            this.entityData.define(IDLE_ANIMATION, (byte) 0);
-            this.entityData.define(HELD_ITEM, ItemStack.EMPTY);
-            this.entityData.define(SKIN, (byte) 0);
-            this.entityData.define(MELT_LEVEL, 0);
-            this.entityData.define(BS_GRABBED, 0);
-        }
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+
+            super.defineSynchedData(builder);
+            builder.define(FADE_OUT, (byte) 0);
+            builder.define(FADE_PERCENT, 100);
+            builder.define(USER_ID, -1);
+            builder.define(ANIMATION, (byte) 0);
+            builder.define(IDLE_ANIMATION, (byte) 0);
+            builder.define(HELD_ITEM, ItemStack.EMPTY);
+            builder.define(SKIN, (byte) 0);
+            builder.define(MELT_LEVEL, 0);
+            builder.define(BS_GRABBED, 0);
+
     }
 
 

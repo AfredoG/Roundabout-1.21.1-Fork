@@ -33,8 +33,8 @@ public class AnubisGuardianRenderer<T extends AnubisGuardian>
         poseStack.scale(0.9375f, 0.9375f, 0.9375f);
     }
 
-    public static final ResourceLocation normal = new ResourceLocation(Roundabout.MOD_ID,"textures/entity/wandering_guardian.png");
-    public static final ResourceLocation revealed = new ResourceLocation(Roundabout.MOD_ID,"textures/entity/wandering_guardian_revealed.png");
+    public static final ResourceLocation normal = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/entity/wandering_guardian.png");
+    public static final ResourceLocation revealed = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/entity/wandering_guardian_revealed.png");
 
 
     @Override

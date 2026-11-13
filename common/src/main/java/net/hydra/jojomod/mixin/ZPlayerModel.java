@@ -238,13 +238,7 @@ public abstract class ZPlayerModel<T extends LivingEntity> extends HumanoidModel
                                     consumerX = mb.getBuffer
                                             (RenderType.entityTranslucent(StandIcons.MUSCLE));
                                 }
-                                rightPants.render(
-                                        ps,
-                                        consumerX,
-                                        packedLight,
-                                        OverlayTexture.NO_OVERLAY,
-                                        1, 1, 1, alpha
-                                );
+                                rightPants.render(ps, consumerX, packedLight, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, 1, 1, 1));
                                 rightPants.xScale -= 0.04f;
                                 rightPants.zScale -= 0.04f;
 
@@ -312,13 +306,7 @@ public abstract class ZPlayerModel<T extends LivingEntity> extends HumanoidModel
                                     consumerX = mb.getBuffer
                                             (RenderType.entityTranslucent(StandIcons.MUSCLE));
                                 }
-                                rightPants.render(
-                                        ps,
-                                        consumerX,
-                                        packedLight,
-                                        OverlayTexture.NO_OVERLAY,
-                                        1, 1, 1, alpha
-                                );
+                                rightPants.render(ps, consumerX, packedLight, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, 1, 1, 1));
                                 rightPants.xScale -= 0.04f;
                                 rightPants.zScale -= 0.04f;
 

@@ -33,7 +33,7 @@ public class RegisterBlockEntityWithoutLevelRenderer implements IBlockEntityWith
             $$2.scale(1.0F, -1.0F, -1.0F);
             if (ModItemModels.HARPOON_MODEL != null) {
                 VertexConsumer vertexconsumer1 = ItemRenderer.getFoilBufferDirect($$3, ModItemModels.HARPOON_MODEL.renderType(ModEntities.HARPOON_TEXTURE), false, $$0.hasFoil());
-                ModItemModels.HARPOON_MODEL.renderToBuffer($$2, vertexconsumer1, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
+                ModItemModels.HARPOON_MODEL.renderToBuffer($$2, vertexconsumer1, $$4, $$5, net.minecraft.util.FastColor.ARGB32.colorFromFloat(1.0F, 1.0F, 1.0F, 1.0F));
             }
             ClientUtil.popPoseAndCooperate($$2,19);
         }
@@ -43,7 +43,7 @@ public class RegisterBlockEntityWithoutLevelRenderer implements IBlockEntityWith
             $$2.scale(1.0F, -1.0F, -1.0F);
             if (ModItemModels.SNUBNOSE_MODEL != null) {
                 VertexConsumer vertexconsumer1 = ItemRenderer.getFoilBufferDirect($$3, ModItemModels.SNUBNOSE_MODEL.renderType(ModEntities.SNUBNOSE_IN_HAND_TEXTURE), false, $$0.hasFoil());
-                ModItemModels.SNUBNOSE_MODEL.renderToBuffer($$2, vertexconsumer1, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
+                ModItemModels.SNUBNOSE_MODEL.renderToBuffer($$2, vertexconsumer1, $$4, $$5, net.minecraft.util.FastColor.ARGB32.colorFromFloat(1.0F, 1.0F, 1.0F, 1.0F));
             }
             ClientUtil.popPoseAndCooperate($$2,19);
         }
@@ -53,7 +53,7 @@ public class RegisterBlockEntityWithoutLevelRenderer implements IBlockEntityWith
             $$2.scale(1.0F, -1.0F, -1.0F);
             if (ModItemModels.TOMMY_GUN_MODEL != null) {
                 VertexConsumer vertexconsumer1 = ItemRenderer.getFoilBufferDirect($$3, ModItemModels.TOMMY_GUN_MODEL.renderType(ModEntities.TOMMY_GUN_IN_HAND_TEXTURE), false, $$0.hasFoil());
-                ModItemModels.TOMMY_GUN_MODEL.renderToBuffer($$2, vertexconsumer1, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
+                ModItemModels.TOMMY_GUN_MODEL.renderToBuffer($$2, vertexconsumer1, $$4, $$5, net.minecraft.util.FastColor.ARGB32.colorFromFloat(1.0F, 1.0F, 1.0F, 1.0F));
             }
             ClientUtil.popPoseAndCooperate($$2,19);
         }
@@ -63,7 +63,7 @@ public class RegisterBlockEntityWithoutLevelRenderer implements IBlockEntityWith
             $$2.scale(1.0F, -1.0F, -1.0F);
             if (ModItemModels.COLT_REVOLVER_MODEL != null) {
                 VertexConsumer vertexconsumer1 = ItemRenderer.getFoilBufferDirect($$3, ModItemModels.COLT_REVOLVER_MODEL.renderType(ModEntities.COLT_REVOLVER_IN_HAND_TEXTURE), false, $$0.hasFoil());
-                ModItemModels.COLT_REVOLVER_MODEL.renderToBuffer($$2, vertexconsumer1, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
+                ModItemModels.COLT_REVOLVER_MODEL.renderToBuffer($$2, vertexconsumer1, $$4, $$5, net.minecraft.util.FastColor.ARGB32.colorFromFloat(1.0F, 1.0F, 1.0F, 1.0F));
             }
             ClientUtil.popPoseAndCooperate($$2,19);
         }
@@ -73,7 +73,7 @@ public class RegisterBlockEntityWithoutLevelRenderer implements IBlockEntityWith
             $$2.scale(1.0F, -1.0F, -1.0F);
             if (ModItemModels.JACKAL_RIFLE_MODEL != null) {
                 VertexConsumer vertexconsumer1 = ItemRenderer.getFoilBufferDirect($$3, ModItemModels.JACKAL_RIFLE_MODEL.renderType(ModEntities.JACKAL_RIFLE_IN_HAND_TEXTURE), false, $$0.hasFoil());
-                ModItemModels.JACKAL_RIFLE_MODEL.renderToBuffer($$2, vertexconsumer1, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
+                ModItemModels.JACKAL_RIFLE_MODEL.renderToBuffer($$2, vertexconsumer1, $$4, $$5, net.minecraft.util.FastColor.ARGB32.colorFromFloat(1.0F, 1.0F, 1.0F, 1.0F));
             }
             ClientUtil.popPoseAndCooperate($$2,19);
         }
@@ -83,7 +83,7 @@ public class RegisterBlockEntityWithoutLevelRenderer implements IBlockEntityWith
             $$2.scale(1.0F, -1.0F, -1.0F);
             if (ModItemModels.BERETTA_PISTOL_MODEL != null) {
                 VertexConsumer vertexconsumer1 = ItemRenderer.getFoilBufferDirect($$3, ModItemModels.BERETTA_PISTOL_MODEL.renderType(ModEntities.BERETTA_PISTOL_IN_HAND_TEXTURE), false, $$0.hasFoil());
-                ModItemModels.BERETTA_PISTOL_MODEL.renderToBuffer($$2, vertexconsumer1, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
+                ModItemModels.BERETTA_PISTOL_MODEL.renderToBuffer($$2, vertexconsumer1, $$4, $$5, net.minecraft.util.FastColor.ARGB32.colorFromFloat(1.0F, 1.0F, 1.0F, 1.0F));
             }
             ClientUtil.popPoseAndCooperate($$2,19);
         }
@@ -93,7 +93,7 @@ public class RegisterBlockEntityWithoutLevelRenderer implements IBlockEntityWith
             $$2.scale(1.0F, -1.0F, -1.0F);
             if (ModItemModels.ANUBIS_MODEL != null) {
                 VertexConsumer vertexconsumer1 = ItemRenderer.getFoilBufferDirect($$3, ModItemModels.HARPOON_MODEL.renderType(ModEntities.HARPOON_TEXTURE), false, $$0.hasFoil());
-                ModItemModels.ANUBIS_MODEL.renderToBuffer($$2, vertexconsumer1, $$4, $$5, 1, 1, 1, 1);
+                ModItemModels.ANUBIS_MODEL.renderToBuffer($$2, vertexconsumer1, $$4, $$5, net.minecraft.util.FastColor.ARGB32.colorFromFloat(1, 1, 1, 1));
                 ClientUtil.popPoseAndCooperate($$2, 18);
 
             }

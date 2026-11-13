@@ -41,11 +41,11 @@ public class CaliforniaKingBedEntity extends FollowingStandEntity {
             EntityDataSerializers.FLOAT);
 
     @Override
-    protected void defineSynchedData() {
-        if (!this.entityData.hasItem(YAW_FORCE)) {
-            super.defineSynchedData();
-            this.entityData.define(YAW_FORCE, 0F);
-        }
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+
+            super.defineSynchedData(builder);
+            builder.define(YAW_FORCE, 0F);
+
     }
     public final void setYawForce(float blocks) {
         this.entityData.set(YAW_FORCE, blocks);

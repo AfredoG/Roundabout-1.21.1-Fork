@@ -42,7 +42,7 @@ import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.navigation.PathNavigation;;
+import net.minecraft.world.entity.ai.navigation.PathNavigation;
 import net.minecraft.world.entity.animal.Fox;
 import net.minecraft.world.entity.animal.IronGolem;
 import net.minecraft.world.entity.monster.AbstractIllager;
@@ -95,13 +95,13 @@ public class SheerHeartAttackEntity extends StandEntity {
 			EntityDataSerializers.BOOLEAN);
 
 	@Override
-	protected void defineSynchedData() {
-		super.defineSynchedData();
-		this.entityData.define(TARGET_STATUS, NONE);
-		this.entityData.define(DATA_FLAGS_ID, (byte)0);
-		this.entityData.define(ANIM, (byte)0);
-		this.entityData.define(RETURN_STATUS, false);
-		this.entityData.define(HAVE_TORCH, false);
+	protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+		super.defineSynchedData(builder);
+		builder.define(TARGET_STATUS, NONE);
+		builder.define(DATA_FLAGS_ID, (byte)0);
+		builder.define(ANIM, (byte)0);
+		builder.define(RETURN_STATUS, false);
+		builder.define(HAVE_TORCH, false);
 	}
 
 	public boolean getReturnStatus() {

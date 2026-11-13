@@ -1386,7 +1386,7 @@ public class PowersKillerQueen extends NewPunchingStand {
     public boolean canAddItem(ItemStack itemStack, Inventory inventory) {
         boolean bl = false;
         for (ItemStack itemStack2 : inventory.items) {
-            if (!itemStack2.isEmpty() && (!ItemStack.isSameItemSameTags(itemStack2, itemStack) || itemStack2.getCount() >= itemStack2.getMaxStackSize())) continue;
+            if (!itemStack2.isEmpty() && (!ItemStack.isSameItemSameComponents(itemStack2, itemStack) || itemStack2.getCount() >= itemStack2.getMaxStackSize())) continue;
             bl = true;
             break;
         }

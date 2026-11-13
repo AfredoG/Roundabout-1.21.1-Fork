@@ -37,8 +37,8 @@ public class TuskNailRenderer extends EntityRenderer<TuskNailEntity> {
         this.model = new Tusk1NailModel($$0.bakeLayer(ModEntityRendererClient.TUSK1_NAIL_MODEL));
     }
 
-    private static final ResourceLocation ACT_1 = new ResourceLocation(Roundabout.MOD_ID,"textures/entity/projectile/tusk_one.png");
-    private static final ResourceLocation ACT_2 = new ResourceLocation(Roundabout.MOD_ID,"textures/entity/projectile/tusk_two.png");
+    private static final ResourceLocation ACT_1 = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/entity/projectile/tusk_one.png");
+    private static final ResourceLocation ACT_2 = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/entity/projectile/tusk_two.png");
 
     @Override
     public ResourceLocation getTextureLocation(TuskNailEntity tne) {
@@ -70,7 +70,7 @@ public class TuskNailRenderer extends EntityRenderer<TuskNailEntity> {
             r *= (1 - scale) + (float) Math.sin(partialTicks + 1) * scale;
             g *= (1 - scale) + (float) Math.sin(partialTicks + 2) * scale;
             b *= (1 - scale) + (float) Math.sin(partialTicks + 3) * scale;
-            this.model.renderToBuffer(poseStack, $$6, $$5, OverlayTexture.NO_OVERLAY, r, g, b, 1.0F);
+            this.model.renderToBuffer(poseStack, $$6, $$5, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(1.0F, r, g, b));
             poseStack.popPose();
             super.render($$0, $$1, partialTicks, poseStack, bufferSource, $$5);
 

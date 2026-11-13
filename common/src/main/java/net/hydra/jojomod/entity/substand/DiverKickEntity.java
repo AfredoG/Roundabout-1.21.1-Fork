@@ -33,9 +33,9 @@ public class DiverKickEntity extends Entity {
     }
 
     @Override
-    protected void defineSynchedData() {
-        this.entityData.define(FACING, Direction.UP);
-        this.entityData.define(SKIN, (byte) 0);
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+        builder.define(FACING, Direction.UP);
+        builder.define(SKIN, (byte) 0);
     }
 
     public Direction getFacing() {

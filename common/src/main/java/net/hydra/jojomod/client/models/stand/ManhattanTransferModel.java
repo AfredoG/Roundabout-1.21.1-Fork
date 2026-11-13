@@ -17,7 +17,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.LivingEntity;
 
 public class ManhattanTransferModel<T extends ManhattanTransferEntity> extends StandModel<T> {
-    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation("modid", "manhattan_transfer"), "main");
+    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath("modid", "manhattan_transfer"), "main");
     private final ModelPart head;
     private final ModelPart stand2;
     private final ModelPart core;

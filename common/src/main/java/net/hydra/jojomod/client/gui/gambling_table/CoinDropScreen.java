@@ -10,9 +10,9 @@ import net.minecraft.resources.ResourceLocation;
 
 public class CoinDropScreen extends Screen {
     private static final ResourceLocation TEXTURE_1 =
-            new ResourceLocation(Roundabout.MOD_ID, "textures/gui/gambling_table/coin_drop/coin_drop_1.png");
+            ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/gui/gambling_table/coin_drop/coin_drop_1.png");
     private static final ResourceLocation TEXTURE_2 =
-            new ResourceLocation(Roundabout.MOD_ID, "textures/gui/gambling_table/coin_drop/coin_drop_2.png");
+            ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/gui/gambling_table/coin_drop/coin_drop_2.png");
 
     private static final int MAIN_SCREEN_U = 4, MAIN_SCREEN_V = 2;
     private static final int MAIN_SCREEN_WIDTH = 194, MAIN_SCREEN_HEIGHT = 181;

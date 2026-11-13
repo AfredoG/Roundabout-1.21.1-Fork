@@ -289,13 +289,13 @@ public class GasolineCanEntity extends ThrowableItemProjectile {
 
 
     @Override
-    protected void defineSynchedData() {
-        if (!this.entityData.hasItem(ROUNDABOUT$SUPER_THROWN)) {
-            super.defineSynchedData();
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+
+            super.defineSynchedData(builder);
             this.getEntityData().define(ROUNDABOUT$SUPER_THROWN, false);
             this.getEntityData().define(ROUNDABOUT$LAUNCHED, false);
             this.getEntityData().define(ROUNDABOUT$LAUNCHER, 0);
-        }
+
     }
 
     public void scatterGoo(BlockPos pos){

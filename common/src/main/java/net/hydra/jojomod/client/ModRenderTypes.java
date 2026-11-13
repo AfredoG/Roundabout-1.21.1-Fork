@@ -23,7 +23,7 @@ public class ModRenderTypes extends RenderType {
             CompositeState.builder()
                     .setShaderState(POSITION_COLOR_TEX_LIGHTMAP_SHADER)
                     .setTextureState(new RenderStateShard.TextureStateShard(
-                            new ResourceLocation("minecraft", "textures/misc/white.png"), false, false))
+                            ResourceLocation.fromNamespaceAndPath("minecraft", "textures/misc/white.png"), false, false))
                     .setTransparencyState(TRANSLUCENT_TRANSPARENCY)
                     .setCullState(NO_CULL)
                     .setLightmapState(LIGHTMAP)

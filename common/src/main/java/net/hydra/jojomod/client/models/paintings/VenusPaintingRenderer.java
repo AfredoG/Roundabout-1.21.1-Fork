@@ -20,6 +20,6 @@ public class VenusPaintingRenderer extends CustomPaintingRenderer {
 
     @Override
     public ResourceLocation getTexture() {
-        return new ResourceLocation(Roundabout.MOD_ID,"textures/entity/painting/venus.png");
+        return ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/entity/painting/venus.png");
     }
 }

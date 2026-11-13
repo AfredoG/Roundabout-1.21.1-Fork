@@ -47,9 +47,9 @@ public class GroundHurricaneEntity extends GroundPathfindingStandAttackEntity {
     public boolean fireStormCreated = false;
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(SIZE, 0);
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(SIZE, 0);
     }
     @Override
     public boolean hurt(DamageSource source, float amount) {

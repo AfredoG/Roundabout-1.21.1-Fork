@@ -88,7 +88,7 @@ public class BlackSabbathEntity extends StandEntity implements HasCustomInventor
             SynchedEntityData.defineId(BlackSabbathEntity.class, EntityDataSerializers.INT);
     public BlackSabbathEntity(EntityType<? extends Mob> entityType, Level world) {
         super(entityType, world);
-        this.setPathfindingMalus(BlockPathTypes.BLOCKED, -1.0F);
+        this.setPathfindingMalus(PathType.BLOCKED, -1.0F);
     }
 
     public static final byte
@@ -805,7 +805,7 @@ public class BlackSabbathEntity extends StandEntity implements HasCustomInventor
                                 setDamageImmunityTicks(10);
                                 super.hurt(damageSource, 1);
                             } else {
-                                this.setSecondsOnFire(1);
+                                this.igniteForSeconds(1);
                                 setDamageImmunityTicks(10);
                             }
                         }
@@ -955,24 +955,24 @@ public class BlackSabbathEntity extends StandEntity implements HasCustomInventor
                 ||this.getHeldItemSabbath().getItem() instanceof HarpoonItem  && !(getHeldItemSabbath().getDamageValue() >= getHeldItemSabbath().getMaxDamage() - 1)) && !(this.getHeldItemSabbath().is(ItemStack.EMPTY.getItem()));
     }
     @Override
-    protected void defineSynchedData() {
-        if (!this.entityData.hasItem(IS_RIDING)) {
-            super.defineSynchedData();
-            this.entityData.define(ANIMATION, (byte) 0);
-            this.entityData.define(CRIPPLED, false);
-            this.entityData.define(IS_RIDING, false);
-            this.entityData.define(IS_HUNTING, false);
-            this.entityData.define(IS_GRABBING, 0);
-            this.entityData.define(SLIDER, 0);
-            this.entityData.define(NOT_RENDER_IT, false);
-            this.entityData.define(IS_STRAFING, false);
-            this.entityData.define(IS_TRIDENT, false);
-            this.entityData.define(MOVEMENT_MODE, 0);
-            this.entityData.define(HELD_ITEM_BLACK_SABBATH, ItemStack.EMPTY);
-            this.entityData.define(HAS_TARGETS, true);
-            this.entityData.define(MUST_UNRENDER, false);
-            this.entityData.define(SLIM_SOUL, false);
-        }
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+
+            super.defineSynchedData(builder);
+            builder.define(ANIMATION, (byte) 0);
+            builder.define(CRIPPLED, false);
+            builder.define(IS_RIDING, false);
+            builder.define(IS_HUNTING, false);
+            builder.define(IS_GRABBING, 0);
+            builder.define(SLIDER, 0);
+            builder.define(NOT_RENDER_IT, false);
+            builder.define(IS_STRAFING, false);
+            builder.define(IS_TRIDENT, false);
+            builder.define(MOVEMENT_MODE, 0);
+            builder.define(HELD_ITEM_BLACK_SABBATH, ItemStack.EMPTY);
+            builder.define(HAS_TARGETS, true);
+            builder.define(MUST_UNRENDER, false);
+            builder.define(SLIM_SOUL, false);
+
     }
     @Override
     public void die(@NotNull DamageSource source) {
@@ -1945,7 +1945,7 @@ public class BlackSabbathEntity extends StandEntity implements HasCustomInventor
             }
             int ench = EnchantmentHelper.getItemEnchantmentLevel(Enchantments.FIRE_ASPECT, item);
             if (ench >= 1) {
-                attacked.setSecondsOnFire((ench) * 4);
+                attacked.igniteForSeconds((ench) * 4);
             }
         }
     }

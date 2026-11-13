@@ -22,7 +22,7 @@ import net.minecraft.world.entity.LivingEntity;
 
 public class EmperorShootingArmModel extends PsuedoHierarchicalModel {
     // This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
-    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(Roundabout.MOD_ID, "emperor_shooting_arm"), "main");
+    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "emperor_shooting_arm"), "main");
     private final ModelPart armAddon;
     private final ModelPart Root;
 
@@ -53,8 +53,13 @@ public class EmperorShootingArmModel extends PsuedoHierarchicalModel {
     }
 
     @Override
-    public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
-        armAddon.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+    public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, int argbColor) {
+        float red = net.minecraft.util.FastColor.ARGB32.red(argbColor) / 255.0F;
+        float green = net.minecraft.util.FastColor.ARGB32.green(argbColor) / 255.0F;
+        float blue = net.minecraft.util.FastColor.ARGB32.blue(argbColor) / 255.0F;
+        float alpha = net.minecraft.util.FastColor.ARGB32.alpha(argbColor) / 255.0F;
+
+        armAddon.render(poseStack, vertexConsumer, packedLight, packedOverlay, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, red, green, blue));
     }
 
     @Override
@@ -66,9 +71,9 @@ public class EmperorShootingArmModel extends PsuedoHierarchicalModel {
     public void setupAnim(Entity var1,  float pAgeInTicks) {
 
     }
-    public static ResourceLocation anime = new ResourceLocation(Roundabout.MOD_ID,
+    public static ResourceLocation anime = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/stand/emperor/emperor_anime.png");
-    public static ResourceLocation manga = new ResourceLocation(Roundabout.MOD_ID,
+    public static ResourceLocation manga = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/stand/emperor/emperor_manga.png");
 
     public ResourceLocation getTextureLocation(Entity context, byte skin){
@@ -96,6 +101,6 @@ public class EmperorShootingArmModel extends PsuedoHierarchicalModel {
         }
 
         VertexConsumer consumer = bufferSource.getBuffer(RenderType.entityTranslucent(getTextureLocation(context, skin)));
-        root().render(poseStack, consumer, light, OverlayTexture.NO_OVERLAY, r, g, b, alpha);
+        root().render(poseStack, consumer, light, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, r, g, b));
     }
 }

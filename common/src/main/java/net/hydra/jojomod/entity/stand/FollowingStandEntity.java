@@ -379,19 +379,19 @@ public class FollowingStandEntity extends StandEntity{
         this.entityData.set(FOLLOWING_ID, standSetId);
     }
     @Override
-    protected void defineSynchedData() {
-        if (!this.entityData.hasItem(FOLLOWING_ID)) {
-            super.defineSynchedData();
-            this.entityData.define(FOLLOWING_ID, -1);
-            this.entityData.define(OFFSET_TYPE, (byte) 0);
-            this.entityData.define(ANCHOR_PLACE, 55);
-            this.entityData.define(ANCHOR_PLACE_ATTACK, 55);
-            this.entityData.define(DISTANCE_OUT, 1.07F);
-            this.entityData.define(MOVE_FORWARD, (byte) 0);
-            this.entityData.define(SIZE_PERCENT, 1F);
-            this.entityData.define(IDLE_ROTATION, 0F);
-            this.entityData.define(IDLE_Y_OFFSET, 0.1F);
-        }
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+
+            super.defineSynchedData(builder);
+            builder.define(FOLLOWING_ID, -1);
+            builder.define(OFFSET_TYPE, (byte) 0);
+            builder.define(ANCHOR_PLACE, 55);
+            builder.define(ANCHOR_PLACE_ATTACK, 55);
+            builder.define(DISTANCE_OUT, 1.07F);
+            builder.define(MOVE_FORWARD, (byte) 0);
+            builder.define(SIZE_PERCENT, 1F);
+            builder.define(IDLE_ROTATION, 0F);
+            builder.define(IDLE_Y_OFFSET, 0.1F);
+
     }
 
 

@@ -83,11 +83,11 @@ public class KnifeEntity extends AbstractArrow {
 
 
     @Override
-    protected void defineSynchedData() {
-        if (!this.entityData.hasItem(ID_FOIL)) {
-            super.defineSynchedData();
-            this.entityData.define(ID_FOIL, false);
-        }
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+
+            super.defineSynchedData(builder);
+            builder.define(ID_FOIL, false);
+
     }
     public boolean isFoil() {
         return this.entityData.get(ID_FOIL);

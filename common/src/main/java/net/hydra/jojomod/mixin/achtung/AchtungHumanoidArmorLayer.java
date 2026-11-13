@@ -48,7 +48,7 @@ public abstract class AchtungHumanoidArmorLayer<T extends LivingEntity, M extend
                 return;
             }
             VertexConsumer $$10 = $$1.getBuffer(RenderType.entityTranslucentCull(this.getArmorLocation($$3, $$5, $$9)));
-            $$4.renderToBuffer($$0, $$10, $$2, OverlayTexture.NO_OVERLAY, $$6, $$7, $$8, 1.0F);
+            $$4.renderToBuffer($$0, $$10, $$2, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(1.0F, $$6, $$7, $$8));
             ci.cancel();
         }
     }

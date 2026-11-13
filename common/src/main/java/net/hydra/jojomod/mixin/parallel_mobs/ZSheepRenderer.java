@@ -15,11 +15,11 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(SheepRenderer.class)
 public class ZSheepRenderer {
 
-    private final ResourceLocation RDBT$ALT_A = new ResourceLocation(Roundabout.MOD_ID,
+    private final ResourceLocation RDBT$ALT_A = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/parallel_mobs/sheep_1.png");
-    private final ResourceLocation RDBT$ALT_B = new ResourceLocation(Roundabout.MOD_ID,
+    private final ResourceLocation RDBT$ALT_B = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/parallel_mobs/sheep_2.png");
-    private final ResourceLocation RDBT$ALT_C = new ResourceLocation(Roundabout.MOD_ID,
+    private final ResourceLocation RDBT$ALT_C = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/parallel_mobs/sheep_3.png");
     @Inject(method = "getTextureLocation(Lnet/minecraft/world/entity/animal/Sheep;)Lnet/minecraft/resources/ResourceLocation;",
             at = @At(value = "HEAD"),cancellable = true)

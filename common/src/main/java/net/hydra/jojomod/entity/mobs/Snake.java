@@ -42,10 +42,10 @@ public class Snake extends Animal {
     }
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(VARIANT_ID, 0);
-        this.entityData.define(IS_AGGRO, false);
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(VARIANT_ID, 0);
+        builder.define(IS_AGGRO, false);
     }
 
     @Override

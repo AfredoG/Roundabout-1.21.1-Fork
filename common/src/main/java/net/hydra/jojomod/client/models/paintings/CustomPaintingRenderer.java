@@ -43,17 +43,17 @@ public class CustomPaintingRenderer extends EntityRenderer<RoundaboutPainting> {
     }
 
     public ResourceLocation getTexture() {
-        return new ResourceLocation(Roundabout.MOD_ID,"textures/entity/painting/van_gogh.png");
+        return ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/entity/painting/van_gogh.png");
     }
     public ResourceLocation getTextureBack() {
-        return new ResourceLocation(Roundabout.MOD_ID,"textures/entity/painting/back.png");
+        return ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/entity/painting/back.png");
     }
 
     public ResourceLocation getTextureLocation(RoundaboutPainting $$0) {
         return getTextureBack();
     }
 
-    private static final ResourceLocation PAINTING_BACK = new ResourceLocation("minecraft", "textures/entity/painting/back.png");
+    private static final ResourceLocation PAINTING_BACK = ResourceLocation.fromNamespaceAndPath("minecraft", "textures/entity/painting/back.png");
 
     private void renderPainting(PoseStack stack,
                                 ResourceLocation frontBuffer,

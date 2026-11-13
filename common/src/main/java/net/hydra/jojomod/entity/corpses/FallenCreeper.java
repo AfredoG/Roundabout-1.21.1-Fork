@@ -61,13 +61,13 @@ public class FallenCreeper extends FallenMob implements PowerableMob {
     }
 
     @Override
-    protected void defineSynchedData() {
-        if (!this.entityData.hasItem(DATA_SWELL_DIR)) {
-            super.defineSynchedData();
-            this.entityData.define(DATA_SWELL_DIR, -1);
-            this.entityData.define(DATA_IS_POWERED, false);
-            this.entityData.define(DATA_IS_IGNITED, false);
-        }
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+
+            super.defineSynchedData(builder);
+            builder.define(DATA_SWELL_DIR, -1);
+            builder.define(DATA_IS_POWERED, false);
+            builder.define(DATA_IS_IGNITED, false);
+
     }
 
 

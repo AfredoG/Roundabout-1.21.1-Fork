@@ -52,8 +52,13 @@ public class IceTwisterModel<T extends Entity> extends PsuedoHierarchicalModel {
 
 
 	@Override
-	public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
-		root.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+	public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, int argbColor) {
+        float red = net.minecraft.util.FastColor.ARGB32.red(argbColor) / 255.0F;
+        float green = net.minecraft.util.FastColor.ARGB32.green(argbColor) / 255.0F;
+        float blue = net.minecraft.util.FastColor.ARGB32.blue(argbColor) / 255.0F;
+        float alpha = net.minecraft.util.FastColor.ARGB32.alpha(argbColor) / 255.0F;
+
+		root.render(poseStack, vertexConsumer, packedLight, packedOverlay, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, red, green, blue));
 	}
 
     @Override
@@ -66,7 +71,7 @@ public class IceTwisterModel<T extends Entity> extends PsuedoHierarchicalModel {
     }
 
     public ResourceLocation getTextureLocation(){
-        return new ResourceLocation(Roundabout.MOD_ID,
+        return ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
                 "textures/stand/white_album/projectiles/ice_twister.png");
     }
     public void animate2(AnimationState $$0, AnimationDefinition $$1, float $$2, float $$3){
@@ -83,7 +88,7 @@ public class IceTwisterModel<T extends Entity> extends PsuedoHierarchicalModel {
             this.root().getAllParts().forEach(ModelPart::resetPose);
             VertexConsumer consumer = bufferSource.getBuffer(RenderType.entityTranslucent(getTextureLocation()));
             //r = bufferSource.getBuffer(RenderType.entityTranslucent(getTextureLocation(context, skin)));
-            root().render(poseStack, consumer, light, OverlayTexture.NO_OVERLAY, r, g, b, alpha);
+            root().render(poseStack, consumer, light, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, r, g, b));
         }
     }
 }

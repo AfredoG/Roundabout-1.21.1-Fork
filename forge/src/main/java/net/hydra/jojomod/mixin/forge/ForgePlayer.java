@@ -174,7 +174,7 @@ public abstract class ForgePlayer extends LivingEntity {
                 f *= 5.0F;
             }
 
-            f = net.minecraftforge.event.ForgeEventFactory.getBreakSpeed(((Player)(Object)this), $$0, f, pos);
+            f = net.neoforged.neoforge.event.EventHooks.getBreakSpeed(((Player)(Object)this), $$0, f, pos);
 
 
             cir.setReturnValue((float)(f));

@@ -182,7 +182,7 @@ public class VisageBasisRenderer extends LivingEntityRenderer<JojoNPC, PlayerMod
                 if (visage.getItem() instanceof MaskItem MI) {
                     VisageData vd = MI.visageData.generateVisageData(var1);
                     if (vd.isCharacterVisage()) {
-                        return (new ResourceLocation(Roundabout.MOD_ID, "textures/entity/visage/player_skins/"+vd.getSkinPath()+".png"));
+                        return (ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/entity/visage/player_skins/"+vd.getSkinPath()+".png"));
                     }
                 }
             }

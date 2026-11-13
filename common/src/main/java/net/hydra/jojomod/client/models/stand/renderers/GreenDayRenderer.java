@@ -15,18 +15,18 @@ import org.jetbrains.annotations.Nullable;
 
 public class GreenDayRenderer extends StandRenderer<GreenDayEntity> {
 
-    private static final ResourceLocation PART_FIVE_GREEN_DAY = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/green_day/part_four_green_day.png");
-    private static final ResourceLocation RED_DAY = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/green_day/red_day.png");
-    private static final ResourceLocation TEAL_DAY= new ResourceLocation(Roundabout.MOD_ID,"textures/stand/green_day/blue_day.png");
-    private static final ResourceLocation BROCOLLI = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/green_day/broccoli_green_day.png");
-    private static final ResourceLocation RED_NIGHT = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/green_day/red_night.png");
-    private static final ResourceLocation GORGONZOLA = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/green_day/gorgonzola_green_day.png");
-    private static final ResourceLocation SILENCE = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/green_day/silence_green_day.png");
-    private static final ResourceLocation TF_CENTURY = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/green_day/21st_century_green_day.png");
-    private static final ResourceLocation NIMROD = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/green_day/nimrod_green_day.png");
-    private static final ResourceLocation AMERICAN_IDIOT = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/green_day/american_idiot_green_day.png");
-    private static final ResourceLocation SAVIOURS = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/green_day/saviours_green_day.png");
-    private static final ResourceLocation MOUTH = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/green_day/mouth_green_day.png");
+    private static final ResourceLocation PART_FIVE_GREEN_DAY = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/green_day/part_four_green_day.png");
+    private static final ResourceLocation RED_DAY = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/green_day/red_day.png");
+    private static final ResourceLocation TEAL_DAY= ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/green_day/blue_day.png");
+    private static final ResourceLocation BROCOLLI = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/green_day/broccoli_green_day.png");
+    private static final ResourceLocation RED_NIGHT = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/green_day/red_night.png");
+    private static final ResourceLocation GORGONZOLA = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/green_day/gorgonzola_green_day.png");
+    private static final ResourceLocation SILENCE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/green_day/silence_green_day.png");
+    private static final ResourceLocation TF_CENTURY = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/green_day/21st_century_green_day.png");
+    private static final ResourceLocation NIMROD = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/green_day/nimrod_green_day.png");
+    private static final ResourceLocation AMERICAN_IDIOT = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/green_day/american_idiot_green_day.png");
+    private static final ResourceLocation SAVIOURS = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/green_day/saviours_green_day.png");
+    private static final ResourceLocation MOUTH = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/green_day/mouth_green_day.png");
 
 
 

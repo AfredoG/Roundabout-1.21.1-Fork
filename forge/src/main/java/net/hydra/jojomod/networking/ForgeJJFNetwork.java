@@ -1,50 +1,40 @@
 package net.hydra.jojomod.networking;
 
 import net.hydra.jojomod.event.powers.jumpingJackFlash.ZeroGravitySync;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.network.NetworkDirection;
-import net.minecraftforge.network.NetworkEvent;
-import net.minecraftforge.network.NetworkRegistry;
-import net.minecraftforge.network.PacketDistributor;
-import net.minecraftforge.network.simple.SimpleChannel;
-
-import java.util.function.Supplier;
+import net.neoforged.neoforge.network.PacketDistributor;
+import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 
 public final class ForgeJJFNetwork {
+    private ForgeJJFNetwork() {}
 
-    private static final String PROTOCOL_VERSION = "1";
+    public record SnapshotPayload(ZeroGravitySync.Snapshot snapshot) implements CustomPacketPayload {
+        public static final Type<SnapshotPayload> TYPE = new Type<>(
+                ResourceLocation.fromNamespaceAndPath("roundabout", "zero_gravity_sync"));
+        public static final StreamCodec<RegistryFriendlyByteBuf, SnapshotPayload> STREAM_CODEC = new StreamCodec<>() {
+            @Override
+            public SnapshotPayload decode(RegistryFriendlyByteBuf buffer) {
+                return new SnapshotPayload(ZeroGravitySync.read(buffer));
+            }
+            @Override
+            public void encode(RegistryFriendlyByteBuf buffer, SnapshotPayload payload) {
+                ZeroGravitySync.write(buffer, payload.snapshot());
+            }
+        };
+        @Override
+        public Type<SnapshotPayload> type() { return TYPE; }
+    }
 
-    private static final SimpleChannel CHANNEL = NetworkRegistry.newSimpleChannel(
-            new ResourceLocation("roundabout", "jjf_network"),
-            () -> PROTOCOL_VERSION,
-            PROTOCOL_VERSION::equals,
-            PROTOCOL_VERSION::equals
-    );
-
-    private ForgeJJFNetwork() {
+    public static void registerPayloads(RegisterPayloadHandlersEvent event) {
+        event.registrar("1").playToClient(SnapshotPayload.TYPE, SnapshotPayload.STREAM_CODEC,
+                (payload, context) -> ForgeJJFClientPackets.apply(payload.snapshot()));
     }
 
     public static void register() {
-        CHANNEL.registerMessage(
-                0,
-                ZeroGravitySync.Snapshot.class,
-                (snapshot, buffer) -> ZeroGravitySync.write(buffer, snapshot),
-                ZeroGravitySync::read,
-                ForgeJJFNetwork::handle
-        );
-
         ZeroGravitySync.registerSender((player, snapshot) ->
-                CHANNEL.send(PacketDistributor.PLAYER.with(() -> player), snapshot));
-    }
-
-    private static void handle(ZeroGravitySync.Snapshot snapshot,
-                               Supplier<NetworkEvent.Context> supplier) {
-        NetworkEvent.Context context = supplier.get();
-        context.enqueueWork(() -> {
-            if (context.getDirection() == NetworkDirection.PLAY_TO_CLIENT) {
-                ForgeJJFClientPackets.apply(snapshot);
-            }
-        });
-        context.setPacketHandled(true);
+                PacketDistributor.sendToPlayer(player, new SnapshotPayload(snapshot)));
     }
 }

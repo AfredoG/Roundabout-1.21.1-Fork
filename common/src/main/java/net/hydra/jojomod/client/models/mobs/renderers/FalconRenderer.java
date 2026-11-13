@@ -14,13 +14,13 @@ public class FalconRenderer<T extends FalconEntity>
         extends MobRenderer<T, FalconModel<T>> {
 
     private static final ResourceLocation PET_SHOP =
-            new ResourceLocation(Roundabout.MOD_ID,"textures/entity/falcon/pet_shop.png");
+            ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/entity/falcon/pet_shop.png");
     private static final ResourceLocation APLOMADO =
-            new ResourceLocation(Roundabout.MOD_ID,"textures/entity/falcon/aplomado.png");
+            ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/entity/falcon/aplomado.png");
     private static final ResourceLocation GERIFALTE =
-            new ResourceLocation(Roundabout.MOD_ID,"textures/entity/falcon/gerifalte.png");
+            ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/entity/falcon/gerifalte.png");
     private static final ResourceLocation CARACARA =
-            new ResourceLocation(Roundabout.MOD_ID,"textures/entity/falcon/caracara.png");
+            ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/entity/falcon/caracara.png");
 
     public FalconRenderer(EntityRendererProvider.Context context) {
         super(context,new FalconModel<>(context.bakeLayer(ModEntityRendererClient.FALCON_LAYER)),0.125F);

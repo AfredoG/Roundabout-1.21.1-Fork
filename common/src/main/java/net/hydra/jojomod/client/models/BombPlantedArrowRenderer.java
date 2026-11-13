@@ -8,9 +8,9 @@ import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.projectile.Arrow;
 
 public class BombPlantedArrowRenderer extends ArrowRenderer<AbstractArrow> {
-    public static final ResourceLocation NORMAL_ARROW_LOCATION = new ResourceLocation("textures/entity/projectiles/arrow.png");
-    public static final ResourceLocation TIPPED_ARROW_LOCATION = new ResourceLocation("textures/entity/projectiles/tipped_arrow.png");
-    public static final ResourceLocation SPECTRAL_ARROW_LOCATION = new ResourceLocation("textures/entity/projectiles/spectral_arrow.png");
+    public static final ResourceLocation NORMAL_ARROW_LOCATION = ResourceLocation.parse("textures/entity/projectiles/arrow.png");
+    public static final ResourceLocation TIPPED_ARROW_LOCATION = ResourceLocation.parse("textures/entity/projectiles/tipped_arrow.png");
+    public static final ResourceLocation SPECTRAL_ARROW_LOCATION = ResourceLocation.parse("textures/entity/projectiles/spectral_arrow.png");
 
     public BombPlantedArrowRenderer(EntityRendererProvider.Context p_174422_) {
         super(p_174422_);

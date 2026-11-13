@@ -30,9 +30,9 @@ public class BCTroop extends MultipleTypeStand {
             SynchedEntityData.defineId(BCTroop.class, EntityDataSerializers.BYTE);
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(CURRENT_TACTIC, (byte)0);
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(CURRENT_TACTIC, (byte)0);
     }
 
     public byte getCurrentTactic() {

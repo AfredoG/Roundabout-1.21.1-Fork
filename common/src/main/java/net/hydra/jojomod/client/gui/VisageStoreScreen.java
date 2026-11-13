@@ -35,7 +35,7 @@ import java.util.Optional;
 
 public class VisageStoreScreen extends Screen {
     //Check out GamemodeSwitcherScreen
-    static final ResourceLocation CORPSE_CHOOSER_LOCATION = new ResourceLocation(Roundabout.MOD_ID,
+    static final ResourceLocation CORPSE_CHOOSER_LOCATION = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/cinderella_gui.png");
     private static final int SPRITE_SHEET_WIDTH = 256;
     private static final int SPRITE_SHEET_HEIGHT = 256;

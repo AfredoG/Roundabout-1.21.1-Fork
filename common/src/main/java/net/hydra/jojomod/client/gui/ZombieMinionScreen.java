@@ -41,7 +41,7 @@ import java.util.List;
 
 public class ZombieMinionScreen extends Screen {
     //Check out GamemodeSwitcherScreen
-    static final ResourceLocation CORPSE_CHOOSER_LOCATION = new ResourceLocation(Roundabout.MOD_ID,
+    static final ResourceLocation CORPSE_CHOOSER_LOCATION = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/tactics_chooser.png");
     private static final int SPRITE_SHEET_WIDTH = 256;
     private static final int SPRITE_SHEET_HEIGHT = 256;
@@ -208,29 +208,29 @@ public class ZombieMinionScreen extends Screen {
 
     public enum tacticIcon {
 
-        NONE(Component.translatable("roundabout.minion.none"), new ResourceLocation(Roundabout.MOD_ID,
+        NONE(Component.translatable("roundabout.minion.none"), ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
                 "textures/gui/pose_icons/jonathan.png"),Tactics.NONE.id,0,31),
-        EQUIP(Component.translatable("roundabout.minion.tactics.equip"), new ResourceLocation(Roundabout.MOD_ID,
+        EQUIP(Component.translatable("roundabout.minion.tactics.equip"), ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
                 "textures/gui/tactics_icons/equip.png"), Tactics.EQUIP.id,-30,4),
-        SETHOME(Component.translatable("roundabout.minion.tactics.sethome"), new ResourceLocation(Roundabout.MOD_ID,
+        SETHOME(Component.translatable("roundabout.minion.tactics.sethome"), ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
                 "textures/gui/tactics_icons/sethome.png"),Tactics.SETHOME.id,0,4),
-        SENDHOME(Component.translatable("roundabout.minion.tactics.sendhome"), new ResourceLocation(Roundabout.MOD_ID,
+        SENDHOME(Component.translatable("roundabout.minion.tactics.sendhome"), ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
                 "textures/gui/tactics_icons/sendhome.png"),Tactics.SENDHOME.id,30,4),
-        STAY_PUT(Component.translatable("roundabout.corpse.tactics.still"), new ResourceLocation(Roundabout.MOD_ID,
+        STAY_PUT(Component.translatable("roundabout.corpse.tactics.still"), ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
                 "textures/gui/tactics_icons/stay_put.png"),Tactics.STAY_PUT.id,-31,40),
-        ROAM(Component.translatable("roundabout.corpse.tactics.wander"), new ResourceLocation(Roundabout.MOD_ID,
+        ROAM(Component.translatable("roundabout.corpse.tactics.wander"), ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
                 "textures/gui/tactics_icons/roam.png"),Tactics.ROAM.id,-31,70),
-        HOLD(Component.translatable("roundabout.corpse.tactics.hold"), new ResourceLocation(Roundabout.MOD_ID,
+        HOLD(Component.translatable("roundabout.corpse.tactics.hold"), ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
                 "textures/gui/tactics_icons/hold.png"),Tactics.HOLD.id,-61,70),
-        FOLLOW(Component.translatable("roundabout.corpse.tactics.follow"), new ResourceLocation(Roundabout.MOD_ID,
+        FOLLOW(Component.translatable("roundabout.corpse.tactics.follow"), ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
                 "textures/gui/tactics_icons/follow.png"),Tactics.FOLLOW.id,-61,40),
-        DEFEND(Component.translatable("roundabout.corpse.tactics.guard"), new ResourceLocation(Roundabout.MOD_ID,
+        DEFEND(Component.translatable("roundabout.corpse.tactics.guard"), ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
                 "textures/gui/tactics_icons/defend.png"),Tactics.DEFEND.id,31,40),
-        HUNT_MONSTERS(Component.translatable("roundabout.corpse.tactics.hunt_monster"), new ResourceLocation(Roundabout.MOD_ID,
+        HUNT_MONSTERS(Component.translatable("roundabout.corpse.tactics.hunt_monster"), ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
                 "textures/gui/tactics_icons/hunt_monsters.png"),Tactics.HUNT_MONSTERS.id,61,40),
-        HUNT_PLAYERS(Component.translatable("roundabout.corpse.tactics.hunt_player"), new ResourceLocation(Roundabout.MOD_ID,
+        HUNT_PLAYERS(Component.translatable("roundabout.corpse.tactics.hunt_player"), ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
                 "textures/gui/tactics_icons/hunt_players.png"),Tactics.HUNT_PLAYERS.id,61,70),
-        PEACEFUL(Component.translatable("roundabout.corpse.tactics.peaceful"), new ResourceLocation(Roundabout.MOD_ID,
+        PEACEFUL(Component.translatable("roundabout.corpse.tactics.peaceful"), ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
                 "textures/gui/tactics_icons/peaceful.png"),Tactics.PEACEFUL.id,31,70);
 
         static tacticIcon getByte(Tactics tactics) {

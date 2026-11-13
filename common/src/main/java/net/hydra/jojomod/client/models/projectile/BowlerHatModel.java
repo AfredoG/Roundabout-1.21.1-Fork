@@ -22,7 +22,7 @@ import net.minecraft.world.entity.LivingEntity;
 
 public class BowlerHatModel<T extends Entity> extends PsuedoHierarchicalModel {
 	// This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
-	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation("modid", "speedwagon_hat_converted"), "main");
+	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath("modid", "speedwagon_hat_converted"), "main");
 	private final ModelPart hat;
     private final ModelPart root;
 
@@ -51,8 +51,13 @@ public class BowlerHatModel<T extends Entity> extends PsuedoHierarchicalModel {
 	} */
 
 	@Override
-	public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
-		hat.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+	public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, int argbColor) {
+        float red = net.minecraft.util.FastColor.ARGB32.red(argbColor) / 255.0F;
+        float green = net.minecraft.util.FastColor.ARGB32.green(argbColor) / 255.0F;
+        float blue = net.minecraft.util.FastColor.ARGB32.blue(argbColor) / 255.0F;
+        float alpha = net.minecraft.util.FastColor.ARGB32.alpha(argbColor) / 255.0F;
+
+		hat.render(poseStack, vertexConsumer, packedLight, packedOverlay, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, red, green, blue));
 	}
 
     @Override
@@ -77,7 +82,7 @@ public class BowlerHatModel<T extends Entity> extends PsuedoHierarchicalModel {
         }
     }
     public ResourceLocation getTextureLocation(){
-        return new ResourceLocation(Roundabout.MOD_ID,
+        return ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
                 "textures/item/bowler_hat_in_hand.png");
     }
 
@@ -91,7 +96,7 @@ public class BowlerHatModel<T extends Entity> extends PsuedoHierarchicalModel {
             this.root().getAllParts().forEach(ModelPart::resetPose);
             VertexConsumer consumer = bufferSource.getBuffer(RenderType.entityTranslucent(getTextureLocation()));
             //r = bufferSource.getBuffer(RenderType.entityTranslucent(getTextureLocation(context, skin)));
-            root().render(poseStack, consumer, light, OverlayTexture.NO_OVERLAY, r, g, b, alpha);
+            root().render(poseStack, consumer, light, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, r, g, b));
         }
     }
 }

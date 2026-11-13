@@ -91,8 +91,13 @@ public class BodySpikePart extends PsuedoHierarchicalModel {
         return LayerDefinition.create(meshdefinition, 8, 8);
     }
     @Override
-    public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
-        body_spikes.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+    public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, int argbColor) {
+        float red = net.minecraft.util.FastColor.ARGB32.red(argbColor) / 255.0F;
+        float green = net.minecraft.util.FastColor.ARGB32.green(argbColor) / 255.0F;
+        float blue = net.minecraft.util.FastColor.ARGB32.blue(argbColor) / 255.0F;
+        float alpha = net.minecraft.util.FastColor.ARGB32.alpha(argbColor) / 255.0F;
+
+        body_spikes.render(poseStack, vertexConsumer, packedLight, packedOverlay, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, red, green, blue));
     }
 
     @Override
@@ -109,7 +114,7 @@ public class BodySpikePart extends PsuedoHierarchicalModel {
 
 
     public ResourceLocation getTextureLocation(){
-        return new ResourceLocation(Roundabout.MOD_ID, "textures/entity/hair/vampire_body/vampire_hair_white.png");
+        return ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/entity/hair/vampire_body/vampire_hair_white.png");
     }
 
     public void render(Entity context, PoseStack poseStack, MultiBufferSource bufferSource, int light) {
@@ -153,7 +158,7 @@ public class BodySpikePart extends PsuedoHierarchicalModel {
                 modifySpike(spike10,partial,tier2);
                 modifySpike(spike11,partial,tier2);
                 modifySpike(spike12,partial,tier2);
-                root().render(poseStack, consumer, light, OverlayTexture.NO_OVERLAY, r, g, b, alpha);
+                root().render(poseStack, consumer, light, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, r, g, b));
 
                 modifySpike2(spike1,partial,tier2);
                 modifySpike2(spike2,partial,tier2);

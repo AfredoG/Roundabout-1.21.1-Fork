@@ -15,7 +15,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 
 public class ZombieAestheticianRenderer<T extends ZombieAesthetician> extends HumanoidMobRenderer<T, ZombieVisageBasisModel<T>> {
-    private static final ResourceLocation AES1 = new ResourceLocation(Roundabout.MOD_ID, "textures/entity/npcs/zombie_aesthetician.png");
+    private static final ResourceLocation AES1 = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/entity/npcs/zombie_aesthetician.png");
 
     public ZombieAestheticianRenderer(EntityRendererProvider.Context context) {
         super(context, new ZombieVisageBasisModel<>(context.bakeLayer(ModelLayers.PLAYER_SLIM), false), 0.5F);
@@ -35,7 +35,7 @@ public class ZombieAestheticianRenderer<T extends ZombieAesthetician> extends Hu
             if (visage.getItem() instanceof MaskItem MI) {
                 VisageData vd = MI.visageData.generateVisageData(t);
                 if (vd.isCharacterVisage()) {
-                    return (new ResourceLocation(Roundabout.MOD_ID, "textures/entity/visage/player_skins/"+vd.getSkinPath()+".png"));
+                    return (ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/entity/visage/player_skins/"+vd.getSkinPath()+".png"));
                 }
             }
         }

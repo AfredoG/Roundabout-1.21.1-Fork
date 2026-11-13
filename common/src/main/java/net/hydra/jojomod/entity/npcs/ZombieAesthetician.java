@@ -71,12 +71,12 @@ public class ZombieAesthetician extends Zombie {
         super(entityType, level);
     }
 
-    protected void defineSynchedData() {
-        if (!this.entityData.hasItem(ROUNDABOUT$SKIN_NUMBER)) {
-            super.defineSynchedData();
-            this.entityData.define(DATA_CONVERTING_ID, false);
-            this.entityData.define(ROUNDABOUT$SKIN_NUMBER, 1);
-        }
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+
+            super.defineSynchedData(builder);
+            builder.define(DATA_CONVERTING_ID, false);
+            builder.define(ROUNDABOUT$SKIN_NUMBER, 1);
+
     }
 
     public void setBaby(boolean $$0) {

@@ -13,7 +13,7 @@ import net.minecraft.world.entity.ai.control.Control;
 import net.minecraft.world.entity.ai.control.MoveControl;
 import net.minecraft.world.entity.ai.navigation.PathNavigation;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.pathfinder.BlockPathTypes;
+import net.minecraft.world.level.pathfinder.PathType;
 import net.minecraft.world.level.pathfinder.NodeEvaluator;
 import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
@@ -268,7 +268,7 @@ public abstract class GravityMoveControlMixin implements Control {
                             Mth.floor(this.mob.getX() + (double) $$0),
                             this.mob.getBlockY(),
                             Mth.floor(this.mob.getZ() + (double) $$1))
-                            != BlockPathTypes.WALKABLE) {
+                            != PathType.WALKABLE) {
                         cir.setReturnValue(false);
                         return;
                     }
@@ -280,7 +280,7 @@ public abstract class GravityMoveControlMixin implements Control {
                             Mth.floor(this.mob.getY() + (double) $$1),
                             this.mob.getBlockZ())
 
-                            != BlockPathTypes.WALKABLE) {
+                            != PathType.WALKABLE) {
                         cir.setReturnValue(false);
                         return;
                     }
@@ -291,7 +291,7 @@ public abstract class GravityMoveControlMixin implements Control {
                             this.mob.getBlockX(),
                             Mth.floor(this.mob.getY() + (double) $$0),
                             Mth.floor(this.mob.getZ() + (double) $$1))
-                            != BlockPathTypes.WALKABLE) {
+                            != PathType.WALKABLE) {
                         cir.setReturnValue(false);
                         return;
                     }

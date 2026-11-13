@@ -2,22 +2,24 @@ package net.hydra.jojomod.Utils;
 
 import com.google.common.base.Suppliers;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraftforge.common.loot.IGlobalLootModifier;
-import net.minecraftforge.common.loot.LootModifier;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.neoforge.common.loot.IGlobalLootModifier;
+import net.neoforged.neoforge.common.loot.LootModifier;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Supplier;
 
 public class ForgeSusGravelItemModifier extends LootModifier {
-    public static final Supplier<Codec<ForgeSusGravelItemModifier>> CODEC = Suppliers.memoize(()
-            -> RecordCodecBuilder.create(inst->codecStart(inst).and(ForgeRegistries.ITEMS.getCodec().
+    public static final Supplier<MapCodec<ForgeSusGravelItemModifier>> CODEC = Suppliers.memoize(()
+            -> RecordCodecBuilder.mapCodec(inst->codecStart(inst).and(BuiltInRegistries.ITEM.byNameCodec().
             fieldOf("item").forGetter(m->m.item)).apply(inst, ForgeSusGravelItemModifier::new)));
 
     private final Item item;
@@ -43,7 +45,7 @@ public class ForgeSusGravelItemModifier extends LootModifier {
     }
 
     @Override
-    public Codec<? extends IGlobalLootModifier> codec() {
+    public MapCodec<? extends IGlobalLootModifier> codec() {
         return CODEC.get();
     }
 }

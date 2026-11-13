@@ -170,7 +170,7 @@ public class MemoryChessPieceItem extends BlockItem implements Vanishable {
 
         ResourceLocation dimensionLocation;
         try {
-            dimensionLocation = new ResourceLocation(dimensionString);
+            dimensionLocation = ResourceLocation.parse(dimensionString);
         } catch (Exception e) {
             return;
         }

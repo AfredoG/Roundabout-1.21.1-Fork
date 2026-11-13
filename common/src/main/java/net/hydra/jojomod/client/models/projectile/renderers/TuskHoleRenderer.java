@@ -32,12 +32,12 @@ public class TuskHoleRenderer extends EntityRenderer<TuskHoleEntity> {
         poseStack.pushPose();
         poseStack.scale(1,0.3F,1);
         poseStack.translate(0,-1.34,0);
-        this.model.renderToBuffer(poseStack, $$4.getBuffer(RenderType.entityTranslucentCull(this.getTextureLocation($$0))), $$5, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 0);
+        this.model.renderToBuffer(poseStack, $$4.getBuffer(RenderType.entityTranslucentCull(this.getTextureLocation($$0))), $$5, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(0, 1.0F, 1.0F, 1.0F));
         poseStack.popPose();
     }
 
     @Override
     public ResourceLocation getTextureLocation(TuskHoleEntity var1) {
-        return new ResourceLocation(Roundabout.MOD_ID,"textures/entity/projectile/tusk_hole.png");
+        return ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/entity/projectile/tusk_hole.png");
     }
 }

@@ -13,7 +13,7 @@ import net.minecraft.resources.ResourceLocation;
 public class JJFSpitRenderer extends EntityRenderer<JJFSpitEntity> {
 
     private static final ResourceLocation TEXTURE =
-            new ResourceLocation(
+            ResourceLocation.fromNamespaceAndPath(
                     "minecraft",
                     "textures/entity/llama/spit.png"
             );
@@ -43,18 +43,9 @@ public class JJFSpitRenderer extends EntityRenderer<JJFSpitEntity> {
     ) {
         poseStack.pushPose();
 
-        model.renderToBuffer(
-                poseStack,
-                buffer.getBuffer(
+        model.renderToBuffer(poseStack, buffer.getBuffer(
                         model.renderType(TEXTURE)
-                ),
-                light,
-                OverlayTexture.NO_OVERLAY,
-                1.0F,
-                1.0F,
-                1.0F,
-                1.0F
-        );
+                ), light, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(1.0F, 1.0F, 1.0F, 1.0F));
 
         poseStack.popPose();
     }

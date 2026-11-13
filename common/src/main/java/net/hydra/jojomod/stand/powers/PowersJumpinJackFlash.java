@@ -1084,7 +1084,7 @@ public class PowersJumpinJackFlash extends NewPunchingStand {
             ItemStack loaded =
                     launcher.getLoadedItem();
 
-            if (!ItemStack.isSameItemSameTags(
+            if (!ItemStack.isSameItemSameComponents(
                     loaded,
                     held
             )) {

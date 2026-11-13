@@ -29,7 +29,7 @@ import java.util.List;
 
 public class BombConfigScreen extends Screen implements NoCancelInputScreen {
     //Check out GamemodeSwitcherScreen
-    static final ResourceLocation KILLER_QUEEN_BOMB_LOCATION = new ResourceLocation(Roundabout.MOD_ID,
+    static final ResourceLocation KILLER_QUEEN_BOMB_LOCATION = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/killer_queen_bomb.png");
     
     private static final int

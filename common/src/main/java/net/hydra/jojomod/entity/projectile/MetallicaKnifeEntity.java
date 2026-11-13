@@ -40,10 +40,10 @@ public class MetallicaKnifeEntity extends KnifeEntity {
     }
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(WAITING, false);
-        this.entityData.define(LAUNCHED, false);
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(WAITING, false);
+        builder.define(LAUNCHED, false);
     }
 
     public void setWaiting(boolean wait) {
@@ -179,7 +179,7 @@ public class MetallicaKnifeEntity extends KnifeEntity {
         Entity owner = this.getOwner();
 
         if (target instanceof LivingEntity livingTarget && owner instanceof LivingEntity) {
-            ResourceLocation bleedLoc = new ResourceLocation(Roundabout.MOD_ID, "bleed");
+            ResourceLocation bleedLoc = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "bleed");
             if (BuiltInRegistries.MOB_EFFECT.containsKey(bleedLoc)) {
                 livingTarget.addEffect(new MobEffectInstance(BuiltInRegistries.MOB_EFFECT.get(bleedLoc), 100, 0), owner);
             }

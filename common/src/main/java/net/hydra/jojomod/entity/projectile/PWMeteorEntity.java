@@ -664,7 +664,7 @@ public class PWMeteorEntity extends AbstractHurtingProjectile implements Unburna
                     PPW.addEXP(5, LE);
                     MainUtil.makeBleed(LE, 1, 100, gotten);
 
-                    LE.setSecondsOnFire(5);
+                    LE.igniteForSeconds(5);
                 }
             }
         }
@@ -694,10 +694,10 @@ public class PWMeteorEntity extends AbstractHurtingProjectile implements Unburna
 
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(USER_ID, -1);
-        this.entityData.define(METEOR_SCALE, 1.0F);
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(USER_ID, -1);
+        builder.define(METEOR_SCALE, 1.0F);
     }
 
     @Override

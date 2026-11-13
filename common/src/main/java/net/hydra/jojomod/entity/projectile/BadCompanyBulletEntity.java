@@ -62,8 +62,8 @@ public class BadCompanyBulletEntity extends AbstractArrow {
     }
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
 
     }
 

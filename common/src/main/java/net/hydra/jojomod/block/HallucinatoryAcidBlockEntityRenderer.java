@@ -21,9 +21,9 @@ import net.minecraft.world.level.block.state.BlockState;
 
 public final class HallucinatoryAcidBlockEntityRenderer
         implements BlockEntityRenderer<HallucinatoryAcidBlockEntity> {
-    private static final ResourceLocation ACID_TEXTURE = new ResourceLocation(Roundabout.MOD_ID,
+    private static final ResourceLocation ACID_TEXTURE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/block/hallucinatory_acid_inner.png");
-    private static final ResourceLocation SAND_TEXTURE = new ResourceLocation("minecraft",
+    private static final ResourceLocation SAND_TEXTURE = ResourceLocation.fromNamespaceAndPath("minecraft",
             "textures/block/sand.png");
 
     public HallucinatoryAcidBlockEntityRenderer(BlockEntityRendererProvider.Context context) {

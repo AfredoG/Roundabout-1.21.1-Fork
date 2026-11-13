@@ -29,15 +29,15 @@ import javax.annotation.Nullable;
 public class LyinEyesLayer<T extends LivingEntity, M extends HumanoidModel<T>, A extends HumanoidModel<T>> extends RenderLayer<T, M> {
     /**Code for humanoid models that summon lyin eyes*/
     // all resource locations
-    public static final ResourceLocation LYIN_EYES_LAYER = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation LYIN_EYES_LAYER = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/lyin_eyes/lyin_eyes_layer.png");
-    public static final ResourceLocation LYIN_EYES_LAEM_LAYER = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation LYIN_EYES_LAEM_LAYER = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/lyin_eyes/lyin_eyes_laem_layer.png");
-    public static final ResourceLocation LYIN_EYES_LAYER2 = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation LYIN_EYES_LAYER2 = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/lyin_eyes/lyin_eyes_layer2.png");
-    public static final ResourceLocation LYIN_EYES_LAYER3 = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation LYIN_EYES_LAYER3 = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/lyin_eyes/lyin_eyes_layer3.png");
-    public static final ResourceLocation LYIN_EYES_LAYER4 = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation LYIN_EYES_LAYER4 = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/lyin_eyes/lyin_eyes_layer4.png");
 
     private final EntityRenderDispatcher dispatcher;
@@ -91,7 +91,7 @@ public class LyinEyesLayer<T extends LivingEntity, M extends HumanoidModel<T>, A
 
             ((IHumanoidModelAccess) $$4).roundabout$getBodyParts().forEach($$8x -> $$8x.xScale += 0.04F);
             ((IHumanoidModelAccess) $$4).roundabout$getBodyParts().forEach($$8x -> $$8x.zScale += 0.04F);
-            $$4.renderToBuffer(poseStack, $$10, integ, OverlayTexture.NO_OVERLAY, $$6, $$7, $$8, alpha);
+            $$4.renderToBuffer(poseStack, $$10, integ, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, $$6, $$7, $$8));
             ((IHumanoidModelAccess) $$4).roundabout$getBodyParts().forEach($$8x -> $$8x.xScale -= 0.04F);
             ((IHumanoidModelAccess) $$4).roundabout$getBodyParts().forEach($$8x -> $$8x.zScale -= 0.04F);
         }

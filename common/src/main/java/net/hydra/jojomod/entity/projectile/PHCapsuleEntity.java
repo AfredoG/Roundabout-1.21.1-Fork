@@ -159,11 +159,11 @@ public class PHCapsuleEntity extends ThrowableProjectile implements UnburnablePr
         this.discard();
     }
     @Override
-    protected void defineSynchedData() {
-        this.entityData.define(ACTIVATED, false);
-        this.entityData.define(LAUNCHED, false);
-        this.entityData.define(USER_ID, -1);
-        this.entityData.define(SPEED, 1F);
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+        builder.define(ACTIVATED, false);
+        builder.define(LAUNCHED, false);
+        builder.define(USER_ID, -1);
+        builder.define(SPEED, 1F);
     }
     public void shootFromRotationDeltaAgnosticR(Entity $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
         float $$6 = -Mth.sin($$2 * (float) (Math.PI / 180.0)) * Mth.cos($$1 * (float) (Math.PI / 180.0));

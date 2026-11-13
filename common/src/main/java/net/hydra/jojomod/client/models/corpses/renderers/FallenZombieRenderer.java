@@ -15,16 +15,16 @@ import net.minecraft.client.renderer.entity.layers.HumanoidArmorLayer;
 import net.minecraft.resources.ResourceLocation;
 
 public class FallenZombieRenderer extends HumanoidMobRenderer<FallenZombie, FallenZombieModel<FallenZombie>> {
-    private static final ResourceLocation ZOMBIE_LOCATION = new ResourceLocation("textures/entity/zombie/zombie.png");
-    public static final ResourceLocation FALLEN_ZOMBIE_LOCATION = new ResourceLocation(Roundabout.MOD_ID,
+    private static final ResourceLocation ZOMBIE_LOCATION = ResourceLocation.parse("textures/entity/zombie/zombie.png");
+    public static final ResourceLocation FALLEN_ZOMBIE_LOCATION = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/justice_corpses/justice_zombie.png");
-    public static final ResourceLocation FALLEN_ZOMBIE_LOCATION_2 = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation FALLEN_ZOMBIE_LOCATION_2 = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/justice_corpses/justice_zombie_holes.png");
-    public static final ResourceLocation FALLEN_ZOMBIE_LOCATION_R = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation FALLEN_ZOMBIE_LOCATION_R = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/justice_corpses/justice_zombie_red.png");
-    public static final ResourceLocation FALLEN_ZOMBIE_LOCATION_G = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation FALLEN_ZOMBIE_LOCATION_G = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/justice_corpses/justice_zombie_green.png");
-    public static final ResourceLocation FALLEN_ZOMBIE_LOCATION_B = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation FALLEN_ZOMBIE_LOCATION_B = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/justice_corpses/justice_zombie_blue.png");
 
     public FallenZombieRenderer(EntityRendererProvider.Context $$0) {

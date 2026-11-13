@@ -7,7 +7,7 @@ import net.minecraft.resources.ResourceLocation;
 
 public class StandIcons {
     private static ResourceLocation whitesnakeIcon(String path) {
-        return new ResourceLocation(Roundabout.MOD_ID, "textures/gui/icons/whitesnake/" + path + ".png");
+        return ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/gui/icons/whitesnake/" + path + ".png");
     }
 
     public static final ResourceLocation WHITESNAKE_PUNCH = whitesnakeIcon("punch");
@@ -37,851 +37,851 @@ public class StandIcons {
     public static final ResourceLocation WHITESNAKE_HALLUCINATION_3 = whitesnakeIcon("hallucination_3");
     public static final ResourceLocation WHITESNAKE_TIME_SPARK = whitesnakeIcon("time_spark");
     public static final ResourceLocation WHITESNAKE_INVENTORY = whitesnakeIcon("inventory");
-    public static final ResourceLocation WHITESNAKE_DISC_STEAL_MENU = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation WHITESNAKE_DISC_STEAL_MENU = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/whitesnake/disc_steal_menu.png");
     public static final ResourceLocation[] WHITESNAKE_DISC_TYPES = {
             whitesnakeIcon("stand_disc"), whitesnakeIcon("sight_disc"),
             whitesnakeIcon("memory_disc"), whitesnakeIcon("hearing_disc")
     };
     public static final Material STAND_FIRE = new Material(TextureAtlas.LOCATION_BLOCKS,
-            new ResourceLocation(Roundabout.MOD_ID,"block/fire_0"));
+            ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"block/fire_0"));
 
-    public static final ResourceLocation INVISIBLOCK = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation INVISIBLOCK = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/block/invisiblock.png");
-    public static final ResourceLocation JOJO_ICONS = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation JOJO_ICONS = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/jojo_icons.png");
-    public static final ResourceLocation JOJO_ICONS_2 = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation JOJO_ICONS_2 = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/jojo_icons_2.png");
-    public static final ResourceLocation JOJO_ICONS_3 = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation JOJO_ICONS_3 = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/jojo_icons_3.png");
-    public static final ResourceLocation TIME_ERASE_SKY = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation TIME_ERASE_SKY = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/environment/time_erase_sky.png");
     public static final ResourceLocation[] SKYBOX = new ResourceLocation[]{
-            new ResourceLocation(Roundabout.MOD_ID, "textures/environment/time_erase_w.png"),
-            new ResourceLocation(Roundabout.MOD_ID, "textures/environment/time_erase_e.png"),
-            new ResourceLocation(Roundabout.MOD_ID, "textures/environment/time_erase_n.png"),
-            new ResourceLocation(Roundabout.MOD_ID, "textures/environment/time_erase_s.png"),
-            new ResourceLocation(Roundabout.MOD_ID, "textures/environment/time_erase_t.png"),
-            new ResourceLocation(Roundabout.MOD_ID, "textures/environment/time_erase_b.png")
+            ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/environment/time_erase_w.png"),
+            ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/environment/time_erase_e.png"),
+            ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/environment/time_erase_n.png"),
+            ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/environment/time_erase_s.png"),
+            ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/environment/time_erase_t.png"),
+            ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/environment/time_erase_b.png")
     };
 
-    public static final ResourceLocation NONE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation NONE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/none.png");
-    public static final ResourceLocation SQUARE_ICON_OG = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation SQUARE_ICON_OG = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/move_square.png");
-    public static final ResourceLocation SQUARE_ICON = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation SQUARE_ICON = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/move_square2.png");
-    public static final ResourceLocation SQUARE_GOLD = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation SQUARE_GOLD = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/move_square_gold.png");
-    public static final ResourceLocation SQUARE_GOLDER = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation SQUARE_GOLDER = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/move_square_golder.png");
-    public static final ResourceLocation SQUARE_PINK = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation SQUARE_PINK = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/move_square_pink.png");
-    public static final ResourceLocation SQUARE_ICON_BLOOD = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation SQUARE_ICON_BLOOD = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/move_square4.png");
-    public static final ResourceLocation NOVELTY_ICON = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation NOVELTY_ICON = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/move_square_novelty.png");
-    public static final ResourceLocation SQUARE_CYAN = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation SQUARE_CYAN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/move_square_cyan.png");
-    public static final ResourceLocation LOCKED_SQUARE_ICON = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation LOCKED_SQUARE_ICON = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/move_square3.png");
-    public static final ResourceLocation UNLOCK_SQUARE_ICON = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation UNLOCK_SQUARE_ICON = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/move_square5.png");
-    public static final ResourceLocation COOLDOWN_ICON = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation COOLDOWN_ICON = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/move_cooldown.png");
-    public static final ResourceLocation FROZEN_COOLDOWN_ICON = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation FROZEN_COOLDOWN_ICON = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/move_cooldown_frozen.png");
-    public static final ResourceLocation GASOLINE_OVERLAY = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation GASOLINE_OVERLAY = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/misc/gasoline_splatter.png");
 
 
-    public static final ResourceLocation EPITAPH = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation EPITAPH = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/misc/epitaph.png");
-    public static final ResourceLocation BETWEEN_VISION = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation BETWEEN_VISION = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/misc/d4c.png");
-    public static final ResourceLocation BETWEEN_VISION_2 = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation BETWEEN_VISION_2 = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/misc/d4c_2.png");
 
-    public static final ResourceLocation POWDER_SNOW_OUTLINE_LOCATION = new ResourceLocation("textures/misc/powder_snow_outline.png");
+    public static final ResourceLocation POWDER_SNOW_OUTLINE_LOCATION = ResourceLocation.parse("textures/misc/powder_snow_outline.png");
 
-    public static final ResourceLocation VEHICLE_ICONS = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation VEHICLE_ICONS = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/vehicle_icons.png");
 
-    public static final ResourceLocation CREAM_ICONS = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation CREAM_ICONS = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/cream_icons.png");
 
-    public static final ResourceLocation STAND_PASSIVES = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation STAND_PASSIVES = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/powers/stand/stand_passives.png");
-    public static final ResourceLocation STAND_SUMMON = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation STAND_SUMMON = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/powers/stand/stand_summon.png");
-    public static final ResourceLocation STAND_VISION = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation STAND_VISION = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/powers/stand/stand_vision.png");
-    public static final ResourceLocation DISC_SWAP = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation DISC_SWAP = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/powers/stand/disc_swap.png");
-    public static final ResourceLocation DISC_IMPRINT = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation DISC_IMPRINT = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/powers/stand/disc_imprint.png");
-    public static final ResourceLocation BLOOD_DRINK = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation BLOOD_DRINK = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/fates/vampire/drink.png");
-    public static final ResourceLocation FLOWER_DRINK = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation FLOWER_DRINK = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/fates/vampire/flower.png");
-    public static final ResourceLocation VAMPIRE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation VAMPIRE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/fates/vampire/vampire.png");
-    public static final ResourceLocation CHEETAH_SPEED = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation CHEETAH_SPEED = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui//icons/fates/vampire/cheetah_speed.png");
-    public static final ResourceLocation GRAFTING = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation GRAFTING = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui//icons/fates/vampire/grafting.png");
-    public static final ResourceLocation REGENERATE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation REGENERATE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui//icons/fates/vampire/regenerate.png");
-    public static final ResourceLocation HYPNOTISM = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation HYPNOTISM = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui//icons/fates/vampire/hypnotism.png");
-    public static final ResourceLocation FLESH_BUD = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation FLESH_BUD = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui//icons/fates/vampire/flesh_bud.png");
-    public static final ResourceLocation DAGGER = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation DAGGER = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui//icons/fates/vampire/dagger.png");
-    public static final ResourceLocation VAMP_JUMP_BOOST = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation VAMP_JUMP_BOOST = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui//icons/fates/vampire/jump_boost.png");
-    public static final ResourceLocation VAMP_VISION_ON = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation VAMP_VISION_ON = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui//icons/fates/vampire/vision_on.png");
-    public static final ResourceLocation VAMP_VISION_OFF = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation VAMP_VISION_OFF = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui//icons/fates/vampire/vision_off.png");
-    public static final ResourceLocation HEARING_MODE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation HEARING_MODE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui//icons/fates/vampire/hearing_mode.png");
-    public static final ResourceLocation WALL_WALK_VAMP = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation WALL_WALK_VAMP = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/fates/vampire/wall_walk.png");
-    public static final ResourceLocation VAMPIRE_STRENGTH = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation VAMPIRE_STRENGTH = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui//icons/fates/vampire/strength.png");
-    public static final ResourceLocation VAMPIRE_RESILIENCE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation VAMPIRE_RESILIENCE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui//icons/fates/vampire/resilience.png");
-    public static final ResourceLocation VAMPIRE_DEXTERITY = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation VAMPIRE_DEXTERITY = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui//icons/fates/vampire/dexterity.png");
 
 
-    public static final ResourceLocation ZOMBIE_ENTER = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation ZOMBIE_ENTER = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui//icons/fates/zombie/enter.png");
 
-    public static final ResourceLocation ZOMBIE_DISGUISE_OFF = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation ZOMBIE_DISGUISE_OFF = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui//icons/fates/zombie/disguise_off.png");
-    public static final ResourceLocation ZOMBIE_DISGUISE_ON = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation ZOMBIE_DISGUISE_ON = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui//icons/fates/zombie/disguise_on.png");
-    public static final ResourceLocation ZOMBIE_DRINK = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation ZOMBIE_DRINK = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui//icons/fates/zombie/drink.png");
-    public static final ResourceLocation ZOMBIE_PROJECTILES = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation ZOMBIE_PROJECTILES = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui//icons/fates/zombie/projectiles.png");
-    public static final ResourceLocation ZOMBIE_WORM = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation ZOMBIE_WORM = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui//icons/fates/zombie/worm.png");
-    public static final ResourceLocation ZOMBIE_WORM_1 = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation ZOMBIE_WORM_1 = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui//icons/fates/zombie/worm_1.png");
-    public static final ResourceLocation ZOMBIE_WORM_2 = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation ZOMBIE_WORM_2 = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui//icons/fates/zombie/worm_2.png");
-    public static final ResourceLocation ZOMBIE_WORM_3 = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation ZOMBIE_WORM_3 = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui//icons/fates/zombie/worm_3.png");
-    public static final ResourceLocation ZOMBIE_WORM_4 = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation ZOMBIE_WORM_4 = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui//icons/fates/zombie/worm_4.png");
-    public static final ResourceLocation ZOMBIE_WORM_5 = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation ZOMBIE_WORM_5 = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui//icons/fates/zombie/worm_5.png");
 
-    public static final ResourceLocation SURVIVOR_ANGER = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation SURVIVOR_ANGER = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/misc/survivor_anger.png");
-    public static final ResourceLocation CREAM_OVERLAY = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation CREAM_OVERLAY = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/misc/cream_overlay.png");
-    public static final ResourceLocation SNIPER_OVERLAY = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation SNIPER_OVERLAY = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/misc/sniper_overlay.png");
-    public static final ResourceLocation ANUBIS_POSSESSION_OVERLAY = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation ANUBIS_POSSESSION_OVERLAY = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/misc/anubis_possession.png");
-    public static final ResourceLocation IN_BUBBLE_OVERLAY = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation IN_BUBBLE_OVERLAY = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/misc/in_bubble.png");
-    public static final ResourceLocation SUN_TINGE_OVERLAY = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation SUN_TINGE_OVERLAY = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/misc/sun_tinge.png");
-    public static final ResourceLocation MOLD_OVERLAY = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation MOLD_OVERLAY = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/misc/mold_overlay.png");
-    public static final ResourceLocation STONE_MASK_OVERLAY = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation STONE_MASK_OVERLAY = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/misc/mask_blur.png");
-    public static final ResourceLocation BLOODY_MASK_OVERLAY = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation BLOODY_MASK_OVERLAY = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/misc/bloody_mask_blur.png");
-    public static final ResourceLocation SUPER_HEARING = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation SUPER_HEARING = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/misc/super_hearing.png");
-    public static final ResourceLocation RATT_SCOPE_OVERLAY = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation RATT_SCOPE_OVERLAY = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/misc/ratt_scope.png");
-    public static final ResourceLocation ANTI_XRAY_OVERLAY = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation ANTI_XRAY_OVERLAY = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/misc/ambient.png");
-    public static final ResourceLocation TIME_REWIND = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation TIME_REWIND = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/misc/time_rewind.png");
-    public static final ResourceLocation NO_FACE_LAYER = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation NO_FACE_LAYER = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/other_layers/faceless.png");
-    public static final ResourceLocation ICICLE_LAYER = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation ICICLE_LAYER = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/other_layers/mr_icicle.png");
-    public static final ResourceLocation ICE_CHEST_LAYER = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation ICE_CHEST_LAYER = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/other_layers/ice_breast.png");
-    public static final ResourceLocation ICE_SKELETON_LAYER = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation ICE_SKELETON_LAYER = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/other_layers/skeleton_layers.png");
-    public static final ResourceLocation ICE_CREEPER_LAYER = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation ICE_CREEPER_LAYER = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/other_layers/creeper_layers.png");
-    public static final ResourceLocation GENERIC_ICE_LAYER = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation GENERIC_ICE_LAYER = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/other_layers/thin_ice.png");
 
-    public static final ResourceLocation OASIS_MUD_HIT = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation OASIS_MUD_HIT = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/oasis/mud_hit.png");
-    public static final ResourceLocation OASIS_DIVE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation OASIS_DIVE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/oasis/dive.png");
-    public static final ResourceLocation OASIS_DIVE_LAUNCH = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation OASIS_DIVE_LAUNCH = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/oasis/dive_launch.png");
-    public static final ResourceLocation OASIS_LIQUEFY = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation OASIS_LIQUEFY = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/oasis/liquefy.png");
-    public static final ResourceLocation OASIS_UNDERGROUND_MOB_GRAB = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation OASIS_UNDERGROUND_MOB_GRAB = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/oasis/underground_mob_grab.png");
-    public static final ResourceLocation OASIS_MOLD_PASSIVE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation OASIS_MOLD_PASSIVE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/oasis/mold_passive.png");
-    public static final ResourceLocation OASIS_MOB_GRAB = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation OASIS_MOB_GRAB = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/oasis/mob_grab.png");
-    public static final ResourceLocation OASIS_SHIELD = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation OASIS_SHIELD = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/oasis/shield.png");
-    public static final ResourceLocation OASIS_SPIT = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation OASIS_SPIT = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/oasis/spit.png");
-    public static final ResourceLocation OASIS_SPIT_SPIKE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation OASIS_SPIT_SPIKE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/oasis/spit_spike.png");
-    public static final ResourceLocation OASIS_SUBMERGE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation OASIS_SUBMERGE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/oasis/submerge.png");
 
-    public static final ResourceLocation STONE_HEAD_OVERLAY = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation STONE_HEAD_OVERLAY = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/misc/stone_face.png");
-    public static final ResourceLocation STONE_HEAD_OVERLAY_JOSUKE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation STONE_HEAD_OVERLAY_JOSUKE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/misc/stone_face_josuke.png");
-    public static final ResourceLocation STONE_HEAD = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation STONE_HEAD = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/locacaca_layers/head.png");
-    public static final ResourceLocation STONE_HEAD_JOSUKE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation STONE_HEAD_JOSUKE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/locacaca_layers/head_josuke.png");
-    public static final ResourceLocation STONE_CHEST = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation STONE_CHEST = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/locacaca_layers/chest.png");
-    public static final ResourceLocation STONE_HEART = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation STONE_HEART = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/locacaca_layers/heart.png");
-    public static final ResourceLocation STONE_RIGHT_ARM = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation STONE_RIGHT_ARM = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/locacaca_layers/right_arm.png");
-    public static final ResourceLocation STONE_LEFT_ARM = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation STONE_LEFT_ARM = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/locacaca_layers/left_arm.png");
-    public static final ResourceLocation STONE_RIGHT_LEG = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation STONE_RIGHT_LEG = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/locacaca_layers/right_leg.png");
-    public static final ResourceLocation STONE_LEFT_LEG = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation STONE_LEFT_LEG = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/locacaca_layers/left_leg.png");
 
-    public static final ResourceLocation CREAM_VOID_ATTACK = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation CREAM_VOID_ATTACK = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/cream/void_attack.png");
 
-    public static final ResourceLocation METALLICA_NAIL = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation METALLICA_NAIL = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/metallica/nail_icon.png");
-    public static final ResourceLocation METALLICA_RAZOR = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation METALLICA_RAZOR = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/metallica/razor_icon.png");
-    public static final ResourceLocation METALLICA_SCISSORS = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation METALLICA_SCISSORS = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/metallica/scissors_icon.png");
-    public static final ResourceLocation METALLICA_FIELD_ON = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation METALLICA_FIELD_ON = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/metallica/metallica_field_on.png");
-    public static final ResourceLocation METALLICA_FIELD_OFF = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation METALLICA_FIELD_OFF = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/metallica/metallica_field_off.png");
-    public static final ResourceLocation METALLICA_KNIFE_RAISE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation METALLICA_KNIFE_RAISE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/metallica/knife_raise.png");
-    public static final ResourceLocation METALLICA_KNIFE_FIRE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation METALLICA_KNIFE_FIRE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/metallica/knife_raise.png");
-    public static final ResourceLocation METALLICA_HARVEST = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation METALLICA_HARVEST = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/metallica/flower_metal.png");
-    public static final ResourceLocation METALLICA_HEAL = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation METALLICA_HEAL = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/metallica/reattatch.png");
-    public static final ResourceLocation METALLICA_INVIS = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation METALLICA_INVIS = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/metallica/metallica_invis.png");
-    public static final ResourceLocation METALLICA_REPAIR = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation METALLICA_REPAIR = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/metallica/fix_tools.png");
 
-    public static final ResourceLocation CATCH_THE_RAINBOW_RAIN_MEND = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation CATCH_THE_RAINBOW_RAIN_MEND = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/catch_the_rainbow/rain_mend.png");
-    public static final ResourceLocation CATCH_THE_RAINBOW_CHOKE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation CATCH_THE_RAINBOW_CHOKE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/catch_the_rainbow/choke.png");
-    public static final ResourceLocation CATCH_THE_RAINBOW_RAIN_DASH = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation CATCH_THE_RAINBOW_RAIN_DASH = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/catch_the_rainbow/rain_dash.png");
-    public static final ResourceLocation CATCH_THE_RAINBOW_DROP_DOWN = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation CATCH_THE_RAINBOW_DROP_DOWN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/catch_the_rainbow/drop_down.png");
-    public static final ResourceLocation CATCH_THE_RAINBOW_FULL_DODGE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation CATCH_THE_RAINBOW_FULL_DODGE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/catch_the_rainbow/full_dodge.png");
-    public static final ResourceLocation CATCH_THE_RAINBOW_BARRIER = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation CATCH_THE_RAINBOW_BARRIER = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/catch_the_rainbow/barrier.png");
-    public static final ResourceLocation CATCH_THE_RAINBOW_PASSIVES = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation CATCH_THE_RAINBOW_PASSIVES = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/catch_the_rainbow/passives.png");
-    public static final ResourceLocation CATCH_THE_RAINBOW_LIFE_CLUTCH = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation CATCH_THE_RAINBOW_LIFE_CLUTCH = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/catch_the_rainbow/life_clutch.png");
-    public static final ResourceLocation CATCH_THE_RAINBOW_RAIN_PLATFORM = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation CATCH_THE_RAINBOW_RAIN_PLATFORM = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/catch_the_rainbow/rain_platform.png");
-    public static final ResourceLocation CATCH_THE_RAINBOW_CHOKE_RETURN = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation CATCH_THE_RAINBOW_CHOKE_RETURN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/catch_the_rainbow/choke_return.png");
 
-    public static final ResourceLocation MUSCLE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation MUSCLE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/other_layers/muscle_full.png");
-    public static final ResourceLocation MUSCLE_SLIM = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation MUSCLE_SLIM = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/other_layers/muscle_slim.png");
-    public static final ResourceLocation THE_WORLD_ASSAULT = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation THE_WORLD_ASSAULT = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/the_world/assault.png");
-    public static final ResourceLocation THE_WORLD_IMPALE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation THE_WORLD_IMPALE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/the_world/impale.png");
-    public static final ResourceLocation THE_WORLD_TIME_STOP = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation THE_WORLD_TIME_STOP = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/the_world/stop_time.png");
-    public static final ResourceLocation THE_WORLD_TIME_STOP_IMPULSE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation THE_WORLD_TIME_STOP_IMPULSE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/the_world/stop_time_impulse.png");
-    public static final ResourceLocation THE_WORLD_TIME_STOP_RESUME = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation THE_WORLD_TIME_STOP_RESUME = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/the_world/stop_time_resume.png");
 
-    public static final ResourceLocation DODGE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation DODGE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/dodge.png");
 
-    public static final ResourceLocation PIECE_ATTACK = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation PIECE_ATTACK = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/california_king_bed/piece_attack.png");
-    public static final ResourceLocation FORBID_RULE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation FORBID_RULE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/california_king_bed/forbid_rule.png");
-    public static final ResourceLocation HURT_RULE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation HURT_RULE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/california_king_bed/hurt_rule.png");
-    public static final ResourceLocation LEAVE_RULE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation LEAVE_RULE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/california_king_bed/leave_rule.png");
-    public static final ResourceLocation FORBID = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation FORBID = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/california_king_bed/forbid.png");
-    public static final ResourceLocation HURT = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation HURT = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/california_king_bed/hurt.png");
-    public static final ResourceLocation LEAVE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation LEAVE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/california_king_bed/leave.png");
-    public static final ResourceLocation SLEEP = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation SLEEP = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/california_king_bed/sleep.png");
-    public static final ResourceLocation EXPERIENCE_BISHOP = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation EXPERIENCE_BISHOP = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/california_king_bed/experience_bishop.png");
-    public static final ResourceLocation STEAL_MEMORIES = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation STEAL_MEMORIES = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/california_king_bed/steal_memories.png");
-    public static final ResourceLocation STEAL_MEMORIES_2 = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation STEAL_MEMORIES_2 = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/california_king_bed/steal_memories_2.png");
-    public static final ResourceLocation STEP_SHADOW = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation STEP_SHADOW = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/california_king_bed/step_shadow.png");
-    public static final ResourceLocation SAVE_LOCATION = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation SAVE_LOCATION = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/california_king_bed/save_location.png");
-    public static final ResourceLocation VAMP_PUNCH = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation VAMP_PUNCH = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/powers/vampire/punch.png");
-    public static final ResourceLocation VAMP_BARRAGE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation VAMP_BARRAGE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/powers/vampire/barrage.png");
-    public static final ResourceLocation VAMP_GUARD = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation VAMP_GUARD = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/powers/vampire/guard.png");
-    public static final ResourceLocation SWEEP_KICK = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation SWEEP_KICK = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/powers/vampire/sweep.png");
-    public static final ResourceLocation COMBO = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation COMBO = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/powers/vampire/combo.png");
 
-    public static final ResourceLocation HAIR_SPIKE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation HAIR_SPIKE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/powers/vampire/hair_spike.png");
-    public static final ResourceLocation BLOOD_CLUTCH = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation BLOOD_CLUTCH = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/powers/vampire/blood_clutch.png");
-    public static final ResourceLocation ICE_CLUTCH = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation ICE_CLUTCH = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/powers/vampire/ice_clutch.png");
-    public static final ResourceLocation RIPPER_EYES = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation RIPPER_EYES = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/powers/vampire/ripper_eyes.png");
-    public static final ResourceLocation RIPPER_SHOT = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation RIPPER_SHOT = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/powers/vampire/ripper_shot.png");
-    public static final ResourceLocation AURA = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation AURA = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/powers/vampire/aura.png");
-    public static final ResourceLocation CAMO = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation CAMO = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/powers/vampire/camo.png");
-    public static final ResourceLocation DEFLECTION = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation DEFLECTION = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/powers/vampire/deflection.png");
-    public static final ResourceLocation HAIR_GRAB = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation HAIR_GRAB = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/powers/vampire/hair_grab.png");
-    public static final ResourceLocation STAND_LEAP_WORLD = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation STAND_LEAP_WORLD = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/the_world/stand_leap.png");
-    public static final ResourceLocation STAND_LEAP_REBOUND_WORLD = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation STAND_LEAP_REBOUND_WORLD = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/the_world/stand_leap_rebound.png");
-    public static final ResourceLocation THE_WORLD_FALL_CATCH = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation THE_WORLD_FALL_CATCH = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/the_world/fall_brace.png");
-    public static final ResourceLocation THE_WORLD_LEDGE_GRAB = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation THE_WORLD_LEDGE_GRAB = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/the_world/stand_ledge_grab.png");
-    public static final ResourceLocation THE_WORLD_GRAB_BLOCK = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation THE_WORLD_GRAB_BLOCK = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/the_world/grab_block.png");
-    public static final ResourceLocation THE_WORLD_GRAB_ITEM = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation THE_WORLD_GRAB_ITEM = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/the_world/grab_item.png");
-    public static final ResourceLocation THE_WORLD_GRAB_MOB = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation THE_WORLD_GRAB_MOB = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/the_world/grab_mob.png");
-    public static final ResourceLocation THE_WORLD_TRAVEL_BARRAGE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation THE_WORLD_TRAVEL_BARRAGE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/the_world/travel_barrage.png");
-    public static final ResourceLocation THE_WORLD_PHASE_GRAB = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation THE_WORLD_PHASE_GRAB = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/the_world/phase_grab.png");
-    public static final ResourceLocation THE_WORLD_GUARD = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation THE_WORLD_GUARD = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/the_world/guard.png");
-    public static final ResourceLocation THE_WORLD_PUNCH = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation THE_WORLD_PUNCH = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/the_world/punch.png");
-    public static final ResourceLocation THE_WORLD_BARRAGE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation THE_WORLD_BARRAGE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/the_world/barrage.png");
-    public static final ResourceLocation THE_WORLD_KICK_BARRAGE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation THE_WORLD_KICK_BARRAGE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/the_world/kick_barrage.png");
-    public static final ResourceLocation THE_WORLD_FINAL_KICK = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation THE_WORLD_FINAL_KICK = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/the_world/final_kick.png");
-    public static final ResourceLocation THE_WORLD_AIR_TANKS = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation THE_WORLD_AIR_TANKS = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/the_world/air_tanks.png");
-    public static final ResourceLocation PLUNDER_SELECTION = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation PLUNDER_SELECTION = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/soft_and_wet/plunder_selection.png");
-    public static final ResourceLocation PLUNDER_BUBBLE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation PLUNDER_BUBBLE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/soft_and_wet/plunder_bubble.png");
-    public static final ResourceLocation WATER_SHIELD = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation WATER_SHIELD = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/soft_and_wet/water_shield.png");
-    public static final ResourceLocation ITEM_BUBBLE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation ITEM_BUBBLE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/soft_and_wet/item_bubble.png");
-    public static final ResourceLocation PLUNDER_BUBBLE_CONTROL = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation PLUNDER_BUBBLE_CONTROL = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/soft_and_wet/plunder_bubble_control.png");
-    public static final ResourceLocation GO_BEYOND = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation GO_BEYOND = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/soft_and_wet/go_beyond.png");
-    public static final ResourceLocation PLUNDER_BUBBLE_FILL_CONTROL = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation PLUNDER_BUBBLE_FILL_CONTROL = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/soft_and_wet/plunder_bubble_fill_control.png");
-    public static final ResourceLocation PLUNDER_BUBBLE_POP = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation PLUNDER_BUBBLE_POP = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/soft_and_wet/bubble_pop.png");
-    public static final ResourceLocation PLUNDER_BUBBLE_FILL_POP = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation PLUNDER_BUBBLE_FILL_POP = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/soft_and_wet/bubble_fill_pop.png");
-    public static final ResourceLocation PLUNDER_BUBBLE_FILL = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation PLUNDER_BUBBLE_FILL = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/soft_and_wet/plunder_bubble_fill.png");
-    public static final ResourceLocation PLUG_WOUND = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation PLUG_WOUND = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/soft_and_wet/plug_wound.png");
-    public static final ResourceLocation SOFT_SHOOTING_MODE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation SOFT_SHOOTING_MODE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/soft_and_wet/shooting_mode.png");
-    public static final ResourceLocation SOFT_SHOOTING_MODE_EXIT = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation SOFT_SHOOTING_MODE_EXIT = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/soft_and_wet/shooting_mode_exit.png");
 
 
-    public static final ResourceLocation SOFT_AND_WET_VAULT = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation SOFT_AND_WET_VAULT = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/soft_and_wet/stand_ledge_grab.png");
-    public static final ResourceLocation SOFT_AND_WET_FALL_CATCH = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation SOFT_AND_WET_FALL_CATCH = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/soft_and_wet/fall_brace.png");
-    public static final ResourceLocation SOFT_AND_WET_BUBBLE_SCAFFOLD = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation SOFT_AND_WET_BUBBLE_SCAFFOLD = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/soft_and_wet/bubble_scaffold.png");
-    public static final ResourceLocation SOFT_AND_WET_BUBBLE_ENCASEMENT = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation SOFT_AND_WET_BUBBLE_ENCASEMENT = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/soft_and_wet/bubble_encase.png");
 
-	public static final ResourceLocation KILLER_QUEEN_PLANT_BOMB_BLOCK = new ResourceLocation(Roundabout.MOD_ID,
+	public static final ResourceLocation KILLER_QUEEN_PLANT_BOMB_BLOCK = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
     		"textures/gui/icons/killer_queen/plant_bomb_block.png");
-    public static final ResourceLocation KILLER_QUEEN_PLANT_BOMB_MOB = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation KILLER_QUEEN_PLANT_BOMB_MOB = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
     		"textures/gui/icons/killer_queen/plant_bomb_mob.png");
-    public static final ResourceLocation KILLER_QUEEN_PLANT_BOMB_ITEM = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation KILLER_QUEEN_PLANT_BOMB_ITEM = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
     		"textures/gui/icons/killer_queen/plant_bomb_item.png");
-    public static final ResourceLocation KILLER_QUEEN_BOMB_SETIINGS = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation KILLER_QUEEN_BOMB_SETIINGS = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
     		"textures/gui/icons/killer_queen/bomb_select.png");
-    public static final ResourceLocation KILLER_QUEEN_ADD_STRAY_CAT = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation KILLER_QUEEN_ADD_STRAY_CAT = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/killer_queen/add_stray_cat.png");
-    public static final ResourceLocation KILLER_QUEEN_OBTAIN_BTD = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation KILLER_QUEEN_OBTAIN_BTD = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/killer_queen/bites_the_dust.png");
-    public static final ResourceLocation KILLER_QUEEN_BOMB_DETONATE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation KILLER_QUEEN_BOMB_DETONATE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
     		"textures/gui/icons/killer_queen/detonate.png");
-    public static final ResourceLocation KILLER_QUEEN_BOMB_DEFUSE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation KILLER_QUEEN_BOMB_DEFUSE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
     		"textures/gui/icons/killer_queen/defuse.png");
-    public static final ResourceLocation KILLER_QUEEN_BUBBLE_LAUNCH = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation KILLER_QUEEN_BUBBLE_LAUNCH = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
     		"textures/gui/icons/killer_queen/bubble_launch.png");
-    public static final ResourceLocation KILLER_QUEEN_BUBBLE_REDIRECT = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation KILLER_QUEEN_BUBBLE_REDIRECT = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
     		"textures/gui/icons/killer_queen/bubble_redirect.png");
-    public static final ResourceLocation KILLER_QUEEN_SHA_SUMMON = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation KILLER_QUEEN_SHA_SUMMON = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
     		"textures/gui/icons/killer_queen/sha_summon.png");
-    public static final ResourceLocation KILLER_QUEEN_BTD_ACTIVATE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation KILLER_QUEEN_BTD_ACTIVATE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
     		"textures/gui/icons/killer_queen/bites_the_dust_mode.png");
-    public static final ResourceLocation KILLER_QUEEN_BTD_DAY= new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation KILLER_QUEEN_BTD_DAY= ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
     		"textures/gui/icons/killer_queen/btd_day.png");
-    public static final ResourceLocation KILLER_QUEEN_BTD_COMBAT = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation KILLER_QUEEN_BTD_COMBAT = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
     		"textures/gui/icons/killer_queen/btd_combat.png");
-    public static final ResourceLocation KILLER_QUEEN_BTD_DEACTIVATE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation KILLER_QUEEN_BTD_DEACTIVATE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
     		"textures/gui/icons/killer_queen/btd_deactivate.png");
-    public static final ResourceLocation KILLER_QUEEN_BARRAGE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation KILLER_QUEEN_BARRAGE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/killer_queen/barrage.png");
-    public static final ResourceLocation KILLER_QUEEN_PUNCH = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation KILLER_QUEEN_PUNCH = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/killer_queen/punch.png");
-    public static final ResourceLocation KILLER_QUEEN_IMPALE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation KILLER_QUEEN_IMPALE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/killer_queen/impale.png");
-    public static final ResourceLocation KILLER_QUEEN_VAULT = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation KILLER_QUEEN_VAULT = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/killer_queen/ledge_grab.png");
-    public static final ResourceLocation KILLER_QUEEN_SHA_RETREAT = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation KILLER_QUEEN_SHA_RETREAT = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/killer_queen/sha_retreat.png");
-    public static final ResourceLocation KILLER_QUEEN_SHA_RETREAT_CANCEL = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation KILLER_QUEEN_SHA_RETREAT_CANCEL = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/killer_queen/sha_retreat_cancel.png");
-    public static final ResourceLocation KILLER_QUEEN_SHA_THROW = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation KILLER_QUEEN_SHA_THROW = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/killer_queen/sha_throw.png");
-    public static final ResourceLocation KILLER_QUEEN_SHA_MINE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation KILLER_QUEEN_SHA_MINE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/killer_queen/sha_mining.png");
-    public static final ResourceLocation KILLER_QUEEN_GUARD = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation KILLER_QUEEN_GUARD = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/killer_queen/guard.png");
-    public static final ResourceLocation KILLER_QUEEN_GUARD_BUBBLES = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation KILLER_QUEEN_GUARD_BUBBLES = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/killer_queen/guard_bubbles.png");
-    public static final ResourceLocation KILLER_QUEEN_FAST_KICK = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation KILLER_QUEEN_FAST_KICK = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/killer_queen/fast_kick.png");
-    public static final ResourceLocation KILLER_QUEEN_MINING = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation KILLER_QUEEN_MINING = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/killer_queen/mining.png");
-    public static final ResourceLocation KILLER_QUEEN_HANDS_ACTIVE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation KILLER_QUEEN_HANDS_ACTIVE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/killer_queen/hands_active.png");
 
-    public static final ResourceLocation BITES_THE_DUST_PLANTED = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation BITES_THE_DUST_PLANTED = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/killer_queen/bites_the_dust_planted.png");
-    public static final ResourceLocation BITES_THE_DUST_TARGET = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation BITES_THE_DUST_TARGET = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/killer_queen/bites_the_dust_target.png");
 
-    public static final ResourceLocation BAD_COMPANY_TROOP_DROP = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation BAD_COMPANY_TROOP_DROP = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/bad_company/troop_summon.png");
-    public static final ResourceLocation BAD_COMPANY_TROOP_RECALL = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation BAD_COMPANY_TROOP_RECALL = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/bad_company/troop_recall.png");
-    public static final ResourceLocation BAD_COMPANY_PILOT_MODE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation BAD_COMPANY_PILOT_MODE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/bad_company/pilot_mode.png");
-    public static final ResourceLocation BAD_COMPANY_PILOT_MODE_EXIT = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation BAD_COMPANY_PILOT_MODE_EXIT = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/bad_company/pilot_mode_exit.png");
-    public static final ResourceLocation BAD_COMPANY_TACTICAL_OPTIONS = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation BAD_COMPANY_TACTICAL_OPTIONS = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/bad_company/tactical_options.png");
 
-    public static final ResourceLocation PLANET_WAVES_METEOR_SHOWER = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation PLANET_WAVES_METEOR_SHOWER = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/planet_waves/meteor_shower.png");
-    public static final ResourceLocation PLANET_WAVES_BIG_METEOR = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation PLANET_WAVES_BIG_METEOR = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/planet_waves/big_meteor.png");
-    public static final ResourceLocation PLANET_WAVES_STAND_TARGETING = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation PLANET_WAVES_STAND_TARGETING = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/planet_waves/stand_targeting.png");
-    public static final ResourceLocation PLANET_WAVES_STAND_RETRIEVING = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation PLANET_WAVES_STAND_RETRIEVING = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/planet_waves/stand_retrieving.png");
-    public static final ResourceLocation PLANET_WAVES_DESINTEGRATION= new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation PLANET_WAVES_DESINTEGRATION= ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/planet_waves/desintegration.png");
-    public static final ResourceLocation PLANET_WAVES_METEOR_TRACKING= new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation PLANET_WAVES_METEOR_TRACKING= ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/planet_waves/meteor_tracking.png");
-    public static final ResourceLocation PLANET_WAVES_FORCED_DISINTEGRATION= new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation PLANET_WAVES_FORCED_DISINTEGRATION= ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
                 "textures/gui/icons/planet_waves/forced_disintegration.png");
-    public static final ResourceLocation PLANET_WAVES_GRAB= new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation PLANET_WAVES_GRAB= ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/planet_waves/grab.png");
-    public static final ResourceLocation PLANET_WAVES_COSMIC_ICON= new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation PLANET_WAVES_COSMIC_ICON= ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/planet_waves/cosmic_icon.png");
 
 
-    public static final ResourceLocation JJF_NORMAL_GRAVITY_ICON = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation JJF_NORMAL_GRAVITY_ICON = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/mob_effect/gravity_flip.png");
-    public static final ResourceLocation JJF_ZERO_GRAVITY_ON = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation JJF_ZERO_GRAVITY_ON = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/jjf/zero_gravity_on.png");
-    public static final ResourceLocation JJF_LOADING_ICON = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation JJF_LOADING_ICON = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/jjf/load.png");
-    public static final ResourceLocation JJF_SHOOTING_ICON = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation JJF_SHOOTING_ICON = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/jjf/shoot.png");
-    public static final ResourceLocation JJF_UNLOADING_ICON = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation JJF_UNLOADING_ICON = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/jjf/unload.png" );
-    public static final ResourceLocation JJF_SPIT_ICON = new ResourceLocation( Roundabout.MOD_ID,
+    public static final ResourceLocation JJF_SPIT_ICON = ResourceLocation.fromNamespaceAndPath( Roundabout.MOD_ID,
             "textures/gui/icons/jjf/spit.png");
-    public static final ResourceLocation JJF_PUNCH_ICON = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation JJF_PUNCH_ICON = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/jjf/punch.png");
-    public static final ResourceLocation JJF_GUARD_ICON = new ResourceLocation( Roundabout.MOD_ID,
+    public static final ResourceLocation JJF_GUARD_ICON = ResourceLocation.fromNamespaceAndPath( Roundabout.MOD_ID,
             "textures/gui/icons/jjf/guard.png" );
 
-    public static final ResourceLocation SILVER_CHARIOT_JAB = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation SILVER_CHARIOT_JAB = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/silver_chariot/jab.png");
-    public static final ResourceLocation SILVER_CHARIOT_BARRAGE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation SILVER_CHARIOT_BARRAGE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/silver_chariot/barrage.png");
-    public static final ResourceLocation SILVER_CHARIOT_GUARD = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation SILVER_CHARIOT_GUARD = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/silver_chariot/guard.png");
-    public static final ResourceLocation SILVER_CHARIOT_FALL_BRACE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation SILVER_CHARIOT_FALL_BRACE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/silver_chariot/fall_brace.png");
-    public static final ResourceLocation SILVER_CHARIOT_VAULT = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation SILVER_CHARIOT_VAULT = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/silver_chariot/stand_ledge_grab.png");
-    public static final ResourceLocation SILVER_CHARIOT_SLAB_CUTTING = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation SILVER_CHARIOT_SLAB_CUTTING = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/silver_chariot/slab_cutting.png");
-    public static final ResourceLocation SILVER_CHARIOT_STATUE_CUTTING = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation SILVER_CHARIOT_STATUE_CUTTING = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/silver_chariot/statue_cutting.png");
-    public static final ResourceLocation SILVER_CHARIOT_MINING = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation SILVER_CHARIOT_MINING = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/silver_chariot/mining.png");
-    public static final ResourceLocation SILVER_CHARIOT_ARM_SUMMON = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation SILVER_CHARIOT_ARM_SUMMON = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/silver_chariot/arm_summon.png");
-    public static final ResourceLocation SILVER_CHARIOT_OFFHAND_WEAPON = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation SILVER_CHARIOT_OFFHAND_WEAPON = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/silver_chariot/offhand_weapon.png");
-    public static final ResourceLocation SILVER_CHARIOT_RAPIER_SLASH = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation SILVER_CHARIOT_RAPIER_SLASH = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/silver_chariot/rapier_slash.png");
-    public static final ResourceLocation SILVER_CHARIOT_RAPIER_SPIN = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation SILVER_CHARIOT_RAPIER_SPIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/silver_chariot/rapier_spin.png");
-    public static final ResourceLocation SILVER_CHARIOT_RAPIER_SHOT = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation SILVER_CHARIOT_RAPIER_SHOT = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/silver_chariot/rapier_shot.png");
-    public static final ResourceLocation SILVER_CHARIOT_RAPIER_SHOT_PLATFORM = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation SILVER_CHARIOT_RAPIER_SHOT_PLATFORM = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/silver_chariot/rapier_shot_platform.png");
-    public static final ResourceLocation SILVER_CHARIOT_CONTROL_MODE_ON = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation SILVER_CHARIOT_CONTROL_MODE_ON = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/silver_chariot/control_mode_on.png");
-    public static final ResourceLocation SILVER_CHARIOT_CONTROL_MODE_OFF = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation SILVER_CHARIOT_CONTROL_MODE_OFF = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/silver_chariot/control_mode_off.png");
-    public static final ResourceLocation SILVER_CHARIOT_SELF_GRAB = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation SILVER_CHARIOT_SELF_GRAB = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/silver_chariot/grab_self.png");
-    public static final ResourceLocation SILVER_CHARIOT_STAND_LEAP_REBOUND = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation SILVER_CHARIOT_STAND_LEAP_REBOUND = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/silver_chariot/stand_leap_rebound.png");
-    public static final ResourceLocation SILVER_CHARIOT_ARMOUR_OFF = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation SILVER_CHARIOT_ARMOUR_OFF = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/silver_chariot/armour_off.png");
 
 
-    public static final ResourceLocation D4C_LEDGE_GRAB = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation D4C_LEDGE_GRAB = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/d4c/stand_ledge_grab.png");
 
-    public static final ResourceLocation KING_CRIMSON_PUNCH = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation KING_CRIMSON_PUNCH = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/king_crimson/punch.png");
-    public static final ResourceLocation KING_CRIMSON_FINAL_PUNCH = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation KING_CRIMSON_FINAL_PUNCH = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/king_crimson/final_punch.png");
-    public static final ResourceLocation KING_CRIMSON_GUARD = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation KING_CRIMSON_GUARD = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/king_crimson/guard.png");
-    public static final ResourceLocation KING_CRIMSON_BARRAGE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation KING_CRIMSON_BARRAGE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/king_crimson/barrage.png");
-    public static final ResourceLocation KING_CRIMSON_IMAPLE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation KING_CRIMSON_IMAPLE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/king_crimson/impale.png");
-    public static final ResourceLocation KING_CRIMSON_BLOOD_SPLASH = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation KING_CRIMSON_BLOOD_SPLASH = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/king_crimson/blood_splash.png");
-    public static final ResourceLocation KING_CRIMSON_EPITAPH = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation KING_CRIMSON_EPITAPH = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/king_crimson/epitaph.png");
-    public static final ResourceLocation KING_CRIMSON_LEDGE_GRAB = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation KING_CRIMSON_LEDGE_GRAB = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/king_crimson/stand_ledge_grab.png");
-    public static final ResourceLocation KING_CRIMSON_LEDGE_GRAB_2 = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation KING_CRIMSON_LEDGE_GRAB_2 = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/king_crimson/vault_2.png");
-    public static final ResourceLocation KING_CRIMSON_HANDS_ACTIVE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation KING_CRIMSON_HANDS_ACTIVE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/king_crimson/hands_active.png");
-    public static final ResourceLocation STAR_PLATINUM_HANDS_ACTIVE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation STAR_PLATINUM_HANDS_ACTIVE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/star_platinum/hands_active.png");
-    public static final ResourceLocation THE_WORLD_HANDS_ACTIVE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation THE_WORLD_HANDS_ACTIVE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/the_world/hands_active.png");
-    public static final ResourceLocation MINING = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation MINING = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/star_platinum/mining.png");
-    public static final ResourceLocation KING_CRIMSON_MINING = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation KING_CRIMSON_MINING = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/king_crimson/mining.png");
-    public static final ResourceLocation THE_WORLD_MINING = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation THE_WORLD_MINING = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/the_world/mining.png");
-    public static final ResourceLocation SOFT_MINING = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation SOFT_MINING = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/soft_and_wet/mining.png");
-    public static final ResourceLocation RED_MINING = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation RED_MINING = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/magicians_red/mining.png");
-    public static final ResourceLocation GREEN_DAY_MINING = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation GREEN_DAY_MINING = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/green_day/mining.png");
-    public static final ResourceLocation TIME_ERASE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation TIME_ERASE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/king_crimson/time_erase.png");
-    public static final ResourceLocation TIME_ERASE_2 = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation TIME_ERASE_2 = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/king_crimson/time_erase_2.png");
-    public static final ResourceLocation HOLOGRAM = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation HOLOGRAM = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/king_crimson/hologram.png");
-    public static final ResourceLocation TIME_SKIP = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation TIME_SKIP = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/king_crimson/time_skip.png");
-    public static final ResourceLocation TIME_SKIP_2 = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation TIME_SKIP_2 = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/king_crimson/time_skip_2.png");
-    public static final ResourceLocation TIME_SKIP_3 = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation TIME_SKIP_3 = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/king_crimson/time_skip_3.png");
-    public static final ResourceLocation KING_CRIMSON_ITEM_GRAB = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation KING_CRIMSON_ITEM_GRAB = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/king_crimson/grab_item.png");
 
-    public static final ResourceLocation MANDOM_VISION_ON = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation MANDOM_VISION_ON = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/mandom/vision_on.png");
-    public static final ResourceLocation MANDOM_VISION_OFF = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation MANDOM_VISION_OFF = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/mandom/vision_off.png");
-    public static final ResourceLocation REWIND = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation REWIND = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/mandom/rewind.png");
-    public static final ResourceLocation REWIND_PENALTY = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation REWIND_PENALTY = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/mandom/rewind_penalty.png");
-    public static final ResourceLocation WATCH = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation WATCH = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/mandom/watch_cycle.png");
-    public static final ResourceLocation CLOCK = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation CLOCK = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/mandom/clock.png");
 
-    public static final ResourceLocation NEUTRAL_STANCE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation NEUTRAL_STANCE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/20th_century_boy/neutralstance.png");
-    public static final ResourceLocation KNOCKBACK_STANCE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation KNOCKBACK_STANCE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/20th_century_boy/knockbackstance.png");
-    public static final ResourceLocation REDSTONE_STANCE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation REDSTONE_STANCE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/20th_century_boy/redstonestance.png");
-    public static final ResourceLocation GROUND_STANCE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation GROUND_STANCE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/20th_century_boy/groundstance.png");
-    public static final ResourceLocation TOGGLE_INVINCIBILITY = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation TOGGLE_INVINCIBILITY = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/20th_century_boy/activateinvincibility.png");
-    public static final ResourceLocation DETOGGLE_INVINCIBILITY = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation DETOGGLE_INVINCIBILITY = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/20th_century_boy/deactivateinvincibility.png");
-    public static final ResourceLocation SWITCH_STANCE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation SWITCH_STANCE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/20th_century_boy/stanceswitch.png");
 
 
 
-    public static final ResourceLocation SNAP_ICON = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation SNAP_ICON = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/magicians_red/fire_clear.png");
-    public static final ResourceLocation SELF_BURN = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation SELF_BURN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/magicians_red/self_burn.png");
-    public static final ResourceLocation FURNACE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation FURNACE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/magician_furnace.png");
-    public static final ResourceLocation LIGHT_FIRE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation LIGHT_FIRE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/magicians_red/light_fire.png");
-    public static final ResourceLocation CROSSFIRE_HURRICANE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation CROSSFIRE_HURRICANE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/magicians_red/crossfire_hurricane.png");
-    public static final ResourceLocation CROSSFIRE_FIRESTORM = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation CROSSFIRE_FIRESTORM = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/magicians_red/crossfire_firestorm.png");
-    public static final ResourceLocation CROSSFIRE_FIRESTORM_END = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation CROSSFIRE_FIRESTORM_END = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/magicians_red/crossfire_firestorm_end.png");
-    public static final ResourceLocation FIRE_SLAM = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation FIRE_SLAM = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/magicians_red/fireslam.png");
-    public static final ResourceLocation LIFE_TRACKER = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation LIFE_TRACKER = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/magicians_red/life_tracker.png");
-    public static final ResourceLocation HIDDEN_HURRICANE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation HIDDEN_HURRICANE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/magicians_red/hidden_hurricane.png");
-    public static final ResourceLocation CROSSFIRE_HURRICANE_SHOT = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation CROSSFIRE_HURRICANE_SHOT = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/magicians_red/crossfire_hurricane_shot.png");
-    public static final ResourceLocation CONCEALED_HURRICANE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation CONCEALED_HURRICANE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/magicians_red/concealed_hurricane.png");
-    public static final ResourceLocation CROSSFIRE_HURRICANE_SPECIAL = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation CROSSFIRE_HURRICANE_SPECIAL = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/magicians_red/crossfire_hurricane_special.png");
-    public static final ResourceLocation PROJECTILE_BURN = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation PROJECTILE_BURN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/magicians_red/projectile_burn.png");
-    public static final ResourceLocation RED_BIND = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation RED_BIND = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/magicians_red/red_bind.png");
-    public static final ResourceLocation RED_LASH = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation RED_LASH = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/magicians_red/red_lash.png");
-    public static final ResourceLocation MAGICIANS_RED_GUARD = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation MAGICIANS_RED_GUARD = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/magicians_red/guard.png");
-    public static final ResourceLocation MAGICIANS_FLAME_KICK = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation MAGICIANS_FLAME_KICK = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/magicians_red/flame_kick.png");
-    public static final ResourceLocation FLAMETHROWER = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation FLAMETHROWER = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/magicians_red/flamethrower.png");
-    public static final ResourceLocation FIREBALL_BARRAGE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation FIREBALL_BARRAGE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/magicians_red/fireball_barrage.png");
-    public static final ResourceLocation FURNACE_ABILITY = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation FURNACE_ABILITY = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/magicians_red/furnace.png");
-    public static final ResourceLocation MAGICIANS_RED_LEDGE_GRAB = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation MAGICIANS_RED_LEDGE_GRAB = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/magicians_red/stand_ledge_grab.png");
 
-    public static final ResourceLocation LOCKED = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation LOCKED = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/locked_2.png");
-    public static final ResourceLocation UNUSABLE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation UNUSABLE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/unusable.png");
-    public static final ResourceLocation STAR_PLATINUM_PUNCH = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation STAR_PLATINUM_PUNCH = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/star_platinum/punch.png");
-    public static final ResourceLocation STAR_PLATINUM_FINAL_PUNCH = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation STAR_PLATINUM_FINAL_PUNCH = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/star_platinum/final_punch.png");
-    public static final ResourceLocation STAR_PLATINUM_GUARD = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation STAR_PLATINUM_GUARD = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/star_platinum/guard.png");
-    public static final ResourceLocation STAR_PLATINUM_BARRAGE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation STAR_PLATINUM_BARRAGE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/star_platinum/barrage.png");
-    public static final ResourceLocation STAR_PLATINUM_KICK_BARRAGE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation STAR_PLATINUM_KICK_BARRAGE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/star_platinum/kick_barrage.png");
-    public static final ResourceLocation STAR_PLATINUM_FINGER = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation STAR_PLATINUM_FINGER = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/star_platinum/star_finger.png");
-    public static final ResourceLocation STAR_PLATINUM_IMPALE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation STAR_PLATINUM_IMPALE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/star_platinum/impale.png");
-    public static final ResourceLocation STAR_PLATINUM_TRAVEL_BARRAGE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation STAR_PLATINUM_TRAVEL_BARRAGE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/star_platinum/travel_barrage.png");
-    public static final ResourceLocation STAND_LEAP_STAR_PLATINUM = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation STAND_LEAP_STAR_PLATINUM = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/star_platinum/stand_leap.png");
-    public static final ResourceLocation STAND_LEAP_REBOUND_STAR_PLATINUM = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation STAND_LEAP_REBOUND_STAR_PLATINUM = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/star_platinum/stand_leap_rebound.png");
-    public static final ResourceLocation STAR_PLATINUM_FALL_CATCH = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation STAR_PLATINUM_FALL_CATCH = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/star_platinum/fall_brace.png");
-    public static final ResourceLocation STAR_PLATINUM_LEDGE_GRAB = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation STAR_PLATINUM_LEDGE_GRAB = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/star_platinum/stand_ledge_grab.png");
-    public static final ResourceLocation STAR_PLATINUM_TIME_STOP = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation STAR_PLATINUM_TIME_STOP = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/star_platinum/stop_time.png");
-    public static final ResourceLocation STAR_PLATINUM_TIME_STOP_IMPULSE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation STAR_PLATINUM_TIME_STOP_IMPULSE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/star_platinum/stop_time_impulse.png");
-    public static final ResourceLocation STAR_PLATINUM_TIME_STOP_RESUME = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation STAR_PLATINUM_TIME_STOP_RESUME = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/star_platinum/stop_time_resume.png");
-    public static final ResourceLocation STAR_PLATINUM_GRAB_BLOCK = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation STAR_PLATINUM_GRAB_BLOCK = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/star_platinum/grab_block.png");
-    public static final ResourceLocation STAR_PLATINUM_GRAB_ITEM = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation STAR_PLATINUM_GRAB_ITEM = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/star_platinum/grab_item.png");
-    public static final ResourceLocation STAR_PLATINUM_GRAB_MOB = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation STAR_PLATINUM_GRAB_MOB = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/star_platinum/grab_mob.png");
-    public static final ResourceLocation STAR_PLATINUM_SCOPE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation STAR_PLATINUM_SCOPE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/star_platinum/scope.png");
-    public static final ResourceLocation STAR_PLATINUM_SCOPE_1 = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation STAR_PLATINUM_SCOPE_1 = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/star_platinum/scope_1.png");
-    public static final ResourceLocation STAR_PLATINUM_SCOPE_2 = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation STAR_PLATINUM_SCOPE_2 = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/star_platinum/scope_2.png");
-    public static final ResourceLocation STAR_PLATINUM_SCOPE_3 = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation STAR_PLATINUM_SCOPE_3 = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/star_platinum/scope_3.png");
-    public static final ResourceLocation STAR_PLATINUM_INHALE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation STAR_PLATINUM_INHALE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/star_platinum/inhale.png");
-    public static final ResourceLocation STAR_PLATINUM_PHASE_GRAB = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation STAR_PLATINUM_PHASE_GRAB = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/star_platinum/phase_grab.png");
 
-    public static final ResourceLocation CALIFORNIA_FALL_CATCH = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation CALIFORNIA_FALL_CATCH = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/california_king_bed/fall_brace.png");
 
-    public static final ResourceLocation JUSTICE_FOG_SWORD = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation JUSTICE_FOG_SWORD = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/justice/fog_sword.png");
-    public static final ResourceLocation JUSTICE_CAST_FOG = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation JUSTICE_CAST_FOG = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/justice/cast_fog.png");
-    public static final ResourceLocation JUSTICE_DISGUISE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation JUSTICE_DISGUISE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/justice/disguise_icon.png");
-    public static final ResourceLocation JUSTICE_DISGUISE_2 = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation JUSTICE_DISGUISE_2 = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/justice/disguise_2.png");
-    public static final ResourceLocation JUSTICE_DISGUISE_3 = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation JUSTICE_DISGUISE_3 = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/justice/disguise_3.png");
-    public static final ResourceLocation JUSTICE_DISGUISE_4 = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation JUSTICE_DISGUISE_4 = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/justice/disguise_4.png");
-    public static final ResourceLocation JUSTICE_FOG_CHAIN = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation JUSTICE_FOG_CHAIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/justice/fog_chain.png");
-    public static final ResourceLocation JUSTICE_FOG_CLONES = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation JUSTICE_FOG_CLONES = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/justice/fog_clones.png");
-    public static final ResourceLocation JUSTICE_CORPSE_ARMY = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation JUSTICE_CORPSE_ARMY = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/justice/corpse_army.png");
-    public static final ResourceLocation JUSTICE_TACTICS = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation JUSTICE_TACTICS = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/justice/tactics.png");
-    public static final ResourceLocation JUSTICE_FOG_BLOCKS = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation JUSTICE_FOG_BLOCKS = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/justice/fog_blocks_icon.png");
-    public static final ResourceLocation JUSTICE_PILOT = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation JUSTICE_PILOT = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/justice/fog_pilot.png");
-    public static final ResourceLocation JUSTICE_PILOT_EXIT = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation JUSTICE_PILOT_EXIT = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/justice/fog_pilot_exit.png");
 
 
-    public static final ResourceLocation FIRM_SWING = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation FIRM_SWING = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/walking_heart/firm_swing.png");
-    public static final ResourceLocation FALL_ABSORB = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation FALL_ABSORB = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/walking_heart/fall_absorb.png");
-    public static final ResourceLocation WALL_WALK = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation WALL_WALK = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/walking_heart/wall_walk.png");
-    public static final ResourceLocation GROUND_IMPLANT = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation GROUND_IMPLANT = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/walking_heart/ground_implant.png");
-    public static final ResourceLocation GROUND_IMPLANT_OUT = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation GROUND_IMPLANT_OUT = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/walking_heart/ground_implant_out.png");
-    public static final ResourceLocation SPIKE_ATTACK_MODE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation SPIKE_ATTACK_MODE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/walking_heart/spike_attack_mode.png");
-    public static final ResourceLocation SPIDER_SKIN = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation SPIDER_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/walking_heart/spider_skin.png");
-    public static final ResourceLocation WALL_PASS = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation WALL_PASS = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/walking_heart/wall_walk_pass.png");
-    public static final ResourceLocation WALL_CUT = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation WALL_CUT = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/walking_heart/wall_walk_cut.png");
-    public static final ResourceLocation WALKING_STOMP = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation WALKING_STOMP = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/walking_heart/walking_stomp.png");
-    public static final ResourceLocation PULL_SPIKE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation PULL_SPIKE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/walking_heart/pull_spike.png");
-    public static final ResourceLocation PUSH_SPIKE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation PUSH_SPIKE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/walking_heart/push_spike.png");
 
-    public static final ResourceLocation CINDERELLA_SCALP = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation CINDERELLA_SCALP = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/cinderella/deface.png");
-    public static final ResourceLocation CINDERELLA_MASK = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation CINDERELLA_MASK = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/cinderella/masks.png");
 
-    public static final ResourceLocation CINDERELLA_LIPSTICK = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation CINDERELLA_LIPSTICK = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/cinderella/lipstick.png");
-    public static final ResourceLocation CINDERELLA_VISAGES = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation CINDERELLA_VISAGES = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/cinderella/visages.png");
 
-    public static final ResourceLocation MT_PREMISE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation MT_PREMISE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/manhattan_transfer/premise.png");
-    public static final ResourceLocation MANUAL_SHOOTING_OFF = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation MANUAL_SHOOTING_OFF = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/manhattan_transfer/auto_shooting_off.png");
-    public static final ResourceLocation MANUAL_SHOOTING_ON = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation MANUAL_SHOOTING_ON = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/manhattan_transfer/auto_shooting_on.png");
-    public static final ResourceLocation CONTROL_MODE_OFF = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation CONTROL_MODE_OFF = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/manhattan_transfer/control_mode_off.png");
-    public static final ResourceLocation CONTROL_MODE_ON = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation CONTROL_MODE_ON = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/manhattan_transfer/control_mode_on.png");
-    public static final ResourceLocation WIND_VISION_OFF = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation WIND_VISION_OFF = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/manhattan_transfer/wind_vision_off.png");
-    public static final ResourceLocation WIND_VISION_ON = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation WIND_VISION_ON = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/manhattan_transfer/wind_vision_on.png");
-    public static final ResourceLocation WIND_READING = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation WIND_READING = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/manhattan_transfer/wind_vision_universal.png");
-    public static final ResourceLocation MANHATTAN_DAMAGE_BOOST = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation MANHATTAN_DAMAGE_BOOST = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/manhattan_transfer/manhattan_damage_boost.png");
-    public static final ResourceLocation MANHATTAN_DODGE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation MANHATTAN_DODGE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/manhattan_transfer/manhattan_dash.png");
 
-    public static final ResourceLocation BITE_FINGERS_POLPO = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation BITE_FINGERS_POLPO = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/black_sabbath/finger_bite_polpo.png");
-    public static final ResourceLocation POLPO_SELECTING_TARGET_NULL = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation POLPO_SELECTING_TARGET_NULL = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/black_sabbath/target_manual_selection_null.png");
-    public static final ResourceLocation POLPO_INVENTORY = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation POLPO_INVENTORY = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/black_sabbath/black_sabbath_chest.png");
-    public static final ResourceLocation POLPO_SELECTING_TARGET_MODE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation POLPO_SELECTING_TARGET_MODE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/black_sabbath/target_manual_selection.png");
-    public static final ResourceLocation POLPO_SELECTING_TARGET_MODE_OFF = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation POLPO_SELECTING_TARGET_MODE_OFF = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/black_sabbath/target_manual_selection_off.png");
-    public static final ResourceLocation POLPO_SELECTING_TARGET_CONFIRM = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation POLPO_SELECTING_TARGET_CONFIRM = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/black_sabbath/target_manual_selection_confirm.png");
-    public static final ResourceLocation POLPO_SELECTING_TARGET_UNSELECTION = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation POLPO_SELECTING_TARGET_UNSELECTION = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/black_sabbath/target_manual_unselection.png");
 
     public static final ResourceLocation D4C_BETWEEN_VISION = Roundabout.location("textures/gui/icons/d4c/between_vision.png");
@@ -970,7 +970,7 @@ public class StandIcons {
     public static final ResourceLocation PH_HEAVY_PUNCH = Roundabout.location("textures/gui/icons/purple_haze/ph_heavy_punch.png");
     public static final ResourceLocation PH_HEAVY_KICK = Roundabout.location("textures/gui/icons/purple_haze/ph_heavy_kick.png");
 
-    public static final ResourceLocation ANUBIS_MEMORY = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation ANUBIS_MEMORY = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/anubis_memory.png");
     public static final ResourceLocation ANUBIS_ALLURING_LIGHT = Roundabout.location("textures/gui/icons/anubis/alluring_light.png");
     public static final ResourceLocation ANUBIS_RAGING_LIGHT = Roundabout.location("textures/gui/icons/anubis/raging_light.png");
@@ -992,14 +992,14 @@ public class StandIcons {
     public static final ResourceLocation ANUBIS_SWORD_THROW = Roundabout.location("textures/gui/icons/anubis/sword_throw.png");
 
 
-    public static final ResourceLocation TUSK_ACTS = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation TUSK_ACTS = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/tusk_acts.png");
     public static final ResourceLocation[] TUSK_ICONS = {
             null,
-            new ResourceLocation(Roundabout.MOD_ID,"textures/gui/icons/tusk/act_11.png"),
-            new ResourceLocation(Roundabout.MOD_ID,"textures/gui/icons/tusk/act_2.png"),
-            new ResourceLocation(Roundabout.MOD_ID,"textures/gui/icons/tusk/act_3.png"),
-            new ResourceLocation(Roundabout.MOD_ID,"textures/gui/icons/tusk/act_4.png")
+            ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/gui/icons/tusk/act_11.png"),
+            ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/gui/icons/tusk/act_2.png"),
+            ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/gui/icons/tusk/act_3.png"),
+            ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/gui/icons/tusk/act_4.png")
     };
     public static final ResourceLocation TUSK_SPINTHROW = Roundabout.location("textures/gui/icons/tusk/spin_throw.png");
     public static final ResourceLocation TUSK_SHOCKWAVE = Roundabout.location("textures/gui/icons/tusk/shockwave_2.png");
@@ -1022,269 +1022,269 @@ public class StandIcons {
     public static final ResourceLocation TUSK_WALL_BREAKER = Roundabout.location("textures/gui/icons/tusk/wall_breaker.png");
 
 
-    public static final ResourceLocation SOFT_AND_WET_BARRAGE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation SOFT_AND_WET_BARRAGE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/soft_and_wet/barrage.png");
 
-    public static final ResourceLocation SOFT_AND_WET_GUARD = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation SOFT_AND_WET_GUARD = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/soft_and_wet/guard.png");
-    public static final ResourceLocation SOFT_AND_WET_PUNCH = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation SOFT_AND_WET_PUNCH = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/soft_and_wet/punch.png");
-    public static final ResourceLocation ENCASEMENT_STRIKE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation ENCASEMENT_STRIKE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/soft_and_wet/encasement_strike.png");
-    public static final ResourceLocation BUBBLE_BARRAGE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation BUBBLE_BARRAGE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/soft_and_wet/bubble_barrage.png");
-    public static final ResourceLocation DANGER_YAP = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation DANGER_YAP = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/hey_ya/danger_yap.png");
-    public static final ResourceLocation DANGER_YAP_DISABLE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation DANGER_YAP_DISABLE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/hey_ya/danger_yap_disable.png");
-    public static final ResourceLocation MINING_YAP = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation MINING_YAP = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/hey_ya/mining_yap.png");
-    public static final ResourceLocation MINING_YAP_DISABLE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation MINING_YAP_DISABLE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/hey_ya/mining_yap_disable.png");
 
-    public static final ResourceLocation YAP_YAP = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation YAP_YAP = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/hey_ya/yap_yap.png");
-    public static final ResourceLocation SPAWN = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation SPAWN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/survivor/spawn.png");
-    public static final ResourceLocation DESPAWN = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation DESPAWN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/survivor/despawn.png");
-    public static final ResourceLocation BOTTLE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation BOTTLE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/survivor/bottle.png");
-    public static final ResourceLocation RAGE_SELECTION = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation RAGE_SELECTION = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/survivor/mom_and_dad_fighting.png");
-    public static final ResourceLocation CUPID_ON = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation CUPID_ON = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/survivor/cupid_on.png");
 
-    public static final ResourceLocation SKATE_ACTIVE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation SKATE_ACTIVE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/white_album/skate_active.png");
-    public static final ResourceLocation SKATE_ACTIVE_MAX = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation SKATE_ACTIVE_MAX = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/white_album/skate_active_max.png");
-    public static final ResourceLocation SKATE_INACTIVE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation SKATE_INACTIVE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/white_album/skate_inactive.png");
-    public static final ResourceLocation TWISTER = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation TWISTER = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/white_album/twister.png");
-    public static final ResourceLocation FREEZE_CANCEL = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation FREEZE_CANCEL = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/white_album/freeze_cancel.png");
-    public static final ResourceLocation SUIT_COMBAT = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation SUIT_COMBAT = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/white_album/suit_combat.png");
-    public static final ResourceLocation SUIT_COMBAT_2 = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation SUIT_COMBAT_2 = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/white_album/suit_combat_2.png");
-    public static final ResourceLocation GENTLY_WEEPS = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation GENTLY_WEEPS = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/white_album/gently_weeps.png");
-    public static final ResourceLocation GENTLY_WEEPS_ATTACH = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation GENTLY_WEEPS_ATTACH = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/white_album/gently_weeps_attach.png");
-    public static final ResourceLocation FREEZE_BLOCKS = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation FREEZE_BLOCKS = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/white_album/freeze_blocks.png");
-    public static final ResourceLocation ICE_BUCKET = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation ICE_BUCKET = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/white_album/ice_bucket.png");
-    public static final ResourceLocation PASSIVE_GUARD = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation PASSIVE_GUARD = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/white_album/passive_guard.png");
-    public static final ResourceLocation ICE_WALL = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation ICE_WALL = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/white_album/ice_wall.png");
-    public static final ResourceLocation ICE_WALL_BEHIND = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation ICE_WALL_BEHIND = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/white_album/ice_wall_behind.png");
 
 
-    public static final ResourceLocation WHITE_PUNCH = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation WHITE_PUNCH = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/white_album/punch.png");
-    public static final ResourceLocation COLD_BLAST = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation COLD_BLAST = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/white_album/cold_blast.png");
-    public static final ResourceLocation COLD_GUARD = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation COLD_GUARD = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/white_album/cold_guard.png");
-    public static final ResourceLocation SUIT_POWER = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation SUIT_POWER = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/white_album/suit_power.png");
-    public static final ResourceLocation FULL_ACCEL = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation FULL_ACCEL = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/white_album/full_accel.png");
 
-    public static final ResourceLocation SELF_INVIS = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation SELF_INVIS = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/achtung_baby/self_invis.png");
-    public static final ResourceLocation BURST_INVIS = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation BURST_INVIS = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/achtung_baby/burst_invis.png");
-    public static final ResourceLocation BABY_VISION_ON = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation BABY_VISION_ON = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/achtung_baby/vision_on.png");
-    public static final ResourceLocation BABY_VISION_OFF = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation BABY_VISION_OFF = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/achtung_baby/vision_off.png");
-    public static final ResourceLocation INVIS_BLOCK = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation INVIS_BLOCK = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/achtung_baby/invis_block.png");
 
     //Diver Down icons start
-        public static final ResourceLocation DIVER_DOWN_PUNCH = new ResourceLocation(Roundabout.MOD_ID,
+        public static final ResourceLocation DIVER_DOWN_PUNCH = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/diver_down/punch.png");
-        public static final ResourceLocation DIVER_DOWN_BARRAGE = new ResourceLocation(Roundabout.MOD_ID,
+        public static final ResourceLocation DIVER_DOWN_BARRAGE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/diver_down/barrage.png");
-        public static final ResourceLocation DIVER_DOWN_GUARD = new ResourceLocation(Roundabout.MOD_ID,
+        public static final ResourceLocation DIVER_DOWN_GUARD = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/diver_down/guard.png");
-        public static final ResourceLocation DIVER_DOWN_PHASE_PUNCH = new ResourceLocation(Roundabout.MOD_ID,
+        public static final ResourceLocation DIVER_DOWN_PHASE_PUNCH = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/diver_down/phase_punch.png");
-        public static final ResourceLocation DIVER_DOWN_VAULT = new ResourceLocation(Roundabout.MOD_ID,
+        public static final ResourceLocation DIVER_DOWN_VAULT = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/diver_down/stand_ledge_grab.png");
-        public static final ResourceLocation DIVER_DOWN_SUBMERGE = new ResourceLocation(Roundabout.MOD_ID,
+        public static final ResourceLocation DIVER_DOWN_SUBMERGE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/diver_down/diver_dive.png");
-        public static final ResourceLocation REDIRECTION_ENABLED = new ResourceLocation(Roundabout.MOD_ID,
+        public static final ResourceLocation REDIRECTION_ENABLED = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/diver_down/redirection_on.png");
-        public static final ResourceLocation REDIRECTION_DISABLED = new ResourceLocation(Roundabout.MOD_ID,
+        public static final ResourceLocation REDIRECTION_DISABLED = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/diver_down/redirection_off.png");
-        public static final ResourceLocation DIVER_DOWN_DISASSEMBLE = new ResourceLocation(Roundabout.MOD_ID,
+        public static final ResourceLocation DIVER_DOWN_DISASSEMBLE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/diver_down/disassemble.png");
-        public static final ResourceLocation DIVER_DOWN_SELF_SUBMERGE = new ResourceLocation(Roundabout.MOD_ID,
+        public static final ResourceLocation DIVER_DOWN_SELF_SUBMERGE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/diver_down/self_dive.png");
-        public static final ResourceLocation DIVER_DOWN_STORE = new ResourceLocation(Roundabout.MOD_ID,
+        public static final ResourceLocation DIVER_DOWN_STORE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/diver_down/store_kick.png");
-        public static final ResourceLocation DIVER_DOWN_ZIP = new ResourceLocation(Roundabout.MOD_ID,
+        public static final ResourceLocation DIVER_DOWN_ZIP = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/diver_down/diver_zip.png");
-        public static final ResourceLocation DIVER_DOWN_WORKSTATION = new ResourceLocation(Roundabout.MOD_ID,
+        public static final ResourceLocation DIVER_DOWN_WORKSTATION = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/diver_down/diver_workstation.png");
-        public static final ResourceLocation DIVER_DOWN_AFFLICTION = new ResourceLocation(Roundabout.MOD_ID,
+        public static final ResourceLocation DIVER_DOWN_AFFLICTION = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/diver_down/affliction_wheel.png");
-        public static final ResourceLocation DIVER_DOWN_TOGGLE_AUTO = new ResourceLocation(Roundabout.MOD_ID,
+        public static final ResourceLocation DIVER_DOWN_TOGGLE_AUTO = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/diver_down/toggle_automatic.png");
-        public static final ResourceLocation DIVER_DOWN_TOGGLE_MANUAL = new ResourceLocation(Roundabout.MOD_ID,
+        public static final ResourceLocation DIVER_DOWN_TOGGLE_MANUAL = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/diver_down/toggle_manual.png");
-        public static final ResourceLocation DIVER_DOWN_RELEASE_MANUAL = new ResourceLocation(Roundabout.MOD_ID,
+        public static final ResourceLocation DIVER_DOWN_RELEASE_MANUAL = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/diver_down/manual_release.png");
-        public static final ResourceLocation DIVER_DOWN_CANCEL_STORE = new ResourceLocation(Roundabout.MOD_ID,
+        public static final ResourceLocation DIVER_DOWN_CANCEL_STORE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/diver_down/delete_traps.png");
-        public static final ResourceLocation DIVER_DOWN_PLATFORM = new ResourceLocation(Roundabout.MOD_ID,
+        public static final ResourceLocation DIVER_DOWN_PLATFORM = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/diver_down/diver_climb.png");
-        public static final ResourceLocation DIVER_DOWN_GROUND_DIVE = new ResourceLocation(Roundabout.MOD_ID,
+        public static final ResourceLocation DIVER_DOWN_GROUND_DIVE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/diver_down/ground_dive.png");
-    public static final ResourceLocation ORE_DETECTION_ENABLED = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation ORE_DETECTION_ENABLED = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/diver_down/detection_on.png");
-    public static final ResourceLocation ORE_DETECTION_DISABLED = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation ORE_DETECTION_DISABLED = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/diver_down/detection_off.png");
-    public static final ResourceLocation DIVER_DOWN_GRAB = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation DIVER_DOWN_GRAB = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/diver_down/diving_item.png");
-    public static final ResourceLocation DIVER_DOWN_CHEST = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation DIVER_DOWN_CHEST = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/diver_down/diving_chest.png");
-        public static final ResourceLocation DIVER_DOWN_RECALL = new ResourceLocation(Roundabout.MOD_ID,
+        public static final ResourceLocation DIVER_DOWN_RECALL = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/diver_down/stand_recall.png");
-    public static final ResourceLocation DIVER_DOWN_MINING = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation DIVER_DOWN_MINING = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/diver_down/mining.png");
         //Diver Down icons end
 
     // lyin eyes icons start
 
-    public static final ResourceLocation LYIN_EYES_INVENTORY = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation LYIN_EYES_INVENTORY = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/lyin_eyes/inventory_reading.png");
-    public static final ResourceLocation LYIN_EYES_TENSION_SENSOR = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation LYIN_EYES_TENSION_SENSOR = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/lyin_eyes/tension_sensor.png");
-    public static final ResourceLocation LYIN_EYES_TENSION_SENSOR_ON = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation LYIN_EYES_TENSION_SENSOR_ON = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/lyin_eyes/tension_sensor_on.png");
-    public static final ResourceLocation LYIN_EYES_PASSIVE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation LYIN_EYES_PASSIVE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/lyin_eyes/callout_passive.png");
-    public static final ResourceLocation LYIN_EYES_MAP_ON = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation LYIN_EYES_MAP_ON = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/lyin_eyes/nematode_map_on.png");
-    public static final ResourceLocation LYIN_EYES_MAP_OFF = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation LYIN_EYES_MAP_OFF = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/lyin_eyes/nematode_map_off.png");
 
     // lyin eyes icons end
 
     // gold experience icons start
 
-    public static final ResourceLocation GOLD_EXPERIENCE_PLACEHOLDER = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation GOLD_EXPERIENCE_PLACEHOLDER = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/gold_experience/placeholder.png");
-    public static final ResourceLocation GOLD_EXPERIENCE_LIFE_PUNCH = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation GOLD_EXPERIENCE_LIFE_PUNCH = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/gold_experience/life_punch.png");
-    public static final ResourceLocation GOLD_EXPERIENCE_DNA_CREATION = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation GOLD_EXPERIENCE_DNA_CREATION = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/gold_experience/dna_creation.png");
-    public static final ResourceLocation GOLD_EXPERIENCE_BRAMBLE_TRAP = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation GOLD_EXPERIENCE_BRAMBLE_TRAP = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/gold_experience/bramble_trap.png");
-    public static final ResourceLocation GOLD_EXPERIENCE_VINE_CLIMB = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation GOLD_EXPERIENCE_VINE_CLIMB = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/gold_experience/vine_climb.png");
-    public static final ResourceLocation GOLD_EXPERIENCE_HEAL = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation GOLD_EXPERIENCE_HEAL = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/gold_experience/heal.png");
-    public static final ResourceLocation GOLD_EXPERIENCE_BRAMBLES = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation GOLD_EXPERIENCE_BRAMBLES = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/gold_experience/violent_brambles.png");
-    public static final ResourceLocation GOLD_EXPERIENCE_LIFEFORM_SELECT = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation GOLD_EXPERIENCE_LIFEFORM_SELECT = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/gold_experience/lifeform_select.png");
-    public static final ResourceLocation GOLD_EXPERIENCE_LIFEFORM_CREATION = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation GOLD_EXPERIENCE_LIFEFORM_CREATION = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/gold_experience/lifeform_creation.png");
-    public static final ResourceLocation GOLD_EXPERIENCE_ITEM_THROW = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation GOLD_EXPERIENCE_ITEM_THROW = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/gold_experience/item_throw.png");
 
     // gold experience icons end
 
-    public static final ResourceLocation EMPEROR_SPEED_UP = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation EMPEROR_SPEED_UP = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/emperor/emperor_speed_up.png");
-    public static final ResourceLocation EMPEROR_SPEED_DOWN = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation EMPEROR_SPEED_DOWN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/emperor/emperor_speed_down.png");
-    public static final ResourceLocation EMPEROR_SPEED_1UP = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation EMPEROR_SPEED_1UP = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/emperor/emperor_speed_1up.png");
-    public static final ResourceLocation EMPEROR_SPEED_1DOWN = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation EMPEROR_SPEED_1DOWN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/emperor/emperor_speed_1down.png");
-    public static final ResourceLocation EMPEROR_SPEED_1ADSU = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation EMPEROR_SPEED_1ADSU = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/emperor/emperor_speed_1adsu.png");
-    public static final ResourceLocation EMPEROR_SPEED_1AUSD = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation EMPEROR_SPEED_1AUSD = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/emperor/emperor_speed_1ausd.png");
-    public static final ResourceLocation EMPEROR_SPEED_2UP = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation EMPEROR_SPEED_2UP = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/emperor/emperor_speed_2up.png");
-    public static final ResourceLocation EMPEROR_SPEED_2DOWN = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation EMPEROR_SPEED_2DOWN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/emperor/emperor_speed_2down.png");
-    public static final ResourceLocation EMPEROR_SPEED_2ADSU = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation EMPEROR_SPEED_2ADSU = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/emperor/emperor_speed_2adsu.png");
-    public static final ResourceLocation EMPEROR_SPEED_2AUSD = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation EMPEROR_SPEED_2AUSD = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/emperor/emperor_speed_2ausd.png");
-    public static final ResourceLocation EMPEROR_SPEED_3UP = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation EMPEROR_SPEED_3UP = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/emperor/emperor_speed_3up.png");
-    public static final ResourceLocation EMPEROR_SPEED_3DOWN = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation EMPEROR_SPEED_3DOWN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/emperor/emperor_speed_3down.png");
-    public static final ResourceLocation EMPEROR_SPEED_3ADSU = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation EMPEROR_SPEED_3ADSU = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/emperor/emperor_speed_3adsu.png");
-    public static final ResourceLocation EMPEROR_SPEED_3AUSD = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation EMPEROR_SPEED_3AUSD = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/emperor/emperor_speed_3ausd.png");
-    public static final ResourceLocation EMPEROR_SPEED_NUP = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation EMPEROR_SPEED_NUP = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/emperor/emperor_speed_nup.png");
-    public static final ResourceLocation EMPEROR_SPEED_NDOWN = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation EMPEROR_SPEED_NDOWN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/emperor/emperor_speed_ndown.png");
-    public static final ResourceLocation EMPEROR_HEAT = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation EMPEROR_HEAT = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/emperor/emperor_heat.png");
-    public static final ResourceLocation EMPEROR_SHOOT = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation EMPEROR_SHOOT = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/emperor/emperor_shoot.png");
-    public static final ResourceLocation EMPEROR_SINGLE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation EMPEROR_SINGLE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/emperor/emperor_single.png");
-    public static final ResourceLocation EMPEROR_TRIPLE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation EMPEROR_TRIPLE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/emperor/emperor_triple.png");
-    public static final ResourceLocation EMPEROR_CONTROL_MODE_ON = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation EMPEROR_CONTROL_MODE_ON = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/emperor/emperor_control_mode_on.png");
-    public static final ResourceLocation EMPEROR_CONTROL_MODE_OFF = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation EMPEROR_CONTROL_MODE_OFF = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/emperor/emperor_control_mode_off.png");
-    public static final ResourceLocation EMPEROR_AUTO_MODE_ON = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation EMPEROR_AUTO_MODE_ON = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/emperor/emperor_auto_mode_on.png");
-    public static final ResourceLocation EMPEROR_AUTO_MODE_OFF = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation EMPEROR_AUTO_MODE_OFF = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/emperor/emperor_auto_mode_off.png");
-    public static final ResourceLocation EMPEROR_SQUINT = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation EMPEROR_SQUINT = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/emperor/emperor_squint.png");
 
-    public static final ResourceLocation PEARL_JAM_PALM_READ = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation PEARL_JAM_PALM_READ = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/pearl_jam/palm_read.png");
-    public static final ResourceLocation PEARL_JAM_FOOD_ENERGIZE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation PEARL_JAM_FOOD_ENERGIZE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/icons/pearl_jam/food_energize.png");
 
-    public static final ResourceLocation EERIE_SKIN = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation EERIE_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/eerie_shift.png");
-    public static final ResourceLocation EERIE_SKIN_ALEX = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation EERIE_SKIN_ALEX = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/eerie_shift_alex.png");
 
-    public static final ResourceLocation OVA_ENYA_SKIN = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation OVA_ENYA_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/visage/player_skins/enya_ova.png");
 
 
-    public static final ResourceLocation ZOMBIE_SKIN = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation ZOMBIE_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/zombie/zombie.png");
-    public static final ResourceLocation ZOMBIE_SKIN_SLIM = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation ZOMBIE_SKIN_SLIM = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/zombie/zombie_slim.png");
 
 
-    public static final ResourceLocation FALLEN_ZOMBIE = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation FALLEN_ZOMBIE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/corpse_icons/zombie.png");
-    public static final ResourceLocation FALLEN_SKELETON = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation FALLEN_SKELETON = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/corpse_icons/skeleton.png");
-    public static final ResourceLocation FALLEN_SPIDER = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation FALLEN_SPIDER = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/corpse_icons/spider.png");
-    public static final ResourceLocation FALLEN_VILLAGER = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation FALLEN_VILLAGER = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/corpse_icons/villager.png");
-    public static final ResourceLocation FALLEN_CREEPER = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation FALLEN_CREEPER = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/corpse_icons/creeper.png");
-    public static final ResourceLocation FALLEN_PHANTOM = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation FALLEN_PHANTOM = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/corpse_icons/phantom.png");
 }

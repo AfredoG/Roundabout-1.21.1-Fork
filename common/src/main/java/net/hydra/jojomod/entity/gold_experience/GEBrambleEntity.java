@@ -60,8 +60,8 @@ public class GEBrambleEntity extends Entity {
     }
 
     @Override
-    protected void defineSynchedData() {
-        this.entityData.define(LIFE_TICKS, 0);
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+        builder.define(LIFE_TICKS, 0);
     }
 
     @Override

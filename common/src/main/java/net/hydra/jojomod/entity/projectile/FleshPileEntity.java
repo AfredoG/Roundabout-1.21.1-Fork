@@ -46,11 +46,11 @@ public class FleshPileEntity extends ThrowableItemProjectile {
     protected static final EntityDataAccessor<Integer> FLESH_COUNT = SynchedEntityData.defineId(FleshPileEntity.class,
             EntityDataSerializers.INT);
     @Override
-    protected void defineSynchedData() {
-        if (!this.entityData.hasItem(FLESH_COUNT)) {
-            super.defineSynchedData();
-            this.entityData.define(FLESH_COUNT, 0);
-        }
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+
+            super.defineSynchedData(builder);
+            builder.define(FLESH_COUNT, 0);
+
     }
     public void setFleshCount(int amount) {this.entityData.set(FLESH_COUNT,amount);}
     public int getFleshCount() {return this.entityData.get(FLESH_COUNT);}

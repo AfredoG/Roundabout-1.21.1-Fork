@@ -15,7 +15,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.AnimationState;
 
 public class GoldExperienceBetaModel<T extends GoldExperienceEntity> extends StandModel<T>{
-    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation("modid", "unknown"), "main");
+    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath("modid", "unknown"), "main");
     private final ModelPart stand2;
     private final ModelPart head2;
     private final ModelPart bone;

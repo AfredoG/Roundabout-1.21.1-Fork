@@ -10,7 +10,7 @@ import net.minecraft.world.entity.player.Inventory;
 
 public class DiverDownAnvilScreen extends AnvilScreen {
     private static final ResourceLocation TEXTURE =
-        new ResourceLocation(Roundabout.MOD_ID, "textures/gui/diver_down/workbench_ui/anvil.png");
+        ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/gui/diver_down/workbench_ui/anvil.png");
 
     public DiverDownAnvilScreen(AnvilMenu menu, Inventory inventory, Component title) {
         super(menu, inventory, title);

@@ -604,13 +604,13 @@ public class D4CCloneEntity extends CloneEntity {
         return ((IEntityAndData)this).rdbt$getNearAlt();
     }
     @Override
-    protected void defineSynchedData() {
-        if (!this.entityData.hasItem(STRATEGY)) {
-            super.defineSynchedData();
-            this.entityData.define(STRATEGY, 0);
-            this.entityData.define(SAFE_COPY, false);
-            this.entityData.define(SPAWNED, false);
-        }
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+
+            super.defineSynchedData(builder);
+            builder.define(STRATEGY, 0);
+            builder.define(SAFE_COPY, false);
+            builder.define(SPAWNED, false);
+
     }
     public boolean getSafeCopy(){
         return entityData.get(SAFE_COPY);

@@ -16,7 +16,7 @@ import org.joml.Matrix3f;
 import org.joml.Matrix4f;
 
 public class PlayerLikeBeeStingLayer <T extends JojoNPC, M extends PlayerLikeModel<T>> extends PlayerLikeStuckInBodyLayer<T, M> {
-    private static final ResourceLocation BEE_STINGER_LOCATION = new ResourceLocation("textures/entity/bee/bee_stinger.png");
+    private static final ResourceLocation BEE_STINGER_LOCATION = ResourceLocation.parse("textures/entity/bee/bee_stinger.png");
 
     public PlayerLikeBeeStingLayer(LivingEntityRenderer<T, M> $$0) {
         super($$0);

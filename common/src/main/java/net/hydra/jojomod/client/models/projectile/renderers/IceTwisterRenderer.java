@@ -53,8 +53,7 @@ public class IceTwisterRenderer extends EntityRenderer<IceTwisterEntity> {
         double dz = motion.z;
         // Horizontal distance (XZ plane)
         double horizontal = Math.sqrt(dx * dx + dz * dz);
-            this.model.renderToBuffer($$3, $$6, $$5, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F,
-                    Math.min((((float)$$0.renderCold)/10)+($$2*0.1F),1f));
+            this.model.renderToBuffer($$3, $$6, $$5, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(Math.min((((float)$$0.renderCold)/10)+($$2*0.1F),1f), 1.0F, 1.0F, 1.0F));
             $$3.popPose();
             super.render($$0, $$1, $$2, $$3, $$4, $$5);
 
@@ -62,7 +61,7 @@ public class IceTwisterRenderer extends EntityRenderer<IceTwisterEntity> {
 
     @Override
     public ResourceLocation getTextureLocation(IceTwisterEntity var1) {
-        return new ResourceLocation(Roundabout.MOD_ID,
+        return ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
                 "textures/stand/white_album/projectiles/ice_twister.png");
     }
 

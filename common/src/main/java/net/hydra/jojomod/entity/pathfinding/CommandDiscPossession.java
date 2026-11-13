@@ -47,9 +47,9 @@ public final class CommandDiscPossession extends GroundPathfindingStandAttackEnt
     }
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        entityData.define(TARGET_ID, -1);
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(TARGET_ID, -1);
     }
 
     public void setCommandTarget(LivingEntity target) {

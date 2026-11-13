@@ -20,7 +20,7 @@ import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.pathfinder.BlockPathTypes;
+import net.minecraft.world.level.pathfinder.PathType;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
@@ -98,8 +98,8 @@ public class CorpseBuildBreakGoal extends Goal {
         Vec3i direction =  blockHit.getDirection().getNormal();
         BlockPos mineBlock = new BlockPos((useOn.getX() + direction.getX()*-1), (useOn.getY() + direction.getY()*-1), (useOn.getZ() + direction.getZ()*-1));
         BlockState bstate = this.fallenMob.level().getBlockState(mineBlock);
-        this.oldWaterCost = this.fallenMob.getPathfindingMalus(BlockPathTypes.WATER);
-        this.fallenMob.setPathfindingMalus(BlockPathTypes.WATER, 0.0F);
+        this.oldWaterCost = this.fallenMob.getPathfindingMalus(PathType.WATER);
+        this.fallenMob.setPathfindingMalus(PathType.WATER, 0.0F);
         if(!this.fallenMob.getMainHandItem().isCorrectToolForDrops(bstate) && !(this.fallenMob.getMainHandItem().getItem() instanceof BlockItem)){
             //Don't mine
 
@@ -114,7 +114,7 @@ public class CorpseBuildBreakGoal extends Goal {
         this.fallenMob.getNavigation().stop();
         //HACK ALERT
         this.fallenMob.getNavigation().moveTo(this.fallenMob,1);
-        this.fallenMob.setPathfindingMalus(BlockPathTypes.WATER, this.oldWaterCost);
+        this.fallenMob.setPathfindingMalus(PathType.WATER, this.oldWaterCost);
 
     }
 

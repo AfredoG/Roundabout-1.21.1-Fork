@@ -24,7 +24,7 @@ import static net.minecraft.client.gui.screens.inventory.InventoryScreen.renderE
 
 public class BlackSabbathPlayerInventoryScreen
         extends EffectRenderingInventoryScreen<BlackSabbathPlayerInventoryMenu> {
-    private static final ResourceLocation HORSE_INVENTORY_LOCATION = new ResourceLocation(Roundabout.MOD_ID, "textures/gui/polpo_stand_screen.png");
+    private static final ResourceLocation HORSE_INVENTORY_LOCATION = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/gui/polpo_stand_screen.png");
     private final Player player;
     private float xMouse;
     private float yMouse;

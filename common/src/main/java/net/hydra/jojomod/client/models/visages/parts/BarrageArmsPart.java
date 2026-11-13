@@ -120,8 +120,13 @@ public class BarrageArmsPart extends PsuedoHierarchicalModel {
         return LayerDefinition.create(meshdefinition, 128, 128);
     }
     @Override
-    public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
-        body.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+    public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, int argbColor) {
+        float red = net.minecraft.util.FastColor.ARGB32.red(argbColor) / 255.0F;
+        float green = net.minecraft.util.FastColor.ARGB32.green(argbColor) / 255.0F;
+        float blue = net.minecraft.util.FastColor.ARGB32.blue(argbColor) / 255.0F;
+        float alpha = net.minecraft.util.FastColor.ARGB32.alpha(argbColor) / 255.0F;
+
+        body.render(poseStack, vertexConsumer, packedLight, packedOverlay, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, red, green, blue));
     }
 
     @Override
@@ -138,7 +143,7 @@ public class BarrageArmsPart extends PsuedoHierarchicalModel {
 
 
     public ResourceLocation getTextureLocation(){
-        return new ResourceLocation(Roundabout.MOD_ID, "textures/stand/star_platinum/anime.png");
+        return ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/star_platinum/anime.png");
     }
 
     public void render(Entity context, PoseStack poseStack, MultiBufferSource bufferSource, int light) {
@@ -245,21 +250,9 @@ public class BarrageArmsPart extends PsuedoHierarchicalModel {
                     if (rightSleeve != null) {
                         rightSleeve.visible = true;
                     }
-                    rightArm.render(
-                            poseStack,
-                            consumer,
-                            light,
-                            OverlayTexture.NO_OVERLAY,
-                            r, g, b, barrageAlpha
-                    );
+                    rightArm.render(poseStack, consumer, light, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(barrageAlpha, r, g, b));
                     if (rightSleeve != null) {
-                        rightSleeve.render(
-                                poseStack,
-                                consumer,
-                                light,
-                                OverlayTexture.NO_OVERLAY,
-                                r, g, b, barrageAlpha
-                        );
+                        rightSleeve.render(poseStack, consumer, light, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(barrageAlpha, r, g, b));
 
                         renderRightLocaArm(bufferSource, rightSleeve, poseStack, light, r, g, b, bt, muscle,
                                 barrageAlpha, player, partialTicks, plm);
@@ -279,21 +272,9 @@ public class BarrageArmsPart extends PsuedoHierarchicalModel {
                     if (rightSleeve != null) {
                         rightSleeve.visible = true;
                     }
-                    rightArm.render(
-                            poseStack,
-                            consumer,
-                            light,
-                            OverlayTexture.NO_OVERLAY,
-                            r, g, b, barrageAlpha
-                    );
+                    rightArm.render(poseStack, consumer, light, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(barrageAlpha, r, g, b));
                     if (rightSleeve != null) {
-                        rightSleeve.render(
-                                poseStack,
-                                consumer,
-                                light,
-                                OverlayTexture.NO_OVERLAY,
-                                r, g, b, barrageAlpha
-                        );
+                        rightSleeve.render(poseStack, consumer, light, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(barrageAlpha, r, g, b));
                         renderRightLocaArm(bufferSource, rightSleeve, poseStack, light, r, g, b, bt, muscle,
                                 barrageAlpha, player, partialTicks, plm);
                     }
@@ -312,21 +293,9 @@ public class BarrageArmsPart extends PsuedoHierarchicalModel {
                     if (rightSleeve != null) {
                         rightSleeve.visible = true;
                     }
-                    rightArm.render(
-                            poseStack,
-                            consumer,
-                            light,
-                            OverlayTexture.NO_OVERLAY,
-                            r, g, b, barrageAlpha
-                    );
+                    rightArm.render(poseStack, consumer, light, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(barrageAlpha, r, g, b));
                     if (rightSleeve != null) {
-                        rightSleeve.render(
-                                poseStack,
-                                consumer,
-                                light,
-                                OverlayTexture.NO_OVERLAY,
-                                r, g, b, barrageAlpha
-                        );
+                        rightSleeve.render(poseStack, consumer, light, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(barrageAlpha, r, g, b));
                         renderRightLocaArm(bufferSource, rightSleeve, poseStack, light, r, g, b, bt, muscle,
                                 barrageAlpha, player, partialTicks, plm);
                     }
@@ -354,21 +323,9 @@ public class BarrageArmsPart extends PsuedoHierarchicalModel {
                     if (leftSleeve != null) {
                         leftSleeve.visible = true;
                     }
-                    leftArm.render(
-                            poseStack,
-                            consumer,
-                            light,
-                            OverlayTexture.NO_OVERLAY,
-                            r, g, b, barrageAlpha
-                    );
+                    leftArm.render(poseStack, consumer, light, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(barrageAlpha, r, g, b));
                     if (leftSleeve != null) {
-                        leftSleeve.render(
-                                poseStack,
-                                consumer,
-                                light,
-                                OverlayTexture.NO_OVERLAY,
-                                r, g, b, barrageAlpha
-                        );
+                        leftSleeve.render(poseStack, consumer, light, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(barrageAlpha, r, g, b));
                         renderLeftLocaArm(bufferSource, leftSleeve, poseStack, light, r, g, b, bt, muscle,
                                 barrageAlpha, player, partialTicks, plm);
                     }
@@ -386,21 +343,9 @@ public class BarrageArmsPart extends PsuedoHierarchicalModel {
                     if (leftSleeve != null) {
                         leftSleeve.visible = true;
                     }
-                    leftArm.render(
-                            poseStack,
-                            consumer,
-                            light,
-                            OverlayTexture.NO_OVERLAY,
-                            r, g, b, barrageAlpha
-                    );
+                    leftArm.render(poseStack, consumer, light, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(barrageAlpha, r, g, b));
                     if (leftSleeve != null) {
-                        leftSleeve.render(
-                                poseStack,
-                                consumer,
-                                light,
-                                OverlayTexture.NO_OVERLAY,
-                                r, g, b, barrageAlpha
-                        );
+                        leftSleeve.render(poseStack, consumer, light, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(barrageAlpha, r, g, b));
                         renderLeftLocaArm(bufferSource, leftSleeve, poseStack, light, r, g, b, bt, muscle,
                                 barrageAlpha, player, partialTicks, plm);
                     }
@@ -419,21 +364,9 @@ public class BarrageArmsPart extends PsuedoHierarchicalModel {
                     if (leftSleeve != null) {
                         leftSleeve.visible = true;
                     }
-                    leftArm.render(
-                            poseStack,
-                            consumer,
-                            light,
-                            OverlayTexture.NO_OVERLAY,
-                            r, g, b, barrageAlpha
-                    );
+                    leftArm.render(poseStack, consumer, light, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(barrageAlpha, r, g, b));
                     if (leftSleeve != null) {
-                        leftSleeve.render(
-                                poseStack,
-                                consumer,
-                                light,
-                                OverlayTexture.NO_OVERLAY,
-                                r, g, b, barrageAlpha
-                        );
+                        leftSleeve.render(poseStack, consumer, light, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(barrageAlpha, r, g, b));
                         renderLeftLocaArm(bufferSource, leftSleeve, poseStack, light, r, g, b, bt, muscle,
                                 barrageAlpha, player, partialTicks, plm);
                     }
@@ -520,13 +453,7 @@ public class BarrageArmsPart extends PsuedoHierarchicalModel {
                         (RenderType.entityTranslucent(StandIcons.STONE_RIGHT_ARM));
                 rsleeve.xScale += 0.04f;
                 rsleeve.zScale += 0.04f;
-                rsleeve.render(
-                        poseStack,
-                        consumerX,
-                        light,
-                        OverlayTexture.NO_OVERLAY,
-                        r, g, b, 1f
-                );
+                rsleeve.render(poseStack, consumerX, light, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(1f, r, g, b));
                 rsleeve.xScale -= 0.04f;
                 rsleeve.zScale -= 0.04f;
                 bSource.getBuffer
@@ -551,13 +478,7 @@ public class BarrageArmsPart extends PsuedoHierarchicalModel {
                             consumerX = bSource.getBuffer
                                     (RenderType.entityTranslucent(StandIcons.MUSCLE));
                         }
-                        rsleeve.render(
-                                poseStack,
-                                consumerX,
-                                light,
-                                OverlayTexture.NO_OVERLAY,
-                                r, g, b, alpha
-                        );
+                        rsleeve.render(poseStack, consumerX, light, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, r, g, b));
                         rsleeve.xScale -= 0.04f;
                         rsleeve.zScale -= 0.04f;
                         poseStack.popPose();
@@ -624,13 +545,7 @@ public class BarrageArmsPart extends PsuedoHierarchicalModel {
                         (RenderType.entityTranslucent(StandIcons.STONE_LEFT_ARM));
                 rsleeve.xScale += 0.04f;
                 rsleeve.zScale += 0.04f;
-                rsleeve.render(
-                        poseStack,
-                        consumerX,
-                        light,
-                        OverlayTexture.NO_OVERLAY,
-                        r, g, b, 1f
-                );
+                rsleeve.render(poseStack, consumerX, light, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(1f, r, g, b));
                 rsleeve.xScale -= 0.04f;
                 rsleeve.zScale -= 0.04f;
                 poseStack.popPose();
@@ -655,13 +570,7 @@ public class BarrageArmsPart extends PsuedoHierarchicalModel {
                             consumerX = bSource.getBuffer
                                     (RenderType.entityTranslucent(StandIcons.MUSCLE));
                         }
-                        rsleeve.render(
-                                poseStack,
-                                consumerX,
-                                light,
-                                OverlayTexture.NO_OVERLAY,
-                                r, g, b, alpha
-                        );
+                        rsleeve.render(poseStack, consumerX, light, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, r, g, b));
                         rsleeve.xScale -= 0.04f;
                         rsleeve.zScale -= 0.04f;
                         poseStack.popPose();

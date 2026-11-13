@@ -40,10 +40,10 @@ import java.util.List;
 
 public class ModificationVisageScreen extends Screen {
     //Check out GamemodeSwitcherScreen
-    static final ResourceLocation CORPSE_CHOOSER_LOCATION = new ResourceLocation(Roundabout.MOD_ID,
+    static final ResourceLocation CORPSE_CHOOSER_LOCATION = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/cinderella_gui.png");
 
-    public static final ResourceLocation POWER_INVENTORY_GEAR_LOCATION = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation POWER_INVENTORY_GEAR_LOCATION = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/stand_user_settings.png");
     private static final int SPRITE_SHEET_WIDTH = 256;
     private static final int SPRITE_SHEET_HEIGHT = 256;

@@ -1,13 +1,14 @@
 package net.hydra.jojomod.biome_modifiers;
 
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderSet;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import net.minecraftforge.common.world.BiomeModifier;
-import net.minecraftforge.common.world.ModifiableBiomeInfo;
+import net.neoforged.neoforge.common.world.BiomeModifier;
+import net.neoforged.neoforge.common.world.ModifiableBiomeInfo;
 
 import java.util.Locale;
 
@@ -21,7 +22,7 @@ public record naturalLocacacaModifier(HolderSet<Biome> biomes, Holder<PlacedFeat
         }
     }
 
-    public Codec<? extends BiomeModifier> codec()
+    public MapCodec<? extends BiomeModifier> codec()
     {
         // This must return a registered Codec, see Biome Modifier Serializers below.
         return BiomeCodec.LOCA_CODEC.get();

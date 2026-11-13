@@ -17,226 +17,227 @@ import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.DispenserBlock;
 import net.minecraft.world.level.material.Fluids;
-import net.minecraftforge.common.ForgeSpawnEggItem;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.common.DeferredSpawnEggItem;
+import net.neoforged.neoforge.registries.DeferredRegister;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.neoforged.neoforge.registries.NeoForgeRegistries;
+import net.neoforged.neoforge.registries.DeferredHolder;
 import net.hydra.jojomod.client.DynamicItemRendering;
-import net.minecraftforge.client.extensions.common.IClientItemExtensions;
+import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import java.util.function.Consumer;
 
 import static net.hydra.jojomod.registry.ForgeCreativeTab.*;
 
 public class ForgeItems {
-    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Roundabout.MOD_ID);
-    public static final DeferredRegister<Potion> POTIONS = DeferredRegister.create(ForgeRegistries.POTIONS, Roundabout.MOD_ID);
+    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(BuiltInRegistries.ITEM, Roundabout.MOD_ID);
+    public static final DeferredRegister<Potion> POTIONS = DeferredRegister.create(BuiltInRegistries.POTION, Roundabout.MOD_ID);
 
-    public static final RegistryObject<Item> COFFEE_GUM = addToTab(ITEMS.register("coffee_gum",
+    public static final DeferredHolder<Item, Item> COFFEE_GUM = addToTab(ITEMS.register("coffee_gum",
             () -> new Item(new Item.Properties()
                     .food(ModFoodComponents.COFFEE_GUM)
             )));
 
-    public static final RegistryObject<Item> CHERRIES = addToTab(ITEMS.register("cherries",
+    public static final DeferredHolder<Item, Item> CHERRIES = addToTab(ITEMS.register("cherries",
             () -> new Item(new Item.Properties()
-                    .food(new FoodProperties.Builder().nutrition(1).saturationMod(0.0F).alwaysEat()
+                    .food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.0F).alwaysEat()
                             .effect(new MobEffectInstance(ForgeEffects.WARDING.get(), 2400, 0), 1.0F)
                             .build())
             )));
 
-    public static final RegistryObject<Item> SNAKE_SKIN = addToTab(ITEMS.register("snake_skin",
+    public static final DeferredHolder<Item, Item> SNAKE_SKIN = addToTab(ITEMS.register("snake_skin",
             () -> new Item(new Item.Properties())));
-    public static final RegistryObject<Item> SNAKE_OIL = addToTab(ITEMS.register("snake_oil",
+    public static final DeferredHolder<Item, Item> SNAKE_OIL = addToTab(ITEMS.register("snake_oil",
             () -> new DrinkableItem(new Item.Properties())));
-    public static final RegistryObject<Item> SNAKE_SKIN_BOOTS = addToTab(ITEMS.register("snake_skin_boots",
+    public static final DeferredHolder<Item, Item> SNAKE_SKIN_BOOTS = addToTab(ITEMS.register("snake_skin_boots",
             () -> new ArmorItem(SnakeSkinBootsItem.SNAKE_ARMOR, ArmorItem.Type.BOOTS, new Item.Properties())));
 
-    public static final RegistryObject<Item> PIRANHA_BUCKET = addToTab(ITEMS.register("piranha_bucket",
+    public static final DeferredHolder<Item, Item> PIRANHA_BUCKET = addToTab(ITEMS.register("piranha_bucket",
             () -> new MobBucketItem(
                     ForgeEntities.PIRANHA,
                     () -> Fluids.WATER,
                     () -> SoundEvents.BUCKET_EMPTY_FISH,
                     new Item.Properties().stacksTo(1)
             )));
-    public static final RegistryObject<Item> PIRANHA = addToTab(ITEMS.register("piranha",
-            () -> new Item(new Item.Properties().food(new FoodProperties.Builder().nutrition(2).saturationMod(0.1F).build()))));
-    public static final RegistryObject<Item> COOKED_PIRANHA = addToTab(ITEMS.register("cooked_piranha",
-            () -> new Item(new Item.Properties().food(new FoodProperties.Builder().nutrition(4).saturationMod(1.2F).build()))));
+    public static final DeferredHolder<Item, Item> PIRANHA = addToTab(ITEMS.register("piranha",
+            () -> new Item(new Item.Properties().food(new FoodProperties.Builder().nutrition(2).saturationModifier(0.1F).build()))));
+    public static final DeferredHolder<Item, Item> COOKED_PIRANHA = addToTab(ITEMS.register("cooked_piranha",
+            () -> new Item(new Item.Properties().food(new FoodProperties.Builder().nutrition(4).saturationModifier(1.2F).build()))));
 
-    public static final RegistryObject<Item> STAND_ARROW = addToTab(ITEMS.register("stand_arrow",
+    public static final DeferredHolder<Item, Item> STAND_ARROW = addToTab(ITEMS.register("stand_arrow",
             () -> new StandArrowItem(new Item.Properties().stacksTo(1).durability(5))));
-    public static final RegistryObject<Item> STAND_BEETLE_ARROW = addToTab(ITEMS.register("stand_beetle_arrow",
+    public static final DeferredHolder<Item, Item> STAND_BEETLE_ARROW = addToTab(ITEMS.register("stand_beetle_arrow",
             () -> new StandArrowItem(new Item.Properties().stacksTo(1).durability(5))));
 
-    public static final RegistryObject<BlockItem> EQUIPPABLE_STONE_MASK_ITEM = addToTab(ITEMS.register("stone_mask",
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> EQUIPPABLE_STONE_MASK_ITEM = addToTab(ITEMS.register("stone_mask",
             () -> new StoneMaskBlockItem(ForgeBlocks.EQUIPPABLE_STONE_MASK_BLOCK.get(),
                     new Item.Properties().stacksTo(1)
             )));
-    public static final RegistryObject<BlockItem> BLOODY_STONE_MASK_ITEM = addToTab(ITEMS.register("bloody_stone_mask",
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> BLOODY_STONE_MASK_ITEM = addToTab(ITEMS.register("bloody_stone_mask",
             () -> new BloodyStoneMaskBlockItem(ForgeBlocks.BLOODY_STONE_MASK_BLOCK.get(),
                     new Item.Properties().stacksTo(1)
             )));
-    public static final RegistryObject<Item> BODY_BAG = addToTab(ITEMS.register("body_bag",
+    public static final DeferredHolder<Item, Item> BODY_BAG = addToTab(ITEMS.register("body_bag",
             () -> new BodyBagItem(new Item.Properties().stacksTo(1))));
-    public static final RegistryObject<Item> CREATIVE_BODY_BAG = addToTab(ITEMS.register("creative_body_bag",
+    public static final DeferredHolder<Item, Item> CREATIVE_BODY_BAG = addToTab(ITEMS.register("creative_body_bag",
             () -> new BodyBagItem(new Item.Properties().stacksTo(1))));
-    public static final RegistryObject<Item> KNIFE = addToTab(ITEMS.register("knife",
+    public static final DeferredHolder<Item, Item> KNIFE = addToTab(ITEMS.register("knife",
             () -> new KnifeItem(new Item.Properties().stacksTo(64))));
-    public static final RegistryObject<Item> KNIFE_BUNDLE = addToTab(ITEMS.register("knife_bundle",
+    public static final DeferredHolder<Item, Item> KNIFE_BUNDLE = addToTab(ITEMS.register("knife_bundle",
             () -> new KnifeItem(new Item.Properties().stacksTo(16))));
-    public static final RegistryObject<Item> MATCH = addToTab(ITEMS.register("match",
+    public static final DeferredHolder<Item, Item> MATCH = addToTab(ITEMS.register("match",
             () -> new MatchItem(new Item.Properties().stacksTo(64))));
-    public static final RegistryObject<Item> MATCH_BUNDLE = addToTab(ITEMS.register("match_bundle",
+    public static final DeferredHolder<Item, Item> MATCH_BUNDLE = addToTab(ITEMS.register("match_bundle",
             () -> new MatchItem(new Item.Properties().stacksTo(16))));
-    public static final RegistryObject<Item> GASOLINE_CAN = addToTab(ITEMS.register("gasoline_can",
+    public static final DeferredHolder<Item, Item> GASOLINE_CAN = addToTab(ITEMS.register("gasoline_can",
             () -> new GasolineCanItem(new Item.Properties().stacksTo(16))));
-    public static final RegistryObject<Item> GASOLINE_BUCKET = addToTab(ITEMS.register("gasoline_bucket",
+    public static final DeferredHolder<Item, Item> GASOLINE_BUCKET = addToTab(ITEMS.register("gasoline_bucket",
             () -> new GasolineBucketItem(new Item.Properties().stacksTo(1))));
-    public static final RegistryObject<Item> OCCULT_CHARGE = addToTab(ITEMS.register("occult_charge",
+    public static final DeferredHolder<Item, Item> OCCULT_CHARGE = addToTab(ITEMS.register("occult_charge",
             () -> new OccultChargeItem(new Item.Properties().stacksTo(16))));
-    public static final RegistryObject<Item> ROAD_ROLLER = addToTab(ITEMS.register("road_roller",
+    public static final DeferredHolder<Item, Item> ROAD_ROLLER = addToTab(ITEMS.register("road_roller",
             () -> new RoadRollerItem(new Item.Properties().stacksTo(1))));
 
-    public static final RegistryObject<Item> STRAY_CAT_ANIME = addToTab(ITEMS.register("stray_cat_anime",
+    public static final DeferredHolder<Item, Item> STRAY_CAT_ANIME = addToTab(ITEMS.register("stray_cat_anime",
             () -> new StrayCatItem(new Item.Properties().stacksTo(1), (byte)0)));
-    public static final RegistryObject<Item> STRAY_CAT_MANGA= addToTab(ITEMS.register("stray_cat_manga",
+    public static final DeferredHolder<Item, Item> STRAY_CAT_MANGA= addToTab(ITEMS.register("stray_cat_manga",
             () -> new StrayCatItem(new Item.Properties().stacksTo(1), (byte)1)));
 
-    public static final RegistryObject<Item> TOTEM_OF_DOOM = addToTab(ITEMS.register("totem_of_doom",
+    public static final DeferredHolder<Item, Item> TOTEM_OF_DOOM = addToTab(ITEMS.register("totem_of_doom",
             () -> new TotemOfDoomItem(new Item.Properties().stacksTo(1))));
 
-    public static final RegistryObject<BlockItem> WIRE_TRAP = addToBuildingTab(ITEMS.register("wire_trap",
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> WIRE_TRAP = addToBuildingTab(ITEMS.register("wire_trap",
             () -> new BlockItem(ForgeBlocks.WIRE_TRAP.get(),
                     new Item.Properties()
             )));
-    public static final RegistryObject<BlockItem> BARBED_WIRE = addToBuildingTab(ITEMS.register("barbed_wire",
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> BARBED_WIRE = addToBuildingTab(ITEMS.register("barbed_wire",
             () -> new BlockItem(ForgeBlocks.BARBED_WIRE.get(),
                     new Item.Properties()
             )));
-    public static final RegistryObject<BlockItem> WIRE_BUNDLE = addToBuildingTab(ITEMS.register("barbed_wire_bundle",
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> WIRE_BUNDLE = addToBuildingTab(ITEMS.register("barbed_wire_bundle",
             () -> new BlockItem(ForgeBlocks.BARBED_WIRE_BUNDLE.get(),
                     new Item.Properties()
             )));
-    public static final RegistryObject<BlockItem> ANCIENT_METEOR_ITEM = addToBuildingTab(ITEMS.register("ancient_meteor",
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> ANCIENT_METEOR_ITEM = addToBuildingTab(ITEMS.register("ancient_meteor",
             () -> new BlockItem(ForgeBlocks.ANCIENT_METEOR.get(),
                     new Item.Properties()
             )));
-    public static final RegistryObject<BlockItem> IMPACT_MOUND_ITEM = addToBuildingTab(ITEMS.register("impact_mound",
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> IMPACT_MOUND_ITEM = addToBuildingTab(ITEMS.register("impact_mound",
             () -> new BlockItem(ForgeBlocks.IMPACT_MOUND.get(),
                     new Item.Properties()
             )));
-    public static final RegistryObject<BlockItem> METEOR_BLOCK_ITEM = addToBuildingTab(ITEMS.register("meteor_block",
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> METEOR_BLOCK_ITEM = addToBuildingTab(ITEMS.register("meteor_block",
             () -> new BlockItem(ForgeBlocks.METEOR_BLOCK.get(),
                     new Item.Properties()
             )));
-    public static final RegistryObject<BlockItem> AJA_ORE_ITEM = addToBuildingTab(ITEMS.register("aja_ore",
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> AJA_ORE_ITEM = addToBuildingTab(ITEMS.register("aja_ore",
             () -> new BlockItem(ForgeBlocks.AJA_ORE.get(),
                     new Item.Properties()
             )));
-    public static final RegistryObject<BlockItem> DEEPSLATE_AJA_ORE_ITEM = addToBuildingTab(ITEMS.register("deepslate_aja_ore",
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> DEEPSLATE_AJA_ORE_ITEM = addToBuildingTab(ITEMS.register("deepslate_aja_ore",
             () -> new BlockItem(ForgeBlocks.DEEPSLATE_AJA_ORE.get(),
                     new Item.Properties()
             )));
-    public static final RegistryObject<BlockItem> AJA_BLOCK_ITEM = addToBuildingTab(ITEMS.register("aja_block",
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> AJA_BLOCK_ITEM = addToBuildingTab(ITEMS.register("aja_block",
             () -> new BlockItem(ForgeBlocks.AJA_BLOCK.get(),
                     new Item.Properties()
             )));
-    public static final RegistryObject<BlockItem> FROZEN_DIRT_ITEM = addToBuildingTab(ITEMS.register("frozen_dirt",
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> FROZEN_DIRT_ITEM = addToBuildingTab(ITEMS.register("frozen_dirt",
             () -> new BlockItem(ForgeBlocks.FROZEN_DIRT.get(),
                     new Item.Properties()
             )));
-    public static final RegistryObject<BlockItem> FROZEN_STONE_ITEM = addToBuildingTab(ITEMS.register("frozen_stone",
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> FROZEN_STONE_ITEM = addToBuildingTab(ITEMS.register("frozen_stone",
             () -> new BlockItem(ForgeBlocks.FROZEN_STONE.get(),
                     new Item.Properties()
             )));
-    public static final RegistryObject<BlockItem> FROZEN_COBBLESTONE_ITEM = addToBuildingTab(ITEMS.register("frozen_cobblestone",
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> FROZEN_COBBLESTONE_ITEM = addToBuildingTab(ITEMS.register("frozen_cobblestone",
             () -> new BlockItem(ForgeBlocks.FROZEN_COBBLESTONE.get(),
                     new Item.Properties()
             )));
-    public static final RegistryObject<BlockItem> FROZEN_DEEPSLATE_ITEM = addToBuildingTab(ITEMS.register("frozen_deepslate",
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> FROZEN_DEEPSLATE_ITEM = addToBuildingTab(ITEMS.register("frozen_deepslate",
             () -> new BlockItem(ForgeBlocks.FROZEN_DEEPSLATE.get(),
                     new Item.Properties()
             )));
-    public static final RegistryObject<BlockItem> FROZEN_COBBLED_DEEPSLATE_ITEM = addToBuildingTab(ITEMS.register("frozen_cobbled_deepslate",
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> FROZEN_COBBLED_DEEPSLATE_ITEM = addToBuildingTab(ITEMS.register("frozen_cobbled_deepslate",
             () -> new BlockItem(ForgeBlocks.FROZEN_COBBLED_DEEPSLATE.get(),
                     new Item.Properties()
             )));
 
-    public static final RegistryObject<BlockItem> FROZEN_STONE_BRICKS_ITEM =
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> FROZEN_STONE_BRICKS_ITEM =
             addToBuildingTab(ITEMS.register("frozen_stone_bricks",
             () -> new BlockItem(ForgeBlocks.FROZEN_STONE_BRICKS.get(),
                     new Item.Properties()
             )));
-    public static final RegistryObject<BlockItem> FROZEN_DIORITE_ITEM =
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> FROZEN_DIORITE_ITEM =
             addToBuildingTab(ITEMS.register("frozen_diorite",
                     () -> new BlockItem(ForgeBlocks.FROZEN_DIORITE.get(),
                             new Item.Properties()
                     )));
-    public static final RegistryObject<BlockItem> FROZEN_ANDESITE_ITEM =
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> FROZEN_ANDESITE_ITEM =
             addToBuildingTab(ITEMS.register("frozen_andesite",
                     () -> new BlockItem(ForgeBlocks.FROZEN_ANDESITE.get(),
                             new Item.Properties()
                     )));
-    public static final RegistryObject<BlockItem> FROZEN_GRANITE_ITEM =
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> FROZEN_GRANITE_ITEM =
             addToBuildingTab(ITEMS.register("frozen_granite",
                     () -> new BlockItem(ForgeBlocks.FROZEN_GRANITE.get(),
                             new Item.Properties()
                     )));
-    public static final RegistryObject<BlockItem> FROZEN_SAND_ITEM =
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> FROZEN_SAND_ITEM =
             addToBuildingTab(ITEMS.register("frozen_sand",
             () -> new BlockItem(ForgeBlocks.FROZEN_SAND.get(),
                     new Item.Properties()
             )));
-    public static final RegistryObject<BlockItem> FROZEN_SANDSTONE_ITEM =
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> FROZEN_SANDSTONE_ITEM =
             addToBuildingTab(ITEMS.register("frozen_sandstone",
             () -> new BlockItem(ForgeBlocks.FROZEN_SANDSTONE.get(),
                     new Item.Properties()
             )));
-    public static final RegistryObject<BlockItem> FROZEN_RED_SAND_ITEM =
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> FROZEN_RED_SAND_ITEM =
             addToBuildingTab(ITEMS.register("frozen_red_sand",
                     () -> new BlockItem(ForgeBlocks.FROZEN_RED_SAND.get(),
                             new Item.Properties()
                     )));
-    public static final RegistryObject<BlockItem> FROZEN_RED_SANDSTONE_ITEM =
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> FROZEN_RED_SANDSTONE_ITEM =
             addToBuildingTab(ITEMS.register("frozen_red_sandstone",
                     () -> new BlockItem(ForgeBlocks.FROZEN_RED_SANDSTONE.get(),
                             new Item.Properties()
                     )));
-    public static final RegistryObject<BlockItem> FROZEN_GRAVEL_ITEM =
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> FROZEN_GRAVEL_ITEM =
             addToBuildingTab(ITEMS.register("frozen_gravel",
             () -> new BlockItem(ForgeBlocks.FROZEN_GRAVEL.get(),
                     new Item.Properties()
             )));
-    public static final RegistryObject<BlockItem> FROZEN_OBSIDIAN_ITEM =
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> FROZEN_OBSIDIAN_ITEM =
             addToBuildingTab(ITEMS.register("frozen_obsidian",
                     () -> new BlockItem(ForgeBlocks.FROZEN_OBSIDIAN.get(),
                             new Item.Properties()
                     )));
-    public static final RegistryObject<BlockItem> FROZEN_NETHERRACK_ITEM =
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> FROZEN_NETHERRACK_ITEM =
             addToBuildingTab(ITEMS.register("frozen_netherrack",
             () -> new BlockItem(ForgeBlocks.FROZEN_NETHERRACK.get(),
                     new Item.Properties()
             )));
-    public static final RegistryObject<BlockItem> FROZEN_NETHER_BRICKS_ITEM =
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> FROZEN_NETHER_BRICKS_ITEM =
             addToBuildingTab(ITEMS.register("frozen_nether_bricks",
             () -> new BlockItem(ForgeBlocks.FROZEN_NETHER_BRICKS.get(),
                     new Item.Properties()
             )));
-    public static final RegistryObject<BlockItem> FROZEN_END_STONE_ITEM =
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> FROZEN_END_STONE_ITEM =
             addToBuildingTab(ITEMS.register("frozen_end_stone",
             () -> new BlockItem(ForgeBlocks.FROZEN_END_STONE.get(),
                     new Item.Properties()
             )));
 
-    public static final RegistryObject<BlockItem> SHINY_QUARTZ_ITEM = addToBuildingTab(ITEMS.register("shiny_quartz",
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> SHINY_QUARTZ_ITEM = addToBuildingTab(ITEMS.register("shiny_quartz",
             () -> new BlockItem(ForgeBlocks.SHINY_QUARTZ.get(),
                     new Item.Properties()
             )));
-    public static final RegistryObject<BlockItem> SHINY_QUARTZ_TILES_ITEM = addToBuildingTab(ITEMS.register("shiny_quartz_tiles",
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> SHINY_QUARTZ_TILES_ITEM = addToBuildingTab(ITEMS.register("shiny_quartz_tiles",
             () -> new BlockItem(ForgeBlocks.SHINY_QUARTZ_TILES.get(),
                     new Item.Properties()
             )));
-    public static final RegistryObject<BlockItem> COFFIN_BLOCK_ITEM = addToBuildingTab(ITEMS.register("coffin_block",
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> COFFIN_BLOCK_ITEM = addToBuildingTab(ITEMS.register("coffin_block",
             () -> new CoffinBlockItem(DyeColor.BLACK, ForgeBlocks.COFFIN_BLOCK.get(),
                     new Item.Properties().stacksTo(1)
             ){ //CoffinBlockItem is a common class, putting BEWLR in there might break fabric, so i put BEWLR here in the forge item registry
@@ -253,195 +254,195 @@ public class ForgeItems {
             }));
 
 
-    /*public static final RegistryObject<BlockItem> CHESSBOARD_BLOCK_ITEM = addToWIPTab(ITEMS.register("chessboard_block",
+    /*public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> CHESSBOARD_BLOCK_ITEM = addToWIPTab(ITEMS.register("chessboard_block",
             () -> new ChessBoardBlockItem(ForgeBlocks.CHESSBOARD_BLOCK.get(),
                     new Item.Properties().stacksTo(1)
             )));*/
 
-    public static final RegistryObject<BlockItem> REGAL_WALL_ITEM = addToBuildingTab(ITEMS.register("regal_wall",
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> REGAL_WALL_ITEM = addToBuildingTab(ITEMS.register("regal_wall",
             () -> new BlockItem(ForgeBlocks.REGAL_WALL.get(),
                     new Item.Properties()
             )));
-    public static final RegistryObject<BlockItem> REGAL_FLOOR_ITEM = addToBuildingTab(ITEMS.register("regal_floor",
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> REGAL_FLOOR_ITEM = addToBuildingTab(ITEMS.register("regal_floor",
             () -> new BlockItem(ForgeBlocks.REGAL_FLOOR.get(),
                     new Item.Properties()
             )));
-    public static final RegistryObject<BlockItem> WOODEN_MANOR_TABLE_ITEM = addToBuildingTab(ITEMS.register("wooden_manor_table",
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> WOODEN_MANOR_TABLE_ITEM = addToBuildingTab(ITEMS.register("wooden_manor_table",
             () -> new BlockItem(ForgeBlocks.WOODEN_MANOR_TABLE.get(),
                     new Item.Properties()
             )));
-    public static final RegistryObject<BlockItem> WOODEN_MANOR_CHAIR_ITEM = addToBuildingTab(ITEMS.register("wooden_manor_chair",
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> WOODEN_MANOR_CHAIR_ITEM = addToBuildingTab(ITEMS.register("wooden_manor_chair",
             () -> new BlockItem(ForgeBlocks.WOODEN_MANOR_CHAIR.get(),
                     new Item.Properties()
             )));
-    public static final RegistryObject<BlockItem> WOOL_SLAB_WHITE_ITEM = addToBuildingTab(ITEMS.register("wool_slab_white",
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> WOOL_SLAB_WHITE_ITEM = addToBuildingTab(ITEMS.register("wool_slab_white",
             () -> new BlockItem(ForgeBlocks.WOOL_SLAB_WHITE.get(),
                     new Item.Properties()
             )));
-    public static final RegistryObject<BlockItem> WOOL_SLAB_BLACK_ITEM = addToBuildingTab(ITEMS.register("wool_slab_black",
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> WOOL_SLAB_BLACK_ITEM = addToBuildingTab(ITEMS.register("wool_slab_black",
             () -> new BlockItem(ForgeBlocks.WOOL_SLAB_BLACK.get(),
                     new Item.Properties()
             )));
-    public static final RegistryObject<BlockItem> WOOL_SLAB_BLUE_ITEM = addToBuildingTab(ITEMS.register("wool_slab_blue",
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> WOOL_SLAB_BLUE_ITEM = addToBuildingTab(ITEMS.register("wool_slab_blue",
             () -> new BlockItem(ForgeBlocks.WOOL_SLAB_BLUE.get(),
                     new Item.Properties()
             )));
-    public static final RegistryObject<BlockItem> WOOL_SLAB_BROWN_ITEM = addToBuildingTab(ITEMS.register("wool_slab_brown",
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> WOOL_SLAB_BROWN_ITEM = addToBuildingTab(ITEMS.register("wool_slab_brown",
             () -> new BlockItem(ForgeBlocks.WOOL_SLAB_BROWN.get(),
                     new Item.Properties()
             )));
-    public static final RegistryObject<BlockItem> WOOL_SLAB_CYAN_ITEM = addToBuildingTab(ITEMS.register("wool_slab_cyan",
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> WOOL_SLAB_CYAN_ITEM = addToBuildingTab(ITEMS.register("wool_slab_cyan",
             () -> new BlockItem(ForgeBlocks.WOOL_SLAB_CYAN.get(),
                     new Item.Properties()
             )));
-    public static final RegistryObject<BlockItem> WOOL_SLAB_DARK_GREEN_ITEM = addToBuildingTab(ITEMS.register("wool_slab_dark_green",
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> WOOL_SLAB_DARK_GREEN_ITEM = addToBuildingTab(ITEMS.register("wool_slab_dark_green",
             () -> new BlockItem(ForgeBlocks.WOOL_SLAB_DARK_GREEN.get(),
                     new Item.Properties()
             )));
-    public static final RegistryObject<BlockItem> WOOL_SLAB_DARK_GREY_ITEM = addToBuildingTab(ITEMS.register("wool_slab_dark_grey",
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> WOOL_SLAB_DARK_GREY_ITEM = addToBuildingTab(ITEMS.register("wool_slab_dark_grey",
             () -> new BlockItem(ForgeBlocks.WOOL_SLAB_DARK_GREY.get(),
                     new Item.Properties()
             )));
-    public static final RegistryObject<BlockItem> WOOL_SLAB_GREEN_ITEM = addToBuildingTab(ITEMS.register("wool_slab_green",
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> WOOL_SLAB_GREEN_ITEM = addToBuildingTab(ITEMS.register("wool_slab_green",
             () -> new BlockItem(ForgeBlocks.WOOL_SLAB_GREEN.get(),
                     new Item.Properties()
             )));
-    public static final RegistryObject<BlockItem> WOOL_SLAB_LIGHT_BLUE_ITEM = addToBuildingTab(ITEMS.register("wool_slab_light_blue",
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> WOOL_SLAB_LIGHT_BLUE_ITEM = addToBuildingTab(ITEMS.register("wool_slab_light_blue",
             () -> new BlockItem(ForgeBlocks.WOOL_SLAB_LIGHT_BLUE.get(),
                     new Item.Properties()
             )));
-    public static final RegistryObject<BlockItem> WOOL_SLAB_LIGHT_GREY_ITEM = addToBuildingTab(ITEMS.register("wool_slab_light_grey",
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> WOOL_SLAB_LIGHT_GREY_ITEM = addToBuildingTab(ITEMS.register("wool_slab_light_grey",
             () -> new BlockItem(ForgeBlocks.WOOL_SLAB_LIGHT_GREY.get(),
                     new Item.Properties()
             )));
-    public static final RegistryObject<BlockItem> WOOL_SLAB_MAGNETA_ITEM = addToBuildingTab(ITEMS.register("wool_slab_magenta",
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> WOOL_SLAB_MAGNETA_ITEM = addToBuildingTab(ITEMS.register("wool_slab_magenta",
             () -> new BlockItem(ForgeBlocks.WOOL_SLAB_MAGENTA.get(),
                     new Item.Properties()
             )));
-    public static final RegistryObject<BlockItem> WOOL_SLAB_ORANGE_ITEM = addToBuildingTab(ITEMS.register("wool_slab_orange",
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> WOOL_SLAB_ORANGE_ITEM = addToBuildingTab(ITEMS.register("wool_slab_orange",
             () -> new BlockItem(ForgeBlocks.WOOL_SLAB_ORANGE.get(),
                     new Item.Properties()
             )));
-    public static final RegistryObject<BlockItem> WOOL_SLAB_PURPLE_ITEM = addToBuildingTab(ITEMS.register("wool_slab_purple",
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> WOOL_SLAB_PURPLE_ITEM = addToBuildingTab(ITEMS.register("wool_slab_purple",
             () -> new BlockItem(ForgeBlocks.WOOL_SLAB_PURPLE.get(),
                     new Item.Properties()
             )));
-    public static final RegistryObject<BlockItem> WOOL_SLAB_PINK_ITEM = addToBuildingTab(ITEMS.register("wool_slab_pink",
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> WOOL_SLAB_PINK_ITEM = addToBuildingTab(ITEMS.register("wool_slab_pink",
             () -> new BlockItem(ForgeBlocks.WOOL_SLAB_PINK.get(),
                     new Item.Properties()
             )));
-    public static final RegistryObject<BlockItem> WOOL_SLAB_RED_ITEM = addToBuildingTab(ITEMS.register("wool_slab_red",
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> WOOL_SLAB_RED_ITEM = addToBuildingTab(ITEMS.register("wool_slab_red",
             () -> new BlockItem(ForgeBlocks.WOOL_SLAB_RED.get(),
                     new Item.Properties()
             )));
-    public static final RegistryObject<BlockItem> WOOL_SLAB_YELLOW_ITEM = addToBuildingTab(ITEMS.register("wool_slab_yellow",
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> WOOL_SLAB_YELLOW_ITEM = addToBuildingTab(ITEMS.register("wool_slab_yellow",
             () -> new BlockItem(ForgeBlocks.WOOL_SLAB_YELLOW.get(),
                     new Item.Properties()
             )));
-    public static final RegistryObject<BlockItem> WOOL_STAIRS_WHITE_ITEM = addToBuildingTab(ITEMS.register("wool_stairs_white",
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> WOOL_STAIRS_WHITE_ITEM = addToBuildingTab(ITEMS.register("wool_stairs_white",
             () -> new BlockItem(ForgeBlocks.WOOL_STAIRS_WHITE.get(),
                     new Item.Properties()
             )));
-    public static final RegistryObject<BlockItem> WOOL_STAIRS_BLACK_ITEM = addToBuildingTab(ITEMS.register("wool_stairs_black",
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> WOOL_STAIRS_BLACK_ITEM = addToBuildingTab(ITEMS.register("wool_stairs_black",
             () -> new BlockItem(ForgeBlocks.WOOL_STAIRS_BLACK.get(),
                     new Item.Properties()
             )));
-    public static final RegistryObject<BlockItem> WOOL_STAIRS_BLUE_ITEM = addToBuildingTab(ITEMS.register("wool_stairs_blue",
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> WOOL_STAIRS_BLUE_ITEM = addToBuildingTab(ITEMS.register("wool_stairs_blue",
             () -> new BlockItem(ForgeBlocks.WOOL_STAIRS_BLUE.get(),
                     new Item.Properties()
             )));
-    public static final RegistryObject<BlockItem> WOOL_STAIRS_CYAN_ITEM = addToBuildingTab(ITEMS.register("wool_stairs_cyan",
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> WOOL_STAIRS_CYAN_ITEM = addToBuildingTab(ITEMS.register("wool_stairs_cyan",
             () -> new BlockItem(ForgeBlocks.WOOL_STAIRS_CYAN.get(),
                     new Item.Properties()
             )));
-    public static final RegistryObject<BlockItem> WOOL_STAIRS_DARK_GREEN_ITEM = addToBuildingTab(ITEMS.register("wool_stairs_dark_green",
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> WOOL_STAIRS_DARK_GREEN_ITEM = addToBuildingTab(ITEMS.register("wool_stairs_dark_green",
             () -> new BlockItem(ForgeBlocks.WOOL_STAIRS_DARK_GREEN.get(),
                     new Item.Properties()
             )));
-    public static final RegistryObject<BlockItem> WOOL_STAIRS_DARK_GREY_ITEM = addToBuildingTab(ITEMS.register("wool_stairs_dark_grey",
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> WOOL_STAIRS_DARK_GREY_ITEM = addToBuildingTab(ITEMS.register("wool_stairs_dark_grey",
             () -> new BlockItem(ForgeBlocks.WOOL_STAIRS_DARK_GREY.get(),
                     new Item.Properties()
             )));
-    public static final RegistryObject<BlockItem> WOOL_STAIRS_GREEN_ITEM = addToBuildingTab(ITEMS.register("wool_stairs_green",
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> WOOL_STAIRS_GREEN_ITEM = addToBuildingTab(ITEMS.register("wool_stairs_green",
             () -> new BlockItem(ForgeBlocks.WOOL_STAIRS_GREEN.get(),
                     new Item.Properties()
             )));
-    public static final RegistryObject<BlockItem> WOOL_STAIRS_LIGHT_BLUE_ITEM = addToBuildingTab(ITEMS.register("wool_stairs_light_blue",
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> WOOL_STAIRS_LIGHT_BLUE_ITEM = addToBuildingTab(ITEMS.register("wool_stairs_light_blue",
             () -> new BlockItem(ForgeBlocks.WOOL_STAIRS_LIGHT_BLUE.get(),
                     new Item.Properties()
             )));
-    public static final RegistryObject<BlockItem> WOOL_STAIRS_LIGHT_GREY_ITEM = addToBuildingTab(ITEMS.register("wool_stairs_light_grey",
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> WOOL_STAIRS_LIGHT_GREY_ITEM = addToBuildingTab(ITEMS.register("wool_stairs_light_grey",
             () -> new BlockItem(ForgeBlocks.WOOL_STAIRS_LIGHT_GREY.get(),
                     new Item.Properties()
             )));
-    public static final RegistryObject<BlockItem> WOOL_STAIRS_MAGNETA_ITEM = addToBuildingTab(ITEMS.register("wool_stairs_magenta",
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> WOOL_STAIRS_MAGNETA_ITEM = addToBuildingTab(ITEMS.register("wool_stairs_magenta",
             () -> new BlockItem(ForgeBlocks.WOOL_STAIRS_MAGENTA.get(),
                     new Item.Properties()
             )));
-    public static final RegistryObject<BlockItem> WOOL_STAIRS_ORANGE_ITEM = addToBuildingTab(ITEMS.register("wool_stairs_orange",
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> WOOL_STAIRS_ORANGE_ITEM = addToBuildingTab(ITEMS.register("wool_stairs_orange",
             () -> new BlockItem(ForgeBlocks.WOOL_STAIRS_ORANGE.get(),
                     new Item.Properties()
             )));
-    public static final RegistryObject<BlockItem> WOOL_STAIRS_PURPLE_ITEM = addToBuildingTab(ITEMS.register("wool_stairs_purple",
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> WOOL_STAIRS_PURPLE_ITEM = addToBuildingTab(ITEMS.register("wool_stairs_purple",
             () -> new BlockItem(ForgeBlocks.WOOL_STAIRS_PURPLE.get(),
                     new Item.Properties()
             )));
-    public static final RegistryObject<BlockItem> WOOL_STAIRS_PINK_ITEM = addToBuildingTab(ITEMS.register("wool_stairs_pink",
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> WOOL_STAIRS_PINK_ITEM = addToBuildingTab(ITEMS.register("wool_stairs_pink",
             () -> new BlockItem(ForgeBlocks.WOOL_STAIRS_PINK.get(),
                     new Item.Properties()
             )));
-    public static final RegistryObject<BlockItem> WOOL_STAIRS_RED_ITEM = addToBuildingTab(ITEMS.register("wool_stairs_red",
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> WOOL_STAIRS_RED_ITEM = addToBuildingTab(ITEMS.register("wool_stairs_red",
             () -> new BlockItem(ForgeBlocks.WOOL_STAIRS_RED.get(),
                     new Item.Properties()
             )));
-    public static final RegistryObject<BlockItem> WOOL_STAIRS_YELLOW_ITEM = addToBuildingTab(ITEMS.register("wool_stairs_yellow",
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> WOOL_STAIRS_YELLOW_ITEM = addToBuildingTab(ITEMS.register("wool_stairs_yellow",
             () -> new BlockItem(ForgeBlocks.WOOL_STAIRS_YELLOW.get(),
                     new Item.Properties()
             )));
-    public static final RegistryObject<BlockItem> WOOL_STAIRS_BROWN_ITEM = addToBuildingTab(ITEMS.register("wool_stairs_brown",
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> WOOL_STAIRS_BROWN_ITEM = addToBuildingTab(ITEMS.register("wool_stairs_brown",
             () -> new BlockItem(ForgeBlocks.WOOL_STAIRS_BROWN.get(),
                     new Item.Properties()
             )));
-    public static final RegistryObject<BlockItem> CULTIVATION_POT_ITEM = addToBuildingTab(ITEMS.register("cultivation_pot",
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> CULTIVATION_POT_ITEM = addToBuildingTab(ITEMS.register("cultivation_pot",
             () -> new BlockItem(ForgeBlocks.CULTIVATION_POT.get(),
                     new Item.Properties()
             )));
-    public static final RegistryObject<BlockItem> LOCACACA_CACTUS_ITEM = addToBuildingTab(ITEMS.register("locacaca_cactus",
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> LOCACACA_CACTUS_ITEM = addToBuildingTab(ITEMS.register("locacaca_cactus",
             () -> new BlockItem(ForgeBlocks.LOCACACA_CACTUS.get(),
                     new Item.Properties()
             )));
 
-    public static final RegistryObject<BlockItem> GASOLINE_SPLATTER_ITEM = ITEMS.register("gasoline_splatter",
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> GASOLINE_SPLATTER_ITEM = ITEMS.register("gasoline_splatter",
             () -> new BlockItem(ForgeBlocks.GASOLINE_SPLATTER.get(),
                     new Item.Properties()
             ));
 
-    public static final RegistryObject<Item> HAIRSPRAY = ITEMS.register("hairspray",
+    public static final DeferredHolder<Item, Item> HAIRSPRAY = ITEMS.register("hairspray",
             () -> new HairsprayItem(new Item.Properties().stacksTo(64)
     ));
 
-    public static final RegistryObject<Item> PAINTING_VAN_GOUGH = addToBuildingTab(ITEMS.register("painting_van_gough",
+    public static final DeferredHolder<Item, Item> PAINTING_VAN_GOUGH = addToBuildingTab(ITEMS.register("painting_van_gough",
             () -> new VanGoughPaintingItem(new Item.Properties().stacksTo(1))
     ));
-    public static final RegistryObject<Item> PAINTING_MONA_LISA = addToBuildingTab(ITEMS.register("painting_mona_lisa",
+    public static final DeferredHolder<Item, Item> PAINTING_MONA_LISA = addToBuildingTab(ITEMS.register("painting_mona_lisa",
             () -> new MonaLisaPaintingItem(new Item.Properties().stacksTo(1))
     ));
-    public static final RegistryObject<Item> PAINTING_BIRTH_OF_VENUS = addToBuildingTab(ITEMS.register("painting_venus",
+    public static final DeferredHolder<Item, Item> PAINTING_BIRTH_OF_VENUS = addToBuildingTab(ITEMS.register("painting_venus",
             () -> new BirthOfVenusPaintingItem(new Item.Properties().stacksTo(1))
     ));
-    public static final RegistryObject<BlockItem> GODDESS_STATUE_ITEM = addToBuildingTab(ITEMS.register("goddess_statue",
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> GODDESS_STATUE_ITEM = addToBuildingTab(ITEMS.register("goddess_statue",
             () -> new BlockItem(ForgeBlocks.GODDESS_STATUE_BLOCK.get(),
                     new Item.Properties().stacksTo(1)
             )));
-    public static final RegistryObject<BlockItem> MAGICIANS_STATUE_ITEM = addToWIPTab(ITEMS.register("magicians_statue",
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> MAGICIANS_STATUE_ITEM = addToWIPTab(ITEMS.register("magicians_statue",
             () -> new BlockItem(ForgeBlocks.MAGICIANS_STATUE_BLOCK.get(),
                     new Item.Properties().stacksTo(1)
             )));
-    public static final RegistryObject<BlockItem> STEREO_ITEM = addToTab(ITEMS.register("stereo",
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> STEREO_ITEM = addToTab(ITEMS.register("stereo",
             () -> new BlockItem(ForgeBlocks.STEREO.get(),
                     new Item.Properties().stacksTo(64)
             )));
-    public static final RegistryObject<BlockItem> HAND_ITEM = ITEMS.register("hand_block",
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> HAND_ITEM = ITEMS.register("hand_block",
             () -> new HandBlockItem(ForgeBlocks.HAND_BLOCK.get(),
                     new Item.Properties().stacksTo(1)
             ) { //HandBlockItem is a common class, putting BEWLR in there might break fabric, so i put BEWLR here in the forge item registry
@@ -457,690 +458,690 @@ public class ForgeItems {
                 }
             });
 
-    public static final RegistryObject<BlockItem> MELON_PARFAIT_ITEM = addToBuildingTab(ITEMS.register("melon_parfait",
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> MELON_PARFAIT_ITEM = addToBuildingTab(ITEMS.register("melon_parfait",
             () -> new BlockItem(ForgeBlocks.MELON_PARFAIT.get(),
                     new Item.Properties().stacksTo(1)
 
             )));
 
-    public static final RegistryObject<BlockItem> FOG_DIRT_COATING = addToFogTab(ITEMS.register("fog_dirt_coating",
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> FOG_DIRT_COATING = addToFogTab(ITEMS.register("fog_dirt_coating",
             () -> new FogCoatBlockItem(ForgeBlocks.FOG_DIRT_COATING.get(),
                     new Item.Properties().stacksTo(64)
                     , Blocks.DIRT)));
-    public static final RegistryObject<BlockItem> FOG_DIRT = addToFogTab(ITEMS.register("fog_dirt",
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> FOG_DIRT = addToFogTab(ITEMS.register("fog_dirt",
             () -> new FogBlockItem(ForgeBlocks.FOG_DIRT.get(),
                     new Item.Properties().stacksTo(64)
             , Blocks.DIRT)));
-    public static final RegistryObject<BlockItem> FOG_TRAP = addToFogTab(ITEMS.register("fog_trap",
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> FOG_TRAP = addToFogTab(ITEMS.register("fog_trap",
             () -> new FogBlockItem(ForgeBlocks.FOG_TRAP.get(),
                     new Item.Properties().stacksTo(64)
                     , Blocks.TRIPWIRE)));
-    public static final RegistryObject<Item> LUCK_SWORD = addToTab(ITEMS.register("luck_sword",
+    public static final DeferredHolder<Item, Item> LUCK_SWORD = addToTab(ITEMS.register("luck_sword",
             () -> new LuckSwordItem(Tiers.IRON, 5F, -2.8F, new Item.Properties())
     ));
-    public static final RegistryObject<Item> IRON_BALL_CROSSBOW = addToTab(ITEMS.register("iron_ball_crossbow",
+    public static final DeferredHolder<Item, Item> IRON_BALL_CROSSBOW = addToTab(ITEMS.register("iron_ball_crossbow",
             () -> new IronBallCrossbowItem(new Item.Properties().stacksTo(1).durability(565))
     ));
-    public static final RegistryObject<Item> WOODEN_GLAIVE = addToTab(ITEMS.register("wooden_glaive",
+    public static final DeferredHolder<Item, Item> WOODEN_GLAIVE = addToTab(ITEMS.register("wooden_glaive",
             () -> new GlaiveItem(Tiers.WOOD, 4F, -2.9F, new Item.Properties(),4)
     ));
-    public static final RegistryObject<Item> STONE_GLAIVE = addToTab(ITEMS.register("stone_glaive",
+    public static final DeferredHolder<Item, Item> STONE_GLAIVE = addToTab(ITEMS.register("stone_glaive",
             () -> new GlaiveItem(Tiers.STONE, 4F, -2.9F, new Item.Properties(),6)
     ));
-    public static final RegistryObject<Item> IRON_GLAIVE = addToTab(ITEMS.register("iron_glaive",
+    public static final DeferredHolder<Item, Item> IRON_GLAIVE = addToTab(ITEMS.register("iron_glaive",
             () -> new GlaiveItem(Tiers.IRON, 4F, -2.9F, new Item.Properties(),7)
     ));
-    public static final RegistryObject<Item> GOLDEN_GLAIVE = addToTab(ITEMS.register("golden_glaive",
+    public static final DeferredHolder<Item, Item> GOLDEN_GLAIVE = addToTab(ITEMS.register("golden_glaive",
             () -> new GlaiveItem(Tiers.GOLD, 4F, -2.9F, new Item.Properties(),10)
     ));
-    public static final RegistryObject<Item> DIAMOND_GLAIVE = addToTab(ITEMS.register("diamond_glaive",
+    public static final DeferredHolder<Item, Item> DIAMOND_GLAIVE = addToTab(ITEMS.register("diamond_glaive",
             () -> new GlaiveItem(Tiers.DIAMOND, 4F, -2.9F, new Item.Properties(),9)
     ));
-    public static final RegistryObject<Item> NETHERITE_GLAIVE = addToTab(ITEMS.register("netherite_glaive",
+    public static final DeferredHolder<Item, Item> NETHERITE_GLAIVE = addToTab(ITEMS.register("netherite_glaive",
             () -> new GlaiveItem(Tiers.NETHERITE, 4F, -2.9F, new Item.Properties().fireResistant(),12)
     ));
 
-    public static final RegistryObject<Item> WOODEN_WAR_HAMMER = addToTab(ITEMS.register("wooden_war_hammer",
+    public static final DeferredHolder<Item, Item> WOODEN_WAR_HAMMER = addToTab(ITEMS.register("wooden_war_hammer",
             () -> new WarhammerItem(Tiers.STONE, 6.0F, -3.6F, new Item.Properties())
     ));
-    public static final RegistryObject<Item> STONE_WAR_HAMMER = addToTab(ITEMS.register("stone_war_hammer",
+    public static final DeferredHolder<Item, Item> STONE_WAR_HAMMER = addToTab(ITEMS.register("stone_war_hammer",
             () -> new WarhammerItem(Tiers.STONE, 7.0F, -3.6F, new Item.Properties())
     ));
-    public static final RegistryObject<Item> IRON_WAR_HAMMER = addToTab(ITEMS.register("iron_war_hammer",
+    public static final DeferredHolder<Item, Item> IRON_WAR_HAMMER = addToTab(ITEMS.register("iron_war_hammer",
             () -> new WarhammerItem(Tiers.IRON, 6.0F, -3.5F, new Item.Properties())
     ));
-    public static final RegistryObject<Item> GOLDEN_WAR_HAMMER = addToTab(ITEMS.register("golden_war_hammer",
+    public static final DeferredHolder<Item, Item> GOLDEN_WAR_HAMMER = addToTab(ITEMS.register("golden_war_hammer",
             () -> new WarhammerItem(Tiers.GOLD, 6.0F, -3.5F, new Item.Properties())
     ));
-    public static final RegistryObject<Item> DIAMOND_WAR_HAMMER = addToTab(ITEMS.register("diamond_war_hammer",
+    public static final DeferredHolder<Item, Item> DIAMOND_WAR_HAMMER = addToTab(ITEMS.register("diamond_war_hammer",
             () -> new WarhammerItem(Tiers.DIAMOND, 5.0F, -3.4F, new Item.Properties())
     ));
-    public static final RegistryObject<Item> NETHERITE_WAR_HAMMER = addToTab(ITEMS.register("netherite_war_hammer",
+    public static final DeferredHolder<Item, Item> NETHERITE_WAR_HAMMER = addToTab(ITEMS.register("netherite_war_hammer",
             () -> new WarhammerItem(Tiers.NETHERITE, 5.0F, -3.3F, new Item.Properties().fireResistant())
     ));
 
-    public static final RegistryObject<Item> SACRIFICIAL_DAGGER = addToTab(ITEMS.register("sacrificial_dagger",
+    public static final DeferredHolder<Item, Item> SACRIFICIAL_DAGGER = addToTab(ITEMS.register("sacrificial_dagger",
             () -> new SacrificialDaggerItem(Tiers.IRON, 0.5F, -1.9F, new Item.Properties())
     ));
-    public static final RegistryObject<Item> SCISSORS = addToTab(ITEMS.register("scissors",
+    public static final DeferredHolder<Item, Item> SCISSORS = addToTab(ITEMS.register("scissors",
             () -> new ScissorItem(Tiers.IRON, 0F, -1.6F, new Item.Properties())
     ));
-    public static final RegistryObject<Item> EXECUTIONER_AXE = addToTab(ITEMS.register("executioner_axe",
+    public static final DeferredHolder<Item, Item> EXECUTIONER_AXE = addToTab(ITEMS.register("executioner_axe",
             () -> new ExecutionerAxeItem(Tiers.IRON, 7F, -3.3F, new Item.Properties(),12)
     ));
-    public static final RegistryObject<Item> HARPOON = addToTab(ITEMS.register("harpoon",
+    public static final DeferredHolder<Item, Item> HARPOON = addToTab(ITEMS.register("harpoon",
             () -> new HarpoonItem((new Item.Properties()).durability(250))
     ));
-    public static final RegistryObject<Item> BOWLER_HAT = addToTab(ITEMS.register("bowler_hat",
+    public static final DeferredHolder<Item, Item> BOWLER_HAT = addToTab(ITEMS.register("bowler_hat",
             () -> new BowlerHatItem(Tiers.IRON, 0F, -1.6F, new Item.Properties())
     ));
-    public static final RegistryObject<Item> ANUBIS_ITEM = addToTab(ITEMS.register("anubis_item",
+    public static final DeferredHolder<Item, Item> ANUBIS_ITEM = addToTab(ITEMS.register("anubis_item",
             () -> new AnubisItem(new Item.Properties().stacksTo(1).rarity(Rarity.EPIC))
     ));
 
 
-    public static final RegistryObject<Item> STAND_DISC_TUSK = addToWIPTab(ITEMS.register("tusk_disc",
+    public static final DeferredHolder<Item, Item> STAND_DISC_TUSK = addToWIPTab(ITEMS.register("tusk_disc",
             () -> new StandDiscItem(new Item.Properties().stacksTo(1), new PowersTusk(null))));
-    public static final RegistryObject<Item> MAX_STAND_DISC_TUSK = addToWIPTab(ITEMS.register("max_tusk_disc",
+    public static final DeferredHolder<Item, Item> MAX_STAND_DISC_TUSK = addToWIPTab(ITEMS.register("max_tusk_disc",
             () -> new MaxStandDiscItem(new Item.Properties().stacksTo(1), new PowersTusk(null))));
 
-    public static final RegistryObject<Item> STAND_DISC_D4C = addToWIPTab(ITEMS.register("d4c_disc",
+    public static final DeferredHolder<Item, Item> STAND_DISC_D4C = addToWIPTab(ITEMS.register("d4c_disc",
             () -> new StandDiscItem(new Item.Properties().stacksTo(1), new PowersD4C(null))));
-    public static final RegistryObject<Item> MAX_STAND_DISC_D4C = addToWIPTab(ITEMS.register("max_d4c_disc",
+    public static final DeferredHolder<Item, Item> MAX_STAND_DISC_D4C = addToWIPTab(ITEMS.register("max_d4c_disc",
             () -> new MaxStandDiscItem(new Item.Properties().stacksTo(1), new PowersD4C(null))));
 
 
 
-    public static final RegistryObject<Item> SNUBNOSE_REVOLVER = addToTab(ITEMS.register("snubnose_revolver",
+    public static final DeferredHolder<Item, Item> SNUBNOSE_REVOLVER = addToTab(ITEMS.register("snubnose_revolver",
             () -> new SnubnoseRevolverItem(new Item.Properties().stacksTo(1))
     ));
 
-    public static final RegistryObject<Item> COLT_REVOLVER = addToTab(ITEMS.register("colt_revolver",
+    public static final DeferredHolder<Item, Item> COLT_REVOLVER = addToTab(ITEMS.register("colt_revolver",
             () -> new ColtRevolverItem(new Item.Properties().stacksTo(1))
     ));
 
-    public static final RegistryObject<Item> BERETTA_PISTOL = addToTab(ITEMS.register("beretta_pistol",
+    public static final DeferredHolder<Item, Item> BERETTA_PISTOL = addToTab(ITEMS.register("beretta_pistol",
             () -> new BerettaPistolItem(new Item.Properties().stacksTo(1))
     ));
 
-    public static final RegistryObject<Item> TOMMY_GUN = addToTab(ITEMS.register("tommy_gun",
+    public static final DeferredHolder<Item, Item> TOMMY_GUN = addToTab(ITEMS.register("tommy_gun",
             () -> new TommyGunItem(new Item.Properties().stacksTo(1))
     ));
 
-    public static final RegistryObject<Item> JACKAL_RIFLE = addToTab(ITEMS.register("jackal_rifle",
+    public static final DeferredHolder<Item, Item> JACKAL_RIFLE = addToTab(ITEMS.register("jackal_rifle",
             () -> new JackalRifleItem(new Item.Properties().stacksTo(1))
     ));
 
-    public static final RegistryObject<Item> SNUBNOSE_AMMO = addToTab(ITEMS.register("snubnose_ammo",
+    public static final DeferredHolder<Item, Item> SNUBNOSE_AMMO = addToTab(ITEMS.register("snubnose_ammo",
             () -> new SnubnoseAmmoItem(new Item.Properties().stacksTo(64))
     ));
 
-    public static final RegistryObject<Item> PISTOL_AMMO = addToTab(ITEMS.register("pistol_ammo",
+    public static final DeferredHolder<Item, Item> PISTOL_AMMO = addToTab(ITEMS.register("pistol_ammo",
             () -> new PistolAmmoItem(new Item.Properties().stacksTo(64))
     ));
 
-    public static final RegistryObject<Item> TOMMY_AMMO = addToTab(ITEMS.register("tommy_ammo",
+    public static final DeferredHolder<Item, Item> TOMMY_AMMO = addToTab(ITEMS.register("tommy_ammo",
             () -> new TommyAmmoItem(new Item.Properties().stacksTo(64))
     ));
 
-    public static final RegistryObject<Item> SNIPER_AMMO = addToTab(ITEMS.register("sniper_ammo",
+    public static final DeferredHolder<Item, Item> SNIPER_AMMO = addToTab(ITEMS.register("sniper_ammo",
             () -> new SniperAmmoItem(new Item.Properties().stacksTo(64))
     ));
 
 
 
 
-    public static final RegistryObject<Item> LUCK_UPGRADE = addToTab(ITEMS.register("luck_upgrade",
+    public static final DeferredHolder<Item, Item> LUCK_UPGRADE = addToTab(ITEMS.register("luck_upgrade",
             () -> new SmithingTemplateItem(SmithingTemplates.LUCK_UPGRADE_APPLIES_TO, SmithingTemplates.LUCK_UPGRADE_INGREDIENTS, SmithingTemplates.LUCK_UPGRADE, SmithingTemplates.LUCK_UPGRADE_BASE_SLOT_DESCRIPTION, SmithingTemplates.LUCK_UPGRADE_ADDITIONS_SLOT_DESCRIPTION, SmithingTemplates.createLuckUpgradeIconList(), SmithingTemplates.createLuckMatIconList())
     ));
-    public static final RegistryObject<Item> EXECUTION_UPGRADE = addToTab(ITEMS.register("execution_upgrade",
+    public static final DeferredHolder<Item, Item> EXECUTION_UPGRADE = addToTab(ITEMS.register("execution_upgrade",
             () -> new SmithingTemplateItem(SmithingTemplates.EXECUTION_UPGRADE_APPLIES_TO, SmithingTemplates.EXECUTION_UPGRADE_INGREDIENTS, SmithingTemplates.EXECUTION_UPGRADE, SmithingTemplates.EXECUTION_UPGRADE_BASE_SLOT_DESCRIPTION, SmithingTemplates.EXECUTION_UPGRADE_ADDITIONS_SLOT_DESCRIPTION, SmithingTemplates.createExecutionUpgradeIconList(), SmithingTemplates.createLuckMatIconList())
     ));
 
-    public static final RegistryObject<Item> STAND_DISC = addToTab(ITEMS.register("stand_disc",
+    public static final DeferredHolder<Item, Item> STAND_DISC = addToTab(ITEMS.register("stand_disc",
             () -> new EmptyStandDiscItem(new Item.Properties().stacksTo(1))));
-    public static final RegistryObject<Item> METEORITE = addToTab(ITEMS.register("meteorite",
+    public static final DeferredHolder<Item, Item> METEORITE = addToTab(ITEMS.register("meteorite",
             () -> new Item(new Item.Properties())));
-    public static final RegistryObject<Item> ANUBIS_2D = ITEMS.register("anubis_sword_2d",
+    public static final DeferredHolder<Item, Item> ANUBIS_2D = ITEMS.register("anubis_sword_2d",
             () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> METEORITE_INGOT = addToTab(ITEMS.register("meteorite_ingot",
+    public static final DeferredHolder<Item, Item> METEORITE_INGOT = addToTab(ITEMS.register("meteorite_ingot",
             () -> new Item(new Item.Properties())));
-    public static final RegistryObject<Item> AJA = addToTab(ITEMS.register("aja",
+    public static final DeferredHolder<Item, Item> AJA = addToTab(ITEMS.register("aja",
             () -> new Item(new Item.Properties())));
 
-    public static final RegistryObject<Item> FANCY_LIGHTER = addToWIPTab(ITEMS.register("fancy_lighter_block",
+    public static final DeferredHolder<Item, Item> FANCY_LIGHTER = addToWIPTab(ITEMS.register("fancy_lighter_block",
             () -> new FancyLighterItem(ForgeBlocks.FANCY_LIGHTER_BLOCK.get(), new Item.Properties().stacksTo(1))));
-    public static final RegistryObject<Item> ULTRAVIOLET_BLASTER = addToTab(ITEMS.register("ultraviolet_blaster",
+    public static final DeferredHolder<Item, Item> ULTRAVIOLET_BLASTER = addToTab(ITEMS.register("ultraviolet_blaster",
             () -> new UltravioletBlasterItem(new Item.Properties().stacksTo(1).durability(UltravioletBlasterItem.durability))));
-    public static final RegistryObject<Item> WALL_STREET_SIGN_DIO_BLOCK_ITEM = addToBuildingTab(ITEMS.register("wall_street_sign_dio",
+    public static final DeferredHolder<Item, Item> WALL_STREET_SIGN_DIO_BLOCK_ITEM = addToBuildingTab(ITEMS.register("wall_street_sign_dio",
     () -> new BlockItem(ForgeBlocks.WALL_STREET_SIGN_DIO.get(),
                     new Item.Properties()
                             )));
-    public static final RegistryObject<Item> WALL_STREET_SIGN_RIGHT_BLOCK_ITEM = addToBuildingTab(ITEMS.register("wall_street_sign_right",
+    public static final DeferredHolder<Item, Item> WALL_STREET_SIGN_RIGHT_BLOCK_ITEM = addToBuildingTab(ITEMS.register("wall_street_sign_right",
             () -> new BlockItem(ForgeBlocks.WALL_STREET_SIGN_RIGHT.get(),
                     new Item.Properties()
             )));
-    public static final RegistryObject<Item> WALL_STREET_SIGN_STOP_BLOCK_ITEM = addToBuildingTab(ITEMS.register("wall_street_sign_stop",
+    public static final DeferredHolder<Item, Item> WALL_STREET_SIGN_STOP_BLOCK_ITEM = addToBuildingTab(ITEMS.register("wall_street_sign_stop",
             () -> new BlockItem(ForgeBlocks.WALL_STREET_SIGN_STOP.get(),
                     new Item.Properties()
             )));
-    public static final RegistryObject<Item> WALL_STREET_SIGN_YIELD_BLOCK_ITEM = addToBuildingTab(ITEMS.register("wall_street_sign_yield",
+    public static final DeferredHolder<Item, Item> WALL_STREET_SIGN_YIELD_BLOCK_ITEM = addToBuildingTab(ITEMS.register("wall_street_sign_yield",
             () -> new BlockItem(ForgeBlocks.WALL_STREET_SIGN_YIELD.get(),
                     new Item.Properties()
             )));
-    public static final RegistryObject<Item> WALL_STREET_SIGN_DANGER_BLOCK_ITEM = addToBuildingTab(ITEMS.register("wall_street_sign_danger",
+    public static final DeferredHolder<Item, Item> WALL_STREET_SIGN_DANGER_BLOCK_ITEM = addToBuildingTab(ITEMS.register("wall_street_sign_danger",
             () -> new BlockItem(ForgeBlocks.WALL_STREET_SIGN_DANGER.get(),
                     new Item.Properties()
             )));
-    public static final RegistryObject<Item> STREET_SIGN_DIO_BLOCK_ITEM = addToBuildingTab(ITEMS.register("street_sign_dio_item",
+    public static final DeferredHolder<Item, Item> STREET_SIGN_DIO_BLOCK_ITEM = addToBuildingTab(ITEMS.register("street_sign_dio_item",
             () -> new SignBlockItem(ForgeBlocks.STREET_SIGN_DIO.get(), new Item.Properties().stacksTo(1))));
-    public static final RegistryObject<Item> STREET_SIGN_RIGHT_BLOCK_ITEM = addToBuildingTab(ITEMS.register("street_sign_right_item",
+    public static final DeferredHolder<Item, Item> STREET_SIGN_RIGHT_BLOCK_ITEM = addToBuildingTab(ITEMS.register("street_sign_right_item",
             () -> new SignBlockItem(ForgeBlocks.STREET_SIGN_RIGHT.get(), new Item.Properties().stacksTo(1))));
-    public static final RegistryObject<Item> STREET_SIGN_STOP_BLOCK_ITEM = addToBuildingTab(ITEMS.register("street_sign_stop_item",
+    public static final DeferredHolder<Item, Item> STREET_SIGN_STOP_BLOCK_ITEM = addToBuildingTab(ITEMS.register("street_sign_stop_item",
             () -> new SignBlockItem(ForgeBlocks.STREET_SIGN_STOP.get(), new Item.Properties().stacksTo(1))));
-    public static final RegistryObject<Item> STREET_SIGN_YIELD_BLOCK_ITEM = addToBuildingTab(ITEMS.register("street_sign_yield_item",
+    public static final DeferredHolder<Item, Item> STREET_SIGN_YIELD_BLOCK_ITEM = addToBuildingTab(ITEMS.register("street_sign_yield_item",
             () -> new SignBlockItem(ForgeBlocks.STREET_SIGN_YIELD.get(), new Item.Properties().stacksTo(1))));
-    public static final RegistryObject<Item> STREET_SIGN_DANGER_BLOCK_ITEM = addToBuildingTab(ITEMS.register("street_sign_danger_item",
+    public static final DeferredHolder<Item, Item> STREET_SIGN_DANGER_BLOCK_ITEM = addToBuildingTab(ITEMS.register("street_sign_danger_item",
             () -> new SignBlockItem(ForgeBlocks.STREET_SIGN_DANGER.get(), new Item.Properties().stacksTo(1))));
 
-    public static final RegistryObject<Item> CEILING_LIGHT_BLOCK_ITEM = addToBuildingTab(ITEMS.register("ceiling_light",
+    public static final DeferredHolder<Item, Item> CEILING_LIGHT_BLOCK_ITEM = addToBuildingTab(ITEMS.register("ceiling_light",
             () -> new BlockItem(ForgeBlocks.CEILING_LIGHT.get(),
                     new Item.Properties()
             )));
-    public static final RegistryObject<Item> WALL_LANTERN_ITEM = addToBuildingTab(ITEMS.register("wall_lantern",
+    public static final DeferredHolder<Item, Item> WALL_LANTERN_ITEM = addToBuildingTab(ITEMS.register("wall_lantern",
             () -> new BlockItem(ForgeBlocks.WALL_LANTERN.get(),
                     new Item.Properties()
             )));
-    public static final RegistryObject<Item> GLASS_DOOR = addToBuildingTab(ITEMS.register("glass_door",
+    public static final DeferredHolder<Item, Item> GLASS_DOOR = addToBuildingTab(ITEMS.register("glass_door",
             () -> new BlockItem(ForgeBlocks.GLASS_DOOR.get(),
                     new Item.Properties()
             )));
-    public static final RegistryObject<Item> MIRROR_ITEM = addToBuildingTab(ITEMS.register("mirror",
+    public static final DeferredHolder<Item, Item> MIRROR_ITEM = addToBuildingTab(ITEMS.register("mirror",
             () -> new BlockItem(ForgeBlocks.MIRROR.get(),
                     new Item.Properties()
             )));
-    public static final RegistryObject<Item> LOCACACA_PIT = addToTab(ITEMS.register("locacaca_pit",
+    public static final DeferredHolder<Item, Item> LOCACACA_PIT = addToTab(ITEMS.register("locacaca_pit",
             () -> new ItemNameBlockItem(ForgeBlocks.LOCACACA_BLOCK.get(), new Item.Properties())));
-    public static final RegistryObject<Item> LOCACACA = addToTab(ITEMS.register("locacaca",
+    public static final DeferredHolder<Item, Item> LOCACACA = addToTab(ITEMS.register("locacaca",
             () -> new LocacacaItem(new Item.Properties().food(ModFoodComponents.LOCACACA))));
-    public static final RegistryObject<Item> LOCACACA_BRANCH = addToTab(ITEMS.register("locacaca_branch",
+    public static final DeferredHolder<Item, Item> LOCACACA_BRANCH = addToTab(ITEMS.register("locacaca_branch",
             () -> new ItemNameBlockItem(ForgeBlocks.NEW_LOCACACA_BLOCK.get(), new Item.Properties())));
-    public static final RegistryObject<Item> NEW_LOCACACA = addToTab(ITEMS.register("new_locacaca",
+    public static final DeferredHolder<Item, Item> NEW_LOCACACA = addToTab(ITEMS.register("new_locacaca",
             () -> new NewLocacacaItem(new Item.Properties().food(ModFoodComponents.LOCACACA))));
 
-    public static final RegistryObject<Item> CHAMOMILE_SEEDS = addToWIPTab(ITEMS.register("chamomile_seeds",
+    public static final DeferredHolder<Item, Item> CHAMOMILE_SEEDS = addToWIPTab(ITEMS.register("chamomile_seeds",
             () -> new ItemNameBlockItem(ForgeBlocks.CHAMOMILE.get(), new Item.Properties()) ));
-    public static final RegistryObject<Item> CHAMOMILE = addToWIPTab(ITEMS.register("chamomile",
+    public static final DeferredHolder<Item, Item> CHAMOMILE = addToWIPTab(ITEMS.register("chamomile",
             () -> new Item(new Item.Properties()
                     .food(new FoodProperties.Builder()
                             .nutrition(2)
-                            .saturationMod(0.1F)
+                            .saturationModifier(0.1F)
                             .effect(() -> new MobEffectInstance(ForgeEffects.REFRESHED.get(),ModItems.CHAMOMILE_DURATION),1.0F)
                             .alwaysEat()
                             .build()))
     ));
-    public static final RegistryObject<Item> MINT_SEEDS = addToWIPTab(ITEMS.register("mint_seeds",
+    public static final DeferredHolder<Item, Item> MINT_SEEDS = addToWIPTab(ITEMS.register("mint_seeds",
             () -> new ItemNameBlockItem(ForgeBlocks.MINT.get(), new Item.Properties()) ));
-    public static final RegistryObject<Item> MINT = addToWIPTab(ITEMS.register("mint",
+    public static final DeferredHolder<Item, Item> MINT = addToWIPTab(ITEMS.register("mint",
             () -> new Item(new Item.Properties().food(
                     new FoodProperties.Builder()
                             .nutrition(2)
-                            .saturationMod(0.1F)
+                            .saturationModifier(0.1F)
                             .effect(() -> new MobEffectInstance(ForgeEffects.REFRESHED.get(),ModItems.MINT_DURATION),1.0F)
                             .alwaysEat()
                             .build()))
     ));
-    public static final RegistryObject<Item> HERB_TEA = addToWIPTab(ITEMS.register("herb_tea",
+    public static final DeferredHolder<Item, Item> HERB_TEA = addToWIPTab(ITEMS.register("herb_tea",
             () -> new Item(new Item.Properties().food(
                     new FoodProperties.Builder()
                             .nutrition(8)
-                            .saturationMod(0.25F)
+                            .saturationModifier(0.25F)
                             .effect(() -> new MobEffectInstance(ForgeEffects.REFRESHED.get(),ModItems.TEA_DURATION),1.0F)
                             .build())
             )));
-    public static final RegistryObject<Item> MUSIC_DISC_TORTURE_DANCE = addToTab(ITEMS.register("music_disc_torture_dance",
+    public static final DeferredHolder<Item, Item> MUSIC_DISC_TORTURE_DANCE = addToTab(ITEMS.register("music_disc_torture_dance",
             () -> new RecordItem(1, ForgeSounds.TORTURE_DANCE,
                     (new Item.Properties()).stacksTo(1).rarity(Rarity.RARE), 2840)));
-    public static final RegistryObject<Item> MUSIC_DISC_HALLELUJAH = addToTab(ITEMS.register("music_disc_hallelujah",
+    public static final DeferredHolder<Item, Item> MUSIC_DISC_HALLELUJAH = addToTab(ITEMS.register("music_disc_hallelujah",
             () -> new RecordItem(1, ForgeSounds.HALLELUJAH,
                     (new Item.Properties()).stacksTo(1).rarity(Rarity.RARE), 4380)));
-    public static final RegistryObject<Item> MUSIC_DISC_CHAKA_HFTF = addToTab(ITEMS.register("music_disc_chaka_hftf",
+    public static final DeferredHolder<Item, Item> MUSIC_DISC_CHAKA_HFTF = addToTab(ITEMS.register("music_disc_chaka_hftf",
             () -> new RecordItem(1, ForgeSounds.CHAKA_HFTF,
                     (new Item.Properties()).stacksTo(1).rarity(Rarity.RARE), 3720)));
 
-    public static final RegistryObject<BlockItem> FLESH_BLOCK = addToBuildingTab(ITEMS.register("flesh_block",
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> FLESH_BLOCK = addToBuildingTab(ITEMS.register("flesh_block",
             () -> new FleshChunkItem(ForgeBlocks.FLESH_BLOCK.get(),
                     new Item.Properties().food(ModFoodComponents.FLESH_CHUNK)
             )));
-    public static final RegistryObject<Item> FLESH_BUCKET = addToBuildingTab(ITEMS.register("flesh_bucket",
+    public static final DeferredHolder<Item, Item> FLESH_BUCKET = addToBuildingTab(ITEMS.register("flesh_bucket",
             () -> new FleshBucketItem(new Item.Properties().stacksTo(1).durability(16))));
-    public static final RegistryObject<ForgeSpawnEggItem> TERRIER_SPAWN_EGG = addToTab(ITEMS.register("terrier_spawn_egg",
-            () -> new ForgeSpawnEggItem(ForgeEntities.TERRIER_DOG,
+    public static final DeferredHolder<net.minecraft.world.item.Item, DeferredSpawnEggItem> TERRIER_SPAWN_EGG = addToTab(ITEMS.register("terrier_spawn_egg",
+            () -> new DeferredSpawnEggItem(ForgeEntities.TERRIER_DOG,
                     0xc9c071, 0xfffded, new Item.Properties())));
-    public static final RegistryObject<ForgeSpawnEggItem> FALCON_SPAWN_EGG = addToWIPTab(ITEMS.register("falcon_spawn_egg",
-            () -> new ForgeSpawnEggItem(ForgeEntities.FALCON,
+    public static final DeferredHolder<net.minecraft.world.item.Item, DeferredSpawnEggItem> FALCON_SPAWN_EGG = addToWIPTab(ITEMS.register("falcon_spawn_egg",
+            () -> new DeferredSpawnEggItem(ForgeEntities.FALCON,
                     0x93503c, 0xbba17e, new Item.Properties())));
-    public static final RegistryObject<ForgeSpawnEggItem> AESTHETICIAN_SPAWN_EGG = addToTab(ITEMS.register("aesthetician_spawn_egg",
-            () -> new ForgeSpawnEggItem(ForgeEntities.AESTHETICIAN,
+    public static final DeferredHolder<net.minecraft.world.item.Item, DeferredSpawnEggItem> AESTHETICIAN_SPAWN_EGG = addToTab(ITEMS.register("aesthetician_spawn_egg",
+            () -> new DeferredSpawnEggItem(ForgeEntities.AESTHETICIAN,
                     0xfffef2, 0xffa8e8, new Item.Properties())));
-    public static final RegistryObject<ForgeSpawnEggItem> ZOMBIE_AESTHETICIAN_SPAWN_EGG = addToTab(ITEMS.register("zombie_aesthetician_spawn_egg",
-            () -> new ForgeSpawnEggItem(ForgeEntities.ZOMBIE_AESTHETICIAN,
+    public static final DeferredHolder<net.minecraft.world.item.Item, DeferredSpawnEggItem> ZOMBIE_AESTHETICIAN_SPAWN_EGG = addToTab(ITEMS.register("zombie_aesthetician_spawn_egg",
+            () -> new DeferredSpawnEggItem(ForgeEntities.ZOMBIE_AESTHETICIAN,
                     0x66BB6A, 0xffa8e8, new Item.Properties())));
-    public static final RegistryObject<ForgeSpawnEggItem> ANUBIS_GUARDIAN_SPAWN_EGG = addToTab(ITEMS.register("anubis_guardian_spawn_egg",
-            () -> new ForgeSpawnEggItem(ForgeEntities.ANUBIS_GUARDIAN,
+    public static final DeferredHolder<net.minecraft.world.item.Item, DeferredSpawnEggItem> ANUBIS_GUARDIAN_SPAWN_EGG = addToTab(ITEMS.register("anubis_guardian_spawn_egg",
+            () -> new DeferredSpawnEggItem(ForgeEntities.ANUBIS_GUARDIAN,
                     0x8E9393, 0x24395E, new Item.Properties())));
-    public static final RegistryObject<ForgeSpawnEggItem> ZOMBIE_MINION_SPAWN_EGG = addToTab(ITEMS.register("zombie_minion_spawn_egg",
-            () -> new ForgeSpawnEggItem(ForgeEntities.VILLAGER_MINION,
+    public static final DeferredHolder<net.minecraft.world.item.Item, DeferredSpawnEggItem> ZOMBIE_MINION_SPAWN_EGG = addToTab(ITEMS.register("zombie_minion_spawn_egg",
+            () -> new DeferredSpawnEggItem(ForgeEntities.VILLAGER_MINION,
                     0xC1FF4F, 0x53A667, new Item.Properties())));
-    public static final RegistryObject<ForgeSpawnEggItem> SNAKE_SPAWN_EGG = addToTab(ITEMS.register("snake_spawn_egg",
-            () -> new ForgeSpawnEggItem(ForgeEntities.SNAKE,
+    public static final DeferredHolder<net.minecraft.world.item.Item, DeferredSpawnEggItem> SNAKE_SPAWN_EGG = addToTab(ITEMS.register("snake_spawn_egg",
+            () -> new DeferredSpawnEggItem(ForgeEntities.SNAKE,
                     0x6dcd4c, 0xf9f07b, new Item.Properties())));
-    public static final RegistryObject<ForgeSpawnEggItem> PIRANHA_SPAWN_EGG = addToTab(ITEMS.register("piranha_spawn_egg",
-            () -> new ForgeSpawnEggItem(ForgeEntities.PIRANHA,
+    public static final DeferredHolder<net.minecraft.world.item.Item, DeferredSpawnEggItem> PIRANHA_SPAWN_EGG = addToTab(ITEMS.register("piranha_spawn_egg",
+            () -> new DeferredSpawnEggItem(ForgeEntities.PIRANHA,
                     0x8fbbdd, 0xe89e4d, new Item.Properties())));
-    public static final RegistryObject<ForgeSpawnEggItem> BUTTERFLY_SPAWN_EGG = addToTab(ITEMS.register("butterfly_spawn_egg",
-            () -> new ForgeSpawnEggItem(ForgeEntities.BUTTERFLY,
+    public static final DeferredHolder<net.minecraft.world.item.Item, DeferredSpawnEggItem> BUTTERFLY_SPAWN_EGG = addToTab(ITEMS.register("butterfly_spawn_egg",
+            () -> new DeferredSpawnEggItem(ForgeEntities.BUTTERFLY,
                     0x95caff, 0xe880c6, new Item.Properties())));
-    public static final RegistryObject<Potion> HEX_POTION = POTIONS.register("roundabout.hex",
+    public static final DeferredHolder<Potion, Potion> HEX_POTION = POTIONS.register("roundabout.hex",
             () -> new Potion(new MobEffectInstance(ForgeEffects.HEX.get(), 9600, 0)));
-    public static final RegistryObject<Potion> HEX_POTION_EXTENDED = POTIONS.register("roundabout.long_hex",
+    public static final DeferredHolder<Potion, Potion> HEX_POTION_EXTENDED = POTIONS.register("roundabout.long_hex",
             () -> new Potion("roundabout.hex", new MobEffectInstance(ForgeEffects.HEX.get(), 19200, 0)));
-    public static final RegistryObject<Potion> HEX_POTION_STRONG = POTIONS.register("roundabout.strong_hex",
+    public static final DeferredHolder<Potion, Potion> HEX_POTION_STRONG = POTIONS.register("roundabout.strong_hex",
             () -> new Potion("roundabout.hex", new MobEffectInstance(ForgeEffects.HEX.get(), 4800, 1)));
-    public static final RegistryObject<Item> STAND_DISC_STAR_PLATINUM = addToDiscTab(ITEMS.register("star_platinum_disc",
+    public static final DeferredHolder<Item, Item> STAND_DISC_STAR_PLATINUM = addToDiscTab(ITEMS.register("star_platinum_disc",
             () -> new StandDiscItem(new Item.Properties().stacksTo(1), new PowersStarPlatinum(null))));
-    public static final RegistryObject<Item> MAX_STAND_DISC_STAR_PLATINUM = addToDiscTab(ITEMS.register("max_star_platinum_disc",
+    public static final DeferredHolder<Item, Item> MAX_STAND_DISC_STAR_PLATINUM = addToDiscTab(ITEMS.register("max_star_platinum_disc",
             () -> new MaxStandDiscItem(new Item.Properties().stacksTo(1), new PowersStarPlatinum(null))));
 
-    public static final RegistryObject<Item> STAND_DISC_THE_WORLD = addToDiscTab(ITEMS.register("the_world_disc",
+    public static final DeferredHolder<Item, Item> STAND_DISC_THE_WORLD = addToDiscTab(ITEMS.register("the_world_disc",
             () -> new StandDiscItem(new Item.Properties().stacksTo(1), new PowersTheWorld(null))));
-    public static final RegistryObject<Item> MAX_STAND_DISC_THE_WORLD = addToDiscTab(ITEMS.register("max_the_world_disc",
+    public static final DeferredHolder<Item, Item> MAX_STAND_DISC_THE_WORLD = addToDiscTab(ITEMS.register("max_the_world_disc",
             () -> new MaxStandDiscItem(new Item.Properties().stacksTo(1), new PowersTheWorld(null))));
 
-    public static final RegistryObject<Item> STAND_DISC_MAGICIANS_RED = addToDiscTab(ITEMS.register("magicians_red_disc",
+    public static final DeferredHolder<Item, Item> STAND_DISC_MAGICIANS_RED = addToDiscTab(ITEMS.register("magicians_red_disc",
             () -> new StandDiscItem(new Item.Properties().stacksTo(1), new PowersMagiciansRed(null))));
-    public static final RegistryObject<Item> MAX_STAND_DISC_MAGICIANS_RED = addToDiscTab(ITEMS.register("max_magicians_red_disc",
+    public static final DeferredHolder<Item, Item> MAX_STAND_DISC_MAGICIANS_RED = addToDiscTab(ITEMS.register("max_magicians_red_disc",
             () -> new MaxStandDiscItem(new Item.Properties().stacksTo(1), new PowersMagiciansRed(null))));
-    public static final RegistryObject<Item> STAND_DISC_JUSTICE = addToDiscTab(
+    public static final DeferredHolder<Item, Item> STAND_DISC_JUSTICE = addToDiscTab(
             ITEMS.register("justice_disc",
                     () -> new StandDiscItem(new Item.Properties().stacksTo(1), new PowersJustice(null)))
     );
-    public static final RegistryObject<Item> MAX_STAND_DISC_JUSTICE = addToDiscTab(
+    public static final DeferredHolder<Item, Item> MAX_STAND_DISC_JUSTICE = addToDiscTab(
             ITEMS.register("max_justice_disc",
                     () -> new MaxStandDiscItem(new Item.Properties().stacksTo(1), new PowersJustice(null)))
     );
-    public static final RegistryObject<Item> STAND_DISC_ANUBIS = addToDiscTab(ITEMS.register("anubis_disc",
+    public static final DeferredHolder<Item, Item> STAND_DISC_ANUBIS = addToDiscTab(ITEMS.register("anubis_disc",
             () -> new StandDiscItem(new Item.Properties().stacksTo(1), new PowersAnubis(null))));
-    public static final RegistryObject<Item> MAX_STAND_DISC_ANUBIS = addToDiscTab(ITEMS.register("max_anubis_disc",
+    public static final DeferredHolder<Item, Item> MAX_STAND_DISC_ANUBIS = addToDiscTab(ITEMS.register("max_anubis_disc",
             () -> new MaxStandDiscItem(new Item.Properties().stacksTo(1), new PowersAnubis(null))));
 
-    public static final RegistryObject<Item> STAND_DISC_RATT = addToDiscTab(ITEMS.register("ratt_disc",
+    public static final DeferredHolder<Item, Item> STAND_DISC_RATT = addToDiscTab(ITEMS.register("ratt_disc",
             () -> new StandDiscItem(new Item.Properties().stacksTo(1), new PowersRatt(null))));
-    public static final RegistryObject<Item> MAX_STAND_DISC_RATT = addToDiscTab(ITEMS.register("max_ratt_disc",
+    public static final DeferredHolder<Item, Item> MAX_STAND_DISC_RATT = addToDiscTab(ITEMS.register("max_ratt_disc",
             () -> new MaxStandDiscItem(new Item.Properties().stacksTo(1), new PowersRatt(null))));
 
-    public static final RegistryObject<Item> STAND_DISC_KILLER_QUEEN = addToDiscTab(ITEMS.register("killer_queen_disc",
+    public static final DeferredHolder<Item, Item> STAND_DISC_KILLER_QUEEN = addToDiscTab(ITEMS.register("killer_queen_disc",
             () -> new StandDiscItem(new Item.Properties().stacksTo(1), new PowersKillerQueen(null))));
-    public static final RegistryObject<Item> MAX_STAND_DISC_KILLER_QUEEN = addToDiscTab(ITEMS.register("max_killer_queen_disc",
+    public static final DeferredHolder<Item, Item> MAX_STAND_DISC_KILLER_QUEEN = addToDiscTab(ITEMS.register("max_killer_queen_disc",
             () -> new MaxStandDiscItem(new Item.Properties().stacksTo(1), new PowersKillerQueen(null))));
 
-    public static final RegistryObject<Item> STAND_DISC_PURPLE_HAZE = addToWIPTab(ITEMS.register("purple_haze_disc",
+    public static final DeferredHolder<Item, Item> STAND_DISC_PURPLE_HAZE = addToWIPTab(ITEMS.register("purple_haze_disc",
             () -> new StandDiscItem(new Item.Properties().stacksTo(1), new PowersPurpleHaze(null))));
-    public static final RegistryObject<Item> MAX_STAND_DISC_PURPLE_HAZE = addToWIPTab(ITEMS.register("max_purple_haze_disc",
+    public static final DeferredHolder<Item, Item> MAX_STAND_DISC_PURPLE_HAZE = addToWIPTab(ITEMS.register("max_purple_haze_disc",
             () -> new MaxStandDiscItem(new Item.Properties().stacksTo(1), new PowersPurpleHaze(null))));
 
- 	public static final RegistryObject<Item> STAND_DISC_BAD_COMPANY = addToWIPTab(ITEMS.register("bad_company_disc",
+    public static final DeferredHolder<Item, Item> STAND_DISC_BAD_COMPANY = addToWIPTab(ITEMS.register("bad_company_disc",
             () -> new StandDiscItem(new Item.Properties().stacksTo(1), new PowersBadCompany(null))));
-    public static final RegistryObject<Item> MAX_STAND_DISC_BAD_COMPANY = addToWIPTab(ITEMS.register("max_bad_company_disc",
+    public static final DeferredHolder<Item, Item> MAX_STAND_DISC_BAD_COMPANY = addToWIPTab(ITEMS.register("max_bad_company_disc",
             () -> new MaxStandDiscItem(new Item.Properties().stacksTo(1), new PowersBadCompany(null))));
 
-    public static final RegistryObject<Item> STAND_DISC_WHITE_ALBUM = addToDiscTab(ITEMS.register("white_album_disc",
+    public static final DeferredHolder<Item, Item> STAND_DISC_WHITE_ALBUM = addToDiscTab(ITEMS.register("white_album_disc",
             () -> new StandDiscItem(new Item.Properties().stacksTo(1), new PowersWhiteAlbum(null))));
-    public static final RegistryObject<Item> MAX_STAND_DISC_WHITE_ALBUM = addToDiscTab(ITEMS.register("max_white_album_disc",
+    public static final DeferredHolder<Item, Item> MAX_STAND_DISC_WHITE_ALBUM = addToDiscTab(ITEMS.register("max_white_album_disc",
             () -> new MaxStandDiscItem(new Item.Properties().stacksTo(1), new PowersWhiteAlbum(null))));
 
-    public static final RegistryObject<Item> STAND_DISC_KING_CRIMSON = addToDiscTab(ITEMS.register("king_crimson_disc",
+    public static final DeferredHolder<Item, Item> STAND_DISC_KING_CRIMSON = addToDiscTab(ITEMS.register("king_crimson_disc",
             () -> new StandDiscItem(new Item.Properties().stacksTo(1), new PowersKingCrimson(null))));
-    public static final RegistryObject<Item> MAX_STAND_DISC_KING_CRIMSON = addToDiscTab(ITEMS.register("max_king_crimson_disc",
+    public static final DeferredHolder<Item, Item> MAX_STAND_DISC_KING_CRIMSON = addToDiscTab(ITEMS.register("max_king_crimson_disc",
             () -> new MaxStandDiscItem(new Item.Properties().stacksTo(1), new PowersKingCrimson(null))));
-    public static final RegistryObject<Item> STAND_DISC_JJF = addToWIPTab(ITEMS.register("jumpin_jack_flash_disc",
+    public static final DeferredHolder<Item, Item> STAND_DISC_JJF = addToWIPTab(ITEMS.register("jumpin_jack_flash_disc",
             () -> new StandDiscItem(new Item.Properties().stacksTo(1), new PowersJumpinJackFlash(null))));
-    public static final RegistryObject<Item> MAX_STAND_DISC_JJF = addToWIPTab(ITEMS.register("max_jumpin_jack_flash_disc",
+    public static final DeferredHolder<Item, Item> MAX_STAND_DISC_JJF = addToWIPTab(ITEMS.register("max_jumpin_jack_flash_disc",
             () -> new MaxStandDiscItem(new Item.Properties().stacksTo(1), new PowersJumpinJackFlash(null))));
 
-    public static final RegistryObject<Item> STAND_DISC_GREEN_DAY = addToDiscTab(ITEMS.register("green_day_disc",
+    public static final DeferredHolder<Item, Item> STAND_DISC_GREEN_DAY = addToDiscTab(ITEMS.register("green_day_disc",
             () -> new StandDiscItem(new Item.Properties().stacksTo(1), new PowersGreenDay(null))));
-    public static final RegistryObject<Item> MAX_STAND_DISC_GREEN_DAY = addToDiscTab(ITEMS.register("max_green_day_disc",
+    public static final DeferredHolder<Item, Item> MAX_STAND_DISC_GREEN_DAY = addToDiscTab(ITEMS.register("max_green_day_disc",
             () -> new MaxStandDiscItem(new Item.Properties().stacksTo(1), new PowersGreenDay(null))));
 
-    public static final RegistryObject<Item> STAND_DISC_WHITESNAKE = addToWIPTab(ITEMS.register(
+    public static final DeferredHolder<Item, Item> STAND_DISC_WHITESNAKE = addToWIPTab(ITEMS.register(
             "whitesnake_disc", () -> new StandDiscItem(new Item.Properties().stacksTo(1),
                     new PowersWhitesnake(null))));
-    public static final RegistryObject<Item> MAX_STAND_DISC_WHITESNAKE = addToWIPTab(ITEMS.register(
+    public static final DeferredHolder<Item, Item> MAX_STAND_DISC_WHITESNAKE = addToWIPTab(ITEMS.register(
             "max_whitesnake_disc", () -> new MaxStandDiscItem(new Item.Properties().stacksTo(1),
                     new PowersWhitesnake(null), (StandDiscItem) STAND_DISC_WHITESNAKE.get())));
-    public static final RegistryObject<Item> SIGHT_DISC = ITEMS.register(
+    public static final DeferredHolder<Item, Item> SIGHT_DISC = ITEMS.register(
             "sight_disc", () -> new SightDiscItem(new Item.Properties().stacksTo(1)));
-    public static final RegistryObject<Item> MEMORY_DISC = addToWIPTab(ITEMS.register(
+    public static final DeferredHolder<Item, Item> MEMORY_DISC = addToWIPTab(ITEMS.register(
             "memory_disc", () -> new MemoryDiscItem(new Item.Properties().stacksTo(1))));
-    public static final RegistryObject<Item> HEARING_DISC = ITEMS.register(
+    public static final DeferredHolder<Item, Item> HEARING_DISC = ITEMS.register(
             "hearing_disc", () -> new HearingDiscItem(new Item.Properties().stacksTo(1)));
-    public static final RegistryObject<Item> JUMP_BACK_COMMAND_DISC = addToWIPTab(ITEMS.register(
+    public static final DeferredHolder<Item, Item> JUMP_BACK_COMMAND_DISC = addToWIPTab(ITEMS.register(
             "jump_back_command_disc", () -> new CommandDiscItem(new Item.Properties().durability(3),
                     CommandDiscItem.Command.JUMP_BACK)));
-    public static final RegistryObject<Item> ATTACK_COMMAND_DISC = addToWIPTab(ITEMS.register(
+    public static final DeferredHolder<Item, Item> ATTACK_COMMAND_DISC = addToWIPTab(ITEMS.register(
             "attack_command_disc", () -> new CommandDiscItem(new Item.Properties().durability(3),
                     CommandDiscItem.Command.ATTACK)));
-    public static final RegistryObject<Item> FORGET_COMMAND_DISC = addToWIPTab(ITEMS.register(
+    public static final DeferredHolder<Item, Item> FORGET_COMMAND_DISC = addToWIPTab(ITEMS.register(
             "forget_command_disc", () -> new CommandDiscItem(new Item.Properties().durability(3),
                     CommandDiscItem.Command.FORGET)));
-    public static final RegistryObject<Item> EXPLOSIVE_COMMAND_DISC = addToWIPTab(ITEMS.register(
+    public static final DeferredHolder<Item, Item> EXPLOSIVE_COMMAND_DISC = addToWIPTab(ITEMS.register(
             "explosive_command_disc", () -> new CommandDiscItem(new Item.Properties().durability(3),
                     CommandDiscItem.Command.EXPLOSIVE)));
-    public static final RegistryObject<Item> HALLUCINATORY_ACID_HEIGHT_1 = addToWIPTab(ITEMS.register(
+    public static final DeferredHolder<Item, Item> HALLUCINATORY_ACID_HEIGHT_1 = addToWIPTab(ITEMS.register(
             "hallucinatory_acid_height_1", () -> new HallucinatoryAcidDebugItem(
                     ForgeBlocks.HALLUCINATORY_ACID.get(), 1, new Item.Properties())));
-    public static final RegistryObject<Item> HALLUCINATORY_ACID_HEIGHT_2 = addToWIPTab(ITEMS.register(
+    public static final DeferredHolder<Item, Item> HALLUCINATORY_ACID_HEIGHT_2 = addToWIPTab(ITEMS.register(
             "hallucinatory_acid_height_2", () -> new HallucinatoryAcidDebugItem(
                     ForgeBlocks.HALLUCINATORY_ACID.get(), 2, new Item.Properties())));
-    public static final RegistryObject<Item> HALLUCINATORY_ACID_HEIGHT_3 = addToWIPTab(ITEMS.register(
+    public static final DeferredHolder<Item, Item> HALLUCINATORY_ACID_HEIGHT_3 = addToWIPTab(ITEMS.register(
             "hallucinatory_acid_height_3", () -> new HallucinatoryAcidDebugItem(
                     ForgeBlocks.HALLUCINATORY_ACID.get(), 3, new Item.Properties())));
-    public static final RegistryObject<Item> HALLUCINATORY_ACID_HEIGHT_4 = addToWIPTab(ITEMS.register(
+    public static final DeferredHolder<Item, Item> HALLUCINATORY_ACID_HEIGHT_4 = addToWIPTab(ITEMS.register(
             "hallucinatory_acid_height_4", () -> new HallucinatoryAcidDebugItem(
                     ForgeBlocks.HALLUCINATORY_ACID.get(), 4, new Item.Properties())));
-    public static final RegistryObject<Item> HALLUCINATORY_ACID_WALL = addToWIPTab(ITEMS.register(
+    public static final DeferredHolder<Item, Item> HALLUCINATORY_ACID_WALL = addToWIPTab(ITEMS.register(
             "hallucinatory_acid_wall", () -> new BlockItem(
                     ForgeBlocks.HALLUCINATORY_ACID_WALL.get(), new Item.Properties())));
-    public static final RegistryObject<Item> PUCCI_MASK = addToWIPTab(ITEMS.register(
+    public static final DeferredHolder<Item, Item> PUCCI_MASK = addToWIPTab(ITEMS.register(
             "pucci_mask", () -> new MaskItem(new Item.Properties().stacksTo(1), new PucciVisage(null))));
-    public static final RegistryObject<Item> PUCCI_MANGA_MASK = addToWIPTab(ITEMS.register(
+    public static final DeferredHolder<Item, Item> PUCCI_MANGA_MASK = addToWIPTab(ITEMS.register(
             "pucci_manga_mask", () -> new MaskItem(new Item.Properties().stacksTo(1), new PucciMangaVisage(null))));
 
 
-    public static final RegistryObject<Item> STAND_DISC_DIVER_DOWN = addToDiscTab(ITEMS.register("diver_down_disc",
+    public static final DeferredHolder<Item, Item> STAND_DISC_DIVER_DOWN = addToDiscTab(ITEMS.register("diver_down_disc",
             () -> new StandDiscItem(new Item.Properties().stacksTo(1), new PowersDiverDown(null))));
-    public static final RegistryObject<Item> MAX_STAND_DISC_DIVER_DOWN = addToDiscTab(ITEMS.register("max_diver_down_disc",
+    public static final DeferredHolder<Item, Item> MAX_STAND_DISC_DIVER_DOWN = addToDiscTab(ITEMS.register("max_diver_down_disc",
             () -> new MaxStandDiscItem(new Item.Properties().stacksTo(1), new PowersDiverDown(null))));
-    public static final RegistryObject<Item> STAND_DISC_GOLD_EXPERIENCE = addToWIPTab(ITEMS.register("gold_experience_disc",
+    public static final DeferredHolder<Item, Item> STAND_DISC_GOLD_EXPERIENCE = addToWIPTab(ITEMS.register("gold_experience_disc",
             () -> new StandDiscItem(new Item.Properties().stacksTo(1), new PowersGoldExperience(null))));
-    public static final RegistryObject<Item> MAX_STAND_DISC_GOLD_EXPERIENCE = addToWIPTab(ITEMS.register("max_gold_experience_disc",
+    public static final DeferredHolder<Item, Item> MAX_STAND_DISC_GOLD_EXPERIENCE = addToWIPTab(ITEMS.register("max_gold_experience_disc",
             () -> new MaxStandDiscItem(new Item.Properties().stacksTo(1), new PowersGoldExperience(null))));
 
-    public static final RegistryObject<Item> STAND_DISC_OASIS = addToWIPTab(ITEMS.register("oasis_disc",
+    public static final DeferredHolder<Item, Item> STAND_DISC_OASIS = addToWIPTab(ITEMS.register("oasis_disc",
             () -> new StandDiscItem(new Item.Properties().stacksTo(1), new PowersOasis(null))));
-    public static final RegistryObject<Item> MAX_STAND_DISC_OASIS = addToWIPTab(ITEMS.register("max_oasis_disc",
+    public static final DeferredHolder<Item, Item> MAX_STAND_DISC_OASIS = addToWIPTab(ITEMS.register("max_oasis_disc",
             () -> new MaxStandDiscItem(new Item.Properties().stacksTo(1), new PowersOasis(null))));
 
-    public static final RegistryObject<Item> STAND_DISC_SOFT_AND_WET = addToDiscTab(ITEMS.register("soft_and_wet_disc",
+    public static final DeferredHolder<Item, Item> STAND_DISC_SOFT_AND_WET = addToDiscTab(ITEMS.register("soft_and_wet_disc",
             () -> new StandDiscItem(new Item.Properties().stacksTo(1), new PowersSoftAndWet(null))));
-    public static final RegistryObject<Item> MAX_STAND_DISC_SOFT_AND_WET = addToDiscTab(ITEMS.register("max_soft_and_wet_disc",
+    public static final DeferredHolder<Item, Item> MAX_STAND_DISC_SOFT_AND_WET = addToDiscTab(ITEMS.register("max_soft_and_wet_disc",
             () -> new MaxStandDiscItem(new Item.Properties().stacksTo(1), new PowersSoftAndWet(null))))
             ;
-    public static final RegistryObject<Item> STAND_DISC_WALKING_HEART = addToDiscTab(ITEMS.register("walking_heart_disc",
+    public static final DeferredHolder<Item, Item> STAND_DISC_WALKING_HEART = addToDiscTab(ITEMS.register("walking_heart_disc",
             () -> new StandDiscItem(new Item.Properties().stacksTo(1), new PowersWalkingHeart(null))));
-    public static final RegistryObject<Item> MAX_STAND_DISC_WALKING_HEART = addToDiscTab(ITEMS.register("max_walking_heart_disc",
+    public static final DeferredHolder<Item, Item> MAX_STAND_DISC_WALKING_HEART = addToDiscTab(ITEMS.register("max_walking_heart_disc",
             () -> new MaxStandDiscItem(new Item.Properties().stacksTo(1), new PowersWalkingHeart(null))));
 
-    public static final RegistryObject<Item> STAND_DISC_PLANET_WAVES = addToWIPTab(ITEMS.register("planet_waves_disc",
+    public static final DeferredHolder<Item, Item> STAND_DISC_PLANET_WAVES = addToWIPTab(ITEMS.register("planet_waves_disc",
             () -> new StandDiscItem(new Item.Properties().stacksTo(1), new PowersPlanetWaves(null))));
-    public static final RegistryObject<Item> MAX_STAND_DISC_PLANET_WAVES = addToWIPTab(ITEMS.register("max_planet_waves_disc",
+    public static final DeferredHolder<Item, Item> MAX_STAND_DISC_PLANET_WAVES = addToWIPTab(ITEMS.register("max_planet_waves_disc",
             () -> new MaxStandDiscItem(new Item.Properties().stacksTo(1), new PowersPlanetWaves(null))))
             ;
 
-    public static final RegistryObject<Item> STAND_DISC_CINDERELLA = addToDiscTab(ITEMS.register("cinderella_disc",
+    public static final DeferredHolder<Item, Item> STAND_DISC_CINDERELLA = addToDiscTab(ITEMS.register("cinderella_disc",
             () -> new StandDiscItem(new Item.Properties().stacksTo(1), new PowersCinderella(null))));
 
 
-    public static final RegistryObject<Item> STAND_DISC_ACHTUNG = addToDiscTab(ITEMS.register("achtung_baby_disc",
+    public static final DeferredHolder<Item, Item> STAND_DISC_ACHTUNG = addToDiscTab(ITEMS.register("achtung_baby_disc",
             () -> new StandDiscItem(new Item.Properties().stacksTo(1), new PowersAchtungBaby(null))));
-    public static final RegistryObject<Item> STAND_DISC_MANHATTAN_TRANSFER = addToDiscTab(ITEMS.register("manhattan_transfer_disc",
+    public static final DeferredHolder<Item, Item> STAND_DISC_MANHATTAN_TRANSFER = addToDiscTab(ITEMS.register("manhattan_transfer_disc",
             () -> new StandDiscItem(new Item.Properties().stacksTo(1), new PowersManhattanTransfer(null))));
-    public static final RegistryObject<Item> STAND_DISC_BLACK_SABBATH = addToWIPTab(ITEMS.register("black_sabbath_disc",
+    public static final DeferredHolder<Item, Item> STAND_DISC_BLACK_SABBATH = addToWIPTab(ITEMS.register("black_sabbath_disc",
             () -> new StandDiscItem(new Item.Properties().stacksTo(1), new PowersBlackSabbath(null))));
-    public static final RegistryObject<Item> STAND_DISC_SURVIVOR = addToDiscTab(ITEMS.register("survivor_disc",
+    public static final DeferredHolder<Item, Item> STAND_DISC_SURVIVOR = addToDiscTab(ITEMS.register("survivor_disc",
             () -> new StandDiscItem(new Item.Properties().stacksTo(1), new PowersSurvivor(null))));
-    public static final RegistryObject<Item> STAND_DISC_HEY_YA = addToDiscTab(ITEMS.register("hey_ya_disc",
+    public static final DeferredHolder<Item, Item> STAND_DISC_HEY_YA = addToDiscTab(ITEMS.register("hey_ya_disc",
             () -> new StandDiscItem(new Item.Properties().stacksTo(1), new PowersHeyYa(null))));
-    public static final RegistryObject<Item> STAND_DISC_MANDOM = addToDiscTab(ITEMS.register("mandom_disc",
+    public static final DeferredHolder<Item, Item> STAND_DISC_MANDOM = addToDiscTab(ITEMS.register("mandom_disc",
             () -> new StandDiscItem(new Item.Properties().stacksTo(1), new PowersMandom(null))));
-    public static final RegistryObject<Item> STAND_DISC_CENTURY_BOY = addToWIPTab(ITEMS.register("20th_century_boy_disc",
+    public static final DeferredHolder<Item, Item> STAND_DISC_CENTURY_BOY = addToWIPTab(ITEMS.register("20th_century_boy_disc",
             () -> new StandDiscItem(new Item.Properties().stacksTo(1), new Powers20thCenturyBoy(null))));
 
-    public static final RegistryObject<Item> STAND_DISC_CALIFORNIA_KING_BED = addToDiscTab(ITEMS.register("california_king_bed_disc",
+    public static final DeferredHolder<Item, Item> STAND_DISC_CALIFORNIA_KING_BED = addToDiscTab(ITEMS.register("california_king_bed_disc",
             () -> new StandDiscItem(new Item.Properties().stacksTo(1), new PowersCalifornia(null))));
 
-    public static final RegistryObject<Item> STAND_DISC_LYIN_EYES = addToDiscTab(ITEMS.register("lyin_eyes_disc",
+    public static final DeferredHolder<Item, Item> STAND_DISC_LYIN_EYES = addToDiscTab(ITEMS.register("lyin_eyes_disc",
             () -> new StandDiscItem(new Item.Properties().stacksTo(1), new PowersLyinEyes(null))));
 
-    public static final RegistryObject<Item> STAND_DISC_PEARL_JAM = addToWIPTab(ITEMS.register("pearl_jam_disc",
+    public static final DeferredHolder<Item, Item> STAND_DISC_PEARL_JAM = addToWIPTab(ITEMS.register("pearl_jam_disc",
             () -> new StandDiscItem(new Item.Properties().stacksTo(1), new PowersPearlJam(null))));
-    public static final RegistryObject<Item> STAND_DISC_CATCH_THE_RAINBOW = addToWIPTab(ITEMS.register("catch_the_rainbow_disc",
+    public static final DeferredHolder<Item, Item> STAND_DISC_CATCH_THE_RAINBOW = addToWIPTab(ITEMS.register("catch_the_rainbow_disc",
             () -> new StandDiscItem(new Item.Properties().stacksTo(1), new PowersCatchTheRainbow(null))));
 
-  /*  public static final RegistryObject<Item> STAND_DISC_D4C = ITEMS.register("d4c_disc",
+  /*  public static final DeferredHolder<Item, Item> STAND_DISC_D4C = ITEMS.register("d4c_disc",
             () -> new StandDiscItem(new Item.Properties().stacksTo(1), new PowersD4C(null)));
-    public static final RegistryObject<Item> MAX_STAND_DISC_D4C = ITEMS.register("max_d4c_disc",
+    public static final DeferredHolder<Item, Item> MAX_STAND_DISC_D4C = ITEMS.register("max_d4c_disc",
             () -> new MaxStandDiscItem(new Item.Properties().stacksTo(1), new PowersD4C(null))); */
 
 
 
- /*   public static final RegistryObject<Item> STAND_DISC_CREAM = addToWIPTab(ITEMS.register("cream_disc",
+ /*   public static final DeferredHolder<Item, Item> STAND_DISC_CREAM = addToWIPTab(ITEMS.register("cream_disc",
             () -> new StandDiscItem(new Item.Properties().stacksTo(1), new PowersCream(null))));
-    public static final RegistryObject<Item> MAX_STAND_DISC_CREAM = addToWIPTab(ITEMS.register("max_cream_disc",
+    public static final DeferredHolder<Item, Item> MAX_STAND_DISC_CREAM = addToWIPTab(ITEMS.register("max_cream_disc",
             () -> new MaxStandDiscItem(new Item.Properties().stacksTo(1), new PowersCream(null)))); */
 
-    public static final RegistryObject<Item> STAND_DISC_SILVER_CHARIOT = addToWIPTab(ITEMS.register("silver_chariot_disc",
+    public static final DeferredHolder<Item, Item> STAND_DISC_SILVER_CHARIOT = addToWIPTab(ITEMS.register("silver_chariot_disc",
             () -> new StandDiscItem(new Item.Properties().stacksTo(1), new PowersSilverChariot(null))));
-    public static final RegistryObject<Item> MAX_STAND_DISC_SILVER_CHARIOT = addToWIPTab(ITEMS.register("max_silver_chariot_disc",
+    public static final DeferredHolder<Item, Item> MAX_STAND_DISC_SILVER_CHARIOT = addToWIPTab(ITEMS.register("max_silver_chariot_disc",
             () -> new MaxStandDiscItem(new Item.Properties().stacksTo(1), new PowersSilverChariot(null))));
 
     //metallica (i gotta do the max_stand_disc_metallica too, i have both sprites)
-    public static final RegistryObject<Item> STAND_DISC_METALLICA = addToWIPTab(ITEMS.register("metallica_disc",
+    public static final DeferredHolder<Item, Item> STAND_DISC_METALLICA = addToWIPTab(ITEMS.register("metallica_disc",
             () -> new StandDiscItem(new Item.Properties().stacksTo(1), new PowersMetallica(null))));
 
-    public static final RegistryObject<Item> STAND_DISC_EMPEROR = addToWIPTab(ITEMS.register("emperor_disc",
+    public static final DeferredHolder<Item, Item> STAND_DISC_EMPEROR = addToWIPTab(ITEMS.register("emperor_disc",
             () -> new StandDiscItem(new Item.Properties().stacksTo(1), new PowersEmperor(null))));
-    public static final RegistryObject<Item> MAX_STAND_DISC_EMPEROR = addToWIPTab(ITEMS.register("max_emperor_disc",
+    public static final DeferredHolder<Item, Item> MAX_STAND_DISC_EMPEROR = addToWIPTab(ITEMS.register("max_emperor_disc",
             () -> new MaxStandDiscItem(new Item.Properties().stacksTo(1), new PowersEmperor(null))));
 
-    public static final RegistryObject<Item> WORTHY_ARROW = addToTab(ITEMS.register("worthy_arrow",
+    public static final DeferredHolder<Item, Item> WORTHY_ARROW = addToTab(ITEMS.register("worthy_arrow",
             () -> new WorthyArrowItem(new Item.Properties().stacksTo(1))));
-    public static final RegistryObject<Item> LUCKY_LIPSTICK = addToTab(ITEMS.register("lucky_lipstick",
+    public static final DeferredHolder<Item, Item> LUCKY_LIPSTICK = addToTab(ITEMS.register("lucky_lipstick",
             () -> new LuckyLipstickItem(new Item.Properties())));
 
-    public static final RegistryObject<Item> BLANK_MASK = addToTab(ITEMS.register("blank_mask",
+    public static final DeferredHolder<Item, Item> BLANK_MASK = addToTab(ITEMS.register("blank_mask",
             () -> new MaskItem(new Item.Properties().stacksTo(1), new NonCharacterVisage(null))));
-    public static final RegistryObject<Item> MODIFICATION_MASK = addToTab(ITEMS.register("modification_mask",
+    public static final DeferredHolder<Item, Item> MODIFICATION_MASK = addToTab(ITEMS.register("modification_mask",
             () -> new ModificationMaskItem(new Item.Properties().stacksTo(1), new ModificationVisage(null))));
 
-    public static final RegistryObject<Item> SPEEDWAGON_MASK = addToTab(ITEMS.register("speedwagon_mask",
+    public static final DeferredHolder<Item, Item> SPEEDWAGON_MASK = addToTab(ITEMS.register("speedwagon_mask",
             () -> new MaskItem(new Item.Properties().stacksTo(1), new SpeedwagonVisage(null))));
-    public static final RegistryObject<Item> STRAIZO_VAMPIRE_MASK = addToTab(ITEMS.register("straizo_vampire_mask",
+    public static final DeferredHolder<Item, Item> STRAIZO_VAMPIRE_MASK = addToTab(ITEMS.register("straizo_vampire_mask",
             () -> new MaskItem(new Item.Properties().stacksTo(1), new StraizoVampireVisage(null))));
-    public static final RegistryObject<Item> JOTARO_MASK = addToTab(ITEMS.register("jotaro_mask",
+    public static final DeferredHolder<Item, Item> JOTARO_MASK = addToTab(ITEMS.register("jotaro_mask",
             () -> new MaskItem(new Item.Properties().stacksTo(1), new JotaroVisage(null))));
-    public static final RegistryObject<Item> JOTARO_4_MASK = addToTab(ITEMS.register("jotaro_4_mask",
+    public static final DeferredHolder<Item, Item> JOTARO_4_MASK = addToTab(ITEMS.register("jotaro_4_mask",
             () -> new MaskItem(new Item.Properties().stacksTo(1), new JotaroFourVisage(null))));
-    public static final RegistryObject<Item> JOTARO_6_MASK = addToTab(ITEMS.register("jotaro_6_mask",
+    public static final DeferredHolder<Item, Item> JOTARO_6_MASK = addToTab(ITEMS.register("jotaro_6_mask",
             () -> new MaskItem(new Item.Properties().stacksTo(1), new JotaroSixVisage(null))));
-    public static final RegistryObject<Item> DIO_VAMPIRE_MASK = addToTab(ITEMS.register("dio_vampire_mask",
+    public static final DeferredHolder<Item, Item> DIO_VAMPIRE_MASK = addToTab(ITEMS.register("dio_vampire_mask",
             () -> new MaskItem(new Item.Properties().stacksTo(1), new DioVampireVisage(null))));
-    public static final RegistryObject<Item> DIO_MASK = addToTab(ITEMS.register("dio_mask",
+    public static final DeferredHolder<Item, Item> DIO_MASK = addToTab(ITEMS.register("dio_mask",
             () -> new MaskItem(new Item.Properties().stacksTo(1), new DIOVisage(null))));
-    public static final RegistryObject<Item> SHADOW_DIO_MASK = addToTab(ITEMS.register("shadow_dio_mask",
+    public static final DeferredHolder<Item, Item> SHADOW_DIO_MASK = addToTab(ITEMS.register("shadow_dio_mask",
             () -> new MaskItem(new Item.Properties().stacksTo(1), new ShadowDIOVisage(null))));
-    public static final RegistryObject<Item> ENYA_MASK = addToTab(ITEMS.register("enya_mask",
+    public static final DeferredHolder<Item, Item> ENYA_MASK = addToTab(ITEMS.register("enya_mask",
             () -> new MaskItem(new Item.Properties().stacksTo(1), new EnyaVisage(null))));
-    public static final RegistryObject<Item> ENYA_OVA_MASK = ITEMS.register("enya_ova_mask",
+    public static final DeferredHolder<Item, Item> ENYA_OVA_MASK = ITEMS.register("enya_ova_mask",
             () -> new MaskItem(new Item.Properties().stacksTo(1), new EnyaOVAVisage(null)));
-    public static final RegistryObject<Item> AVDOL_MASK = addToTab(ITEMS.register("avdol_mask",
+    public static final DeferredHolder<Item, Item> AVDOL_MASK = addToTab(ITEMS.register("avdol_mask",
             () -> new MaskItem(new Item.Properties().stacksTo(1), new AvdolVisage(null))));
-    public static final RegistryObject<Item> KAKYOIN_MASK = addToTab(ITEMS.register("kakyoin_mask",
+    public static final DeferredHolder<Item, Item> KAKYOIN_MASK = addToTab(ITEMS.register("kakyoin_mask",
             () -> new MaskItem(new Item.Properties().stacksTo(1), new KakyoinVisage(null))));
-    public static final RegistryObject<Item> POLNAREFF_MASK = addToTab(ITEMS.register("polnareff_mask",
+    public static final DeferredHolder<Item, Item> POLNAREFF_MASK = addToTab(ITEMS.register("polnareff_mask",
             () -> new MaskItem(new Item.Properties().stacksTo(1), new PolnareffVisage(null))));
-    public static final RegistryObject<Item> KHAN_MASK = addToTab(ITEMS.register("khan_mask",
+    public static final DeferredHolder<Item, Item> KHAN_MASK = addToTab(ITEMS.register("khan_mask",
             () -> new MaskItem(new Item.Properties().stacksTo(1), new KhanVisage(null))));
-    public static final RegistryObject<Item> BLACK_POLNAREFF_MASK = addToTab(ITEMS.register("black_polnareff_mask",
+    public static final DeferredHolder<Item, Item> BLACK_POLNAREFF_MASK = addToTab(ITEMS.register("black_polnareff_mask",
             () -> new MaskItem(new Item.Properties().stacksTo(1), new BlackPolnareffVisage(null))));
-    public static final RegistryObject<Item> SPEEDWAGON_FOUNDATION_MASK = addToTab(ITEMS.register("speedwagon_foundation_mask",
+    public static final DeferredHolder<Item, Item> SPEEDWAGON_FOUNDATION_MASK = addToTab(ITEMS.register("speedwagon_foundation_mask",
             () -> new MaskItem(new Item.Properties().stacksTo(1), new SpeedwagonFoundationVisage(null))));
-    public static final RegistryObject<Item> GHIACCIO_MASK = addToTab(ITEMS.register("ghiaccio_mask",
+    public static final DeferredHolder<Item, Item> GHIACCIO_MASK = addToTab(ITEMS.register("ghiaccio_mask",
             () -> new MaskItem(new Item.Properties().stacksTo(1), new GhiaccioVisage(null))));
-    public static final RegistryObject<Item> BOSS_MASK = addToTab(ITEMS.register("boss_mask",
+    public static final DeferredHolder<Item, Item> BOSS_MASK = addToTab(ITEMS.register("boss_mask",
             () -> new MaskItem(new Item.Properties().stacksTo(1), new BossVisage(null))));
-    public static final RegistryObject<Item> DIAVOLO_MASK = addToTab(ITEMS.register("diavolo_mask",
+    public static final DeferredHolder<Item, Item> DIAVOLO_MASK = addToTab(ITEMS.register("diavolo_mask",
             () -> new MaskItem(new Item.Properties().stacksTo(1), new DiavoloVisage(null))));
-    public static final RegistryObject<Item> DOPPIO_MASK = addToTab(ITEMS.register("doppio_mask",
+    public static final DeferredHolder<Item, Item> DOPPIO_MASK = addToTab(ITEMS.register("doppio_mask",
             () -> new MaskItem(new Item.Properties().stacksTo(1), new DoppioVisage(null))));
-    public static final RegistryObject<Item> KIRA_PART_FOUR_MASK = addToTab(ITEMS.register(
+    public static final DeferredHolder<Item, Item> KIRA_PART_FOUR_MASK = addToTab(ITEMS.register(
             "kira_part_four_mask", () -> new MaskItem(new Item.Properties().stacksTo(1), new KiraPartFourVisage(null))));
-    public static final RegistryObject<Item> KOSAKU_MASK = addToTab(ITEMS.register(
+    public static final DeferredHolder<Item, Item> KOSAKU_MASK = addToTab(ITEMS.register(
             "kosaku_mask", () -> new MaskItem(new Item.Properties().stacksTo(1), new KosakuVisage(null))));
-    public static final RegistryObject<Item> KIRASAKU_MASK = addToTab(ITEMS.register(
+    public static final DeferredHolder<Item, Item> KIRASAKU_MASK = addToTab(ITEMS.register(
             "kirasaku_mask", () -> new MaskItem(new Item.Properties().stacksTo(1), new KirasakuVisage(null))));
-    public static final RegistryObject<Item> HAYATO_KAWAJIRI_MASK = addToTab(ITEMS.register(
+    public static final DeferredHolder<Item, Item> HAYATO_KAWAJIRI_MASK = addToTab(ITEMS.register(
             "hayato_kawajiri_mask", () -> new MaskItem(new Item.Properties().stacksTo(1), new HayatoVisage(null))));
-    public static final RegistryObject<Item> KIRA_PART_EIGHT_MASK = addToTab(ITEMS.register(
+    public static final DeferredHolder<Item, Item> KIRA_PART_EIGHT_MASK = addToTab(ITEMS.register(
             "kira_part_eight_mask", () -> new MaskItem(new Item.Properties().stacksTo(1), new KiraPartEightVisage(null))));
-    public static final RegistryObject<Item> JOHNGALLIA_MASK = addToTab(ITEMS.register("johngallia_mask",
+    public static final DeferredHolder<Item, Item> JOHNGALLIA_MASK = addToTab(ITEMS.register("johngallia_mask",
             () -> new MaskItem(new Item.Properties().stacksTo(1), new JohngalliaVisage(null))));
-    public static final RegistryObject<Item> JOHNNY_MASK = addToTab(ITEMS.register("johnny_mask",
+    public static final DeferredHolder<Item, Item> JOHNNY_MASK = addToTab(ITEMS.register("johnny_mask",
             () -> new MaskItem(new Item.Properties().stacksTo(1), new JohnnyVisage(null))));
-    public static final RegistryObject<Item> GYRO_MASK = addToTab(ITEMS.register("gyro_mask",
+    public static final DeferredHolder<Item, Item> GYRO_MASK = addToTab(ITEMS.register("gyro_mask",
             () -> new MaskItem(new Item.Properties().stacksTo(1), new GyroVisage(null))));
-    public static final RegistryObject<Item> LUCY_MASK = addToTab(ITEMS.register("lucy_mask",
+    public static final DeferredHolder<Item, Item> LUCY_MASK = addToTab(ITEMS.register("lucy_mask",
             () -> new MaskItem(new Item.Properties().stacksTo(1), new LucyVisage(null))));
-    public static final RegistryObject<Item> STEVEN_MASK = addToTab(ITEMS.register("steven_mask",
+    public static final DeferredHolder<Item, Item> STEVEN_MASK = addToTab(ITEMS.register("steven_mask",
             () -> new MaskItem(new Item.Properties().stacksTo(1), new StevenVisage(null))));
-    public static final RegistryObject<Item> DIEGO_MASK = addToTab(ITEMS.register("diego_mask",
+    public static final DeferredHolder<Item, Item> DIEGO_MASK = addToTab(ITEMS.register("diego_mask",
             () -> new MaskItem(new Item.Properties().stacksTo(1), new DiegoVisage(null))));
-    public static final RegistryObject<Item> DIEGO_2_MASK = addToTab(ITEMS.register("diego_2_mask",
+    public static final DeferredHolder<Item, Item> DIEGO_2_MASK = addToTab(ITEMS.register("diego_2_mask",
             () -> new MaskItem(new Item.Properties().stacksTo(1), new Diego2Visage(null))));
-    public static final RegistryObject<Item> SANDMAN_MASK = addToTab(ITEMS.register("sandman_mask",
+    public static final DeferredHolder<Item, Item> SANDMAN_MASK = addToTab(ITEMS.register("sandman_mask",
             () -> new MaskItem(new Item.Properties().stacksTo(1), new SandmanVisage(null))));
-    public static final RegistryObject<Item> POCOLOCO_MASK = addToTab(ITEMS.register("pocoloco_mask",
+    public static final DeferredHolder<Item, Item> POCOLOCO_MASK = addToTab(ITEMS.register("pocoloco_mask",
             () -> new MaskItem(new Item.Properties().stacksTo(1), new PocolocoVisage(null))));
-    public static final RegistryObject<Item> OYECOMOVA_MASK = addToTab(ITEMS.register("oyecomova_mask",
+    public static final DeferredHolder<Item, Item> OYECOMOVA_MASK = addToTab(ITEMS.register("oyecomova_mask",
             () -> new MaskItem(new Item.Properties().stacksTo(1), new OyecomovaVisage(null))));
-    public static final RegistryObject<Item> TIM_MASK = addToTab(ITEMS.register("tim_mask",
+    public static final DeferredHolder<Item, Item> TIM_MASK = addToTab(ITEMS.register("tim_mask",
             () -> new MaskItem(new Item.Properties().stacksTo(1), new TimVisage(null))));
-    public static final RegistryObject<Item> SHERIFF_MASK = addToTab(ITEMS.register("sheriff_mask",
+    public static final DeferredHolder<Item, Item> SHERIFF_MASK = addToTab(ITEMS.register("sheriff_mask",
             () -> new MaskItem(new Item.Properties().stacksTo(1), new SheriffVisage(null))));
-    public static final RegistryObject<Item> RINGO_MASK = addToTab(ITEMS.register("ringo_mask",
+    public static final DeferredHolder<Item, Item> RINGO_MASK = addToTab(ITEMS.register("ringo_mask",
             () -> new MaskItem(new Item.Properties().stacksTo(1), new RingoVisage(null))));
-    public static final RegistryObject<Item> DOT_HAN_MASK = addToTab(ITEMS.register("dot_han_mask",
+    public static final DeferredHolder<Item, Item> DOT_HAN_MASK = addToTab(ITEMS.register("dot_han_mask",
             () -> new MaskItem(new Item.Properties().stacksTo(1), new DotHanVisage(null))));
-    public static final RegistryObject<Item> AVDUL_MASK = addToTab(ITEMS.register("avdul_mask",
+    public static final DeferredHolder<Item, Item> AVDUL_MASK = addToTab(ITEMS.register("avdul_mask",
             () -> new MaskItem(new Item.Properties().stacksTo(1), new AvdulVisage(null))));
-    public static final RegistryObject<Item> DAIYA_MASK = addToTab(ITEMS.register("daiya_mask",
+    public static final DeferredHolder<Item, Item> DAIYA_MASK = addToTab(ITEMS.register("daiya_mask",
             () -> new MaskItem(new Item.Properties().stacksTo(1), new DaiyaVisage(null))));
-    public static final RegistryObject<Item> DAIYA_2_MASK = addToTab(ITEMS.register("daiya_2_mask",
+    public static final DeferredHolder<Item, Item> DAIYA_2_MASK = addToTab(ITEMS.register("daiya_2_mask",
             () -> new MaskItem(new Item.Properties().stacksTo(1), new Daiya2Visage(null))));
-    public static final RegistryObject<Item> HATO_MASK = addToTab(ITEMS.register("hato_mask",
+    public static final DeferredHolder<Item, Item> HATO_MASK = addToTab(ITEMS.register("hato_mask",
             () -> new MaskItem(new Item.Properties().stacksTo(1), new HatoVisage(null))));
-    public static final RegistryObject<Item> LAEM_MASK = addToTab(ITEMS.register("laem_mask",
+    public static final DeferredHolder<Item, Item> LAEM_MASK = addToTab(ITEMS.register("laem_mask",
             () -> new MaskItem(new Item.Properties().stacksTo(1), new LaemVisage(null))));
-    public static final RegistryObject<Item> JOSUKE_PART_EIGHT_MASK = addToTab(ITEMS.register("josuke_part_eight_mask",
+    public static final DeferredHolder<Item, Item> JOSUKE_PART_EIGHT_MASK = addToTab(ITEMS.register("josuke_part_eight_mask",
             () -> new MaskItem(new Item.Properties().stacksTo(1), new JosukePartEightVisage(null))));
-    public static final RegistryObject<Item> AYA_MASK = addToTab(ITEMS.register("aya_mask",
+    public static final DeferredHolder<Item, Item> AYA_MASK = addToTab(ITEMS.register("aya_mask",
             () -> new MaskItem(new Item.Properties().stacksTo(1), new AyaVisage(null))));
-    public static final RegistryObject<Item> MISTA_MASK = addToTab(ITEMS.register("mista_mask",
+    public static final DeferredHolder<Item, Item> MISTA_MASK = addToTab(ITEMS.register("mista_mask",
             () -> new MaskItem(new Item.Properties().stacksTo(1), new MistaVisage(null))));
-    public static final RegistryObject<Item> ABBACCHIO_MASK = addToTab(ITEMS.register("abbacchio_mask",
+    public static final DeferredHolder<Item, Item> ABBACCHIO_MASK = addToTab(ITEMS.register("abbacchio_mask",
             () -> new MaskItem(new Item.Properties().stacksTo(1), new AbbacchioVisage(null))));
-    public static final RegistryObject<Item> FUGO_MASK = addToTab(ITEMS.register("pannacotta_fugo_mask",
+    public static final DeferredHolder<Item, Item> FUGO_MASK = addToTab(ITEMS.register("pannacotta_fugo_mask",
             () -> new MaskItem(new Item.Properties().stacksTo(1), new FugoVisage(null))));
-    public static final RegistryObject<Item> FUGO_FEEDBACK_MASK = addToTab(ITEMS.register("pannacotta_fugo_feedback_mask",
+    public static final DeferredHolder<Item, Item> FUGO_FEEDBACK_MASK = addToTab(ITEMS.register("pannacotta_fugo_feedback_mask",
             () -> new MaskItem(new Item.Properties().stacksTo(1), new FugoFeedbackVisage(null))));
-    public static final RegistryObject<Item> ANASUI_MASK = addToTab(ITEMS.register("anasui_mask",
+    public static final DeferredHolder<Item, Item> ANASUI_MASK = addToTab(ITEMS.register("anasui_mask",
             () -> new MaskItem(new Item.Properties().stacksTo(1), new AnasuiVisage(null))));
-    public static final RegistryObject<Item> FEM_ANASUI_MASK = addToTab(ITEMS.register("fem_anasui_mask",
+    public static final DeferredHolder<Item, Item> FEM_ANASUI_MASK = addToTab(ITEMS.register("fem_anasui_mask",
             () -> new MaskItem(new Item.Properties().stacksTo(1), new FemAnasuiVisage(null))));
-    public static final RegistryObject<Item> ANAKISS_MASK = addToTab(ITEMS.register("anakiss_mask",
+    public static final DeferredHolder<Item, Item> ANAKISS_MASK = addToTab(ITEMS.register("anakiss_mask",
             () -> new MaskItem(new Item.Properties().stacksTo(1), new AnakissVisage(null))));
-    public static final RegistryObject<Item> BLACKMORE_MASK = addToWIPTab(ITEMS.register("blackmore_mask",
+    public static final DeferredHolder<Item, Item> BLACKMORE_MASK = addToWIPTab(ITEMS.register("blackmore_mask",
             () -> new MaskItem(new Item.Properties().stacksTo(1), new BlackmoreVisage(null))));
-    public static final RegistryObject<Item> GUCCIO_MASK = addToTab(ITEMS.register("guccio_mask",
+    public static final DeferredHolder<Item, Item> GUCCIO_MASK = addToTab(ITEMS.register("guccio_mask",
             () -> new MaskItem(new Item.Properties().stacksTo(1), new GuccioVisage(null))));
-    public static final RegistryObject<Item> VALENTINE_MASK = addToTab(ITEMS.register("valentine_mask",
+    public static final DeferredHolder<Item, Item> VALENTINE_MASK = addToTab(ITEMS.register("valentine_mask",
             () -> new MaskItem(new Item.Properties().stacksTo(1), new ValentineVisage(null))));
-    public static final RegistryObject<Item> SHIZUKA_MASK = addToTab(ITEMS.register("shizuka_mask",
+    public static final DeferredHolder<Item, Item> SHIZUKA_MASK = addToTab(ITEMS.register("shizuka_mask",
             () -> new MaskItem(new Item.Properties().stacksTo(1), new ShizukaVisage(null))));
-    public static final RegistryObject<Item> CHAKA_MASK = addToTab(ITEMS.register("chaka_mask",
+    public static final DeferredHolder<Item, Item> CHAKA_MASK = addToTab(ITEMS.register("chaka_mask",
             () -> new MaskItem(new Item.Properties().stacksTo(1), new ChakaVisage(null))));
-    public static final RegistryObject<Item> AESTHETICIAN_MASK_1 = ITEMS.register("aesthetician_mask_1",
+    public static final DeferredHolder<Item, Item> AESTHETICIAN_MASK_1 = ITEMS.register("aesthetician_mask_1",
             () -> new MaskItem(new Item.Properties().stacksTo(1), new AestheticianVisage1(null)));
-    public static final RegistryObject<Item> AESTHETICIAN_MASK_2 = ITEMS.register("aesthetician_mask_2",
+    public static final DeferredHolder<Item, Item> AESTHETICIAN_MASK_2 = ITEMS.register("aesthetician_mask_2",
             () -> new MaskItem(new Item.Properties().stacksTo(1), new AestheticianVisage2(null)));
-    public static final RegistryObject<Item> AESTHETICIAN_MASK_3 = ITEMS.register("aesthetician_mask_3",
+    public static final DeferredHolder<Item, Item> AESTHETICIAN_MASK_3 = ITEMS.register("aesthetician_mask_3",
             () -> new MaskItem(new Item.Properties().stacksTo(1), new AestheticianVisage3(null)));
-    public static final RegistryObject<Item> AESTHETICIAN_MASK_4 = ITEMS.register("aesthetician_mask_4",
+    public static final DeferredHolder<Item, Item> AESTHETICIAN_MASK_4 = ITEMS.register("aesthetician_mask_4",
             () -> new MaskItem(new Item.Properties().stacksTo(1), new AestheticianVisage4(null)));
-    public static final RegistryObject<Item> AESTHETICIAN_MASK_5 = ITEMS.register("aesthetician_mask_5",
+    public static final DeferredHolder<Item, Item> AESTHETICIAN_MASK_5 = ITEMS.register("aesthetician_mask_5",
             () -> new MaskItem(new Item.Properties().stacksTo(1), new AestheticianVisage5(null)));
-    public static final RegistryObject<Item> AESTHETICIAN_MASK_ZOMBIE = ITEMS.register("aesthetician_mask_zombie",
+    public static final DeferredHolder<Item, Item> AESTHETICIAN_MASK_ZOMBIE = ITEMS.register("aesthetician_mask_zombie",
             () -> new MaskItem(new Item.Properties().stacksTo(1), new AestheticianVisageZombie(null)));
-    public static final RegistryObject<Item> RAT_MASK = addToTab(ITEMS.register("rat_mask",
+    public static final DeferredHolder<Item, Item> RAT_MASK = addToTab(ITEMS.register("rat_mask",
             () -> new MaskItem(new Item.Properties().stacksTo(1), new NonCharacterVisage(null))));
-   /* public static final RegistryObject<Item> INTERDIMENSIONAL_KEY = ITEMS.register("interdimensional_key",
+   /* public static final DeferredHolder<Item, Item> INTERDIMENSIONAL_KEY = ITEMS.register("interdimensional_key",
             () -> new InterdimensionalKeyItem(new Item.Properties().stacksTo(1))); */
 
-    public static final RegistryObject<Item> CAT_REMAINS = addToTab(ITEMS.register("cat_remains",
+    public static final DeferredHolder<Item, Item> CAT_REMAINS = addToTab(ITEMS.register("cat_remains",
             () -> new HeadRemainsItem(new Item.Properties().stacksTo(64))));
-    public static final RegistryObject<Item> POLAR_BEAR_REMAINS = addToTab(ITEMS.register("polar_bear_remains",
+    public static final DeferredHolder<Item, Item> POLAR_BEAR_REMAINS = addToTab(ITEMS.register("polar_bear_remains",
             () -> new HeadRemainsItem(new Item.Properties().stacksTo(64))));
-    public static final RegistryObject<Item> MOOSHROOM_REMAINS = addToTab(ITEMS.register("mooshroom_remains",
+    public static final DeferredHolder<Item, Item> MOOSHROOM_REMAINS = addToTab(ITEMS.register("mooshroom_remains",
             () -> new HeadRemainsItem(new Item.Properties().stacksTo(64))));
-    public static final RegistryObject<Item> GOAT_REMAINS = addToTab(ITEMS.register("goat_remains",
+    public static final DeferredHolder<Item, Item> GOAT_REMAINS = addToTab(ITEMS.register("goat_remains",
             () -> new HeadRemainsItem(new Item.Properties().stacksTo(64))));
-    public static final RegistryObject<Item> LLAMA_REMAINS = addToTab(ITEMS.register("llama_remains",
+    public static final DeferredHolder<Item, Item> LLAMA_REMAINS = addToTab(ITEMS.register("llama_remains",
             () -> new HeadRemainsItem(new Item.Properties().stacksTo(64))));
-    public static final RegistryObject<Item> SILVERFISH_REMAINS = addToTab(ITEMS.register("silverfish_remains",
+    public static final DeferredHolder<Item, Item> SILVERFISH_REMAINS = addToTab(ITEMS.register("silverfish_remains",
             () -> new HeadRemainsItem(new Item.Properties().stacksTo(64))));
-    public static final RegistryObject<Item> OCELOT_REMAINS = addToTab(ITEMS.register("ocelot_remains",
+    public static final DeferredHolder<Item, Item> OCELOT_REMAINS = addToTab(ITEMS.register("ocelot_remains",
             () -> new BodyRemainsItem(new Item.Properties().stacksTo(64))));
-    public static final RegistryObject<Item> PARROT_REMAINS = addToTab(ITEMS.register("parrot_remains",
+    public static final DeferredHolder<Item, Item> PARROT_REMAINS = addToTab(ITEMS.register("parrot_remains",
             () -> new BodyRemainsItem(new Item.Properties().stacksTo(64))));
-    public static final RegistryObject<Item> CHICKEN_REMAINS = addToTab(ITEMS.register("chicken_remains",
+    public static final DeferredHolder<Item, Item> CHICKEN_REMAINS = addToTab(ITEMS.register("chicken_remains",
             () -> new BodyRemainsItem(new Item.Properties().stacksTo(64))));
-    public static final RegistryObject<Item> DOG_REMAINS = addToTab(ITEMS.register("dog_remains",
+    public static final DeferredHolder<Item, Item> DOG_REMAINS = addToTab(ITEMS.register("dog_remains",
             () -> new BodyRemainsItem(new Item.Properties().stacksTo(64))));
-    public static final RegistryObject<Item> AXOLOTL_REMAINS = addToTab(ITEMS.register("axolotl_remains",
+    public static final DeferredHolder<Item, Item> AXOLOTL_REMAINS = addToTab(ITEMS.register("axolotl_remains",
             () -> new BodyRemainsItem(new Item.Properties().stacksTo(64))));
 
-    public static final RegistryObject<Item> MEMORY_PAWN = addToTab(ITEMS.register("memory_pawn",
+    public static final DeferredHolder<Item, Item> MEMORY_PAWN = addToTab(ITEMS.register("memory_pawn",
             () -> new MemoryChessPieceItem(ForgeBlocks.CHESS_PIECE.get(), new Item.Properties())));
-    public static final RegistryObject<Item> MEMORY_ROOK = addToTab(ITEMS.register("memory_rook",
+    public static final DeferredHolder<Item, Item> MEMORY_ROOK = addToTab(ITEMS.register("memory_rook",
             () -> new MemoryChessPieceItem(ForgeBlocks.CHESS_PIECE.get(),new Item.Properties())));
-    public static final RegistryObject<Item> MEMORY_KNIGHT = addToTab(ITEMS.register("memory_knight",
+    public static final DeferredHolder<Item, Item> MEMORY_KNIGHT = addToTab(ITEMS.register("memory_knight",
             () -> new MemoryChessPieceItem(ForgeBlocks.CHESS_PIECE.get(),new Item.Properties())));
-    public static final RegistryObject<Item> MEMORY_BISHOP = addToTab(ITEMS.register("memory_bishop",
+    public static final DeferredHolder<Item, Item> MEMORY_BISHOP = addToTab(ITEMS.register("memory_bishop",
             () -> new MemoryChessPieceItem(ForgeBlocks.CHESS_PIECE.get(),new Item.Properties())));
-    public static final RegistryObject<Item> MEMORY_QUEEN = addToTab(ITEMS.register("memory_queen",
+    public static final DeferredHolder<Item, Item> MEMORY_QUEEN = addToTab(ITEMS.register("memory_queen",
             () -> new MemoryChessPieceItem(ForgeBlocks.CHESS_PIECE.get(),new Item.Properties())));
-    public static final RegistryObject<Item> MEMORY_KING = addToTab(ITEMS.register("memory_king",
+    public static final DeferredHolder<Item, Item> MEMORY_KING = addToTab(ITEMS.register("memory_king",
             () -> new MemoryChessPieceItem(ForgeBlocks.CHESS_PIECE.get(),new Item.Properties())));
-    public static final RegistryObject<Item> MEMORY_PAWN_WHITE = addToTab(ITEMS.register("memory_pawn_white",
+    public static final DeferredHolder<Item, Item> MEMORY_PAWN_WHITE = addToTab(ITEMS.register("memory_pawn_white",
             () -> new MemoryChessPieceItem(ForgeBlocks.CHESS_PIECE.get(),new Item.Properties())));
-    public static final RegistryObject<Item> MEMORY_ROOK_WHITE = addToTab(ITEMS.register("memory_rook_white",
+    public static final DeferredHolder<Item, Item> MEMORY_ROOK_WHITE = addToTab(ITEMS.register("memory_rook_white",
             () -> new MemoryChessPieceItem(ForgeBlocks.CHESS_PIECE.get(),new Item.Properties())));
-    public static final RegistryObject<Item> MEMORY_KNIGHT_WHITE = addToTab(ITEMS.register("memory_knight_white",
+    public static final DeferredHolder<Item, Item> MEMORY_KNIGHT_WHITE = addToTab(ITEMS.register("memory_knight_white",
             () -> new MemoryChessPieceItem(ForgeBlocks.CHESS_PIECE.get(),new Item.Properties())));
-    public static final RegistryObject<Item> MEMORY_BISHOP_WHITE = addToTab(ITEMS.register("memory_bishop_white",
+    public static final DeferredHolder<Item, Item> MEMORY_BISHOP_WHITE = addToTab(ITEMS.register("memory_bishop_white",
             () -> new MemoryChessPieceItem(ForgeBlocks.CHESS_PIECE.get(),new Item.Properties())));
-    public static final RegistryObject<Item> MEMORY_QUEEN_WHITE = addToTab(ITEMS.register("memory_queen_white",
+    public static final DeferredHolder<Item, Item> MEMORY_QUEEN_WHITE = addToTab(ITEMS.register("memory_queen_white",
             () -> new MemoryChessPieceItem(ForgeBlocks.CHESS_PIECE.get(),new Item.Properties())));
-    public static final RegistryObject<Item> MEMORY_KING_WHITE = addToTab(ITEMS.register("memory_king_white",
+    public static final DeferredHolder<Item, Item> MEMORY_KING_WHITE = addToTab(ITEMS.register("memory_king_white",
             () -> new MemoryChessPieceItem(ForgeBlocks.CHESS_PIECE.get(),new Item.Properties())));
-    public static final RegistryObject<Item> EXP_BISHOP = addToTab(ITEMS.register("exp_bishop",
+    public static final DeferredHolder<Item, Item> EXP_BISHOP = addToTab(ITEMS.register("exp_bishop",
             () -> new ExperienceBishopItem(ForgeBlocks.CHESS_PIECE.get(),new Item.Properties())));
 
-    public static final RegistryObject<Item> ZOMBIE_HORSE_THREAD = addToWIPTab(ITEMS.register("zombie_horse_thread",
+    public static final DeferredHolder<Item, Item> ZOMBIE_HORSE_THREAD = addToWIPTab(ITEMS.register("zombie_horse_thread",
             () -> new ZombieHorseThreadItem(new Item.Properties().stacksTo(1).durability(16))));
 
-    public static final RegistryObject<BlockItem> GAMBLING_TABLE_ITEM = addToWIPTab(ITEMS.register("gambling_table",
+    public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> GAMBLING_TABLE_ITEM = addToWIPTab(ITEMS.register("gambling_table",
             () -> new BlockItem(ForgeBlocks.GAMBLING_TABLE.get(), new Item.Properties())));
 
     public static void assignStupidForge(){

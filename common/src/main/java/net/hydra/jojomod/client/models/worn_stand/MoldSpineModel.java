@@ -22,7 +22,7 @@ import static net.minecraft.client.renderer.entity.ShulkerRenderer.getTextureLoc
 
 public class MoldSpineModel<T extends Entity> extends EntityModel<T> {
 	// This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
-	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation("modid", "moldspinemodel"), "main");
+	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath("modid", "moldspinemodel"), "main");
 	private final ModelPart Head;
 	private final ModelPart Body;
 	private final ModelPart RightArm;
@@ -82,19 +82,24 @@ public class MoldSpineModel<T extends Entity> extends EntityModel<T> {
 
 	}
 	public ResourceLocation getTextureLocation(){
-		return new ResourceLocation(Roundabout.MOD_ID,
+		return ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
 				"textures/stand/green_day/moldandspine.png");
 	}
 
 
 	@Override
-	public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
-		Head.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
-		Body.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
-		RightArm.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
-		LeftArm.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
-		RightLeg.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
-		LeftLeg.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+	public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, int argbColor) {
+        float red = net.minecraft.util.FastColor.ARGB32.red(argbColor) / 255.0F;
+        float green = net.minecraft.util.FastColor.ARGB32.green(argbColor) / 255.0F;
+        float blue = net.minecraft.util.FastColor.ARGB32.blue(argbColor) / 255.0F;
+        float alpha = net.minecraft.util.FastColor.ARGB32.alpha(argbColor) / 255.0F;
+
+		Head.render(poseStack, vertexConsumer, packedLight, packedOverlay, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, red, green, blue));
+		Body.render(poseStack, vertexConsumer, packedLight, packedOverlay, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, red, green, blue));
+		RightArm.render(poseStack, vertexConsumer, packedLight, packedOverlay, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, red, green, blue));
+		LeftArm.render(poseStack, vertexConsumer, packedLight, packedOverlay, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, red, green, blue));
+		RightLeg.render(poseStack, vertexConsumer, packedLight, packedOverlay, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, red, green, blue));
+		LeftLeg.render(poseStack, vertexConsumer, packedLight, packedOverlay, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, red, green, blue));
 	}
 	public void render(Entity context, float partialTicks, PoseStack poseStack, MultiBufferSource bufferSource, int light, float r, float g, float b, float heyFull) {
 		VertexConsumer consumer = bufferSource.getBuffer(RenderType.entityCutout(getTextureLocation()));
@@ -106,7 +111,7 @@ public class MoldSpineModel<T extends Entity> extends EntityModel<T> {
 			this.root().getAllParts().forEach(ModelPart::resetPose);
 			VertexConsumer consumer = bufferSource.getBuffer(RenderType.entityCutout(getTextureLocation()));
 			//r = bufferSource.getBuffer(RenderType.entityTranslucent(getTextureLocation(context, skin)));
-			root().render(poseStack, consumer, light, OverlayTexture.NO_OVERLAY, r, g, b, alpha);
+			root().render(poseStack, consumer, light, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, r, g, b));
 		}
 	}
 }

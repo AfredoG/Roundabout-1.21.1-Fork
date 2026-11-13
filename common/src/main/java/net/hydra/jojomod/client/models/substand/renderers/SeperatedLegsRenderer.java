@@ -38,7 +38,7 @@ import java.util.Map;
 import java.util.Objects;
 
 public class SeperatedLegsRenderer extends StandRenderer<SeperatedLegsEntity> {
-    private static final ResourceLocation PART_FIVE_GREEN_DAY = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/green_day/part_four_green_day.png");
+    private static final ResourceLocation PART_FIVE_GREEN_DAY = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/green_day/part_four_green_day.png");
 
     public SeperatedLegsRenderer(EntityRendererProvider.Context context) {
         super(context,new SeperatedLegsModel<>(context.bakeLayer(ModEntityRendererClient.SEPERATED_LEGS_LAYER)), 0f);

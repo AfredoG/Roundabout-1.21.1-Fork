@@ -35,7 +35,7 @@ import java.util.StringTokenizer;
 
 public class StandArrowRerollScreen extends Screen {
     //Check out GamemodeSwitcherScreen
-    static final ResourceLocation MOB_SWITCHER_LOCATION = new ResourceLocation(Roundabout.MOD_ID,
+    static final ResourceLocation MOB_SWITCHER_LOCATION = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/pose_switcher.png");
     private static final int SPRITE_SHEET_WIDTH = 256;
     private static final int SPRITE_SHEET_HEIGHT = 256;
@@ -210,12 +210,12 @@ public class StandArrowRerollScreen extends Screen {
     }
 
     public enum standRerollIcon {
-        MAIN_STAND(Component.translatable("roundabout.stand_switch.main"), new ResourceLocation(Roundabout.MOD_ID,
+        MAIN_STAND(Component.translatable("roundabout.stand_switch.main"), ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
                 "textures/gui/stand_type_icons/main_stand.png"),(byte)1,-31,31, Component.translatable("roundabout.stand_switch.main.desc", ClientNetworking.getAppropriateConfig().itemSettings.levelsToGetStand)),
-        SECONDARY_STAND(Component.translatable("roundabout.stand_switch.secondary"), new ResourceLocation(Roundabout.MOD_ID,
+        SECONDARY_STAND(Component.translatable("roundabout.stand_switch.secondary"), ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
                 "textures/gui/stand_type_icons/secondary_stand.png"),(byte)2,31,31, Component.translatable("roundabout.stand_switch.secondary.desc")),
 
-        NONE(Component.translatable("roundabout.stand_switch.none"), new ResourceLocation(Roundabout.MOD_ID,
+        NONE(Component.translatable("roundabout.stand_switch.none"), ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
                 "textures/gui/stand_type_icons/main_stand.png"),(byte)0,0,31, Component.translatable("roundabout.stand_switch.main.desc"));
 
         static standRerollIcon getByte(Poses pose) {

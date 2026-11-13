@@ -230,27 +230,27 @@ public class HumanoidLikeArmorLayer<T extends JojoNPC, M extends PlayerLikeModel
                 renderModel($$0,$$1,$$2,$$3,$$4,$$5,$$6,$$7,$$8,rl);
             } else {
                 VertexConsumer $$10 = $$1.getBuffer(RenderType.armorCutoutNoCull(this.getArmorLocation($$3, $$5, $$9)));
-                $$4.renderToBuffer($$0, $$10, $$2, OverlayTexture.NO_OVERLAY, $$6, $$7, $$8, 1.0F);
+                $$4.renderToBuffer($$0, $$10, $$2, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(1.0F, $$6, $$7, $$8));
             }
         } else {
             VertexConsumer $$10 = $$1.getBuffer(RenderType.armorCutoutNoCull(this.getArmorLocation($$3, $$5, $$9)));
-            $$4.renderToBuffer($$0, $$10, $$2, OverlayTexture.NO_OVERLAY, $$6, $$7, $$8, 1.0F);
+            $$4.renderToBuffer($$0, $$10, $$2, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(1.0F, $$6, $$7, $$8));
         }
     }
 
     private void renderModel(PoseStack p_289664_, MultiBufferSource p_289689_, int p_289681_, ArmorItem p_289650_, net.minecraft.client.model.Model p_289658_, boolean p_289668_, float p_289678_, float p_289674_, float p_289693_, ResourceLocation armorResource) {
         VertexConsumer vertexconsumer = p_289689_.getBuffer(RenderType.armorCutoutNoCull(armorResource));
-        p_289658_.renderToBuffer(p_289664_, vertexconsumer, p_289681_, OverlayTexture.NO_OVERLAY, p_289678_, p_289674_, p_289693_, 1.0F);
+        p_289658_.renderToBuffer(p_289664_, vertexconsumer, p_289681_, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(1.0F, p_289678_, p_289674_, p_289693_));
     }
 
     private void renderTrim(ArmorMaterial $$0, PoseStack $$1, MultiBufferSource $$2, int $$3, ArmorTrim $$4, A $$5, boolean $$6) {
         TextureAtlasSprite $$7 = this.armorTrimAtlas.getSprite($$6 ? $$4.innerTexture($$0) : $$4.outerTexture($$0));
         VertexConsumer $$8 = $$7.wrap($$2.getBuffer(Sheets.armorTrimsSheet()));
-        $$5.renderToBuffer($$1, $$8, $$3, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
+        $$5.renderToBuffer($$1, $$8, $$3, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(1.0F, 1.0F, 1.0F, 1.0F));
     }
 
     private void renderGlint(PoseStack $$0, MultiBufferSource $$1, int $$2, A $$3) {
-        $$3.renderToBuffer($$0, $$1.getBuffer(RenderType.armorEntityGlint()), $$2, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
+        $$3.renderToBuffer($$0, $$1.getBuffer(RenderType.armorEntityGlint()), $$2, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(1.0F, 1.0F, 1.0F, 1.0F));
     }
 
     private A getArmorModel(EquipmentSlot $$0) {
@@ -280,7 +280,7 @@ public class HumanoidLikeArmorLayer<T extends JojoNPC, M extends PlayerLikeModel
             ResourceLocation resourcelocation = ARMOR_LOCATION_CACHE.get(s1);
 
             if (resourcelocation == null && s1 != null) {
-                resourcelocation = new ResourceLocation(s1);
+                resourcelocation = ResourceLocation.parse(s1);
                 ARMOR_LOCATION_CACHE.put(s1, resourcelocation);
             }
 

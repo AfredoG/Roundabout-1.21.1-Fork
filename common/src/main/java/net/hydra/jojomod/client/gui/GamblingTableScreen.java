@@ -16,7 +16,7 @@ import net.minecraft.world.entity.player.Inventory;
 
 public class GamblingTableScreen extends AbstractContainerScreen<GamblingTableMenu> {
     private static final ResourceLocation TEXTURE =
-            new ResourceLocation(Roundabout.MOD_ID, "textures/gui/gambling_table/gambling_table.png");
+            ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/gui/gambling_table/gambling_table.png");
 
     // Change these if the texture also gets changed
     private static final int GUI_OFFSET_X = -9;

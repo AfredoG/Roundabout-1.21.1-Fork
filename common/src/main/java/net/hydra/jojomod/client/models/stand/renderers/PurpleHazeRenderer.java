@@ -14,20 +14,20 @@ import org.jetbrains.annotations.Nullable;
 
 public class PurpleHazeRenderer extends StandRenderer<PurpleHazeEntity> {
 
-    public static final ResourceLocation ANIME = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/purple_haze/anime.png");
-    public static final ResourceLocation BLAZING_HAZE = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/purple_haze/blazing_haze.png");
-    public static final ResourceLocation BLACK = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/purple_haze/black.png");
-    public static final ResourceLocation GREEN = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/purple_haze/green.png");
-    public static final ResourceLocation NETHERITE = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/purple_haze/netherite.png");
-    public static final ResourceLocation MANGA = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/purple_haze/manga.png");
-    public static final ResourceLocation MIRROR_BATTLE = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/purple_haze/mirror_battle.png");
-    public static final ResourceLocation ROTT = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/purple_haze/rott_haze.png");
-    public static final ResourceLocation PEPPERMINT = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/purple_haze/peppermint.png");
-    public static final ResourceLocation GREENER = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/purple_haze/greener.png");
-    public static final ResourceLocation DISTORTION = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/purple_haze/distortion.png");
-    public static final ResourceLocation GREEN_DSITORTION = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/purple_haze/distorted_green.png");
-    public static final ResourceLocation PLAGUE_RED = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/purple_haze/plague_red.png");
-    public static final ResourceLocation PLAGUE_BLUE = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/purple_haze/plague_blue.png");
+    public static final ResourceLocation ANIME = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/purple_haze/anime.png");
+    public static final ResourceLocation BLAZING_HAZE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/purple_haze/blazing_haze.png");
+    public static final ResourceLocation BLACK = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/purple_haze/black.png");
+    public static final ResourceLocation GREEN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/purple_haze/green.png");
+    public static final ResourceLocation NETHERITE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/purple_haze/netherite.png");
+    public static final ResourceLocation MANGA = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/purple_haze/manga.png");
+    public static final ResourceLocation MIRROR_BATTLE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/purple_haze/mirror_battle.png");
+    public static final ResourceLocation ROTT = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/purple_haze/rott_haze.png");
+    public static final ResourceLocation PEPPERMINT = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/purple_haze/peppermint.png");
+    public static final ResourceLocation GREENER = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/purple_haze/greener.png");
+    public static final ResourceLocation DISTORTION = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/purple_haze/distortion.png");
+    public static final ResourceLocation GREEN_DSITORTION = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/purple_haze/distorted_green.png");
+    public static final ResourceLocation PLAGUE_RED = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/purple_haze/plague_red.png");
+    public static final ResourceLocation PLAGUE_BLUE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/purple_haze/plague_blue.png");
 
     public PurpleHazeRenderer(EntityRendererProvider.Context context) {
         super(context, new PurpleHazeModel<>(context.bakeLayer(ModEntityRendererClient.PURPLE_HAZE_LAYER)), 0f);

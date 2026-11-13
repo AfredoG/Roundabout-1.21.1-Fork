@@ -144,9 +144,9 @@ public class FallingBannerEntity extends Entity {
         return this.entityData.get(BANNER);
     }
     @Override
-    public void defineSynchedData() {
-        if (!this.entityData.hasItem(BANNER)) {
-            this.entityData.define(BANNER, ItemStack.EMPTY);
-        }
+    public void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+
+            builder.define(BANNER, ItemStack.EMPTY);
+
     }
 }

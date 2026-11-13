@@ -139,7 +139,7 @@ public class IronBallEntity extends AbstractArrow {
         boolean bl = entity.getType() == EntityType.ENDERMAN;
         int j = entity.getRemainingFireTicks();
         if (this.isOnFire() && !bl) {
-            entity.setSecondsOnFire(5);
+            entity.igniteForSeconds(5);
         }
         byte pl = getPierceLevel();
         setPierceLevel((byte) 0);
@@ -355,8 +355,8 @@ public class IronBallEntity extends AbstractArrow {
         super.readAdditionalSaveData($$0);
     }
 
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(IRON_BALL, ItemStack.EMPTY);
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(IRON_BALL, ItemStack.EMPTY);
     }
 }

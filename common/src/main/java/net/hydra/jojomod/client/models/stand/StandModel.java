@@ -202,8 +202,13 @@ public class StandModel<T extends StandEntity> extends HierarchicalModel<T> {
         }
     }
     @Override
-    public void renderToBuffer(PoseStack matrices, VertexConsumer vertexConsumer, int light, int overlay, float red, float green, float blue, float alpha) {
-        stand.render(matrices, vertexConsumer, light, overlay, red, green, blue, this.alpha);
+    public void renderToBuffer(PoseStack matrices, VertexConsumer vertexConsumer, int light, int overlay, int argbColor) {
+        float red = net.minecraft.util.FastColor.ARGB32.red(argbColor) / 255.0F;
+        float green = net.minecraft.util.FastColor.ARGB32.green(argbColor) / 255.0F;
+        float blue = net.minecraft.util.FastColor.ARGB32.blue(argbColor) / 255.0F;
+        float alpha = net.minecraft.util.FastColor.ARGB32.alpha(argbColor) / 255.0F;
+
+        stand.render(matrices, vertexConsumer, light, overlay, net.minecraft.util.FastColor.ARGB32.colorFromFloat(this.alpha, red, green, blue));
     }
 
     public void setAlpha(float alpha){

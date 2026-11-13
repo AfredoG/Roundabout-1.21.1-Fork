@@ -317,11 +317,11 @@ public class StandFireballEntity extends AbstractHurtingProjectile implements Un
 
 
     @Override
-    protected void defineSynchedData() {
-        if (!this.entityData.hasItem(USER_ID)) {
-            super.defineSynchedData();
-            this.entityData.define(USER_ID, -1);
-        }
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+
+            super.defineSynchedData(builder);
+            builder.define(USER_ID, -1);
+
     }
 
     @Override

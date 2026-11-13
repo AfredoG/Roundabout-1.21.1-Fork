@@ -21,16 +21,16 @@ import org.joml.Vector3f;
 
 public class RattRenderer extends StandRenderer<RattEntity> {
 
-    private static final ResourceLocation ANIME_SKIN = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/ratt/anime.png");
-    private static final ResourceLocation MANGA_SKIN = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/ratt/manga.png");
-    private static final ResourceLocation MELON_SKIN = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/ratt/melon.png");
-    private static final ResourceLocation SAND_SKIN = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/ratt/sand.png");
-    private static final ResourceLocation AZTEC_SKIN = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/ratt/aztec.png");
-    private static final ResourceLocation TOWER_SKIN = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/ratt/tower.png");
-    private static final ResourceLocation SNOWY_SKIN = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/ratt/snowy.png");
-    private static final ResourceLocation NETHER_SKIN = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/ratt/nether.png");
-    private static final ResourceLocation GUARDIAN_SKIN = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/ratt/guardian.png");
-    private static final ResourceLocation ELDER_GUARDIAN_SKIN = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/ratt/elder_guardian.png");
+    private static final ResourceLocation ANIME_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/ratt/anime.png");
+    private static final ResourceLocation MANGA_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/ratt/manga.png");
+    private static final ResourceLocation MELON_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/ratt/melon.png");
+    private static final ResourceLocation SAND_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/ratt/sand.png");
+    private static final ResourceLocation AZTEC_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/ratt/aztec.png");
+    private static final ResourceLocation TOWER_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/ratt/tower.png");
+    private static final ResourceLocation SNOWY_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/ratt/snowy.png");
+    private static final ResourceLocation NETHER_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/ratt/nether.png");
+    private static final ResourceLocation GUARDIAN_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/ratt/guardian.png");
+    private static final ResourceLocation ELDER_GUARDIAN_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/ratt/elder_guardian.png");
 
 
 

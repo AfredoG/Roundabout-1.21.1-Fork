@@ -30,7 +30,7 @@ public abstract class GravityWalkNodeEvaluatorMixin extends NodeEvaluator {
 //
 //    @Shadow protected abstract Node getStartNode(BlockPos blockPos);
 //
-//    @Shadow protected abstract BlockPathTypes getCachedBlockType(Mob mob, int i, int j, int k);
+//    @Shadow protected abstract PathType getCachedBlockType(Mob mob, int i, int j, int k);
 //
 //    @Shadow
 //    public static double getFloorLevel(BlockGetter blockGetter, BlockPos blockPos) {
@@ -39,7 +39,7 @@ public abstract class GravityWalkNodeEvaluatorMixin extends NodeEvaluator {
 //
 //    @Shadow protected abstract double getFloorLevel(BlockPos blockPos);
 //
-//    @Shadow @Nullable protected abstract Node findAcceptedNode(int i, int j, int k, int l, double d, Direction direction, BlockPathTypes blockPathTypes);
+//    @Shadow @Nullable protected abstract Node findAcceptedNode(int i, int j, int k, int l, double d, Direction direction, PathType blockPathTypes);
 //
 //    @Shadow protected abstract boolean isNeighborValid(@Nullable Node node, Node node2);
 //
@@ -49,10 +49,10 @@ public abstract class GravityWalkNodeEvaluatorMixin extends NodeEvaluator {
 //
 //    @Shadow protected abstract double getMobJumpHeight();
 //
-//    @Shadow protected abstract Node getNodeAndUpdateCostToMax(int i, int j, int k, BlockPathTypes blockPathTypes, float f);
+//    @Shadow protected abstract Node getNodeAndUpdateCostToMax(int i, int j, int k, PathType blockPathTypes, float f);
 //
 //    @Shadow
-//    protected static boolean doesBlockHavePartialCollision(BlockPathTypes blockPathTypes) {
+//    protected static boolean doesBlockHavePartialCollision(PathType blockPathTypes) {
 //        return false;
 //    }
 //
@@ -63,12 +63,12 @@ public abstract class GravityWalkNodeEvaluatorMixin extends NodeEvaluator {
 //    @Shadow protected abstract Node getBlockedNode(int i, int j, int k);
 //
 //    @Shadow
-//    public static BlockPathTypes checkNeighbourBlocks(BlockGetter blockGetter, BlockPos.MutableBlockPos mutableBlockPos, BlockPathTypes blockPathTypes) {
+//    public static PathType checkNeighbourBlocks(BlockGetter blockGetter, BlockPos.MutableBlockPos mutableBlockPos, PathType blockPathTypes) {
 //        return null;
 //    }
 //
 //    @Shadow
-//    protected static BlockPathTypes getBlockPathTypeRaw(BlockGetter blockGetter, BlockPos blockPos) {
+//    protected static PathType getBlockPathTypeRaw(BlockGetter blockGetter, BlockPos blockPos) {
 //        return null;
 //    }
 //
@@ -257,9 +257,9 @@ public abstract class GravityWalkNodeEvaluatorMixin extends NodeEvaluator {
 //
 //            int $$2 = 0;
 //            int $$3 = 0;
-//            BlockPathTypes $$4 = this.getCachedBlockType(this.mob, $$1.x, $$1.y, $$1.z+ 1);
-//            BlockPathTypes $$5 = this.getCachedBlockType(this.mob, $$1.x, $$1.y, $$1.z);
-//            if (this.mob.getPathfindingMalus($$4) >= 0.0F && $$5 != BlockPathTypes.STICKY_HONEY) {
+//            PathType $$4 = this.getCachedBlockType(this.mob, $$1.x, $$1.y, $$1.z+ 1);
+//            PathType $$5 = this.getCachedBlockType(this.mob, $$1.x, $$1.y, $$1.z);
+//            if (this.mob.getPathfindingMalus($$4) >= 0.0F && $$5 != PathType.STICKY_HONEY) {
 //                $$3 = Mth.floor(Math.max(1.0F, this.mob.maxUpStep()));
 //            }
 //
@@ -361,8 +361,8 @@ public abstract class GravityWalkNodeEvaluatorMixin extends NodeEvaluator {
 //
 //            if (check1 || check2) {
 //                cir.setReturnValue(false);
-//            } else if ($$1.type != BlockPathTypes.WALKABLE_DOOR && $$2.type != BlockPathTypes.WALKABLE_DOOR && $$3.type != BlockPathTypes.WALKABLE_DOOR) {
-//                boolean $$4 = $$2.type == BlockPathTypes.FENCE && $$1.type == BlockPathTypes.FENCE && (double)this.mob.getBbWidth() < 0.5;
+//            } else if ($$1.type != PathType.WALKABLE_DOOR && $$2.type != PathType.WALKABLE_DOOR && $$3.type != PathType.WALKABLE_DOOR) {
+//                boolean $$4 = $$2.type == PathType.FENCE && $$1.type == PathType.FENCE && (double)this.mob.getBbWidth() < 0.5;
 //                cir.setReturnValue($$3.costMalus >= 0.0F && (check1 || $$2.costMalus >= 0.0F || $$4) && (check2 || $$1.costMalus >= 0.0F || $$4));
 //            } else {
 //                cir.setReturnValue(false);
@@ -426,13 +426,13 @@ public abstract class GravityWalkNodeEvaluatorMixin extends NodeEvaluator {
 //
 //
 //    @Inject(
-//            method = "findAcceptedNode(IIIIDLnet/minecraft/core/Direction;Lnet/minecraft/world/level/pathfinder/BlockPathTypes;)Lnet/minecraft/world/level/pathfinder/Node;",
+//            method = "findAcceptedNode(IIIIDLnet/minecraft/core/Direction;Lnet/minecraft/world/level/pathfinder/PathType;)Lnet/minecraft/world/level/pathfinder/Node;",
 //            at = @At(
 //                    value = "HEAD"
 //            ),
 //            cancellable = true
 //    )
-//    public void rdbt$findAcceptedNode(int $$0, int $$1, int $$2, int $$3, double $$4, Direction $$5, BlockPathTypes $$6, CallbackInfoReturnable<Node> cir){
+//    public void rdbt$findAcceptedNode(int $$0, int $$1, int $$2, int $$3, double $$4, Direction $$5, PathType $$6, CallbackInfoReturnable<Node> cir){
 //        Direction dir = ((IGravityEntity) this.mob).roundabout$getGravityDirection();
 //        if (dir == Direction.DOWN)
 //            return;
@@ -444,7 +444,7 @@ public abstract class GravityWalkNodeEvaluatorMixin extends NodeEvaluator {
 //            cir.setReturnValue(null);
 //            return;
 //        } else {
-//            BlockPathTypes $$10 = this.getCachedBlockType(this.mob, $$0, $$1, $$2);
+//            PathType $$10 = this.getCachedBlockType(this.mob, $$0, $$1, $$2);
 //            float $$11 = this.mob.getPathfindingMalus($$10);
 //            double $$12 = (double)this.mob.getBbWidth() / 2.0;
 //            if ($$11 >= 0.0F) {
@@ -455,15 +455,15 @@ public abstract class GravityWalkNodeEvaluatorMixin extends NodeEvaluator {
 //                $$7 = null;
 //            }
 //
-//            if ($$10 != BlockPathTypes.WALKABLE && (!this.isAmphibious() || $$10 != BlockPathTypes.WATER)) {
+//            if ($$10 != PathType.WALKABLE && (!this.isAmphibious() || $$10 != PathType.WATER)) {
 //                if (($$7 == null || $$7.costMalus < 0.0F)
 //                        && $$3 > 0
-//                        && ($$10 != BlockPathTypes.FENCE || this.canWalkOverFences())
-//                        && $$10 != BlockPathTypes.UNPASSABLE_RAIL
-//                        && $$10 != BlockPathTypes.TRAPDOOR
-//                        && $$10 != BlockPathTypes.POWDER_SNOW) {
+//                        && ($$10 != PathType.FENCE || this.canWalkOverFences())
+//                        && $$10 != PathType.UNPASSABLE_RAIL
+//                        && $$10 != PathType.TRAPDOOR
+//                        && $$10 != PathType.POWDER_SNOW) {
 //                    $$7 = this.findAcceptedNode($$0, $$1 + 1, $$2, $$3 - 1, $$4, $$5, $$6);
-//                    if ($$7 != null && ($$7.type == BlockPathTypes.OPEN || $$7.type == BlockPathTypes.WALKABLE) && this.mob.getBbWidth() < 1.0F) {
+//                    if ($$7 != null && ($$7.type == PathType.OPEN || $$7.type == PathType.WALKABLE) && this.mob.getBbWidth() < 1.0F) {
 //                        double stpX = (double)($$0 - $$5.getStepX()) + 0.5;
 //                        double stpZ = (double)($$2 - $$5.getStepZ()) + 0.5;
 //                        AABB $$15= new AABB(
@@ -481,15 +481,15 @@ public abstract class GravityWalkNodeEvaluatorMixin extends NodeEvaluator {
 //                    }
 //                }
 //
-//                if (!this.isAmphibious() && $$10 == BlockPathTypes.WATER && !this.canFloat()) {
-//                    if (this.getCachedBlockType(this.mob, $$0, $$1 - 1, $$2) != BlockPathTypes.WATER) {
+//                if (!this.isAmphibious() && $$10 == PathType.WATER && !this.canFloat()) {
+//                    if (this.getCachedBlockType(this.mob, $$0, $$1 - 1, $$2) != PathType.WATER) {
 //                        cir.setReturnValue($$7);
 //                        return;
 //                    }
 //
 //                    while ($$1 > this.mob.level().getMinBuildHeight()) {
 //                        $$10 = this.getCachedBlockType(this.mob, $$0, --$$1, $$2);
-//                        if ($$10 != BlockPathTypes.WATER) {
+//                        if ($$10 != PathType.WATER) {
 //                            cir.setReturnValue($$7);
 //                            return;
 //                        }
@@ -498,12 +498,12 @@ public abstract class GravityWalkNodeEvaluatorMixin extends NodeEvaluator {
 //                    }
 //                }
 //
-//                if ($$10 == BlockPathTypes.OPEN) {
+//                if ($$10 == PathType.OPEN) {
 //                    int $$16 = 0;
 //                    int $$17 = $$1;
 //                    int cap = 300;
 //
-//                    while ($$10 == BlockPathTypes.OPEN) {
+//                    while ($$10 == PathType.OPEN) {
 //                        if (dir == Direction.UP){
 //                            ++$$1;
 //                            if ($$1 > this.mob.level().getMaxBuildHeight()) {
@@ -536,7 +536,7 @@ public abstract class GravityWalkNodeEvaluatorMixin extends NodeEvaluator {
 //
 //                        $$10 = this.getCachedBlockType(this.mob, $$0, $$1, $$2);
 //                        $$11 = this.mob.getPathfindingMalus($$10);
-//                        if ($$10 != BlockPathTypes.OPEN && $$11 >= 0.0F) {
+//                        if ($$10 != PathType.OPEN && $$11 >= 0.0F) {
 //                            $$7 = this.getNodeAndUpdateCostToMax($$0, $$1, $$2, $$10, $$11);
 //                            break;
 //                        }
@@ -565,13 +565,13 @@ public abstract class GravityWalkNodeEvaluatorMixin extends NodeEvaluator {
 //    }
 //
 //    @Inject(
-//            method = "getBlockPathType(Lnet/minecraft/world/level/BlockGetter;III)Lnet/minecraft/world/level/pathfinder/BlockPathTypes;",
+//            method = "getBlockPathType(Lnet/minecraft/world/level/BlockGetter;III)Lnet/minecraft/world/level/pathfinder/PathType;",
 //            at = @At(
 //                    value = "HEAD"
 //            ),
 //            cancellable = true
 //    )
-//    public void rdbt$getBlockPathType(BlockGetter $$0, int $$1, int $$2, int $$3, CallbackInfoReturnable<BlockPathTypes> cir) {
+//    public void rdbt$getBlockPathType(BlockGetter $$0, int $$1, int $$2, int $$3, CallbackInfoReturnable<PathType> cir) {
 //        Direction dir = ((IGravityEntity) this.mob).roundabout$getGravityDirection();
 //        if (dir == Direction.DOWN)
 //            return;
@@ -581,13 +581,13 @@ public abstract class GravityWalkNodeEvaluatorMixin extends NodeEvaluator {
 //    }
 //
 //    @Unique
-//    private static BlockPathTypes rdbt$getBlockPathTypeStatic(Direction dir, BlockGetter $$0, BlockPos.MutableBlockPos $$1) {
+//    private static PathType rdbt$getBlockPathTypeStatic(Direction dir, BlockGetter $$0, BlockPos.MutableBlockPos $$1) {
 //        int $$2 = $$1.getX();
 //        int $$3 = $$1.getY();
 //        int $$4 = $$1.getZ();
-//        BlockPathTypes $$5 = getBlockPathTypeRaw($$0, $$1);
-//        if ($$5 == BlockPathTypes.OPEN) {
-//            BlockPathTypes $$6 = null;
+//        PathType $$5 = getBlockPathTypeRaw($$0, $$1);
+//        if ($$5 == PathType.OPEN) {
+//            PathType $$6 = null;
 //
 //            if (dir == Direction.UP){
 //                getBlockPathTypeRaw($$0, $$1.set($$2, $$3 + 1, $$4));
@@ -600,31 +600,31 @@ public abstract class GravityWalkNodeEvaluatorMixin extends NodeEvaluator {
 //            } if (dir == Direction.EAST){
 //                getBlockPathTypeRaw($$0, $$1.set($$2 + 1, $$3, $$4));
 //            }
-//            $$5 = $$6 != BlockPathTypes.WALKABLE && $$6 != BlockPathTypes.OPEN && $$6 != BlockPathTypes.WATER && $$6 != BlockPathTypes.LAVA
-//                    ? BlockPathTypes.WALKABLE
-//                    : BlockPathTypes.OPEN;
-//            if ($$6 == BlockPathTypes.DAMAGE_FIRE) {
-//                $$5 = BlockPathTypes.DAMAGE_FIRE;
+//            $$5 = $$6 != PathType.WALKABLE && $$6 != PathType.OPEN && $$6 != PathType.WATER && $$6 != PathType.LAVA
+//                    ? PathType.WALKABLE
+//                    : PathType.OPEN;
+//            if ($$6 == PathType.DAMAGE_FIRE) {
+//                $$5 = PathType.DAMAGE_FIRE;
 //            }
 //
-//            if ($$6 == BlockPathTypes.DAMAGE_OTHER) {
-//                $$5 = BlockPathTypes.DAMAGE_OTHER;
+//            if ($$6 == PathType.DAMAGE_OTHER) {
+//                $$5 = PathType.DAMAGE_OTHER;
 //            }
 //
-//            if ($$6 == BlockPathTypes.STICKY_HONEY) {
-//                $$5 = BlockPathTypes.STICKY_HONEY;
+//            if ($$6 == PathType.STICKY_HONEY) {
+//                $$5 = PathType.STICKY_HONEY;
 //            }
 //
-//            if ($$6 == BlockPathTypes.POWDER_SNOW) {
-//                $$5 = BlockPathTypes.DANGER_POWDER_SNOW;
+//            if ($$6 == PathType.POWDER_SNOW) {
+//                $$5 = PathType.DANGER_POWDER_SNOW;
 //            }
 //
-//            if ($$6 == BlockPathTypes.DAMAGE_CAUTIOUS) {
-//                $$5 = BlockPathTypes.DAMAGE_CAUTIOUS;
+//            if ($$6 == PathType.DAMAGE_CAUTIOUS) {
+//                $$5 = PathType.DAMAGE_CAUTIOUS;
 //            }
 //        }
 //
-//        if ($$5 == BlockPathTypes.WALKABLE) {
+//        if ($$5 == PathType.WALKABLE) {
 //            $$5 = checkNeighbourBlocks($$0, $$1.set($$2, $$3, $$4), $$5);
 //        }
 //

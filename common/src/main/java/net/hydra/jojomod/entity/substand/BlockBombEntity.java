@@ -44,9 +44,9 @@ public class BlockBombEntity extends StandEntity implements NoHitboxRendering {
 	public int renderFadeCooldown = 7;
 
 	@Override
-	protected void defineSynchedData() {
-		super.defineSynchedData();
-		this.entityData.define(CONTACT, false);
+	protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+		super.defineSynchedData(builder);
+		builder.define(CONTACT, false);
 	}
 
 	public void setOnContact(boolean value) {

@@ -18,7 +18,7 @@ import org.joml.Matrix3f;
 import org.joml.Matrix4f;
 
 public final class DiverDownPointerRenderer {
-    private static final ResourceLocation POINTER_ICON = new ResourceLocation(
+    private static final ResourceLocation POINTER_ICON = ResourceLocation.fromNamespaceAndPath(
             Roundabout.MOD_ID, "textures/particle/pointer_diver_down.png");
 
     private DiverDownPointerRenderer() {}

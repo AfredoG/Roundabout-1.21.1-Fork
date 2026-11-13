@@ -12,7 +12,7 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 
 public class GEBrambleRenderer extends EntityRenderer<GEBrambleEntity> {
-    private static final ResourceLocation TEXTURE = new ResourceLocation("roundabout", "textures/entity/ge_bramble.png");
+    private static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath("roundabout", "textures/entity/ge_bramble.png");
     private final GEBrambleModel model;
 
     public GEBrambleRenderer(EntityRendererProvider.Context context) {
@@ -35,7 +35,7 @@ public class GEBrambleRenderer extends EntityRenderer<GEBrambleEntity> {
         float ageInTicks = entity.tickCount + partialTicks;
         this.model.setupAnim(entity, 0.0F, 0.0F, ageInTicks, 0.0F, 0.0F);
 
-        this.model.renderToBuffer(poseStack, buffer.getBuffer(this.model.renderType(this.getTextureLocation(entity))), packedLight, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
+        this.model.renderToBuffer(poseStack, buffer.getBuffer(this.model.renderType(this.getTextureLocation(entity))), packedLight, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(1.0F, 1.0F, 1.0F, 1.0F));
 
         poseStack.popPose();
         super.render(entity, entityYaw, partialTicks, poseStack, buffer, packedLight);

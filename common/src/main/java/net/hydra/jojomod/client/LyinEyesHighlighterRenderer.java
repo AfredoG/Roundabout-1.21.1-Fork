@@ -17,16 +17,16 @@ import org.joml.Random;
 
 public class LyinEyesHighlighterRenderer {
     private static final ResourceLocation[] ICONS = {
-        new ResourceLocation("roundabout", "textures/particle/lyin_eyes_highlight_1.png"),
-        new ResourceLocation("roundabout", "textures/particle/lyin_eyes_highlight_2.png"),
-        new ResourceLocation("roundabout", "textures/particle/lyin_eyes_highlight_3.png"),
-        new ResourceLocation("roundabout", "textures/particle/lyin_eyes_highlight_4.png")
+        ResourceLocation.fromNamespaceAndPath("roundabout", "textures/particle/lyin_eyes_highlight_1.png"),
+        ResourceLocation.fromNamespaceAndPath("roundabout", "textures/particle/lyin_eyes_highlight_2.png"),
+        ResourceLocation.fromNamespaceAndPath("roundabout", "textures/particle/lyin_eyes_highlight_3.png"),
+        ResourceLocation.fromNamespaceAndPath("roundabout", "textures/particle/lyin_eyes_highlight_4.png")
     };
     private static final ResourceLocation[] ICONS_THICK = {
-            new ResourceLocation("roundabout", "textures/particle/lyin_eyes_thick_1.png"),
-            new ResourceLocation("roundabout", "textures/particle/lyin_eyes_thick_2.png"),
-            new ResourceLocation("roundabout", "textures/particle/lyin_eyes_thick_3.png"),
-            new ResourceLocation("roundabout", "textures/particle/lyin_eyes_thick_4.png")
+            ResourceLocation.fromNamespaceAndPath("roundabout", "textures/particle/lyin_eyes_thick_1.png"),
+            ResourceLocation.fromNamespaceAndPath("roundabout", "textures/particle/lyin_eyes_thick_2.png"),
+            ResourceLocation.fromNamespaceAndPath("roundabout", "textures/particle/lyin_eyes_thick_3.png"),
+            ResourceLocation.fromNamespaceAndPath("roundabout", "textures/particle/lyin_eyes_thick_4.png")
     };
 
     /**

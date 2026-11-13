@@ -14,7 +14,7 @@ import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.Nullable;
 
 public class ReddRenderer extends StandRenderer<ReddEntity> {
-    private static final ResourceLocation REDD_SKIN = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/ratt/redd.png");
+    private static final ResourceLocation REDD_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/ratt/redd.png");
 
 
     public ReddRenderer(EntityRendererProvider.Context context) {

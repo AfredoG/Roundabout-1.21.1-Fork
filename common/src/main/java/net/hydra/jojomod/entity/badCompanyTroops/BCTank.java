@@ -37,9 +37,9 @@ public class BCTank extends BCTroop{
     public final static float height = 0.32f;
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(CURRENT_ANIM, IDLE);
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(CURRENT_ANIM, IDLE);
     }
 
     @Override

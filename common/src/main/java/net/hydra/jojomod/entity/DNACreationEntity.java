@@ -35,9 +35,9 @@ public class DNACreationEntity extends LivingEntity {
     }
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(DATA_ITEM, ItemStack.EMPTY);
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(DATA_ITEM, ItemStack.EMPTY);
     }
 
     @Override

@@ -23,7 +23,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 public abstract class SethanRenderer {
 
-    public static ResourceLocation SETHAN_TEXTURE = new ResourceLocation(Roundabout.MOD_ID + ":textures/stand/sethan.png");
+    public static ResourceLocation SETHAN_TEXTURE = ResourceLocation.parse(Roundabout.MOD_ID + ":textures/stand/sethan.png");
     private static final RenderType SHADOW_RENDER_TYPE = RenderType.entityShadow(SETHAN_TEXTURE);
 
 

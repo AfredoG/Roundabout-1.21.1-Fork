@@ -39,8 +39,13 @@ public class RattShoulderModel extends PsuedoHierarchicalModel {
         return RattModel.getTexturedModelData();
     }
     @Override
-    public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
-        stand.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+    public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, int argbColor) {
+        float red = net.minecraft.util.FastColor.ARGB32.red(argbColor) / 255.0F;
+        float green = net.minecraft.util.FastColor.ARGB32.green(argbColor) / 255.0F;
+        float blue = net.minecraft.util.FastColor.ARGB32.blue(argbColor) / 255.0F;
+        float alpha = net.minecraft.util.FastColor.ARGB32.alpha(argbColor) / 255.0F;
+
+        stand.render(poseStack, vertexConsumer, packedLight, packedOverlay, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, red, green, blue));
     }
 
     @Override
@@ -52,27 +57,27 @@ public class RattShoulderModel extends PsuedoHierarchicalModel {
     public void setupAnim(Entity var1, float pAgeInTicks) {
     }
 
-    public static ResourceLocation base = new ResourceLocation(Roundabout.MOD_ID,
+    public static ResourceLocation base = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/stand/ratt/anime.png");
-    public static ResourceLocation anime = new ResourceLocation(Roundabout.MOD_ID,
+    public static ResourceLocation anime = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/stand/ratt/anime.png");
-    public static ResourceLocation manga = new ResourceLocation(Roundabout.MOD_ID,
+    public static ResourceLocation manga = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/stand/ratt/manga.png");
-    public static ResourceLocation melon = new ResourceLocation(Roundabout.MOD_ID,
+    public static ResourceLocation melon = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/stand/ratt/melon.png");
-    public static ResourceLocation sand = new ResourceLocation(Roundabout.MOD_ID,
+    public static ResourceLocation sand = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/stand/ratt/sand.png");
-    public static ResourceLocation aztec = new ResourceLocation(Roundabout.MOD_ID,
+    public static ResourceLocation aztec = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/stand/ratt/aztec.png");
-    public static ResourceLocation snowy = new ResourceLocation(Roundabout.MOD_ID,
+    public static ResourceLocation snowy = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/stand/ratt/snowy.png");
-    public static ResourceLocation nether = new ResourceLocation(Roundabout.MOD_ID,
+    public static ResourceLocation nether = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/stand/ratt/nether.png");
-    public static ResourceLocation tower = new ResourceLocation(Roundabout.MOD_ID,
+    public static ResourceLocation tower = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/stand/ratt/tower.png");
-    public static ResourceLocation guardian = new ResourceLocation(Roundabout.MOD_ID,
+    public static ResourceLocation guardian = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/stand/ratt/guardian.png");
-    public static ResourceLocation elder_guardian = new ResourceLocation(Roundabout.MOD_ID,
+    public static ResourceLocation elder_guardian = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/stand/ratt/elder_guardian.png");
 
 
@@ -108,7 +113,7 @@ public class RattShoulderModel extends PsuedoHierarchicalModel {
             StandUser user = ((StandUser) LE);
             VertexConsumer consumer = bufferSource.getBuffer(RenderType.entityTranslucent(getTextureLocation(context, skin)));
 
-            root().render(poseStack, consumer, light, OverlayTexture.NO_OVERLAY, r, g, b, alpha);
+            root().render(poseStack, consumer, light, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, r, g, b));
         }
     }
 

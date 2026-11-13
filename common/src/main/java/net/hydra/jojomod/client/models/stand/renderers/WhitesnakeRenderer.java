@@ -49,7 +49,7 @@ public class WhitesnakeRenderer extends StandRenderer<WhitesnakeEntity> {
     }
 
     private static ResourceLocation texture(String name) {
-        return new ResourceLocation(Roundabout.MOD_ID, "textures/stand/whitesnake/" + name + ".png");
+        return ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/whitesnake/" + name + ".png");
     }
 
     @Override

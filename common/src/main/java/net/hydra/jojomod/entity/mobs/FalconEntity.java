@@ -39,7 +39,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.pathfinder.BlockPathTypes;
+import net.minecraft.world.level.pathfinder.PathType;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
@@ -54,9 +54,9 @@ public class FalconEntity extends ShoulderRidingEntity implements VariantHolder<
     public FalconEntity(EntityType<? extends FalconEntity> $$0, Level $$1) {
         super($$0, $$1);
         this.moveControl = new FlyingMoveControl(this, 10, false);
-        this.setPathfindingMalus(BlockPathTypes.DANGER_FIRE, -1.0F);
-        this.setPathfindingMalus(BlockPathTypes.DAMAGE_FIRE, -1.0F);
-        this.setPathfindingMalus(BlockPathTypes.COCOA, -1.0F);
+        this.setPathfindingMalus(PathType.DANGER_FIRE, -1.0F);
+        this.setPathfindingMalus(PathType.DAMAGE_FIRE, -1.0F);
+        this.setPathfindingMalus(PathType.COCOA, -1.0F);
     }
 
     public static boolean canSpawn(EntityType<FalconEntity> FalconEntityEntityType, ServerLevelAccessor serverWorldAccess, MobSpawnType spawnReason, BlockPos blockPos, RandomSource random) {
@@ -117,9 +117,9 @@ public class FalconEntity extends ShoulderRidingEntity implements VariantHolder<
         this.setVariant(Variant.byId(p_29402_.getInt("Variant")));
     }
 
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(DATA_VARIANT_ID, 0);
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(DATA_VARIANT_ID, 0);
     }
 
     public boolean isFlying() {

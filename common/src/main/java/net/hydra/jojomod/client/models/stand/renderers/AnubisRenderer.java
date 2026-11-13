@@ -13,7 +13,7 @@ import org.jetbrains.annotations.Nullable;
 
 public class AnubisRenderer extends StandRenderer<AnubisEntity> {
 
-    private static final ResourceLocation ANIME = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/anubis/anime_human.png");
+    private static final ResourceLocation ANIME = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/anubis/anime_human.png");
     public AnubisRenderer(EntityRendererProvider.Context context) {
         super(context, new AnubisHumanoidModel<>(context.bakeLayer(ModEntityRendererClient.ANUBIS)), 0f);
     }

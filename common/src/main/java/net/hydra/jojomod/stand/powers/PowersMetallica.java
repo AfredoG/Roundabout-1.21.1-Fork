@@ -721,7 +721,7 @@ public class PowersMetallica extends NewDashPreset {
     private void triggerMetalEffect(LivingEntity victim, StandUser data) {
         float dmg = (getMetalMode() == SCISSORS) ? 12.0f : (getMetalMode() == RAZORS) ? 6.0f : 3.0f;
 
-        ResourceKey<DamageType> ironKey = ResourceKey.create(Registries.DAMAGE_TYPE, new ResourceLocation(Roundabout.MOD_ID, "iron_deprivation"));
+        ResourceKey<DamageType> ironKey = ResourceKey.create(Registries.DAMAGE_TYPE, ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "iron_deprivation"));
         DamageSource source = null;
 
         if (self.level() instanceof ServerLevel sl) {
@@ -741,7 +741,7 @@ public class PowersMetallica extends NewDashPreset {
 
         victim.hurt(source, dmg);
 
-        ResourceLocation bleedLoc = new ResourceLocation(Roundabout.MOD_ID, "bleed");
+        ResourceLocation bleedLoc = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "bleed");
         if (BuiltInRegistries.MOB_EFFECT.containsKey(bleedLoc)) {
             net.minecraft.world.effect.MobEffect bleedEffect = BuiltInRegistries.MOB_EFFECT.get(bleedLoc);
 

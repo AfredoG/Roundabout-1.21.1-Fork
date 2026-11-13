@@ -84,14 +84,14 @@ public class DiverArmsLayer<T extends LivingEntity, A extends HumanoidModel<T>> 
 
             this.getParentModel().leftArm.translateAndRotate(poseStack);
             poseStack.scale(1.05F, 1.02F, 1.05F);
-            arms.leftArm.render(poseStack, vertexConsumer, packedLight, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 0.70F);
+            arms.leftArm.render(poseStack, vertexConsumer, packedLight, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(0.70F, 1.0F, 1.0F, 1.0F));
 
             poseStack.popPose();
             poseStack.pushPose();
 
             this.getParentModel().rightArm.translateAndRotate(poseStack);
             poseStack.scale(1.05F, 1.02F, 1.05F);
-            arms.rightArm.render(poseStack, vertexConsumer, packedLight, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 0.70F);
+            arms.rightArm.render(poseStack, vertexConsumer, packedLight, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(0.70F, 1.0F, 1.0F, 1.0F));
 
             poseStack.popPose();
         }
@@ -124,7 +124,7 @@ public class DiverArmsLayer<T extends LivingEntity, A extends HumanoidModel<T>> 
         poseStack.scale(1.05F, 1.02F, 1.05F);
 
         VertexConsumer consumer = bufferSource.getBuffer(RenderType.entityTranslucent(texture));
-        armToRender.render(poseStack, consumer, packedLight, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, alpha * 0.70F);
+        armToRender.render(poseStack, consumer, packedLight, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha * 0.70F, 1.0F, 1.0F, 1.0F));
 
         ClientUtil.popPoseAndCooperate(poseStack, 8);
     }

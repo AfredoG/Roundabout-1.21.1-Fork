@@ -23,7 +23,7 @@ public class GEntityTags {
      */
     public static final TagKey<EntityType<?>> ALLOWED_SPECIAL = TagKey.create(
             BuiltInRegistries.ENTITY_TYPE.key(),
-            new ResourceLocation("gravity_changer", "allowed_special")
+            ResourceLocation.fromNamespaceAndPath("gravity_changer", "allowed_special")
     );
 
     public static boolean canChangeGravity(Entity entity) {

@@ -351,7 +351,7 @@ public class ClientToServerPackets {
                         byte context = (byte) vargs[0];
                         ItemStack stack = (ItemStack) vargs[1];
                         Vector3f vec = (Vector3f) vargs[2];
-                        boolean offh = ItemStack.isSameItemSameTags(sender.getOffhandItem(),stack);
+                        boolean offh = ItemStack.isSameItemSameComponents(sender.getOffhandItem(),stack);
                         if (sender.getInventory().contains(stack) || offh || stack.is(ModItems.CREATIVE_BODY_BAG)) {
                             ItemStack item;
                             int zombies = 1;

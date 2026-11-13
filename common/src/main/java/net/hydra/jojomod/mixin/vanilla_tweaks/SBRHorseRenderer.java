@@ -23,13 +23,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public abstract class SBRHorseRenderer extends AbstractHorseRenderer<Horse, HorseModel<Horse>> {
     /**Makes horses named after sbr horses have custom skins>*/
     @Unique
-    ResourceLocation roundabout$slowDancerTexture = new ResourceLocation(Roundabout.MOD_ID, "textures/entity/slow_dancer.png");
+    ResourceLocation roundabout$slowDancerTexture = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/entity/slow_dancer.png");
     @Unique
-    ResourceLocation roundabout$valkyrieTexture = new ResourceLocation(Roundabout.MOD_ID, "textures/entity/valkyrie.png");
+    ResourceLocation roundabout$valkyrieTexture = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/entity/valkyrie.png");
     @Unique
-    ResourceLocation roundabout$silverBulletTexture = new ResourceLocation(Roundabout.MOD_ID, "textures/entity/silver_bullet.png");
+    ResourceLocation roundabout$silverBulletTexture = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/entity/silver_bullet.png");
     @Unique
-    ResourceLocation roundabout$getsUpTexture = new ResourceLocation(Roundabout.MOD_ID, "textures/entity/gets_up.png");
+    ResourceLocation roundabout$getsUpTexture = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/entity/gets_up.png");
 
     public SBRHorseRenderer(EntityRendererProvider.Context $$0, HorseModel<Horse> $$1, float $$2) {
         super($$0, $$1, $$2);

@@ -11,8 +11,8 @@ import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.Nullable;
 
 public class GoldExperienceBaseRenderer extends StandRenderer<GoldExperienceEntity> {
-    public static final ResourceLocation PART_5 = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/gold_experience/base.png");
-    public static final ResourceLocation BETA = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/gold_experience/beta.png");
+    public static final ResourceLocation PART_5 = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/gold_experience/base.png");
+    public static final ResourceLocation BETA = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/gold_experience/beta.png");
 
     public GoldExperienceBaseRenderer(EntityRendererProvider.Context context, StandModel<GoldExperienceEntity> entityModel, float f) {
         super(context, entityModel, f);

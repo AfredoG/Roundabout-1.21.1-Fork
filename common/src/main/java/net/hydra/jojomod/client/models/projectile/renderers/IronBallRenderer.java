@@ -46,13 +46,13 @@ public class IronBallRenderer extends EntityRenderer<IronBallEntity> {
             $$3.translate(0,-0.2f,0);
             $$3.scale(1.45f, 1.45f, 1.45f);
             VertexConsumer $$6 = $$4.getBuffer(RenderType.entityTranslucent(getTextureLocation($$0)));
-            this.model.renderToBuffer($$3, $$6, $$5, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1f);
+            this.model.renderToBuffer($$3, $$6, $$5, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(1f, 1.0F, 1.0F, 1.0F));
             $$3.popPose();
             super.render($$0, $$1, $$2, $$3, $$4, 15728880);
     }
 
 
-    public static final ResourceLocation IRON_BALL_TEXTURE = new ResourceLocation(Roundabout.MOD_ID, "textures/entity/projectile/iron_ball.png");
+    public static final ResourceLocation IRON_BALL_TEXTURE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/entity/projectile/iron_ball.png");
 
     @Override
     public ResourceLocation getTextureLocation(IronBallEntity var1) {

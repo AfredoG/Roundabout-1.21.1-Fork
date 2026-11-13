@@ -44,7 +44,7 @@ import java.util.List;
 
 public class TroopSelectScreen extends Screen {
     //Check out GamemodeSwitcherScreen
-    static final ResourceLocation TROOP_CHOOSER_LOCATION = new ResourceLocation(Roundabout.MOD_ID,
+    static final ResourceLocation TROOP_CHOOSER_LOCATION = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/troop_chooser.png");
 
     private static final int

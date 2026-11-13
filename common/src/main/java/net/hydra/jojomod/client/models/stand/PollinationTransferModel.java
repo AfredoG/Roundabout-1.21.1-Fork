@@ -23,7 +23,7 @@ import net.minecraft.client.model.EntityModel;
 
 public class PollinationTransferModel <T extends PollinationTransferEntity> extends StandModel<T> {
 
-    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation("modid", "pollination_transfer"), "main");
+    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath("modid", "pollination_transfer"), "main");
 
     private final ModelPart stand2;
     private final ModelPart core;

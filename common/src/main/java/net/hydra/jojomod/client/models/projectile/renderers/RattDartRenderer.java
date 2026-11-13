@@ -38,7 +38,7 @@ public class RattDartRenderer extends EntityRenderer<RattDartEntity> {
             poseStack.mulPose(Axis.ZP.rotationDegrees(Mth.lerp(partialTicks, $$0.xRotO, $$0.getXRot()) + 90.0F));
             poseStack.scale(1.1f, 1.1f, 1.1f);
             VertexConsumer $$6 = ItemRenderer.getFoilBufferDirect($$4, this.model.renderType(this.getTextureLocation($$0)), false, false);// $$0.isFoil());
-            this.model.renderToBuffer(poseStack, $$6, $$5, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
+            this.model.renderToBuffer(poseStack, $$6, $$5, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(1.0F, 1.0F, 1.0F, 1.0F));
             poseStack.popPose();
             super.render($$0, $$1, partialTicks, poseStack, $$4, $$5);
 

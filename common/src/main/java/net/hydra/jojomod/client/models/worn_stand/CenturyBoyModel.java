@@ -27,7 +27,7 @@ import net.minecraft.world.entity.LivingEntity;
 
 public class CenturyBoyModel extends PsuedoHierarchicalModel {
 	// This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
-	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation("modid", "20cb"), "main");
+	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath("modid", "20cb"), "main");
 	private final ModelPart Waist;
 	private final ModelPart Head;
 	private final ModelPart Body;
@@ -88,8 +88,13 @@ public class CenturyBoyModel extends PsuedoHierarchicalModel {
 	}
 
 	@Override
-	public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
-		Waist.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+	public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, int argbColor) {
+        float red = net.minecraft.util.FastColor.ARGB32.red(argbColor) / 255.0F;
+        float green = net.minecraft.util.FastColor.ARGB32.green(argbColor) / 255.0F;
+        float blue = net.minecraft.util.FastColor.ARGB32.blue(argbColor) / 255.0F;
+        float alpha = net.minecraft.util.FastColor.ARGB32.alpha(argbColor) / 255.0F;
+
+		Waist.render(poseStack, vertexConsumer, packedLight, packedOverlay, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, red, green, blue));
 	}
 
 	@Override
@@ -102,49 +107,49 @@ public class CenturyBoyModel extends PsuedoHierarchicalModel {
 
 	}
 
-	public static ResourceLocation manga = new ResourceLocation(Roundabout.MOD_ID,
+	public static ResourceLocation manga = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
 			"textures/stand/20_centuryboy/manga.png");
-	public static ResourceLocation bedrock = new ResourceLocation(Roundabout.MOD_ID,
+	public static ResourceLocation bedrock = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
 			"textures/stand/20_centuryboy/bedrock.png");
-	public static ResourceLocation bee = new ResourceLocation(Roundabout.MOD_ID,
+	public static ResourceLocation bee = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
 			"textures/stand/20_centuryboy/bee.png");
-	public static ResourceLocation biker = new ResourceLocation(Roundabout.MOD_ID,
+	public static ResourceLocation biker = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
 			"textures/stand/20_centuryboy/biker.png");
-	public static ResourceLocation retro = new ResourceLocation(Roundabout.MOD_ID,
+	public static ResourceLocation retro = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
 			"textures/stand/20_centuryboy/retro.png");
-	public static ResourceLocation gold = new ResourceLocation(Roundabout.MOD_ID,
+	public static ResourceLocation gold = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
 			"textures/stand/20_centuryboy/gold.png");
-	public static ResourceLocation old_century_boy = new ResourceLocation(Roundabout.MOD_ID,
+	public static ResourceLocation old_century_boy = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
 			"textures/stand/20_centuryboy/19th_century_boy.png");
-	public static ResourceLocation shulker = new ResourceLocation(Roundabout.MOD_ID,
+	public static ResourceLocation shulker = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
 			"textures/stand/20_centuryboy/shulker.png");
-	public static ResourceLocation sulfur = new ResourceLocation(Roundabout.MOD_ID,
+	public static ResourceLocation sulfur = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
 			"textures/stand/20_centuryboy/sulfur.png");
-	public static ResourceLocation lemon = new ResourceLocation(Roundabout.MOD_ID,
+	public static ResourceLocation lemon = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
 			"textures/stand/20_centuryboy/lemon.png");
-	public static ResourceLocation blue = new ResourceLocation(Roundabout.MOD_ID,
+	public static ResourceLocation blue = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
 			"textures/stand/20_centuryboy/blue.png");
-	public static ResourceLocation grape = new ResourceLocation(Roundabout.MOD_ID,
+	public static ResourceLocation grape = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
 			"textures/stand/20_centuryboy/grape.png");
-	public static ResourceLocation strawberry = new ResourceLocation(Roundabout.MOD_ID,
+	public static ResourceLocation strawberry = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
 			"textures/stand/20_centuryboy/strawberry.png");
-	public static ResourceLocation salmonberry = new ResourceLocation(Roundabout.MOD_ID,
+	public static ResourceLocation salmonberry = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
 			"textures/stand/20_centuryboy/salmonberry.png");
-	public static ResourceLocation chicken = new ResourceLocation(Roundabout.MOD_ID,
+	public static ResourceLocation chicken = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
 			"textures/stand/20_centuryboy/chicken.png");
-	public static ResourceLocation older_century_boy = new ResourceLocation(Roundabout.MOD_ID,
+	public static ResourceLocation older_century_boy = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
 			"textures/stand/20_centuryboy/10th_century_boy.png");
-	public static ResourceLocation oldest_century_boy = new ResourceLocation(Roundabout.MOD_ID,
+	public static ResourceLocation oldest_century_boy = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
 			"textures/stand/20_centuryboy/11th_century_boy.png");
-	public static ResourceLocation beta = new ResourceLocation(Roundabout.MOD_ID,
+	public static ResourceLocation beta = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
 			"textures/stand/20_centuryboy/beta.png");
-	public static ResourceLocation pumpkin = new ResourceLocation(Roundabout.MOD_ID,
+	public static ResourceLocation pumpkin = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
 			"textures/stand/20_centuryboy/pumpkin.png");
-	public static ResourceLocation evil_pumpkin = new ResourceLocation(Roundabout.MOD_ID,
+	public static ResourceLocation evil_pumpkin = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
 			"textures/stand/20_centuryboy/evil_pumkin.png");
-	public static ResourceLocation ghost = new ResourceLocation(Roundabout.MOD_ID,
+	public static ResourceLocation ghost = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
 			"textures/stand/20_centuryboy/ghost.png");
-	public static ResourceLocation wandering = new ResourceLocation(Roundabout.MOD_ID,
+	public static ResourceLocation wandering = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
 			"textures/stand/20_centuryboy/wandering.png");
 
 
@@ -187,7 +192,7 @@ public class CenturyBoyModel extends PsuedoHierarchicalModel {
 		if (context instanceof LivingEntity LE) {
 			VertexConsumer consumer = bufferSource.getBuffer(RenderType.entityTranslucent(getTextureLocation(context, skin)));
 
-			Body.render(poseStack, consumer, light, OverlayTexture.NO_OVERLAY, r, g, b, alpha);
+			Body.render(poseStack, consumer, light, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, r, g, b));
 		}
 	}
 	public void renderHead(Entity context, float partialTicks, PoseStack poseStack, MultiBufferSource bufferSource,
@@ -195,7 +200,7 @@ public class CenturyBoyModel extends PsuedoHierarchicalModel {
 		if (context instanceof LivingEntity LE) {
 			VertexConsumer consumer = bufferSource.getBuffer(RenderType.entityTranslucent(getTextureLocation(context, skin)));
 
-			Head.render(poseStack, consumer, light, OverlayTexture.NO_OVERLAY, r, g, b, alpha);
+			Head.render(poseStack, consumer, light, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, r, g, b));
 		}
 	}
 	public void renderRightArm(Entity context, float partialTicks, PoseStack poseStack, MultiBufferSource bufferSource,
@@ -203,7 +208,7 @@ public class CenturyBoyModel extends PsuedoHierarchicalModel {
 		if (context instanceof LivingEntity LE) {
 			VertexConsumer consumer = bufferSource.getBuffer(RenderType.entityTranslucent(getTextureLocation(context, skin)));
 
-			RightArm.render(poseStack, consumer, light, OverlayTexture.NO_OVERLAY, r, g, b, alpha);
+			RightArm.render(poseStack, consumer, light, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, r, g, b));
 		}
 	}
 	public void renderLeftArm(Entity context, float partialTicks, PoseStack poseStack, MultiBufferSource bufferSource,
@@ -211,7 +216,7 @@ public class CenturyBoyModel extends PsuedoHierarchicalModel {
 		if (context instanceof LivingEntity) {
 			VertexConsumer consumer = bufferSource.getBuffer(RenderType.entityTranslucent(getTextureLocation(context, skin)));
 
-			LeftArm.render(poseStack, consumer, light, OverlayTexture.NO_OVERLAY, r, g, b, alpha);
+			LeftArm.render(poseStack, consumer, light, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, r, g, b));
 		}
 	}
 	public void renderRightArmSlim(Entity context, float partialTicks, PoseStack poseStack, MultiBufferSource bufferSource,
@@ -219,7 +224,7 @@ public class CenturyBoyModel extends PsuedoHierarchicalModel {
 		if (context instanceof LivingEntity LE) {
 			VertexConsumer consumer = bufferSource.getBuffer(RenderType.entityTranslucent(getTextureLocation(context, skin)));
 
-			RightArmSlim.render(poseStack, consumer, light, OverlayTexture.NO_OVERLAY, r, g, b, alpha);
+			RightArmSlim.render(poseStack, consumer, light, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, r, g, b));
 		}
 	}
 	public void renderLeftArmSlim(Entity context, float partialTicks, PoseStack poseStack, MultiBufferSource bufferSource,
@@ -227,7 +232,7 @@ public class CenturyBoyModel extends PsuedoHierarchicalModel {
 		if (context instanceof LivingEntity) {
 			VertexConsumer consumer = bufferSource.getBuffer(RenderType.entityTranslucent(getTextureLocation(context, skin)));
 
-			LeftArmSlim.render(poseStack, consumer, light, OverlayTexture.NO_OVERLAY, r, g, b, alpha);
+			LeftArmSlim.render(poseStack, consumer, light, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, r, g, b));
 		}
 	}
 	public void renderBreast(Entity context, float partialTicks, PoseStack poseStack, MultiBufferSource bufferSource,
@@ -238,7 +243,7 @@ public class CenturyBoyModel extends PsuedoHierarchicalModel {
 			if (ClientUtil.hasChangedBody(context)) {
 				consumer = bufferSource.getBuffer(RenderType.entityTranslucent(ClientUtil.getChangedBodyBreastTexture(context)));
 			}
-			Breast.render(poseStack, consumer, light, OverlayTexture.NO_OVERLAY, r, g, b, alpha);
+			Breast.render(poseStack, consumer, light, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, r, g, b));
 
 		}
 	}
@@ -247,10 +252,10 @@ public class CenturyBoyModel extends PsuedoHierarchicalModel {
 		if (context instanceof LivingEntity) {
 			VertexConsumer consumer = bufferSource.getBuffer(RenderType.entityTranslucent(getTextureLocation(context, skin)));
 
-			Body.render(poseStack, consumer, light, OverlayTexture.NO_OVERLAY, r, g, b, alpha);
-			Head.render(poseStack, consumer, light, OverlayTexture.NO_OVERLAY, r, g, b, alpha);
-			RightArm.render(poseStack, consumer, light, OverlayTexture.NO_OVERLAY, r, g, b, alpha);
-			LeftArm.render(poseStack, consumer, light, OverlayTexture.NO_OVERLAY, r, g, b, alpha);
+			Body.render(poseStack, consumer, light, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, r, g, b));
+			Head.render(poseStack, consumer, light, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, r, g, b));
+			RightArm.render(poseStack, consumer, light, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, r, g, b));
+			LeftArm.render(poseStack, consumer, light, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, r, g, b));
 		}
 	}
 

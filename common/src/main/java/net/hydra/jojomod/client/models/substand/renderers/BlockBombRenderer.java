@@ -36,12 +36,12 @@ import java.util.Map;
 import org.lwjgl.opengl.GL11;
 
 public class BlockBombRenderer extends StandRenderer<BlockBombEntity> {
-	private static final ResourceLocation PART_4_KILLER_QUEEN = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/killer_queen/blockbombs/pink.png");
-	private static final ResourceLocation MINESWEEPER = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/killer_queen/blockbombs/minesweeper.png");
-	private static final ResourceLocation BLUE = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/killer_queen/blockbombs/blue.png");
-	private static final ResourceLocation GREEN = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/killer_queen/blockbombs/green.png");
-	private static final ResourceLocation GOLD = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/killer_queen/blockbombs/gold.png");
-	private static final ResourceLocation NUMBRA = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/killer_queen/blockbombs/numbra.png");
+	private static final ResourceLocation PART_4_KILLER_QUEEN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/killer_queen/blockbombs/pink.png");
+	private static final ResourceLocation MINESWEEPER = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/killer_queen/blockbombs/minesweeper.png");
+	private static final ResourceLocation BLUE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/killer_queen/blockbombs/blue.png");
+	private static final ResourceLocation GREEN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/killer_queen/blockbombs/green.png");
+	private static final ResourceLocation GOLD = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/killer_queen/blockbombs/gold.png");
+	private static final ResourceLocation NUMBRA = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/killer_queen/blockbombs/numbra.png");
 	//private static final ResourceLocation ONIBIS = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/killer_queen/blockbombs/samurai.png");
 
 	
@@ -87,8 +87,7 @@ public class BlockBombRenderer extends StandRenderer<BlockBombEntity> {
                     matrixStack.mulPose(Axis.ZP.rotationDegrees(180f));
                     matrixStack.translate(0, -1.5, 0);
 
-                    model.renderToBuffer(matrixStack, vertex, 15728880, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F,
-                            0.75f * Math.min(fade + (partialTicks * 0.05F), 1f));
+                    model.renderToBuffer(matrixStack, vertex, 15728880, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(0.75f * Math.min(fade + (partialTicks * 0.05F), 1f), 1.0F, 1.0F, 1.0F));
                     matrixStack.popPose();
                 }
         	}

@@ -22,7 +22,7 @@ import net.minecraft.world.item.ItemStack;
 import org.joml.Vector3f;
 
 public class PlayerModifiedRenderer<T extends JojoNPC> extends PlayerLikeRenderer<JojoNPCPlayer> {
-    private static final ResourceLocation STEVE_SKIN = new ResourceLocation(Roundabout.MOD_ID,"textures/entity/visage/steve.png");
+    private static final ResourceLocation STEVE_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/entity/visage/steve.png");
 
     public PlayerModifiedRenderer(EntityRendererProvider.Context context) {
         super(context, new PlayerModifiedModel<>(context.bakeLayer(ModEntityRendererClient.MODIFIED_LAYER)),0f);

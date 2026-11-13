@@ -20,7 +20,7 @@ import net.minecraft.world.entity.player.Player;
 import java.util.Map;
 
 public class LeftSeperatedArmRenderer extends StandRenderer<LeftSeperatedArmEntity> {
-    private static final ResourceLocation PART_FIVE_GREEN_DAY = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/green_day/part_four_green_day.png");
+    private static final ResourceLocation PART_FIVE_GREEN_DAY = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/green_day/part_four_green_day.png");
 
 
     public LeftSeperatedArmRenderer(EntityRendererProvider.Context context) {

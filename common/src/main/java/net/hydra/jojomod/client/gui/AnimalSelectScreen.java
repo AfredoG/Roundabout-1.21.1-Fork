@@ -31,7 +31,7 @@ import java.util.StringTokenizer;
 
 public class AnimalSelectScreen extends Screen implements NoCancelInputScreen {
     //Check out GamemodeSwitcherScreen
-    static final ResourceLocation MOB_SWITCHER_LOCATION = new ResourceLocation(Roundabout.MOD_ID,
+    static final ResourceLocation MOB_SWITCHER_LOCATION = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/ge_menu.png");
     private standRerollIcon currentlyHovered;
     private int firstMouseX;
@@ -241,24 +241,24 @@ public class AnimalSelectScreen extends Screen implements NoCancelInputScreen {
     }
 
     public enum standRerollIcon {
-        BUTTERFLY(Component.translatable("roundabout.gold_experience_animal.butterfly"), new ResourceLocation(Roundabout.MOD_ID,
+        BUTTERFLY(Component.translatable("roundabout.gold_experience_animal.butterfly"), ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
                 "textures/gui/ge_animal_icons/butterfly.png"),AnimalTypes.BUTTERFLY.id,-43,31, Component.translatable("roundabout.gold_experience_animal.butterfly.desc")),
-        BAT(Component.translatable("roundabout.gold_experience_animal.bat"), new ResourceLocation(Roundabout.MOD_ID,
+        BAT(Component.translatable("roundabout.gold_experience_animal.bat"), ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
                 "textures/gui/ge_animal_icons/bat.png"),AnimalTypes.BAT.id,-28,1, Component.translatable("roundabout.gold_experience_animal.bat.desc")),
-        BEE(Component.translatable("roundabout.gold_experience_animal.bee"), new ResourceLocation(Roundabout.MOD_ID,
+        BEE(Component.translatable("roundabout.gold_experience_animal.bee"), ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
                 "textures/gui/ge_animal_icons/bee.png"),AnimalTypes.BEE.id,42,31, Component.translatable("roundabout.gold_experience_animal.bee.desc")),
-        FISH(Component.translatable("roundabout.gold_experience_animal.fish"), new ResourceLocation(Roundabout.MOD_ID,
+        FISH(Component.translatable("roundabout.gold_experience_animal.fish"), ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
                 "textures/gui/ge_animal_icons/fish.png"),AnimalTypes.FISH.id,0,-16, Component.translatable("roundabout.gold_experience_animal.fish.desc")),
-        PIRAHNA(Component.translatable("roundabout.gold_experience_animal.pirahna"), new ResourceLocation(Roundabout.MOD_ID,
+        PIRAHNA(Component.translatable("roundabout.gold_experience_animal.pirahna"), ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
                 "textures/gui/ge_animal_icons/pirahna.png"),AnimalTypes.PIRAHNA.id,28,1, Component.translatable("roundabout.gold_experience_animal.pirahna.desc")),
-        SNAKE(Component.translatable("roundabout.gold_experience_animal.snake"), new ResourceLocation(Roundabout.MOD_ID,
+        SNAKE(Component.translatable("roundabout.gold_experience_animal.snake"), ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
                 "textures/gui/ge_animal_icons/snake.png"),AnimalTypes.SNAKE.id,28,61, Component.translatable("roundabout.gold_experience_animal.snake.desc")),
-        FROG(Component.translatable("roundabout.gold_experience_animal.frog"), new ResourceLocation(Roundabout.MOD_ID,
+        FROG(Component.translatable("roundabout.gold_experience_animal.frog"), ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
                 "textures/gui/ge_animal_icons/frog.png"),AnimalTypes.FROG.id,-28,61, Component.translatable("roundabout.gold_experience_animal.frog.desc")),
-        FOX(Component.translatable("roundabout.gold_experience_animal.fox"), new ResourceLocation(Roundabout.MOD_ID,
+        FOX(Component.translatable("roundabout.gold_experience_animal.fox"), ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
                 "textures/gui/ge_animal_icons/fox.png"),AnimalTypes.FOX.id,0,78, Component.translatable("roundabout.gold_experience_animal.fox.desc")),
 
-        NONE(Component.translatable("roundabout.gold_experience_animal.none"), new ResourceLocation(Roundabout.MOD_ID,
+        NONE(Component.translatable("roundabout.gold_experience_animal.none"), ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
                 "textures/gui/ge_animal_icons/main_stand.png"),(byte)0,0,31, Component.translatable("roundabout.stand_switch.main.desc"));
 
         protected static final standRerollIcon[] VALUES;

@@ -163,7 +163,7 @@ public class StandHudRender {
         if (itemID == null) return;
 
         String fixedString = itemID.getPath().replace("_powder", "");
-        ResourceLocation blockID = new ResourceLocation(itemID.getNamespace(), fixedString);
+        ResourceLocation blockID = ResourceLocation.fromNamespaceAndPath(itemID.getNamespace(), fixedString);
         Block actualConcrete = BuiltInRegistries.BLOCK.getOptional(blockID).orElse(Blocks.BLACK_CONCRETE);
 
         int l = scaledHeight - 32 + 3;
@@ -705,7 +705,7 @@ public class StandHudRender {
     }
 
     private static final ResourceLocation FIRE_0 =
-            new ResourceLocation("minecraft", "textures/block/fire_0.png");
+            ResourceLocation.fromNamespaceAndPath("minecraft", "textures/block/fire_0.png");
     public static void renderComboHudNumber(GuiGraphics context, Minecraft client, Player playerEntity,
                                                       int scaledWidth, int scaledHeight, int x,
                                                       PunchingGeneralPowers pgp) {
@@ -834,7 +834,7 @@ public class StandHudRender {
         }
     }
 
-    private static final ResourceLocation GUI_ICONS_LOCATION = new ResourceLocation("textures/gui/icons.png");
+    private static final ResourceLocation GUI_ICONS_LOCATION = ResourceLocation.parse("textures/gui/icons.png");
     public static void renderExperienceBar(Minecraft client,int scaledWidth, int scaledHeight, GuiGraphics $$0) {
         int $$2 = client.player.getXpNeededForNextLevel();
         if ($$2 > 0) {

@@ -15,11 +15,11 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(PigRenderer.class)
 public class ZPigRenderer {
 
-    private final ResourceLocation RDBT$ALT_A = new ResourceLocation(Roundabout.MOD_ID,
+    private final ResourceLocation RDBT$ALT_A = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/parallel_mobs/pig_1.png");
-    private final ResourceLocation RDBT$ALT_B = new ResourceLocation(Roundabout.MOD_ID,
+    private final ResourceLocation RDBT$ALT_B = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/parallel_mobs/pig_2.png");
-    private final ResourceLocation RDBT$ALT_C = new ResourceLocation(Roundabout.MOD_ID,
+    private final ResourceLocation RDBT$ALT_C = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/parallel_mobs/pig_3.png");
     @Inject(method = "getTextureLocation(Lnet/minecraft/world/entity/animal/Pig;)Lnet/minecraft/resources/ResourceLocation;",
             at = @At(value = "HEAD"),cancellable = true)

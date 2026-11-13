@@ -53,7 +53,7 @@ public class StandArrowBowItem {
                             }
 
                             if (EnchantmentHelper.getItemEnchantmentLevel(Enchantments.FLAMING_ARROWS, $$0) > 0) {
-                                $$11.setSecondsOnFire(100);
+                                $$11.igniteForSeconds(100);
                             }
 
                             $$0.hurtAndBreak(1, $$4, $$1x -> $$1x.broadcastBreakEvent($$4.getUsedItemHand()));

@@ -61,12 +61,12 @@ public class PowerInventoryScreen
         extends EffectRenderingInventoryScreen<PowerInventoryMenu> {
     /**Currently unfinished, this is when you press the stand power inventory key.
      * It should render your current stand, as well as its moves and stuff.*/
-    public static final ResourceLocation POWER_INVENTORY_LOCATION = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation POWER_INVENTORY_LOCATION = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/power_inventory.png");
-    public static final ResourceLocation POWER_INVENTORY_GEAR_LOCATION = new ResourceLocation(Roundabout.MOD_ID,
+    public static final ResourceLocation POWER_INVENTORY_GEAR_LOCATION = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/stand_user_settings.png");
 
-    private static final ResourceLocation RECIPE_BUTTON_LOCATION = new ResourceLocation("textures/gui/recipe_button.png");
+    private static final ResourceLocation RECIPE_BUTTON_LOCATION = ResourceLocation.parse("textures/gui/recipe_button.png");
     private float xMouse;
     private float yMouse;
     //private final RecipeBookComponent recipeBookComponent = new RecipeBookComponent();

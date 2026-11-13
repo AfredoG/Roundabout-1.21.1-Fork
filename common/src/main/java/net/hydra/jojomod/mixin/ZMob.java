@@ -345,7 +345,7 @@ public abstract class ZMob extends LivingEntity implements IMob {
 
                 int $$3 = EnchantmentHelper.getFireAspect(this);
                 if ($$3 > 0) {
-                    $$0.setSecondsOnFire($$3 * 4);
+                    $$0.igniteForSeconds($$3 * 4);
                 }
 
                 boolean $$4 = $$0.hurt(this.damageSources().mobAttack(this), $$1);

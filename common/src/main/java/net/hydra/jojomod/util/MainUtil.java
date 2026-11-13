@@ -960,7 +960,7 @@ public class MainUtil {
 
     public static void handleChangeItem(Player player, byte context, ItemStack stack) {
         if (context == PacketDataIndex.ITEM_SWITCH_MAIN || context == PacketDataIndex.ITEM_SWITCH_SECONDARY) {
-            boolean offh = ItemStack.isSameItemSameTags(player.getOffhandItem(), stack);
+            boolean offh = ItemStack.isSameItemSameComponents(player.getOffhandItem(), stack);
             if (player.getInventory().contains(stack) || offh) {
                 if (stack.getItem() instanceof StandArrowItem) {
                     StandArrowItem.rerollStand(player, offh, stack, context);
@@ -1027,7 +1027,7 @@ public class MainUtil {
     public static boolean canAddItem(ItemStack itemStack, Inventory inventory) {
         boolean bl = false;
         for (ItemStack itemStack2 : inventory.items) {
-            if (!itemStack2.isEmpty() && (!ItemStack.isSameItemSameTags(itemStack2, itemStack)
+            if (!itemStack2.isEmpty() && (!ItemStack.isSameItemSameComponents(itemStack2, itemStack)
                     || itemStack2.getCount() >= itemStack2.getMaxStackSize()))
                 continue;
             bl = true;
@@ -2537,7 +2537,7 @@ public class MainUtil {
                         break;
                     }
                     if (!value.fireImmune()) {
-                        value.setSecondsOnFire(15);
+                        value.igniteForSeconds(15);
                         float np = power;
                         if (value instanceof LivingEntity) {
                             ((StandUser) value).roundabout$setGasolineTime(-1);
@@ -4006,9 +4006,9 @@ public class MainUtil {
                 FirearmItem.cycleReload = true;
                 ItemStack stack = player.getUseItem();
                 InteractionHand hand = InteractionHand.MAIN_HAND;
-                if (ItemStack.isSameItemSameTags(player.getMainHandItem(), stack)) {
+                if (ItemStack.isSameItemSameComponents(player.getMainHandItem(), stack)) {
                     hand = InteractionHand.MAIN_HAND;
-                } else if (ItemStack.isSameItemSameTags(player.getOffhandItem(), stack)) {
+                } else if (ItemStack.isSameItemSameComponents(player.getOffhandItem(), stack)) {
                     hand = InteractionHand.OFF_HAND;
                 }
                 fm.use(player.level(), player, hand);
@@ -4781,7 +4781,7 @@ public class MainUtil {
                             if (!visage.getItem().equals(ModItems.RAT_MASK)
                                     && !visage.getItem().equals(ModItems.BLANK_MASK)
                                     && !visage.getItem().equals(ModItems.MODIFICATION_MASK)) {
-                                return new ResourceLocation(Roundabout.MOD_ID, "textures/entity/visage/zombie_skins/"
+                                return ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/entity/visage/zombie_skins/"
                                         + MI.visageData.generateVisageData(player).getSkinPath() + ".png");
                             }
                         }
@@ -4797,7 +4797,7 @@ public class MainUtil {
                 if (visage.getItem() instanceof MaskItem MI) {
                     if (!visage.getItem().equals(ModItems.RAT_MASK) && !visage.getItem().equals(ModItems.BLANK_MASK)
                             && !visage.getItem().equals(ModItems.MODIFICATION_MASK)) {
-                        return new ResourceLocation(Roundabout.MOD_ID, "textures/entity/visage/player_skins/"
+                        return ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/entity/visage/player_skins/"
                                 + MI.visageData.generateVisageData(player).getSkinPath() + ".png");
                     }
                 }
@@ -4805,7 +4805,7 @@ public class MainUtil {
         }
         if (player.getGameProfile() != null) {
             if (!player.getGameProfile().isComplete()) {
-                return new ResourceLocation(Roundabout.MOD_ID, "textures/stand/green_day/part_four_green_day.png");
+                return ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/green_day/part_four_green_day.png");
             } else {
                 final Minecraft minecraft = Minecraft.getInstance();
                 SkinManager skinManager = minecraft.getSkinManager();
@@ -4820,7 +4820,7 @@ public class MainUtil {
             }
         }
 
-        return new ResourceLocation(Roundabout.MOD_ID, "textures/stand/green_day/part_four_green_day.png");
+        return ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/green_day/part_four_green_day.png");
     }
 
     /**This one is for when you don't want visages/modifications to the skin*/
@@ -4829,7 +4829,7 @@ public class MainUtil {
             IPlayerEntity pl = ((IPlayerEntity) player);
             if (player.getGameProfile() != null) {
                 if (!player.getGameProfile().isComplete()) {
-                    return new ResourceLocation(Roundabout.MOD_ID, "textures/stand/green_day/part_four_green_day.png");
+                    return ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/green_day/part_four_green_day.png");
                 } else {
                     final Minecraft minecraft = Minecraft.getInstance();
                     SkinManager skinManager = minecraft.getSkinManager();
@@ -4844,7 +4844,7 @@ public class MainUtil {
                 }
             }
         }
-        return new ResourceLocation(Roundabout.MOD_ID, "textures/stand/green_day/part_four_green_day.png");
+        return ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/green_day/part_four_green_day.png");
     }
 
     public static BlockHitResult getMotionPath(Entity entity, float distOut) {

@@ -128,7 +128,7 @@ public abstract class DimensionResourceKeyD4CForge {
                     list.add(s2);
                 }
 
-                list.add(new ResourceLocation("overworld") + " FC: " + longset.size());
+                list.add(ResourceLocation.parse("overworld") + " FC: " + longset.size());
                 list.add("");
                 list.add(String.format(Locale.ROOT, "XYZ: %.3f / %.5f / %.3f", this.minecraft.getCameraEntity().getX(), this.minecraft.getCameraEntity().getY(), this.minecraft.getCameraEntity().getZ()));
                 list.add(String.format(Locale.ROOT, "Block: %d %d %d [%d %d %d]", blockpos.getX(), blockpos.getY(), blockpos.getZ(), blockpos.getX() & 15, blockpos.getY() & 15, blockpos.getZ() & 15));

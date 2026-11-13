@@ -39,7 +39,7 @@ import java.util.List;
 
 public class CorpseBagScreen extends Screen {
     //Check out GamemodeSwitcherScreen
-    static final ResourceLocation CORPSE_CHOOSER_LOCATION = new ResourceLocation(Roundabout.MOD_ID,
+    static final ResourceLocation CORPSE_CHOOSER_LOCATION = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/corpse_chooser.png");
     private static final int SPRITE_SHEET_WIDTH = 256;
     private static final int SPRITE_SHEET_HEIGHT = 256;
@@ -240,7 +240,7 @@ public class CorpseBagScreen extends Screen {
         SPIDER(Component.translatable("entity.minecraft.spider"), StandIcons.FALLEN_SPIDER,Corpses.SPIDER.id,31,31),
         PHANTOM(Component.translatable("entity.minecraft.phantom"), StandIcons.FALLEN_PHANTOM,Corpses.PHANTOM.id,0,62),
 
-        NONE(Component.translatable("roundabout.corpse.none"), new ResourceLocation(Roundabout.MOD_ID,
+        NONE(Component.translatable("roundabout.corpse.none"), ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
                 "textures/gui/pose_icons/jonathan.png"),Corpses.NONE.id,0,31);
 
         static corpseIcon getByte(Corpses corpse) {

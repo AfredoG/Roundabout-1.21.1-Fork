@@ -108,7 +108,7 @@ public class FallenZombie extends FallenMob{
         if ($$1) {
             float $$2 = this.level().getCurrentDifficultyAt(this.blockPosition()).getEffectiveDifficulty();
             if (this.getMainHandItem().isEmpty() && this.isOnFire() && this.random.nextFloat() < $$2 * 0.3F) {
-                $$0.setSecondsOnFire(2 * (int)$$2);
+                $$0.igniteForSeconds(2 * (int)$$2);
             }
         }
 

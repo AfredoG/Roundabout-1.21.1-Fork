@@ -26,7 +26,7 @@ import net.minecraft.world.entity.LivingEntity;
 
 public class CatchTheRainbowModel extends PsuedoHierarchicalModel {
 	// This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
-	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation("modid", "catchtherainbow"), "main");
+	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath("modid", "catchtherainbow"), "main");
 	private final ModelPart stand;
 	private final ModelPart Root;
 
@@ -52,38 +52,43 @@ public class CatchTheRainbowModel extends PsuedoHierarchicalModel {
 	}
 
 	@Override
-	public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
-		stand.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+	public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, int argbColor) {
+        float red = net.minecraft.util.FastColor.ARGB32.red(argbColor) / 255.0F;
+        float green = net.minecraft.util.FastColor.ARGB32.green(argbColor) / 255.0F;
+        float blue = net.minecraft.util.FastColor.ARGB32.blue(argbColor) / 255.0F;
+        float alpha = net.minecraft.util.FastColor.ARGB32.alpha(argbColor) / 255.0F;
+
+		stand.render(poseStack, vertexConsumer, packedLight, packedOverlay, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, red, green, blue));
 	}
 
 	@Override
 	public ModelPart root() {return Root;}
 
-	public static ResourceLocation base = new ResourceLocation(Roundabout.MOD_ID,
+	public static ResourceLocation base = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
 			"textures/stand/catch_the_rainbow/base.png");
-	public static ResourceLocation ghast_dry = new ResourceLocation(Roundabout.MOD_ID,
+	public static ResourceLocation ghast_dry = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
 			"textures/stand/catch_the_rainbow/ghast_dry.png");
-	public static ResourceLocation ghast_happy = new ResourceLocation(Roundabout.MOD_ID,
+	public static ResourceLocation ghast_happy = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
 			"textures/stand/catch_the_rainbow/ghast_happy.png");
-	public static ResourceLocation lali_ho = new ResourceLocation(Roundabout.MOD_ID,
+	public static ResourceLocation lali_ho = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
 			"textures/stand/catch_the_rainbow/lali_ho.png");
-	public static ResourceLocation eye_white = new ResourceLocation(Roundabout.MOD_ID,
+	public static ResourceLocation eye_white = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
 			"textures/stand/catch_the_rainbow/eye_white.png");
-	public static ResourceLocation eye_red = new ResourceLocation(Roundabout.MOD_ID,
+	public static ResourceLocation eye_red = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
 			"textures/stand/catch_the_rainbow/eye_red.png");
-	public static ResourceLocation skeletonctr = new ResourceLocation(Roundabout.MOD_ID,
+	public static ResourceLocation skeletonctr = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
 			"textures/stand/catch_the_rainbow/skeleton.png");
-	public static ResourceLocation neon_on = new ResourceLocation(Roundabout.MOD_ID,
+	public static ResourceLocation neon_on = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
 			"textures/stand/catch_the_rainbow/neon_on.png");
-	public static ResourceLocation neon_off = new ResourceLocation(Roundabout.MOD_ID,
+	public static ResourceLocation neon_off = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
 			"textures/stand/catch_the_rainbow/neon_off.png");
-	public static ResourceLocation strider_healthy = new ResourceLocation(Roundabout.MOD_ID,
+	public static ResourceLocation strider_healthy = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
 			"textures/stand/catch_the_rainbow/strider_healthy.png");
-	public static ResourceLocation strider_sick = new ResourceLocation(Roundabout.MOD_ID,
+	public static ResourceLocation strider_sick = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
 			"textures/stand/catch_the_rainbow/strider_sick.png");
-	public static ResourceLocation cmy = new ResourceLocation(Roundabout.MOD_ID,
+	public static ResourceLocation cmy = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
 			"textures/stand/catch_the_rainbow/cmy.png");
-	public static ResourceLocation magma = new ResourceLocation(Roundabout.MOD_ID,
+	public static ResourceLocation magma = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
 			"textures/stand/catch_the_rainbow/magma.png");
 
 	public ResourceLocation getTextureLocation(Entity context, byte skin) {
@@ -190,7 +195,7 @@ public class CatchTheRainbowModel extends PsuedoHierarchicalModel {
 				this.animate(user.roundabout$getWornStandIdleAnimation(), CatchTheRainbowAnimations.openleft, partialTicks, 1f);
 			}
 
-			root().render(poseStack, consumer, light, OverlayTexture.NO_OVERLAY, r, g, b, alpha);
+			root().render(poseStack, consumer, light, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, r, g, b));
 		}
 	}
 }

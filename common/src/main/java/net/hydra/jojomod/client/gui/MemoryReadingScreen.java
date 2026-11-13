@@ -19,7 +19,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.item.ItemStack;
 
 public final class MemoryReadingScreen extends Screen {
-    private static final ResourceLocation BACKGROUND = new ResourceLocation(
+    private static final ResourceLocation BACKGROUND = ResourceLocation.fromNamespaceAndPath(
             Roundabout.MOD_ID, "textures/gui/memory_reading.png");
     private static final int TEXTURE_WIDTH = 512;
     private static final int TEXTURE_HEIGHT = 256;

@@ -766,7 +766,7 @@ public class RoadRollerEntity extends LivingEntity implements PlayerRideable {
 
                         String fixedString = itemID.getPath().replace("_powder", "");
 
-                        ResourceLocation blockID = new ResourceLocation(itemID.getNamespace(), fixedString);
+                        ResourceLocation blockID = ResourceLocation.fromNamespaceAndPath(itemID.getNamespace(), fixedString);
 
                         Block actualConcrete = BuiltInRegistries.BLOCK.getOptional(blockID).orElse(Blocks.BLACK_CONCRETE);
 
@@ -1023,17 +1023,17 @@ public class RoadRollerEntity extends LivingEntity implements PlayerRideable {
     protected static final EntityDataAccessor<Integer> EXPLOSION_TICKS = SynchedEntityData.defineId(RoadRollerEntity.class, EntityDataSerializers.INT);
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(PAVING_TIMER, 0);
-        this.entityData.define(PAVING_BOOLEAN, false);
-        this.entityData.define(CONCRETE_COLOUR, ItemStack.EMPTY);
-        this.entityData.define(INPUT_UP, false);
-        this.entityData.define(EXPLODED, false);
-        this.entityData.define(CRACKINESS, Crackiness.NONE);
-        this.entityData.define(PICKUP_TIMER, 0);
-        this.entityData.define(PICKUP_BOOLEAN_INT, -1);
-        this.entityData.define(EXPLOSION_TICKS, 0);
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(PAVING_TIMER, 0);
+        builder.define(PAVING_BOOLEAN, false);
+        builder.define(CONCRETE_COLOUR, ItemStack.EMPTY);
+        builder.define(INPUT_UP, false);
+        builder.define(EXPLODED, false);
+        builder.define(CRACKINESS, Crackiness.NONE);
+        builder.define(PICKUP_TIMER, 0);
+        builder.define(PICKUP_BOOLEAN_INT, -1);
+        builder.define(EXPLOSION_TICKS, 0);
     }
 
     public final void setPavingTimer(int PavingTimer) {
@@ -1147,7 +1147,7 @@ public class RoadRollerEntity extends LivingEntity implements PlayerRideable {
             concreteEnabled = true;
             if (getPavingBoolean()) {
                 ItemStack current = getConcreteColour();
-                if (!ItemStack.isSameItemSameTags(current, item)) {
+                if (!ItemStack.isSameItemSameComponents(current, item)) {
                     setConcreteColour(item);
                 }
 

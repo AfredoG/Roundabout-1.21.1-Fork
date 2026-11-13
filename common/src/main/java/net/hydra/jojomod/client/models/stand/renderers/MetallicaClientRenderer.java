@@ -111,7 +111,7 @@ public class MetallicaClientRenderer {
                 double z = zBase + dz;
 
                 if (hasLineOfSight(entity, x, y, z)) {
-                    ResourceLocation loc = new ResourceLocation(Roundabout.MOD_ID, "metallica_field_png");
+                    ResourceLocation loc = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "metallica_field_png");
                     if (BuiltInRegistries.PARTICLE_TYPE.containsKey(loc)) {
                         level.addParticle((ParticleOptions) BuiltInRegistries.PARTICLE_TYPE.get(loc), x, y, z, 0, 0, 0);
                     }
@@ -121,7 +121,7 @@ public class MetallicaClientRenderer {
     }
 
     private static void spawnParticleWithID(LivingEntity entity, String type, double x, double y, double z) {
-        ResourceLocation loc = new ResourceLocation(Roundabout.MOD_ID, type);
+        ResourceLocation loc = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, type);
         if (BuiltInRegistries.PARTICLE_TYPE.containsKey(loc)) {
             ParticleOptions pOptions = (ParticleOptions) BuiltInRegistries.PARTICLE_TYPE.get(loc);
 

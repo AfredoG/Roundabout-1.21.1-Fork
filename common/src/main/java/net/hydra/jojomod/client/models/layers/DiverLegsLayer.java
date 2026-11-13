@@ -83,12 +83,12 @@ public class DiverLegsLayer<T extends LivingEntity, A extends HumanoidModel<T>> 
             poseStack.pushPose();
             this.getParentModel().rightLeg.translateAndRotate(poseStack);
             poseStack.scale(1.09F, 1.09F, 1.09F);
-            legs.rightLeg().render(poseStack, consumer, packedLight, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 0.70F);
+            legs.rightLeg().render(poseStack, consumer, packedLight, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(0.70F, 1.0F, 1.0F, 1.0F));
             poseStack.popPose();
             poseStack.pushPose();
             this.getParentModel().leftLeg.translateAndRotate(poseStack);
             poseStack.scale(1.09F, 1.09F, 1.09F);
-            legs.leftLeg().render(poseStack, consumer, packedLight, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 0.70F);
+            legs.leftLeg().render(poseStack, consumer, packedLight, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(0.70F, 1.0F, 1.0F, 1.0F));
             poseStack.popPose();
         }
     }

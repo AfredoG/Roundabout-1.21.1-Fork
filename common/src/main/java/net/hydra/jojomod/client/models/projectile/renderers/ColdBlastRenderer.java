@@ -44,7 +44,7 @@ public class ColdBlastRenderer extends EntityRenderer<ColdBlastProjectile> {
 
     @Override
     public ResourceLocation getTextureLocation(ColdBlastProjectile var1) {
-        return new ResourceLocation(Roundabout.MOD_ID, "textures/stand/white_album/projectiles/shooting_mode.png");
+        return ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/white_album/projectiles/shooting_mode.png");
     }
 
 }

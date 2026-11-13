@@ -20,7 +20,7 @@ import net.minecraft.world.entity.LivingEntity;
 
 public class ColtRevolverModel<T extends Entity> extends HierarchicalModel<T> {
 	// This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
-	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation("modid", "colt_revolver"), "main");
+	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath("modid", "colt_revolver"), "main");
     private final ModelPart ColtSAA;
     private final ModelPart Root;
 
@@ -48,8 +48,13 @@ public class ColtRevolverModel<T extends Entity> extends HierarchicalModel<T> {
 	}
 
 	@Override
-	public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
-        ColtSAA.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+	public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, int argbColor) {
+        float red = net.minecraft.util.FastColor.ARGB32.red(argbColor) / 255.0F;
+        float green = net.minecraft.util.FastColor.ARGB32.green(argbColor) / 255.0F;
+        float blue = net.minecraft.util.FastColor.ARGB32.blue(argbColor) / 255.0F;
+        float alpha = net.minecraft.util.FastColor.ARGB32.alpha(argbColor) / 255.0F;
+
+        ColtSAA.render(poseStack, vertexConsumer, packedLight, packedOverlay, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, red, green, blue));
 	}
 
     @Override
@@ -63,7 +68,7 @@ public class ColtRevolverModel<T extends Entity> extends HierarchicalModel<T> {
     }
 
     public ResourceLocation getTextureLocation(){
-        return new ResourceLocation(Roundabout.MOD_ID,
+        return ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
                 "textures/item/colt_revolver.png");
     }
 
@@ -77,7 +82,7 @@ public class ColtRevolverModel<T extends Entity> extends HierarchicalModel<T> {
             this.root().getAllParts().forEach(ModelPart::resetPose);
             VertexConsumer consumer = bufferSource.getBuffer(RenderType.entityTranslucent(getTextureLocation()));
             //r = bufferSource.getBuffer(RenderType.entityTranslucent(getTextureLocation(context, skin)));
-            root().render(poseStack, consumer, light, OverlayTexture.NO_OVERLAY, r, g, b, alpha);
+            root().render(poseStack, consumer, light, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, r, g, b));
         }
     }
 }

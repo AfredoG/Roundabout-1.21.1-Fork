@@ -41,10 +41,10 @@ public class AnubisSlipstreamEntity extends Entity {
     private static final EntityDataAccessor<Integer> LIFETIME = SynchedEntityData.defineId(AnubisSlipstreamEntity.class,
             EntityDataSerializers.INT);
     @Override
-    protected void defineSynchedData() {
-        if (!this.entityData.hasItem(LIFETIME)) {
-            this.entityData.define(LIFETIME,-1);
-        }
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+
+            builder.define(LIFETIME,-1);
+
     }
 
     @Override

@@ -38,10 +38,10 @@ public class Butterfly extends AmbientCreature {
     }
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(VARIANT_ID, 0);
-        this.entityData.define(RESTING, false);
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(VARIANT_ID, 0);
+        builder.define(RESTING, false);
     }
 
     @Override

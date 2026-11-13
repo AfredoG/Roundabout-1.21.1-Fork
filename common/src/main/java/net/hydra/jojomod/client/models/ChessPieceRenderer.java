@@ -138,19 +138,19 @@ public class ChessPieceRenderer<T extends BlockEntity> implements BlockEntityRen
         return LayerDefinition.create(meshdefinition, 32, 32);
     }
 
-    private static final ResourceLocation BLACK_PAWN = new ResourceLocation(Roundabout.MOD_ID, "textures/block/black_pawn.png");
-    private static final ResourceLocation WHITE_PAWN = new ResourceLocation(Roundabout.MOD_ID, "textures/block/white_pawn.png");
-    private static final ResourceLocation BLACK_KNIGHT = new ResourceLocation(Roundabout.MOD_ID, "textures/block/black_knight.png");
-    private static final ResourceLocation WHITE_KNIGHT = new ResourceLocation(Roundabout.MOD_ID, "textures/block/white_knight.png");
-    private static final ResourceLocation BLACK_KING = new ResourceLocation(Roundabout.MOD_ID, "textures/block/black_king.png");
-    private static final ResourceLocation WHITE_KING = new ResourceLocation(Roundabout.MOD_ID, "textures/block/white_king.png");
-    private static final ResourceLocation BLACK_QUEEN = new ResourceLocation(Roundabout.MOD_ID, "textures/block/black_queen.png");
-    private static final ResourceLocation WHITE_QUEEN = new ResourceLocation(Roundabout.MOD_ID, "textures/block/white_queen.png");
-    private static final ResourceLocation BLACK_ROOK = new ResourceLocation(Roundabout.MOD_ID, "textures/block/black_rook.png");
-    private static final ResourceLocation WHITE_ROOK = new ResourceLocation(Roundabout.MOD_ID, "textures/block/white_rook.png");
-    private static final ResourceLocation BLACK_BISHOP = new ResourceLocation(Roundabout.MOD_ID, "textures/block/black_bishop.png");
-    private static final ResourceLocation WHITE_BISHOP = new ResourceLocation(Roundabout.MOD_ID, "textures/block/white_bishop.png");
-    private static final ResourceLocation EXP_BISHOP = new ResourceLocation(Roundabout.MOD_ID, "textures/block/exp_bishop.png");
+    private static final ResourceLocation BLACK_PAWN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/block/black_pawn.png");
+    private static final ResourceLocation WHITE_PAWN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/block/white_pawn.png");
+    private static final ResourceLocation BLACK_KNIGHT = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/block/black_knight.png");
+    private static final ResourceLocation WHITE_KNIGHT = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/block/white_knight.png");
+    private static final ResourceLocation BLACK_KING = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/block/black_king.png");
+    private static final ResourceLocation WHITE_KING = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/block/white_king.png");
+    private static final ResourceLocation BLACK_QUEEN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/block/black_queen.png");
+    private static final ResourceLocation WHITE_QUEEN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/block/white_queen.png");
+    private static final ResourceLocation BLACK_ROOK = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/block/black_rook.png");
+    private static final ResourceLocation WHITE_ROOK = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/block/white_rook.png");
+    private static final ResourceLocation BLACK_BISHOP = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/block/black_bishop.png");
+    private static final ResourceLocation WHITE_BISHOP = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/block/white_bishop.png");
+    private static final ResourceLocation EXP_BISHOP = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/block/exp_bishop.png");
 
     @Override
     public void render(T $$0, float $$1, PoseStack $$2, MultiBufferSource $$3, int $$4, int $$5) {

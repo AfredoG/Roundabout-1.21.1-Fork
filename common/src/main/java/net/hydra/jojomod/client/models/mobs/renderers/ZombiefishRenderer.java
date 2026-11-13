@@ -11,7 +11,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.monster.Silverfish;
 
 public class ZombiefishRenderer extends MobRenderer<Zombiefish, SilverfishModel<Zombiefish>> {
-    private static final ResourceLocation SILVERFISH_LOCATION = new ResourceLocation(Roundabout.MOD_ID,"textures/entity/zombiefish.png");
+    private static final ResourceLocation SILVERFISH_LOCATION = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/entity/zombiefish.png");
 
     public ZombiefishRenderer(EntityRendererProvider.Context $$0) {
         super($$0, new SilverfishModel<>($$0.bakeLayer(ModEntityRendererClient.ZOMBIEFISH_LAYER)), 0.3F);

@@ -229,12 +229,12 @@ public class SilverChariotMountEntity extends LivingEntity implements NoHitboxRe
     }
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
         int hoverCharge = configuredSelfCarryHoveringCharge();
-        entityData.define(HOVER_CHARGE, hoverCharge);
-        entityData.define(MAX_HOVER_CHARGE, hoverCharge);
-        entityData.define(IS_HOVERING, false);
+        builder.define(HOVER_CHARGE, hoverCharge);
+        builder.define(MAX_HOVER_CHARGE, hoverCharge);
+        builder.define(IS_HOVERING, false);
     }
 
     @Override

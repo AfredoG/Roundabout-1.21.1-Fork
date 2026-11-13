@@ -44,31 +44,31 @@ public class StandFireballRenderer extends EntityRenderer<StandFireballEntity> {
             $$3.mulPose(Axis.ZP.rotationDegrees($$0.getXRot()));
             $$3.scale(2.6f, 2.6f, 2.6f);
             VertexConsumer $$6 = $$4.getBuffer(RenderType.entityTranslucent(getTextureLocation($$0)));
-            this.model.renderToBuffer($$3, $$6, 15728880, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 0.4f);
+            this.model.renderToBuffer($$3, $$6, 15728880, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(0.4f, 1.0F, 1.0F, 1.0F));
             $$3.popPose();
             super.render($$0, $$1, $$2, $$3, $$4, 15728880);
         }
     }
 
 
-    public static final ResourceLocation STAND_FIREBALL_TEXTURE = new ResourceLocation(Roundabout.MOD_ID, "textures/entity/projectile/stand_fireball.png");
-    public static final ResourceLocation STAND_FIREBALL_TEXTURE_2 = new ResourceLocation(Roundabout.MOD_ID, "textures/entity/projectile/stand_fireball_2.png");
-    public static final ResourceLocation STAND_FIREBALL_TEXTURE_3 = new ResourceLocation(Roundabout.MOD_ID, "textures/entity/projectile/stand_fireball_3.png");
-    public static final ResourceLocation STAND_FIREBALL_TEXTURE_BLUE = new ResourceLocation(Roundabout.MOD_ID, "textures/entity/projectile/stand_fireball_blue.png");
-    public static final ResourceLocation STAND_FIREBALL_TEXTURE_2_BLUE = new ResourceLocation(Roundabout.MOD_ID, "textures/entity/projectile/stand_fireball_2_blue.png");
-    public static final ResourceLocation STAND_FIREBALL_TEXTURE_3_BLUE = new ResourceLocation(Roundabout.MOD_ID, "textures/entity/projectile/stand_fireball_3_blue.png");
-    public static final ResourceLocation STAND_FIREBALL_TEXTURE_PURPLE = new ResourceLocation(Roundabout.MOD_ID, "textures/entity/projectile/stand_fireball_purple.png");
-    public static final ResourceLocation STAND_FIREBALL_TEXTURE_2_PURPLE = new ResourceLocation(Roundabout.MOD_ID, "textures/entity/projectile/stand_fireball_2_purple.png");
-    public static final ResourceLocation STAND_FIREBALL_TEXTURE_3_PURPLE = new ResourceLocation(Roundabout.MOD_ID, "textures/entity/projectile/stand_fireball_3_purple.png");
-    public static final ResourceLocation STAND_FIREBALL_TEXTURE_GREEN = new ResourceLocation(Roundabout.MOD_ID, "textures/entity/projectile/stand_fireball_green.png");
-    public static final ResourceLocation STAND_FIREBALL_TEXTURE_2_GREEN = new ResourceLocation(Roundabout.MOD_ID, "textures/entity/projectile/stand_fireball_2_green.png");
-    public static final ResourceLocation STAND_FIREBALL_TEXTURE_3_GREEN = new ResourceLocation(Roundabout.MOD_ID, "textures/entity/projectile/stand_fireball_3_green.png");
-    public static final ResourceLocation STAND_FIREBALL_TEXTURE_DREAD = new ResourceLocation(Roundabout.MOD_ID, "textures/entity/projectile/stand_fireball_dread.png");
-    public static final ResourceLocation STAND_FIREBALL_TEXTURE_2_DREAD = new ResourceLocation(Roundabout.MOD_ID, "textures/entity/projectile/stand_fireball_2_dread.png");
-    public static final ResourceLocation STAND_FIREBALL_TEXTURE_3_DREAD = new ResourceLocation(Roundabout.MOD_ID, "textures/entity/projectile/stand_fireball_3_dread.png");
-    public static final ResourceLocation STAND_FIREBALL_TEXTURE_CREAM = new ResourceLocation(Roundabout.MOD_ID, "textures/entity/projectile/stand_fireball_cream.png");
-    public static final ResourceLocation STAND_FIREBALL_TEXTURE_2_CREAM = new ResourceLocation(Roundabout.MOD_ID, "textures/entity/projectile/stand_fireball_2_cream.png");
-    public static final ResourceLocation STAND_FIREBALL_TEXTURE_3_CREAM = new ResourceLocation(Roundabout.MOD_ID, "textures/entity/projectile/stand_fireball_3_cream.png");
+    public static final ResourceLocation STAND_FIREBALL_TEXTURE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/entity/projectile/stand_fireball.png");
+    public static final ResourceLocation STAND_FIREBALL_TEXTURE_2 = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/entity/projectile/stand_fireball_2.png");
+    public static final ResourceLocation STAND_FIREBALL_TEXTURE_3 = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/entity/projectile/stand_fireball_3.png");
+    public static final ResourceLocation STAND_FIREBALL_TEXTURE_BLUE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/entity/projectile/stand_fireball_blue.png");
+    public static final ResourceLocation STAND_FIREBALL_TEXTURE_2_BLUE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/entity/projectile/stand_fireball_2_blue.png");
+    public static final ResourceLocation STAND_FIREBALL_TEXTURE_3_BLUE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/entity/projectile/stand_fireball_3_blue.png");
+    public static final ResourceLocation STAND_FIREBALL_TEXTURE_PURPLE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/entity/projectile/stand_fireball_purple.png");
+    public static final ResourceLocation STAND_FIREBALL_TEXTURE_2_PURPLE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/entity/projectile/stand_fireball_2_purple.png");
+    public static final ResourceLocation STAND_FIREBALL_TEXTURE_3_PURPLE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/entity/projectile/stand_fireball_3_purple.png");
+    public static final ResourceLocation STAND_FIREBALL_TEXTURE_GREEN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/entity/projectile/stand_fireball_green.png");
+    public static final ResourceLocation STAND_FIREBALL_TEXTURE_2_GREEN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/entity/projectile/stand_fireball_2_green.png");
+    public static final ResourceLocation STAND_FIREBALL_TEXTURE_3_GREEN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/entity/projectile/stand_fireball_3_green.png");
+    public static final ResourceLocation STAND_FIREBALL_TEXTURE_DREAD = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/entity/projectile/stand_fireball_dread.png");
+    public static final ResourceLocation STAND_FIREBALL_TEXTURE_2_DREAD = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/entity/projectile/stand_fireball_2_dread.png");
+    public static final ResourceLocation STAND_FIREBALL_TEXTURE_3_DREAD = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/entity/projectile/stand_fireball_3_dread.png");
+    public static final ResourceLocation STAND_FIREBALL_TEXTURE_CREAM = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/entity/projectile/stand_fireball_cream.png");
+    public static final ResourceLocation STAND_FIREBALL_TEXTURE_2_CREAM = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/entity/projectile/stand_fireball_2_cream.png");
+    public static final ResourceLocation STAND_FIREBALL_TEXTURE_3_CREAM = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/entity/projectile/stand_fireball_3_cream.png");
 
     public ResourceLocation getThird(StandFireballEntity var1){
         LivingEntity user = var1.getUser();

@@ -8,7 +8,7 @@ import net.minecraft.world.entity.projectile.LlamaSpit;
 
 public class PoisonLlamaSpitRenderer extends LlamaSpitRenderer {
     private static final ResourceLocation LLAMA_SPIT_2_LOCATION =
-            new ResourceLocation(Roundabout.MOD_ID,"textures/entity/projectile/llama_spit.png");
+            ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/entity/projectile/llama_spit.png");
     public PoisonLlamaSpitRenderer(EntityRendererProvider.Context $$0) {
         super($$0);
     }

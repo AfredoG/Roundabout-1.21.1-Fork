@@ -32,15 +32,15 @@ public class StrayCatEntityRenderer<T extends StrayCatEntity>
         extends MobRenderer<T, StrayCatEntityModel<T>> {
 
     private static final ResourceLocation ANIME =
-            new ResourceLocation(Roundabout.MOD_ID,"textures/entity/stray_cat/entity/anime.png");
+            ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/entity/stray_cat/entity/anime.png");
     private static final ResourceLocation MANGA =
-            new ResourceLocation(Roundabout.MOD_ID,"textures/entity/stray_cat/entity/manga.png");
+            ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/entity/stray_cat/entity/manga.png");
 
     /// Bubbles Shields Render :0
     private static final ResourceLocation BIG_PINK =
-            new ResourceLocation(Roundabout.MOD_ID,"textures/stand/killer_queen/projectiles/big_pink.png");
+            ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/killer_queen/projectiles/big_pink.png");
     private static final ResourceLocation BIG_GREEN =
-            new ResourceLocation(Roundabout.MOD_ID,"textures/stand/killer_queen/projectiles/big_green.png");
+            ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/killer_queen/projectiles/big_green.png");
 
 
     public StrayCatEntityRenderer(EntityRendererProvider.Context context) {

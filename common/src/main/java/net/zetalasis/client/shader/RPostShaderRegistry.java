@@ -56,7 +56,7 @@ public class RPostShaderRegistry {
             TextureManager tm = client.getTextureManager();
             ResourceManager rm = client.getResourceManager();
 
-            IPostChainAccessor shader = IPostChainAccessor.getInstance(new PostChain(tm, rm, client.getMainRenderTarget(), new ResourceLocation("shaders/post/"+name+".json")));
+            IPostChainAccessor shader = IPostChainAccessor.getInstance(new PostChain(tm, rm, client.getMainRenderTarget(), ResourceLocation.parse("shaders/post/"+name+".json")));
 
             shaders.put(name, shader);
 

@@ -4,10 +4,10 @@ import net.hydra.jojomod.block.CoffinBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.ForgeEventFactory;
-import net.minecraftforge.event.entity.player.SleepingTimeCheckEvent;
-import net.minecraftforge.eventbus.api.Event;
+import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.event.EventHooks;
+import net.neoforged.neoforge.event.entity.player.SleepingTimeCheckEvent;
+import net.neoforged.bus.api.Event;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -15,7 +15,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.Optional;
 
-@Mixin(value = ForgeEventFactory.class, priority = 99)
+@Mixin(value = EventHooks.class, priority = 99)
 public abstract class ForgeCoffinSleepAtDayMixin {
 
     @Inject(method = "fireSleepingTimeCheck(Lnet/minecraft/world/entity/player/Player;Ljava/util/Optional;)Z", at = @At(value = "HEAD"), cancellable = true, remap = false)
@@ -27,7 +27,7 @@ public abstract class ForgeCoffinSleepAtDayMixin {
                 cir.setReturnValue(true);
 
                 SleepingTimeCheckEvent evt = new SleepingTimeCheckEvent(player, sleepingLocation);
-                MinecraftForge.EVENT_BUS.post(evt);
+                NeoForge.EVENT_BUS.post(evt);
 
                 Event.Result canContinueSleep = evt.getResult();
                 if (serverPlayer.level().isDay() || serverPlayer.level().isThundering()) {

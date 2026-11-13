@@ -72,8 +72,13 @@ public class MandomModel extends PsuedoHierarchicalModel {
         return LayerDefinition.create(meshdefinition, 64, 64);
     }
     @Override
-    public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
-        stand.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+    public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, int argbColor) {
+        float red = net.minecraft.util.FastColor.ARGB32.red(argbColor) / 255.0F;
+        float green = net.minecraft.util.FastColor.ARGB32.green(argbColor) / 255.0F;
+        float blue = net.minecraft.util.FastColor.ARGB32.blue(argbColor) / 255.0F;
+        float alpha = net.minecraft.util.FastColor.ARGB32.alpha(argbColor) / 255.0F;
+
+        stand.render(poseStack, vertexConsumer, packedLight, packedOverlay, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, red, green, blue));
     }
 
     @Override
@@ -85,47 +90,47 @@ public class MandomModel extends PsuedoHierarchicalModel {
     public void setupAnim(Entity var1, float pAgeInTicks) {
 
     }
-    public static ResourceLocation base = new ResourceLocation(Roundabout.MOD_ID,
+    public static ResourceLocation base = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/stand/mandom/base.png");
-    public static ResourceLocation purple = new ResourceLocation(Roundabout.MOD_ID,
+    public static ResourceLocation purple = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/stand/mandom/purple.png");
-    public static ResourceLocation sky = new ResourceLocation(Roundabout.MOD_ID,
+    public static ResourceLocation sky = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/stand/mandom/sky.png");
-    public static ResourceLocation squid = new ResourceLocation(Roundabout.MOD_ID,
+    public static ResourceLocation squid = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/stand/mandom/squid.png");
-    public static ResourceLocation glow_squid = new ResourceLocation(Roundabout.MOD_ID,
+    public static ResourceLocation glow_squid = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/stand/mandom/glow_squid.png");
-    public static ResourceLocation rose = new ResourceLocation(Roundabout.MOD_ID,
+    public static ResourceLocation rose = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/stand/mandom/rose.png");
-    public static ResourceLocation nautilus = new ResourceLocation(Roundabout.MOD_ID,
+    public static ResourceLocation nautilus = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/stand/mandom/nautilus.png");
-    public static ResourceLocation alien = new ResourceLocation(Roundabout.MOD_ID,
+    public static ResourceLocation alien = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/stand/mandom/alien.png");
-    public static ResourceLocation dark = new ResourceLocation(Roundabout.MOD_ID,
+    public static ResourceLocation dark = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/stand/mandom/dark.png");
-    public static ResourceLocation jellyfish = new ResourceLocation(Roundabout.MOD_ID,
+    public static ResourceLocation jellyfish = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/stand/mandom/jellyfish.png");
-    public static ResourceLocation happy = new ResourceLocation(Roundabout.MOD_ID,
+    public static ResourceLocation happy = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/stand/mandom/happy.png");
-    public static ResourceLocation melon = new ResourceLocation(Roundabout.MOD_ID,
+    public static ResourceLocation melon = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/stand/mandom/melon.png");
-    public static ResourceLocation eye = new ResourceLocation(Roundabout.MOD_ID,
+    public static ResourceLocation eye = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/stand/mandom/eye.png");
-    public static ResourceLocation esidisi = new ResourceLocation(Roundabout.MOD_ID,
+    public static ResourceLocation esidisi = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/stand/mandom/esidisi.png");
-    public static ResourceLocation caps = new ResourceLocation(Roundabout.MOD_ID,
+    public static ResourceLocation caps = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/stand/mandom/caps.png");
-    public static ResourceLocation command = new ResourceLocation(Roundabout.MOD_ID,
+    public static ResourceLocation command = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/stand/mandom/command.png");
-    public static ResourceLocation command2 = new ResourceLocation(Roundabout.MOD_ID,
+    public static ResourceLocation command2 = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/stand/mandom/emissive/command.png");
-    public static ResourceLocation sculk = new ResourceLocation(Roundabout.MOD_ID,
+    public static ResourceLocation sculk = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/stand/mandom/sculk.png");
-    public static ResourceLocation sculk2 = new ResourceLocation(Roundabout.MOD_ID,
+    public static ResourceLocation sculk2 = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/stand/mandom/emissive/sculk.png");
-    public static ResourceLocation tv = new ResourceLocation(Roundabout.MOD_ID,
+    public static ResourceLocation tv = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/stand/mandom/tv.png");
-    public static ResourceLocation tv2 = new ResourceLocation(Roundabout.MOD_ID,
+    public static ResourceLocation tv2 = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/stand/mandom/emissive/tv.png");
     public ResourceLocation getTextureLocation(Entity context, byte skin){
         switch (skin)
@@ -196,18 +201,18 @@ public class MandomModel extends PsuedoHierarchicalModel {
             this.animate(user.roundabout$getWornStandIdleAnimation(), MandomAnimations.back, partialTicks, 1f);
             //this.animate(user.roundabout$getHeyYaAnimation(), HeyYaAnimations.idle_normal, partialTicks, 1f);
             //The number at the end is inversely proportional so 2 is half speed
-            root().render(poseStack, consumer, light, OverlayTexture.NO_OVERLAY, r, g, b, alpha);
+            root().render(poseStack, consumer, light, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, r, g, b));
             if (user.roundabout$getStandSkin() == PowersMandom.COMMAND){
                 consumer = bufferSource.getBuffer(RenderType.entityTranslucent(command2));
-                root().render(poseStack, consumer, 15728880, OverlayTexture.NO_OVERLAY, r, g, b, alpha);
+                root().render(poseStack, consumer, 15728880, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, r, g, b));
             }
             if (user.roundabout$getStandSkin() == PowersMandom.SCULK){
                 consumer = bufferSource.getBuffer(RenderType.entityTranslucent(sculk2));
-                root().render(poseStack, consumer, 15728880, OverlayTexture.NO_OVERLAY, r, g, b, alpha);
+                root().render(poseStack, consumer, 15728880, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, r, g, b));
             }
             if (user.roundabout$getStandSkin() == PowersMandom.TV){
                 consumer = bufferSource.getBuffer(RenderType.entityTranslucent(tv2));
-                root().render(poseStack, consumer, 15728880, OverlayTexture.NO_OVERLAY, r, g, b, alpha);
+                root().render(poseStack, consumer, 15728880, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, r, g, b));
             }
         }
     }

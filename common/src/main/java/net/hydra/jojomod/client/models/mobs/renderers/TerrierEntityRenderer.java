@@ -13,9 +13,9 @@ import net.minecraft.world.entity.animal.Wolf;
 
 
 public class TerrierEntityRenderer extends MobRenderer<Wolf, WolfModel<Wolf>> {
-    private static final ResourceLocation WILD_TEXTURE = new ResourceLocation(Roundabout.MOD_ID, "textures/entity/terrier.png");
-    private static final ResourceLocation TAMED_TEXTURE = new ResourceLocation(Roundabout.MOD_ID,"textures/entity/terrier_tame.png");
-    private static final ResourceLocation ANGRY_TEXTURE = new ResourceLocation(Roundabout.MOD_ID,"textures/entity/terrier_angry.png");
+    private static final ResourceLocation WILD_TEXTURE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/entity/terrier.png");
+    private static final ResourceLocation TAMED_TEXTURE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/entity/terrier_tame.png");
+    private static final ResourceLocation ANGRY_TEXTURE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/entity/terrier_angry.png");
 
 
     public TerrierEntityRenderer(EntityRendererProvider.Context context) {

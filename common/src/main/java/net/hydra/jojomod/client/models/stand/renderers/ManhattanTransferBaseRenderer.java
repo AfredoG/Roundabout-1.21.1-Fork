@@ -28,16 +28,16 @@ public class ManhattanTransferBaseRenderer extends StandRenderer<ManhattanTransf
         super(context, entityModel,f);
     }
 
-    private static final ResourceLocation ANIME_SKIN = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/manhattan_transfer/manhattan_part_6.png");
-    private static final ResourceLocation MANGA_SKIN = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/manhattan_transfer/manhattan_manga_part_6.png");
-    private static final ResourceLocation AERO_TRANSFER_SKIN = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/manhattan_transfer/manhattan_aerosmith.png");
-    private static final ResourceLocation JOLLY_SKIN = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/manhattan_transfer/jollytransfer.png");
-    private static final ResourceLocation BRAZIL_SKIN = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/manhattan_transfer/brazilian_transfer.png");
-    private static final ResourceLocation RADIOACTIVE_SKIN = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/manhattan_transfer/radioactive_transfer.png");
-    private static final ResourceLocation POLLINATION_SKIN = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/manhattan_transfer/pollination_transfer.png");
-    private static final ResourceLocation UFO_TRANSFER_SKIN = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/manhattan_transfer/ufotransfer.png");
-    private static final ResourceLocation FLESHY_TRANSFER_SKIN = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/manhattan_transfer/fleshy_transfer.png");
-    private static final ResourceLocation BLAZE_TRANFER_SKIN = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/manhattan_transfer/blaze_transfer.png");
+    private static final ResourceLocation ANIME_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/manhattan_transfer/manhattan_part_6.png");
+    private static final ResourceLocation MANGA_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/manhattan_transfer/manhattan_manga_part_6.png");
+    private static final ResourceLocation AERO_TRANSFER_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/manhattan_transfer/manhattan_aerosmith.png");
+    private static final ResourceLocation JOLLY_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/manhattan_transfer/jollytransfer.png");
+    private static final ResourceLocation BRAZIL_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/manhattan_transfer/brazilian_transfer.png");
+    private static final ResourceLocation RADIOACTIVE_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/manhattan_transfer/radioactive_transfer.png");
+    private static final ResourceLocation POLLINATION_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/manhattan_transfer/pollination_transfer.png");
+    private static final ResourceLocation UFO_TRANSFER_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/manhattan_transfer/ufotransfer.png");
+    private static final ResourceLocation FLESHY_TRANSFER_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/manhattan_transfer/fleshy_transfer.png");
+    private static final ResourceLocation BLAZE_TRANFER_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/manhattan_transfer/blaze_transfer.png");
 
     @Override
     public ResourceLocation getTextureLocation(ManhattanTransferEntity entity) {

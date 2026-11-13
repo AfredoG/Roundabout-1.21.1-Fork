@@ -250,21 +250,21 @@ public class ModEntities {
 
     public static EntityType<StrayCatEntity> STRAY_CAT;
 
-    public static final ResourceLocation HARPOON_TEXTURE = new ResourceLocation(Roundabout.MOD_ID,"textures/entity/projectile/thrown_harpoon.png");
-    public static final ResourceLocation SNUBNOSE_IN_HAND_TEXTURE = new ResourceLocation(Roundabout.MOD_ID,"textures/item/snubnose_revolver.png");
-    public static final ResourceLocation TOMMY_GUN_IN_HAND_TEXTURE = new ResourceLocation(Roundabout.MOD_ID,"textures/item/tommy_gun.png");
-    public static final ResourceLocation COLT_REVOLVER_IN_HAND_TEXTURE = new ResourceLocation(Roundabout.MOD_ID,"textures/item/colt_revolver.png");
-    public static final ResourceLocation JACKAL_RIFLE_IN_HAND_TEXTURE = new ResourceLocation(Roundabout.MOD_ID,"textures/item/jackal_rifle.png");
-    public static final ResourceLocation BERETTA_PISTOL_IN_HAND_TEXTURE = new ResourceLocation(Roundabout.MOD_ID,"textures/item/beretta_pistol.png");
-    public static final ResourceLocation BLADED_BOWLER_HAT_TEXTURE = new ResourceLocation(Roundabout.MOD_ID,"textures/entity/projectile/bladed_bowler_hat.png");
-    public static final ResourceLocation ROUNDABOUT_BULLET_ENTITY_TEXTURE = new ResourceLocation(Roundabout.MOD_ID,"textures/entity/projectile/roundabout_bullet.png");
-    public static final ResourceLocation KNIFE_TEXTURE = new ResourceLocation(Roundabout.MOD_ID,"textures/entity/projectile/thrown_knife.png");
-    public static final ResourceLocation RATT_DART_TEXTURE = new ResourceLocation(Roundabout.MOD_ID,"textures/entity/projectile/ratt_dart.png");
-    public static final ResourceLocation GASOLINE_CAN_TEXTURE = new ResourceLocation(Roundabout.MOD_ID,"textures/entity/projectile/thrown_gasoline_can.png");
+    public static final ResourceLocation HARPOON_TEXTURE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/entity/projectile/thrown_harpoon.png");
+    public static final ResourceLocation SNUBNOSE_IN_HAND_TEXTURE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/item/snubnose_revolver.png");
+    public static final ResourceLocation TOMMY_GUN_IN_HAND_TEXTURE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/item/tommy_gun.png");
+    public static final ResourceLocation COLT_REVOLVER_IN_HAND_TEXTURE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/item/colt_revolver.png");
+    public static final ResourceLocation JACKAL_RIFLE_IN_HAND_TEXTURE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/item/jackal_rifle.png");
+    public static final ResourceLocation BERETTA_PISTOL_IN_HAND_TEXTURE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/item/beretta_pistol.png");
+    public static final ResourceLocation BLADED_BOWLER_HAT_TEXTURE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/entity/projectile/bladed_bowler_hat.png");
+    public static final ResourceLocation ROUNDABOUT_BULLET_ENTITY_TEXTURE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/entity/projectile/roundabout_bullet.png");
+    public static final ResourceLocation KNIFE_TEXTURE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/entity/projectile/thrown_knife.png");
+    public static final ResourceLocation RATT_DART_TEXTURE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/entity/projectile/ratt_dart.png");
+    public static final ResourceLocation GASOLINE_CAN_TEXTURE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/entity/projectile/thrown_gasoline_can.png");
 
-    public static final ResourceLocation ROAD_ROLLER_TEXTURE = new ResourceLocation(Roundabout.MOD_ID,"textures/entity/road_roller.png");
-    public static final ResourceLocation ROAD_ROLLER_TEXTURE_CRACKED_MEDIUM = new ResourceLocation(Roundabout.MOD_ID,"textures/entity/road_roller_cracked_medium.png");
-    public static final ResourceLocation ROAD_ROLLER_TEXTURE_CRACKED_HIGH = new ResourceLocation(Roundabout.MOD_ID,"textures/entity/road_roller_cracked_high.png");
+    public static final ResourceLocation ROAD_ROLLER_TEXTURE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/entity/road_roller.png");
+    public static final ResourceLocation ROAD_ROLLER_TEXTURE_CRACKED_MEDIUM = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/entity/road_roller_cracked_medium.png");
+    public static final ResourceLocation ROAD_ROLLER_TEXTURE_CRACKED_HIGH = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/entity/road_roller_cracked_high.png");
 
 
     /// Creates and registers the stand entity

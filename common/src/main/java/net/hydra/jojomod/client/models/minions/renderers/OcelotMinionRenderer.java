@@ -16,7 +16,7 @@ import net.minecraft.client.renderer.entity.layers.ItemInHandLayer;
 import net.minecraft.resources.ResourceLocation;
 
 public class OcelotMinionRenderer extends MobRenderer<OcelotMinion, OcelotMinionModel<OcelotMinion>> {
-    private static final ResourceLocation VINDICATOR = new ResourceLocation(Roundabout.MOD_ID,"textures/entity/minions/ocelot.png");
+    private static final ResourceLocation VINDICATOR = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/entity/minions/ocelot.png");
 
     public OcelotMinionRenderer(EntityRendererProvider.Context $$0) {
         super($$0, new OcelotMinionModel<>($$0.bakeLayer(ModEntityRendererClient.OCELOT_MINION_LAYER)), 0.4F);

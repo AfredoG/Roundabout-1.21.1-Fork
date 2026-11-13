@@ -1,36 +1,33 @@
 package net.hydra.jojomod.networking;
 
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.fml.DistExecutor;
-import net.minecraftforge.network.NetworkEvent;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
+import net.minecraft.resources.ResourceLocation;
 
-import java.util.function.Supplier;
-
-public class ClientboundBlackSabbathOpenPacket {
+public final class ClientboundBlackSabbathOpenPacket implements CustomPacketPayload {
+    public static final Type<ClientboundBlackSabbathOpenPacket> TYPE = new Type<>(
+            ResourceLocation.fromNamespaceAndPath("roundabout", "black_sabbath_open"));
+    public static final StreamCodec<RegistryFriendlyByteBuf, ClientboundBlackSabbathOpenPacket> STREAM_CODEC =
+            new StreamCodec<>() {
+                @Override
+                public ClientboundBlackSabbathOpenPacket decode(RegistryFriendlyByteBuf buffer) {
+                    return new ClientboundBlackSabbathOpenPacket(buffer.readUnsignedByte(), buffer.readInt());
+                }
+                @Override
+                public void encode(RegistryFriendlyByteBuf buffer, ClientboundBlackSabbathOpenPacket packet) {
+                    buffer.writeByte(packet.containerId);
+                    buffer.writeInt(packet.entityId);
+                }
+            };
     protected final int containerId;
     protected final int entityId;
-
 
     public ClientboundBlackSabbathOpenPacket(int containerId, int entityId) {
         this.containerId = containerId;
         this.entityId = entityId;
     }
 
-    public static void encode(ClientboundBlackSabbathOpenPacket message, FriendlyByteBuf buffer) {
-        buffer.writeByte(message.containerId);
-        buffer.writeInt(message.entityId);
-    }
-
-    public static ClientboundBlackSabbathOpenPacket decode(FriendlyByteBuf buffer) {
-        return new ClientboundBlackSabbathOpenPacket(buffer.readUnsignedByte(), buffer.readInt());
-    }
-
-    public static void handle(ClientboundBlackSabbathOpenPacket message, Supplier<NetworkEvent.Context> context) {
-        context.get().enqueueWork(() -> {
-            DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> ClientPacketHandler.handleClientboundBlackSabbathOpenPacket(message, context));
-        });
-
-        context.get().setPacketHandled(true);
-    }
+    @Override
+    public Type<ClientboundBlackSabbathOpenPacket> type() { return TYPE; }
 }

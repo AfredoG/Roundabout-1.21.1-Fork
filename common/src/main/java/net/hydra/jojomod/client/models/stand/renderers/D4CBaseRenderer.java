@@ -25,7 +25,7 @@ public class D4CBaseRenderer<M extends StandEntity> extends StandRenderer<D4CEnt
 
     public static ResourceLocation getSkin(byte BT){
         String path = PowersD4C.getSkinString(BT);
-        return new ResourceLocation(Roundabout.MOD_ID,"textures/stand/d4c/"+path+".png");
+        return ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/d4c/"+path+".png");
     }
 
     @Override

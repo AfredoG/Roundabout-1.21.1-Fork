@@ -28,7 +28,7 @@ public abstract class PsuedoHierarchicalModel extends Model {
 
     @Override
     public void renderToBuffer(PoseStack $$0, VertexConsumer $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-        this.root().render($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+        this.root().render($$0, $$1, $$2, $$3, net.minecraft.util.FastColor.ARGB32.colorFromFloat($$7, $$4, $$5, $$6));
     }
 
     public abstract ModelPart root();

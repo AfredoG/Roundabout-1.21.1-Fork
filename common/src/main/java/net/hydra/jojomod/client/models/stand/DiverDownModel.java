@@ -19,7 +19,7 @@ import net.minecraft.world.entity.LivingEntity;
 
 public class DiverDownModel<T extends DiverDownEntity> extends StandModel<T>{
     // This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
-    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation("modid", "unknown"), "main");
+    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath("modid", "unknown"), "main");
     private final ModelPart stand2;
     private final ModelPart head2;
     private final ModelPart eyebrows;

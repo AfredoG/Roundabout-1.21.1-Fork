@@ -293,12 +293,12 @@ public class GentlyWeepsEntity extends WhiteAlbumFreezingEntity {
     }
 
     @Override
-    protected void defineSynchedData() {
-        if (!this.entityData.hasItem(BLED)) {
-            super.defineSynchedData();
-            this.entityData.define(BLED, false);
-            this.entityData.define(ATTACHED, -1);
-        }
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+
+            super.defineSynchedData(builder);
+            builder.define(BLED, false);
+            builder.define(ATTACHED, -1);
+
     }
 
 }

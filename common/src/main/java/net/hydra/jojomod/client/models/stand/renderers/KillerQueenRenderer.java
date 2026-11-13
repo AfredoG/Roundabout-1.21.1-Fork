@@ -18,33 +18,33 @@ import org.jetbrains.annotations.Nullable;
 
 public class KillerQueenRenderer extends StandRenderer<KillerQueenEntity>{
 	
-    private static final ResourceLocation PART_4_SKIN = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/killer_queen/anime.png");
-    private static final ResourceLocation MANGA_SKIN = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/killer_queen/manga.png");
-    private static final ResourceLocation GOGO_SKIN = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/killer_queen/agogo.png");
-    private static final ResourceLocation DEADLY_SKIN = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/killer_queen/deadly.png");
-    private static final ResourceLocation STRAY_SKIN = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/killer_queen/stray.png");
-    private static final ResourceLocation JOJOLION_SKIN = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/killer_queen/jojolion.png");
-    private static final ResourceLocation GUNPOWDER_SKIN = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/killer_queen/gunpowder.png");
-    private static final ResourceLocation FINALSHOWDOWN_SKIN = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/killer_queen/finalshowdown.png");
-    private static final ResourceLocation ARTWORK_SKIN = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/killer_queen/artwork.png");
-    private static final ResourceLocation LIMBUSMORTIS_SKIN = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/killer_queen/limbusmortis.png");
-    private static final ResourceLocation CRACKED_SKIN = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/killer_queen/cracked.png");
-    private static final ResourceLocation YELLOW_SKIN = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/killer_queen/yellow.png");
-    private static final ResourceLocation UMBRA_SKIN = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/killer_queen/umbra.png");
-    private static final ResourceLocation NIGHTMARE_SKIN = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/killer_queen/nightmare.png");
-    private static final ResourceLocation CREEPER_SKIN = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/killer_queen/creeper.png");
-    private static final ResourceLocation TAMA_SKIN = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/killer_queen/tama.png");
-    private static final ResourceLocation MINESWEEPER_SKIN = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/killer_queen/minesweeper.png");
-    private static final ResourceLocation NOTW_SKIN = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/killer_queen/notw.png");
-    private static final ResourceLocation MEMENTO_SKIN = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/killer_queen/mementomorioh.png");
-    private static final ResourceLocation STARDUST_SKIN = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/killer_queen/stardust.png");
-    private static final ResourceLocation MINUET_SKIN = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/killer_queen/minuet.png");
-    private static final ResourceLocation BROWN_SKIN = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/killer_queen/brown.png");
-    private static final ResourceLocation GREY_SKIN = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/killer_queen/grey.png");
-    private static final ResourceLocation SAMURAI_SKIN = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/killer_queen/samurai.png");
-    private static final ResourceLocation SPIRIT_SKIN = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/killer_queen/spirit.png");
-    private static final ResourceLocation BETA_SKIN = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/killer_queen/beta.png");
-    private static final ResourceLocation WEAKNESS_SKIN = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/killer_queen/weakness.png");
+    private static final ResourceLocation PART_4_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/killer_queen/anime.png");
+    private static final ResourceLocation MANGA_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/killer_queen/manga.png");
+    private static final ResourceLocation GOGO_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/killer_queen/agogo.png");
+    private static final ResourceLocation DEADLY_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/killer_queen/deadly.png");
+    private static final ResourceLocation STRAY_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/killer_queen/stray.png");
+    private static final ResourceLocation JOJOLION_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/killer_queen/jojolion.png");
+    private static final ResourceLocation GUNPOWDER_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/killer_queen/gunpowder.png");
+    private static final ResourceLocation FINALSHOWDOWN_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/killer_queen/finalshowdown.png");
+    private static final ResourceLocation ARTWORK_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/killer_queen/artwork.png");
+    private static final ResourceLocation LIMBUSMORTIS_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/killer_queen/limbusmortis.png");
+    private static final ResourceLocation CRACKED_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/killer_queen/cracked.png");
+    private static final ResourceLocation YELLOW_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/killer_queen/yellow.png");
+    private static final ResourceLocation UMBRA_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/killer_queen/umbra.png");
+    private static final ResourceLocation NIGHTMARE_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/killer_queen/nightmare.png");
+    private static final ResourceLocation CREEPER_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/killer_queen/creeper.png");
+    private static final ResourceLocation TAMA_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/killer_queen/tama.png");
+    private static final ResourceLocation MINESWEEPER_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/killer_queen/minesweeper.png");
+    private static final ResourceLocation NOTW_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/killer_queen/notw.png");
+    private static final ResourceLocation MEMENTO_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/killer_queen/mementomorioh.png");
+    private static final ResourceLocation STARDUST_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/killer_queen/stardust.png");
+    private static final ResourceLocation MINUET_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/killer_queen/minuet.png");
+    private static final ResourceLocation BROWN_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/killer_queen/brown.png");
+    private static final ResourceLocation GREY_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/killer_queen/grey.png");
+    private static final ResourceLocation SAMURAI_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/killer_queen/samurai.png");
+    private static final ResourceLocation SPIRIT_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/killer_queen/spirit.png");
+    private static final ResourceLocation BETA_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/killer_queen/beta.png");
+    private static final ResourceLocation WEAKNESS_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/killer_queen/weakness.png");
 
     static public ResourceLocation getSkin(byte BT) {
         if (BT == KillerQueenEntity.PART_4) {

@@ -943,7 +943,7 @@ public class SoftAndWetPlunderBubbleEntity extends SoftAndWetBubbleEntity {
     public boolean canAddItem(ItemStack itemStack, Inventory inventory) {
         boolean bl = false;
         for (ItemStack itemStack2 : inventory.items) {
-            if (!itemStack2.isEmpty() && (!ItemStack.isSameItemSameTags(itemStack2, itemStack) || itemStack2.getCount() >= itemStack2.getMaxStackSize())) continue;
+            if (!itemStack2.isEmpty() && (!ItemStack.isSameItemSameComponents(itemStack2, itemStack) || itemStack2.getCount() >= itemStack2.getMaxStackSize())) continue;
             bl = true;
             break;
         }
@@ -1374,18 +1374,18 @@ public class SoftAndWetPlunderBubbleEntity extends SoftAndWetBubbleEntity {
         this.getEntityData().set(LIQUID_STOLEN, entid);
     }
     @Override
-    protected void defineSynchedData() {
-        if (!this.entityData.hasItem(PLUNDER_TYPE)){
-            super.defineSynchedData();
-            this.entityData.define(PLUNDER_TYPE, (byte)0);
-            this.entityData.define(BLOCK_POS, BlockPos.ZERO);
-            this.entityData.define(FINISHED, false);
-            this.entityData.define(SINGULAR, false);
-            this.entityData.define(RETURNING, false);
-            this.entityData.define(HELD_ITEM, ItemStack.EMPTY);
-            this.entityData.define(ENTITY_STOLEN, -1);
-            this.entityData.define(LIQUID_STOLEN, -1);
-        }
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+
+            super.defineSynchedData(builder);
+            builder.define(PLUNDER_TYPE, (byte)0);
+            builder.define(BLOCK_POS, BlockPos.ZERO);
+            builder.define(FINISHED, false);
+            builder.define(SINGULAR, false);
+            builder.define(RETURNING, false);
+            builder.define(HELD_ITEM, ItemStack.EMPTY);
+            builder.define(ENTITY_STOLEN, -1);
+            builder.define(LIQUID_STOLEN, -1);
+
     }
 
     @Override

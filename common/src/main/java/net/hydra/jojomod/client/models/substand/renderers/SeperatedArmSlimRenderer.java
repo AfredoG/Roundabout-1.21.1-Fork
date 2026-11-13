@@ -28,7 +28,7 @@ import java.util.Map;
 import java.util.Objects;
 
 public class SeperatedArmSlimRenderer extends StandRenderer<SeperatedArmSlimEntity> {
-    private static final ResourceLocation PART_FIVE_GREEN_DAY = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/green_day/part_four_green_day.png");
+    private static final ResourceLocation PART_FIVE_GREEN_DAY = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/green_day/part_four_green_day.png");
 
 
     public SeperatedArmSlimRenderer(EntityRendererProvider.Context context) {

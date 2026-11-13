@@ -494,14 +494,14 @@ public class StrayCatAirBubble extends AbstractHurtingProjectile implements Unbu
     }
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(ACTIVATED, false);
-        this.entityData.define(LAUNCHED, false);
-        this.entityData.define(USER_ID, -1);
-        this.entityData.define(SPEED, 1F);
-        this.entityData.define(SKIN, (byte)0);
-        this.entityData.define(TARGET, -1);
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(ACTIVATED, false);
+        builder.define(LAUNCHED, false);
+        builder.define(USER_ID, -1);
+        builder.define(SPEED, 1F);
+        builder.define(SKIN, (byte)0);
+        builder.define(TARGET, -1);
     }
 
 

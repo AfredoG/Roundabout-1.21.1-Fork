@@ -13,13 +13,14 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.material.Fluid;
-import net.minecraftforge.common.Tags;
-import net.minecraftforge.common.ForgeHooks;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent;
-import net.minecraftforge.eventbus.api.Event;
-import net.minecraftforge.fml.ModList;
-import net.minecraftforge.fml.loading.FMLLoader;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.neoforge.common.Tags;
+import net.neoforged.neoforge.common.CommonHooks;
+import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
+import net.neoforged.bus.api.Event;
+import net.neoforged.fml.ModList;
+import net.neoforged.fml.loading.FMLLoader;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.neoforged.neoforge.registries.NeoForgeRegistries;
 
 
 public class ForgePlatformHelper implements IPlatformHelper {
@@ -27,7 +28,7 @@ public class ForgePlatformHelper implements IPlatformHelper {
     @Override
     public boolean canControlMineBlock(ServerPlayer player, BlockPos pos, Direction direction,
                                        ServerboundPlayerActionPacket.Action action) {
-        PlayerInteractEvent.LeftClickBlock event = ForgeHooks.onLeftClickBlock(player, pos, direction, action);
+        PlayerInteractEvent.LeftClickBlock event = CommonHooks.onLeftClickBlock(player, pos, direction, action);
         return !event.isCanceled() && (player.isCreative()
                 || event.getResult() != Event.Result.DENY
                 && event.getUseBlock() != Event.Result.DENY
@@ -55,7 +56,7 @@ public class ForgePlatformHelper implements IPlatformHelper {
 
     public ResourceLocation soundId(SoundEvent event){
         Roundabout.LOGGER.info("fgfg");
-        return ForgeRegistries.SOUND_EVENTS.getKey(event);
+        return BuiltInRegistries.SOUND_EVENT.getKey(event);
     }
 
     @Override
@@ -66,8 +67,8 @@ public class ForgePlatformHelper implements IPlatformHelper {
     @SuppressWarnings("removal")
     public boolean getFluidTagPushCode(Entity ent, TagKey<Fluid> $$0, double $$1){
         ent.updateFluidHeightAndDoFluidPushing();
-        if($$0 == FluidTags.WATER) return ent.isInFluidType(net.minecraftforge.common.ForgeMod.WATER_TYPE.get());
-        else if ($$0 == FluidTags.LAVA) return ent.isInFluidType(net.minecraftforge.common.ForgeMod.LAVA_TYPE.get());
+        if($$0 == FluidTags.WATER) return ent.isInFluidType(net.neoforged.neoforge.common.NeoForgeMod.WATER_TYPE.get());
+        else if ($$0 == FluidTags.LAVA) return ent.isInFluidType(net.neoforged.neoforge.common.NeoForgeMod.LAVA_TYPE.get());
         else return false;
     }
 

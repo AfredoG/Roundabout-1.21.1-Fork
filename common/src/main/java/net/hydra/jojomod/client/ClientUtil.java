@@ -1002,7 +1002,7 @@ public class ClientUtil {
                 } else if (message.equals(ServerToClientPackets.S2CPackets.MESSAGES.SendSafeParticle.value)) {
                     String str1 = (String) vargs[0];
 
-                    ResourceLocation particleId = new ResourceLocation(str1);
+                    ResourceLocation particleId = ResourceLocation.parse(str1);
 
                     ParticleType<?> particleType =
                             BuiltInRegistries.PARTICLE_TYPE.get(particleId);

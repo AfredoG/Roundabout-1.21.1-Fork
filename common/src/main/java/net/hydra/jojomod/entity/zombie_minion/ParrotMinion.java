@@ -21,7 +21,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.pathfinder.BlockPathTypes;
+import net.minecraft.world.level.pathfinder.PathType;
 import net.minecraft.world.phys.Vec3;
 
 import javax.annotation.Nullable;
@@ -30,9 +30,9 @@ public class ParrotMinion extends BaseMinion{
     public ParrotMinion(EntityType<? extends ParrotMinion> $$0, Level $$1) {
         super($$0, $$1);
         this.moveControl = new FlyingMoveControl(this, 10, false);
-        this.setPathfindingMalus(BlockPathTypes.DANGER_FIRE, -1.0F);
-        this.setPathfindingMalus(BlockPathTypes.DAMAGE_FIRE, -1.0F);
-        this.setPathfindingMalus(BlockPathTypes.COCOA, -1.0F);
+        this.setPathfindingMalus(PathType.DANGER_FIRE, -1.0F);
+        this.setPathfindingMalus(PathType.DAMAGE_FIRE, -1.0F);
+        this.setPathfindingMalus(PathType.COCOA, -1.0F);
     }
 
     @Override

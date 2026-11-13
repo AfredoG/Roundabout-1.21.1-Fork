@@ -286,11 +286,11 @@ public class KingCrimsonCloneEntity extends CloneEntity {
         }
     }
     @Override
-    protected void defineSynchedData() {
-        if (!this.entityData.hasItem(JUMPING)) {
-            super.defineSynchedData();
-            this.entityData.define(JUMPING, false);
-        }
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+
+            super.defineSynchedData(builder);
+            builder.define(JUMPING, false);
+
     }
 
     private void redirectAggroBackToPlayer() {

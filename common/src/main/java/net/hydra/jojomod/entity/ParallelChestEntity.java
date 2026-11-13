@@ -136,7 +136,7 @@ public class ParallelChestEntity extends Entity {
     public boolean canAddItem(ItemStack itemStack, Inventory inventory) {
         boolean bl = false;
         for (ItemStack itemStack2 : inventory.items) {
-            if (!itemStack2.isEmpty() && (!ItemStack.isSameItemSameTags(itemStack2, itemStack) || itemStack2.getCount() >= itemStack2.getMaxStackSize())) continue;
+            if (!itemStack2.isEmpty() && (!ItemStack.isSameItemSameComponents(itemStack2, itemStack) || itemStack2.getCount() >= itemStack2.getMaxStackSize())) continue;
             bl = true;
             break;
         }
@@ -199,11 +199,11 @@ public class ParallelChestEntity extends Entity {
         return InteractionResult.SUCCESS;
     }
     @Override
-    protected void defineSynchedData() {
-        if (!this.entityData.hasItem(OPENED)) {
-            this.entityData.define(OPENED, false);
-            this.entityData.define(AMMO, false);
-        }
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+
+            builder.define(OPENED, false);
+            builder.define(AMMO, false);
+
     }
     @Override
     public void addAdditionalSaveData(CompoundTag $$0) {

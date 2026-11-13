@@ -7,7 +7,7 @@ import net.minecraft.resources.ResourceLocation;
 
 public class MetallicaKnifeRenderer extends KnifeRenderer {
 
-    private static final ResourceLocation SCALPEL_TEXTURE = new ResourceLocation(Roundabout.MOD_ID, "textures/entity/projectile/scalpel.png");
+    private static final ResourceLocation SCALPEL_TEXTURE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/entity/projectile/scalpel.png");
 
     public MetallicaKnifeRenderer(EntityRendererProvider.Context context) {
         super(context);

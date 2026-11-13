@@ -13,16 +13,16 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 
 public class FallenCreeperRenderer extends MobRenderer<FallenCreeper, FallenCreeperModel<FallenCreeper>> {
-    private static final ResourceLocation CREEPER_LOCATION = new ResourceLocation("textures/entity/creeper/creeper.png");
-    private static final ResourceLocation FALLEN_CREEPER_LOCATION = new ResourceLocation(Roundabout.MOD_ID,
+    private static final ResourceLocation CREEPER_LOCATION = ResourceLocation.parse("textures/entity/creeper/creeper.png");
+    private static final ResourceLocation FALLEN_CREEPER_LOCATION = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/justice_corpses/justice_creeper.png");
-    private static final ResourceLocation FALLEN_CREEPER_LOCATION_2 = new ResourceLocation(Roundabout.MOD_ID,
+    private static final ResourceLocation FALLEN_CREEPER_LOCATION_2 = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/justice_corpses/justice_creeper_holes.png");
-    private static final ResourceLocation FALLEN_CREEPER_LOCATION_B = new ResourceLocation(Roundabout.MOD_ID,
+    private static final ResourceLocation FALLEN_CREEPER_LOCATION_B = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/justice_corpses/justice_creeper_blue.png");
-    private static final ResourceLocation FALLEN_CREEPER_LOCATION_R = new ResourceLocation(Roundabout.MOD_ID,
+    private static final ResourceLocation FALLEN_CREEPER_LOCATION_R = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/justice_corpses/justice_creeper_red.png");
-    private static final ResourceLocation FALLEN_CREEPER_LOCATION_G = new ResourceLocation(Roundabout.MOD_ID,
+    private static final ResourceLocation FALLEN_CREEPER_LOCATION_G = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/justice_corpses/justice_creeper_green.png");
 
     public FallenCreeperRenderer(EntityRendererProvider.Context $$0) {

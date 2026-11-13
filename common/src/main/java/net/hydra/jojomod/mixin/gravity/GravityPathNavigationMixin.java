@@ -72,7 +72,7 @@ public abstract class GravityPathNavigationMixin {
 //
 //    @Shadow protected abstract void resetStuckTimeout();
 //
-//    @Shadow public abstract boolean canCutCorner(BlockPathTypes blockPathTypes);
+//    @Shadow public abstract boolean canCutCorner(PathType blockPathTypes);
 //
 //    @Shadow protected abstract void doStuckDetection(Vec3 vec3);
 //

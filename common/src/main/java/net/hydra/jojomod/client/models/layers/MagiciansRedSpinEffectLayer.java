@@ -26,12 +26,12 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.LivingEntity;
 
 public class MagiciansRedSpinEffectLayer<T extends FollowingStandEntity> extends RenderLayer<T, StandModel<T>> {
-    public static final ResourceLocation TEXTURE = new ResourceLocation(Roundabout.MOD_ID, "textures/entity/orange_flame_spin.png");
-    public static final ResourceLocation TEXTURE_BLUE = new ResourceLocation(Roundabout.MOD_ID, "textures/entity/blue_flame_spin.png");
-    public static final ResourceLocation TEXTURE_PURPLE = new ResourceLocation(Roundabout.MOD_ID, "textures/entity/purple_flame_spin.png");
-    public static final ResourceLocation TEXTURE_GREEN = new ResourceLocation(Roundabout.MOD_ID, "textures/entity/green_flame_spin.png");
-    public static final ResourceLocation TEXTURE_DREAD = new ResourceLocation(Roundabout.MOD_ID, "textures/entity/dread_flame_spin.png");
-    public static final ResourceLocation TEXTURE_CREAM = new ResourceLocation(Roundabout.MOD_ID, "textures/entity/cream_flame_spin.png");
+    public static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/entity/orange_flame_spin.png");
+    public static final ResourceLocation TEXTURE_BLUE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/entity/blue_flame_spin.png");
+    public static final ResourceLocation TEXTURE_PURPLE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/entity/purple_flame_spin.png");
+    public static final ResourceLocation TEXTURE_GREEN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/entity/green_flame_spin.png");
+    public static final ResourceLocation TEXTURE_DREAD = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/entity/dread_flame_spin.png");
+    public static final ResourceLocation TEXTURE_CREAM = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/entity/cream_flame_spin.png");
     public static final String BOX = "box";
     private final ModelPart box;
 

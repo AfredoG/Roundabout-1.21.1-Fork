@@ -12,7 +12,7 @@ import net.minecraft.resources.ResourceLocation;
 
 public class PiranhaEyesLayer<T extends Piranha, M extends PiranhaModel<T>> extends EyesLayer<T, M> {
     private static final RenderType EYES_TEXTURE = RenderType.eyes(
-            new ResourceLocation(Roundabout.MOD_ID, "textures/entity/piranha/piranha_eyes.png")
+            ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/entity/piranha/piranha_eyes.png")
     );
 
     public PiranhaEyesLayer(RenderLayerParent<T, M> renderer) {

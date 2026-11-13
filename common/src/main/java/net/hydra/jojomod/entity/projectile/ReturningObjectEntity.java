@@ -68,7 +68,7 @@ public class ReturningObjectEntity extends ThrowableItemProjectile {
     }
 
     @Override
-    protected void defineSynchedData() {
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
         if (!this.getEntityData().hasItem(RETURN_POS)) {
             this.getEntityData().define(BLOCK_STATE, Blocks.DIRT.defaultBlockState());
             this.getEntityData().define(RETURN_POS, BlockPos.ZERO);

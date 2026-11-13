@@ -8,7 +8,7 @@ import net.minecraft.world.entity.ai.control.SmoothSwimmingLookControl;
 import net.minecraft.world.entity.ai.control.SmoothSwimmingMoveControl;
 import net.minecraft.world.entity.animal.axolotl.Axolotl;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.pathfinder.BlockPathTypes;
+import net.minecraft.world.level.pathfinder.PathType;
 import net.minecraft.world.phys.Vec3;
 import org.joml.Vector3f;
 
@@ -28,7 +28,7 @@ public class AxolotlMinion extends BaseMinion  implements LerpingModel {
     protected void registerGoals() {
         //this.goalSelector.addGoal(1, new FallenZombieAttackGoal(this, 1.0, true));
         this.addBehaviourGoals();
-        this.setPathfindingMalus(BlockPathTypes.WATER, 0.0F);
+        this.setPathfindingMalus(PathType.WATER, 0.0F);
         this.moveControl = new SmoothSwimmingMoveControl(this, 85, 10, 0.1F, 0.5F, false);
         this.lookControl = new SmoothSwimmingLookControl(this, 20);
         this.setMaxUpStep(1.0F);

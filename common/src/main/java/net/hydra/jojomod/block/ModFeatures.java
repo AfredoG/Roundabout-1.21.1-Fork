@@ -4,7 +4,7 @@ import net.hydra.jojomod.Roundabout;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstapContext;
+import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
@@ -22,7 +22,7 @@ import net.minecraft.world.level.levelgen.placement.InSquarePlacement;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 
 public class ModFeatures {
-    public static final ResourceLocation LOCACACA_PLACED = new ResourceLocation(Roundabout.MOD_ID, "placed_locacaca");
-    public static final ResourceLocation AJA_ORE = new ResourceLocation(Roundabout.MOD_ID, "ore_aja");
-    public static final ResourceLocation AJA_ORE_DESERT = new ResourceLocation(Roundabout.MOD_ID, "ore_aja_desert");
+    public static final ResourceLocation LOCACACA_PLACED = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "placed_locacaca");
+    public static final ResourceLocation AJA_ORE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "ore_aja");
+    public static final ResourceLocation AJA_ORE_DESERT = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "ore_aja_desert");
 }

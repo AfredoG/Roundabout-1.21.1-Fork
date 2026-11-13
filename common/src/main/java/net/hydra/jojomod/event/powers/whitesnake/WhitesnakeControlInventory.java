@@ -94,7 +94,7 @@ public final class WhitesnakeControlInventory {
         } else if (isAmmo(source) || isDisc(source)) {
             for (int i = STORAGE_START; i < SIZE && !source.isEmpty(); i++) {
                 ItemStack existing = inventory.get(i);
-                if (!existing.isEmpty() && ItemStack.isSameItemSameTags(existing, source)) {
+                if (!existing.isEmpty() && ItemStack.isSameItemSameComponents(existing, source)) {
                     int moved = Math.min(source.getCount(), existing.getMaxStackSize() - existing.getCount());
                     if (moved > 0) {
                         existing.grow(moved);

@@ -20,11 +20,11 @@ import org.jetbrains.annotations.Nullable;
 
 public class BCSoldierBaseRenderer extends StandRenderer<BCSoldier> {
 
-    private static final ResourceLocation BETA = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/bad_company/soldier/beta.png");
-    private static final ResourceLocation ANIME = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/bad_company/soldier/anime.png");
-    private static final ResourceLocation MANGA = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/bad_company/soldier/manga.png");
-    private static final ResourceLocation MARINE = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/bad_company/soldier/marine.png");
-    private static final ResourceLocation SAND = new ResourceLocation(Roundabout.MOD_ID, "textures/stand/bad_company/soldier/sand.png");
+    private static final ResourceLocation BETA = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/bad_company/soldier/beta.png");
+    private static final ResourceLocation ANIME = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/bad_company/soldier/anime.png");
+    private static final ResourceLocation MANGA = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/bad_company/soldier/manga.png");
+    private static final ResourceLocation MARINE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/bad_company/soldier/marine.png");
+    private static final ResourceLocation SAND = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/stand/bad_company/soldier/sand.png");
 
     public BCSoldierBaseRenderer(EntityRendererProvider.Context context, StandModel<BCSoldier> entityModel, float f) {
         super(context, entityModel,f);

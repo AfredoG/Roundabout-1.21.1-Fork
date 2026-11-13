@@ -7,37 +7,38 @@ import net.hydra.jojomod.menu.GamblingTableMenu;
 import net.hydra.jojomod.menu.diverdown.*;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.inventory.*;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.registries.DeferredRegister;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.neoforged.neoforge.registries.NeoForgeRegistries;
+import net.neoforged.neoforge.registries.DeferredHolder;
 
 public final class ForgeMenus {
         //there's no registry yet for custom UI that doesn't use the default minecraft abstract menu, so I had to make one for the custom Diver Down workbenches textures.
         //If somebody has a better way to do this, please message me on discord- 88superguy
         public static final DeferredRegister<MenuType<?>> MENUS =
-                DeferredRegister.create(ForgeRegistries.MENU_TYPES, Roundabout.MOD_ID);
+                DeferredRegister.create(BuiltInRegistries.MENU, Roundabout.MOD_ID);
 
         //Diver Down Crafting Table registry
-        public static final RegistryObject<MenuType<CraftingMenu>> DIVER_DOWN_CRAFTING =
+        public static final DeferredHolder<net.minecraft.world.inventory.MenuType<?>, MenuType<CraftingMenu>> DIVER_DOWN_CRAFTING =
                 MENUS.register("diver_down_crafting", () ->
                         new MenuType<>(DiverDownCraftingMenu::new, FeatureFlags.DEFAULT_FLAGS));
         //Diver Down Anvil register
-        public static final RegistryObject<MenuType<AnvilMenu>> DIVER_DOWN_ANVIL =
+        public static final DeferredHolder<net.minecraft.world.inventory.MenuType<?>, MenuType<AnvilMenu>> DIVER_DOWN_ANVIL =
                 MENUS.register("diver_down_anvil", () ->
                         new MenuType<>(DiverDownAnvilMenu::new, FeatureFlags.DEFAULT_FLAGS));
         //Diver Down Smithing Table registry
-        public static final RegistryObject<MenuType<SmithingMenu>> DIVER_DOWN_SMITHING =
+        public static final DeferredHolder<net.minecraft.world.inventory.MenuType<?>, MenuType<SmithingMenu>> DIVER_DOWN_SMITHING =
                 MENUS.register("diver_down_smithing", () ->
                         new MenuType<>(DiverDownSmithingMenu::new, FeatureFlags.DEFAULT_FLAGS));
-    public static final RegistryObject<MenuType<StonecutterMenu>> DIVER_DOWN_STONECUTTER =
+    public static final DeferredHolder<net.minecraft.world.inventory.MenuType<?>, MenuType<StonecutterMenu>> DIVER_DOWN_STONECUTTER =
             MENUS.register("diver_down_stonecutter", () ->
                     new MenuType<>(DiverDownStonecutterMenu::new, FeatureFlags.DEFAULT_FLAGS));
-    public static final RegistryObject<MenuType<LoomMenu>> DIVER_DOWN_LOOM =
+    public static final DeferredHolder<net.minecraft.world.inventory.MenuType<?>, MenuType<LoomMenu>> DIVER_DOWN_LOOM =
             MENUS.register("diver_down_loom", () ->
                     new MenuType<>(DiverDownLoomMenu::new, FeatureFlags.DEFAULT_FLAGS));
-    public static final RegistryObject<MenuType<GamblingTableMenu>> GAMBLING_TABLE =
+    public static final DeferredHolder<net.minecraft.world.inventory.MenuType<?>, MenuType<GamblingTableMenu>> GAMBLING_TABLE =
             MENUS.register("gambling_table", () -> new MenuType<>(GamblingTableMenu::new, FeatureFlags.DEFAULT_FLAGS));
-    public static final RegistryObject<MenuType<LyinEyesInventoryMenu>> LYIN_EYES_INVENTORY =
+    public static final DeferredHolder<net.minecraft.world.inventory.MenuType<?>, MenuType<LyinEyesInventoryMenu>> LYIN_EYES_INVENTORY =
             MENUS.register("lyin_eyes_inventory", () -> new MenuType<>(LyinEyesInventoryMenu::new, FeatureFlags.DEFAULT_FLAGS));
 
     private ForgeMenus() {

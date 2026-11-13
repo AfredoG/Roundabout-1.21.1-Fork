@@ -52,7 +52,7 @@ public class DiverDownAfflictionSelection extends Screen implements NoCancelInpu
     private byte selectedAffliction = 0;
 
     //Check out GamemodeSwitcherScreen
-    static final private ResourceLocation AFFLICTION_SELECT_GUI = new ResourceLocation(Roundabout.MOD_ID,
+    static final private ResourceLocation AFFLICTION_SELECT_GUI = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/gui/diver_down/diver_gui.png");
     private AfflictionType currentlyHovered;
     private int firstMouseX;
@@ -297,28 +297,28 @@ public class DiverDownAfflictionSelection extends Screen implements NoCancelInpu
      */
     public enum AfflictionType {
         // LEFT (Positive)
-        DIVER_LEGS_ID(Component.translatable("roundabout.diver_affliction.diver_legs"), new ResourceLocation(Roundabout.MOD_ID,
+        DIVER_LEGS_ID(Component.translatable("roundabout.diver_affliction.diver_legs"), ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
                 "textures/gui/diver_down/affliction_icons/diver_legs.png"), DIVER_LEGS, -43, 31, Component.translatable("roundabout.diver_affliction.diver_legs.desc"), CircleColor.GREEN),
-        EFFECT_CURE_ID(Component.translatable("roundabout.diver_affliction.effect_cure"), new ResourceLocation(Roundabout.MOD_ID,
+        EFFECT_CURE_ID(Component.translatable("roundabout.diver_affliction.effect_cure"), ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
                 "textures/gui/diver_down/affliction_icons/effect_cure.png"), EFFECT_CURE, -28, 1, Component.translatable("roundabout.diver_affliction.effect_cure.desc"), CircleColor.GREEN),
-        TRANSFER_ID(Component.translatable("roundabout.diver_affliction.diver_arms"), new ResourceLocation(Roundabout.MOD_ID,
+        TRANSFER_ID(Component.translatable("roundabout.diver_affliction.diver_arms"), ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
                 "textures/gui/diver_down/affliction_icons/diver_arms.png"), TRANSFER, -28, 61, Component.translatable("roundabout.diver_affliction.diver_arms.desc"), CircleColor.GREEN),
 
         // TOP & BOTTOM (Neutral)
-        DISGUISE_ID(Component.translatable("roundabout.diver_affliction.disguise"), new ResourceLocation(Roundabout.MOD_ID,
+        DISGUISE_ID(Component.translatable("roundabout.diver_affliction.disguise"), ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
                 "textures/gui/diver_down/affliction_icons/disguise.png"), DISGUISE, 0, -16, Component.translatable("roundabout.diver_affliction.disguise.desc"), CircleColor.NEUTRAL),
-        EMBED_POTION_ID(Component.translatable("roundabout.diver_affliction.embed_potion"), new ResourceLocation(Roundabout.MOD_ID,
+        EMBED_POTION_ID(Component.translatable("roundabout.diver_affliction.embed_potion"), ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
                 "textures/gui/diver_down/affliction_icons/effects.png"), EMBED_POTION, 0, 78, Component.translatable("roundabout.diver_affliction.embed_potion.desc"), CircleColor.NEUTRAL),
 
         // RIGHT (Negative)
-        RIBCAGE_TRAP_ID(Component.translatable("roundabout.diver_affliction.ribcage_trap"), new ResourceLocation(Roundabout.MOD_ID,
+        RIBCAGE_TRAP_ID(Component.translatable("roundabout.diver_affliction.ribcage_trap"), ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
                 "textures/gui/diver_down/affliction_icons/ribcage_trap.png"), RIBCAGE_TRAP, 28, 1, Component.translatable("roundabout.diver_affliction.ribcage_trap.desc"), CircleColor.RED),
-        BONE_BOMB_ID(Component.translatable("roundabout.diver_affliction.bone_bomb"), new ResourceLocation(Roundabout.MOD_ID,
+        BONE_BOMB_ID(Component.translatable("roundabout.diver_affliction.bone_bomb"), ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
                 "textures/gui/diver_down/affliction_icons/bone_bomb.png"), BONE_BOMB, 28, 61, Component.translatable("roundabout.diver_affliction.bone_bomb.desc"), CircleColor.RED),
-        SPRING_LEGS_ID(Component.translatable("roundabout.diver_affliction.spring_legs"), new ResourceLocation(Roundabout.MOD_ID,
+        SPRING_LEGS_ID(Component.translatable("roundabout.diver_affliction.spring_legs"), ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
                 "textures/gui/diver_down/affliction_icons/spring_legs.png"), SPRING_LEGS, 43, 31, Component.translatable("roundabout.diver_affliction.spring_legs.desc"), CircleColor.RED),
 
-        NONE(Component.translatable("roundabout.diver_affliction.none"), new ResourceLocation(Roundabout.MOD_ID,
+        NONE(Component.translatable("roundabout.diver_affliction.none"), ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
                 "textures/gui/plunder_icons/main_stand.png"), (byte) 0, 0, 75, Component.translatable("roundabout.stand_switch.main.desc"), CircleColor.NEUTRAL);
 
         protected static final AfflictionType[] VALUES;

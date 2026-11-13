@@ -13,18 +13,18 @@ import org.jetbrains.annotations.Nullable;
 
 public class WalkingHeartRenderer extends StandRenderer<WalkingHeartEntity> {
 
-    private static final ResourceLocation MANGA = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/walking_heart/base.png");
-    private static final ResourceLocation MODEL = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/walking_heart/model.png");
-    private static final ResourceLocation GOTHIC = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/walking_heart/gothic.png");
-    private static final ResourceLocation PALE = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/walking_heart/pale.png");
-    private static final ResourceLocation VERDANT = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/walking_heart/verdant.png");
-    private static final ResourceLocation SPIDER = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/walking_heart/spider.png");
-    private static final ResourceLocation VALENTINE = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/walking_heart/valentine.png");
-    private static final ResourceLocation PURPLE = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/walking_heart/purple.png");
-    private static final ResourceLocation SCARECROW_SKIN = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/walking_heart/scarecrow.png");
-    private static final ResourceLocation ABYSSAL_SKIN = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/walking_heart/abyssal.png");
-    private static final ResourceLocation MELON_SKIN = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/walking_heart/melon.png");
-    private static final ResourceLocation CREAKING_SKIN = new ResourceLocation(Roundabout.MOD_ID,"textures/stand/walking_heart/creaking.png");
+    private static final ResourceLocation MANGA = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/walking_heart/base.png");
+    private static final ResourceLocation MODEL = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/walking_heart/model.png");
+    private static final ResourceLocation GOTHIC = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/walking_heart/gothic.png");
+    private static final ResourceLocation PALE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/walking_heart/pale.png");
+    private static final ResourceLocation VERDANT = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/walking_heart/verdant.png");
+    private static final ResourceLocation SPIDER = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/walking_heart/spider.png");
+    private static final ResourceLocation VALENTINE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/walking_heart/valentine.png");
+    private static final ResourceLocation PURPLE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/walking_heart/purple.png");
+    private static final ResourceLocation SCARECROW_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/walking_heart/scarecrow.png");
+    private static final ResourceLocation ABYSSAL_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/walking_heart/abyssal.png");
+    private static final ResourceLocation MELON_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/walking_heart/melon.png");
+    private static final ResourceLocation CREAKING_SKIN = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,"textures/stand/walking_heart/creaking.png");
     public WalkingHeartRenderer(EntityRendererProvider.Context context) {
         super(context, new WalkingHeartModel<>(context.bakeLayer(ModEntityRendererClient.WALKING_HEART_LAYER)), 0f);
         this.addLayer(new WalkingHeartEyeLayer<>(this));

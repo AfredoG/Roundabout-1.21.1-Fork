@@ -16,16 +16,16 @@ import net.minecraft.world.entity.monster.Phantom;
 import net.minecraft.world.phys.Vec3;
 
 public class FallenPhantomRenderer<T extends Phantom> extends MobRenderer<FallenPhantom, FallenPhantomModel<FallenPhantom>> {
-    private static final ResourceLocation PHANTOM_LOCATION = new ResourceLocation("textures/entity/phantom.png");
-    private static final ResourceLocation FALLEN_PHANTOM_LOCATION = new ResourceLocation(Roundabout.MOD_ID,
+    private static final ResourceLocation PHANTOM_LOCATION = ResourceLocation.parse("textures/entity/phantom.png");
+    private static final ResourceLocation FALLEN_PHANTOM_LOCATION = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/justice_corpses/justice_phantom.png");
-    private static final ResourceLocation FALLEN_PHANTOM_LOCATION_R = new ResourceLocation(Roundabout.MOD_ID,
+    private static final ResourceLocation FALLEN_PHANTOM_LOCATION_R = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/justice_corpses/justice_phantom_red.png");
-    private static final ResourceLocation FALLEN_PHANTOM_LOCATION_G = new ResourceLocation(Roundabout.MOD_ID,
+    private static final ResourceLocation FALLEN_PHANTOM_LOCATION_G = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/justice_corpses/justice_phantom_green.png");
-    private static final ResourceLocation FALLEN_PHANTOM_LOCATION_B = new ResourceLocation(Roundabout.MOD_ID,
+    private static final ResourceLocation FALLEN_PHANTOM_LOCATION_B = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/justice_corpses/justice_phantom_blue.png");
-    private static final ResourceLocation FALLEN_PHANTOM_LOCATION_2 = new ResourceLocation(Roundabout.MOD_ID,
+    private static final ResourceLocation FALLEN_PHANTOM_LOCATION_2 = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/justice_corpses/justice_phantom_holes.png");
 
 

@@ -10,7 +10,7 @@ import net.minecraft.world.entity.player.Inventory;
 
 public class LyinEyesInventoryScreen extends AbstractContainerScreen<LyinEyesInventoryMenu> {
     private static final ResourceLocation TEXTURE =
-            new ResourceLocation(Roundabout.MOD_ID, "textures/gui/lyin_eyes_inventory.png");
+            ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/gui/lyin_eyes_inventory.png");
 
     public LyinEyesInventoryScreen(LyinEyesInventoryMenu menu, Inventory inventory, Component title) {
         super(menu, inventory, title);

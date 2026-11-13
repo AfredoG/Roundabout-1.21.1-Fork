@@ -456,10 +456,10 @@ public class PurpleSmokeEntity extends StandEntity {
     private static final EntityDataAccessor<Byte> DATA_STAND_SKIN =
             SynchedEntityData.defineId(PurpleSmokeEntity.class, EntityDataSerializers.BYTE);
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(DISTORTION_MODE, false);
-        this.entityData.define(DATA_STAND_SKIN, PurpleHazeEntity.ANIME);
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(DISTORTION_MODE, false);
+        builder.define(DATA_STAND_SKIN, PurpleHazeEntity.ANIME);
     }
     public boolean isDistortionMode() {
         return this.entityData.get(DISTORTION_MODE);

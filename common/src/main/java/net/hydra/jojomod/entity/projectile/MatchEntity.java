@@ -204,11 +204,11 @@ public class MatchEntity extends ThrowableItemProjectile {
 
 
     @Override
-    protected void defineSynchedData() {
-        if (!this.entityData.hasItem(ROUNDABOUT$SUPER_THROWN)) {
-            super.defineSynchedData();
-            this.entityData.define(ROUNDABOUT$SUPER_THROWN, false);
-        }
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+
+            super.defineSynchedData(builder);
+            builder.define(ROUNDABOUT$SUPER_THROWN, false);
+
     }
 
     @Override

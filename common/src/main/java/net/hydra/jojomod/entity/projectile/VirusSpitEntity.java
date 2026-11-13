@@ -68,7 +68,7 @@ public class VirusSpitEntity extends ThrowableProjectile {
             VirusSpitEntity.class, EntityDataSerializers.BYTE
     );
     @Override
-    protected void defineSynchedData() {
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
         this.getEntityData().define(SPLATTER_TYPE, (byte)0);
     }
 

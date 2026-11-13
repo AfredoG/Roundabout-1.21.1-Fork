@@ -28,13 +28,13 @@ import org.joml.Quaternionf;
 
 
 public class TuskNailModel extends PsuedoHierarchicalModel {
-    public static ResourceLocation uno = new ResourceLocation(Roundabout.MOD_ID,
+    public static ResourceLocation uno = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/stand/tusk/projectiles/nail.png");
     public ResourceLocation getTextureLocation(Entity context){
         return uno;
     }
 
-    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(Roundabout.MOD_ID, "tusk_drill_spin"), "main");
+    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "tusk_drill_spin"), "main");
     private final ModelPart Root;
 
     public TuskNailModel() {
@@ -50,8 +50,13 @@ public class TuskNailModel extends PsuedoHierarchicalModel {
 
 
     @Override
-    public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
-        Root.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+    public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, int argbColor) {
+        float red = net.minecraft.util.FastColor.ARGB32.red(argbColor) / 255.0F;
+        float green = net.minecraft.util.FastColor.ARGB32.green(argbColor) / 255.0F;
+        float blue = net.minecraft.util.FastColor.ARGB32.blue(argbColor) / 255.0F;
+        float alpha = net.minecraft.util.FastColor.ARGB32.alpha(argbColor) / 255.0F;
+
+        Root.render(poseStack, vertexConsumer, packedLight, packedOverlay, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, red, green, blue));
     }
 
     @Override
@@ -85,7 +90,7 @@ public class TuskNailModel extends PsuedoHierarchicalModel {
                 r *= (1 - scale) + (float) Math.sin(partialTicks + i) * scale;
                 g *= (1 - scale) + (float) Math.sin(partialTicks + i * 2) * scale;
                 b *= (1 - scale) + (float) Math.sin(partialTicks + i * 3) * scale;
-                root().render(poseStack, consumer, 15728880, OverlayTexture.NO_OVERLAY, r, g, b, 1.0F);
+                root().render(poseStack, consumer, 15728880, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(1.0F, r, g, b));
             }
         }
     }

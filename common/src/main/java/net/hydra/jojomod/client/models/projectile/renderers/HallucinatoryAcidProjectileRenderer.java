@@ -16,7 +16,7 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 
 public class HallucinatoryAcidProjectileRenderer extends EntityRenderer<HallucinatoryAcidProjectile> {
-    private static final ResourceLocation TEXTURE = new ResourceLocation(Roundabout.MOD_ID,
+    private static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/projectile/acid_projectile.png");
     private final HallucinatoryAcidProjectileModel model;
 

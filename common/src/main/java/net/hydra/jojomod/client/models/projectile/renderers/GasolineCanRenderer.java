@@ -36,7 +36,7 @@ public class GasolineCanRenderer extends EntityRenderer<GasolineCanEntity> {
         this.model.can.zRot = rotX;
         $$3.scale(0.9f,0.9f,0.9f);
         VertexConsumer $$6 = ItemRenderer.getFoilBufferDirect($$4, this.model.renderType(this.getTextureLocation($$0)), false, false);
-        this.model.renderToBuffer($$3, $$6, $$5, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
+        this.model.renderToBuffer($$3, $$6, $$5, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(1.0F, 1.0F, 1.0F, 1.0F));
         $$3.popPose();
         super.render($$0, $$1, $$2, $$3, $$4, $$5);
     }

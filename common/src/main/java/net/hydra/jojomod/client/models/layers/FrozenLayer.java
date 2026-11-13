@@ -109,13 +109,11 @@ public class FrozenLayer<T extends LivingEntity, A extends EntityModel<T>> exten
         part.xScale = xscale-0.01f;
         part.yScale = yscale-0.01f;
         part.zScale = zscale-0.01f;
-        part.render(stack, consumer, packedLight, OverlayTexture.NO_OVERLAY, 1,
-                1, 1, 1);
+        part.render(stack, consumer, packedLight, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(1, 1, 1, 1));
         part.xScale = xscale+0.01f;
         part.yScale = yscale+0.01f;
         part.zScale = zscale+0.01f;
-        part.render(stack, consumer, packedLight, OverlayTexture.NO_OVERLAY, 1,
-                1, 1, 1);
+        part.render(stack, consumer, packedLight, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(1, 1, 1, 1));
         part.xScale = xscale;
         part.yScale = yscale;
         part.zScale = zscale;
@@ -134,13 +132,11 @@ public class FrozenLayer<T extends LivingEntity, A extends EntityModel<T>> exten
         part.yScale = yscale-0.05f;
         part.zScale = zscale-0.05f;
         part.y-=0.03f;
-        part.render(stack, consumer, packedLight, OverlayTexture.NO_OVERLAY, 1,
-                1, 1, 1);
+        part.render(stack, consumer, packedLight, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(1, 1, 1, 1));
         part.xScale = xscale+0.05f;
         part.yScale = yscale+0.05f;
         part.zScale = zscale+0.05f;
-        part.render(stack, consumer, packedLight, OverlayTexture.NO_OVERLAY, 1,
-                1, 1, 1);
+        part.render(stack, consumer, packedLight, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(1, 1, 1, 1));
         part.y+=0.03f;
         part.xScale = xscale;
         part.yScale = yscale;
@@ -158,13 +154,11 @@ public class FrozenLayer<T extends LivingEntity, A extends EntityModel<T>> exten
         part.yScale = yscale-0.02f;
         part.zScale = zscale-0.02f;
         part.y-=0.01f;
-        part.render(stack, consumer, packedLight, OverlayTexture.NO_OVERLAY, 1,
-                1, 1, 1);
+        part.render(stack, consumer, packedLight, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(1, 1, 1, 1));
         part.xScale = xscale+0.02f;
         part.yScale = yscale+0.02f;
         part.zScale = zscale+0.02f;
-        part.render(stack, consumer, packedLight, OverlayTexture.NO_OVERLAY, 1,
-                1, 1, 1);
+        part.render(stack, consumer, packedLight, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(1, 1, 1, 1));
         part.y+=0.01f;
         part.xScale = xscale;
         part.yScale = yscale;
@@ -182,13 +176,11 @@ public class FrozenLayer<T extends LivingEntity, A extends EntityModel<T>> exten
         part.yScale = yscale-0.02f;
         part.zScale = zscale-0.02f;
         part.y+=0.01f;
-        part.render(stack, consumer, packedLight, OverlayTexture.NO_OVERLAY, 1,
-                1, 1, 1);
+        part.render(stack, consumer, packedLight, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(1, 1, 1, 1));
         part.xScale = xscale+0.02f;
         part.yScale = yscale+0.02f;
         part.zScale = zscale+0.02f;
-        part.render(stack, consumer, packedLight, OverlayTexture.NO_OVERLAY, 1,
-                1, 1, 1);
+        part.render(stack, consumer, packedLight, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(1, 1, 1, 1));
         part.y-=0.01f;
         part.xScale = xscale;
         part.yScale = yscale;

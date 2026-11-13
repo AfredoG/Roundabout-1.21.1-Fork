@@ -493,8 +493,8 @@ public class SilverChariotRapierShotEntity extends AbstractArrow implements Unbu
                 PLATFORM_SHOT = (byte) 2;
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
         /*
         if (!this.getEntityData().hasItem(USER_ID)) {
             this.getEntityData().define(USER_ID, -1);
@@ -503,9 +503,9 @@ public class SilverChariotRapierShotEntity extends AbstractArrow implements Unbu
         }
 
          */
-        if (!this.entityData.hasItem(USER_ID)) {
-            this.entityData.define(USER_ID, -1);
-        }
+
+            builder.define(USER_ID, -1);
+
     }
 
     @Override

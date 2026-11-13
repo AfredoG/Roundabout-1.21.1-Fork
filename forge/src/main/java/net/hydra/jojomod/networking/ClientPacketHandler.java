@@ -6,13 +6,14 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.world.entity.Entity;
-import net.minecraftforge.network.NetworkEvent;
+import net.neoforged.neoforge.network.handling.IPayloadContext;
 
 import java.util.function.Supplier;
 
 public class ClientPacketHandler {
-    public static void handleClientboundBlackSabbathOpenPacket(ClientboundBlackSabbathOpenPacket message, Supplier<NetworkEvent.Context> context) {
+    public static void handleClientboundBlackSabbathOpenPacket(ClientboundBlackSabbathOpenPacket message, IPayloadContext context) {
         LocalPlayer player = Minecraft.getInstance().player;
+        if (player == null) return;
         ClientLevel level = player.clientLevel;
         Entity entity = level.getEntity(message.entityId);
 

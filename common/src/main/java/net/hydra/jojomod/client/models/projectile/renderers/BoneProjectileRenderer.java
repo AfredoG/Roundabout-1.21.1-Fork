@@ -19,7 +19,7 @@ import org.joml.Matrix4f;
 
 public class BoneProjectileRenderer extends EntityRenderer<BoneProjectileEntity> {
 
-    public static final ResourceLocation BONE_TEXTURE = new ResourceLocation(
+    public static final ResourceLocation BONE_TEXTURE = ResourceLocation.fromNamespaceAndPath(
             Roundabout.MOD_ID, "textures/entity/projectile/bone_projectile.png"
     );
 

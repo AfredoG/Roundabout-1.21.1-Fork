@@ -128,17 +128,17 @@ public class WhitesnakeEntity extends FollowingStandEntity {
     }
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        entityData.define(DISGUISE_ID, Optional.empty());
-        entityData.define(DISGUISE_NAME, "");
-        entityData.define(DISGUISE_FLICKER_START, -1000);
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(DISGUISE_ID, Optional.empty());
+        builder.define(DISGUISE_NAME, "");
+        builder.define(DISGUISE_FLICKER_START, -1000);
         int hoverCharge = configuredMeltingHoverCharge();
-        entityData.define(MELTING_HOVER_CHARGE, hoverCharge);
-        entityData.define(MELTING_HOVER_MAX_CHARGE, hoverCharge);
-        entityData.define(MELTING_HOVERING, false);
-        entityData.define(MELTING_MODE_ACTIVE, false);
-        entityData.define(REMOTE_MODE, REMOTE_MODE_NONE);
+        builder.define(MELTING_HOVER_CHARGE, hoverCharge);
+        builder.define(MELTING_HOVER_MAX_CHARGE, hoverCharge);
+        builder.define(MELTING_HOVERING, false);
+        builder.define(MELTING_MODE_ACTIVE, false);
+        builder.define(REMOTE_MODE, REMOTE_MODE_NONE);
     }
 
     public boolean isDisguised() {

@@ -1022,17 +1022,17 @@ public class BaseMinion extends PathfinderMob {
     }
 
     @Override
-    protected void defineSynchedData() {
-        if (!this.entityData.hasItem(CONTROLLER)) {
-            super.defineSynchedData();
-            this.entityData.define(TARGET_TACTIC, (byte) 0);
-            this.entityData.define(MOVEMENT_TACTIC, (byte) 0);
-            this.entityData.define(CONTROLLER, -1);
-            this.entityData.define(DIGPROG, -1);
-            this.entityData.define(DIED_IN_SUN, false);
-            this.entityData.define(HEAD_ITEM, ItemStack.EMPTY);
-            this.entityData.define(BODY_ITEM, ItemStack.EMPTY);
-        }
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+
+            super.defineSynchedData(builder);
+            builder.define(TARGET_TACTIC, (byte) 0);
+            builder.define(MOVEMENT_TACTIC, (byte) 0);
+            builder.define(CONTROLLER, -1);
+            builder.define(DIGPROG, -1);
+            builder.define(DIED_IN_SUN, false);
+            builder.define(HEAD_ITEM, ItemStack.EMPTY);
+            builder.define(BODY_ITEM, ItemStack.EMPTY);
+
     }
 
     @Override

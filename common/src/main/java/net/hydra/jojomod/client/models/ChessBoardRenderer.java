@@ -34,7 +34,7 @@ import java.util.Calendar;
 
 public class ChessBoardRenderer<T extends BlockEntity> implements BlockEntityRenderer<T> {
 	// This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
-	private static final ResourceLocation CHESSBOARD = new ResourceLocation(Roundabout.MOD_ID, "textures/block/chessboard.png");
+	private static final ResourceLocation CHESSBOARD = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/block/chessboard.png");
 	private final ModelPart block;
 	/*
 	public ChessBoardRenderer(ModelPart root) {

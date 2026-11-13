@@ -2826,7 +2826,7 @@ public class PowersAnubis extends NewDashPreset {
             if (s.hasNext()) {
                 String itemName = s.next();
                 try {
-                    item = BuiltInRegistries.ITEM.get(new ResourceLocation(itemName));
+                    item = BuiltInRegistries.ITEM.get(ResourceLocation.parse(itemName));
                     if (item.equals(Items.AIR)) {
                         item = ModItems.ANUBIS_ITEM;
                     }

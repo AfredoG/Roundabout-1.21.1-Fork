@@ -14,18 +14,18 @@ import net.minecraft.client.renderer.entity.layers.CustomHeadLayer;
 import net.minecraft.resources.ResourceLocation;
 
 public class FallenVillagerRenderer extends MobRenderer<FallenVillager, FallenVillagerModel<FallenVillager>> {
-    private static final ResourceLocation FALLEN_VILLAGER_LOCATION = new ResourceLocation(Roundabout.MOD_ID,
+    private static final ResourceLocation FALLEN_VILLAGER_LOCATION = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/justice_corpses/justice_villager.png");
-    private static final ResourceLocation FALLEN_VILLAGER_LOCATION_2 = new ResourceLocation(Roundabout.MOD_ID,
+    private static final ResourceLocation FALLEN_VILLAGER_LOCATION_2 = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/justice_corpses/justice_villager_holes.png");
-    private static final ResourceLocation FALLEN_VILLAGER_LOCATION_B = new ResourceLocation(Roundabout.MOD_ID,
+    private static final ResourceLocation FALLEN_VILLAGER_LOCATION_B = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/justice_corpses/justice_villager_blue.png");
-    private static final ResourceLocation FALLEN_VILLAGER_LOCATION_R = new ResourceLocation(Roundabout.MOD_ID,
+    private static final ResourceLocation FALLEN_VILLAGER_LOCATION_R = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/justice_corpses/justice_villager_red.png");
-    private static final ResourceLocation FALLEN_VILLAGER_LOCATION_G = new ResourceLocation(Roundabout.MOD_ID,
+    private static final ResourceLocation FALLEN_VILLAGER_LOCATION_G = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/justice_corpses/justice_villager_green.png");
 
-    private static final ResourceLocation VILLAGER_BASE_SKIN = new ResourceLocation("textures/entity/villager/villager.png");
+    private static final ResourceLocation VILLAGER_BASE_SKIN = ResourceLocation.parse("textures/entity/villager/villager.png");
 
     public FallenVillagerRenderer(EntityRendererProvider.Context $$0) {
         super($$0, new FallenVillagerModel<>($$0.bakeLayer(ModelLayers.VILLAGER)), 0.5F);

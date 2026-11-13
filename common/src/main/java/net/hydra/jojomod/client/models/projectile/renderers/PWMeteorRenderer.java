@@ -65,19 +65,10 @@ public class PWMeteorRenderer extends EntityRenderer<PWMeteorEntity> {
         float alpha = (texture == PW_METEOR_COMET_TEXTURE) ? 1.0F : 0.4F;
 
         VertexConsumer consumer = buffer.getBuffer(RenderType.entityTranslucent(texture));
-        this.model.renderToBuffer(poseStack, consumer, 15728880, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, alpha);
+        this.model.renderToBuffer(poseStack, consumer, 15728880, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, 1.0F, 1.0F, 1.0F));
 
 
-        this.model.renderToBuffer(
-                poseStack,
-                consumer,
-                15728880,
-                OverlayTexture.NO_OVERLAY,
-                1.0F,
-                1.0F,
-                1.0F,
-                0.4f
-        );
+        this.model.renderToBuffer(poseStack, consumer, 15728880, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(0.4f, 1.0F, 1.0F, 1.0F));
 
         poseStack.popPose();
 
@@ -85,14 +76,14 @@ public class PWMeteorRenderer extends EntityRenderer<PWMeteorEntity> {
     }
 
 
-    public static final ResourceLocation PW_METEOR_TEXTURE = new ResourceLocation(Roundabout.MOD_ID, "textures/entity/projectile/pw_meteor.png");
-    public static final ResourceLocation PW_METEOR_BLUE_TEXTURE = new ResourceLocation(Roundabout.MOD_ID, "textures/entity/projectile/pw_meteor_blue.png");
-    public static final ResourceLocation PW_METEOR_GREEN_TEXTURE = new ResourceLocation(Roundabout.MOD_ID, "textures/entity/projectile/pw_meteor_green.png");
-    public static final ResourceLocation PW_METEOR_PURPLE_TEXTURE = new ResourceLocation(Roundabout.MOD_ID, "textures/entity/projectile/pw_meteor_purple.png");
-    public static final ResourceLocation PW_METEOR_WATER_TEXTURE = new ResourceLocation(Roundabout.MOD_ID, "textures/entity/projectile/pw_meteor_water.png");
-    public static final ResourceLocation PW_METEOR_WHITE_TEXTURE = new ResourceLocation(Roundabout.MOD_ID, "textures/entity/projectile/pw_meteor_white.png");
-    public static final ResourceLocation PW_METEOR_COMET_TEXTURE = new ResourceLocation(Roundabout.MOD_ID, "textures/entity/projectile/pw_meteor_comet.png");
-    public static final ResourceLocation PW_METEOR_GRAPE_TEXTURE = new ResourceLocation(Roundabout.MOD_ID, "textures/entity/projectile/pw_meteor_grape.png");
+    public static final ResourceLocation PW_METEOR_TEXTURE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/entity/projectile/pw_meteor.png");
+    public static final ResourceLocation PW_METEOR_BLUE_TEXTURE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/entity/projectile/pw_meteor_blue.png");
+    public static final ResourceLocation PW_METEOR_GREEN_TEXTURE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/entity/projectile/pw_meteor_green.png");
+    public static final ResourceLocation PW_METEOR_PURPLE_TEXTURE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/entity/projectile/pw_meteor_purple.png");
+    public static final ResourceLocation PW_METEOR_WATER_TEXTURE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/entity/projectile/pw_meteor_water.png");
+    public static final ResourceLocation PW_METEOR_WHITE_TEXTURE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/entity/projectile/pw_meteor_white.png");
+    public static final ResourceLocation PW_METEOR_COMET_TEXTURE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/entity/projectile/pw_meteor_comet.png");
+    public static final ResourceLocation PW_METEOR_GRAPE_TEXTURE = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "textures/entity/projectile/pw_meteor_grape.png");
 
     @Override
     public ResourceLocation getTextureLocation(PWMeteorEntity entity) {

@@ -18,7 +18,7 @@ import org.joml.Matrix4f;
 import org.joml.Vector3f;
 
 public class VirusSpitRenderer extends EntityRenderer<VirusSpitEntity> {
-    private static final ResourceLocation DEFAULTSPIT = new ResourceLocation(Roundabout.MOD_ID,
+    private static final ResourceLocation DEFAULTSPIT = ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID,
             "textures/entity/projectile/blood_1.png");
 
 

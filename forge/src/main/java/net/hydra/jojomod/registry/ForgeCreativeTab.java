@@ -9,18 +9,19 @@ import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.registries.DeferredRegister;
+import net.neoforged.neoforge.registries.DeferredHolder;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Supplier;
 
-@Mod.EventBusSubscriber(modid = Roundabout.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+@EventBusSubscriber(modid = Roundabout.MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class ForgeCreativeTab {
     public static final DeferredRegister<CreativeModeTab> TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Roundabout.MOD_ID);
 
@@ -30,7 +31,7 @@ public class ForgeCreativeTab {
     public static final List<Supplier<? extends ItemLike>> WIP_TAB_ITEMS = new ArrayList<>();
     public static final List<Supplier<? extends ItemLike>> FOG_TAB_ITEMS = new ArrayList<>();
 
-    public static final RegistryObject<CreativeModeTab> JOJO_GROUP = TABS.register("jojo",
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> JOJO_GROUP = TABS.register("jojo",
             () -> CreativeModeTab.builder()
                     .title(Component.translatable("itemgroup.jojo"))
                     .icon(ForgeItems.STAND_ARROW.get()::getDefaultInstance)
@@ -39,7 +40,7 @@ public class ForgeCreativeTab {
                     .withSearchBar()
                     .build()
     );
-    public static final RegistryObject<CreativeModeTab> DISC_GROUP = TABS.register("jojo_discs",
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> DISC_GROUP = TABS.register("jojo_discs",
             () -> CreativeModeTab.builder()
                     .title(Component.translatable("itemgroup.jojo_discs"))
                     .icon(ForgeItems.STAND_DISC_STAR_PLATINUM.get()::getDefaultInstance)
@@ -48,7 +49,7 @@ public class ForgeCreativeTab {
                     .withSearchBar()
                     .build()
     );
-    public static final RegistryObject<CreativeModeTab> JOJO_BUILDING_GROUP = TABS.register("jojo_building_blocks",
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> JOJO_BUILDING_GROUP = TABS.register("jojo_building_blocks",
             () -> CreativeModeTab.builder()
                     .title(Component.translatable("itemgroup.jojo_building_blocks")).hideTitle()
                     .icon(ForgeItems.GODDESS_STATUE_ITEM.get()::getDefaultInstance)
@@ -57,7 +58,7 @@ public class ForgeCreativeTab {
                     .withSearchBar()
                     .build()
     );
-    public static final RegistryObject<CreativeModeTab> WIP_GROUP = TABS.register("jojo_wip_features",
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> WIP_GROUP = TABS.register("jojo_wip_features",
             () -> CreativeModeTab.builder()
                     .title(Component.translatable("itemgroup.jojo_wip_features")).hideTitle()
                     .icon(ForgeItems.AJA.get()::getDefaultInstance)
@@ -73,7 +74,7 @@ public class ForgeCreativeTab {
                     .withSearchBar()
                     .build()
     );
-    public static final RegistryObject<CreativeModeTab> FOG_GROUP = TABS.register("justice_fog_items",
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> FOG_GROUP = TABS.register("justice_fog_items",
             () -> CreativeModeTab.builder()
                     .title(Component.translatable("itemgroup.justice_fog_items")).hideTitle()
                     .icon(ForgeItems.FOG_DIRT.get()::getDefaultInstance)
@@ -83,27 +84,27 @@ public class ForgeCreativeTab {
                     .build()
     );
 
-    public static <T extends Item> RegistryObject<T> addToTab(RegistryObject<T> itemLike) {
+    public static <T extends Item> DeferredHolder<net.minecraft.world.item.Item, T> addToTab(DeferredHolder<net.minecraft.world.item.Item, T> itemLike) {
         EXAMPLE_TAB_ITEMS.add(itemLike);
         return itemLike;
     }
 
-    public static <T extends Item> RegistryObject<T> addToDiscTab(RegistryObject<T> itemLike) {
+    public static <T extends Item> DeferredHolder<net.minecraft.world.item.Item, T> addToDiscTab(DeferredHolder<net.minecraft.world.item.Item, T> itemLike) {
         DISC_TAB_ITEMS.add(itemLike);
         return itemLike;
     }
 
-    public static <T extends Item> RegistryObject<T> addToBuildingTab(RegistryObject<T> itemLike) {
+    public static <T extends Item> DeferredHolder<net.minecraft.world.item.Item, T> addToBuildingTab(DeferredHolder<net.minecraft.world.item.Item, T> itemLike) {
         BUILDING_TAB_ITEMS.add(itemLike);
         return itemLike;
     }
 
-    public static <T extends Item> RegistryObject<T> addToWIPTab(RegistryObject<T> itemLike) {
+    public static <T extends Item> DeferredHolder<net.minecraft.world.item.Item, T> addToWIPTab(DeferredHolder<net.minecraft.world.item.Item, T> itemLike) {
         WIP_TAB_ITEMS.add(itemLike);
         return itemLike;
     }
 
-    public static <T extends Item> RegistryObject<T> addToFogTab(RegistryObject<T> itemLike) {
+    public static <T extends Item> DeferredHolder<net.minecraft.world.item.Item, T> addToFogTab(DeferredHolder<net.minecraft.world.item.Item, T> itemLike) {
         FOG_TAB_ITEMS.add(itemLike);
         return itemLike;
     }
