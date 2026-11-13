@@ -1,3 +1,6 @@
+> [!NOTE]
+> THIS IS AN UNOFFICIAL VERSION THAT IS BEING DEVELOPED WITH THE PARTICIPATION OF ARTIFICIAL INTELLIGENCE AS A TEST OF ITS CAPABILITIES
+> AND JUST FOR FUN, USE IT AT YOUR OWN RISK.<br>
 <p align="center">
   <a href="https://modrinth.com/mod/roundabout_the_jojo_mod" rel="Modrinth"><img src="https://raw.githubusercontent.com/intergrav/devins-badges/1aec26abb75544baec37249f42008b2fcc0e731f/assets/cozy/available/modrinth_vector.svg"></a>
   <a href="https://www.curseforge.com/minecraft/mc-mods/roundabout-the-jojo-mod" rel="Curseforge"><img src="https://raw.githubusercontent.com/intergrav/devins-badges/1aec26abb75544baec37249f42008b2fcc0e731f/assets/cozy/available/curseforge_vector.svg"></a>
