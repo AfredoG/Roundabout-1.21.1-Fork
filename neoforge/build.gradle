@@ -1,0 +1,86 @@
+plugins {
+    id 'java-library'
+    id 'net.neoforged.moddev' version '2.0.148'
+}
+
+def upstream = new Properties()
+file('../gradle.properties').withInputStream { upstream.load(it) }
+version = "${upstream.version}-${port_revision}"
+group = upstream.group
+base.archivesName = 'Roundabout-neoforge-1.21.1'
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+java.withSourcesJar()
+
+sourceSets.main.java.srcDirs('../common/src/main/java', '../forge/src/main/java')
+// Keep source paths shared with upstream to allow ordinary Git merges.
+sourceSets.main.resources.srcDirs('../common/src/main/resources', '../forge/src/main/resources')
+
+neoForge {
+    version = project.neo_version
+    runs {
+        client { client() }
+        server { server(); programArgument '--nogui' }
+    }
+    mods {
+        roundabout { sourceSet(sourceSets.main) }
+    }
+    accessTransformers = files('src/main/resources/META-INF/accesstransformer.cfg')
+}
+
+repositories { mavenCentral() }
+dependencies {
+    compileOnly 'com.google.code.findbugs:jsr305:3.0.2'
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+    options.release = 21
+    options.compilerArgs += ['-Xmaxerrs', '10000']
+}
+processResources {
+    exclude 'META-INF/mods.toml', '**/*.accesswidener'
+    // The original AT uses Forge SRG names; the port supplies Mojang names.
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    def props = [mod_id: upstream.mod_id, mod_name: upstream.mod_name,
+                 version: project.version.toString(), license: upstream.license,
+                 mod_author: upstream.mod_author, description: upstream.description]
+    inputs.properties props
+    filesMatching(['META-INF/neoforge.mods.toml', 'pack.mcmeta', '*.mixins.json']) { expand props }
+    // Keep upstream resource paths intact; convert the packaged paths for 1.21.
+    eachFile { details ->
+        if (details.path.startsWith('data/')) {
+            def parts = details.path.split('/') as List
+            def names = [advancements:'advancement', recipes:'recipe',
+                         loot_tables:'loot_table', structures:'structure',
+                         functions:'function', entity_types:'entity_type',
+                         blocks:'block', items:'item', fluids:'fluid', game_events:'game_event']
+            int index = parts.size() > 3 && parts[2] == 'tags' ? 3 : 2
+            if (parts.size() > index && names.containsKey(parts[index])) {
+                parts[index] = names[parts[index]]
+            }
+            if (parts.size() > 3 && parts[2] == 'forge' && parts[3] == 'biome_modifier') {
+                parts[2] = 'neoforge'
+            }
+            if (parts[1] == 'forge' && parts[2] == 'loot_modifiers') parts[1] = 'neoforge'
+            details.path = parts.join('/')
+        }
+    }
+    includeEmptyDirs = false
+    doLast {
+        // 1.21 recipe results are ItemStack objects with an id, including cooking.
+        fileTree(destinationDir).matching { include 'data/*/recipe/**/*.json' }.each { recipe ->
+            def json = new groovy.json.JsonSlurper().parse(recipe)
+            if (json.result instanceof Map && json.result.containsKey('item')) {
+                json.result.id = json.result.remove('item')
+            } else if (json.result instanceof String) {
+                json.result = [id: json.result, count: json.remove('count') ?: 1]
+            }
+            recipe.setText(groovy.json.JsonOutput.prettyPrint(groovy.json.JsonOutput.toJson(json)) + '\n', 'UTF-8')
+        }
+    }
+}
+tasks.withType(Jar).configureEach {
+    from('../LICENSE')
+    preserveFileTimestamps = false
+    reproducibleFileOrder = true
+}

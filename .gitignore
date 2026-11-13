@@ -39,3 +39,6 @@ build.bat
 !core/gradlew.bat
 !gradle/wrapper
 !gradlew.bat
+!neoforge/gradlew.bat
+!neoforge/gradle/wrapper/
+!neoforge/gradle/wrapper/**

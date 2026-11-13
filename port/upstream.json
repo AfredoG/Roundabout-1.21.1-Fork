@@ -1,0 +1,8 @@
+{
+  "repository": "https://github.com/Hydraheads/RoundaboutMod.git",
+  "branch": "master",
+  "base_commit": "6be5c7745095b9864dfaa8b6ec30773810fc448a",
+  "minecraft": "1.21.1",
+  "loader": "NeoForge",
+  "status": "incomplete-development-port"
+}
