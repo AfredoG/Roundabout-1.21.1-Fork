@@ -722,40 +722,6 @@ common/src/main/java/net/hydra/jojomod/entity/stand/WhitesnakeEntity.java:552: e
                                                                          ^
   symbol:   method isIndirect()
   location: variable source of type DamageSource
-common/src/main/java/net/hydra/jojomod/event/powers/whitesnake/HallucinationEffect.java:51: error: method does not override or implement a method from a supertype
-    @Override
-    ^
-common/src/main/java/net/hydra/jojomod/event/powers/whitesnake/HallucinationEffect.java:56: error: incompatible types: UUID cannot be converted to ResourceLocation
-        if (movement != null && movement.getModifier(SLOWNESS_ID) == null) {
-                                                     ^
-common/src/main/java/net/hydra/jojomod/event/powers/whitesnake/HallucinationEffect.java:58: error: cannot find symbol
-                    "Hallucination movement slowdown", -0.06D, AttributeModifier.Operation.MULTIPLY_TOTAL));
-                                                                                          ^
-  symbol:   variable MULTIPLY_TOTAL
-  location: class Operation
-common/src/main/java/net/hydra/jojomod/event/powers/whitesnake/HallucinationEffect.java:62: error: method does not override or implement a method from a supertype
-    @Override
-    ^
-common/src/main/java/net/hydra/jojomod/event/powers/whitesnake/HallucinationEffect.java:66: error: no suitable method found for removeModifier(UUID)
-        if (movement != null) movement.removeModifier(SLOWNESS_ID);
-                                      ^
-    method AttributeInstance.removeModifier(AttributeModifier) is not applicable
-      (argument mismatch; UUID cannot be converted to AttributeModifier)
-    method AttributeInstance.removeModifier(ResourceLocation) is not applicable
-      (argument mismatch; UUID cannot be converted to ResourceLocation)
-common/src/main/java/net/hydra/jojomod/event/powers/whitesnake/HallucinationEffect.java:70: error: applyEffectTick(LivingEntity,int) in HallucinationEffect cannot override applyEffectTick(LivingEntity,int) in MobEffect
-    public void applyEffectTick(LivingEntity living, int amplifier) {
-                ^
-  return type void is not compatible with boolean
-common/src/main/java/net/hydra/jojomod/event/powers/whitesnake/HallucinationEffect.java:69: error: method does not override or implement a method from a supertype
-    @Override
-    ^
-common/src/main/java/net/hydra/jojomod/event/powers/whitesnake/HallucinationEffect.java:71: error: incompatible types: HallucinationEffect cannot be converted to Holder<MobEffect>
-        MobEffectInstance hallucination = living.getEffect(this);
-                                                           ^
-common/src/main/java/net/hydra/jojomod/event/powers/whitesnake/HallucinationEffect.java:101: error: method does not override or implement a method from a supertype
-    @Override
-    ^
 common/src/main/java/net/hydra/jojomod/entity/projectile/JJFProjectileEntity.java:113: error: method does not override or implement a method from a supertype
     @Override
     ^
@@ -3534,6 +3500,6 @@ Note: Recompile with -Xlint:deprecation for details.
 Note: Some input files use unchecked or unsafe operations.
 Note: Recompile with -Xlint:unchecked for details.
 Note: Some messages have been simplified; recompile with -Xdiags:verbose to get full output
-775 errors
+766 errors
 18 warnings
 

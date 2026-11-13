@@ -19,6 +19,7 @@
     "PlayerEntity",
     "PlayerEntityServer",
     "StandUserEntity",
+    "HallucinationEffectLifecycleMixin",
     "WorldTickServer",
     "ZAbstractFish",
     "ZAbstractSkeleton",

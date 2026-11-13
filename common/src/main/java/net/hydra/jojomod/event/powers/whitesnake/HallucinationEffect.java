@@ -24,12 +24,14 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 
-import java.util.UUID;
+import net.hydra.jojomod.Roundabout;
+import net.minecraft.resources.ResourceLocation;
 
 public final class HallucinationEffect extends MobEffect {
     public static final int MAX_LEVEL = 3;
     private static final int CONFUSION_PULSE_TICKS = 7;
-    private static final UUID SLOWNESS_ID = UUID.fromString("BBA1462A-85ED-4AD4-A6A0-08BEEA9C9177");
+    private static final ResourceLocation SLOWNESS_ID = ResourceLocation.fromNamespaceAndPath(
+            Roundabout.MOD_ID, "hallucination_movement_slowdown");
 
     public HallucinationEffect() {
         super(MobEffectCategory.HARMFUL, 0xEEEAF7);
@@ -48,28 +50,44 @@ public final class HallucinationEffect extends MobEffect {
         return effect != null;
     }
 
-    @Override
-    public void addAttributeModifiers(LivingEntity living, AttributeMap attributes, int amplifier) {
+    // Called from LivingEntity's lifecycle hooks, which still provide the entity in 1.21.1.
+    public static void onLevelChanged(LivingEntity living, int amplifier) {
+        if (living.level().isClientSide()) return;
+        updateMovementModifier(living, amplifier);
         syncIndicator(living, amplifier + 1);
-        if (amplifier < 1 || amplifier >= 2 && !(living instanceof Player)) return;
-        AttributeInstance movement = attributes.getInstance(Attributes.MOVEMENT_SPEED);
-        if (movement != null && movement.getModifier(SLOWNESS_ID) == null) {
+    }
+
+    public static void onRemoved(LivingEntity living) {
+        if (living.level().isClientSide()) return;
+        syncIndicator(living, 0);
+    }
+
+    private static void updateMovementModifier(LivingEntity living, int amplifier) {
+        AttributeInstance movement = living.getAttribute(Attributes.MOVEMENT_SPEED);
+        if (movement == null) return;
+        boolean slowed = amplifier >= 1 && (amplifier < 2 || living instanceof Player);
+        if (!slowed) {
+            movement.removeModifier(SLOWNESS_ID);
+        } else if (movement.getModifier(SLOWNESS_ID) == null) {
             movement.addTransientModifier(new AttributeModifier(SLOWNESS_ID,
-                    "Hallucination movement slowdown", -0.06D, AttributeModifier.Operation.MULTIPLY_TOTAL));
+                    -0.06D, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
         }
     }
 
     @Override
-    public void removeAttributeModifiers(LivingEntity living, AttributeMap attributes, int amplifier) {
-        syncIndicator(living, 0);
+    public void removeAttributeModifiers(AttributeMap attributes) {
+        super.removeAttributeModifiers(attributes);
         AttributeInstance movement = attributes.getInstance(Attributes.MOVEMENT_SPEED);
         if (movement != null) movement.removeModifier(SLOWNESS_ID);
     }
 
     @Override
-    public void applyEffectTick(LivingEntity living, int amplifier) {
-        MobEffectInstance hallucination = living.getEffect(this);
-        if (hallucination == null) return;
+    public boolean applyEffectTick(LivingEntity living, int amplifier) {
+        if (living.level().isClientSide()) return true;
+        MobEffectInstance hallucination = living.getEffect(ModEffects.HALLUCINATION);
+        if (hallucination == null) return true;
+        // Re-establish the transient modifier after loading an entity from disk.
+        updateMovementModifier(living, amplifier);
         int duration = hallucination.getDuration();
         if (!living.level().isClientSide() && living.tickCount % 20 == 0) {
             syncIndicator(living, amplifier + 1);
@@ -96,10 +114,11 @@ public final class HallucinationEffect extends MobEffect {
                 living.addEffect(new MobEffectInstance(ModEffects.MELTING, duration, amplifier));
             }
         }
+        return true;
     }
 
     @Override
-    public boolean isDurationEffectTick(int duration, int amplifier) {
+    public boolean shouldApplyEffectTickThisTick(int duration, int amplifier) {
         return true;
     }
 

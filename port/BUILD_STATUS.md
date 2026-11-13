@@ -8,7 +8,7 @@
 - Gradle help: успешно.
 - Подготовка исходников и классов Minecraft/NeoForge: успешно.
 - processResources: успешно; проверены метаданные, access transformer, mixin-конфигурации и 141 рецепт.
-- compileJava: НЕУСПЕШНО, 775 ошибок, 18 предупреждений (последняя полная проверка текущих исходников).
+- compileJava: НЕУСПЕШНО, 766 ошибок, 18 предупреждений (последняя полная проверка текущих исходников).
 - JDK 21 и Gradle восстановлены; подготовка Minecraft/NeoForge и processResources прошли в новой среде.
 - JAR для установки: отсутствует.
 - Запуск клиента и выделенного сервера полного мода: не выполнен (компиляция не проходит).
@@ -22,8 +22,8 @@
 
 | Ошибка | Количество |
 |---|---:|
-| cannot find symbol | 388 |
-| method does not override or implement a method from a supertype | 122 |
+| cannot find symbol | 387 |
+| method does not override or implement a method from a supertype | 118 |
 | minecraft has private access in Gui | 11 |
 | method isCorrectToolForDrops in class Item cannot be applied to given types; | 9 |
 | incompatible types: ResourceKey<Enchantment> cannot be converted to Holder<Enchantment> | 7 |
@@ -247,3 +247,15 @@
 - Код сохранён отдельными коммитами faec840, 6ff6c7b и fb0e18e; здесь сохранена обновлённая диагностика.
 - В этой среде GRADLE_USER_HOME теперь размещён в build-tools/gradle-cache рядом с проектом; используются актуальный прокси из окружения и системный Java trustStore /etc/ssl/certs/java/cacerts. Эти параметры окружения не добавлены в конфигурацию проекта.
 - Полный мод по-прежнему не компилируется; игровой запуск и работа модификаторов/защиты территорий не проверены. Следующие блоки: HallucinationEffect (новый жизненный цикл эффектов), сон, рендеринг, MobType/зачарования.
+
+
+## Контрольная точка — жизненный цикл галлюцинаций (13 ноября 2026)
+
+- HallucinationEffect: ResourceLocation для замедления, ADD_MULTIPLIED_TOTAL, Holder эффекта, shouldApplyEffectTickThisTick и boolean applyEffectTick. Действия эффекта выполняются на сервере.
+- В 1.21.1 add/removeAttributeModifiers больше не получают LivingEntity. Добавлен обязательный HallucinationEffectLifecycleMixin к onEffectAdded/onEffectUpdated/onEffectRemoved: синхронизация индикатора и зависящее от типа сущности замедление выполняются при фактическом изменении эффекта, включая forceAddEffect и возврат скрытого уровня. onEffectStarted намеренно не используется: он вызывается и для отклонённого более слабого уровня.
+- Сохранена таблица замедления: уровень I — нет; II — игроки и мобы; III — только игроки. Модификатор -6% временный и не дублируется; снимается при удалении/смене уровня. После загрузки сущности восстанавливается первым тиком эффекта. Индикатор очищается при удалении; периодическая синхронизация сохранена.
+- Сигнатуры и порядок вызовов проверены по подготовленным LivingEntity/MobEffect/MobEffectInstance 1.21.1. Новые инъекции используют defaultRequire=1; обязательность не ослаблялась.
+- Полная compileJava: **766 ошибок, 18 предупреждений**, было 775/18. В HallucinationEffect и HallucinationEffectLifecycleMixin ошибок Java нет.
+- Полный игровой запуск недоступен: остаются ошибки других классов. После первой рабочей сборки проверить молоко/истечение эффекта, обновление I→II→III и обратное, игроков и мобов, перезагрузку мира и индикатор Whitesnake. Следующие блоки: сон, рендеринг, MobType/зачарования.
+
+- processResources проходит; в итоговой mixin-конфигурации новый класс присутствует ровно один раз и defaultRequire=1 сохранён. git diff --check проходит. Это проверка упаковки, не применения mixin в игре.
