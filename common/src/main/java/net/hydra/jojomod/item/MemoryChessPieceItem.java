@@ -47,7 +47,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-public class MemoryChessPieceItem extends BlockItem implements Vanishable {
+public class MemoryChessPieceItem extends BlockItem {
     public MemoryChessPieceItem(Block $$0, Properties $$1) {
         super($$0,$$1.defaultDurability(3));
     }
@@ -110,7 +110,7 @@ public class MemoryChessPieceItem extends BlockItem implements Vanishable {
             return;
         }
 
-        CompoundTag tag = stack.getTag();
+        CompoundTag tag = net.hydra.jojomod.util.ItemData.get(stack);
         if (tag == null) {
             return;
         }
@@ -245,7 +245,7 @@ public class MemoryChessPieceItem extends BlockItem implements Vanishable {
 
     public static ItemStack initializePiece(ItemStack stack, Entity victim, int stealType){
         if (victim instanceof LivingEntity livingEntity){
-            CompoundTag tag = stack.getOrCreateTag();
+            CompoundTag tag = net.hydra.jojomod.util.ItemData.copy(stack);
             tag.putUUID("victim",victim.getUUID());
             tag.putInt("stealType",stealType);
             tag.putInt("swings",0);
@@ -296,6 +296,7 @@ public class MemoryChessPieceItem extends BlockItem implements Vanishable {
                     tag.putString("Dimension", spawnDimension.location().toString());
                 }
 
+            net.hydra.jojomod.util.ItemData.set(stack, tag);
         }
         return stack;
     }
@@ -303,7 +304,7 @@ public class MemoryChessPieceItem extends BlockItem implements Vanishable {
     public void appendHoverText(ItemStack $$0, net.minecraft.world.item.Item.TooltipContext tooltipContext, List<Component> $$2, TooltipFlag $$3) {
         Level $$1 = tooltipContext.level();
         String comp = net.hydra.jojomod.util.ItemData.copy($$0).getString("vicName");
-        boolean comp2 = $$0.getOrCreateTag().hasUUID("victim");
+        boolean comp2 = net.hydra.jojomod.util.ItemData.copy($$0).hasUUID("victim");
         if (comp != null && !comp.isBlank()){
             ChatFormatting formatting = ChatFormatting.LIGHT_PURPLE;
              $$2.add(Component.literal(comp).withStyle(formatting));
@@ -330,7 +331,7 @@ public class MemoryChessPieceItem extends BlockItem implements Vanishable {
             return;
         }
 
-        CompoundTag tag = stack.getTag();
+        CompoundTag tag = net.hydra.jojomod.util.ItemData.get(stack);
         if (tag == null){
             return;
         }
@@ -368,6 +369,7 @@ public class MemoryChessPieceItem extends BlockItem implements Vanishable {
                         entity.getUUID().equals(tag.getUUID("victim"))) {
 
                     tag.putBoolean("activated",false);
+                            net.hydra.jojomod.util.ItemData.set(stack, tag);
                     stack.setDamageValue(0);
                     player.setItemSlot(EquipmentSlot.MAINHAND, stack);
                 }
@@ -396,6 +398,7 @@ public class MemoryChessPieceItem extends BlockItem implements Vanishable {
                     } else {
                         if (!player.getAbilities().instabuild) {
                             tag.putInt("swings", destroy);
+                            net.hydra.jojomod.util.ItemData.set(stack, tag);
                         }
                     }
                 }
@@ -410,6 +413,7 @@ public class MemoryChessPieceItem extends BlockItem implements Vanishable {
             }
         } else {
             tag.putBoolean("activated",false);
+                            net.hydra.jojomod.util.ItemData.set(stack, tag);
             stack.setDamageValue(0);
             player.setItemSlot(EquipmentSlot.MAINHAND, stack);
         }

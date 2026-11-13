@@ -28,7 +28,7 @@ import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.ShieldItem;
-import net.minecraft.world.item.alchemy.PotionUtils;
+import net.hydra.jojomod.util.PotionData;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
@@ -86,7 +86,7 @@ public class AnubisGuardian extends AbstractIllager implements RangedAttackMob {
                 a.enchant(Enchantments.PUNCH_ARROWS,1);
                 this.setItemInHand(InteractionHand.MAIN_HAND,a);
             }
-            case FIRE_POT -> this.setItemInHand(InteractionHand.MAIN_HAND,PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.FIRE_RESISTANCE) );
+            case FIRE_POT -> this.setItemInHand(InteractionHand.MAIN_HAND,PotionData.setPotion(new ItemStack(Items.POTION), Potions.FIRE_RESISTANCE) );
         }
     }
     public AnubisAttacks getAction() {return AnubisAttacks.getFromByte(this.entityData.get(CHOSEN_ACTION));}

@@ -18,18 +18,18 @@ public class AccessAreaOfEffectCloud implements IAreaOfEffectCloud {
     @Unique
     @Override
     public List<MobEffectInstance> roundabout$getEffects(){
-        return this.effects;
+        return this.potionContents.customEffects();
     }
     @Unique
     @Override
     public Potion roundabout$getPotions(){
-        return this.potion;
+        return this.potionContents.potion().map(net.minecraft.core.Holder::value).orElse(null);
     }
 
     /**Shadows, ignore
      * -------------------------------------------------------------------------------------------------------------
      * */
-    @Shadow @Final private List<MobEffectInstance> effects;
 
-    @Shadow private Potion potion;
+
+    @Shadow private net.minecraft.world.item.alchemy.PotionContents potionContents;
 }

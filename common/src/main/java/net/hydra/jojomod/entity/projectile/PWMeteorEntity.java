@@ -435,7 +435,7 @@ public class PWMeteorEntity extends AbstractHurtingProjectile implements Unburna
             if (this.level().getGameRules().getBoolean(ModGamerules.ROUNDABOUT_STAND_GRIEFING)) {
                 BlockPos pos = hit.getBlockPos();
                 BlockState state = this.level().getBlockState(pos);
-                if (state.getBlock() instanceof net.minecraft.world.level.block.AbstractGlassBlock) {
+                if (state.getBlock() instanceof net.minecraft.world.level.block.TransparentBlock) {
                     this.level().destroyBlock(pos, true);
                 }
             }

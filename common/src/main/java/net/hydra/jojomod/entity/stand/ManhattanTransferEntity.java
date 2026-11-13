@@ -381,7 +381,7 @@ public class ManhattanTransferEntity extends StandEntity {
             if (!this.getHeldItemManhattanFull().isEmpty() && !this.getHeldItemManhattanFull().isEmpty()) {
                 double $$3 = this.getEyeY() - 0.3F;
                 ItemEntity $$4 = new ItemEntity(this.level(), this.getX(), $$3, this.getZ(), this.getHeldItemManhattanFull());
-                $$4.setThrower(this.getUUID());
+                $$4.setThrower(this);
                 this.level().addFreshEntity($$4);
                 this.setHeldItemManhattanFull(ItemStack.EMPTY);
             }
@@ -390,7 +390,7 @@ public class ManhattanTransferEntity extends StandEntity {
         if (hasItemTwo) {
             double $$3 = this.getEyeY() - 0.3F;
             ItemEntity $$4 = new ItemEntity(this.level(), this.getX(), $$3, this.getZ(), this.getHeldItemManhattanFull());
-            $$4.setThrower(this.getUUID());
+            $$4.setThrower(this);
             this.level().addFreshEntity($$4);
             this.setHeldItemManhattanFull(ItemStack.EMPTY);
             hasItemTwo = false;

@@ -56,7 +56,7 @@ public class StrayCatItem extends Item {
     private static final int LIFE_SPAN = 180;
 
     static public void saveStrayCatEntityInfo(ItemStack stack, StrayCatEntity stray) {
-        CompoundTag tag = stack.getOrCreateTag();
+        CompoundTag tag = net.hydra.jojomod.util.ItemData.copy(stack);
         //tag.putString(NAME_TAG, stray.get);
 
         getCompoundTagSave(tag, stray);
@@ -68,10 +68,10 @@ public class StrayCatItem extends Item {
         tag.putFloat(HEALTH_TAG, stray.getHealth());
         */
         if (stray.hasCustomName()) {
-            stack.setHoverName(stray.getCustomName());
+            stack.set(net.minecraft.core.component.DataComponents.CUSTOM_NAME, stray.getCustomName());
         }
 
-        stack.setTag(tag);
+        net.hydra.jojomod.util.ItemData.set(stack, tag);
     }
 
     static public void getCompoundTagSave(CompoundTag tag, StrayCatEntity stray) {
@@ -93,8 +93,8 @@ public class StrayCatItem extends Item {
 
     static public void getCompoundTagSave(CompoundTag tag, ItemStack stray) {
 
-        if (stray.hasTag()) {
-            CompoundTag itag = stray.getTag();
+        if (net.hydra.jojomod.util.ItemData.has(stray)) {
+            CompoundTag itag = net.hydra.jojomod.util.ItemData.get(stray);
             if (itag.contains(OWNER_UUID_TAG)) {
                 tag.putUUID(OWNER_UUID_TAG, itag.getUUID(OWNER_UUID_TAG));
             }
@@ -113,8 +113,8 @@ public class StrayCatItem extends Item {
 
 
     static public boolean validateStrayCatOwner(ItemStack stack, LivingEntity attempt) {
-        if (stack.getItem() instanceof StrayCatItem && stack.hasTag() && attempt != null) {
-            CompoundTag tag = stack.getTag();
+        if (stack.getItem() instanceof StrayCatItem && net.hydra.jojomod.util.ItemData.has(stack) && attempt != null) {
+            CompoundTag tag = net.hydra.jojomod.util.ItemData.get(stack);
             if (tag != null && tag.contains(OWNER_UUID_TAG)) {
                 UUID uuid = tag.getUUID(OWNER_UUID_TAG);
                 return uuid.equals(attempt.getUUID());
@@ -189,7 +189,7 @@ public class StrayCatItem extends Item {
             StrayCatEntity stray = ModEntities.STRAY_CAT.create(level);
             if (stray != null) {
                 ItemStack item = context.getItemInHand();
-                CompoundTag tag = item.getOrCreateTag();
+                CompoundTag tag = net.hydra.jojomod.util.ItemData.copy(item);
 
                 /*if (tag.contains(NEW_DATA_SAVE)) {
                     stray.readAdditionalSaveData(tag.getCompound(NEW_DATA_SAVE));
@@ -203,7 +203,7 @@ public class StrayCatItem extends Item {
                     stray.setHealth(tag.getFloat(HEALTH_TAG));
                 }
                 stray.setBreed(breed);
-                if (item.hasCustomHoverName()) {
+                if (item.has(net.minecraft.core.component.DataComponents.CUSTOM_NAME)) {
                     stray.setCustomName(item.getHoverName());
                 }
                 stray.setPotted(true);
@@ -235,7 +235,7 @@ public class StrayCatItem extends Item {
 
 
     public float getCurrentPredicateValue(Level level, ItemStack stack, LivingEntity user) {
-        CompoundTag tag = stack.getOrCreateTag();
+        CompoundTag tag = net.hydra.jojomod.util.ItemData.copy(stack);
         float value = 0.0f;
 
         if (level != null) {

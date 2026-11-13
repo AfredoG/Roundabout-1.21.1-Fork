@@ -72,7 +72,7 @@ import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.entity.projectile.ThrownPotion;
 import net.minecraft.world.entity.raid.Raider;
 import net.minecraft.world.item.*;
-import net.minecraft.world.item.alchemy.PotionUtils;
+import net.hydra.jojomod.util.PotionData;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
@@ -767,8 +767,8 @@ public class PowersSoftAndWet extends NewPunchingStand {
     public boolean canUseWaterShield(){
         ItemStack stack = this.getSelf().getMainHandItem();
         ItemStack stack2 = this.getSelf().getOffhandItem();
-        return ((!stack.isEmpty() && stack.getItem() instanceof PotionItem PI && PotionUtils.getPotion(stack) == Potions.WATER)
-        || (!stack2.isEmpty() && stack2.getItem() instanceof PotionItem PI2 && PotionUtils.getPotion(stack2) == Potions.WATER)
+        return ((!stack.isEmpty() && stack.getItem() instanceof PotionItem PI && PotionData.isPotion(stack, Potions.WATER))
+        || (!stack2.isEmpty() && stack2.getItem() instanceof PotionItem PI2 && PotionData.isPotion(stack2, Potions.WATER))
         ||(!stack.isEmpty() && stack.getItem() instanceof BucketItem BI && ((IBucketItem)BI).roundabout$getContents() != null && ((IBucketItem)BI).roundabout$getContents().is(FluidTags.WATER))
                 || (!stack2.isEmpty() && stack2.getItem() instanceof BucketItem BI2  && ((IBucketItem)BI2).roundabout$getContents() != null  && ((IBucketItem)BI2).roundabout$getContents().is(FluidTags.WATER)));
     }
@@ -1347,7 +1347,7 @@ public class PowersSoftAndWet extends NewPunchingStand {
         if (this.self instanceof Player PL) {
             ItemStack stack = this.getSelf().getMainHandItem();
             ItemStack stack2 = this.getSelf().getOffhandItem();
-            if ((!stack.isEmpty() && stack.getItem() instanceof PotionItem PI && PotionUtils.getPotion(stack) == Potions.WATER)) {
+            if ((!stack.isEmpty() && stack.getItem() instanceof PotionItem PI && PotionData.isPotion(stack, Potions.WATER))) {
                 if (!PL.getAbilities().instabuild) {
                     stack.shrink(1);
                     PL.getInventory().add(new ItemStack(Items.GLASS_BOTTLE));
@@ -1358,7 +1358,7 @@ public class PowersSoftAndWet extends NewPunchingStand {
                 isBucketSpawned = true;
                 if (!PL.level().isClientSide())
                     splashWaterShield();
-            } else if ((!stack2.isEmpty() && stack2.getItem() instanceof PotionItem PI2 && PotionUtils.getPotion(stack2) == Potions.WATER)) {
+            } else if ((!stack2.isEmpty() && stack2.getItem() instanceof PotionItem PI2 && PotionData.isPotion(stack2, Potions.WATER))) {
                 if (!PL.getAbilities().instabuild) {
                     stack2.shrink(1);
                     PL.getInventory().add(new ItemStack(Items.GLASS_BOTTLE));

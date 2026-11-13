@@ -35,7 +35,7 @@ public class KillerQueenEntity extends FollowingStandEntity {
 
             builder.define(PLANTED_BITES_THE_DUST, false);
 
-        if (!this.entityData.hasItem(BUBBLE_SHIELD_ACTIVE)) {
+        if (!net.hydra.jojomod.util.TrackedData.has(builder, BUBBLE_SHIELD_ACTIVE)) {
             builder.define(BUBBLE_SHIELD_ACTIVE, false);
         }
     }

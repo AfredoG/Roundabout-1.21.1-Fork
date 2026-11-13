@@ -2,12 +2,12 @@ package net.hydra.jojomod.mixin;
 
 import net.hydra.jojomod.event.index.PowerTypes;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.block.entity.EnchantmentTableBlockEntity;
+import net.minecraft.world.level.block.entity.EnchantingTableBlockEntity;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 
-@Mixin(EnchantmentTableBlockEntity.class)
+@Mixin(EnchantingTableBlockEntity.class)
 public class ZEnchantmentTableBlockEntity {
     @ModifyVariable(
             method = "bookAnimationTick",

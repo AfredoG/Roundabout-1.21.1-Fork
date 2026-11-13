@@ -147,7 +147,7 @@ public class SoftAndWetExplosiveBubbleEntity extends SoftAndWetBubbleEntity {
                 if (bs.getBlock() instanceof TntBlock tnt) {
                     this.level().destroyBlock($$0.getBlockPos(),false,this.getOwner());
                     wasExploded(this.level(), $$0.getBlockPos());
-                } else if (bs.getBlock() instanceof AbstractGlassBlock || bs.getBlock() instanceof StainedGlassPaneBlock
+                } else if (bs.getBlock() instanceof TransparentBlock || bs.getBlock() instanceof StainedGlassPaneBlock
                         || bs.getBlock().defaultBlockState().is(Blocks.GLASS_PANE) || bs.is(BlockTags.LEAVES)
                         || bs.is(BlockTags.ICE)) {
                     this.level().destroyBlock($$0.getBlockPos(),false,this.getOwner());

@@ -33,7 +33,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.PotionItem;
 import net.minecraft.world.item.SplashPotionItem;
-import net.minecraft.world.item.alchemy.PotionUtils;
+import net.hydra.jojomod.util.PotionData;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
@@ -237,7 +237,7 @@ public class SurvivorEntity extends MultipleTypeStand {
 
             if (!this.getActivated()) {
                 ItemStack plrItem = player.getItemInHand(intHand);
-                if ((!plrItem.isEmpty() && plrItem.getItem() instanceof PotionItem PI && PotionUtils.getPotion(plrItem) == Potions.WATER &&
+                if ((!plrItem.isEmpty() && plrItem.getItem() instanceof PotionItem PI && PotionData.isPotion(plrItem, Potions.WATER) &&
                         !(PI instanceof SplashPotionItem))) {
                     if (!player.getAbilities().instabuild) {
                         plrItem.shrink(1);

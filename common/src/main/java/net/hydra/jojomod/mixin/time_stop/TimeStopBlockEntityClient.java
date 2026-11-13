@@ -22,7 +22,7 @@ public class TimeStopBlockEntityClient implements IBlockEntityClientAccess {
     @Override
     public void roundabout$setPreTSTick() {
         Minecraft mc = Minecraft.getInstance();
-        roundabout$PrevTick = mc.getFrameTime();
+        roundabout$PrevTick = mc.getTimer().getGameTimeDeltaPartialTick(true);
     }
     @Override
     public void roundabout$resetPreTSTick() {

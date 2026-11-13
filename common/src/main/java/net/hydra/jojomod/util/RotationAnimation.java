@@ -117,12 +117,12 @@ public class RotationAnimation {
 
         if (ClientUtil.checkIfGamePaused()){
             if (ent != null){
-                float partialTick = Minecraft.getInstance().getFrameTime();
+                float partialTick = Minecraft.getInstance().getTimer().getGameTimeDeltaPartialTick(true);
                 timeMs = ent.level().getGameTime() * 50;
             }
         } else {
             if (ent != null){
-                float partialTick = Minecraft.getInstance().getFrameTime();
+                float partialTick = Minecraft.getInstance().getTimer().getGameTimeDeltaPartialTick(true);
                 timeMs = ent.level().getGameTime() * 50 + (long) ((partialTick%1) * 50);
             }
         }

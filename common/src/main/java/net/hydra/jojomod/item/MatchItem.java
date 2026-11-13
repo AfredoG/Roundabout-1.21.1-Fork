@@ -15,11 +15,10 @@ import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.UseAnim;
-import net.minecraft.world.item.Vanishable;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class MatchItem extends Item implements Vanishable {
+public class MatchItem extends Item {
 
 
     public static final int THROW_THRESHOLD_TIME = 10;

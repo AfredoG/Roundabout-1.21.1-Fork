@@ -26,7 +26,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 
-public class BowlerHatItem extends TieredItem implements Vanishable {
+public class BowlerHatItem extends TieredItem {
 
     private final float attackDamage;
     private final Multimap<Attribute, AttributeModifier> defaultModifiers;
@@ -73,7 +73,7 @@ public class BowlerHatItem extends TieredItem implements Vanishable {
 
         if (player.getAttackStrengthScale(1) >= 1F) {
             player.startUsingItem(interactionHand);
-            if (player.getUseItem() == itemStack && player.getUseItemRemainingTicks() == player.getUseItem().getUseDuration()) {
+            if (player.getUseItem() == itemStack && player.getUseItemRemainingTicks() == player.getUseItem().getUseDuration(player)) {
                 dimension.playSound(null, player, ModSounds.BOWLER_HAT_AIM_SOUND_EVENT, SoundSource.PLAYERS, 1.0F, 1.0F);
             }
         }

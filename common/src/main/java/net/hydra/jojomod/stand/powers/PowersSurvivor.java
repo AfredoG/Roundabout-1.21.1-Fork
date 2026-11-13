@@ -35,7 +35,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.PotionItem;
 import net.minecraft.world.item.SplashPotionItem;
-import net.minecraft.world.item.alchemy.PotionUtils;
+import net.hydra.jojomod.util.PotionData;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.phys.Vec3;
 
@@ -236,7 +236,7 @@ public class PowersSurvivor extends NewDashPreset {
         this.setCooldown(PowerIndex.SKILL_1, cooldown);
         if (!this.self.level().isClientSide() && this.self instanceof Player PL){
             ItemStack stack = this.getSelf().getMainHandItem();
-            if ((!stack.isEmpty() && stack.getItem() instanceof PotionItem PI && PotionUtils.getPotion(stack) == Potions.WATER)
+            if ((!stack.isEmpty() && stack.getItem() instanceof PotionItem PI && PotionData.isPotion(stack, Potions.WATER))
             && !(stack.getItem() instanceof SplashPotionItem )) {
                 throwBottleActually(stack.copy());
                 if (!PL.getAbilities().instabuild) {
@@ -245,7 +245,7 @@ public class PowersSurvivor extends NewDashPreset {
                 return true;
             }
             ItemStack stack2 = this.getSelf().getOffhandItem();
-            if ((!stack2.isEmpty() && stack2.getItem() instanceof PotionItem PI && PotionUtils.getPotion(stack2) == Potions.WATER)
+            if ((!stack2.isEmpty() && stack2.getItem() instanceof PotionItem PI && PotionData.isPotion(stack2, Potions.WATER))
                     && !(stack2.getItem() instanceof SplashPotionItem )) {
                 throwBottleActually(stack2.copy());
                 if (!PL.getAbilities().instabuild) {
@@ -671,8 +671,8 @@ public class PowersSurvivor extends NewDashPreset {
         ItemStack stack = this.getSelf().getMainHandItem();
         ItemStack stack2 = this.getSelf().getOffhandItem();
         return ((!stack.isEmpty() && stack.getItem() instanceof PotionItem PI &&
-                PotionUtils.getPotion(stack) == Potions.WATER && !(PI instanceof SplashPotionItem))
-                || ((!stack2.isEmpty() && stack2.getItem() instanceof PotionItem PI2 && PotionUtils.getPotion(stack2) == Potions.WATER)
+                PotionData.isPotion(stack, Potions.WATER) && !(PI instanceof SplashPotionItem))
+                || ((!stack2.isEmpty() && stack2.getItem() instanceof PotionItem PI2 && PotionData.isPotion(stack2, Potions.WATER))
                 && !(PI2 instanceof SplashPotionItem)));
     }
     public boolean isAttackIneptVisually(byte activeP, int slot) {

@@ -215,7 +215,7 @@ public abstract class GravityPlayerMixin extends LivingEntity {
             ItemEntity $$4 = new ItemEntity(this.level(), vec3d.x, vec3d.y, vec3d.z, $$0);
             $$4.setPickUpDelay(40);
             if ($$2) {
-                $$4.setThrower(this.getUUID());
+                $$4.setThrower(this);
             }
 
             if ($$1) {

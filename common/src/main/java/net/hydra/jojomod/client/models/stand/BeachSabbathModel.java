@@ -54,7 +54,7 @@ public class BeachSabbathModel<T extends BeachSabbathEntity> extends StandModel<
         if (entity.getUser() != null) {
             LivingEntity User = entity.getUser();
             if (!mc.isPaused() && !(((TimeStop) entity.level()).CanTimeStopEntity(User))) {
-                float tickDelta = mc.getDeltaFrameTime();
+                float tickDelta = mc.getTimer().getGameTimeDeltaTicks();
             }
         }
         super.defaultModifiers(entity);

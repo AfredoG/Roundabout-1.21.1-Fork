@@ -11,7 +11,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Equipable;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.alchemy.PotionUtils;
+import net.hydra.jojomod.util.PotionData;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
@@ -70,7 +70,7 @@ public class BloodyStoneMaskBlock extends StoneMaskBlock{
     }
 
     private boolean tryEmptyBottle(Level level, Player player, ItemStack stack) {
-        if (stack.is(Items.POTION) && PotionUtils.getPotion(stack) == Potions.WATER) {
+        if (stack.is(Items.POTION) && PotionData.isPotion(stack, Potions.WATER)) {
             if (!level.isClientSide) {
                 // Replace with glass bottle
                 ItemStack newStack = new ItemStack(Items.GLASS_BOTTLE);

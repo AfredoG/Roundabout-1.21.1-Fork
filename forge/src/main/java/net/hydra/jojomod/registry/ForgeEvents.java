@@ -48,7 +48,7 @@ import net.minecraft.world.level.levelgen.Heightmap;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.common.brewing.BrewingRecipeRegistry;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
-import net.neoforged.neoforge.event.entity.SpawnPlacementRegisterEvent;
+import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
 import net.neoforged.neoforge.event.village.VillagerTradesEvent;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
@@ -197,34 +197,34 @@ public class ForgeEvents {
     }
 
     @SubscribeEvent
-    public static void registerSpawnPlacements(SpawnPlacementRegisterEvent event) {
+    public static void registerSpawnPlacements(RegisterSpawnPlacementsEvent event) {
         event.register(
                 ForgeEntities.TERRIER_DOG.get(),
                 SpawnPlacements.Type.ON_GROUND,
                 Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                 TerrierEntity::canSpawn,
-                SpawnPlacementRegisterEvent.Operation.OR
+                RegisterSpawnPlacementsEvent.Operation.OR
         );
         event.register(
                 ForgeEntities.SNAKE.get(),
                 SpawnPlacements.Type.ON_GROUND,
                 Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                 Snake::checkMobSpawnRules,
-                SpawnPlacementRegisterEvent.Operation.OR
+                RegisterSpawnPlacementsEvent.Operation.OR
         );
         event.register(
                 ForgeEntities.PIRANHA.get(),
                 SpawnPlacements.Type.IN_WATER,
                 Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                 Piranha::checkSurfaceWaterAnimalSpawnRules,
-                SpawnPlacementRegisterEvent.Operation.OR
+                RegisterSpawnPlacementsEvent.Operation.OR
         );
         event.register(
                 ForgeEntities.BUTTERFLY.get(),
                 SpawnPlacements.Type.ON_GROUND,
                 Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                 Butterfly::checkMobSpawnRules,
-                SpawnPlacementRegisterEvent.Operation.OR
+                RegisterSpawnPlacementsEvent.Operation.OR
         );
     }
 
@@ -762,9 +762,6 @@ public class ForgeEvents {
 
         ModItems.initializeVisageStore();
 
-        BrewingRecipeRegistry.addRecipe(new ForgeBrewingRecipes(Potions.AWKWARD, ModItems.LOCACACA_PIT, ForgeItems.HEX_POTION.get()));
-        BrewingRecipeRegistry.addRecipe(new ForgeBrewingRecipes(ForgeItems.HEX_POTION.get(), Items.REDSTONE, ForgeItems.HEX_POTION_EXTENDED.get()));
-        BrewingRecipeRegistry.addRecipe(new ForgeBrewingRecipes(ForgeItems.HEX_POTION.get(), Items.GLOWSTONE_DUST, ForgeItems.HEX_POTION_STRONG.get()));
 
 
         ModParticles.HIT_IMPACT = ForgeParticles.HIT_IMPACT.get();

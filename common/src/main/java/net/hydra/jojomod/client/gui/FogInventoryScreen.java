@@ -621,7 +621,7 @@ public class FogInventoryScreen extends EffectRenderingInventoryScreen<FogInvent
                     this.minecraft.player.level().registryAccess()
             );
         }
-        this.renderBackground($$0);
+        this.renderBackground($$0, $$1, $$2, $$3);
         super.render($$0, $$1, $$2, $$3);
 
 

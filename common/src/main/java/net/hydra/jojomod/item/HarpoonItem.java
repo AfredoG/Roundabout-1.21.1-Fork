@@ -34,7 +34,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 
-public class HarpoonItem extends Item implements Vanishable {
+public class HarpoonItem extends Item {
     public static final int THROW_THRESHOLD_TIME = 10;
     public static final float SHOOT_POWER = 2.5F;
     private final Multimap<Attribute, AttributeModifier> defaultModifiers;

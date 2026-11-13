@@ -32,7 +32,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(CrossbowItem.class)
-public abstract class GravityCrossbowItemMixin extends ProjectileWeaponItem implements Vanishable {
+public abstract class GravityCrossbowItemMixin extends ProjectileWeaponItem {
     @Shadow
     private static AbstractArrow getArrow(Level level, LivingEntity livingEntity, ItemStack itemStack, ItemStack itemStack2) {
         return null;

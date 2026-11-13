@@ -27,7 +27,7 @@ import net.minecraft.world.level.block.GrowingPlantHeadBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 
-public class ScissorItem extends TieredItem implements Vanishable {
+public class ScissorItem extends TieredItem {
     /**It is basically a hybrid speedy weapon + shears that also inflicts bleed on strike*/
 
     private final float attackDamage;

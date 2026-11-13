@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 
 @Mixin(AbstractFurnaceMenu.class)
-public abstract class AccessAbstractFurnaceMenu extends RecipeBookMenu<Container> implements IAbstractFurnaceMenu {
+public abstract class AccessAbstractFurnaceMenu extends RecipeBookMenu<net.minecraft.world.item.crafting.SingleRecipeInput, net.minecraft.world.item.crafting.AbstractCookingRecipe> implements IAbstractFurnaceMenu {
     /**There is no reason for these to be private or protected, we should be able to tap into them.*/
     @Unique
     @Override

@@ -23,7 +23,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-public class ExperienceBishopItem extends BlockItem implements Vanishable {
+public class ExperienceBishopItem extends BlockItem {
     public ExperienceBishopItem(Block $$0, Properties $$1) {
         super($$0, $$1.defaultDurability(3));
     }

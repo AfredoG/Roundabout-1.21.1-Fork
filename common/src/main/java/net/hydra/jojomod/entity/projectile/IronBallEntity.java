@@ -91,7 +91,7 @@ public class IronBallEntity extends AbstractArrow {
                     target.getY() + target.getEyeHeight(), target.getZ(),
                     stack);
             $$4.setPickUpDelay(20);
-            $$4.setThrower(target.getUUID());
+            $$4.setThrower(target);
             target.level().addFreshEntity($$4);
         }
     }

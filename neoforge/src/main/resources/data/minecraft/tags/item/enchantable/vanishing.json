@@ -1,0 +1,32 @@
+{
+  "replace": false,
+  "values": [
+    "roundabout:beretta_pistol",
+    "roundabout:bowler_hat",
+    "roundabout:colt_revolver",
+    "roundabout:exp_bishop",
+    "roundabout:gasoline_can",
+    "roundabout:harpoon",
+    "roundabout:jackal_rifle",
+    "roundabout:lucky_lipstick",
+    "roundabout:match",
+    "roundabout:match_bundle",
+    "roundabout:memory_bishop",
+    "roundabout:memory_bishop_white",
+    "roundabout:memory_king",
+    "roundabout:memory_king_white",
+    "roundabout:memory_knight",
+    "roundabout:memory_knight_white",
+    "roundabout:memory_pawn",
+    "roundabout:memory_pawn_white",
+    "roundabout:memory_queen",
+    "roundabout:memory_queen_white",
+    "roundabout:memory_rook",
+    "roundabout:memory_rook_white",
+    "roundabout:sacrificial_dagger",
+    "roundabout:scissors",
+    "roundabout:snubnose_revolver",
+    "roundabout:tommy_gun",
+    "roundabout:ultraviolet_blaster"
+  ]
+}

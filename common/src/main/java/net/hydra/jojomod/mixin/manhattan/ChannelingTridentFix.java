@@ -206,9 +206,9 @@ import java.util.List;
             this.entityData.set(ID_LOYALTY_SABBATH, bt);
         }
         @Inject(method = "defineSynchedData", at = @At(value = "TAIL"), cancellable = true)
-        protected void roundabout$defineSynchedData(CallbackInfo ci) {
-            if (!((ThrownTrident)(Object)this).getEntityData().hasItem(ID_LOYALTY_SABBATH)) {
-                this.entityData.define(ID_LOYALTY_SABBATH, (byte)0);
+        protected void roundabout$defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder, CallbackInfo ci) {
+            if (!net.hydra.jojomod.util.TrackedData.has(builder, ID_LOYALTY_SABBATH)) {
+                builder.define(ID_LOYALTY_SABBATH, (byte)0);
             }
         }
         protected ItemStack getPickupItem;

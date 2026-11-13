@@ -61,7 +61,7 @@ public class TotemOfDoomEntity extends Entity implements ItemSupplier {
 
     @Override
     protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
-        this.getEntityData().define(DATA_ITEM_STACK, ItemStack.EMPTY);
+        builder.define(DATA_ITEM_STACK, ItemStack.EMPTY);
     }
 
     public void setItem(ItemStack stack) {

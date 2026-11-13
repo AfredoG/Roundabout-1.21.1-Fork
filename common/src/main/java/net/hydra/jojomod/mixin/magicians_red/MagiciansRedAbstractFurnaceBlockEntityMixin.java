@@ -7,7 +7,7 @@ import net.hydra.jojomod.item.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.WorldlyContainer;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.RecipeHolder;
+import net.minecraft.world.inventory.RecipeCraftingHolder;
 import net.minecraft.world.inventory.StackedContentsCompatible;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.AbstractFurnaceBlock;
@@ -24,7 +24,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(AbstractFurnaceBlockEntity.class)
 public abstract class MagiciansRedAbstractFurnaceBlockEntityMixin extends BaseContainerBlockEntity implements
-        WorldlyContainer, RecipeHolder, StackedContentsCompatible, IAbstractFurnaceBlockEntity {
+        WorldlyContainer, RecipeCraftingHolder, StackedContentsCompatible, IAbstractFurnaceBlockEntity {
 
     /**Allows the possibility of directly setting a furnace as heated, so that Magician's Red
      * can heat furnaces up.

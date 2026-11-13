@@ -39,7 +39,7 @@ public abstract class WhitesnakeDropItemMixin {
                         stand.getZ(), dropped);
                 item.setDeltaMovement(stand.getLookAngle().scale(0.3D).add(0.0D, 0.1D, 0.0D));
                 item.setPickUpDelay(40);
-                item.setThrower(player.getUUID());
+                item.setThrower(player);
                 player.level().addFreshEntity(item);
                 ((WhitesnakeInventoryAccess) player).roundaboutWhitesnake$syncInventory();
             }

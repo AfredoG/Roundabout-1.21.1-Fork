@@ -14,10 +14,9 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ThrownEnderpearl;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Vanishable;
 import net.minecraft.world.level.Level;
 
-public class LuckyLipstickItem extends Item implements Vanishable {
+public class LuckyLipstickItem extends Item {
     public LuckyLipstickItem(Item.Properties $$0) {
         super($$0.defaultDurability(6));
     }

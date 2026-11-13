@@ -5,15 +5,26 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.alchemy.Potion;
-import net.minecraft.world.item.alchemy.PotionUtils;
+import net.hydra.jojomod.util.PotionData;
+import net.minecraft.core.Holder;
 import net.neoforged.neoforge.common.brewing.IBrewingRecipe;
 
 public class ForgeBrewingRecipes implements IBrewingRecipe {
-    private final Potion input;
-    private final Item ingredient;
-    private final Potion output;
+    public static void register(net.neoforged.neoforge.event.brewing.RegisterBrewingRecipesEvent event) {
+        var builder = event.getBuilder();
+        builder.addRecipe(new ForgeBrewingRecipes(net.minecraft.world.item.alchemy.Potions.AWKWARD,
+                net.hydra.jojomod.registry.ForgeItems.LOCACACA_PIT.get(), net.hydra.jojomod.registry.ForgeItems.HEX_POTION));
+        builder.addRecipe(new ForgeBrewingRecipes(net.hydra.jojomod.registry.ForgeItems.HEX_POTION,
+                net.minecraft.world.item.Items.REDSTONE, net.hydra.jojomod.registry.ForgeItems.HEX_POTION_EXTENDED));
+        builder.addRecipe(new ForgeBrewingRecipes(net.hydra.jojomod.registry.ForgeItems.HEX_POTION,
+                net.minecraft.world.item.Items.GLOWSTONE_DUST, net.hydra.jojomod.registry.ForgeItems.HEX_POTION_STRONG));
+    }
 
-    public ForgeBrewingRecipes(Potion input, Item ingredient, Potion output) {
+    private final Holder<Potion> input;
+    private final Item ingredient;
+    private final Holder<Potion> output;
+
+    public ForgeBrewingRecipes(Holder<Potion> input, Item ingredient, Holder<Potion> output) {
         this.input = input;
         this.ingredient = ingredient;
         this.output = output;
@@ -21,7 +32,7 @@ public class ForgeBrewingRecipes implements IBrewingRecipe {
 
     @Override
     public boolean isInput(ItemStack input) {
-        return PotionUtils.getPotion(input) == this.input;
+        return PotionData.isPotion(input, this.input);
     }
 
     @Override
@@ -36,8 +47,7 @@ public class ForgeBrewingRecipes implements IBrewingRecipe {
         }
 
         ItemStack itemStack = new ItemStack(input.getItem());
-        itemStack.setTag(new CompoundTag());
-        PotionUtils.setPotion(itemStack, this.output);
+        PotionData.setPotion(itemStack, this.output);
         return itemStack;
     }
 }

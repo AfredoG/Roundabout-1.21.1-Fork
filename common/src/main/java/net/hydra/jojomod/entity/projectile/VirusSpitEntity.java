@@ -69,7 +69,7 @@ public class VirusSpitEntity extends ThrowableProjectile {
     );
     @Override
     protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
-        this.getEntityData().define(SPLATTER_TYPE, (byte)0);
+        builder.define(SPLATTER_TYPE, (byte)0);
     }
 
     //0 = default, healing vampire blood
@@ -189,7 +189,7 @@ public class VirusSpitEntity extends ThrowableProjectile {
         this.setDeltaMovement(this.getDeltaMovement().add($$9.x, $$0.onGround() ? 0.0 : $$9.y, $$9.z));
     }
     @Override
-    protected float getGravity() {
+    protected double getDefaultGravity() {
         if (getSplatterType() == 1){
             return 0.04F;
         }

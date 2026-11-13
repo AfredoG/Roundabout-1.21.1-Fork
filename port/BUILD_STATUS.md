@@ -8,7 +8,7 @@
 - Gradle help: успешно.
 - Подготовка исходников и классов Minecraft/NeoForge: успешно.
 - processResources: успешно; проверены метаданные, access transformer, mixin-конфигурации и 141 рецепт.
-- compileJava: НЕУСПЕШНО, 1819 ошибок, 18 предупреждений.
+- compileJava: НЕУСПЕШНО, 1203 ошибки, 18 предупреждений.
 - JAR для установки: отсутствует.
 - Запуск клиента и выделенного сервера полного мода: не выполнен (компиляция не проходит).
 - Помощник обновления: проверены чистое слияние, конфликт, отказ при незакоммиченных изменениях.
@@ -21,21 +21,21 @@
 
 | Ошибка | Количество |
 |---|---:|
-| cannot find symbol | 1107 |
-| method does not override or implement a method from a supertype | 179 |
-| incompatible types: UUID cannot be converted to Entity | 30 |
+| cannot find symbol | 676 |
+| method does not override or implement a method from a supertype | 140 |
 | incompatible types: CompoundTag cannot be converted to Provider | 29 |
 | incompatible types: double cannot be converted to LivingEntity | 17 |
-| incompatible types: Pose cannot be converted to Matrix3f | 16 |
-| method setupRotations in class LivingEntityRenderer<T,M> cannot be applied to given types; | 16 |
-| method getUseDuration in class ItemStack cannot be applied to given types; | 12 |
-| method renderBackground in class Screen cannot be applied to given types; | 12 |
 | incompatible types: ResourceKey<Enchantment> cannot be converted to Holder<Enchantment> | 11 |
 | minecraft has private access in Gui | 11 |
-| incompatible types: Holder<Potion> cannot be converted to Potion | 10 |
 | method isCorrectToolForDrops in class Item cannot be applied to given types; | 9 |
 | constructor LootAdder in class LootAdder cannot be applied to given types; | 7 |
 | <M,U>register(MenuType<? extends M>,ScreenConstructor<M,U>) has private access in MenuScreens | 7 |
+| incompatible types: ItemStack cannot be converted to ItemCost | 6 |
+| isCollisionShapeFullBlock(BlockState,BlockGetter,BlockPos) has protected access in BlockBehaviour | 6 |
+| package minecraft does not exist | 6 |
+| incompatible types: Reference<SoundEvent> cannot be converted to SoundEvent | 5 |
+| method getFoodProperties in interface IItemExtension cannot be applied to given types; | 5 |
+| incompatible types: BlockGetter cannot be converted to LevelReader | 5 |
 
 ## Что требуется закончить
 
@@ -43,7 +43,7 @@
 2. Данные ItemStack: DataComponents, копирование/изменение CustomData, сериализация через HolderLookup.Provider. Простая замена getOrCreateTag на copyTag теряет запись изменений и недопустима.
 3. Mixin: проверить цели, дескрипторы, локальные переменные и порядок инъекций по исходникам 1.21.1. Не отключать обязательность инъекций для скрытия ошибок.
 4. Рендеринг: оставшиеся VertexConsumer/BufferBuilder, модели, GUI, слои брони и скины.
-5. Сущности: завершить Builder-синхронизацию, включая mixin; сохранение NBT, атрибуты, перемещение между измерениями, эффекты.
+5. Сущности: проверить Builder-синхронизацию и mixin при запуске; сохранение NBT, атрибуты, перемещение между измерениями, эффекты.
 6. Предметы и ресурсы: новая система брони, зачарований, еды, зелий, музыкальных дисков; loot/advancement/worldgen JSON и новые теги.
 7. NeoForge-события и клиентская регистрация.
 8. После успешной компиляции — запуск клиента и выделенного сервера, затем проверка всех стендов, инвентарей, сохранений, измерений и сетевой синхронизации.
@@ -64,3 +64,24 @@
 ## Контрольные копии
 
 После каждого законченного блока сохраняется накопительный Roundabout_port_checkpoint.patch относительно коммита f8f891f03 исходного архива. Патч содержит и новые файлы; локальный коммит сам по себе не заменяет сохранение копии вне рабочей среды. Полный архив содержит уже применённые изменения — повторно накладывать патч на него не нужно.
+
+## Последний сохранённый этап
+
+- POTION_CONTENTS и PotionData; облака зелий и регистрация рецептов через RegisterBrewingRecipesEvent.
+- Материал Snake Skin Boots зарегистрирован отдельно; тег vanishing сохранён для исходных предметов.
+- Builder для синхронизируемых данных сущностей и инъекций mixin. Gravity-поля определяются до builder.build() в конструкторе Entity. TrackedData проверяет наличие записи через accessor массива itemsById.
+- Новые сигнатуры setupRotations и renderBackground; Pose у вершин рыболовной лески и стрел.
+- Stray Cat и шахматные фигуры: изменения CustomData явно записываются обратно.
+- BlockSource раздатчиков и износ гарпуна без преждевременного удаления предмета.
+- CUSTOM_NAME, noTerrainParticles, ResourceLocation для моделей, аргумент LivingEntity у времени использования предмета.
+- DeltaTracker: остановка экранной интерполяции перенесена в client-only TimeStopDeltaTracker; старые инъекции getFrameTime/getDeltaFrameTime и запись во внутренний таймер Minecraft удалены. Накопитель тиков не изменяется. Проверка поведения в игре ещё требуется.
+- Последовательные проверки compileJava: 1523 → 1333 → 1220 → 1203 ошибки. Исходники из компиляции не исключались.
+
+## С чего продолжить
+
+1. Открыть port/build-errors.txt. Оставшиеся большие группы: ItemStack/NBT, музыка (RecordItem удалён), зачарования, геометрия сущностей, рендеринг и NeoForge client events.
+2. IronBallCrossbowItem пока содержит старое хранение ChargedProjectiles и MULTISHOT. Нужны CHARGED_PROJECTILES и новая обработка зачарований; нельзя просто удалить загрузку снарядов.
+3. Перенести музыкальные предметы на JUKEBOX_PLAYABLE/JukeboxSong, включая StereoBlockEntity, MusicDiscController и Whitesnake.
+4. Проверить mixin-цели по исходникам 1.21.1. Успешная компиляция helper-классов не проверяет инъекции в игре.
+5. Собирать из neoforge: JAVA_HOME должен указывать на полноценный JDK 21, команда ./gradlew compileJava --console=plain. Корневой Gradle относится к исходным загрузчикам.
+6. После очередного законченного блока сохранить накопительный патч относительно f8f891f03. При восстановлении из этого архива патч НЕ нужен: все текущие изменения уже включены.

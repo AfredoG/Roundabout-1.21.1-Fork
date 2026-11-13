@@ -24,7 +24,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class SacrificialDaggerItem extends TieredItem implements Vanishable {
+public class SacrificialDaggerItem extends TieredItem {
     /**It is basically a hybrid speedy weapon + shears that also inflicts bleed on strike*/
 
     private final float attackDamage;

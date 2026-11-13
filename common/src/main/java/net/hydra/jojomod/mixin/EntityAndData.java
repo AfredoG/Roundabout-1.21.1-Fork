@@ -599,7 +599,7 @@ public abstract class EntityAndData implements IEntityAndData {
                             double $$3 = stand.getEyeY() - 0.3F;
                             ItemEntity $$4 = new ItemEntity(this.level(), stand.getX(), $$3, stand.getZ(), stand.getHeldItem().copy());
                             $$4.setPickUpDelay(40);
-                            $$4.setThrower(stand.getUUID());
+                            $$4.setThrower(stand);
                             stand.level().addFreshEntity($$4);
                             stand.setHeldItem(ItemStack.EMPTY);
                         }

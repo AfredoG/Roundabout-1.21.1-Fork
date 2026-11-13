@@ -51,7 +51,7 @@ import net.minecraft.world.entity.raid.Raid;
 import net.minecraft.world.entity.raid.Raider;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.alchemy.Potion;
-import net.minecraft.world.item.alchemy.PotionUtils;
+import net.hydra.jojomod.util.PotionData;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.block.*;
@@ -939,9 +939,9 @@ public class PowersManhattanTransfer extends NewDashPreset {
                                             ME.level().addFreshEntity($$7);
                                             ME.hattanDeflected = $$7;
                                         } else if (this.getSelf() instanceof Witch wh) {
-                                            Potion $$7 = Potions.HARMING;
+                                            net.minecraft.core.Holder<Potion> $$7 = Potions.HARMING;
                                             ThrownPotion $$8 = new ThrownPotion(ME.getUser().level(), ME.getUser());
-                                            $$8.setItem(PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION), $$7));
+                                            $$8.setItem(PotionData.setPotion(new ItemStack(Items.SPLASH_POTION), $$7));
                                             $$8.setXRot($$8.getXRot() - -20.0F);
                                             $$8.setPos(ME.getX(), ME.getY() - 0.15, ME.getZ());
                                             $$8.shootFromRotation(ME, ME.shootRotationXHattan, ME.shootRotationYHattan, -3.0F, 0.75F, 0.0F);

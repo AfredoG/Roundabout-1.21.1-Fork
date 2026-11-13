@@ -98,8 +98,8 @@ public class TuskNailEntity extends AbstractArrow {
     }
     @Override
     public void addAdditionalSaveData(CompoundTag $$0) {
-        if (this.getEntityData().hasItem(ROUNDABOUT$ACT)) {$$0.putInt("act",this.getEntityData().get(ROUNDABOUT$ACT));}
-        if (this.getEntityData().hasItem(ROUNDABOUT$BONUS)) {$$0.putByte("rb_extra",this.getEntityData().get(ROUNDABOUT$BONUS));}
+        if (net.hydra.jojomod.util.TrackedData.has(this.getEntityData(), ROUNDABOUT$ACT)) {$$0.putInt("act",this.getEntityData().get(ROUNDABOUT$ACT));}
+        if (net.hydra.jojomod.util.TrackedData.has(this.getEntityData(), ROUNDABOUT$BONUS)) {$$0.putByte("rb_extra",this.getEntityData().get(ROUNDABOUT$BONUS));}
         super.addAdditionalSaveData($$0);
     }
 

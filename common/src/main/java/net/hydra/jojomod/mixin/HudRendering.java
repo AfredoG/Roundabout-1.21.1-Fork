@@ -1019,7 +1019,7 @@ public abstract class HudRendering implements IHudAccess {
                 && ((StandUser) this.minecraft.player).roundabout$getStandPowers() instanceof PowersLyinEyes LE
                 && LE.getMapModeClient()
                 && LE.isActive()) {
-            LyinEyesMapOverlay.renderMap($$0, this.minecraft.getFrameTime());
+            LyinEyesMapOverlay.renderMap($$0, this.minecraft.getTimer().getGameTimeDeltaPartialTick(true));
             info.cancel();
             return;
         }

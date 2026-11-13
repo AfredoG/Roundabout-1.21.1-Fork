@@ -27,7 +27,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.AbstractGlassBlock;
+import net.minecraft.world.level.block.TransparentBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.StainedGlassPaneBlock;
@@ -234,7 +234,7 @@ public class BadCompanyBulletEntity extends AbstractArrow {
         this.setDeltaMovement(Vec3.ZERO);
         if (!level().isClientSide) {
             Block blkk = this.level().getBlockState($$0.getBlockPos()).getBlock();
-            if (blkk instanceof AbstractGlassBlock || blkk instanceof StainedGlassPaneBlock
+            if (blkk instanceof TransparentBlock || blkk instanceof StainedGlassPaneBlock
                     || blkk.defaultBlockState().is(Blocks.GLASS_PANE)){
                 if (this.level().removeBlock($$0.getBlockPos(),false)){
                     blockBreakParticles(blkk,

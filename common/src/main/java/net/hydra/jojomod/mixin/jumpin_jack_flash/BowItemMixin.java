@@ -34,7 +34,7 @@ public class BowItemMixin {
         }
 
         int chargeTicks =
-                bow.getUseDuration() - remainingTicks;
+                bow.getUseDuration(shooter) - remainingTicks;
 
         float power =
                 BowItem.getPowerForTime(chargeTicks);

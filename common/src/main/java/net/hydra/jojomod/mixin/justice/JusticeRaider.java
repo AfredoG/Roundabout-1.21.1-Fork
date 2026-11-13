@@ -26,9 +26,9 @@ public abstract class JusticeRaider extends PatrollingMonster implements IRaider
         this.getEntityData().set(roundabout$IS_TRANSFORMED, transformed);
     }
     @Inject(method = "defineSynchedData", at = @At(value = "TAIL"))
-    protected void roundabout$DefineSyncedData(CallbackInfo ci) {
-        if (!((Raider)(Object)this).getEntityData().hasItem(roundabout$IS_TRANSFORMED)) {
-            this.entityData.define(roundabout$IS_TRANSFORMED, false);
+    protected void roundabout$DefineSyncedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder, CallbackInfo ci) {
+        if (!net.hydra.jojomod.util.TrackedData.has(builder, roundabout$IS_TRANSFORMED)) {
+            builder.define(roundabout$IS_TRANSFORMED, false);
         }
 
     }

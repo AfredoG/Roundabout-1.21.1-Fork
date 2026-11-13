@@ -37,7 +37,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.SpawnEggItem;
-import net.minecraft.world.item.alchemy.PotionUtils;
+import net.hydra.jojomod.util.PotionData;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.ButtonBlock;
@@ -1175,7 +1175,7 @@ public class JJFProjectileEntity extends ThrowableItemProjectile {
     }
 
     private void applyDirectPotion(LivingEntity target, double strength) {
-        for (MobEffectInstance effect : PotionUtils.getMobEffects(getItem())) {
+        for (MobEffectInstance effect : PotionData.getMobEffects(getItem())) {
             if (effect.getEffect().isInstantenous()) {
                 effect.getEffect().applyInstantenousEffect(
                         getOwner(),
@@ -1226,7 +1226,7 @@ public class JJFProjectileEntity extends ThrowableItemProjectile {
 
             double strength = 1.0D - distance / radius;
 
-            for (MobEffectInstance effect : PotionUtils.getMobEffects(getItem())) {
+            for (MobEffectInstance effect : PotionData.getMobEffects(getItem())) {
                 if (effect.getEffect().isInstantenous()) {
                     effect.getEffect().applyInstantenousEffect(
                             getOwner(),
@@ -1289,7 +1289,7 @@ public class JJFProjectileEntity extends ThrowableItemProjectile {
         cloud.setRadiusPerTick(-3.0F / 160.0F);
         cloud.setParticle(ParticleTypes.ENTITY_EFFECT);
 
-        for (MobEffectInstance effect : PotionUtils.getMobEffects(getItem())) {
+        for (MobEffectInstance effect : PotionData.getMobEffects(getItem())) {
             int duration = Math.max(20, effect.getDuration() / 4);
 
             cloud.addEffect(

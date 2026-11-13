@@ -4394,7 +4394,7 @@ public class MainUtil {
                 player.getEyePosition().y, player.getEyePosition().z,
                 stack);
         $$4.setPickUpDelay(0);
-        $$4.setThrower(player.getUUID());
+        $$4.setThrower(player);
         player.level().addFreshEntity($$4);
     }
 

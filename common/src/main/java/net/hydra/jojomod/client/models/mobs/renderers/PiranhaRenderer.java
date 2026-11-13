@@ -34,8 +34,8 @@ public class PiranhaRenderer<T extends Piranha> extends MobRenderer<T, PiranhaMo
 
     // taken from tropical fish renderer, flopping on land anim
     @Override
-    protected void setupRotations(T entity, PoseStack poseStack, float ageInTicks, float rotationYaw, float partialTicks) {
-        super.setupRotations(entity, poseStack, ageInTicks, rotationYaw, partialTicks);
+    protected void setupRotations(T entity, PoseStack poseStack, float ageInTicks, float rotationYaw, float partialTicks, float entityScale) {
+        super.setupRotations(entity, poseStack, ageInTicks, rotationYaw, partialTicks, entityScale);
         float bodyRoll = 4.3F * Mth.sin(0.6F * ageInTicks);
         poseStack.mulPose(Axis.YP.rotationDegrees(bodyRoll));
         if (!entity.isInWater()) {

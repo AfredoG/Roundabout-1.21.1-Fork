@@ -7,7 +7,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.common.EventBusSubscriber;
 
-@EventBusSubscriber(modid = Roundabout.MOD_ID, value = Dist.CLIENT, bus = EventBusSubscriber.Bus.FORGE)
+@EventBusSubscriber(modid = Roundabout.MOD_ID, value = Dist.CLIENT, bus = EventBusSubscriber.Bus.GAME)
 public class ClientForgeForgeEvents {
 
     @SubscribeEvent

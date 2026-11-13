@@ -639,47 +639,6 @@ public abstract class InputEvents implements IInputEvents {
             return false;
         }
 
-    @Unique
-    float roundabout$pt = 0;
-    @Unique
-    float roundabout$tickDelta = 0;
-    @Unique
-    float roundabout$ppt = 0;
-
-    @Inject(method = "runTick", at = @At(value = "INVOKE",target = "Lnet/minecraft/client/renderer/FogRenderer;setupNoFog()V"), cancellable = true)
-    public void roundabout$run(CallbackInfo ci) {
-        if (ClientUtil.getScreenFreeze()) {
-            if (player != null && level != null) {
-                boolean canTS = ((TimeStop) level).CanTimeStopEntity(player);
-                if (canTS) {
-                    roundabout$pt = this.timer.partialTick;
-                    roundabout$tickDelta = this.timer.tickDelta;
-                    roundabout$ppt = this.timer.partialTick;
-                    this.timer.partialTick = 0;
-                    this.timer.tickDelta = 0;
-                    this.pausePartialTick = 0;
-                }
-            }
-        }
-    }
-    @Inject(method = "runTick", at = @At(value = "TAIL"), cancellable = true)
-    public void roundabout$run2(CallbackInfo ci) {
-        if (ClientUtil.getScreenFreeze()) {
-
-            if (player != null && level != null) {
-                boolean canTS = ((TimeStop) level).CanTimeStopEntity(player);
-                if (canTS) {
-                    this.timer.partialTick = roundabout$pt;
-                    this.timer.tickDelta = roundabout$tickDelta;
-                    this.pausePartialTick = roundabout$ppt;
-                    roundabout$pt = 0;
-                    roundabout$tickDelta = 0;
-                    roundabout$ppt = 0;
-                }
-            }
-        }
-    }
-
     @Inject(method = "tick", at = @At("HEAD"), cancellable = true)
     public void roundabout$tickTick(CallbackInfo ci) {
         ClientUtil.tickClientUtilStuff();
@@ -1201,9 +1160,7 @@ public abstract class InputEvents implements IInputEvents {
 
     @Shadow public abstract SoundManager getSoundManager();
 
-    @Shadow @Final private Timer timer;
     @Shadow private volatile boolean pause;
-    @Shadow private float pausePartialTick;
     @Shadow @Final public KeyboardHandler keyboardHandler;
 
     @Shadow public abstract RenderBuffers renderBuffers();
@@ -1220,17 +1177,7 @@ public abstract class InputEvents implements IInputEvents {
         }
     }
 
-    @Inject(method = "getFrameTime", at = @At("HEAD"), cancellable = true)
-    public void roundabout$getFrameTime(CallbackInfoReturnable<Float> cir){
-        if (ClientUtil.getScreenFreeze()) {
-            if (player != null && level != null) {
-                boolean canTS = ((TimeStop) level).CanTimeStopEntity(player);
-                if (canTS) {
-                   cir.setReturnValue(0F);
-                }
-            }
-        }
-    }
+
 
     @Inject(method = "pickBlock", at = @At("HEAD"), cancellable = true)
     public void roundabout$pickBlock(CallbackInfo ci){
@@ -1246,17 +1193,7 @@ public abstract class InputEvents implements IInputEvents {
         }
     }
 
-    @Inject(method = "getDeltaFrameTime", at = @At("HEAD"), cancellable = true)
-    public void roundabout$getDeltaFrameTime(CallbackInfoReturnable<Float> cir){
-        if (ClientUtil.getScreenFreeze()) {
-            if (player != null && level != null) {
-                boolean canTS = ((TimeStop) level).CanTimeStopEntity(player);
-                if (canTS) {
-                        cir.setReturnValue(0F);
-                }
-            }
-        }
-    }
+
 
     //This is required
 

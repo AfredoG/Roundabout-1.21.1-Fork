@@ -16,7 +16,7 @@ import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 
 
-public class FogInventoryMenu extends RecipeBookMenu<CraftingContainer> {
+public class FogInventoryMenu extends RecipeBookMenu<net.minecraft.world.item.crafting.CraftingInput, net.minecraft.world.item.crafting.CraftingRecipe> {
     public static final int CONTAINER_ID = 42357;
     public static final int RESULT_SLOT = 0;
     public static final int CRAFT_SLOT_START = 1;
@@ -53,9 +53,9 @@ public class FogInventoryMenu extends RecipeBookMenu<CraftingContainer> {
             final EquipmentSlot slot = SLOT_IDS[slotIndex];
             this.addSlot(new Slot(inventory, 39 - slotIndex, 8, 8 + slotIndex * 18) {
                 @Override
-                public void setByPlayer(ItemStack stack) {
-                    FogInventoryMenu.onEquipItem(player, slot, stack, this.getItem());
-                    super.setByPlayer(stack);
+                public void setByPlayer(ItemStack stack, ItemStack oldStack) {
+                    FogInventoryMenu.onEquipItem(player, slot, stack, oldStack);
+                    super.setByPlayer(stack, oldStack);
                 }
 
                 @Override
@@ -65,13 +65,13 @@ public class FogInventoryMenu extends RecipeBookMenu<CraftingContainer> {
 
                 @Override
                 public boolean mayPlace(ItemStack stack) {
-                    return slot == Mob.getEquipmentSlotForItem(stack);
+                    return stack.canEquip(slot, player);
                 }
 
                 @Override
                 public boolean mayPickup(Player p) {
                     ItemStack stack = this.getItem();
-                    return !stack.isEmpty() && !p.isCreative() && EnchantmentHelper.hasBindingCurse(stack) ? false : super.mayPickup(p);
+                    return !stack.isEmpty() && !p.isCreative() && EnchantmentHelper.has(stack, net.minecraft.world.item.enchantment.EnchantmentEffectComponents.PREVENT_ARMOR_CHANGE) ? false : super.mayPickup(p);
                 }
 
                 @Override
@@ -88,9 +88,9 @@ public class FogInventoryMenu extends RecipeBookMenu<CraftingContainer> {
 
         this.addSlot(new Slot(inventory, 40, 77, 62) {
             @Override
-            public void setByPlayer(ItemStack stack) {
-                FogInventoryMenu.onEquipItem(player, EquipmentSlot.OFFHAND, stack, this.getItem());
-                super.setByPlayer(stack);
+            public void setByPlayer(ItemStack stack, ItemStack oldStack) {
+                FogInventoryMenu.onEquipItem(player, EquipmentSlot.OFFHAND, stack, oldStack);
+                super.setByPlayer(stack, oldStack);
             }
 
             @Override
@@ -123,8 +123,8 @@ public class FogInventoryMenu extends RecipeBookMenu<CraftingContainer> {
     }
 
     @Override
-    public boolean recipeMatches(Recipe<? super CraftingContainer> $$0) {
-        return $$0.matches(this.craftSlots, this.owner.level());
+    public boolean recipeMatches(net.minecraft.world.item.crafting.RecipeHolder<net.minecraft.world.item.crafting.CraftingRecipe> $$0) {
+        return $$0.value().matches(this.craftSlots.asCraftInput(), this.owner.level());
     }
 
     @Override
@@ -144,7 +144,7 @@ public class FogInventoryMenu extends RecipeBookMenu<CraftingContainer> {
         if (slot.hasItem()) {
             ItemStack slotStack = slot.getItem();
             stack = slotStack.copy();
-            EquipmentSlot equipmentSlot = Mob.getEquipmentSlotForItem(stack);
+            EquipmentSlot equipmentSlot = player.getEquipmentSlotForItem(stack);
 
             if (slotIndex == 0) {
                 if (!this.moveItemStackTo(slotStack, 9, 45, true)) {

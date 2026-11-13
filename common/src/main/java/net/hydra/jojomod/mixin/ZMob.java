@@ -282,10 +282,10 @@ public abstract class ZMob extends LivingEntity implements IMob {
     }
 
     @Inject(method = "defineSynchedData", at = @At(value = "TAIL"))
-    private void initDataTrackerRoundabout(CallbackInfo ci) {
-        if (!((Mob)(Object)this).getEntityData().hasItem(ROUNDABOUT$IS_WORTHY)) {
-            this.getEntityData().define(ROUNDABOUT$IS_WORTHY, false);
-            this.getEntityData().define(ROUNDABOUT$FATE, (byte)0);
+    private void initDataTrackerRoundabout(net.minecraft.network.syncher.SynchedEntityData.Builder builder, CallbackInfo ci) {
+        if (!net.hydra.jojomod.util.TrackedData.has(builder, ROUNDABOUT$IS_WORTHY)) {
+            builder.define(ROUNDABOUT$IS_WORTHY, false);
+            builder.define(ROUNDABOUT$FATE, (byte)0);
         }
     }
 

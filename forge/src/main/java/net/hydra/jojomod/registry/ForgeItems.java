@@ -30,6 +30,11 @@ import java.util.function.Consumer;
 import static net.hydra.jojomod.registry.ForgeCreativeTab.*;
 
 public class ForgeItems {
+    public static final net.neoforged.neoforge.registries.DeferredRegister<ArmorMaterial> ARMOR_MATERIALS =
+            net.neoforged.neoforge.registries.DeferredRegister.create(net.minecraft.core.registries.Registries.ARMOR_MATERIAL, Roundabout.MOD_ID);
+    public static final DeferredHolder<ArmorMaterial, ArmorMaterial> SNAKE_ARMOR =
+            ARMOR_MATERIALS.register("snake_skin_armor", SnakeSkinBootsItem::createMaterial);
+
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(BuiltInRegistries.ITEM, Roundabout.MOD_ID);
     public static final DeferredRegister<Potion> POTIONS = DeferredRegister.create(BuiltInRegistries.POTION, Roundabout.MOD_ID);
 
@@ -50,7 +55,7 @@ public class ForgeItems {
     public static final DeferredHolder<Item, Item> SNAKE_OIL = addToTab(ITEMS.register("snake_oil",
             () -> new DrinkableItem(new Item.Properties())));
     public static final DeferredHolder<Item, Item> SNAKE_SKIN_BOOTS = addToTab(ITEMS.register("snake_skin_boots",
-            () -> new ArmorItem(SnakeSkinBootsItem.SNAKE_ARMOR, ArmorItem.Type.BOOTS, new Item.Properties())));
+            () -> new ArmorItem(SNAKE_ARMOR, ArmorItem.Type.BOOTS, new Item.Properties().durability(13))));
 
     public static final DeferredHolder<Item, Item> PIRANHA_BUCKET = addToTab(ITEMS.register("piranha_bucket",
             () -> new MobBucketItem(

@@ -744,7 +744,7 @@ public class FallenMob extends PathfinderMob implements NeutralMob {
             double $$3 = this.getEyeY() - 0.3F;
             ItemEntity $$4 = new ItemEntity(this.level(), this.getX(), $$3, this.getZ(), this.getMainHandItem().copyAndClear());
             $$4.setPickUpDelay(40);
-            $$4.setThrower(this.getUUID());
+            $$4.setThrower(this);
             this.level().addFreshEntity($$4);
             this.setItemInHand(InteractionHand.MAIN_HAND,ItemStack.EMPTY);
         }

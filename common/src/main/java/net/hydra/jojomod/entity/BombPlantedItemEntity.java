@@ -157,7 +157,7 @@ public class BombPlantedItemEntity extends Entity implements TraceableEntity {
 
     @Override
     protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
-        this.getEntityData().define(DATA_ITEM, ItemStack.EMPTY);
+        builder.define(DATA_ITEM, ItemStack.EMPTY);
     }
 
     @Override

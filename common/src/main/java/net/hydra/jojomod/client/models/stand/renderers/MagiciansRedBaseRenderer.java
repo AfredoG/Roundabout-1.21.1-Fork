@@ -100,8 +100,8 @@ public class MagiciansRedBaseRenderer<M extends StandEntity> extends StandRender
 
 
     @Override
-    protected void setupRotations(MagiciansRedEntity $$0, PoseStack $$1, float $$2, float $$3, float $$4) {
-        super.setupRotations($$0,$$1,$$2,$$3,$$4);
+    protected void setupRotations(MagiciansRedEntity $$0, PoseStack $$1, float $$2, float $$3, float $$4, float entityScale) {
+        super.setupRotations($$0,$$1,$$2,$$3,$$4, entityScale);
         if ($$0.getOffsetType() == OffsetIndex.LOOSE  && !$$0.getDisplay()) {
             $$1.mulPose(Axis.XP.rotationDegrees(-90.0F - $$0.getXRot()));
         }

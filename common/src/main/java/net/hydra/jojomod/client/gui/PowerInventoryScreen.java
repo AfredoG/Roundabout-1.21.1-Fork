@@ -381,7 +381,7 @@ public class PowerInventoryScreen
 
         //leftPos+=leftposModifier;
 
-        this.renderBackground(context);
+        this.renderBackground(context, mouseX, mouseY, delta);
 
          super.render(context, mouseX, mouseY, delta);
 

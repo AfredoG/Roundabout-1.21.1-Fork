@@ -7,10 +7,9 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Vanishable;
 import net.minecraft.world.phys.Vec3;
 
-public class ColtRevolverItem extends FirearmItem implements Vanishable {
+public class ColtRevolverItem extends FirearmItem {
 
     public ColtRevolverItem(Properties properties) {
         super(properties.durability(300));

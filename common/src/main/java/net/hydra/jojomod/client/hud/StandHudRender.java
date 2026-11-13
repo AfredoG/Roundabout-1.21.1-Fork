@@ -77,7 +77,7 @@ public class StandHudRender {
             //x = (int) (-20);
             y = ConfigManager.getClientConfig().abilityIconHudY;
             Minecraft mc = Minecraft.getInstance();
-            float tickDelta = mc.getDeltaFrameTime();
+            float tickDelta = mc.getTimer().getGameTimeDeltaTicks();
 
             boolean powerOn = ((StandUser) playerEntity).roundabout$getActive();
             boolean standOn = PowerTypes.hasStandActive(playerEntity);

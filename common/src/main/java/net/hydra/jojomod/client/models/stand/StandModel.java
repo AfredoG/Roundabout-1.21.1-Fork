@@ -149,7 +149,7 @@ public class StandModel<T extends StandEntity> extends HierarchicalModel<T> {
         if (entity.getUser() != null) {
             LivingEntity User = entity.getUser();
             if (!mc.isPaused() && !(((TimeStop) entity.level()).CanTimeStopEntity(User))) {
-                float tickDelta = mc.getDeltaFrameTime();
+                float tickDelta = mc.getTimer().getGameTimeDeltaTicks();
                 rotateStand(entity, this.root(), tickDelta);
                 if (this.root().hasChild("stand2")) {
 

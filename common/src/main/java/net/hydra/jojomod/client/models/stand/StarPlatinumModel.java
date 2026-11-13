@@ -42,7 +42,7 @@ public class StarPlatinumModel<T extends StarPlatinumEntity> extends StandModel<
 		if (entity.getUser() != null) {
 			LivingEntity User = entity.getUser();
 			if (!mc.isPaused() && !(((TimeStop) entity.level()).CanTimeStopEntity(User))) {
-				float tickDelta = mc.getDeltaFrameTime();
+				float tickDelta = mc.getTimer().getGameTimeDeltaTicks();
 				entity.fingerInterpolation = MainUtil.controlledLerp(tickDelta, entity.fingerInterpolation, entity.getFingerLength(), 1f);
 				finger.yScale = entity.fingerInterpolation;
 			}

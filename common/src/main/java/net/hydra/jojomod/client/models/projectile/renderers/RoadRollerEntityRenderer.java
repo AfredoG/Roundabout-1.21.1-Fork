@@ -49,7 +49,7 @@ public class RoadRollerEntityRenderer extends LivingEntityRenderer<RoadRollerEnt
     }
 
     @Override
-    protected void setupRotations(RoadRollerEntity entity, PoseStack poseStack, float ageInTicks, float rotationYaw, float partialTicks) {
+    protected void setupRotations(RoadRollerEntity entity, PoseStack poseStack, float ageInTicks, float rotationYaw, float partialTicks, float entityScale) {
         if (!(entity.getVehicle() instanceof net.hydra.jojomod.entity.stand.StandEntity)) {
             poseStack.mulPose(Axis.YP.rotationDegrees(180.0F - rotationYaw));
         }

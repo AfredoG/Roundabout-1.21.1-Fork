@@ -32,8 +32,8 @@ public abstract class PlayerWhitesnakeInventoryMixin implements WhitesnakeInvent
     private CompoundTag roundaboutWhitesnake$lastSync = new CompoundTag();
 
     @Inject(method = "defineSynchedData", at = @At("TAIL"))
-    private void roundaboutWhitesnake$defineInventory(CallbackInfo ci) {
-        ((Player) (Object) this).getEntityData().define(WHITESNAKE_INVENTORY, new CompoundTag());
+    private void roundaboutWhitesnake$defineInventory(net.minecraft.network.syncher.SynchedEntityData.Builder builder, CallbackInfo ci) {
+        builder.define(WHITESNAKE_INVENTORY, new CompoundTag());
     }
 
     @Inject(method = "addAdditionalSaveData", at = @At("TAIL"))

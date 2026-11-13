@@ -46,8 +46,8 @@ public class BigBubbleLayer<T extends LivingEntity, A extends EntityModel<T>> ex
             if (((StandUser)entity).roundabout$isBubbleEncased() && ((IEntityAndData)entity).roundabout$getExclusiveLayers()) {
 
                 ClientUtil.pushPoseAndCooperate(poseStack,22);
-                float height = entity.getDimensions(Pose.STANDING).height;
-                float width = entity.getDimensions(Pose.STANDING).width;
+                float height = entity.getDimensions(Pose.STANDING).height();
+                float width = entity.getDimensions(Pose.STANDING).width();
                 if (ClientUtil.savedPose != null) {
                     poseStack.last().pose().set(ClientUtil.savedPose);
                 }

@@ -292,9 +292,9 @@ public class GasolineCanEntity extends ThrowableItemProjectile {
     protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
 
             super.defineSynchedData(builder);
-            this.getEntityData().define(ROUNDABOUT$SUPER_THROWN, false);
-            this.getEntityData().define(ROUNDABOUT$LAUNCHED, false);
-            this.getEntityData().define(ROUNDABOUT$LAUNCHER, 0);
+            builder.define(ROUNDABOUT$SUPER_THROWN, false);
+            builder.define(ROUNDABOUT$LAUNCHED, false);
+            builder.define(ROUNDABOUT$LAUNCHER, 0);
 
     }
 
@@ -469,7 +469,7 @@ public class GasolineCanEntity extends ThrowableItemProjectile {
     }
 
 
-    protected float getGravity() {
+    protected double getDefaultGravity() {
         if (getSuperThrow()){
             return 0;
         } else {

@@ -80,7 +80,7 @@ public class GlaiveItem extends SwordItem {
 
         if ($$1.getAttackStrengthScale(1) >= 1F) {
             $$1.startUsingItem($$2);
-                if ($$1.getUseItem() == $$3 && $$1.getUseItemRemainingTicks() == $$1.getUseItem().getUseDuration()) {
+                if ($$1.getUseItem() == $$3 && $$1.getUseItemRemainingTicks() == $$1.getUseItem().getUseDuration($$1)) {
                     if (!$$0.isClientSide) {
                         ((StandUser) $$1).roundabout$getStandPowers().playSoundsIfNearby(SoundIndex.GLAIVE_CHARGE, 10, false);
                     }

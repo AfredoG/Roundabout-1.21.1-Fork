@@ -63,7 +63,7 @@ public abstract class RegisterItemRenderer implements IItemRenderer {
                     return this.itemModelShaper.getModelManager().getModel(ModItemModels.IRON_BALL_CROSSBOW_LOADED);
                 } else {
                     if ($$2.isUsingItem() && $$2.getUseItem() == $$0){
-                        float charge = (float) ($$0.getUseDuration() - $$2.getUseItemRemainingTicks()) / (float) IronBallCrossbowItem.getChargeDuration($$0);
+                        float charge = (float) ($$0.getUseDuration($$2) - $$2.getUseItemRemainingTicks()) / (float) IronBallCrossbowItem.getChargeDuration($$0, $$2);
                         if (charge > 1.0) {
                             return this.itemModelShaper.getModelManager().getModel(ModItemModels.IRON_BALL_CROSSBOW_PULLING_2);
                         } else if (charge > 0.58) {

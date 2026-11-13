@@ -211,7 +211,7 @@ public class NailColorChangeScreen extends Screen {
     }
     @Override
     public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float delta) {
-        renderBackground(guiGraphics);
+        renderBackground(guiGraphics, mouseX, mouseY, delta);
 
         guiGraphics.pose().pushPose();
         RenderSystem.enableBlend();

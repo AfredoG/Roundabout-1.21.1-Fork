@@ -28,34 +28,25 @@ public abstract class GravityThrowableProjectileMixin extends Entity implements 
         super($$0, $$1);
     }
 
-    @Shadow
-    protected abstract float getGravity();
 
     @Unique
     @Override
     public float rdbt$getGravity(){
-        return getGravity();
+        return (float) getGravity();
     }
     /*@Override
     public Direction gravitychanger$getAppliedGravityDirection() {
         return GravityChangerAPI.getGravityDirection((ThrownEntity)(Object)this);
     }*/
 
-    @ModifyVariable(
-            method = "tick()V",
-            at = @At(
-                    value = "STORE"
-            )
-            , ordinal = 0
+    @org.spongepowered.asm.mixin.injection.Redirect(
+            method = "tick",
+            at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/projectile/ThrowableProjectile;applyGravity()V")
     )
-    public Vec3 tick(Vec3 modify) {
-        //if(this instanceof RotatableEntityAccessor) {
-        modify = new Vec3(modify.x, modify.y + this.getGravity(), modify.z);
-        modify = RotationUtil.vecWorldToPlayer(modify, GravityAPI.getGravityDirection((ThrowableProjectile) (Object) this));
-        modify = new Vec3(modify.x, modify.y - this.getGravity(), modify.z);
-        modify = RotationUtil.vecPlayerToWorld(modify, GravityAPI.getGravityDirection((ThrowableProjectile) (Object) this));
-        // }
-        return modify;
+    private void roundabout$applyDirectionalGravity(ThrowableProjectile projectile) {
+        Vec3 acceleration = RotationUtil.vecPlayerToWorld(0.0D, -projectile.getGravity(), 0.0D,
+                GravityAPI.getGravityDirection(projectile));
+        projectile.setDeltaMovement(projectile.getDeltaMovement().add(acceleration));
     }
 
     @Inject(

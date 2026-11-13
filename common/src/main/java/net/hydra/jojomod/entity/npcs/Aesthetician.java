@@ -193,7 +193,7 @@ public class Aesthetician extends StandUsingNPC {
                                                 ent.getEyePosition().y, ent.getEyePosition().z,
                                                 ModItems.RAT_MASK.getDefaultInstance().copy());
                                         itemEntity.setPickUpDelay(0);
-                                        itemEntity.setThrower(this.getUUID());
+                                        itemEntity.setThrower(this);
                                         this.level().addFreshEntity(itemEntity);
                                         spentRat = true;
                                         break;

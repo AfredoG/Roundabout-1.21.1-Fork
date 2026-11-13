@@ -34,7 +34,7 @@ public abstract class WhitesnakeSoundListenerMixin {
                 && powers.isPiloting()) {
             LivingEntity stand = powers.getPilotingStand();
             if (stand != null && stand.isAlive() && !stand.isRemoved()) {
-                Vec3 position = stand.getEyePosition(minecraft.getFrameTime());
+                Vec3 position = stand.getEyePosition(minecraft.getTimer().getGameTimeDeltaPartialTick(true));
                 executor.execute(() -> listener.setListenerPosition(position));
             }
         }

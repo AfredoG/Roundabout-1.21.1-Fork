@@ -60,66 +60,66 @@ public class RattDartEntity extends AbstractArrow {
     private static final EntityDataAccessor<Boolean> ROUNDABOUT$BREAKS_BLOCKS = SynchedEntityData.defineId(RattDartEntity.class, EntityDataSerializers.BOOLEAN);
 
     public byte getShotType() {
-        if (this.getEntityData().hasItem(ROUNDABOUT$TYPE)) {
+        if (net.hydra.jojomod.util.TrackedData.has(this.getEntityData(), ROUNDABOUT$TYPE)) {
             return this.getEntityData().get(ROUNDABOUT$TYPE);
         }
         return BASIC;
     }
 
     public void setShotType(byte b) {
-        if (this.getEntityData().hasItem(ROUNDABOUT$TYPE)) {
+        if (net.hydra.jojomod.util.TrackedData.has(this.getEntityData(), ROUNDABOUT$TYPE)) {
             this.getEntityData().set(ROUNDABOUT$TYPE,b);
         }
     }
 
     public int getBounces() {
-        if (this.getEntityData().hasItem(ROUNDABOUT$BOUNCES)) {
+        if (net.hydra.jojomod.util.TrackedData.has(this.getEntityData(), ROUNDABOUT$BOUNCES)) {
             return this.getEntityData().get(ROUNDABOUT$BOUNCES);
         }
         return 0;
     }
 
     public void setBounces(int i) {
-        if (this.getEntityData().hasItem(ROUNDABOUT$BOUNCES)) {
+        if (net.hydra.jojomod.util.TrackedData.has(this.getEntityData(), ROUNDABOUT$BOUNCES)) {
             this.getEntityData().set(ROUNDABOUT$BOUNCES,i);
         }
     }
 
     public int getSuperthrowTicks() {
-        if (this.getEntityData().hasItem(ROUNDABOUT$SUPER_THROWN)) {
+        if (net.hydra.jojomod.util.TrackedData.has(this.getEntityData(), ROUNDABOUT$SUPER_THROWN)) {
             return this.getEntityData().get(ROUNDABOUT$SUPER_THROWN);
         }
         return 0;
     }
 
     public void setSuperthrowTicks(int i) {
-        if (this.getEntityData().hasItem(ROUNDABOUT$SUPER_THROWN)) {
+        if (net.hydra.jojomod.util.TrackedData.has(this.getEntityData(), ROUNDABOUT$SUPER_THROWN)) {
             this.getEntityData().set(ROUNDABOUT$SUPER_THROWN,i);
         }
     }
 
     public boolean shouldParticle() {
-        if (this.getEntityData().hasItem(ROUNDABOUT$PARTICLES)) {
+        if (net.hydra.jojomod.util.TrackedData.has(this.getEntityData(), ROUNDABOUT$PARTICLES)) {
             return this.getEntityData().get(ROUNDABOUT$PARTICLES);
         }
         return false;
     }
 
     public void setParticle(boolean b) {
-        if (this.getEntityData().hasItem(ROUNDABOUT$PARTICLES)) {
+        if (net.hydra.jojomod.util.TrackedData.has(this.getEntityData(), ROUNDABOUT$PARTICLES)) {
             this.getEntityData().set(ROUNDABOUT$PARTICLES,b);
         }
     }
 
     public boolean getBlockBreak() {
-        if (this.getEntityData().hasItem(ROUNDABOUT$BREAKS_BLOCKS)) {
+        if (net.hydra.jojomod.util.TrackedData.has(this.getEntityData(), ROUNDABOUT$BREAKS_BLOCKS)) {
             return this.getEntityData().get(ROUNDABOUT$BREAKS_BLOCKS);
         }
         return false;
     }
 
     public void setBlockBreak(boolean b) {
-        if (this.getEntityData().hasItem(ROUNDABOUT$BREAKS_BLOCKS)) {
+        if (net.hydra.jojomod.util.TrackedData.has(this.getEntityData(), ROUNDABOUT$BREAKS_BLOCKS)) {
             this.getEntityData().set(ROUNDABOUT$BREAKS_BLOCKS,b);
         }
     }
@@ -133,12 +133,12 @@ public class RattDartEntity extends AbstractArrow {
     @Override
     protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
         super.defineSynchedData(builder);
-        if (!this.getEntityData().hasItem(ROUNDABOUT$SUPER_THROWN)) {
-            this.getEntityData().define(ROUNDABOUT$SUPER_THROWN, 0);
-            this.getEntityData().define(ROUNDABOUT$BOUNCES, 0);
-            this.getEntityData().define(ROUNDABOUT$TYPE, RattDartEntity.BASIC);
-            this.getEntityData().define(ROUNDABOUT$PARTICLES, true);
-            this.getEntityData().define(ROUNDABOUT$BREAKS_BLOCKS, false);
+        if (!net.hydra.jojomod.util.TrackedData.has(builder, ROUNDABOUT$SUPER_THROWN)) {
+            builder.define(ROUNDABOUT$SUPER_THROWN, 0);
+            builder.define(ROUNDABOUT$BOUNCES, 0);
+            builder.define(ROUNDABOUT$TYPE, RattDartEntity.BASIC);
+            builder.define(ROUNDABOUT$PARTICLES, true);
+            builder.define(ROUNDABOUT$BREAKS_BLOCKS, false);
         }
     }
 
@@ -169,19 +169,19 @@ public class RattDartEntity extends AbstractArrow {
     @Override
     public void addAdditionalSaveData(CompoundTag $$0) {
         super.addAdditionalSaveData($$0);
-        if (this.getEntityData().hasItem(ROUNDABOUT$SUPER_THROWN)) {
+        if (net.hydra.jojomod.util.TrackedData.has(this.getEntityData(), ROUNDABOUT$SUPER_THROWN)) {
             $$0.putInt("superthrow_ticks",this.getEntityData().get(ROUNDABOUT$SUPER_THROWN));
         }
-        if (this.getEntityData().hasItem(ROUNDABOUT$BOUNCES)) {
+        if (net.hydra.jojomod.util.TrackedData.has(this.getEntityData(), ROUNDABOUT$BOUNCES)) {
             $$0.putInt("bounces",this.getEntityData().get(ROUNDABOUT$BOUNCES));
         }
-        if (this.getEntityData().hasItem(ROUNDABOUT$TYPE)) {
+        if (net.hydra.jojomod.util.TrackedData.has(this.getEntityData(), ROUNDABOUT$TYPE)) {
             $$0.putByte("type",this.getEntityData().get(ROUNDABOUT$TYPE));
         }
-        if (this.getEntityData().hasItem(ROUNDABOUT$PARTICLES)) {
+        if (net.hydra.jojomod.util.TrackedData.has(this.getEntityData(), ROUNDABOUT$PARTICLES)) {
             $$0.putBoolean("particles",this.getEntityData().get(ROUNDABOUT$PARTICLES));
         }
-        if (this.getEntityData().hasItem(ROUNDABOUT$BREAKS_BLOCKS)) {
+        if (net.hydra.jojomod.util.TrackedData.has(this.getEntityData(), ROUNDABOUT$BREAKS_BLOCKS)) {
             $$0.putBoolean("breaks",this.getEntityData().get(ROUNDABOUT$BREAKS_BLOCKS));
         }
         $$0.putBoolean("disableMelt",disableMelt);

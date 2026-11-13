@@ -32,7 +32,7 @@ public class GamblingGameSelectionScreen extends Screen {
 
     @Override
     public void render(GuiGraphics graphics, int mouseX, int mouseY, float partialTick) {
-        this.renderBackground(graphics);
+        this.renderBackground(graphics, mouseX, mouseY, partialTick);
         int centerX = this.width / 2;
         int startY = this.height / 2 - 60;
 

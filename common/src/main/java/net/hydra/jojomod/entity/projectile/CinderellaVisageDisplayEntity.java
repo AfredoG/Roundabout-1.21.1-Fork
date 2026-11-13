@@ -29,7 +29,7 @@ import java.util.UUID;
 public class CinderellaVisageDisplayEntity extends ThrowableItemProjectile implements UnburnableProjectile {
 
     @Override
-    protected float getGravity() {
+    protected double getDefaultGravity() {
         return 0.0F;
     }
 

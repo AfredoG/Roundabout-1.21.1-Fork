@@ -13,7 +13,7 @@ import net.minecraft.world.entity.raid.Raider;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.Potion;
-import net.minecraft.world.item.alchemy.PotionUtils;
+import net.hydra.jojomod.util.PotionData;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
@@ -53,7 +53,7 @@ public abstract class GravityWitchMixin extends Raider implements RangedAttackMo
             double $$4 = target.position().add(RotationUtil.vecPlayerToWorld(0.0D, target.getEyeHeight() - 1.100000023841858D, 0.0D, gravityDirection)).y + 1.100000023841858D - 1.1F - this.getY();
             double $$5 = target.position().add(RotationUtil.vecPlayerToWorld(0.0D, target.getEyeHeight() - 1.100000023841858D, 0.0D, gravityDirection)).z + $$2.z - this.getZ();
             double $$6 = Math.sqrt(Math.sqrt($$3 * $$3 + $$5 * $$5));
-            Potion $$7 = Potions.HARMING;
+            net.minecraft.core.Holder<Potion> $$7 = Potions.HARMING;
             if (target instanceof Raider || (danger && Math.random() < 0.5F)) {
                 if (target.getHealth() <= 4.0F) {
                     $$7 = Potions.HEALING;
@@ -71,7 +71,7 @@ public abstract class GravityWitchMixin extends Raider implements RangedAttackMo
             }
 
             ThrownPotion $$8 = new ThrownPotion(this.level(), this);
-            $$8.setItem(PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION), $$7));
+            $$8.setItem(PotionData.setPotion(new ItemStack(Items.SPLASH_POTION), $$7));
             $$8.setXRot($$8.getXRot() - -20.0F);
             $$8.shoot($$3, $$4 + $$6 * 0.2, $$5, 0.75F, 8.0F);
             if (!this.isSilent()) {

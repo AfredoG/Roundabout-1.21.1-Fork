@@ -409,10 +409,10 @@ public class ThrownObjectEntity extends ThrowableItemProjectile {
 
     @Override
     protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
-        if (!this.getEntityData().hasItem(ROUNDABOUT$SUPER_THROWN)) {
+        if (!net.hydra.jojomod.util.TrackedData.has(builder, ROUNDABOUT$SUPER_THROWN)) {
             super.defineSynchedData(builder);
-            this.getEntityData().define(ROUNDABOUT$SUPER_THROWN, false);
-            this.getEntityData().define(ROUNDABOUT$STYLE, (byte)0);
+            builder.define(ROUNDABOUT$SUPER_THROWN, false);
+            builder.define(ROUNDABOUT$STYLE, (byte)0);
         }
     }
     public boolean getSuperThrow() {
@@ -430,7 +430,7 @@ public class ThrownObjectEntity extends ThrowableItemProjectile {
     }
 
     @Override
-    protected float getGravity() {
+    protected double getDefaultGravity() {
         if (getSuperThrow()){
             return 0;
         } else {
@@ -533,7 +533,7 @@ public class ThrownObjectEntity extends ThrowableItemProjectile {
                     }
                 } else if (this.getItem().is(Items.BRICK) || this.getItem().is(Items.NETHER_BRICK)) {
                     Block blkk = this.level().getBlockState($$0.getBlockPos()).getBlock();
-                    if (this.places && (blkk instanceof AbstractGlassBlock || blkk instanceof StainedGlassPaneBlock
+                    if (this.places && (blkk instanceof TransparentBlock || blkk instanceof StainedGlassPaneBlock
                             || blkk.defaultBlockState().is(Blocks.GLASS_PANE))){
                         if (this.level().removeBlock($$0.getBlockPos(),false)){
                             blockBreakParticles(blkk,
@@ -643,7 +643,7 @@ private void bridgePlace(BlockHitResult $$0,Player P) {
                 pos.getY() + 0.25F, pos.getZ() + 0.5F,
                 this.getItem());
         $$4.setPickUpDelay(40);
-        $$4.setThrower(this.getUUID());
+        $$4.setThrower(this);
         $$4.setDeltaMovement(Math.random() * 0.1F - 0.05F, 0.2F, Math.random() * 0.18F - 0.05F);
         this.level().addFreshEntity($$4);
     }
@@ -659,7 +659,7 @@ private void bridgePlace(BlockHitResult $$0,Player P) {
         float damage = 1;
         if (this.getItem().getItem() instanceof BlockItem){
             float DT =((BlockItem)this.getItem().getItem()).getBlock().defaultDestroyTime();
-            if ((((BlockItem) this.getItem().getItem()).getBlock()) instanceof AbstractGlassBlock ||
+            if ((((BlockItem) this.getItem().getItem()).getBlock()) instanceof TransparentBlock ||
                     (((BlockItem) this.getItem().getItem()).getBlock()) instanceof StainedGlassPaneBlock ||
                     this.getItem().is(Items.GLASS_PANE)) {
                 damage = 12;
@@ -924,7 +924,7 @@ private void bridgePlace(BlockHitResult $$0,Player P) {
 
                 if (this.getItem().getItem() instanceof BlockItem && MainUtil.isThrownBlockItem(this.getItem().getItem())) {
                     Block blk = ((BlockItem) this.getItem().getItem()).getBlock();
-                    if (blk instanceof CactusBlock || blk instanceof AbstractGlassBlock ||
+                    if (blk instanceof CactusBlock || blk instanceof TransparentBlock ||
                             blk instanceof StainedGlassPaneBlock || blk instanceof BarbedWireBlock
                             || blk instanceof BarbedWireBundleBlock || this.getItem().is(Items.GLASS_PANE)) {
                         MainUtil.makeBleed($$1, 0, 300, this);
@@ -1121,7 +1121,7 @@ private void bridgePlace(BlockHitResult $$0,Player P) {
     }
 
     public boolean useNametag(ItemStack stack, LivingEntity entity){
-        if (stack.hasCustomHoverName() && !(entity instanceof Player)) {
+        if (stack.has(net.minecraft.core.component.DataComponents.CUSTOM_NAME) && !(entity instanceof Player)) {
             if (!this.level().isClientSide() && entity.isAlive()) {
                 entity.setCustomName(stack.getHoverName());
                 if (entity instanceof Mob) {

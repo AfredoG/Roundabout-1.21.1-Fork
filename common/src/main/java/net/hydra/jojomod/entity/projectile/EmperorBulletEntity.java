@@ -1,6 +1,5 @@
 package net.hydra.jojomod.entity.projectile;
 
-import com.mojang.authlib.yggdrasil.response.User;
 import net.hydra.jojomod.access.IEnderMan;
 import net.hydra.jojomod.client.ClientNetworking;
 import net.hydra.jojomod.entity.ModEntities;

@@ -23,9 +23,9 @@ public abstract class JusticeCreeper extends Monster implements IJusticeCreeper 
     private static final EntityDataAccessor<Boolean> roundabout$IS_TRANSFORMED = SynchedEntityData.defineId(Creeper.class, EntityDataSerializers.BOOLEAN);
 
     @Inject(method = "defineSynchedData", at = @At(value = "HEAD"))
-    protected void roundabout$DefineSyncedData(CallbackInfo ci) {
-        if (!((Creeper)(Object)this).getEntityData().hasItem(roundabout$IS_TRANSFORMED)) {
-            this.entityData.define(roundabout$IS_TRANSFORMED, false);
+    protected void roundabout$DefineSyncedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder, CallbackInfo ci) {
+        if (!net.hydra.jojomod.util.TrackedData.has(builder, roundabout$IS_TRANSFORMED)) {
+            builder.define(roundabout$IS_TRANSFORMED, false);
         }
     }
     @Unique

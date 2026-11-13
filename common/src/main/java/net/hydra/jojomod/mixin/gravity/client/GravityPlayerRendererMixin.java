@@ -16,13 +16,13 @@ public abstract class GravityPlayerRendererMixin {
 
     /**elytra rotation fix*/
     @ModifyVariable(
-            method = "setupRotations(Lnet/minecraft/client/player/AbstractClientPlayer;Lcom/mojang/blaze3d/vertex/PoseStack;FFF)V",
+            method = "setupRotations(Lnet/minecraft/client/player/AbstractClientPlayer;Lcom/mojang/blaze3d/vertex/PoseStack;FFFF)V",
             at = @At(
                     value = "STORE"
             ),
             ordinal = 0
     )
-    private Vec3 modify_setupTransforms_Vec3d_0(Vec3 vec, AbstractClientPlayer instance, PoseStack $$1, float $$2, float $$3, float partialTick) {
+    private Vec3 modify_setupTransforms_Vec3d_0(Vec3 vec, AbstractClientPlayer instance, PoseStack $$1, float $$2, float $$3, float partialTick, float entityScale) {
         Direction gravityDirection = GravityAPI.getGravityDirection(instance);
         if (gravityDirection == Direction.DOWN)
             return vec;

@@ -189,7 +189,7 @@ public class SilverChariotBaseRenderer<T extends StandEntity> extends StandRende
 
         matrixStack.pushPose();
 
-        this.setupRotations(mobEntity, matrixStack, mobEntity.tickCount + g, f, g);
+        this.setupRotations(mobEntity, matrixStack, mobEntity.tickCount + g, f, g, mobEntity.getScale());
         this.scale(mobEntity, matrixStack, g);
         matrixStack.mulPose((Axis.ZP.rotationDegrees(-180.0F)));
         matrixStack.translate(x, y, z);
@@ -277,8 +277,8 @@ public class SilverChariotBaseRenderer<T extends StandEntity> extends StandRende
                     relativePos.y + 1.5D,
                     relativePos.z
             );
-            this.setupRotations(mobEntity, matrixStack, mobEntity.tickCount + g, entityYaw, g);
-            // this.setupRotations(mobEntity, matrixStack, g, entityYaw, g);
+            this.setupRotations(mobEntity, matrixStack, mobEntity.tickCount + g, entityYaw, g, mobEntity.getScale());
+            // this.setupRotations(mobEntity, matrixStack, g, entityYaw, g, mobEntity.getScale());
             matrixStack.mulPose((Axis.ZP.rotationDegrees(180.0F)));
             this.scale(mobEntity, matrixStack, g);
 
@@ -328,8 +328,8 @@ public class SilverChariotBaseRenderer<T extends StandEntity> extends StandRende
                     relativePos.y + 1.5D,
                     relativePos.z
             );
-            this.setupRotations(mobEntity, matrixStack, mobEntity.tickCount + g, entityYaw, g);
-            // this.setupRotations(mobEntity, matrixStack, g, entityYaw, g);
+            this.setupRotations(mobEntity, matrixStack, mobEntity.tickCount + g, entityYaw, g, mobEntity.getScale());
+            // this.setupRotations(mobEntity, matrixStack, g, entityYaw, g, mobEntity.getScale());
             matrixStack.mulPose((Axis.ZP.rotationDegrees(180.0F)));
             this.scale(mobEntity, matrixStack, g);
 

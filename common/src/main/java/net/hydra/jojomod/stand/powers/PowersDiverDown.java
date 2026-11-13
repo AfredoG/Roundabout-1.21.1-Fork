@@ -78,7 +78,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.*;
-import net.minecraft.world.item.alchemy.PotionUtils;
+import net.hydra.jojomod.util.PotionData;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.crafting.CraftingRecipe;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -4566,13 +4566,13 @@ public class PowersDiverDown extends NewPunchingStand {
         InteractionHand hand = InteractionHand.MAIN_HAND;
         ItemStack stack = player.getMainHandItem();
         boolean isMobBucket = stack.getItem() instanceof MobBucketItem;
-        List<MobEffectInstance> effects = PotionUtils.getMobEffects(stack);
+        List<MobEffectInstance> effects = PotionData.getMobEffects(stack);
 
         if (effects.isEmpty() && !isMobBucket) {
             hand = InteractionHand.OFF_HAND;
             stack = player.getOffhandItem();
             isMobBucket = stack.getItem() instanceof MobBucketItem;
-            effects = PotionUtils.getMobEffects(stack);
+            effects = PotionData.getMobEffects(stack);
         }
 
         // mob bucket stuff

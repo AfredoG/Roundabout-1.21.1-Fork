@@ -319,7 +319,8 @@
     "whitesnake.memory.horse.HorseMemoryRavagerMixin",
     "whitesnake.memory.horse.HorseMemoryRavagerRidingMixin",
     "whitesnake.memory.horse.HorseMemorySaddledControlMixin",
-    "whitesnake.memory.horse.LobotomizedHorseMovementMixin"
+    "whitesnake.memory.horse.LobotomizedHorseMovementMixin",
+    "access.AccessSynchedData"
   ],
   "client": [
     "jumpin_jack_flash.AirPressureHudMixin",
@@ -505,7 +506,8 @@
     "whitesnake.inventory.WhitesnakePlayerHeldItemMixin",
     "whitesnake.memory.DiscSealHudMixin",
     "whitesnake.memory.MemoryLocalPlayerInput",
-    "whitesnake.memory.MinecraftMemoryControlMixin"
+    "whitesnake.memory.MinecraftMemoryControlMixin",
+    "time_stop.TimeStopDeltaTracker"
   ],
   "server": [],
   "injectors": {

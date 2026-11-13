@@ -1272,7 +1272,7 @@ public abstract class StandUserEntity extends Entity implements StandUser {
     @Unique
     @Override
     public byte roundabout$getGlow() {
-        if (getEntityData().hasItem(ROUNDABOUT$GLOW)) {
+        if (net.hydra.jojomod.util.TrackedData.has(getEntityData(), ROUNDABOUT$GLOW)) {
             return this.getEntityData().get(ROUNDABOUT$GLOW);
         } else {
             return 0;
@@ -1322,7 +1322,7 @@ public abstract class StandUserEntity extends Entity implements StandUser {
     @Unique
     @Override
     public void roundabout$setBoundToID(int bound) {
-        if (this.entityData.hasItem(ROUNDABOUT$IS_BOUND_TO)) {
+        if (net.hydra.jojomod.util.TrackedData.has(this.entityData, ROUNDABOUT$IS_BOUND_TO)) {
             this.getEntityData().set(ROUNDABOUT$IS_BOUND_TO, bound);
         }
     }
@@ -1330,7 +1330,7 @@ public abstract class StandUserEntity extends Entity implements StandUser {
     @Unique
     @Override
     public int roundabout$getBoundToID() {
-        if (this.entityData.hasItem(ROUNDABOUT$IS_BOUND_TO)) {
+        if (net.hydra.jojomod.util.TrackedData.has(this.entityData, ROUNDABOUT$IS_BOUND_TO)) {
             return this.getEntityData().get(ROUNDABOUT$IS_BOUND_TO);
         }
         return -1;
@@ -1339,7 +1339,7 @@ public abstract class StandUserEntity extends Entity implements StandUser {
     @Unique
     @Override
     public void roundabout$setZappedToID(int bound) {
-        if (this.entityData.hasItem(ROUNDABOUT$IS_ZAPPED_TO_ATTACK)) {
+        if (net.hydra.jojomod.util.TrackedData.has(this.entityData, ROUNDABOUT$IS_ZAPPED_TO_ATTACK)) {
             roundabout$zappedTicks = 0;
             this.getEntityData().set(ROUNDABOUT$IS_ZAPPED_TO_ATTACK, bound);
         }
@@ -1348,7 +1348,7 @@ public abstract class StandUserEntity extends Entity implements StandUser {
     @Unique
     @Override
     public int roundabout$getZappedToID() {
-        if (this.entityData.hasItem(ROUNDABOUT$IS_ZAPPED_TO_ATTACK)) {
+        if (net.hydra.jojomod.util.TrackedData.has(this.entityData, ROUNDABOUT$IS_ZAPPED_TO_ATTACK)) {
             return this.getEntityData().get(ROUNDABOUT$IS_ZAPPED_TO_ATTACK);
         }
         return -1;
@@ -1407,7 +1407,7 @@ public abstract class StandUserEntity extends Entity implements StandUser {
     @Unique
     @Override
     public void roundabout$setAdjustedGravity(int adj) {
-        if (this.entityData.hasItem(ROUNDABOUT$ADJUSTED_GRAVITY)) {
+        if (net.hydra.jojomod.util.TrackedData.has(this.entityData, ROUNDABOUT$ADJUSTED_GRAVITY)) {
             this.getEntityData().set(ROUNDABOUT$ADJUSTED_GRAVITY, adj);
         }
     }
@@ -1415,7 +1415,7 @@ public abstract class StandUserEntity extends Entity implements StandUser {
     @Unique
     @Override
     public int roundabout$getAdjustedGravity() {
-        if (this.entityData.hasItem(ROUNDABOUT$ADJUSTED_GRAVITY)) {
+        if (net.hydra.jojomod.util.TrackedData.has(this.entityData, ROUNDABOUT$ADJUSTED_GRAVITY)) {
             return this.getEntityData().get(ROUNDABOUT$ADJUSTED_GRAVITY);
         }
         return -1;
@@ -1424,7 +1424,7 @@ public abstract class StandUserEntity extends Entity implements StandUser {
     @Unique
     @Override
     public void roundabout$setBubbleEncased(byte adj) {
-        if (this.entityData.hasItem(ROUNDABOUT$IS_BUBBLE_ENCASED)) {
+        if (net.hydra.jojomod.util.TrackedData.has(this.entityData, ROUNDABOUT$IS_BUBBLE_ENCASED)) {
             this.getEntityData().set(ROUNDABOUT$IS_BUBBLE_ENCASED, adj);
         }
     }
@@ -1433,7 +1433,7 @@ public abstract class StandUserEntity extends Entity implements StandUser {
     @Override
     public void roundabout$setBubbleLaunchEncased() {
         this.roundabout$encasedTimer = 140;
-        if (this.entityData.hasItem(ROUNDABOUT$IS_BUBBLE_ENCASED)) {
+        if (net.hydra.jojomod.util.TrackedData.has(this.entityData, ROUNDABOUT$IS_BUBBLE_ENCASED)) {
             this.getEntityData().set(ROUNDABOUT$IS_BUBBLE_ENCASED, (byte) 2);
         }
     }
@@ -1441,7 +1441,7 @@ public abstract class StandUserEntity extends Entity implements StandUser {
     @Unique
     @Override
     public byte roundabout$getBubbleEncased() {
-        if (this.entityData.hasItem(ROUNDABOUT$IS_BUBBLE_ENCASED)) {
+        if (net.hydra.jojomod.util.TrackedData.has(this.entityData, ROUNDABOUT$IS_BUBBLE_ENCASED)) {
             return this.getEntityData().get(ROUNDABOUT$IS_BUBBLE_ENCASED);
         }
         return 0;
@@ -1494,7 +1494,7 @@ public abstract class StandUserEntity extends Entity implements StandUser {
     @Unique
     @Override
     public boolean roundabout$isBubbleEncased() {
-        if (this.entityData.hasItem(ROUNDABOUT$IS_BUBBLE_ENCASED)) {
+        if (net.hydra.jojomod.util.TrackedData.has(this.entityData, ROUNDABOUT$IS_BUBBLE_ENCASED)) {
             return this.getEntityData().get(ROUNDABOUT$IS_BUBBLE_ENCASED) > 0;
         }
         return false;
@@ -1503,7 +1503,7 @@ public abstract class StandUserEntity extends Entity implements StandUser {
     @Unique
     @Override
     public boolean roundabout$isLaunchBubbleEncased() {
-        if (this.entityData.hasItem(ROUNDABOUT$IS_BUBBLE_ENCASED)) {
+        if (net.hydra.jojomod.util.TrackedData.has(this.entityData, ROUNDABOUT$IS_BUBBLE_ENCASED)) {
             return this.getEntityData().get(ROUNDABOUT$IS_BUBBLE_ENCASED) == 2;
         }
         return false;
@@ -2045,7 +2045,7 @@ public abstract class StandUserEntity extends Entity implements StandUser {
     @Override
     @Unique
     public byte roundabout$getStandAnimation() {
-        if (this.getEntityData().hasItem(ROUNDABOUT$STAND_ANIMATION)) {
+        if (net.hydra.jojomod.util.TrackedData.has(this.getEntityData(), ROUNDABOUT$STAND_ANIMATION)) {
             return this.getEntityData().get(ROUNDABOUT$STAND_ANIMATION);
         }
         return 0;
@@ -2060,7 +2060,7 @@ public abstract class StandUserEntity extends Entity implements StandUser {
     @Override
     @Unique
     public boolean roundabout$getUniqueStandModeToggle() {
-        if (this.getEntityData().hasItem(ROUNDABOUT$UNIQUE_STAND_MODE_TOGGLE)) {
+        if (net.hydra.jojomod.util.TrackedData.has(this.getEntityData(), ROUNDABOUT$UNIQUE_STAND_MODE_TOGGLE)) {
             return this.getEntityData().get(ROUNDABOUT$UNIQUE_STAND_MODE_TOGGLE);
         }
         return false;
@@ -2305,7 +2305,7 @@ public abstract class StandUserEntity extends Entity implements StandUser {
 
     @Unique
     public byte roundabout$getStoredDamageByte() {
-        if (getEntityData().hasItem(ROUNDABOUT_TS_DAMAGE)) {
+        if (net.hydra.jojomod.util.TrackedData.has(getEntityData(), ROUNDABOUT_TS_DAMAGE)) {
             return this.getEntityData().get(ROUNDABOUT_TS_DAMAGE);
         } else {
             return 0;
@@ -2369,7 +2369,7 @@ public abstract class StandUserEntity extends Entity implements StandUser {
     @Unique
     @Override
     public byte roundabout$getLocacacaCurse() {
-        if (getEntityData().hasItem(ROUNDABOUT$LOCACACA_CURSE)) {
+        if (net.hydra.jojomod.util.TrackedData.has(getEntityData(), ROUNDABOUT$LOCACACA_CURSE)) {
             return this.getEntityData().get(ROUNDABOUT$LOCACACA_CURSE);
         } else {
             return 0;
@@ -2379,7 +2379,7 @@ public abstract class StandUserEntity extends Entity implements StandUser {
     @Unique
     @Override
     public byte roundabout$getOnStandFire() {
-        if (getEntityData().hasItem(ROUNDABOUT$ON_STAND_FIRE)) {
+        if (net.hydra.jojomod.util.TrackedData.has(getEntityData(), ROUNDABOUT$ON_STAND_FIRE)) {
             return this.getEntityData().get(ROUNDABOUT$ON_STAND_FIRE);
         } else {
             return 0;
@@ -2398,7 +2398,7 @@ public abstract class StandUserEntity extends Entity implements StandUser {
     @Override
     public int roundabout$getBleedLevel() {
 
-        if (getEntityData().hasItem(ROUNDABOUT$BLEED_LEVEL)) {
+        if (net.hydra.jojomod.util.TrackedData.has(getEntityData(), ROUNDABOUT$BLEED_LEVEL)) {
             return this.getEntityData().get(ROUNDABOUT$BLEED_LEVEL);
         } else {
             return 0;
@@ -2408,7 +2408,7 @@ public abstract class StandUserEntity extends Entity implements StandUser {
     @Unique
     @Override
     public boolean roundabout$getOnlyBleeding() {
-        if (getEntityData().hasItem(ROUNDABOUT$ONLY_BLEEDING)) {
+        if (net.hydra.jojomod.util.TrackedData.has(getEntityData(), ROUNDABOUT$ONLY_BLEEDING)) {
             return this.getEntityData().get(ROUNDABOUT$ONLY_BLEEDING);
         } else {
             return false;
@@ -2475,7 +2475,7 @@ public abstract class StandUserEntity extends Entity implements StandUser {
     @Unique
     @Override
     public ItemStack roundabout$getStandDisc() {
-        if (getEntityData().hasItem(ROUNDABOUT$STAND_DISC)) {
+        if (net.hydra.jojomod.util.TrackedData.has(getEntityData(), ROUNDABOUT$STAND_DISC)) {
             return this.getEntityData().get(ROUNDABOUT$STAND_DISC);
         } else {
             return ItemStack.EMPTY;
@@ -2737,7 +2737,7 @@ public abstract class StandUserEntity extends Entity implements StandUser {
 
     @Unique
     public boolean roundabout$getActive() {
-        if (((LivingEntity) (Object) this).getEntityData().hasItem(ROUNDABOUT$STAND_ACTIVE) &&
+        if (net.hydra.jojomod.util.TrackedData.has(((LivingEntity) (Object) this).getEntityData(), ROUNDABOUT$STAND_ACTIVE) &&
                 ((LivingEntity) (Object) this).getEntityData().get(ROUNDABOUT$STAND_ACTIVE) instanceof Boolean) {
             return ((LivingEntity) (Object) this).getEntityData().get(ROUNDABOUT$STAND_ACTIVE);
         } else {
@@ -3874,7 +3874,7 @@ public abstract class StandUserEntity extends Entity implements StandUser {
     @Nullable
     public StandEntity roundabout$getStand() {
         if (this.level().isClientSide
-                && (((LivingEntity) (Object) this).getEntityData().hasItem(ROUNDABOUT$STAND_ID))) {
+                && (net.hydra.jojomod.util.TrackedData.has(((LivingEntity) (Object) this).getEntityData(), ROUNDABOUT$STAND_ID))) {
             Entity entity = this.level()
                     .getEntity(((LivingEntity) (Object) this).getEntityData().get(ROUNDABOUT$STAND_ID));
             if (entity instanceof StandEntity SE) {
@@ -3973,43 +3973,43 @@ public abstract class StandUserEntity extends Entity implements StandUser {
     }
 
     @Inject(method = "defineSynchedData", at = @At(value = "TAIL"))
-    private void roundabout$initDataTrackerRoundabout(CallbackInfo ci) {
-        if (!((LivingEntity) (Object) this).getEntityData().hasItem(ROUNDABOUT$STAND_ID)) {
-            ((LivingEntity) (Object) this).getEntityData().define(ROUNDABOUT$STAND_ID, -1);
-            ((LivingEntity) (Object) this).getEntityData().define(ROUNDABOUT_TS_DAMAGE, (byte) 0);
-            ((LivingEntity) (Object) this).getEntityData().define(ROUNDABOUT$LOCACACA_CURSE, (byte) -1);
-            ((LivingEntity) (Object) this).getEntityData().define(ROUNDABOUT$ON_STAND_FIRE, (byte) 0);
-            ((LivingEntity) (Object) this).getEntityData().define(ROUNDABOUT$BLEED_LEVEL, -1);
-            ((LivingEntity) (Object) this).getEntityData().define(ROUNDABOUT$GLOW, (byte) 0);
-            ((LivingEntity) (Object) this).getEntityData().define(ROUNDABOUT$IS_BUBBLE_ENCASED, (byte) 0);
-            ((LivingEntity) (Object) this).getEntityData().define(ROUNDABOUT$POSSESSOR, -1);
-            ((LivingEntity) (Object) this).getEntityData().define(ROUNDABOUT$HEAT, 0);
-            ((LivingEntity) (Object) this).getEntityData().define(ROUNDABOUT$EXPLOSION_INFLATE, -1);
-            ((LivingEntity) (Object) this).getEntityData().define(ROUNDABOUT$METAL_METER, 0F);
-            ((LivingEntity) (Object) this).getEntityData().define(ROUNDABOUT$IS_BOUND_TO, -1);
-            ((LivingEntity) (Object) this).getEntityData().define(ROUNDABOUT$IS_ZAPPED_TO_ATTACK, -1);
-            ((LivingEntity) (Object) this).getEntityData().define(ROUNDABOUT$TRUE_INVISIBILITY, -1);
-            ((LivingEntity) (Object) this).getEntityData().define(ROUNDABOUT$METALLICA_INVISIBILITY, -1);
-            ((LivingEntity) (Object) this).getEntityData().define(ROUNDABOUT$ADJUSTED_GRAVITY, -1);
-            ((LivingEntity) (Object) this).getEntityData().define(ROUNDABOUT$ONLY_BLEEDING, true);
-            ((LivingEntity) (Object) this).getEntityData().define(ROUNDABOUT$STAND_DISC, ItemStack.EMPTY);
-            ((LivingEntity) (Object) this).getEntityData().define(ROUNDABOUT$STAND_ACTIVE, false);
-            ((LivingEntity) (Object) this).getEntityData().define(ROUNDABOUT$STAND_ANIMATION, (byte) 0);
-            ((LivingEntity) (Object) this).getEntityData().define(ROUNDABOUT$UNIQUE_STAND_MODE_TOGGLE, false);
-            ((LivingEntity) (Object) this).getEntityData().define(ROUNDABOUT$MOLD_JUMP_IMUNITY_TICKS, 4);
-            ((LivingEntity) (Object) this).getEntityData().define(ROUNDABOUT$MOLD_STARTING_Y_POS, 0.0f);
-            ((LivingEntity) (Object) this).getEntityData().define(ROUNDABOUT$GOING_DOWN, false);
-            ((LivingEntity) (Object) this).getEntityData().define(ROUNDABOUT$PURPLE_HAZE_TICKS, 0);
-            ((LivingEntity) (Object) this).getEntityData().define(ROUNDABOUT$PURPLE_HAZE_SKIN, PurpleHazeEntity.ANIME);
-            ((LivingEntity) (Object) this).getEntityData().define(ROUNDABOUT$DISTORTION_HAZE_TICKS, 0);
-            ((LivingEntity) (Object) this).getEntityData().define(ROUNDABOUT$DISGUISE_ID, Optional.empty());
-            ((LivingEntity) (Object) this).getEntityData().define(ROUNDABOUT$DISGUISE_NAME, "");
-            ((LivingEntity) (Object) this).getEntityData().define(ROUNDABOUT$DIVER_LEGS, false);
-            ((LivingEntity) (Object) this).getEntityData().define(ROUNDABOUT$DIVER_ARMS, false);
-            ((LivingEntity) (Object) this).getEntityData().define(ROUNDABOUT$RIBCAGE_TRAP, false);
-            ((LivingEntity) (Object) this).getEntityData().define(ROUNDABOUT$SPRING_LEGS, false);
-            ((LivingEntity) (Object) this).getEntityData().define(ROUNDABOUT$GRABBED_SOUL, false);
-            ((LivingEntity) (Object) this).getEntityData().define(ROUNDABOUT$GRABBER_ID, 0);
+    private void roundabout$initDataTrackerRoundabout(net.minecraft.network.syncher.SynchedEntityData.Builder builder, CallbackInfo ci) {
+        if (!net.hydra.jojomod.util.TrackedData.has(builder, ROUNDABOUT$STAND_ID)) {
+            builder.define(ROUNDABOUT$STAND_ID, -1);
+            builder.define(ROUNDABOUT_TS_DAMAGE, (byte) 0);
+            builder.define(ROUNDABOUT$LOCACACA_CURSE, (byte) -1);
+            builder.define(ROUNDABOUT$ON_STAND_FIRE, (byte) 0);
+            builder.define(ROUNDABOUT$BLEED_LEVEL, -1);
+            builder.define(ROUNDABOUT$GLOW, (byte) 0);
+            builder.define(ROUNDABOUT$IS_BUBBLE_ENCASED, (byte) 0);
+            builder.define(ROUNDABOUT$POSSESSOR, -1);
+            builder.define(ROUNDABOUT$HEAT, 0);
+            builder.define(ROUNDABOUT$EXPLOSION_INFLATE, -1);
+            builder.define(ROUNDABOUT$METAL_METER, 0F);
+            builder.define(ROUNDABOUT$IS_BOUND_TO, -1);
+            builder.define(ROUNDABOUT$IS_ZAPPED_TO_ATTACK, -1);
+            builder.define(ROUNDABOUT$TRUE_INVISIBILITY, -1);
+            builder.define(ROUNDABOUT$METALLICA_INVISIBILITY, -1);
+            builder.define(ROUNDABOUT$ADJUSTED_GRAVITY, -1);
+            builder.define(ROUNDABOUT$ONLY_BLEEDING, true);
+            builder.define(ROUNDABOUT$STAND_DISC, ItemStack.EMPTY);
+            builder.define(ROUNDABOUT$STAND_ACTIVE, false);
+            builder.define(ROUNDABOUT$STAND_ANIMATION, (byte) 0);
+            builder.define(ROUNDABOUT$UNIQUE_STAND_MODE_TOGGLE, false);
+            builder.define(ROUNDABOUT$MOLD_JUMP_IMUNITY_TICKS, 4);
+            builder.define(ROUNDABOUT$MOLD_STARTING_Y_POS, 0.0f);
+            builder.define(ROUNDABOUT$GOING_DOWN, false);
+            builder.define(ROUNDABOUT$PURPLE_HAZE_TICKS, 0);
+            builder.define(ROUNDABOUT$PURPLE_HAZE_SKIN, PurpleHazeEntity.ANIME);
+            builder.define(ROUNDABOUT$DISTORTION_HAZE_TICKS, 0);
+            builder.define(ROUNDABOUT$DISGUISE_ID, Optional.empty());
+            builder.define(ROUNDABOUT$DISGUISE_NAME, "");
+            builder.define(ROUNDABOUT$DIVER_LEGS, false);
+            builder.define(ROUNDABOUT$DIVER_ARMS, false);
+            builder.define(ROUNDABOUT$RIBCAGE_TRAP, false);
+            builder.define(ROUNDABOUT$SPRING_LEGS, false);
+            builder.define(ROUNDABOUT$GRABBED_SOUL, false);
+            builder.define(ROUNDABOUT$GRABBER_ID, 0);
         }
     }
 
@@ -4026,7 +4026,7 @@ public abstract class StandUserEntity extends Entity implements StandUser {
     @Unique
     @Override
     public float roundabout$getMetalMeter() {
-        if (this.entityData.hasItem(ROUNDABOUT$METAL_METER)) {
+        if (net.hydra.jojomod.util.TrackedData.has(this.entityData, ROUNDABOUT$METAL_METER)) {
             return this.entityData.get(ROUNDABOUT$METAL_METER);
         }
         return 0f;
@@ -4045,7 +4045,7 @@ public abstract class StandUserEntity extends Entity implements StandUser {
     @Unique
     @Override
     public int roundabout$getMetallicaInvisibility() {
-        if (this.entityData.hasItem(ROUNDABOUT$METALLICA_INVISIBILITY)) {
+        if (net.hydra.jojomod.util.TrackedData.has(this.entityData, ROUNDABOUT$METALLICA_INVISIBILITY)) {
             return this.getEntityData().get(ROUNDABOUT$METALLICA_INVISIBILITY);
         }
         return -1;
@@ -4054,7 +4054,7 @@ public abstract class StandUserEntity extends Entity implements StandUser {
     @Unique
     @Override
     public void roundabout$setMetallicaInvisibility(int invis) {
-        if (this.entityData.hasItem(ROUNDABOUT$METALLICA_INVISIBILITY)) {
+        if (net.hydra.jojomod.util.TrackedData.has(this.entityData, ROUNDABOUT$METALLICA_INVISIBILITY)) {
             this.getEntityData().set(ROUNDABOUT$METALLICA_INVISIBILITY, invis);
         }
     }
@@ -4436,7 +4436,7 @@ public abstract class StandUserEntity extends Entity implements StandUser {
     @Unique
     @Override
     public void roundabout$setTrueInvis(int bound) {
-        if (this.entityData.hasItem(ROUNDABOUT$TRUE_INVISIBILITY)) {
+        if (net.hydra.jojomod.util.TrackedData.has(this.entityData, ROUNDABOUT$TRUE_INVISIBILITY)) {
             roundabout$zappedTicks = 0;
             this.getEntityData().set(ROUNDABOUT$TRUE_INVISIBILITY, bound);
         }
@@ -4445,7 +4445,7 @@ public abstract class StandUserEntity extends Entity implements StandUser {
     @Unique
     @Override
     public int roundabout$getTrueInvis() {
-        if (this.entityData.hasItem(ROUNDABOUT$TRUE_INVISIBILITY)) {
+        if (net.hydra.jojomod.util.TrackedData.has(this.entityData, ROUNDABOUT$TRUE_INVISIBILITY)) {
             return this.getEntityData().get(ROUNDABOUT$TRUE_INVISIBILITY);
         }
         return -1;
@@ -4738,7 +4738,7 @@ public abstract class StandUserEntity extends Entity implements StandUser {
     @Override
     public double roundabout$getGravity(double ogGrav) {
 
-        if (this.getEntityData().hasItem(ROUNDABOUT$ADJUSTED_GRAVITY) && this.getDeltaMovement().y <= 0) {
+        if (net.hydra.jojomod.util.TrackedData.has(this.getEntityData(), ROUNDABOUT$ADJUSTED_GRAVITY) && this.getDeltaMovement().y <= 0) {
             double basegrav = roundabout$getAdjustedGravity();
             if (basegrav >= 0) {
                 ogGrav *= (basegrav / 1000);

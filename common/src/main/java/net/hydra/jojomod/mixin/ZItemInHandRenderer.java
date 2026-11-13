@@ -389,7 +389,7 @@ public abstract class ZItemInHandRenderer {
                     poseStack.mulPose(Axis.XP.rotationDegrees(-11.935F));
                     poseStack.mulPose(Axis.YP.rotationDegrees((float)$$14 * 65.3F));
                     poseStack.mulPose(Axis.ZP.rotationDegrees((float)$$14 * -9.785F));
-                    float $$15 = (float)itemStack.getUseDuration() - ((float)this.minecraft.player.getUseItemRemainingTicks() - partialTick + 1.0F);
+                    float $$15 = (float)itemStack.getUseDuration(this.minecraft.player) - ((float)this.minecraft.player.getUseItemRemainingTicks() - partialTick + 1.0F);
                     float $$16 = $$15 / (float)IronBallCrossbowItem.getChargeDuration(itemStack);
                     if ($$16 > 1.0F) {
                         $$16 = 1.0F;
@@ -461,7 +461,7 @@ public abstract class ZItemInHandRenderer {
                     }
                     poseStack.mulPose(Axis.YP.rotationDegrees((float) q * 35.3f));
                     poseStack.mulPose(Axis.ZP.rotationDegrees((float) q * -9.785f));
-                    float r = (float) itemStack.getUseDuration() - ((float) this.minecraft.player.getUseItemRemainingTicks() - partialTick + kT2);
+                    float r = (float) itemStack.getUseDuration(this.minecraft.player) - ((float) this.minecraft.player.getUseItemRemainingTicks() - partialTick + kT2);
                     float l = r / knifeTime;
                     if (l > kT2) {
                         l = kT2;
@@ -496,7 +496,7 @@ public abstract class ZItemInHandRenderer {
                     poseStack.mulPose(Axis.XP.rotationDegrees(30.0f));
                     poseStack.mulPose(Axis.YP.rotationDegrees((float) q * -35.3f));
                     poseStack.mulPose(Axis.ZP.rotationDegrees((float) q * -9.785f));
-                    float r = (float) itemStack.getUseDuration() - ((float) this.minecraft.player.getUseItemRemainingTicks() - partialTick + kT2);
+                    float r = (float) itemStack.getUseDuration(this.minecraft.player) - ((float) this.minecraft.player.getUseItemRemainingTicks() - partialTick + kT2);
                     float l = r / knifeTime;
                     l/=2;
                     if (l > kT2) {
@@ -526,7 +526,7 @@ public abstract class ZItemInHandRenderer {
                     poseStack.mulPose(Axis.XP.rotationDegrees(30.0f));
                     poseStack.mulPose(Axis.YP.rotationDegrees((float) q * -35.3f));
                     poseStack.mulPose(Axis.ZP.rotationDegrees((float) q * -9.785f));
-                    float r = (float) itemStack.getUseDuration() - ((float) this.minecraft.player.getUseItemRemainingTicks() - partialTick + kT2);
+                    float r = (float) itemStack.getUseDuration(this.minecraft.player) - ((float) this.minecraft.player.getUseItemRemainingTicks() - partialTick + kT2);
                     float l = r / knifeTime;
                     if (l > kT2) {
                         l = kT2;

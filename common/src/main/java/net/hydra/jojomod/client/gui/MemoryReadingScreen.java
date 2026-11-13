@@ -79,7 +79,7 @@ public final class MemoryReadingScreen extends Screen {
 
     @Override
     public void render(GuiGraphics graphics, int mouseX, int mouseY, float delta) {
-        renderBackground(graphics);
+        renderBackground(graphics, mouseX, mouseY, delta);
         int panelHeight = kind == DiscItemData.READING_PLAYER ? PLAYER_PANEL_HEIGHT : MOB_PANEL_HEIGHT;
         int left = (width - PANEL_WIDTH) / 2;
         int top = (height - panelHeight) / 2;

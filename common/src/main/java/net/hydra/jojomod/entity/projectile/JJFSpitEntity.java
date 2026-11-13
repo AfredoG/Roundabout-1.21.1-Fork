@@ -45,7 +45,7 @@ public class JJFSpitEntity extends ThrowableProjectile {
     }
 
     @Override
-    protected float getGravity() {
+    protected double getDefaultGravity() {
         return 0.01F;
     }
 

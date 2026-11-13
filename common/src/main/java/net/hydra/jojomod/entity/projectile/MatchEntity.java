@@ -242,7 +242,7 @@ public class MatchEntity extends ThrowableItemProjectile {
     public boolean getSuperThrow() {
         return this.getEntityData().get(ROUNDABOUT$SUPER_THROWN);
     }
-    protected float getGravity() {
+    protected double getDefaultGravity() {
         if (getSuperThrow()){
             return 0;
         } else {

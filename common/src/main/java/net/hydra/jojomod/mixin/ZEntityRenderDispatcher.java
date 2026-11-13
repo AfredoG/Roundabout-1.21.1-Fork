@@ -321,7 +321,7 @@ public abstract class ZEntityRenderDispatcher {
                 ci.cancel();
                 return;
             }
-            $$4 = Minecraft.getInstance().getFrameTime();
+            $$4 = Minecraft.getInstance().getTimer().getGameTimeDeltaPartialTick(true);
             float $$7 = shadowRadius;
             if ($$2 instanceof Mob $$8 && $$8.isBaby()) {
                 $$7 = shadowRadius * 0.5F;

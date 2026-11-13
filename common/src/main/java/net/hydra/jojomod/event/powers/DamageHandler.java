@@ -26,7 +26,7 @@ public class DamageHandler {
             float tickDelta = 0;
             if (entity.level().isClientSide()) {
                 Minecraft mc = Minecraft.getInstance();
-                tickDelta = mc.getDeltaFrameTime();
+                tickDelta = mc.getTimer().getGameTimeDeltaTicks();
             }
             Vec3 vec3d = entity.getEyePosition(tickDelta);
             Vec3 vec3d2 = entity.getViewVector(tickDelta);

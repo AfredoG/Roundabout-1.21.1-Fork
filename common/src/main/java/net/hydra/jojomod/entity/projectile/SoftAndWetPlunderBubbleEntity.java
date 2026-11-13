@@ -875,7 +875,7 @@ public class SoftAndWetPlunderBubbleEntity extends SoftAndWetBubbleEntity {
     }
 
     protected float getEyeHeight(Pose $$0, EntityDimensions $$1) {
-        return $$1.height * 0.1F;
+        return $$1.height() * 0.1F;
     }
 
     public boolean hasDitchedItem = false;
@@ -889,7 +889,7 @@ public class SoftAndWetPlunderBubbleEntity extends SoftAndWetBubbleEntity {
                             this.getY() + this.getEyeHeight(), this.getZ(),
                             getHeldItem());
                     $$4.setPickUpDelay(40);
-                    $$4.setThrower(this.standUser.getUUID());
+                    $$4.setThrower(this.standUser);
                     standUser.level().addFreshEntity($$4);
                 }
             } else {
@@ -909,7 +909,7 @@ public class SoftAndWetPlunderBubbleEntity extends SoftAndWetBubbleEntity {
                     this.getY() + this.getEyeHeight(), this.getZ(),
                     getHeldItem());
             $$4.setPickUpDelay(40);
-            $$4.setThrower(this.getUUID());
+            $$4.setThrower(this);
             this.level().addFreshEntity($$4);
             this.setHeldItem(ItemStack.EMPTY);
             hasDitchedItem = true;
@@ -926,7 +926,7 @@ public class SoftAndWetPlunderBubbleEntity extends SoftAndWetBubbleEntity {
                             this.getY() + this.getEyeHeight(), this.getZ(),
                             getHeldItem());
                     $$4.setPickUpDelay(40);
-                    $$4.setThrower(PE.getUUID());
+                    $$4.setThrower(PE);
                     PE.level().addFreshEntity($$4);
                 }
             } else {

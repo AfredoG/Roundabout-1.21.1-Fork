@@ -749,7 +749,7 @@ public class ZeroGravitySystem {
 
             case UP -> {
                 double standingHeight =
-                        entity.getDimensions(Pose.STANDING).height;
+                        entity.getDimensions(Pose.STANDING).height();
 
                 double currentHeight =
                         entity.getBbHeight();

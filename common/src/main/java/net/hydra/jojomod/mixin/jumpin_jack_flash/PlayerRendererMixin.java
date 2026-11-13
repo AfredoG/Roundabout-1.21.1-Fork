@@ -21,7 +21,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public abstract class PlayerRendererMixin {
 
     @Inject(
-            method = "setupRotations(Lnet/minecraft/client/player/AbstractClientPlayer;Lcom/mojang/blaze3d/vertex/PoseStack;FFF)V",
+            method = "setupRotations(Lnet/minecraft/client/player/AbstractClientPlayer;Lcom/mojang/blaze3d/vertex/PoseStack;FFFF)V",
             at = @At("TAIL")
     )
     private void jjf$ceilingRotation(
@@ -30,6 +30,7 @@ public abstract class PlayerRendererMixin {
             float ageInTicks,
             float bodyYaw,
             float partialTick,
+            float entityScale,
             CallbackInfo ci
     ) {
         if (!(player instanceof ZeroGravityAccess access)) {

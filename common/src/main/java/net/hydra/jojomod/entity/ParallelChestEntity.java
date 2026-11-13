@@ -151,7 +151,7 @@ public class ParallelChestEntity extends Entity {
                         this.getY() + this.getEyeHeight(), this.getZ(),
                         stack);
                 $$4.setPickUpDelay(40);
-                $$4.setThrower(PE.getUUID());
+                $$4.setThrower(PE);
                 PE.level().addFreshEntity($$4);
             }
         } else {

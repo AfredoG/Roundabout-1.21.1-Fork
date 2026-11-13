@@ -133,19 +133,19 @@ public abstract class ZVillager extends AbstractVillager implements ReputationEv
     }
 
     @Inject(method = "defineSynchedData",at=@At(value = "TAIL"))
-    private void roundabout$addVillagerSynched(CallbackInfo ci) {
-        if (!((Villager)(Object)this).getEntityData().hasItem(ROUNDABOUT$ANUBIS_TICKS) ) {
-            ((Villager)(Object)this).getEntityData().define(ROUNDABOUT$ANUBIS_TICKS, -1);
-            ((Villager)(Object)this).getEntityData().define(ROUNDABOUT$ANUBIS_TYPE, (byte)-1);
+    private void roundabout$addVillagerSynched(net.minecraft.network.syncher.SynchedEntityData.Builder builder, CallbackInfo ci) {
+        if (!net.hydra.jojomod.util.TrackedData.has(builder, ROUNDABOUT$ANUBIS_TICKS) ) {
+            builder.define(ROUNDABOUT$ANUBIS_TICKS, -1);
+            builder.define(ROUNDABOUT$ANUBIS_TYPE, (byte)-1);
         }
-        if (!((Villager)(Object)this).getEntityData().hasItem(ROUNDABOUT$TENSION_STATE)) {
-            ((Villager)(Object)this).getEntityData().define(ROUNDABOUT$TENSION_STATE, TENSION_UNROLLED);
+        if (!net.hydra.jojomod.util.TrackedData.has(builder, ROUNDABOUT$TENSION_STATE)) {
+            builder.define(ROUNDABOUT$TENSION_STATE, TENSION_UNROLLED);
         }
-        if (!this.getEntityData().hasItem(ROUNDABOUT$CALLOUT_EFFECT_TICKS)) {
-            this.getEntityData().define(ROUNDABOUT$CALLOUT_EFFECT_TICKS, 0);
+        if (!net.hydra.jojomod.util.TrackedData.has(builder, ROUNDABOUT$CALLOUT_EFFECT_TICKS)) {
+            builder.define(ROUNDABOUT$CALLOUT_EFFECT_TICKS, 0);
         }
-        if (!this.getEntityData().hasItem(ROUNDABOUT$SNAKE_OIL_LOCKOUT)) {
-            this.getEntityData().define(ROUNDABOUT$SNAKE_OIL_LOCKOUT, 0);
+        if (!net.hydra.jojomod.util.TrackedData.has(builder, ROUNDABOUT$SNAKE_OIL_LOCKOUT)) {
+            builder.define(ROUNDABOUT$SNAKE_OIL_LOCKOUT, 0);
         }
     }
     /// currently broken, unsure why

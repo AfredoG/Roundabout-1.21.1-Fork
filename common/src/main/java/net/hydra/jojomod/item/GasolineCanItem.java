@@ -17,7 +17,7 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class GasolineCanItem extends Item implements Vanishable {
+public class GasolineCanItem extends Item {
     /**The Can that Diego throws*/
 
     public static final int THROW_THRESHOLD_TIME = 10;

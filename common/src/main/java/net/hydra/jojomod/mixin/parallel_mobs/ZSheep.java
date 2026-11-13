@@ -25,9 +25,9 @@ public abstract class ZSheep extends Animal implements ISheep {
 
 
     @Inject(method = "defineSynchedData", at = @At(value = "HEAD"))
-    protected void roundabout$pigDefineSyncedData(CallbackInfo ci) {
-        if (!(this.getEntityData().hasItem(roundabout$ALT_LOOK))) {
-            this.entityData.define(roundabout$ALT_LOOK, (byte)0);
+    protected void roundabout$pigDefineSyncedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder, CallbackInfo ci) {
+        if (!(net.hydra.jojomod.util.TrackedData.has(builder, roundabout$ALT_LOOK))) {
+            builder.define(roundabout$ALT_LOOK, (byte)0);
         }
     }
     @Inject(method = "addAdditionalSaveData", at = @At(value = "HEAD"))

@@ -58,7 +58,7 @@ public final class WhitesnakeDisguiseScreen extends Screen {
 
     @Override
     public void render(GuiGraphics graphics, int mouseX, int mouseY, float delta) {
-        renderBackground(graphics);
+        renderBackground(graphics, mouseX, mouseY, delta);
         graphics.drawCenteredString(font, Component.translatable("roundabout.whitesnake.disguise.title"),
                 width / 2, height / 2 - 36, -1);
         super.render(graphics, mouseX, mouseY, delta);

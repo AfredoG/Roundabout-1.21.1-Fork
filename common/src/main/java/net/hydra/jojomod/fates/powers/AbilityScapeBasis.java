@@ -1284,7 +1284,7 @@ public class AbilityScapeBasis {
             double $$3 = stand.getEyeY() - 0.3F;
             ItemEntity $$4 = new ItemEntity(stand.level(), stand.getX(), $$3, stand.getZ(), stand.getHeldItem());
             $$4.setPickUpDelay(40);
-            $$4.setThrower(stand.getUUID());
+            $$4.setThrower(stand);
             stand.level().addFreshEntity($$4);
             stand.setHeldItem(ItemStack.EMPTY);
         }
@@ -1310,7 +1310,7 @@ public class AbilityScapeBasis {
             double $$3 = stand.getEyeY() - 0.3F;
             ItemEntity $$4 = new ItemEntity(stand.level(), stand.getX(), $$3, stand.getZ(), stand.getHeldItem());
             $$4.setPickUpDelay(40);
-            $$4.setThrower(stand.getUUID());
+            $$4.setThrower(stand);
             stand.level().addFreshEntity($$4);
             stand.setHeldItem(ItemStack.EMPTY);
         }

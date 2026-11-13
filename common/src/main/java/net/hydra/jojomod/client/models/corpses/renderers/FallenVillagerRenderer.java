@@ -68,8 +68,8 @@ public class FallenVillagerRenderer extends MobRenderer<FallenVillager, FallenVi
     }
 
     @Override
-    protected void setupRotations(FallenVillager FM, PoseStack pose, float $$2, float $$3, float $$4) {
-        super.setupRotations(FM,pose,$$2,$$3,$$4);
+    protected void setupRotations(FallenVillager FM, PoseStack pose, float $$2, float $$3, float $$4, float entityScale) {
+        super.setupRotations(FM,pose,$$2,$$3,$$4, entityScale);
         int tickTock = FM.ticksThroughPhases;
         if (FM.getPhasesFull()){
             tickTock = 10;

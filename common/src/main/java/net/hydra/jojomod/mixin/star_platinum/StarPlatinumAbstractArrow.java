@@ -67,9 +67,9 @@ public abstract class StarPlatinumAbstractArrow extends Entity implements ISuper
         roundabout$superThrowTicks = 20;
     }
     @Inject(method = "defineSynchedData", at = @At(value = "HEAD"),cancellable = true)
-    private void roundabout$defineSynchedData(CallbackInfo ci) {
-        if (!((AbstractArrow)(Object)this).getEntityData().hasItem(ROUNDABOUT$SUPER_THROWN)) {
-            this.entityData.define(ROUNDABOUT$SUPER_THROWN, false);
+    private void roundabout$defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder, CallbackInfo ci) {
+        if (!net.hydra.jojomod.util.TrackedData.has(builder, ROUNDABOUT$SUPER_THROWN)) {
+            builder.define(ROUNDABOUT$SUPER_THROWN, false);
         }
     }
     @Inject(method = "tick", at = @At(value = "TAIL"),cancellable = true)

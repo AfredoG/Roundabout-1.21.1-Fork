@@ -1401,7 +1401,7 @@ public class PowersKillerQueen extends NewPunchingStand {
                     this.getSelf().getY() + this.getSelf().getEyeHeight(), this.getSelf().getZ(),
                     standEntity.getHeldItem());
             $$4.setPickUpDelay(40);
-            $$4.setThrower(this.getSelf().getUUID());
+            $$4.setThrower(this.getSelf());
             PowerTypes.copyPlaneOfExisting(self,$$4);
             this.getSelf().level().addFreshEntity($$4);
         }
@@ -2700,7 +2700,7 @@ public class PowersKillerQueen extends NewPunchingStand {
                         data.putByte(strayCatBreed, itemTag.getByte(StrayCatItem.SKIN_TAG));
                     }
 
-                    if (item.hasCustomHoverName()) {
+                    if (item.has(net.minecraft.core.component.DataComponents.CUSTOM_NAME)) {
                         data.putString(strayCatCustomName, item.getHoverName().getString());
                     }
                     */

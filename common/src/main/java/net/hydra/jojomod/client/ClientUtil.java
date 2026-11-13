@@ -2030,7 +2030,7 @@ public class ClientUtil {
 
     public static float getDelta() {
         Minecraft mc = Minecraft.getInstance();
-        return mc.getDeltaFrameTime();
+        return mc.getTimer().getGameTimeDeltaTicks();
     }
 
     /**Dynamic Worlds packet, removing local player calls so servers don't crash on startup*/
@@ -2047,7 +2047,7 @@ public class ClientUtil {
 
     public static float getFrameTime() {
         Minecraft mc = Minecraft.getInstance();
-        return mc.getFrameTime();
+        return mc.getTimer().getGameTimeDeltaPartialTick(true);
     }
     public static void handlePowerFloatPacket(byte activePower, float data){
         LocalPlayer player = Minecraft.getInstance().player;

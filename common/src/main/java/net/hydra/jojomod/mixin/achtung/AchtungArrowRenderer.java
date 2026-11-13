@@ -60,21 +60,21 @@ public abstract class AchtungArrowRenderer<T extends AbstractArrow> extends Enti
             PoseStack.Pose $$19 = $$3.last();
             Matrix4f $$20 = $$19.pose();
             PoseStack.Pose $$21 = $$19;
-            this.roundabout$vertexAchtung($$20, $$21, $$18, -7, -2, -2, 0.0F, 0.15625F, -1, 0, 0, $$5);
-            this.roundabout$vertexAchtung($$20, $$21, $$18, -7, -2, 2, 0.15625F, 0.15625F, -1, 0, 0, $$5);
-            this.roundabout$vertexAchtung($$20, $$21, $$18, -7, 2, 2, 0.15625F, 0.3125F, -1, 0, 0, $$5);
-            this.roundabout$vertexAchtung($$20, $$21, $$18, -7, 2, -2, 0.0F, 0.3125F, -1, 0, 0, $$5);
-            this.roundabout$vertexAchtung($$20, $$21, $$18, -7, 2, -2, 0.0F, 0.15625F, 1, 0, 0, $$5);
-            this.roundabout$vertexAchtung($$20, $$21, $$18, -7, 2, 2, 0.15625F, 0.15625F, 1, 0, 0, $$5);
-            this.roundabout$vertexAchtung($$20, $$21, $$18, -7, -2, 2, 0.15625F, 0.3125F, 1, 0, 0, $$5);
-            this.roundabout$vertexAchtung($$20, $$21, $$18, -7, -2, -2, 0.0F, 0.3125F, 1, 0, 0, $$5);
+            this.roundabout$vertexAchtung($$19, $$18, -7, -2, -2, 0.0F, 0.15625F, -1, 0, 0, $$5);
+            this.roundabout$vertexAchtung($$19, $$18, -7, -2, 2, 0.15625F, 0.15625F, -1, 0, 0, $$5);
+            this.roundabout$vertexAchtung($$19, $$18, -7, 2, 2, 0.15625F, 0.3125F, -1, 0, 0, $$5);
+            this.roundabout$vertexAchtung($$19, $$18, -7, 2, -2, 0.0F, 0.3125F, -1, 0, 0, $$5);
+            this.roundabout$vertexAchtung($$19, $$18, -7, 2, -2, 0.0F, 0.15625F, 1, 0, 0, $$5);
+            this.roundabout$vertexAchtung($$19, $$18, -7, 2, 2, 0.15625F, 0.15625F, 1, 0, 0, $$5);
+            this.roundabout$vertexAchtung($$19, $$18, -7, -2, 2, 0.15625F, 0.3125F, 1, 0, 0, $$5);
+            this.roundabout$vertexAchtung($$19, $$18, -7, -2, -2, 0.0F, 0.3125F, 1, 0, 0, $$5);
 
             for (int $$22 = 0; $$22 < 4; $$22++) {
                 $$3.mulPose(Axis.XP.rotationDegrees(90.0F));
-                this.roundabout$vertexAchtung($$20, $$21, $$18, -8, -2, 0, 0.0F, 0.0F, 0, 1, 0, $$5);
-                this.roundabout$vertexAchtung($$20, $$21, $$18, 8, -2, 0, 0.5F, 0.0F, 0, 1, 0, $$5);
-                this.roundabout$vertexAchtung($$20, $$21, $$18, 8, 2, 0, 0.5F, 0.15625F, 0, 1, 0, $$5);
-                this.roundabout$vertexAchtung($$20, $$21, $$18, -8, 2, 0, 0.0F, 0.15625F, 0, 1, 0, $$5);
+                this.roundabout$vertexAchtung($$19, $$18, -8, -2, 0, 0.0F, 0.0F, 0, 1, 0, $$5);
+                this.roundabout$vertexAchtung($$19, $$18, 8, -2, 0, 0.5F, 0.0F, 0, 1, 0, $$5);
+                this.roundabout$vertexAchtung($$19, $$18, 8, 2, 0, 0.5F, 0.15625F, 0, 1, 0, $$5);
+                this.roundabout$vertexAchtung($$19, $$18, -8, 2, 0, 0.0F, 0.15625F, 0, 1, 0, $$5);
             }
 
             ClientUtil.popPoseAndCooperate($$3,7);
@@ -84,13 +84,13 @@ public abstract class AchtungArrowRenderer<T extends AbstractArrow> extends Enti
     }
 
     @Unique
-    public void roundabout$vertexAchtung(Matrix4f $$0, Matrix3f $$1, VertexConsumer $$2, int $$3, int $$4, int $$5, float $$6, float $$7, int $$8, int $$9, int $$10, int $$11) {
-        $$2.vertex($$0, (float)$$3, (float)$$4, (float)$$5)
+    public void roundabout$vertexAchtung(PoseStack.Pose pose, VertexConsumer $$2, int $$3, int $$4, int $$5, float $$6, float $$7, int $$8, int $$9, int $$10, int $$11) {
+        $$2.addVertex(pose, (float)$$3, (float)$$4, (float)$$5)
                 .setColor(255, 255, 255, ClientUtil.getThrowFadeToTheEtherInt())
                 .setUv($$6, $$7)
                 .setOverlay(OverlayTexture.NO_OVERLAY)
                 .setLight($$11)
-                .setNormal($$1, (float)$$8, (float)$$10, (float)$$9)
+                .setNormal(pose, (float)$$8, (float)$$10, (float)$$9)
                 ;
     }
 
@@ -107,6 +107,6 @@ public abstract class AchtungArrowRenderer<T extends AbstractArrow> extends Enti
     }
 
     @Shadow
-    public abstract void vertex(Matrix4f $$0, Matrix3f $$1, VertexConsumer $$2, int $$3, int $$4, int $$5, float $$6, float $$7, int $$8, int $$9, int $$10, int $$11);
+    public abstract void vertex(PoseStack.Pose pose, VertexConsumer $$2, int $$3, int $$4, int $$5, float $$6, float $$7, int $$8, int $$9, int $$10, int $$11);
 
 }

@@ -73,7 +73,7 @@ public class EditValueScreen extends Screen {
 
     @Override
     public void render(GuiGraphics drawContext, int mouseX, int mouseY, float delta) {
-        this.renderBackground(drawContext);
+        this.renderBackground(drawContext, mouseX, mouseY, delta);
         drawContext.drawCenteredString(this.font, Component.translatable("config.roundabout.major.edit").getString()+" " + field.getName(), this.width / 2, 20, 0xFFFFFF);
         super.render(drawContext, mouseX, mouseY, delta);
     }

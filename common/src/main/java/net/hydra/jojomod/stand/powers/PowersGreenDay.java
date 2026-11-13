@@ -434,7 +434,7 @@ public class PowersGreenDay extends NewPunchingStand {
                                 this.getSelf().getY() + this.getSelf().getEyeHeight(), this.getSelf().getZ(),
                                 OffhandItemToReturn);
                         $$4.setPickUpDelay(1);
-                        $$4.setThrower(this.getSelf().getUUID());
+                        $$4.setThrower(this.getSelf());
                         PowerTypes.copyPlaneOfExisting(self,$$4);
                         this.getSelf().level().addFreshEntity($$4);
                     }
@@ -1267,7 +1267,7 @@ public class PowersGreenDay extends NewPunchingStand {
                         this.getSelf().getY() + this.getSelf().getEyeHeight(), this.getSelf().getZ(),
                         Main_arm.getHeldItem());
                 $$4.setPickUpDelay(1);
-                $$4.setThrower(this.getSelf().getUUID());
+                $$4.setThrower(this.getSelf());
                 PowerTypes.copyPlaneOfExisting(self,$$4);
                 this.getSelf().level().addFreshEntity($$4);
             }

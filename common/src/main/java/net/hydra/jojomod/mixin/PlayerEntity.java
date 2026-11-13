@@ -214,7 +214,7 @@ public abstract class PlayerEntity extends LivingEntity implements IPlayerEntity
         if (PowerTypes.hasStandActive(this) && ((StandUser)this).roundabout$getStandPowers().hasPassiveCombatMode()){
             return true;
         }
-        if (getEntityData().hasItem(ROUNDABOUT$COMBAT_MODE)) {
+        if (net.hydra.jojomod.util.TrackedData.has(getEntityData(), ROUNDABOUT$COMBAT_MODE)) {
             return this.getEntityData().get(ROUNDABOUT$COMBAT_MODE);
         } else {
             return false;
@@ -282,7 +282,7 @@ public abstract class PlayerEntity extends LivingEntity implements IPlayerEntity
     @Unique
     @Override
     public void rdbt$setHairColorX(float color){
-        if (((Player)(Object)this).getEntityData().hasItem(ROUNDABOUT$HAIR_COLOR)) {
+        if (net.hydra.jojomod.util.TrackedData.has(((Player)(Object)this).getEntityData(), ROUNDABOUT$HAIR_COLOR)) {
             Rotations rot = ((Player) (Object) this).getEntityData().get(ROUNDABOUT$HAIR_COLOR);
             ((Player) (Object) this).getEntityData().set(ROUNDABOUT$HAIR_COLOR,
                     new Rotations(color,rot.getY(),rot.getZ()));
@@ -291,7 +291,7 @@ public abstract class PlayerEntity extends LivingEntity implements IPlayerEntity
     @Unique
     @Override
     public void rdbt$setHairColorY(float color){
-        if (((Player)(Object)this).getEntityData().hasItem(ROUNDABOUT$HAIR_COLOR)) {
+        if (net.hydra.jojomod.util.TrackedData.has(((Player)(Object)this).getEntityData(), ROUNDABOUT$HAIR_COLOR)) {
             Rotations rot = ((Player) (Object) this).getEntityData().get(ROUNDABOUT$HAIR_COLOR);
             ((Player) (Object) this).getEntityData().set(ROUNDABOUT$HAIR_COLOR,
                     new Rotations(rot.getX(),color,rot.getZ()));
@@ -300,7 +300,7 @@ public abstract class PlayerEntity extends LivingEntity implements IPlayerEntity
     @Unique
     @Override
     public void rdbt$setHairColorZ(float color){
-        if (((Player)(Object)this).getEntityData().hasItem(ROUNDABOUT$HAIR_COLOR)) {
+        if (net.hydra.jojomod.util.TrackedData.has(((Player)(Object)this).getEntityData(), ROUNDABOUT$HAIR_COLOR)) {
             Rotations rot = ((Player) (Object) this).getEntityData().get(ROUNDABOUT$HAIR_COLOR);
             ((Player) (Object) this).getEntityData().set(ROUNDABOUT$HAIR_COLOR,
                     new Rotations(rot.getX(),rot.getY(),color));
@@ -309,7 +309,7 @@ public abstract class PlayerEntity extends LivingEntity implements IPlayerEntity
     @Unique
     @Override
     public float rdbt$getHairColorX(){
-        if (((Player)(Object)this).getEntityData().hasItem(ROUNDABOUT$HAIR_COLOR)) {
+        if (net.hydra.jojomod.util.TrackedData.has(((Player)(Object)this).getEntityData(), ROUNDABOUT$HAIR_COLOR)) {
             return ((Player) (Object) this).getEntityData().get(ROUNDABOUT$HAIR_COLOR).getX();
         }
         return rdbt$hairColorX;
@@ -317,7 +317,7 @@ public abstract class PlayerEntity extends LivingEntity implements IPlayerEntity
     @Unique
     @Override
     public float rdbt$getHairColorY(){
-        if (((Player)(Object)this).getEntityData().hasItem(ROUNDABOUT$HAIR_COLOR)) {
+        if (net.hydra.jojomod.util.TrackedData.has(((Player)(Object)this).getEntityData(), ROUNDABOUT$HAIR_COLOR)) {
             return ((Player) (Object) this).getEntityData().get(ROUNDABOUT$HAIR_COLOR).getY();
         }
         return rdbt$hairColorY;
@@ -325,7 +325,7 @@ public abstract class PlayerEntity extends LivingEntity implements IPlayerEntity
     @Unique
     @Override
     public float rdbt$getHairColorZ(){
-        if (((Player)(Object)this).getEntityData().hasItem(ROUNDABOUT$HAIR_COLOR)) {
+        if (net.hydra.jojomod.util.TrackedData.has(((Player)(Object)this).getEntityData(), ROUNDABOUT$HAIR_COLOR)) {
             return ((Player) (Object) this).getEntityData().get(ROUNDABOUT$HAIR_COLOR).getZ();
         }
         return rdbt$hairColorZ;
@@ -388,14 +388,14 @@ public abstract class PlayerEntity extends LivingEntity implements IPlayerEntity
     @Unique
     @Override
     public void roundabout$setTeamColor(byte color){
-        if (((Player)(Object)this).getEntityData().hasItem(ROUNDABOUT$TEAM_COLOR)) {
+        if (net.hydra.jojomod.util.TrackedData.has(((Player)(Object)this).getEntityData(), ROUNDABOUT$TEAM_COLOR)) {
             ((Player) (Object) this).getEntityData().set(ROUNDABOUT$TEAM_COLOR, color);
         }
     }
     @Unique
     @Override
     public byte roundabout$getTeamColor(){
-        if (((Player)(Object)this).getEntityData().hasItem(ROUNDABOUT$TEAM_COLOR)) {
+        if (net.hydra.jojomod.util.TrackedData.has(((Player)(Object)this).getEntityData(), ROUNDABOUT$TEAM_COLOR)) {
             return this.entityData.get(ROUNDABOUT$TEAM_COLOR);
         }
         return 0;
@@ -411,7 +411,7 @@ public abstract class PlayerEntity extends LivingEntity implements IPlayerEntity
     @Unique
     @Override
     public void roundabout$setFate(byte style){
-        if (((Player)(Object)this).getEntityData().hasItem(ROUNDABOUT$FATE)) {
+        if (net.hydra.jojomod.util.TrackedData.has(((Player)(Object)this).getEntityData(), ROUNDABOUT$FATE)) {
             if (roundabout$getFate() != style) {
                 roundabout$SetPos2(PlayerPosIndex.NONE);
                 this.getEntityData().set(ROUNDABOUT$FATE, style);
@@ -421,7 +421,7 @@ public abstract class PlayerEntity extends LivingEntity implements IPlayerEntity
     @Unique
     @Override
     public byte roundabout$getFate(){
-        if (((Player)(Object)this).getEntityData().hasItem(ROUNDABOUT$FATE)) {
+        if (net.hydra.jojomod.util.TrackedData.has(((Player)(Object)this).getEntityData(), ROUNDABOUT$FATE)) {
             return this.entityData.get(ROUNDABOUT$FATE);
         }
         return 0;
@@ -429,7 +429,7 @@ public abstract class PlayerEntity extends LivingEntity implements IPlayerEntity
     @Unique
     @Override
     public void roundabout$setPower(byte style){
-        if (((Player)(Object)this).getEntityData().hasItem(ROUNDABOUT$POWERS)) {
+        if (net.hydra.jojomod.util.TrackedData.has(((Player)(Object)this).getEntityData(), ROUNDABOUT$POWERS)) {
             roundabout$SetPos2(PlayerPosIndex.NONE);
             this.getEntityData().set(ROUNDABOUT$POWERS, style);
         }
@@ -437,7 +437,7 @@ public abstract class PlayerEntity extends LivingEntity implements IPlayerEntity
     @Unique
     @Override
     public void roundabout$setPowerWithPenalty(byte style){
-        if (((Player)(Object)this).getEntityData().hasItem(ROUNDABOUT$POWERS)) {
+        if (net.hydra.jojomod.util.TrackedData.has(((Player)(Object)this).getEntityData(), ROUNDABOUT$POWERS)) {
             roundabout$SetPos2(PlayerPosIndex.NONE);
             if (style != this.getEntityData().get(ROUNDABOUT$POWERS) && this.getEntityData().get(ROUNDABOUT$POWERS) != PowerTypes.NONE.ordinal()){
                 if (ClientNetworking.getAppropriateConfig().powersSettings.powerSwitchingPenalty) {
@@ -480,7 +480,7 @@ public abstract class PlayerEntity extends LivingEntity implements IPlayerEntity
     @Unique
     @Override
     public byte roundabout$getPower(){
-        if (((Player)(Object)this).getEntityData().hasItem(ROUNDABOUT$POWERS)) {
+        if (net.hydra.jojomod.util.TrackedData.has(((Player)(Object)this).getEntityData(), ROUNDABOUT$POWERS)) {
             byte pows = this.entityData.get(ROUNDABOUT$POWERS);
             if (!level().isClientSide()) {
                 if (pows == PowerTypes.NONE.ordinal() && ((StandUser) this).roundabout$hasAStand()) {
@@ -2089,7 +2089,7 @@ public abstract class PlayerEntity extends LivingEntity implements IPlayerEntity
         if (PowerTypes.hasStandActive(this) && user.roundabout$getStandPowers().hasPassiveCombatMode()){
             return true;
         }
-        if (getEntityData().hasItem(ROUNDABOUT$COMBAT_MODE)) {
+        if (net.hydra.jojomod.util.TrackedData.has(getEntityData(), ROUNDABOUT$COMBAT_MODE)) {
             return this.getEntityData().get(ROUNDABOUT$COMBAT_MODE) && (((StandUser)this).roundabout$hasAStand() &&
                     user.roundabout$getStandPowers().hasStandActive(((LivingEntity) (Object)this)));
         } else {
@@ -2098,28 +2098,28 @@ public abstract class PlayerEntity extends LivingEntity implements IPlayerEntity
     }
 
     @Inject(method = "defineSynchedData", at = @At(value = "TAIL"))
-    private void initDataTrackerRoundabout(CallbackInfo ci) {
-        if (!((LivingEntity)(Object)this).getEntityData().hasItem(ROUNDABOUT$POS)) {
-            ((LivingEntity) (Object) this).getEntityData().define(ROUNDABOUT$POS, PlayerPosIndex.NONE);
-            ((LivingEntity) (Object) this).getEntityData().define(ROUNDABOUT$POS_2, PlayerPosIndex.NONE);
-            ((LivingEntity) (Object) this).getEntityData().define(ROUNDABOUT$POSE_EMOTE, (byte) 0);
-            ((LivingEntity) (Object) this).getEntityData().define(ROUNDABOUT$DODGE_TIME, -1);
-            ((LivingEntity) (Object) this).getEntityData().define(ROUNDABOUT$CAMERA_HITS, -1);
-            ((LivingEntity) (Object) this).getEntityData().define(ROUNDABOUT$COMBAT_MODE, false);
-            ((LivingEntity) (Object) this).getEntityData().define(ROUNDABOUT$DATA_KNIFE_COUNT_ID, (byte) 0);
-            ((LivingEntity) (Object) this).getEntityData().define(ROUNDABOUT$MASK_SLOT, ItemStack.EMPTY);
-            ((LivingEntity) (Object) this).getEntityData().define(ROUNDABOUT$MASK_VOICE_SLOT, ItemStack.EMPTY);
-            ((LivingEntity) (Object) this).getEntityData().define(ROUNDABOUT$STAND_LEVEL, (byte) 0);
-            ((LivingEntity) (Object) this).getEntityData().define(ROUNDABOUT$SHAPE_SHIFT, (byte) 0);
-            ((LivingEntity) (Object) this).getEntityData().define(ROUNDABOUT$SHAPE_SHIFT_EXTRA, (byte) 0);
-            ((LivingEntity) (Object) this).getEntityData().define(ROUNDABOUT$WIDTH_FACTOR, (byte) 0);
-            ((LivingEntity) (Object) this).getEntityData().define(ROUNDABOUT$STAND_EXP, 0);
-            ((LivingEntity) (Object) this).getEntityData().define(ROUNDABOUT$IS_CONTROLLING, 0);
-            ((LivingEntity) (Object) this).getEntityData().define(ROUNDABOUT$TEAM_COLOR, (byte) 0);
-            ((LivingEntity) (Object) this).getEntityData().define(ROUNDABOUT$FATE, (byte) 0);
-            ((LivingEntity) (Object) this).getEntityData().define(ROUNDABOUT$POWERS, (byte) 0);
-            ((LivingEntity) (Object) this).getEntityData().define(ROUNDABOUT$IS_BLINDED, false);
-            ((LivingEntity) (Object) this).getEntityData().define(ROUNDABOUT$HAIR_COLOR, new Rotations(rdbt$hairColorX,rdbt$hairColorY,rdbt$hairColorZ));
+    private void initDataTrackerRoundabout(net.minecraft.network.syncher.SynchedEntityData.Builder builder, CallbackInfo ci) {
+        if (!net.hydra.jojomod.util.TrackedData.has(builder, ROUNDABOUT$POS)) {
+            builder.define(ROUNDABOUT$POS, PlayerPosIndex.NONE);
+            builder.define(ROUNDABOUT$POS_2, PlayerPosIndex.NONE);
+            builder.define(ROUNDABOUT$POSE_EMOTE, (byte) 0);
+            builder.define(ROUNDABOUT$DODGE_TIME, -1);
+            builder.define(ROUNDABOUT$CAMERA_HITS, -1);
+            builder.define(ROUNDABOUT$COMBAT_MODE, false);
+            builder.define(ROUNDABOUT$DATA_KNIFE_COUNT_ID, (byte) 0);
+            builder.define(ROUNDABOUT$MASK_SLOT, ItemStack.EMPTY);
+            builder.define(ROUNDABOUT$MASK_VOICE_SLOT, ItemStack.EMPTY);
+            builder.define(ROUNDABOUT$STAND_LEVEL, (byte) 0);
+            builder.define(ROUNDABOUT$SHAPE_SHIFT, (byte) 0);
+            builder.define(ROUNDABOUT$SHAPE_SHIFT_EXTRA, (byte) 0);
+            builder.define(ROUNDABOUT$WIDTH_FACTOR, (byte) 0);
+            builder.define(ROUNDABOUT$STAND_EXP, 0);
+            builder.define(ROUNDABOUT$IS_CONTROLLING, 0);
+            builder.define(ROUNDABOUT$TEAM_COLOR, (byte) 0);
+            builder.define(ROUNDABOUT$FATE, (byte) 0);
+            builder.define(ROUNDABOUT$POWERS, (byte) 0);
+            builder.define(ROUNDABOUT$IS_BLINDED, false);
+            builder.define(ROUNDABOUT$HAIR_COLOR, new Rotations(rdbt$hairColorX,rdbt$hairColorY,rdbt$hairColorZ));
         }
     }
 

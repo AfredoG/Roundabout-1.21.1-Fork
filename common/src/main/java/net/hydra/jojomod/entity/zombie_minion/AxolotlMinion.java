@@ -81,7 +81,7 @@ public class AxolotlMinion extends BaseMinion  implements LerpingModel {
     }
     @Override
     protected float getStandingEyeHeight(Pose $$0, EntityDimensions $$1) {
-        return $$1.height * 0.655F;
+        return $$1.height() * 0.655F;
     }
 
     public int getMaxHeadXRot() {

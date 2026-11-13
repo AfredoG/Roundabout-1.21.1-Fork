@@ -15,7 +15,7 @@ import net.minecraft.world.entity.raid.Raider;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.Potion;
-import net.minecraft.world.item.alchemy.PotionUtils;
+import net.hydra.jojomod.util.PotionData;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.Level;
 import org.spongepowered.asm.mixin.Mixin;
@@ -51,11 +51,11 @@ public abstract class DazeWitch extends Raider {
         }
 
         if (((IMob)this).rdbt$getStolen()){
-            Potion $$3 = Potions.POISON;
+            net.minecraft.core.Holder<Potion> $$3 = Potions.POISON;
             if (Math.random() < 0.5){
                 $$3 = Potions.HARMING;
             }
-            this.setItemSlot(EquipmentSlot.MAINHAND, PotionUtils.setPotion(new ItemStack(Items.POTION), $$3));
+            this.setItemSlot(EquipmentSlot.MAINHAND, PotionData.setPotion(new ItemStack(Items.POTION), $$3));
         }
     }
 

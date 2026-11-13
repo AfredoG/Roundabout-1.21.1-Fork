@@ -95,7 +95,7 @@ public class ZWorldRenderer {
             ci.cancel();
         } else {
             Minecraft mc = Minecraft.getInstance();
-            ((IEntityAndData) $$0).roundabout$setPreTSTick(mc.getFrameTime());
+            ((IEntityAndData) $$0).roundabout$setPreTSTick(mc.getTimer().getGameTimeDeltaPartialTick(true));
         }
     }
 

@@ -59,7 +59,7 @@ public class BlackSabbathPlayerInventoryScreen
 
     @Override
     public void render(GuiGraphics $$0, int $$1, int $$2, float $$3) {
-        this.renderBackground($$0);
+        this.renderBackground($$0, $$1, $$2, $$3);
         this.xMouse = (float)$$1;
         this.yMouse = (float)$$2;
         super.render($$0, $$1, $$2, $$3);

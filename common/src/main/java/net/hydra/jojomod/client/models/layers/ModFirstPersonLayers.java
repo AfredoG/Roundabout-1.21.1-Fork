@@ -46,7 +46,7 @@ public class ModFirstPersonLayers {
 
 
     public static float getAttackAnimationScale(float $$0, LivingEntity ent, ItemStack item) {
-        return ((float)( ent.getUseItem().getUseDuration() - ent.getUseItemRemainingTicks()) + $$0) / (float)item.getUseDuration();
+        return ((float)( ent.getUseItem().getUseDuration(ent) - ent.getUseItemRemainingTicks()) + $$0) / (float)item.getUseDuration(ent);
     }
 
     public static void render(PoseStack pss, MultiBufferSource mb, int packedLight, LivingEntity player, float deltaTime){
@@ -54,7 +54,7 @@ public class ModFirstPersonLayers {
             LivingEntity ent = MainUtil.getStoneTarget(player.level(), player);
             if (ent != null) {
                 float $$7 = getAttackAnimationScale(deltaTime,player,player.getUseItem());
-                float $$8 = ( player.getUseItem().getUseDuration() - player.getUseItemRemainingTicks()) + deltaTime;
+                float $$8 = ( player.getUseItem().getUseDuration(player) - player.getUseItemRemainingTicks()) + deltaTime;
                 float f2 = $$8 * 0.5F % 1.0F;
                 float f3 = (float) (player.getBbHeight() * 0.5D);
                 PoseStack ps = new PoseStack();

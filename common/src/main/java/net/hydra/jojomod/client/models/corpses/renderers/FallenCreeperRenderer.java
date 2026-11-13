@@ -68,8 +68,8 @@ public class FallenCreeperRenderer extends MobRenderer<FallenCreeper, FallenCree
     }
 
     @Override
-    protected void setupRotations(FallenCreeper FM, PoseStack pose, float $$2, float $$3, float $$4) {
-        super.setupRotations(FM,pose,$$2,$$3,$$4);
+    protected void setupRotations(FallenCreeper FM, PoseStack pose, float $$2, float $$3, float $$4, float entityScale) {
+        super.setupRotations(FM,pose,$$2,$$3,$$4, entityScale);
         int tickTock = FM.ticksThroughPhases;
         if (FM.getPhasesFull()){
             tickTock = 10;

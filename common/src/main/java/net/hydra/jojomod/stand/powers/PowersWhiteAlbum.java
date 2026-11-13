@@ -408,7 +408,7 @@ public class PowersWhiteAlbum extends NewDashPreset {
             if ($$0.getUseAnimation(this.self.getUseItem()) != UseAnim.BLOCK) {
                 return false;
             } else {
-                return $$0.getUseDuration(this.self.getUseItem()) - this.self.getUseItemRemainingTicks() >= 5;
+                return $$0.getUseDuration(this.self.getUseItem(), this.self) - this.self.getUseItemRemainingTicks() >= 5;
             }
         } else {
             return false;

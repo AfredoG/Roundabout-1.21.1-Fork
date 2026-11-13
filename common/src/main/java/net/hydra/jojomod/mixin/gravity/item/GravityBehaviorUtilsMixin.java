@@ -42,7 +42,7 @@ public class GravityBehaviorUtilsMixin {
                 GravityAPI.getGravityDirection(entity)
         );
 
-        itemEntity.setThrower(entity.getUUID());
+        itemEntity.setThrower(entity);
         Vec3 $$7 = $$2.subtract(entity.position());
         $$7 = $$7.normalize().multiply($$3.x, $$3.y, $$3.z);
         GravityAPI.setWorldVelocity(itemEntity, $$7);

@@ -72,13 +72,13 @@ public class SilverChariotEntity extends FollowingStandEntity {
     );
 
     public void setIsCarryingUser(boolean isCarryingUser) {
-        if (this.entityData.hasItem(IS_CARRYING_USER)) {
+        if (net.hydra.jojomod.util.TrackedData.has(this.entityData, IS_CARRYING_USER)) {
             this.entityData.set(IS_CARRYING_USER, isCarryingUser);
         }
     }
 
     public boolean getIsCarryingUser() {
-        if (this.entityData.hasItem(IS_CARRYING_USER)) {
+        if (net.hydra.jojomod.util.TrackedData.has(this.entityData, IS_CARRYING_USER)) {
             return this.entityData.get(IS_CARRYING_USER);
         }
         return false;
@@ -128,13 +128,13 @@ public class SilverChariotEntity extends FollowingStandEntity {
     );
 
     public void setHasRapier(boolean hasRapier) {
-        if (this.entityData.hasItem(HAS_RAPIER)) {
+        if (net.hydra.jojomod.util.TrackedData.has(this.entityData, HAS_RAPIER)) {
             this.entityData.set(HAS_RAPIER, hasRapier);
         }
     }
 
     public boolean getHasRapier() {
-        if (this.entityData.hasItem(HAS_RAPIER)) {
+        if (net.hydra.jojomod.util.TrackedData.has(this.entityData, HAS_RAPIER)) {
             return this.entityData.get(HAS_RAPIER);
         }
         return true;
@@ -146,13 +146,13 @@ public class SilverChariotEntity extends FollowingStandEntity {
     );
 
     public void setIsFake(boolean value) {
-        if (this.entityData.hasItem(IS_FAKE)) {
+        if (net.hydra.jojomod.util.TrackedData.has(this.entityData, IS_FAKE)) {
             this.entityData.set(IS_FAKE, value);
         }
     }
 
     public boolean getIsFake() {
-        if (this.entityData.hasItem(IS_FAKE)) {
+        if (net.hydra.jojomod.util.TrackedData.has(this.entityData, IS_FAKE)) {
             return this.entityData.get(IS_FAKE);
         }
         return false;
@@ -173,26 +173,26 @@ public class SilverChariotEntity extends FollowingStandEntity {
     );
 
     public void setActiveHand(byte handValue) {
-        if (this.entityData.hasItem(ACTIVE_HAND)) {
+        if (net.hydra.jojomod.util.TrackedData.has(this.entityData, ACTIVE_HAND)) {
             this.entityData.set(ACTIVE_HAND, handValue);
         }
     }
 
     public byte getActiveHand() {
-        if (this.entityData.hasItem(ACTIVE_HAND)) {
+        if (net.hydra.jojomod.util.TrackedData.has(this.entityData, ACTIVE_HAND)) {
             return this.entityData.get(ACTIVE_HAND);
         }
         return RIGHT_HAND;
     }
 
     public void setArmoured(boolean armoured) {
-        if (this.entityData.hasItem(IS_ARMOURED)) {
+        if (net.hydra.jojomod.util.TrackedData.has(this.entityData, IS_ARMOURED)) {
             this.entityData.set(IS_ARMOURED, armoured);
         }
     }
 
     public boolean getArmoured() {
-        if (this.entityData.hasItem(IS_ARMOURED)) {
+        if (net.hydra.jojomod.util.TrackedData.has(this.entityData, IS_ARMOURED)) {
             return this.entityData.get(IS_ARMOURED);
         }
         return true;
@@ -1006,13 +1006,13 @@ public class SilverChariotEntity extends FollowingStandEntity {
     );
 
     public void setSilverChariotOffhandItem(ItemStack itemStack) {
-        if (this.entityData.hasItem(SilverChariotEntity.HELD_ITEM_SILVER_CHARIOT)) {
+        if (net.hydra.jojomod.util.TrackedData.has(this.entityData, SilverChariotEntity.HELD_ITEM_SILVER_CHARIOT)) {
             this.entityData.set(SilverChariotEntity.HELD_ITEM_SILVER_CHARIOT, itemStack);
         }
     }
 
     public ItemStack getSilverChariotOffhandItem() {
-        if (this.entityData.hasItem(SilverChariotEntity.HELD_ITEM_SILVER_CHARIOT)) {
+        if (net.hydra.jojomod.util.TrackedData.has(this.entityData, SilverChariotEntity.HELD_ITEM_SILVER_CHARIOT)) {
             return this.entityData.get(SilverChariotEntity.HELD_ITEM_SILVER_CHARIOT);
         }
         return ItemStack.EMPTY;

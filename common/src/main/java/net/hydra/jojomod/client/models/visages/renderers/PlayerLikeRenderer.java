@@ -153,10 +153,10 @@ public class PlayerLikeRenderer<T extends JojoNPC> extends MobRenderer<T, Player
             return HumanoidModel.ArmPose.ITEM;
         }
     }
-    protected void setupRotations(T $$0, PoseStack $$1, float $$2, float $$3, float $$4) {
+    protected void setupRotations(T $$0, PoseStack $$1, float $$2, float $$3, float $$4, float entityScale) {
         float $$5 = $$0.getSwimAmount($$4);
         if ($$0.isFallFlying()) {
-            super.setupRotations($$0, $$1, $$2, $$3, $$4);
+            super.setupRotations($$0, $$1, $$2, $$3, $$4, entityScale);
             float $$6 = (float)$$0.getFallFlyingTicks() + $$4;
             float $$7 = Mth.clamp($$6 * $$6 / 100.0F, 0.0F, 1.0F);
             if (!$$0.isAutoSpinAttack()) {
@@ -173,7 +173,7 @@ public class PlayerLikeRenderer<T extends JojoNPC> extends MobRenderer<T, Player
                 $$1.mulPose(Axis.YP.rotation((float)(Math.signum($$13) * Math.acos($$12))));
             }
         } else if ($$5 > 0.0F) {
-            super.setupRotations($$0, $$1, $$2, $$3, $$4);
+            super.setupRotations($$0, $$1, $$2, $$3, $$4, entityScale);
             float $$14 = $$0.isInWater() ? -90.0F - $$0.getXRot() : -90.0F;
             float $$15 = Mth.lerp($$5, 0.0F, $$14);
             $$1.mulPose(Axis.XP.rotationDegrees($$15));
@@ -181,7 +181,7 @@ public class PlayerLikeRenderer<T extends JojoNPC> extends MobRenderer<T, Player
                 $$1.translate(0.0F, -1.0F, 0.3F);
             }
         } else {
-            super.setupRotations($$0, $$1, $$2, $$3, $$4);
+            super.setupRotations($$0, $$1, $$2, $$3, $$4, entityScale);
         }
 
 

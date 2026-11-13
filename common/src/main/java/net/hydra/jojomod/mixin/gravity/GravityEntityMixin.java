@@ -215,7 +215,7 @@ public abstract class GravityEntityMixin implements IGravityEntity {
     @Unique
     @Override
     public void roundabout$setExistVec(byte adj, Vec3 exist) {
-        if (this.entityData.hasItem(ROUNDABOUT$EXIST_PLANE)) {
+        if (net.hydra.jojomod.util.TrackedData.has(this.entityData, ROUNDABOUT$EXIST_PLANE)) {
             this.getEntityData().set(ROUNDABOUT$EXIST_PLANE, adj);
         }
         rdb$existPlaneStartPoint = exist;
@@ -224,7 +224,7 @@ public abstract class GravityEntityMixin implements IGravityEntity {
     @Unique
     @Override
     public byte roundabout$getExistPlane() {
-        if (this.entityData.hasItem(ROUNDABOUT$EXIST_PLANE)) {
+        if (net.hydra.jojomod.util.TrackedData.has(this.entityData, ROUNDABOUT$EXIST_PLANE)) {
             return this.getEntityData().get(ROUNDABOUT$EXIST_PLANE);
         }
         return 0;
@@ -233,7 +233,7 @@ public abstract class GravityEntityMixin implements IGravityEntity {
     @Unique
     @Override
     public Direction roundabout$getGravityDirection() {
-        if (this.entityData.hasItem(ROUNDABOUT$GRAVITY_DIRECTION)) {
+        if (net.hydra.jojomod.util.TrackedData.has(this.entityData, ROUNDABOUT$GRAVITY_DIRECTION)) {
             return this.getEntityData().get(ROUNDABOUT$GRAVITY_DIRECTION);
         }
         return Direction.DOWN;
@@ -261,17 +261,20 @@ public abstract class GravityEntityMixin implements IGravityEntity {
     @Unique
     @Override
     public void roundabout$setGravityDirection(Direction direction) {
-        if (this.entityData.hasItem(ROUNDABOUT$GRAVITY_DIRECTION)) {
+        if (net.hydra.jojomod.util.TrackedData.has(this.entityData, ROUNDABOUT$GRAVITY_DIRECTION)) {
             this.getEntityData().set(ROUNDABOUT$GRAVITY_DIRECTION, direction);
         }
     }
 
-    @Inject(method = "<init>(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/level/Level;)V", at = @At("TAIL"))
-    public void roundabout$init(EntityType $$0, Level $$1, CallbackInfo ci) {
-        if (!((Entity) (Object) this).getEntityData().hasItem(ROUNDABOUT$GRAVITY_DIRECTION)) {
-            ((Entity) (Object) this).getEntityData().define(ROUNDABOUT$GRAVITY_DIRECTION, Direction.DOWN);
-            ((Entity) (Object) this).getEntityData().define(ROUNDABOUT$EXIST_PLANE, (byte) 0);
-        }
+    @org.spongepowered.asm.mixin.injection.ModifyArg(
+            method = "<init>(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/level/Level;)V",
+            at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/Entity;defineSynchedData(Lnet/minecraft/network/syncher/SynchedEntityData$Builder;)V"),
+            index = 0
+    )
+    private SynchedEntityData.Builder roundabout$initGravityData(SynchedEntityData.Builder builder) {
+        builder.define(ROUNDABOUT$GRAVITY_DIRECTION, Direction.DOWN);
+        builder.define(ROUNDABOUT$EXIST_PLANE, (byte) 0);
+        return builder;
     }
 
     @Unique
@@ -559,7 +562,7 @@ public abstract class GravityEntityMixin implements IGravityEntity {
         EntityDimensions dimensions = entity.getDimensions(entity.getPose());
         if (newGravity.getOpposite() == oldGravity) {
             // In the center of the hit-box
-            return new Vec3(0, dimensions.height / 2, 0);
+            return new Vec3(0, dimensions.height() / 2, 0);
         } else {
             return Vec3.ZERO;
         }
@@ -1031,7 +1034,7 @@ public abstract class GravityEntityMixin implements IGravityEntity {
         if (this.noPhysics) {
             cir.setReturnValue(false);
         } else {
-            float $$0 = this.dimensions.width * 0.8F;
+            float $$0 = this.dimensions.width() * 0.8F;
 
             Vec3 rotate = new Vec3((double) $$0, 1.0E-6, (double) $$0);
             rotate = RotationUtil.vecPlayerToWorld(rotate, GravityAPI.getGravityDirection((Entity) (Object) this));
@@ -1113,8 +1116,8 @@ public abstract class GravityEntityMixin implements IGravityEntity {
         if (blockState.getRenderShape() != RenderShape.INVISIBLE) {
             Vec3 particlePos = this.position()
                     .add(RotationUtil.vecPlayerToWorld(
-                            (this.random.nextDouble() - 0.5D) * (double) this.dimensions.width, 0.1D,
-                            (this.random.nextDouble() - 0.5D) * (double) this.dimensions.width, gravityDirection));
+                            (this.random.nextDouble() - 0.5D) * (double) this.dimensions.width(), 0.1D,
+                            (this.random.nextDouble() - 0.5D) * (double) this.dimensions.width(), gravityDirection));
             Vec3 playerVelocity = this.getDeltaMovement();
             Vec3 particleVelocity = RotationUtil.vecPlayerToWorld(playerVelocity.x * -4.0D, 1.5D,
                     playerVelocity.z * -4.0D, gravityDirection);

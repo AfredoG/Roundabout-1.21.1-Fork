@@ -147,7 +147,7 @@ public abstract class GravityCameraMixin {
             if (gravityDirection == Direction.DOWN && !animation.isInAnimation()) {
                 return;
             }
-            float partialTick = Minecraft.getInstance().getFrameTime();
+            float partialTick = Minecraft.getInstance().getTimer().getGameTimeDeltaPartialTick(true);
             long timeMs = entity.level().getGameTime() * 50 + (long) ((partialTick%1) * 50);
             Quaternionf rotation = new Quaternionf(animation.getCurrentGravityRotation(gravityDirection, timeMs));
             rotation.conjugate();

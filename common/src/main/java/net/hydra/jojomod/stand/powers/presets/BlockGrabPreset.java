@@ -876,7 +876,7 @@ public class BlockGrabPreset extends NewPunchingStand {
                     this.getSelf().getY() + this.getSelf().getEyeHeight(), this.getSelf().getZ(),
                     standEntity.getHeldItem());
             $$4.setPickUpDelay(40);
-            $$4.setThrower(this.getSelf().getUUID());
+            $$4.setThrower(this.getSelf());
             PowerTypes.copyPlaneOfExisting(self,$$4);
             this.getSelf().level().addFreshEntity($$4);
         }
@@ -1181,7 +1181,7 @@ public class BlockGrabPreset extends NewPunchingStand {
                                 ((IMinecartItemAccess)ME).roundabout$getType()
                         );
 
-                        if (stack.hasCustomHoverName()) {
+                        if (stack.has(net.minecraft.core.component.DataComponents.CUSTOM_NAME)) {
                             $$7.setCustomName(stack.getHoverName());
                         }
                         $$7.setYRot(this.getSelf().getYRot());

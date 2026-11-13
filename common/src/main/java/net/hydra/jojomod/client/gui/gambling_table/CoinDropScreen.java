@@ -58,7 +58,7 @@ public class CoinDropScreen extends Screen {
 
     @Override
     public void render(GuiGraphics graphics, int mouseX, int mouseY, float partialTick) {
-        this.renderBackground(graphics);
+        this.renderBackground(graphics, mouseX, mouseY, partialTick);
 
         //normal cup
         int centerX = this.width / 2;

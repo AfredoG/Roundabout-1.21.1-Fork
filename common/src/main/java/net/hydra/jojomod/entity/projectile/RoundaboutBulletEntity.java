@@ -456,7 +456,7 @@ public class RoundaboutBulletEntity extends AbstractArrow {
         this.setDeltaMovement(Vec3.ZERO);
         if (!level().isClientSide) {
             Block blkk = this.level().getBlockState($$0.getBlockPos()).getBlock();
-            if (blkk instanceof AbstractGlassBlock || blkk instanceof StainedGlassPaneBlock
+            if (blkk instanceof TransparentBlock || blkk instanceof StainedGlassPaneBlock
                     || blkk.defaultBlockState().is(Blocks.GLASS_PANE)){
                 if (this.level().removeBlock($$0.getBlockPos(),false)){
                     blockBreakParticles(blkk,

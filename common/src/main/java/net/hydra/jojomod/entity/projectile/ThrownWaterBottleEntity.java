@@ -20,7 +20,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.Potion;
-import net.minecraft.world.item.alchemy.PotionUtils;
+import net.hydra.jojomod.util.PotionData;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.AbstractCandleBlock;
@@ -58,7 +58,7 @@ public class ThrownWaterBottleEntity extends ThrowableItemProjectile implements 
     }
 
     @Override
-    protected float getGravity() {
+    protected double getDefaultGravity() {
         return 0.05F;
     }
 
@@ -96,18 +96,18 @@ public class ThrownWaterBottleEntity extends ThrowableItemProjectile implements 
         super.onHit($$0);
         if (!this.level().isClientSide) {
             ItemStack $$1 = this.getItem();
-            Potion $$2 = PotionUtils.getPotion($$1);
-            List<MobEffectInstance> $$3 = PotionUtils.getMobEffects($$1);
+            var contents = PotionData.contents($$1);
+            List<MobEffectInstance> $$3 = PotionData.getMobEffects($$1);
             splashWater();
 
-            int $$5 = $$2.hasInstantEffects() ? 2007 : 2002;
-            this.level().levelEvent($$5, this.blockPosition(), PotionUtils.getColor($$1));
+            int $$5 = java.util.stream.StreamSupport.stream(contents.getAllEffects().spliterator(), false).anyMatch(effect -> effect.getEffect().value().isInstantenous()) ? 2007 : 2002;
+            this.level().levelEvent($$5, this.blockPosition(), PotionData.getColor($$1));
             this.discard();
         }
     }
 
 
-    private void makeAreaOfEffectCloud(ItemStack $$0, Potion $$1) {
+    private void makeAreaOfEffectCloud(ItemStack $$0, net.minecraft.core.Holder<Potion> $$1) {
         AreaEffectCloud $$2 = new AreaEffectCloud(this.level(), this.getX(), this.getY(), this.getZ());
         Entity $$3 = this.getOwner();
         if ($$3 instanceof LivingEntity) {
@@ -118,16 +118,7 @@ public class ThrownWaterBottleEntity extends ThrowableItemProjectile implements 
         $$2.setRadiusOnUse(-0.5F);
         $$2.setWaitTime(10);
         $$2.setRadiusPerTick(-$$2.getRadius() / (float)$$2.getDuration());
-        $$2.setPotion($$1);
-
-        for (MobEffectInstance $$4 : PotionUtils.getCustomEffects($$0)) {
-            $$2.addEffect(new MobEffectInstance($$4));
-        }
-
-        CompoundTag $$5 = $$0.getTag();
-        if ($$5 != null && $$5.contains("CustomPotionColor", 99)) {
-            $$2.setFixedColor($$5.getInt("CustomPotionColor"));
-        }
+        $$2.setPotionContents(PotionData.contents($$0).withPotion($$1));
 
         this.level().addFreshEntity($$2);
     }

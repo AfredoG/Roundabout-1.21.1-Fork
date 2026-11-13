@@ -268,7 +268,7 @@ public class ModBlocks {
                     .strength(0F, 0F)
                     .sound(SoundType.MUD)
                     .pushReaction(PushReaction.DESTROY)
-                    .noParticlesOnBreak()
+                    .noTerrainParticles()
             );
 
     public static Block COLD_AIR_PROPERTIES =
@@ -821,12 +821,12 @@ public class ModBlocks {
     public static InvisiBlock INVISIBLE_BLOCK_PROPERTIES = new InvisiBlock(
             BlockBehaviour.Properties.of().mapColor(MapColor.NONE).forceSolidOn().noOcclusion().strength(-1.0F, 3600000.0F).lightLevel((p_152607_) -> {
                 return 1;
-            }).noParticlesOnBreak().pushReaction(PushReaction.IGNORE).sound(SoundType.EMPTY));
+            }).noTerrainParticles().pushReaction(PushReaction.IGNORE).sound(SoundType.EMPTY));
 
     public static D4CPortalBlock D4C_PORTAL_PROPERTIES = new D4CPortalBlock(
             BlockBehaviour.Properties.of().mapColor(MapColor.NONE).noOcclusion().strength(-1.0F, 3600000.0F).lightLevel((p_152607_) -> {
                 return 10;
-            }).noParticlesOnBreak().noCollission().pushReaction(PushReaction.IGNORE).sound(SoundType.EMPTY));
+            }).noTerrainParticles().noCollission().pushReaction(PushReaction.IGNORE).sound(SoundType.EMPTY));
     public static StereoBlock STEREO_PROPERTIES = new StereoBlock(
 
             BlockBehaviour.Properties.of().mapColor(MapColor.RAW_IRON).
@@ -843,7 +843,7 @@ public class ModBlocks {
 
             BlockBehaviour.Properties.of().mapColor(MapColor.RAW_IRON).pushReaction(PushReaction.DESTROY).lightLevel((p_152607_) -> {
                         return 15;
-                    }).noParticlesOnBreak().
+                    }).noTerrainParticles().
                     instrument(NoteBlockInstrument.BASS).strength(0, 0));
     public static Block FLESH_BLOCK_PROPERTIES = new FleshBlock(
             BlockBehaviour.Properties.of()
@@ -855,16 +855,16 @@ public class ModBlocks {
     public static BubbleScaffoldBlock BUBBLE_SCAFFOLD_BLOCK_PROPERTIES = new BubbleScaffoldBlock(
             BlockBehaviour.Properties.of().mapColor(MapColor.FIRE).noCollission().dynamicShape().speedFactor(0.7F).replaceable().instabreak().lightLevel((p_152607_) -> {
                 return 1;
-            }).noParticlesOnBreak().pushReaction(PushReaction.DESTROY).sound(SoundType.EMPTY));
+            }).noTerrainParticles().pushReaction(PushReaction.DESTROY).sound(SoundType.EMPTY));
     //copying the bubble scaffold code for diver down's limb, but removing the speed reducer since the tradeoff is that you're only limited to 4, and it's only placable on walls/floor.
     public static DiverLimbBlock DIVER_LIMB_BLOCK_PROPERTIES = new DiverLimbBlock(
             BlockBehaviour.Properties.of().mapColor(MapColor.FIRE).noCollission().dynamicShape().instabreak().lightLevel((p_152607_) -> {
                 return 1;
-            }).noParticlesOnBreak().pushReaction(PushReaction.DESTROY).sound(SoundType.EMPTY));
+            }).noTerrainParticles().pushReaction(PushReaction.DESTROY).sound(SoundType.EMPTY));
     public static SilverChariotRapierPlatformBlock SC_RAPIER_PLATFORM_BLOCK_PROPERTIES = new SilverChariotRapierPlatformBlock(
             BlockBehaviour.Properties.of().mapColor(MapColor.FIRE).noCollission().dynamicShape().instabreak().lightLevel((p_152607_) -> {
                 return 1;
-            }).noParticlesOnBreak().pushReaction(PushReaction.DESTROY).sound(SoundType.EMPTY));
+            }).noTerrainParticles().pushReaction(PushReaction.DESTROY).sound(SoundType.EMPTY));
     public static GEBushBlock GE_BUSH_BLOCK_PROPERTIES = new GEBushBlock(
             BlockBehaviour.Properties.of().mapColor(MapColor.PLANT)
                     .noCollission()
@@ -876,31 +876,31 @@ public class ModBlocks {
     public static StandFireBlock STAND_FIRE_PROPERTIES = new StandFireBlock(
             BlockBehaviour.Properties.of().mapColor(MapColor.FIRE).replaceable().noCollission().instabreak().lightLevel((p_152607_) -> {
                 return 15;
-            }).noParticlesOnBreak().pushReaction(PushReaction.DESTROY).sound(SoundType.EMPTY));
+            }).noTerrainParticles().pushReaction(PushReaction.DESTROY).sound(SoundType.EMPTY));
     public static FireBlock ORANGE_FIRE_PROPERTIES = new FireBlock(
             BlockBehaviour.Properties.of().mapColor(MapColor.FIRE).replaceable().noCollission().instabreak().lightLevel((p_152607_) -> {
                 return 15;
-            }).noParticlesOnBreak().pushReaction(PushReaction.DESTROY).sound(SoundType.EMPTY));
+            }).noTerrainParticles().pushReaction(PushReaction.DESTROY).sound(SoundType.EMPTY));
     public static FireBlock BLUE_FIRE_PROPERTIES = new FireBlock(
             BlockBehaviour.Properties.of().mapColor(MapColor.FIRE).replaceable().noCollission().instabreak().lightLevel((p_152607_) -> {
                 return 15;
-            }).noParticlesOnBreak().pushReaction(PushReaction.DESTROY).sound(SoundType.EMPTY));
+            }).noTerrainParticles().pushReaction(PushReaction.DESTROY).sound(SoundType.EMPTY));
     public static FireBlock PURPLE_FIRE_PROPERTIES = new FireBlock(
             BlockBehaviour.Properties.of().mapColor(MapColor.FIRE).replaceable().noCollission().instabreak().lightLevel((p_152607_) -> {
                 return 15;
-            }).noParticlesOnBreak().pushReaction(PushReaction.DESTROY).sound(SoundType.EMPTY));
+            }).noTerrainParticles().pushReaction(PushReaction.DESTROY).sound(SoundType.EMPTY));
     public static FireBlock GREEN_FIRE_PROPERTIES = new FireBlock(
             BlockBehaviour.Properties.of().mapColor(MapColor.FIRE).replaceable().noCollission().instabreak().lightLevel((p_152607_) -> {
                 return 15;
-            }).noParticlesOnBreak().pushReaction(PushReaction.DESTROY).sound(SoundType.EMPTY));
+            }).noTerrainParticles().pushReaction(PushReaction.DESTROY).sound(SoundType.EMPTY));
     public static FireBlock DREAD_FIRE_PROPERTIES = new FireBlock(
             BlockBehaviour.Properties.of().mapColor(MapColor.FIRE).replaceable().noCollission().instabreak().lightLevel((p_152607_) -> {
                 return 15;
-            }).noParticlesOnBreak().pushReaction(PushReaction.DESTROY).sound(SoundType.EMPTY));
+            }).noTerrainParticles().pushReaction(PushReaction.DESTROY).sound(SoundType.EMPTY));
     public static FireBlock CREAM_FIRE_PROPERTIES = new FireBlock(
             BlockBehaviour.Properties.of().mapColor(MapColor.FIRE).replaceable().noCollission().instabreak().lightLevel((p_152607_) -> {
                 return 15;
-            }).noParticlesOnBreak().pushReaction(PushReaction.DESTROY).sound(SoundType.EMPTY));
+            }).noTerrainParticles().pushReaction(PushReaction.DESTROY).sound(SoundType.EMPTY));
 
     public static EquippableStoneMaskBlock EQUIPPABLE_STONE_MASK_PROPERTIES = new EquippableStoneMaskBlock(
             BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_RED).strength(0.35F).sound(SoundType.STONE).pushReaction(PushReaction.DESTROY).lightLevel((L) -> {

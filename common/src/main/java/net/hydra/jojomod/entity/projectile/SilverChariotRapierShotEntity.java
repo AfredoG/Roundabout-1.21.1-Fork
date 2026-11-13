@@ -196,27 +196,27 @@ public class SilverChariotRapierShotEntity extends AbstractArrow implements Unbu
     }
 
     public int getBounces() {
-        if (this.getEntityData().hasItem(ROUNDABOUT$BOUNCES)) {
+        if (net.hydra.jojomod.util.TrackedData.has(this.getEntityData(), ROUNDABOUT$BOUNCES)) {
             this.getEntityData().get(ROUNDABOUT$BOUNCES);
         }
         return 0;
     }
 
     public void setBounces(int bounces) {
-        if (this.getEntityData().hasItem(ROUNDABOUT$BOUNCES)) {
+        if (net.hydra.jojomod.util.TrackedData.has(this.getEntityData(), ROUNDABOUT$BOUNCES)) {
             this.getEntityData().set(ROUNDABOUT$BOUNCES, bounces);
         }
     }
 
     public byte getRapierShotType() {
-        if (this.getEntityData().hasItem(ROUNDABOUT$TYPE)) {
+        if (net.hydra.jojomod.util.TrackedData.has(this.getEntityData(), ROUNDABOUT$TYPE)) {
             return this.getEntityData().get(ROUNDABOUT$TYPE);
         }
         return BASE;
     }
 
     public void setRapierShotType(byte type) {
-        if (this.getEntityData().hasItem(ROUNDABOUT$TYPE)) {
+        if (net.hydra.jojomod.util.TrackedData.has(this.getEntityData(), ROUNDABOUT$TYPE)) {
             this.getEntityData().set(ROUNDABOUT$TYPE, type);
         }
     }
@@ -496,10 +496,10 @@ public class SilverChariotRapierShotEntity extends AbstractArrow implements Unbu
     protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
         super.defineSynchedData(builder);
         /*
-        if (!this.getEntityData().hasItem(USER_ID)) {
-            this.getEntityData().define(USER_ID, -1);
-            this.getEntityData().define(ROUNDABOUT$TYPE, BASE);
-            this.getEntityData().define(ROUNDABOUT$BOUNCES, 0);
+        if (!net.hydra.jojomod.util.TrackedData.has(builder, USER_ID)) {
+            builder.define(USER_ID, -1);
+            builder.define(ROUNDABOUT$TYPE, BASE);
+            builder.define(ROUNDABOUT$BOUNCES, 0);
         }
 
          */

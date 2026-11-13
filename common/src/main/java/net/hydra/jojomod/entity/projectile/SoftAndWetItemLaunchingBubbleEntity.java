@@ -136,7 +136,7 @@ public class SoftAndWetItemLaunchingBubbleEntity extends SoftAndWetBubbleEntity{
                             this.getY() + this.getEyeHeight(), this.getZ(),
                             getHeldItem());
                     $$4.setPickUpDelay(40);
-                    $$4.setThrower(this.standUser.getUUID());
+                    $$4.setThrower(this.standUser);
                     standUser.level().addFreshEntity($$4);
                 } else {
                     ItemEntity $$4 = new ItemEntity(this.level(), this.getX(),
@@ -180,7 +180,7 @@ public class SoftAndWetItemLaunchingBubbleEntity extends SoftAndWetBubbleEntity{
                 if (bs.getBlock() instanceof TntBlock tnt){
                         this.level().setBlock($$0.getBlockPos(), Blocks.AIR.defaultBlockState(), 3);
                         wasExploded(this.level(),$$0.getBlockPos());
-                } else if (bs.getBlock() instanceof AbstractGlassBlock || bs.getBlock() instanceof StainedGlassPaneBlock
+                } else if (bs.getBlock() instanceof TransparentBlock || bs.getBlock() instanceof StainedGlassPaneBlock
                         || bs.getBlock().defaultBlockState().is(Blocks.GLASS_PANE) || bs.is(BlockTags.LEAVES)
                         || bs.is(BlockTags.ICE)){
                     this.level().setBlock($$0.getBlockPos(), Blocks.AIR.defaultBlockState(), 3);

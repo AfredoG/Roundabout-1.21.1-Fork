@@ -69,12 +69,12 @@ public class ReturningObjectEntity extends ThrowableItemProjectile {
 
     @Override
     protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
-        if (!this.getEntityData().hasItem(RETURN_POS)) {
-            this.getEntityData().define(BLOCK_STATE, Blocks.DIRT.defaultBlockState());
-            this.getEntityData().define(RETURN_POS, BlockPos.ZERO);
-            this.getEntityData().define(BOX_START, BlockPos.ZERO);
-            this.getEntityData().define(BOX_END, BlockPos.ZERO);
-            this.getEntityData().define(LIFETIME, 0);
+        if (!net.hydra.jojomod.util.TrackedData.has(builder, RETURN_POS)) {
+            builder.define(BLOCK_STATE, Blocks.DIRT.defaultBlockState());
+            builder.define(RETURN_POS, BlockPos.ZERO);
+            builder.define(BOX_START, BlockPos.ZERO);
+            builder.define(BOX_END, BlockPos.ZERO);
+            builder.define(LIFETIME, 0);
         }
     }
 

@@ -1006,7 +1006,7 @@ public abstract class StandEntity extends Mob implements NoVibrationEntity {
                         double $$3 = this.getEyeY() - 0.3F;
                         ItemEntity $$4 = new ItemEntity(this.level(), this.getX(), $$3, this.getZ(), this.getHeldItem());
                         $$4.setPickUpDelay(40);
-                        $$4.setThrower(this.getUUID());
+                        $$4.setThrower(this);
                         this.level().addFreshEntity($$4);
                         this.setHeldItem(ItemStack.EMPTY);
                     }
@@ -1055,7 +1055,7 @@ public abstract class StandEntity extends Mob implements NoVibrationEntity {
                     double $$3 = this.getEyeY() - 0.3F;
                     ItemEntity $$4 = new ItemEntity(this.level(), this.getX(), $$3, this.getZ(), this.getHeldItem().copy());
                     $$4.setPickUpDelay(40);
-                    $$4.setThrower(this.getUUID());
+                    $$4.setThrower(this);
                     this.level().addFreshEntity($$4);
                     this.setHeldItem(ItemStack.EMPTY);
                     discard();
@@ -1070,7 +1070,7 @@ public abstract class StandEntity extends Mob implements NoVibrationEntity {
                         double $$3 = this.getEyeY() - 0.3F;
                         ItemEntity $$4 = new ItemEntity(this.level(), this.getX(), $$3, this.getZ(), ME.getHeldItemManhattan().copy());
                         $$4.setPickUpDelay(40);
-                        $$4.setThrower(this.getUUID());
+                        $$4.setThrower(this);
                         this.level().addFreshEntity($$4);
                         ME.setHeldItemManhattan(ItemStack.EMPTY);
                     } else if (ME.getHeldItemManhattan().is(Items.IRON_INGOT)){
@@ -1099,7 +1099,7 @@ public abstract class StandEntity extends Mob implements NoVibrationEntity {
                     double $$3 = this.getEyeY() - 0.3F;
                     ItemEntity $$4 = new ItemEntity(this.level(), this.getX(), $$3, this.getZ(), this.getHeldItem().copy());
                     $$4.setPickUpDelay(40);
-                    $$4.setThrower(this.getUUID());
+                    $$4.setThrower(this);
                     this.level().addFreshEntity($$4);
                     this.setHeldItem(ItemStack.EMPTY);
             }
@@ -1110,7 +1110,7 @@ public abstract class StandEntity extends Mob implements NoVibrationEntity {
                     double $$3 = this.getEyeY() - 0.3F;
                     ItemEntity $$4 = new ItemEntity(this.level(), this.getX(), $$3, this.getZ(), ME.getHeldItemManhattan().copy());
                     $$4.setPickUpDelay(40);
-                    $$4.setThrower(this.getUUID());
+                    $$4.setThrower(this);
                     this.level().addFreshEntity($$4);
                     ME.setHeldItemManhattan(ItemStack.EMPTY);
                 } else if (ME.getHeldItemManhattan().is(Items.IRON_INGOT)){
@@ -1180,7 +1180,7 @@ public abstract class StandEntity extends Mob implements NoVibrationEntity {
     }
 
     public boolean isTechnicallyInWall() {
-        float $$0 = this.getDimensions(this.getPose()).width * 0.8F;
+        float $$0 = this.getDimensions(this.getPose()).width() * 0.8F;
         AABB $$1 = AABB.ofSize(this.getEyePosition(), (double)$$0, 1.0E-6, (double)$$0);
         return BlockPos.betweenClosedStream($$1)
                 .anyMatch(
@@ -1197,7 +1197,7 @@ public abstract class StandEntity extends Mob implements NoVibrationEntity {
                 );
     }
     public boolean isTechnicallyInImpassableWall() {
-        float $$0 = this.getDimensions(this.getPose()).width * 0.8F;
+        float $$0 = this.getDimensions(this.getPose()).width() * 0.8F;
         AABB $$1 = AABB.ofSize(this.getEyePosition(), (double)$$0, 1.0E-6, (double)$$0);
         return BlockPos.betweenClosedStream($$1)
                 .anyMatch(

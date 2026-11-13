@@ -69,7 +69,7 @@ public class BlackSabbathModel<T extends BlackSabbathEntity> extends StandModel<
         if (entity.getUser() != null) {
             LivingEntity User = entity.getUser();
             if (!mc.isPaused() && !(((TimeStop) entity.level()).CanTimeStopEntity(User))) {
-                float tickDelta = mc.getDeltaFrameTime();
+                float tickDelta = mc.getTimer().getGameTimeDeltaTicks();
             }
         }
         super.defaultModifiers(entity);
@@ -231,7 +231,7 @@ public class BlackSabbathModel<T extends BlackSabbathEntity> extends StandModel<
         StandUser SU = (StandUser) pEntity.getUser();
         if (SU != null) {
             if (SU.roundabout$getStandPowers() instanceof PowersBlackSabbath PBS) {
-                float tickDelta = mc.getDeltaFrameTime();
+                float tickDelta = mc.getTimer().getGameTimeDeltaTicks();
                 float tickDelta2 = Math.min(tickDelta, 2);
                 float r = pEntity.getUser().getViewXRot(tickDelta2);
                 float r2 = pEntity.getViewYRot(tickDelta2);

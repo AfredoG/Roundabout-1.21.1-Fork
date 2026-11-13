@@ -78,10 +78,10 @@ public abstract class LivingEntityDiscData extends Entity implements DiscBearer 
     }
 
     @Inject(method = "defineSynchedData", at = @At("TAIL"))
-    private void roundabout$defineDiscData(CallbackInfo ci) {
-        if (!this.entityData.hasItem(ROUNDABOUT$HAS_MEMORY)) {
-            this.entityData.define(ROUNDABOUT$HAS_MEMORY, true);
-            this.entityData.define(ROUNDABOUT$MEMORY_PERSONALITY,
+    private void roundabout$defineDiscData(net.minecraft.network.syncher.SynchedEntityData.Builder builder, CallbackInfo ci) {
+        if (!net.hydra.jojomod.util.TrackedData.has(builder, ROUNDABOUT$HAS_MEMORY)) {
+            builder.define(ROUNDABOUT$HAS_MEMORY, true);
+            builder.define(ROUNDABOUT$MEMORY_PERSONALITY,
                     MemoryPersonality.classify((LivingEntity) (Object) this));
         }
     }

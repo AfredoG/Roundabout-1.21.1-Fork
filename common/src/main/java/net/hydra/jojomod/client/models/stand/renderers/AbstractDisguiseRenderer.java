@@ -147,10 +147,10 @@ public abstract class AbstractDisguiseRenderer extends LivingEntityRenderer<Livi
     }
 
     @Override
-    protected void setupRotations(LivingEntity entity, PoseStack poseStack, float ageInTicks, float rotationYaw, float partialTicks) {
+    protected void setupRotations(LivingEntity entity, PoseStack poseStack, float ageInTicks, float rotationYaw, float partialTicks, float entityScale) {
         float swimAmount = entity.getSwimAmount(partialTicks);
         if (entity.isFallFlying()) {
-            super.setupRotations(entity, poseStack, ageInTicks, rotationYaw, partialTicks);
+            super.setupRotations(entity, poseStack, ageInTicks, rotationYaw, partialTicks, entityScale);
             float fallFlyingTicks = (float) entity.getFallFlyingTicks() + partialTicks;
             float progress = Mth.clamp(fallFlyingTicks * fallFlyingTicks / 100.0F, 0.0F, 1.0F);
             if (!entity.isAutoSpinAttack()) {
@@ -166,7 +166,7 @@ public abstract class AbstractDisguiseRenderer extends LivingEntityRenderer<Livi
                 poseStack.mulPose(Axis.YP.rotation((float) (Math.signum(m) * Math.acos(l))));
             }
         } else if (swimAmount > 0.0F) {
-            super.setupRotations(entity, poseStack, ageInTicks, rotationYaw, partialTicks);
+            super.setupRotations(entity, poseStack, ageInTicks, rotationYaw, partialTicks, entityScale);
             float pitch = entity.isInWater() ? -90.0F - entity.getXRot() : -90.0F;
             float lean = Mth.lerp(swimAmount, 0.0F, pitch);
             poseStack.mulPose(Axis.XP.rotationDegrees(lean));
@@ -174,7 +174,7 @@ public abstract class AbstractDisguiseRenderer extends LivingEntityRenderer<Livi
                 poseStack.translate(0.0F, -1.0F, 0.3F);
             }
         } else {
-            super.setupRotations(entity, poseStack, ageInTicks, rotationYaw, partialTicks);
+            super.setupRotations(entity, poseStack, ageInTicks, rotationYaw, partialTicks, entityScale);
         }
     }
 }

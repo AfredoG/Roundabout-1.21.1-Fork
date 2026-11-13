@@ -40,7 +40,7 @@ public class ConcealedFlameObjectEntity extends ThrowableItemProjectile implemen
     private void initDataTrackerRoundabout(CallbackInfo ci) {
     }
     @Override
-    protected float getGravity() {
+    protected double getDefaultGravity() {
         return 0.0F;
     }
 
@@ -202,7 +202,7 @@ public class ConcealedFlameObjectEntity extends ThrowableItemProjectile implemen
                 pos.getY() + 0.25F, pos.getZ() + 0.5F,
                 this.getItem());
         $$4.setPickUpDelay(40);
-        $$4.setThrower(this.getUUID());
+        $$4.setThrower(this);
         $$4.setDeltaMovement(Math.random() * 0.1F - 0.05F, 0.2F, Math.random() * 0.18F - 0.05F);
         this.level().addFreshEntity($$4);
     }

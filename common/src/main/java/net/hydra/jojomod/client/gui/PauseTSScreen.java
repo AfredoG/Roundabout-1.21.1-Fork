@@ -127,7 +127,7 @@ public class PauseTSScreen extends Screen {
 
     public void render(GuiGraphics p_281899_, int p_281431_, int p_283183_, float p_281435_) {
         if (this.showPauseMenu) {
-            this.renderBackground(p_281899_);
+            this.renderBackground(p_281899_, p_281431_, p_283183_, p_281435_);
         }
 
         super.render(p_281899_, p_281431_, p_283183_, p_281435_);

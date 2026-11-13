@@ -11,7 +11,7 @@ import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.projectile.Arrow;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.alchemy.PotionUtils;
+import net.hydra.jojomod.util.PotionData;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
 
@@ -36,7 +36,7 @@ public class BombPlantedArrow extends Arrow {
     public void setEffectsFromItem(ItemStack $$0) {
         super.setEffectsFromItem($$0);
         if ($$0.is(Items.TIPPED_ARROW)) {
-            effects = PotionUtils.getCustomEffects($$0);
+            effects = PotionData.getCustomEffects($$0);
         }
     }
 

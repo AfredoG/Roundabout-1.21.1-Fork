@@ -47,6 +47,7 @@ public class RoundaboutModForge {
         ForgeSounds.SOUNDS.register(bus);
         ForgeBlocks.BLOCKS.register(bus);
         ForgeBlocks.BLOCK_ENTITIES.register(bus);
+        ForgeItems.ARMOR_MATERIALS.register(bus);
         ForgeItems.ITEMS.register(bus);
 
         ForgeItems.POTIONS.register(bus);
@@ -63,6 +64,7 @@ public class RoundaboutModForge {
         bus.addListener(this::commonSetup);
         bus.addListener(this::loadComplete);
         NeoForge.EVENT_BUS.addListener(this::entityLifeCycle);
+        NeoForge.EVENT_BUS.addListener(net.hydra.jojomod.Utils.ForgeBrewingRecipes::register);
 
 
         Roundabout.LOGGER.info("Hello Forge world!");
