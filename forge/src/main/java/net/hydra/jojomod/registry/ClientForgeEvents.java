@@ -41,7 +41,6 @@ import net.hydra.jojomod.client.models.npcs.ZombieAestheticianModel;
 import net.hydra.jojomod.client.models.npcs.renderers.ZombieAestheticianRenderer;
 import net.hydra.jojomod.particles.*;
 import net.hydra.jojomod.util.MainUtil;
-import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.model.SilverfishModel;
 import net.minecraft.client.particle.ExplodeParticle;
 import net.minecraft.client.renderer.BiomeColors;
@@ -55,8 +54,8 @@ import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.ModelEvent;
 import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
 import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
+import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 
@@ -68,20 +67,24 @@ public class ClientForgeEvents {
         // This runs on client during mod loading (after registries)
         MainUtil.setClient();
         event.enqueueWork(() -> {
-            //Diver Down custom workbenches registry
-            MenuScreens.register(ForgeMenus.DIVER_DOWN_CRAFTING.get(), DiverDownCraftingScreen::new);
-            MenuScreens.register(ForgeMenus.DIVER_DOWN_ANVIL.get(), DiverDownAnvilScreen::new);
-            MenuScreens.register(ForgeMenus.DIVER_DOWN_SMITHING.get(), DiverDownSmithingScreen::new);
-            MenuScreens.register(ForgeMenus.DIVER_DOWN_STONECUTTER.get(), DiverDownStonecutterScreen::new);
-            MenuScreens.register(ForgeMenus.DIVER_DOWN_LOOM.get(), DiverDownLoomScreen::new);
-            //DD workbench registry end
-            MenuScreens.register(ForgeMenus.GAMBLING_TABLE.get(), GamblingTableScreen::new);
-            MenuScreens.register(ForgeMenus.LYIN_EYES_INVENTORY.get(), LyinEyesInventoryScreen::new);
             ItemBlockRenderTypes.setRenderLayer(ForgeBlocks.HALLUCINATORY_ACID.get(), RenderType.translucent());
             ItemBlockRenderTypes.setRenderLayer(ForgeBlocks.HALLUCINATORY_ACID_WALL.get(), RenderType.translucent());
             ItemBlockRenderTypes.setRenderLayer(ForgeBlocks.GE_VINE.get(), RenderType.cutout());
         });
     }
+    @SubscribeEvent
+    public static void registerMenuScreens(RegisterMenuScreensEvent event) {
+        //Diver Down custom workbenches registry
+        event.register(ForgeMenus.DIVER_DOWN_CRAFTING.get(), DiverDownCraftingScreen::new);
+        event.register(ForgeMenus.DIVER_DOWN_ANVIL.get(), DiverDownAnvilScreen::new);
+        event.register(ForgeMenus.DIVER_DOWN_SMITHING.get(), DiverDownSmithingScreen::new);
+        event.register(ForgeMenus.DIVER_DOWN_STONECUTTER.get(), DiverDownStonecutterScreen::new);
+        event.register(ForgeMenus.DIVER_DOWN_LOOM.get(), DiverDownLoomScreen::new);
+        //DD workbench registry end
+        event.register(ForgeMenus.GAMBLING_TABLE.get(), GamblingTableScreen::new);
+        event.register(ForgeMenus.LYIN_EYES_INVENTORY.get(), LyinEyesInventoryScreen::new);
+    }
+
     @SubscribeEvent
     public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
         event.registerEntityRenderer(ForgeEntities.TERRIER_DOG.get(), TerrierEntityRenderer::new);
@@ -701,8 +704,8 @@ public class ClientForgeEvents {
     @SubscribeEvent
     public static void modifyWhitesnakeBakedModels(ModelEvent.ModifyBakingResult event) {
         event.getModels().replaceAll((id, model) -> {
-            if (!id.getNamespace().equals(Roundabout.MOD_ID)) return model;
-            String path = id.getPath();
+            if (!id.id().getNamespace().equals(Roundabout.MOD_ID)) return model;
+            String path = id.id().getPath();
             return path.equals("hallucinatory_acid") || path.equals("hallucinatory_acid_wall")
                     ? new HallucinationAcidBakedModel(model) : model;
         });
