@@ -523,6 +523,12 @@ public class SilverChariotRapierShotEntity extends AbstractArrow implements Unbu
          */
     }
 
+    /** AbstractArrow persists a nonempty item; getPickupItem() still forbids actual pickup. */
+    @Override
+    protected ItemStack getDefaultPickupItem() {
+        return new ItemStack(net.minecraft.world.item.Items.ARROW);
+    }
+
     @Override
     protected ItemStack getPickupItem() {
         return ItemStack.EMPTY;

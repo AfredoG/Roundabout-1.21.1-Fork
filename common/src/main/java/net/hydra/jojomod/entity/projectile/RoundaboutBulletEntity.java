@@ -53,11 +53,11 @@ public class RoundaboutBulletEntity extends AbstractArrow {
     }
 
     public RoundaboutBulletEntity(Level level, LivingEntity livingEntity) {
-        super(ModEntities.ROUNDABOUT_BULLET_ENTITY, livingEntity, level);
+        super(ModEntities.ROUNDABOUT_BULLET_ENTITY, livingEntity, level, new ItemStack(net.minecraft.world.item.Items.ARROW), null);
         setNoGravity(true);
     }
     public RoundaboutBulletEntity(Level $$0, LivingEntity $$1, ItemStack $$2, double p_36862_, double p_36863_, double p_36864_) {
-        super(ModEntities.ROUNDABOUT_BULLET_ENTITY, p_36862_, p_36863_, p_36864_, $$0);
+        super(ModEntities.ROUNDABOUT_BULLET_ENTITY, p_36862_, p_36863_, p_36864_, $$0, new ItemStack(net.minecraft.world.item.Items.ARROW), null);
     }
 
     public List<Vec3> getTrailPoints() {
@@ -342,9 +342,8 @@ public class RoundaboutBulletEntity extends AbstractArrow {
         this.inGround = true;
         this.shakeTime = 7;
         this.setCritArrow(false);
-        this.setPierceLevel((byte)0);
+        ((net.hydra.jojomod.access.IAbstractArrowAccess) this).roundabout$setPierceLevel((byte)0);
         this.setSoundEvent(SoundEvents.ARROW_HIT);
-        this.setShotFromCrossbow(false);
         ((IAbstractArrowAccess)this).roundabout$resetPiercedEntities();
     }
 
@@ -434,6 +433,12 @@ public class RoundaboutBulletEntity extends AbstractArrow {
                 this.trailPoints.clear();
             }
         }
+    }
+
+    /** AbstractArrow persists a nonempty item; getPickupItem() still forbids actual pickup. */
+    @Override
+    protected ItemStack getDefaultPickupItem() {
+        return new ItemStack(net.minecraft.world.item.Items.ARROW);
     }
 
     @Override

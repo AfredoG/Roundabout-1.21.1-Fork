@@ -30,6 +30,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
@@ -51,8 +52,15 @@ public class BladedBowlerHatEntity extends AbstractArrow {
 
     public void setItem(ItemStack stack){
         this.bowlerHatItem = stack == null ? ItemStack.EMPTY : stack.copy();
-        this.entityData.set(ID_LOYALTY, (byte) EnchantmentHelper.getLoyalty(this.bowlerHatItem));
+        this.entityData.set(ID_LOYALTY, (byte) roundabout$getLoyalty(this.bowlerHatItem));
         this.entityData.set(ID_FOIL, this.bowlerHatItem.hasFoil());
+    }
+
+    private byte roundabout$getLoyalty(ItemStack stack) {
+        return this.level() instanceof net.minecraft.server.level.ServerLevel serverLevel
+                ? (byte) net.minecraft.util.Mth.clamp(
+                        EnchantmentHelper.getTridentReturnToOwnerAcceleration(serverLevel, stack, this), 0, 127)
+                : 0;
     }
 
     public BladedBowlerHatEntity(EntityType<? extends BladedBowlerHatEntity> type, Level level) {
@@ -63,13 +71,13 @@ public class BladedBowlerHatEntity extends AbstractArrow {
             super(ModEntities.BLADED_BOWLER_HAT, livingEntity, level, itemStack, null);
             bowlerHatItem = itemStack;
             this.bowlerHatItem = itemStack.copy();
-            this.entityData.set(ID_LOYALTY, (byte) EnchantmentHelper.getLoyalty(itemStack));
+            this.entityData.set(ID_LOYALTY, (byte) roundabout$getLoyalty(itemStack));
             this.entityData.set(ID_FOIL, itemStack.hasFoil());
         }
     public BladedBowlerHatEntity(Level $$0, LivingEntity $$1, ItemStack $$2, double p_36862_, double p_36863_, double p_36864_) {
         super(ModEntities.BLADED_BOWLER_HAT, p_36862_, p_36863_, p_36864_, $$0, $$2, null);
         this.bowlerHatItem = $$2.copy();
-        this.entityData.set(ID_LOYALTY, (byte) EnchantmentHelper.getLoyalty($$2));
+        this.entityData.set(ID_LOYALTY, (byte) roundabout$getLoyalty($$2));
         this.entityData.set(ID_FOIL, $$2.hasFoil());
     }
 
@@ -210,10 +218,9 @@ public class BladedBowlerHatEntity extends AbstractArrow {
         Entity owner = this.getOwner();
         ItemStack stack = this.bowlerHatItem.copy();
 
-        if (owner instanceof LivingEntity livingEntity) {
-            stack.hurtAndBreak(1, livingEntity, e -> {
-
-            });
+        if (owner instanceof LivingEntity livingEntity
+                && this.level() instanceof net.minecraft.server.level.ServerLevel serverLevel) {
+            stack.hurtAndBreak(1, serverLevel, livingEntity, item -> {});
         }
         return stack;
     }
@@ -341,9 +348,8 @@ public class BladedBowlerHatEntity extends AbstractArrow {
                 }
 
                 if ($$1 instanceof LivingEntity $$7) {
-                    if ($$4 instanceof LivingEntity) {
-                        EnchantmentHelper.doPostHurtEffects($$7, $$4);
-                        EnchantmentHelper.doPostDamageEffects((LivingEntity)$$4, $$7);
+                    if ($$4 instanceof LivingEntity && this.level() instanceof net.minecraft.server.level.ServerLevel serverLevel) {
+                        EnchantmentHelper.doPostAttackEffectsWithItemSource(serverLevel, $$7, $$5, this.bowlerHatItem);
                     }
 
                     this.doPostHurtEffects($$7);
@@ -395,7 +401,8 @@ public class BladedBowlerHatEntity extends AbstractArrow {
         }
 
         public boolean isChanneling() {
-            return EnchantmentHelper.hasChanneling(this.bowlerHatItem);
+            return this.bowlerHatItem.getEnchantmentLevel(this.registryAccess().lookupOrThrow(
+                    net.minecraft.core.registries.Registries.ENCHANTMENT).getOrThrow(Enchantments.CHANNELING)) > 0;
         }
 
         @Override
@@ -418,7 +425,7 @@ public class BladedBowlerHatEntity extends AbstractArrow {
             }
 
             this.dealtDamage = $$0.getBoolean("DealtDamage");
-            this.entityData.set(ID_LOYALTY, (byte)EnchantmentHelper.getLoyalty(this.bowlerHatItem));
+            this.entityData.set(ID_LOYALTY, (byte)roundabout$getLoyalty(this.bowlerHatItem));
         }
 
         @Override

@@ -38,7 +38,7 @@ public abstract class PlayerMixin implements JJFLauncherAccess {
     @Inject(method = "addAdditionalSaveData", at = @At("TAIL"))
     private void jjf$saveLauncherState(CompoundTag tag, CallbackInfo ci) {
         CompoundTag jjfTag = tag.getCompound("jjf");
-        jjfTag.put("Launcher", jjf$launcherState.save());
+        jjfTag.put("Launcher", jjf$launcherState.save(((Player) (Object) this).registryAccess()));
         tag.put("jjf", jjfTag);
     }
 
@@ -56,7 +56,7 @@ public abstract class PlayerMixin implements JJFLauncherAccess {
             return;
         }
 
-        jjf$launcherState.load(jjfTag.getCompound("Launcher"));
+        jjf$launcherState.load(jjfTag.getCompound("Launcher"), ((Player) (Object) this).registryAccess());
         jjf$setLoadedAmmoCount(jjf$launcherState.getLoadedCount());
     }
 }

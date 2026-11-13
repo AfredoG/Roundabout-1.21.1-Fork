@@ -51,6 +51,13 @@ public class HarpoonEntity extends AbstractArrow {
         public boolean isThrown = false;
         public int clientSideReturnTridentTickCount;
 
+    private byte roundabout$getLoyalty(ItemStack stack) {
+        return this.level() instanceof net.minecraft.server.level.ServerLevel serverLevel
+                ? (byte) net.minecraft.util.Mth.clamp(
+                        EnchantmentHelper.getTridentReturnToOwnerAcceleration(serverLevel, stack, this), 0, 127)
+                : 0;
+    }
+
     public HarpoonEntity(EntityType<? extends HarpoonEntity> $$0, Level $$1) {
             super($$0, $$1);
         }
@@ -58,13 +65,13 @@ public class HarpoonEntity extends AbstractArrow {
     public HarpoonEntity(Level $$0, LivingEntity $$1, ItemStack $$2) {
             super(ModEntities.THROWN_HARPOON, $$1, $$0, $$2, null);
             this.harpoonItem = $$2.copy();
-            this.entityData.set(ID_LOYALTY, (byte) EnchantmentHelper.getLoyalty($$2));
+            this.entityData.set(ID_LOYALTY, (byte) roundabout$getLoyalty($$2));
             this.entityData.set(ID_FOIL, $$2.hasFoil());
         }
     public HarpoonEntity(Level $$0, LivingEntity $$1, ItemStack $$2, double p_36862_, double p_36863_, double p_36864_) {
         super(ModEntities.THROWN_HARPOON, p_36862_, p_36863_, p_36864_, $$0, $$2, null);
         this.harpoonItem = $$2.copy();
-        this.entityData.set(ID_LOYALTY, (byte) EnchantmentHelper.getLoyalty($$2));
+        this.entityData.set(ID_LOYALTY, (byte) roundabout$getLoyalty($$2));
         this.entityData.set(ID_FOIL, $$2.hasFoil());
     }
 
@@ -212,9 +219,8 @@ public class HarpoonEntity extends AbstractArrow {
         this.inGround = true;
         this.shakeTime = 7;
         this.setCritArrow(false);
-        this.setPierceLevel((byte)0);
+        ((net.hydra.jojomod.access.IAbstractArrowAccess) this).roundabout$setPierceLevel((byte)0);
         this.setSoundEvent(SoundEvents.ARROW_HIT);
-        this.setShotFromCrossbow(false);
         ((IAbstractArrowAccess)this).roundabout$resetPiercedEntities();
     }
 
@@ -226,13 +232,16 @@ public class HarpoonEntity extends AbstractArrow {
             Entity $$1 = $$0.getEntity();
             float $$2 = 7.0F;
             if ($$1 instanceof LivingEntity $$3) {
-                int f = EnchantmentHelper.getEnchantmentLevel(Enchantments.PROJECTILE_PROTECTION, $$3);
+                int f = EnchantmentHelper.getEnchantmentLevel(this.registryAccess().lookupOrThrow(
+                        net.minecraft.core.registries.Registries.ENCHANTMENT).getOrThrow(Enchantments.PROJECTILE_PROTECTION), $$3);
                 $$2 = (float) ($$2 * (1-(f*0.03)));
-                $$2 += EnchantmentHelper.getDamageBonus(this.harpoonItem, $$3.getMobType());
             }
 
             Entity $$4 = this.getOwner();
             DamageSource $$5 = ModDamageTypes.of(this.level(),ModDamageTypes.HARPOON,this, (Entity)($$4 == null ? this : $$4));
+            if (this.level() instanceof net.minecraft.server.level.ServerLevel serverLevel) {
+                $$2 = EnchantmentHelper.modifyDamage(serverLevel, this.harpoonItem, $$1, $$5, $$2);
+            }
             this.dealtDamage = true;
 
             skyHit = false;
@@ -267,9 +276,8 @@ public class HarpoonEntity extends AbstractArrow {
                 }
 
                 if ($$1 instanceof LivingEntity $$7) {
-                    if ($$4 instanceof LivingEntity) {
-                        EnchantmentHelper.doPostHurtEffects($$7, $$4);
-                        EnchantmentHelper.doPostDamageEffects((LivingEntity)$$4, $$7);
+                    if ($$4 instanceof LivingEntity && this.level() instanceof net.minecraft.server.level.ServerLevel serverLevel) {
+                        EnchantmentHelper.doPostAttackEffectsWithItemSource(serverLevel, $$7, $$5, this.harpoonItem);
                     }
 
                     this.doPostHurtEffects($$7);
@@ -330,7 +338,8 @@ public class HarpoonEntity extends AbstractArrow {
         }
 
         public boolean isChanneling() {
-            return EnchantmentHelper.hasChanneling(this.harpoonItem);
+            return this.harpoonItem.getEnchantmentLevel(this.registryAccess().lookupOrThrow(
+                    net.minecraft.core.registries.Registries.ENCHANTMENT).getOrThrow(Enchantments.CHANNELING)) > 0;
         }
 
         @Override
@@ -353,7 +362,7 @@ public class HarpoonEntity extends AbstractArrow {
             }
 
             this.dealtDamage = $$0.getBoolean("DealtDamage");
-            this.entityData.set(ID_LOYALTY, (byte)EnchantmentHelper.getLoyalty(this.harpoonItem));
+            this.entityData.set(ID_LOYALTY, (byte)roundabout$getLoyalty(this.harpoonItem));
         }
 
         @Override

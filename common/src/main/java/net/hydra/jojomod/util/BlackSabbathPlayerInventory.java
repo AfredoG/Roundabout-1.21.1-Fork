@@ -1,6 +1,7 @@
 package net.hydra.jojomod.util;
 
 import net.hydra.jojomod.access.IPlayerEntity;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.network.chat.Component;
@@ -21,7 +22,7 @@ public class BlackSabbathPlayerInventory extends SimpleContainer {
     }
 
     @Override
-    public void fromTag(ListTag $$0) {
+    public void fromTag(ListTag $$0, HolderLookup.Provider registries) {
         for (int $$1 = 0; $$1 < this.getContainerSize(); $$1++) {
             this.setItem($$1, ItemStack.EMPTY);
         }
@@ -30,21 +31,20 @@ public class BlackSabbathPlayerInventory extends SimpleContainer {
             CompoundTag $$3 = $$0.getCompound($$2);
             int $$4 = $$3.getByte("Slot") & 255;
             if ($$4 >= 0 && $$4 < this.getContainerSize()) {
-                this.setItem($$4, ItemStack.of($$3));
+                this.setItem($$4, ItemStack.parseOptional(registries, $$3));
             }
         }
     }
 
     @Override
-    public ListTag createTag() {
+    public ListTag createTag(HolderLookup.Provider registries) {
         ListTag $$0 = new ListTag();
 
         for (int $$1 = 0; $$1 < this.getContainerSize(); $$1++) {
             ItemStack $$2 = this.getItem($$1);
             if (!$$2.isEmpty()) {
-                CompoundTag $$3 = new CompoundTag();
+                CompoundTag $$3 = (CompoundTag) $$2.save(registries);
                 $$3.putByte("Slot", (byte)$$1);
-                $$2.save($$3);
                 $$0.add($$3);
             }
         }

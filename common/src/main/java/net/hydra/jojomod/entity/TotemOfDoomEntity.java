@@ -167,7 +167,7 @@ public class TotemOfDoomEntity extends Entity implements ItemSupplier {
     @Override
     protected void readAdditionalSaveData(CompoundTag tag) {
         if (tag.contains("Item", 10)) {
-            this.setItem(ItemStack.of(tag.getCompound("Item")));
+            this.setItem(ItemStack.parseOptional(this.registryAccess(), tag.getCompound("Item")));
         }
         this.life = tag.getInt("Life");
     }
@@ -176,7 +176,7 @@ public class TotemOfDoomEntity extends Entity implements ItemSupplier {
     protected void addAdditionalSaveData(CompoundTag tag) {
         ItemStack item = this.getEntityData().get(DATA_ITEM_STACK);
         if (!item.isEmpty()) {
-            tag.put("Item", item.save(new CompoundTag()));
+            tag.put("Item", item.saveOptional(this.registryAccess()));
         }
         tag.putInt("Life", this.life);
     }

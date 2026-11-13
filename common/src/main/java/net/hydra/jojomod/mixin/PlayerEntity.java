@@ -1344,13 +1344,13 @@ public abstract class PlayerEntity extends LivingEntity implements IPlayerEntity
         ItemStack m2 = this.roundabout$maskInventory.getItem(1);
         if (!m1.isEmpty() || $$0.contains("roundabout.Mask", 10)) {
             CompoundTag compoundtag = new CompoundTag();
-            $$0.put("roundabout.Mask",m1.save(compoundtag));
+            $$0.put("roundabout.Mask",m1.saveOptional(this.registryAccess()));
         }
         if (!m2.isEmpty() || $$0.contains("roundabout.VoiceMask", 10)) {
             CompoundTag compoundtag = new CompoundTag();
-            $$0.put("roundabout.VoiceMask",m2.save(compoundtag));
+            $$0.put("roundabout.VoiceMask",m2.saveOptional(this.registryAccess()));
         }
-        $$0.put("BlackSabbathPlayerItems", this.rdbt$blckSabbathInventory.createTag());
+        $$0.put("BlackSabbathPlayerItems", this.rdbt$blckSabbathInventory.createTag(this.registryAccess()));
         CompoundTag compoundtag = $$0.getCompound("roundabout");
         compoundtag.putInt("anchorPlace",roundabout$anchorPlace);
         compoundtag.putInt("anchorPlaceAttack",roundabout$anchorPlaceAttack);
@@ -1423,19 +1423,19 @@ public abstract class PlayerEntity extends LivingEntity implements IPlayerEntity
         ((StandUser)this).roundabout$setLocacacaCurse($$0.getByte("roundabout.LocacacaCurse"));
         if ($$0.contains("roundabout.Mask", 10)) {
             CompoundTag compoundtag = $$0.getCompound("roundabout.Mask");
-            ItemStack itemstack = ItemStack.of(compoundtag);
+            ItemStack itemstack = ItemStack.parseOptional(this.registryAccess(), compoundtag);
             if (!itemstack.isEmpty() && itemstack.getItem() instanceof MaskItem SD){
                 this.roundabout$maskInventory.setItem(0,itemstack);
             }
         }if ($$0.contains("roundabout.VoiceMask", 10)) {
             CompoundTag compoundtag = $$0.getCompound("roundabout.VoiceMask");
-            ItemStack itemstack = ItemStack.of(compoundtag);
+            ItemStack itemstack = ItemStack.parseOptional(this.registryAccess(), compoundtag);
             if (!itemstack.isEmpty() && itemstack.getItem() instanceof MaskItem SD){
                 this.roundabout$maskInventory.setItem(1,itemstack);
             }
         }
         if ($$0.contains("BlackSabbathPlayerItems", 9)) {
-            this.rdbt$blckSabbathInventory.fromTag($$0.getList("BlackSabbathPlayerItems", 10));
+            this.rdbt$blckSabbathInventory.fromTag($$0.getList("BlackSabbathPlayerItems", 10), this.registryAccess());
         }
         CompoundTag compoundtag2 = $$0.getCompound("roundabout");
         if (compoundtag2.contains("anchorPlace")) {

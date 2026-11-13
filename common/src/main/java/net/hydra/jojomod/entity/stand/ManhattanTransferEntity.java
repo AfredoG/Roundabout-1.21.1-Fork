@@ -149,19 +149,21 @@ public class ManhattanTransferEntity extends StandEntity {
     @Override
     public void addAdditionalSaveData(CompoundTag $$0) {
         $$0.putBoolean("roundabout.AcquireHeldItem", this.canAcquireHeldItem);
-        CompoundTag compoundtag = new CompoundTag();
-        $$0.put("roundabout.HeldItem", this.getHeldItemManhattan().save(compoundtag));
-        $$0.put("roundabout.HeldItem", this.getHeldItemManhattanFull().save(compoundtag));
+        $$0.put("roundabout.ManhattanHeldItem", this.getHeldItemManhattan().saveOptional(this.registryAccess()));
+        $$0.put("roundabout.ManhattanHeldItemFull", this.getHeldItemManhattanFull().saveOptional(this.registryAccess()));
         super.addAdditionalSaveData($$0);
     }
 
     @Override
     public void readAdditionalSaveData(CompoundTag $$0) {
         this.canAcquireHeldItem = $$0.getBoolean("roundabout.AcquireHeldItem");
-        CompoundTag compoundtag = $$0.getCompound("roundabout.HeldItem");
-        ItemStack itemstack = ItemStack.of(compoundtag);
-        this.setHeldItemManhattan(itemstack);
-        this.setHeldItemManhattanFull(itemstack);
+        // Older saves used the base stand's key for both slots. Read it only as a fallback.
+        CompoundTag held = $$0.getCompound($$0.contains("roundabout.ManhattanHeldItem", 10)
+                ? "roundabout.ManhattanHeldItem" : "roundabout.HeldItem");
+        CompoundTag full = $$0.getCompound($$0.contains("roundabout.ManhattanHeldItemFull", 10)
+                ? "roundabout.ManhattanHeldItemFull" : "roundabout.HeldItem");
+        this.setHeldItemManhattan(ItemStack.parseOptional(this.registryAccess(), held));
+        this.setHeldItemManhattanFull(ItemStack.parseOptional(this.registryAccess(), full));
         super.readAdditionalSaveData($$0);
     }
 

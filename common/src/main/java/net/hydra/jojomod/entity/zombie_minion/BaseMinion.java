@@ -669,11 +669,11 @@ public class BaseMinion extends PathfinderMob {
         ItemStack m2 = getBodyItem();
         if (!m1.isEmpty() || $$0.contains("headItem", 10)) {
             CompoundTag compoundtag = new CompoundTag();
-            $$0.put("headItem",m1.save(compoundtag));
+            $$0.put("headItem",m1.saveOptional(this.registryAccess()));
         }
         if (!m2.isEmpty() || $$0.contains("bodyItem", 10)) {
             CompoundTag compoundtag = new CompoundTag();
-            $$0.put("bodyItem",m2.save(compoundtag));
+            $$0.put("bodyItem",m2.saveOptional(this.registryAccess()));
         }
         super.addAdditionalSaveData($$0);
     }
@@ -690,13 +690,13 @@ public class BaseMinion extends PathfinderMob {
         }
         if ($$0.contains("headItem", 10)) {
             CompoundTag compoundtag = $$0.getCompound("headItem");
-            ItemStack itemstack = ItemStack.of(compoundtag);
+            ItemStack itemstack = ItemStack.parseOptional(this.registryAccess(), compoundtag);
             if (!itemstack.isEmpty() && itemstack.getItem() instanceof HeadRemainsItem SD){
                 setHeadItem(itemstack);
             }
         }if ($$0.contains("bodyItem", 10)) {
             CompoundTag compoundtag = $$0.getCompound("bodyItem");
-            ItemStack itemstack = ItemStack.of(compoundtag);
+            ItemStack itemstack = ItemStack.parseOptional(this.registryAccess(), compoundtag);
             if (!itemstack.isEmpty() && itemstack.getItem() instanceof BodyRemainsItem SD){
                 setBodyItem(itemstack);
             }

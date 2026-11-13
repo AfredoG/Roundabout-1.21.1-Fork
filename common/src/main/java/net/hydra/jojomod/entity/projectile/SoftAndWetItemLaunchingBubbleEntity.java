@@ -54,7 +54,7 @@ public class SoftAndWetItemLaunchingBubbleEntity extends SoftAndWetBubbleEntity{
     @Override
     public void addAdditionalSaveData(CompoundTag $$0){
         CompoundTag compoundtag = new CompoundTag();
-        $$0.put("roundabout.HeldItem",this.getHeldItem().save(compoundtag));
+        $$0.put("roundabout.HeldItem",this.getHeldItem().saveOptional(this.registryAccess()));
         $$0.putBoolean("roundabout.ditchedItem",hasDitchedItem);
         $$0.putBoolean("roundabout.canGiveYouItem",canGiveYouItem);
         $$0.putFloat("roundabout.speed",getSped());
@@ -63,7 +63,7 @@ public class SoftAndWetItemLaunchingBubbleEntity extends SoftAndWetBubbleEntity{
     @Override
     public void readAdditionalSaveData(CompoundTag $$0){
         CompoundTag compoundtag = $$0.getCompound("roundabout.HeldItem");
-        ItemStack itemstack = ItemStack.of(compoundtag);
+        ItemStack itemstack = ItemStack.parseOptional(this.registryAccess(), compoundtag);
         hasDitchedItem = $$0.getBoolean("roundabout.ditchedItem");
         canGiveYouItem = $$0.getBoolean("roundabout.canGiveYouItem");
         setSped($$0.getFloat("roundabout.speed"));

@@ -50,11 +50,11 @@ public class BadCompanyBulletEntity extends AbstractArrow {
     }
 
     public BadCompanyBulletEntity(Level level, LivingEntity livingEntity) {
-        super(ModEntities.BAD_COMPANY_BULLET_ENTITY, livingEntity, level);
+        super(ModEntities.BAD_COMPANY_BULLET_ENTITY, livingEntity, level, new ItemStack(net.minecraft.world.item.Items.ARROW), null);
         setNoGravity(true);
     }
     public BadCompanyBulletEntity(Level $$0, LivingEntity $$1, ItemStack $$2, double p_36862_, double p_36863_, double p_36864_) {
-        super(ModEntities.BAD_COMPANY_BULLET_ENTITY, p_36862_, p_36863_, p_36864_, $$0);
+        super(ModEntities.BAD_COMPANY_BULLET_ENTITY, p_36862_, p_36863_, p_36864_, $$0, new ItemStack(net.minecraft.world.item.Items.ARROW), null);
     }
 
     public List<Vec3> getTrailPoints() {
@@ -174,9 +174,8 @@ public class BadCompanyBulletEntity extends AbstractArrow {
         this.inGround = true;
         this.shakeTime = 7;
         this.setCritArrow(false);
-        this.setPierceLevel((byte)0);
+        ((net.hydra.jojomod.access.IAbstractArrowAccess) this).roundabout$setPierceLevel((byte)0);
         this.setSoundEvent(SoundEvents.ARROW_HIT);
-        this.setShotFromCrossbow(false);
         ((IAbstractArrowAccess)this).roundabout$resetPiercedEntities();
         discard();
     }
@@ -212,6 +211,12 @@ public class BadCompanyBulletEntity extends AbstractArrow {
             }
         }
 
+    }
+
+    /** AbstractArrow persists a nonempty item; getPickupItem() still forbids actual pickup. */
+    @Override
+    protected ItemStack getDefaultPickupItem() {
+        return new ItemStack(net.minecraft.world.item.Items.ARROW);
     }
 
     @Override

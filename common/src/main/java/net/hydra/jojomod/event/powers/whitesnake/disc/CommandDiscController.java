@@ -66,7 +66,7 @@ public final class CommandDiscController {
         if (!COMMAND_DISCS.containsKey(commanded)) return;
         CompoundTag discs = new CompoundTag();
         COMMAND_DISCS.get(commanded).forEach((command, stack) ->
-                discs.put(command.name(), stack.save(new CompoundTag())));
+                discs.put(command.name(), stack.saveOptional(commanded.registryAccess())));
         tag.put("roundabout.CommandDiscs", discs);
     }
 
@@ -78,7 +78,7 @@ public final class CommandDiscController {
         CompoundTag discs = tag.getCompound("roundabout.CommandDiscs");
         for (CommandDiscItem.Command command : CommandDiscItem.Command.values()) {
             if (!discs.contains(command.name(), 10)) continue;
-            ItemStack stack = ItemStack.of(discs.getCompound(command.name()));
+            ItemStack stack = ItemStack.parseOptional(commanded.registryAccess(), discs.getCompound(command.name()));
             if (stack.getItem() instanceof CommandDiscItem disc && disc.getCommand() == command
                     && stack.getDamageValue() < stack.getMaxDamage()) {
                 stack.setCount(1);

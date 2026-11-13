@@ -394,7 +394,7 @@ public class ThrownObjectEntity extends ThrowableItemProjectile {
         $$0.putBoolean("roundabout.AcquireHeldItem",places);
         $$0.putByte("roundabout.style",getStyle());
         CompoundTag compoundtag = new CompoundTag();
-        $$0.put("roundabout.HeldItem",this.getItem().save(compoundtag));
+        $$0.put("roundabout.HeldItem",this.getItem().saveOptional(this.registryAccess()));
         super.addAdditionalSaveData($$0);
     }
     @Override
@@ -402,7 +402,7 @@ public class ThrownObjectEntity extends ThrowableItemProjectile {
         this.places = $$0.getBoolean("roundabout.AcquireHeldItem");
         setStyle($$0.getByte("roundabout.style"));
         CompoundTag compoundtag = $$0.getCompound("roundabout.HeldItem");
-        ItemStack itemstack = ItemStack.of(compoundtag);
+        ItemStack itemstack = ItemStack.parseOptional(this.registryAccess(), compoundtag);
         this.setItem(itemstack);
         super.readAdditionalSaveData($$0);
     }

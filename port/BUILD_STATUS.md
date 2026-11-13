@@ -8,36 +8,35 @@
 - Gradle help: успешно.
 - Подготовка исходников и классов Minecraft/NeoForge: успешно.
 - processResources: успешно; проверены метаданные, access transformer, mixin-конфигурации и 141 рецепт.
-- Последняя сохранённая полная диагностика compileJava: НЕУСПЕШНО, 1203 ошибки, 18 предупреждений.
-- После начала переноса арбалетов наблюдалась проверка с 1184 ошибками; её журнал утрачен при перезапуске среды.
-- Текущие исходники после последующих правок НЕ прошли новую компиляцию: загрузка Gradle в восстановленной среде блокируется сетью; также отсутствует полный JDK.
+- compileJava: НЕУСПЕШНО, 1064 ошибки, 18 предупреждений (последняя полная проверка текущих исходников).
+- JDK 21 и Gradle восстановлены; подготовка Minecraft/NeoForge и processResources прошли в новой среде.
 - JAR для установки: отсутствует.
 - Запуск клиента и выделенного сервера полного мода: не выполнен (компиляция не проходит).
 - Помощник обновления: проверены чистое слияние, конфликт, отказ при незакоммиченных изменениях.
 - GitHub Actions: конфигурация добавлена, удалённый запуск не выполнялся.
 
 Список ошибок — build-errors.txt. Ошибки могут быть каскадными; их число не является оценкой процента готовности.
-Текущая проверка выполнена на полноценном JDK 21; обход определения пути Java не потребовался.
+Текущая проверка выполнена на Azul JDK 21.0.6 и Gradle 8.14.3; зависимости восстановлены заново.
 
 ## Основные категории оставшихся ошибок компиляции
 
 | Ошибка | Количество |
 |---|---:|
-| cannot find symbol | 676 |
-| method does not override or implement a method from a supertype | 140 |
-| incompatible types: CompoundTag cannot be converted to Provider | 29 |
-| incompatible types: double cannot be converted to LivingEntity | 17 |
-| incompatible types: ResourceKey<Enchantment> cannot be converted to Holder<Enchantment> | 11 |
+| cannot find symbol | 614 |
+| method does not override or implement a method from a supertype | 138 |
 | minecraft has private access in Gui | 11 |
 | method isCorrectToolForDrops in class Item cannot be applied to given types; | 9 |
+| incompatible types: ResourceKey<Enchantment> cannot be converted to Holder<Enchantment> | 7 |
 | constructor LootAdder in class LootAdder cannot be applied to given types; | 7 |
 | <M,U>register(MenuType<? extends M>,ScreenConstructor<M,U>) has private access in MenuScreens | 7 |
-| incompatible types: ItemStack cannot be converted to ItemCost | 6 |
 | isCollisionShapeFullBlock(BlockState,BlockGetter,BlockPos) has protected access in BlockBehaviour | 6 |
+| incompatible types: ItemStack cannot be converted to ItemCost | 6 |
 | package minecraft does not exist | 6 |
 | incompatible types: Reference<SoundEvent> cannot be converted to SoundEvent | 5 |
+| invalid method reference | 5 |
+| incompatible types: MobEffect cannot be converted to Holder<MobEffect> | 5 |
+| incompatible types: double cannot be converted to LivingEntity | 5 |
 | method getFoodProperties in interface IItemExtension cannot be applied to given types; | 5 |
-| incompatible types: BlockGetter cannot be converted to LevelReader | 5 |
 
 ## Что требуется закончить
 
@@ -100,3 +99,21 @@
 - git diff --check проходит. Игровые тесты не запускались. Клиентский/серверный JAR отсутствует.
 
 Следующий шаг: восстановить JDK 21 и доступ к зависимостям, выполнить compileJava из neoforge. Затем закончить остальные подклассы AbstractArrow (пули, Tusk, Ratt, рапира), enchantment API у гарпуна/шляпы и mixin конструкторов с изменённой гравитацией. Отдельно проверить корректность сетевой синхронизации pickupItemStack и дополнительных полей предметов после загрузки мира.
+
+## Последний этап — проверен компилятором 11 ноября 2026
+
+Этот раздел заменяет прежние ограничения по отсутствию JDK/сети: доступ к загрузкам восстановлен, сборка снова доходит до Java-компиляции.
+
+- ItemStack в 13 классах сущностей сохраняется через saveOptional(registryAccess) и читается через parseOptional. Пустые предметы сохраняются без вызова save, который не допускает пустой стек.
+- Manhattan Transfer: раздельные NBT-ключи ManhattanHeldItem и ManhattanHeldItemFull; чтение старого HeldItem оставлено как fallback. Ключ базового StandEntity больше не перезаписывает оба слота.
+- JJFLauncherState и его player mixin передают HolderLookup.Provider; сохранены счётчик заряда, копирование предмета и сброс времени выстрела при загрузке.
+- CommandDiscController, LivingEntityDiscData, маски игрока: сериализация предметов с реестрами.
+- BlackSabbathPlayerInventory: новые сигнатуры SimpleContainer, сохранение Slot вместе с компонентами предмета; пустые позиции не уплотняются.
+- Конструкторы семи видов неподбираемых снарядов переведены на API 1.21.1. Внутренний default item непустой (требование AbstractArrow.save), но getPickupItem остаётся EMPTY: подбираемая стрела из них не создаётся.
+- GravityAbstractArrowMixin: обновлён дескриптор конструктора; старый локальный ModifyVariable(require=0) заменён Redirect applyGravity. Точка вызова подтверждена javap по compiledWithNeoForge; учитываются getGravity и направление GravityAPI. Игровое применение mixin ещё не проверено.
+- Гарпун и шляпа: современная лояльность, эффекты попадания, проверка Channeling, обработка прочности и бонусов урона. Исходная логика возврата в tick сохранена.
+- Приватный setPierceLevel вызывается через ранее добавленный invoker. Удалены несуществующие setShotFromCrossbow(false) у классов, которые не имеют оружия-арбалета.
+- Проверки compileJava: 1108 → 1078 → 1068 → 1064 ошибки. У этих перенесённых классов снарядов, JJFLauncherState и BlackSabbathPlayerInventory в последнем логе нет ошибок Java; это не проверка поведения в игре.
+- git diff --check проходит. Клиент/сервер не запускались; JAR для игры отсутствует.
+
+Продолжать с port/build-errors.txt: музыка и RecordItem, рендеринг/GUI, предметы и эффекты зачарований, события NeoForge. У Manhattan Transfer остаётся перенос захвата/выпуска стрел (getKnockback/setKnockback и createArrow с оружием), что отдельно отмечено компилятором. До игры требуется проверка всех mixin, сохранения/загрузки, сетевой синхронизации и поведения предметов.

@@ -207,7 +207,7 @@ public class RattDartEntity extends AbstractArrow {
 
     private int life = 0;
     public RattDartEntity(Level world, LivingEntity player,byte type) {
-        super(ModEntities.RATT_DART, player, world);
+        super(ModEntities.RATT_DART, player, world, new ItemStack(net.minecraft.world.item.Items.ARROW), null);
         this.setShotType(type);
         if (type != BASIC) {
             this.setBounces(1);
@@ -215,7 +215,7 @@ public class RattDartEntity extends AbstractArrow {
     }
 
     public RattDartEntity(Level world, LivingEntity player) {
-        super(ModEntities.RATT_DART, player, world);
+        super(ModEntities.RATT_DART, player, world, new ItemStack(net.minecraft.world.item.Items.ARROW), null);
         alignDart(player);
     }
 
@@ -327,6 +327,12 @@ public class RattDartEntity extends AbstractArrow {
         this.shootWithVariance((double)$$6, (double)$$7, (double)$$8, $$4, $$5);
     }
 
+    /** AbstractArrow persists a nonempty item; getPickupItem() still forbids actual pickup. */
+    @Override
+    protected ItemStack getDefaultPickupItem() {
+        return new ItemStack(net.minecraft.world.item.Items.ARROW);
+    }
+
     @Override
     protected ItemStack getPickupItem() {
         return ItemStack.EMPTY;
@@ -344,9 +350,8 @@ public class RattDartEntity extends AbstractArrow {
         this.inGround = true;
         this.shakeTime = 7;
         this.setCritArrow(false);
-        this.setPierceLevel((byte)0);
+        ((net.hydra.jojomod.access.IAbstractArrowAccess) this).roundabout$setPierceLevel((byte)0);
         this.setSoundEvent(SoundEvents.ARROW_HIT);
-        this.setShotFromCrossbow(false);
         ((IAbstractArrowAccess)this).roundabout$resetPiercedEntities();
     }
     public void applyEffect(LivingEntity $$1) {
@@ -454,9 +459,8 @@ public class RattDartEntity extends AbstractArrow {
                 }
                 applyEffect($$7);
                 $$1.setDeltaMovement($$1.getDeltaMovement().multiply(0.4,0.4,0.4));
-                if ($$4 instanceof LivingEntity) {
-                    EnchantmentHelper.doPostHurtEffects($$7, $$4);
-                    EnchantmentHelper.doPostDamageEffects((LivingEntity) $$4, $$7);
+                if ($$4 instanceof LivingEntity && this.level() instanceof net.minecraft.server.level.ServerLevel serverLevel) {
+                    EnchantmentHelper.doPostAttackEffectsWithItemSource(serverLevel, $$7, $$5, this.getWeaponItem());
                 }
 
                 this.doPostHurtEffects($$7);

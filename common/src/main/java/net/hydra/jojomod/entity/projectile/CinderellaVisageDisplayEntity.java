@@ -158,13 +158,13 @@ public class CinderellaVisageDisplayEntity extends ThrowableItemProjectile imple
     @Override
     public void addAdditionalSaveData(CompoundTag $$0){
         CompoundTag compoundtag = new CompoundTag();
-        $$0.put("roundabout.HeldItem",this.getItem().save(compoundtag));
+        $$0.put("roundabout.HeldItem",this.getItem().saveOptional(this.registryAccess()));
         super.addAdditionalSaveData($$0);
     }
     @Override
     public void readAdditionalSaveData(CompoundTag $$0){
         CompoundTag compoundtag = $$0.getCompound("roundabout.HeldItem");
-        ItemStack itemstack = ItemStack.of(compoundtag);
+        ItemStack itemstack = ItemStack.parseOptional(this.registryAccess(), compoundtag);
         this.setItem(itemstack);
         super.readAdditionalSaveData($$0);
     }

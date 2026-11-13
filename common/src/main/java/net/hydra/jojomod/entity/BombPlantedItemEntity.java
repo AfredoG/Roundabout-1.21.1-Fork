@@ -94,7 +94,7 @@ public class BombPlantedItemEntity extends Entity implements TraceableEntity {
         }
 
         if (!this.getItem().isEmpty()) {
-            $$0.put("Item", this.getItem().save(new CompoundTag()));
+            $$0.put("Item", this.getItem().saveOptional(this.registryAccess()));
         }
     }
 
@@ -115,7 +115,7 @@ public class BombPlantedItemEntity extends Entity implements TraceableEntity {
         }
 
         CompoundTag $$1 = $$0.getCompound("Item");
-        this.setItem(ItemStack.of($$1));
+        this.setItem(ItemStack.parseOptional(this.registryAccess(), $$1));
         if (this.getItem().isEmpty()) {
             this.discard();
         }

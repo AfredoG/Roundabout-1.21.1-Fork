@@ -44,7 +44,7 @@ public class DNACreationEntity extends LivingEntity {
     public void addAdditionalSaveData(CompoundTag tag) {
         super.addAdditionalSaveData(tag);
         if (!this.getDNAItem().isEmpty()) {
-            tag.put("DNAItem", this.getDNAItem().save(new CompoundTag()));
+            tag.put("DNAItem", this.getDNAItem().saveOptional(this.registryAccess()));
         }
         tag.putInt("TransformTicks", this.tickCount);
     }
@@ -53,7 +53,7 @@ public class DNACreationEntity extends LivingEntity {
     public void readAdditionalSaveData(CompoundTag tag) {
         super.readAdditionalSaveData(tag);
         if (tag.contains("DNAItem")) {
-            this.setDNAItem(ItemStack.of(tag.getCompound("DNAItem")));
+            this.setDNAItem(ItemStack.parseOptional(this.registryAccess(), tag.getCompound("DNAItem")));
         }
         if (tag.contains("TransformTicks")) {
             this.tickCount = tag.getInt("TransformTicks");

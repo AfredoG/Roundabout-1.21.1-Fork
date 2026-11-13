@@ -1167,14 +1167,14 @@ public abstract class StandEntity extends Mob implements NoVibrationEntity {
     public void addAdditionalSaveData(CompoundTag $$0){
             $$0.putBoolean("roundabout.AcquireHeldItem",this.canAcquireHeldItem);
             CompoundTag compoundtag = new CompoundTag();
-            $$0.put("roundabout.HeldItem",this.getHeldItem().save(compoundtag));
+            $$0.put("roundabout.HeldItem",this.getHeldItem().saveOptional(this.registryAccess()));
         super.addAdditionalSaveData($$0);
     }
     @Override
     public void readAdditionalSaveData(CompoundTag $$0){
         this.canAcquireHeldItem = $$0.getBoolean("roundabout.AcquireHeldItem");
         CompoundTag compoundtag = $$0.getCompound("roundabout.HeldItem");
-        ItemStack itemstack = ItemStack.of(compoundtag);
+        ItemStack itemstack = ItemStack.parseOptional(this.registryAccess(), compoundtag);
         this.setHeldItem(itemstack);
         super.readAdditionalSaveData($$0);
     }

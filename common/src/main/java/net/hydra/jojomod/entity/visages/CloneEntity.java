@@ -147,7 +147,7 @@ public class CloneEntity extends PathfinderMob {
 
         if (!getVisage().isEmpty() || tag.contains("roundabout.Mask", 10)) {
             CompoundTag compoundtag = new CompoundTag();
-            tag.put("roundabout.Mask",getVisage().save(compoundtag));
+            tag.put("roundabout.Mask",getVisage().saveOptional(this.registryAccess()));
         }
         tag.putByte("widthFactor",roundabout$getWidthFactor());
 
@@ -158,7 +158,7 @@ public class CloneEntity extends PathfinderMob {
         super.readAdditionalSaveData(tag);
         if (tag.contains("roundabout.Mask", 10)) {
             CompoundTag compoundtag = tag.getCompound("roundabout.Mask");
-            ItemStack itemstack = ItemStack.of(compoundtag);
+            ItemStack itemstack = ItemStack.parseOptional(this.registryAccess(), compoundtag);
             if (!itemstack.isEmpty() && itemstack.getItem() instanceof MaskItem SD) {
                 setVisage(itemstack);
             }

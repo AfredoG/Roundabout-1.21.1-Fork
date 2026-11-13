@@ -24,11 +24,11 @@ public class BoneProjectileEntity extends AbstractArrow {
     }
 
     public BoneProjectileEntity(Level level, LivingEntity shooter) {
-        super(ModEntities.BONE_PROJECTILE, shooter, level);
+        super(ModEntities.BONE_PROJECTILE, shooter, level, new ItemStack(net.minecraft.world.item.Items.ARROW), null);
     }
 
     public BoneProjectileEntity(Level level, double x, double y, double z) {
-        super(ModEntities.BONE_PROJECTILE, x, y, z, level);
+        super(ModEntities.BONE_PROJECTILE, x, y, z, level, new ItemStack(net.minecraft.world.item.Items.ARROW), null);
     }
 
     @Override
@@ -49,6 +49,12 @@ public class BoneProjectileEntity extends AbstractArrow {
         }
 
         super.tick();
+    }
+
+    /** AbstractArrow persists a nonempty item; getPickupItem() still forbids actual pickup. */
+    @Override
+    protected ItemStack getDefaultPickupItem() {
+        return new ItemStack(net.minecraft.world.item.Items.ARROW);
     }
 
     @Override

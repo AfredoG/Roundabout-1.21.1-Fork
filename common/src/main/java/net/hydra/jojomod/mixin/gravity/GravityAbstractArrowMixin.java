@@ -25,31 +25,24 @@ public abstract class GravityAbstractArrowMixin extends Entity implements Tracea
         super(type, world);
     }
 
-    @ModifyVariable(
-            method = "tick()V",
-            at = @At(
-                    value = "STORE"
-            )
-            , ordinal = 0,
-            require = 0
-    )
-    public Vec3 tick(Vec3 modify) {
-        modify = new Vec3(modify.x, modify.y + 0.05, modify.z);
-        modify = RotationUtil.vecWorldToPlayer(modify, GravityAPI.getGravityDirection(this));
-        modify = new Vec3(modify.x, modify.y - 0.05, modify.z);
-        modify = RotationUtil.vecPlayerToWorld(modify, GravityAPI.getGravityDirection(this));
-        return modify;
+    @Redirect(method = "tick", at = @At(value = "INVOKE",
+            target = "Lnet/minecraft/world/entity/projectile/AbstractArrow;applyGravity()V"))
+    private void roundabout$applyGravity(AbstractArrow arrow) {
+        double acceleration = this.getGravity();
+        if (acceleration != 0.0D) {
+            this.setDeltaMovement(this.getDeltaMovement().add(RotationUtil.vecPlayerToWorld(
+                    0.0D, -acceleration, 0.0D, GravityAPI.getGravityDirection(this))));
+        }
     }
 
-
     @Inject(
-            method = "<init>(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/level/Level;)V",
+            method = "<init>(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/level/Level;Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/ItemStack;)V",
             at = @At(
                     value = "RETURN"
             )
     )
     private void rdbt$init(
-            EntityType $$0, LivingEntity $$1, Level $$2, CallbackInfo ci
+            EntityType $$0, LivingEntity $$1, Level $$2, ItemStack ammo, ItemStack weapon, CallbackInfo ci
     ) {
         Direction gravityDirection = GravityAPI.getGravityDirection($$1);
         if (gravityDirection == Direction.DOWN) return;

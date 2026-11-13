@@ -1,5 +1,6 @@
 package net.hydra.jojomod.event.powers.jumpingJackFlash;
 
+import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.world.item.ItemStack;
@@ -66,16 +67,14 @@ public class JJFLauncherState {
                 gameTime;
     }
 
-    public CompoundTag save() {
+    public CompoundTag save(HolderLookup.Provider registries) {
         CompoundTag tag =
                 new CompoundTag();
 
         if (!loadedItem.isEmpty()) {
             tag.put(
                     "LoadedItem",
-                    loadedItem.save(
-                            new CompoundTag()
-                    )
+                    loadedItem.saveOptional(registries)
             );
         }
 
@@ -83,7 +82,7 @@ public class JJFLauncherState {
     }
 
     public void load(
-            CompoundTag tag
+            CompoundTag tag, HolderLookup.Provider registries
     ) {
         clearLoadedItem();
 
@@ -95,7 +94,7 @@ public class JJFLauncherState {
                 Tag.TAG_COMPOUND
         )) {
             loadedItem =
-                    ItemStack.of(
+                    ItemStack.parseOptional(registries,
                             tag.getCompound(
                                     "LoadedItem"
                             )

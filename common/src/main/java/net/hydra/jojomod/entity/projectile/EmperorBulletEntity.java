@@ -35,6 +35,12 @@ import org.joml.Vector3f;
 import java.util.UUID;
 
 public class EmperorBulletEntity extends AbstractArrow {
+    /** AbstractArrow persists a nonempty item; getPickupItem() still forbids actual pickup. */
+    @Override
+    protected ItemStack getDefaultPickupItem() {
+        return new ItemStack(net.minecraft.world.item.Items.ARROW);
+    }
+
     @Override
     protected ItemStack getPickupItem() {
         return ItemStack.EMPTY;
@@ -49,10 +55,10 @@ public class EmperorBulletEntity extends AbstractArrow {
     }
 
     public EmperorBulletEntity(Level level, LivingEntity livingEntity) {
-        super(ModEntities.ROUNDABOUT_BULLET_ENTITY, livingEntity, level);
+        super(ModEntities.ROUNDABOUT_BULLET_ENTITY, livingEntity, level, new ItemStack(net.minecraft.world.item.Items.ARROW), null);
     }
     public EmperorBulletEntity(Level $$0, LivingEntity $$1, ItemStack $$2, double p_36862_, double p_36863_, double p_36864_) {
-        super(ModEntities.ROUNDABOUT_BULLET_ENTITY, p_36862_, p_36863_, p_36864_, $$0);
+        super(ModEntities.ROUNDABOUT_BULLET_ENTITY, p_36862_, p_36863_, p_36864_, $$0, new ItemStack(net.minecraft.world.item.Items.ARROW), null);
     }
     private double baseSpeed;
     public LivingEntity standUser;

@@ -120,10 +120,10 @@ public abstract class LivingEntityDiscData extends Entity implements DiscBearer 
             discs.put("MemoryReading", roundabout$memoryReading.copy());
         }
         if (!roundabout$getMusicDisc().isEmpty()) {
-            discs.put("MusicDisc", roundabout$getMusicDisc().save(new CompoundTag()));
+            discs.put("MusicDisc", roundabout$getMusicDisc().saveOptional(this.registryAccess()));
         }
         if (roundabout$hasTemporaryMemoryDisc()) {
-            discs.put("DreamingMemoryDisc", roundabout$temporaryMemoryDisc.save(new CompoundTag()));
+            discs.put("DreamingMemoryDisc", roundabout$temporaryMemoryDisc.saveOptional(this.registryAccess()));
             discs.put("MemoryBeforeDreaming", roundabout$memoryBeforeDreaming.copy());
         }
         tag.put("roundabout.WhitesnakeDiscs", discs);
@@ -170,9 +170,9 @@ public abstract class LivingEntityDiscData extends Entity implements DiscBearer 
         roundabout$memoryReading = discs.contains("MemoryReading", 10)
                 ? discs.getCompound("MemoryReading").copy() : new CompoundTag();
         roundabout$setMusicDisc(discs.contains("MusicDisc", 10)
-                ? ItemStack.of(discs.getCompound("MusicDisc")) : ItemStack.EMPTY);
+                ? ItemStack.parseOptional(this.registryAccess(), discs.getCompound("MusicDisc")) : ItemStack.EMPTY);
         roundabout$setTemporaryMemoryDisc(discs.contains("DreamingMemoryDisc", 10)
-                ? ItemStack.of(discs.getCompound("DreamingMemoryDisc")) : ItemStack.EMPTY);
+                ? ItemStack.parseOptional(this.registryAccess(), discs.getCompound("DreamingMemoryDisc")) : ItemStack.EMPTY);
         roundabout$setMemoryBeforeDreaming(discs.contains("MemoryBeforeDreaming", 10)
                 ? discs.getCompound("MemoryBeforeDreaming") : new CompoundTag());
         entityData.set(ROUNDABOUT$HAS_MEMORY,

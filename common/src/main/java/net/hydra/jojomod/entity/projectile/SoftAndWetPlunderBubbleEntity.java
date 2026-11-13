@@ -605,7 +605,7 @@ public class SoftAndWetPlunderBubbleEntity extends SoftAndWetBubbleEntity {
     @Override
     public void addAdditionalSaveData(CompoundTag $$0){
         CompoundTag compoundtag = new CompoundTag();
-        $$0.put("roundabout.HeldItem",this.getHeldItem().save(compoundtag));
+        $$0.put("roundabout.HeldItem",this.getHeldItem().saveOptional(this.registryAccess()));
         $$0.putBoolean("roundabout.ditchedItem",hasDitchedItem);
         $$0.putFloat("roundabout.speed",getSped());
         $$0.putBoolean("roundabout.stolenLiquid",stolenPhysicalLiquid);
@@ -614,7 +614,7 @@ public class SoftAndWetPlunderBubbleEntity extends SoftAndWetBubbleEntity {
     @Override
     public void readAdditionalSaveData(CompoundTag $$0){
         CompoundTag compoundtag = $$0.getCompound("roundabout.HeldItem");
-        ItemStack itemstack = ItemStack.of(compoundtag);
+        ItemStack itemstack = ItemStack.parseOptional(this.registryAccess(), compoundtag);
         hasDitchedItem = $$0.getBoolean("roundabout.ditchedItem");
         setSped($$0.getFloat("roundabout.speed"));
         stolenPhysicalLiquid = $$0.getBoolean("roundabout.stolenPhysicalLiquid");

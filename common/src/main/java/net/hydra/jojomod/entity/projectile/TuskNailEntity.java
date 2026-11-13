@@ -66,7 +66,7 @@ public class TuskNailEntity extends AbstractArrow {
     }
 
     public TuskNailEntity(LivingEntity $$1, Level $$2, byte act) {
-        super(ModEntities.TUSK_NAIL, $$1.getX(), $$1.getEyeY() - 0.1F, $$1.getZ(), $$2);
+        super(ModEntities.TUSK_NAIL, $$1.getX(), $$1.getEyeY() - 0.1F, $$1.getZ(), $$2, new ItemStack(net.minecraft.world.item.Items.ARROW), null);
         this.setOwner($$1);
         this.setAct(act);
     }
@@ -242,6 +242,12 @@ public class TuskNailEntity extends AbstractArrow {
             return tuskHoleEntity;
         }
         return null;
+    }
+
+    /** AbstractArrow persists a nonempty item; getPickupItem() still forbids actual pickup. */
+    @Override
+    protected ItemStack getDefaultPickupItem() {
+        return new ItemStack(net.minecraft.world.item.Items.ARROW);
     }
 
     @Override
