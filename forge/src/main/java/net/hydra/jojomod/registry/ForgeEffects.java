@@ -1,6 +1,7 @@
 package net.hydra.jojomod.registry;
 
 import net.hydra.jojomod.Roundabout;
+import net.minecraft.resources.ResourceLocation;
 import net.hydra.jojomod.event.powers.ReconstructionEffect;
 import net.hydra.jojomod.event.powers.whitesnake.HallucinationEffect;
 import net.hydra.jojomod.event.powers.whitesnake.OldEffect;
@@ -60,7 +61,7 @@ public class ForgeEffects{
     public static final DeferredHolder<MobEffect, MobEffect> MELTING =
             POTION_EFFECTS.register("melting", () ->
                     new Effect(MobEffectCategory.HARMFUL, 10329495)
-                            .addAttributeModifier(Attributes.MAX_HEALTH,"6107DE5E-7CE8-4030-940E-514C1F160890",-0.7, AttributeModifier.Operation.ADDITION)
+                            .addAttributeModifier(Attributes.MAX_HEALTH,ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "melting_health"),-0.7, AttributeModifier.Operation.ADD_VALUE)
             );
     public static final DeferredHolder<MobEffect, MobEffect> STAND_MELTING =
             POTION_EFFECTS.register("stand_melting", () ->
@@ -87,7 +88,7 @@ public class ForgeEffects{
     public static final DeferredHolder<MobEffect, MobEffect> CRIPPLED =
             POTION_EFFECTS.register("crippled", () ->
                     new Effect(MobEffectCategory.HARMFUL, 725255)
-                            .addAttributeModifier(Attributes.MOVEMENT_SPEED,"6107DE5E-7CE8-4030-940E-514C1F160890",-0.3, AttributeModifier.Operation.MULTIPLY_TOTAL));
+                            .addAttributeModifier(Attributes.MOVEMENT_SPEED,ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "crippled_speed"),-0.3, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
     public static final DeferredHolder<MobEffect, MobEffect> HALLUCINATION =
             POTION_EFFECTS.register("hallucination", HallucinationEffect::new);
     public static final DeferredHolder<MobEffect, MobEffect> OLD = POTION_EFFECTS.register("old", OldEffect::new);
@@ -120,7 +121,7 @@ public class ForgeEffects{
     public static final DeferredHolder<MobEffect, MobEffect> SWAPPED =
             POTION_EFFECTS.register("swapped", () ->
                     new Effect(MobEffectCategory.NEUTRAL, 16134815).
-                            addAttributeModifier(Attributes.MAX_HEALTH,"6107DE5A-7CE8-4030-940E-514C1F160890",-2, AttributeModifier.Operation.ADDITION)
+                            addAttributeModifier(Attributes.MAX_HEALTH,ResourceLocation.fromNamespaceAndPath(Roundabout.MOD_ID, "swapped_health"),-2, AttributeModifier.Operation.ADD_VALUE)
             );
     public static final DeferredHolder<MobEffect, MobEffect> FORTIFICATION =
             POTION_EFFECTS.register("fortification", () ->
