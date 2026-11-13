@@ -11,7 +11,9 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.RecordItem;
+import net.hydra.jojomod.util.MusicDiscData;
+import net.minecraft.core.Holder;
+import net.minecraft.world.item.JukeboxSong;
 import net.hydra.jojomod.sound.ModSounds;
 
 import java.util.Map;
@@ -20,14 +22,14 @@ import java.util.Collections;
 import java.util.WeakHashMap;
 
 public final class MusicDiscController {
-    private static final Map<LivingEntity, Item> PLAYING = new WeakHashMap<>();
+    private static final Map<LivingEntity, Holder<JukeboxSong>> PLAYING = new WeakHashMap<>();
     private static final Map<LivingEntity, Set<ServerPlayer>> LISTENERS = new WeakHashMap<>();
 
     private MusicDiscController() {
     }
 
     public static boolean implant(ItemStack stack, LivingEntity target, LivingEntity thrower) {
-        if (!(stack.getItem() instanceof RecordItem)
+        if (!MusicDiscData.isDisc(stack)
                 || WhitesnakeDiscUtil.isDiscBlacklisted(target)) return false;
         if (target.level().isClientSide()) return true;
         DiscBearer bearer = (DiscBearer) target;
@@ -44,11 +46,16 @@ public final class MusicDiscController {
     public static void tick(LivingEntity bearerEntity) {
         if (bearerEntity.level().isClientSide()) return;
         ItemStack stack = ((DiscBearer) bearerEntity).roundabout$getMusicDisc();
-        if (stack.isEmpty() || !(stack.getItem() instanceof RecordItem)) {
+        if (stack.isEmpty() || !MusicDiscData.isDisc(stack)) {
             if (PLAYING.containsKey(bearerEntity)) stop(bearerEntity);
             return;
         }
-        if (PLAYING.get(bearerEntity) != stack.getItem() || bearerEntity.tickCount % 20 == 0) {
+        var song = MusicDiscData.song(stack, bearerEntity.registryAccess());
+        if (song.isEmpty()) {
+            if (PLAYING.containsKey(bearerEntity)) stop(bearerEntity);
+            return;
+        }
+        if (!java.util.Objects.equals(PLAYING.get(bearerEntity), song.get()) || bearerEntity.tickCount % 20 == 0) {
             start(bearerEntity, stack);
         }
     }
@@ -72,14 +79,17 @@ public final class MusicDiscController {
     }
 
     private static void start(LivingEntity entity, ItemStack stack) {
-        if (!(entity.level() instanceof ServerLevel server) || !(stack.getItem() instanceof RecordItem record)) return;
-        if (PLAYING.get(entity) != stack.getItem()) {
+        if (!(entity.level() instanceof ServerLevel server)) return;
+        var resolved = MusicDiscData.song(stack, server.registryAccess());
+        if (resolved.isEmpty()) return;
+        Holder<JukeboxSong> song = resolved.get();
+        if (!java.util.Objects.equals(PLAYING.get(entity), song)) {
             if (PLAYING.containsKey(entity)) stop(entity);
-            PLAYING.put(entity, stack.getItem());
+            PLAYING.put(entity, song);
         }
         Set<ServerPlayer> listeners = LISTENERS.computeIfAbsent(entity,
                 target -> Collections.newSetFromMap(new WeakHashMap<>()));
-        SoundEvent sound = record.getSound();
+        SoundEvent sound = song.value().soundEvent().value();
         double range = sound.getRange(4.0F);
         for (ServerPlayer player : server.players()) {
             if (listeners.contains(player)) continue;

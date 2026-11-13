@@ -77,7 +77,6 @@ import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.RecordItem;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.block.BedBlock;
@@ -1133,7 +1132,7 @@ public class PowersWhitesnake extends BlockGrabPreset {
     private static boolean isThrowableDisc(ItemStack stack) {
         Item item = stack.getItem();
         return item instanceof StandDiscItem || item instanceof AbstractBodyDiscItem
-                || item instanceof CommandDiscItem || item instanceof RecordItem;
+                || item instanceof CommandDiscItem || net.hydra.jojomod.util.MusicDiscData.isDisc(stack);
     }
 
     @Override

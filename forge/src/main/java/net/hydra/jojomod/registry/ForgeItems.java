@@ -45,8 +45,8 @@ public class ForgeItems {
 
     public static final DeferredHolder<Item, Item> CHERRIES = addToTab(ITEMS.register("cherries",
             () -> new Item(new Item.Properties()
-                    .food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.0F).alwaysEat()
-                            .effect(new MobEffectInstance(ForgeEffects.WARDING.get(), 2400, 0), 1.0F)
+                    .food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.0F).alwaysEdible()
+                            .effect(() -> new MobEffectInstance(ForgeEffects.WARDING, 2400, 0), 1.0F)
                             .build())
             )));
 
@@ -59,9 +59,9 @@ public class ForgeItems {
 
     public static final DeferredHolder<Item, Item> PIRANHA_BUCKET = addToTab(ITEMS.register("piranha_bucket",
             () -> new MobBucketItem(
-                    ForgeEntities.PIRANHA,
-                    () -> Fluids.WATER,
-                    () -> SoundEvents.BUCKET_EMPTY_FISH,
+                    ForgeEntities.PIRANHA.get(),
+                    Fluids.WATER,
+                    SoundEvents.BUCKET_EMPTY_FISH,
                     new Item.Properties().stacksTo(1)
             )));
     public static final DeferredHolder<Item, Item> PIRANHA = addToTab(ITEMS.register("piranha",
@@ -681,8 +681,8 @@ public class ForgeItems {
                     .food(new FoodProperties.Builder()
                             .nutrition(2)
                             .saturationModifier(0.1F)
-                            .effect(() -> new MobEffectInstance(ForgeEffects.REFRESHED.get(),ModItems.CHAMOMILE_DURATION),1.0F)
-                            .alwaysEat()
+                            .effect(() -> new MobEffectInstance(ForgeEffects.REFRESHED,ModItems.CHAMOMILE_DURATION),1.0F)
+                            .alwaysEdible()
                             .build()))
     ));
     public static final DeferredHolder<Item, Item> MINT_SEEDS = addToWIPTab(ITEMS.register("mint_seeds",
@@ -692,8 +692,8 @@ public class ForgeItems {
                     new FoodProperties.Builder()
                             .nutrition(2)
                             .saturationModifier(0.1F)
-                            .effect(() -> new MobEffectInstance(ForgeEffects.REFRESHED.get(),ModItems.MINT_DURATION),1.0F)
-                            .alwaysEat()
+                            .effect(() -> new MobEffectInstance(ForgeEffects.REFRESHED,ModItems.MINT_DURATION),1.0F)
+                            .alwaysEdible()
                             .build()))
     ));
     public static final DeferredHolder<Item, Item> HERB_TEA = addToWIPTab(ITEMS.register("herb_tea",
@@ -701,18 +701,18 @@ public class ForgeItems {
                     new FoodProperties.Builder()
                             .nutrition(8)
                             .saturationModifier(0.25F)
-                            .effect(() -> new MobEffectInstance(ForgeEffects.REFRESHED.get(),ModItems.TEA_DURATION),1.0F)
+                            .effect(() -> new MobEffectInstance(ForgeEffects.REFRESHED,ModItems.TEA_DURATION),1.0F)
                             .build())
             )));
     public static final DeferredHolder<Item, Item> MUSIC_DISC_TORTURE_DANCE = addToTab(ITEMS.register("music_disc_torture_dance",
-            () -> new RecordItem(1, ForgeSounds.TORTURE_DANCE,
-                    (new Item.Properties()).stacksTo(1).rarity(Rarity.RARE), 2840)));
+            () -> new Item((new Item.Properties()).stacksTo(1).rarity(Rarity.RARE)
+                    .jukeboxPlayable(net.hydra.jojomod.util.MusicDiscData.key("torture_dance")))));
     public static final DeferredHolder<Item, Item> MUSIC_DISC_HALLELUJAH = addToTab(ITEMS.register("music_disc_hallelujah",
-            () -> new RecordItem(1, ForgeSounds.HALLELUJAH,
-                    (new Item.Properties()).stacksTo(1).rarity(Rarity.RARE), 4380)));
+            () -> new Item((new Item.Properties()).stacksTo(1).rarity(Rarity.RARE)
+                    .jukeboxPlayable(net.hydra.jojomod.util.MusicDiscData.key("hallelujah")))));
     public static final DeferredHolder<Item, Item> MUSIC_DISC_CHAKA_HFTF = addToTab(ITEMS.register("music_disc_chaka_hftf",
-            () -> new RecordItem(1, ForgeSounds.CHAKA_HFTF,
-                    (new Item.Properties()).stacksTo(1).rarity(Rarity.RARE), 3720)));
+            () -> new Item((new Item.Properties()).stacksTo(1).rarity(Rarity.RARE)
+                    .jukeboxPlayable(net.hydra.jojomod.util.MusicDiscData.key("chaka_hftf")))));
 
     public static final DeferredHolder<net.minecraft.world.item.Item, BlockItem> FLESH_BLOCK = addToBuildingTab(ITEMS.register("flesh_block",
             () -> new FleshChunkItem(ForgeBlocks.FLESH_BLOCK.get(),
@@ -748,11 +748,11 @@ public class ForgeItems {
             () -> new DeferredSpawnEggItem(ForgeEntities.BUTTERFLY,
                     0x95caff, 0xe880c6, new Item.Properties())));
     public static final DeferredHolder<Potion, Potion> HEX_POTION = POTIONS.register("roundabout.hex",
-            () -> new Potion(new MobEffectInstance(ForgeEffects.HEX.get(), 9600, 0)));
+            () -> new Potion(new MobEffectInstance(ForgeEffects.HEX, 9600, 0)));
     public static final DeferredHolder<Potion, Potion> HEX_POTION_EXTENDED = POTIONS.register("roundabout.long_hex",
-            () -> new Potion("roundabout.hex", new MobEffectInstance(ForgeEffects.HEX.get(), 19200, 0)));
+            () -> new Potion("roundabout.hex", new MobEffectInstance(ForgeEffects.HEX, 19200, 0)));
     public static final DeferredHolder<Potion, Potion> HEX_POTION_STRONG = POTIONS.register("roundabout.strong_hex",
-            () -> new Potion("roundabout.hex", new MobEffectInstance(ForgeEffects.HEX.get(), 4800, 1)));
+            () -> new Potion("roundabout.hex", new MobEffectInstance(ForgeEffects.HEX, 4800, 1)));
     public static final DeferredHolder<Item, Item> STAND_DISC_STAR_PLATINUM = addToDiscTab(ITEMS.register("star_platinum_disc",
             () -> new StandDiscItem(new Item.Properties().stacksTo(1), new PowersStarPlatinum(null))));
     public static final DeferredHolder<Item, Item> MAX_STAND_DISC_STAR_PLATINUM = addToDiscTab(ITEMS.register("max_star_platinum_disc",

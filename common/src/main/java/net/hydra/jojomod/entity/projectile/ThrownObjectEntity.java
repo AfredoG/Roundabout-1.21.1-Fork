@@ -567,11 +567,11 @@ public class ThrownObjectEntity extends ThrowableItemProjectile {
                     } else {
                         dropItem(pos);
                     }
-                } else if (this.getItem().getItem() instanceof RecordItem se) {
+                } else if (net.hydra.jojomod.util.MusicDiscData.isDisc(this.getItem())) {
                     BlockEntity blke = this.level().getBlockEntity($$0.getBlockPos());
-                    if (blke instanceof JukeboxBlockEntity je && je.getFirstItem().isEmpty()) {
+                    if (blke instanceof JukeboxBlockEntity je && je.getTheItem().isEmpty()) {
                         je.setItem(0,this.getItem());
-                    } else if (blke instanceof StereoBlockEntity je && je.getFirstItem().isEmpty()) {
+                    } else if (blke instanceof StereoBlockEntity je && je.getTheItem().isEmpty()) {
                         je.setItem(0,this.getItem());
                     } else {
                         dropItem(pos);
@@ -1008,7 +1008,7 @@ private void bridgePlace(BlockHitResult $$0,Player P) {
 
     private boolean handleDiscImpact(EntityHitResult hit) {
         ItemStack stack = getItem();
-        boolean musicDisc = stack.getItem() instanceof RecordItem && canImplantMusicDisc();
+        boolean musicDisc = net.hydra.jojomod.util.MusicDiscData.isDisc(stack) && canImplantMusicDisc();
         if (!(stack.getItem() instanceof AbstractBodyDiscItem)
                 && !(stack.getItem() instanceof CommandDiscItem)
                 && !musicDisc) {

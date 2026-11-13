@@ -15,7 +15,9 @@ import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.RecordItem;
+import net.hydra.jojomod.util.MusicDiscData;
+import net.minecraft.world.item.JukeboxSong;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.JukeboxBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -30,7 +32,7 @@ import java.util.Objects;
 /**The specs of the Stereo are almost identical to MC jukebox code, out of need to function the same way*/
 public class StereoBlockEntity extends BlockEntity implements Clearable, ContainerSingleItem {
     private static final int SONG_END_PADDING = 20;
-    private final NonNullList<ItemStack> items = NonNullList.withSize(this.getContainerSize(), ItemStack.EMPTY);
+    private final NonNullList<ItemStack> items = NonNullList.withSize(1, ItemStack.EMPTY);
     private int ticksSinceLastEvent;
     private long tickCount;
     private long recordStartedTick;
@@ -44,6 +46,7 @@ public class StereoBlockEntity extends BlockEntity implements Clearable, Contain
     @Override
     public void loadAdditional(CompoundTag $$0, net.minecraft.core.HolderLookup.Provider registries) {
         super.loadAdditional($$0, registries);
+        this.items.set(0, ItemStack.EMPTY);
         if ($$0.contains("RecordItem", 10)) {
             this.items.set(0, ItemStack.parseOptional(registries, $$0.getCompound("RecordItem")));
         }
@@ -56,8 +59,8 @@ public class StereoBlockEntity extends BlockEntity implements Clearable, Contain
     @Override
     protected void saveAdditional(CompoundTag $$0, net.minecraft.core.HolderLookup.Provider registries) {
         super.saveAdditional($$0, registries);
-        if (!this.getFirstItem().isEmpty()) {
-            $$0.put("RecordItem", this.getFirstItem().save(registries, new CompoundTag()));
+        if (!this.getTheItem().isEmpty()) {
+            $$0.put("RecordItem", this.getTheItem().save(registries, new CompoundTag()));
         }
 
         $$0.putBoolean("IsPlaying", this.isPlaying);
@@ -66,7 +69,7 @@ public class StereoBlockEntity extends BlockEntity implements Clearable, Contain
     }
 
     public boolean isRecordPlaying() {
-        return !this.getFirstItem().isEmpty() && this.isPlaying;
+        return !this.getTheItem().isEmpty() && this.isPlaying;
     }
 
     private void setHasRecordBlockState(@Nullable Entity $$0, boolean $$1) {
@@ -78,10 +81,15 @@ public class StereoBlockEntity extends BlockEntity implements Clearable, Contain
 
     @VisibleForTesting
     public void startPlaying() {
+        if (this.level == null) return;
+        var song = MusicDiscData.song(this.getTheItem(), this.level.registryAccess());
+        if (song.isEmpty()) return;
+        int songId = this.level.registryAccess().registryOrThrow(Registries.JUKEBOX_SONG).getId(song.get().value());
+        if (songId < 0) return;
         this.recordStartedTick = this.tickCount;
         this.isPlaying = true;
         this.level.updateNeighborsAt(this.getBlockPos(), this.getBlockState().getBlock());
-        this.level.levelEvent(null, 1010, this.getBlockPos(), Item.getId(this.getFirstItem().getItem()));
+        this.level.levelEvent(null, 1010, this.getBlockPos(), songId);
         this.setChanged();
     }
 
@@ -95,8 +103,9 @@ public class StereoBlockEntity extends BlockEntity implements Clearable, Contain
 
     private void tick(Level $$0, BlockPos $$1, BlockState $$2) {
         this.ticksSinceLastEvent++;
-        if (this.isRecordPlaying() && this.getFirstItem().getItem() instanceof RecordItem $$3) {
-            if (this.shouldRecordStopPlaying($$3)) {
+        var song = MusicDiscData.song(this.getTheItem(), $$0.registryAccess());
+        if (this.isPlaying) {
+            if (song.isEmpty() || this.shouldRecordStopPlaying(song.get().value())) {
                 this.stopPlaying();
             } else if (this.shouldSendJukeboxPlayingEvent()) {
                 this.ticksSinceLastEvent = 0;
@@ -108,8 +117,8 @@ public class StereoBlockEntity extends BlockEntity implements Clearable, Contain
         this.tickCount++;
     }
 
-    private boolean shouldRecordStopPlaying(RecordItem $$0) {
-        return this.tickCount >= this.recordStartedTick + (long)$$0.getLengthInTicks() + 20L;
+    private boolean shouldRecordStopPlaying(JukeboxSong $$0) {
+        return $$0.hasFinished(this.tickCount - this.recordStartedTick);
     }
 
     private boolean shouldSendJukeboxPlayingEvent() {
@@ -117,15 +126,31 @@ public class StereoBlockEntity extends BlockEntity implements Clearable, Contain
     }
 
     @Override
+    public ItemStack getTheItem() {
+        return this.items.get(0);
+    }
+
+    @Override
+    public void setTheItem(ItemStack stack) {
+        this.setItem(0, stack);
+    }
+
+    @Override
+    public ItemStack splitTheItem(int amount) {
+        return amount <= 0 ? ItemStack.EMPTY : this.removeItem(0, amount);
+    }
+
+    @Override
     public ItemStack getItem(int $$0) {
-        return this.items.get($$0);
+        return $$0 == 0 ? this.items.get(0) : ItemStack.EMPTY;
     }
 
     @Override
     public ItemStack removeItem(int $$0, int $$1) {
+        if ($$0 != 0 || $$1 <= 0) return ItemStack.EMPTY;
         ItemStack $$2 = Objects.requireNonNullElse(this.items.get($$0), ItemStack.EMPTY);
         this.items.set($$0, ItemStack.EMPTY);
-        if (!$$2.isEmpty()) {
+        if (!$$2.isEmpty() && this.level != null) {
             this.setHasRecordBlockState(null, false);
             this.stopPlaying();
         }
@@ -135,8 +160,13 @@ public class StereoBlockEntity extends BlockEntity implements Clearable, Contain
 
     @Override
     public void setItem(int $$0, ItemStack $$1) {
-        if ($$1.is(ItemTags.MUSIC_DISCS) && this.level != null) {
-            this.items.set($$0, $$1);
+        if ($$0 != 0) return;
+        if ($$1.isEmpty()) {
+            this.removeItem(0, 1);
+            return;
+        }
+        if (MusicDiscData.isDisc($$1) && this.level != null) {
+            this.items.set(0, $$1.copyWithCount(1));
             this.setHasRecordBlockState(null, true);
             this.startPlaying();
         }
@@ -154,7 +184,7 @@ public class StereoBlockEntity extends BlockEntity implements Clearable, Contain
 
     @Override
     public boolean canPlaceItem(int $$0, ItemStack $$1) {
-        return $$1.is(ItemTags.MUSIC_DISCS) && this.getItem($$0).isEmpty();
+        return MusicDiscData.isDisc($$1) && this.getItem($$0).isEmpty();
     }
 
     @Override
@@ -173,9 +203,9 @@ public class StereoBlockEntity extends BlockEntity implements Clearable, Contain
     public void popOutRecord() {
         if (this.level != null && !this.level.isClientSide) {
             BlockPos $$0 = this.getBlockPos();
-            ItemStack $$1 = this.getFirstItem();
+            ItemStack $$1 = this.getTheItem();
             if (!$$1.isEmpty()) {
-                this.removeFirstItem();
+                this.removeTheItem();
                 Vec3 $$2 = Vec3.atLowerCornerWithOffset($$0, 0.5, 0.4, 0.5).offsetRandom(this.level.random, 0.4F);
                 ItemStack $$3 = $$1.copy();
                 ItemEntity $$4 = new ItemEntity(this.level, $$2.x(), $$2.y(), $$2.z(), $$3);

@@ -73,8 +73,8 @@ public class MoldSporesEntity extends StandEntity {
         if (user == null) {
             this.discard();
         } else {
-            if (user.isUsingItem() && user.getMainHandItem().getItem().getFoodProperties() != null) {
-                if (user.isUsingItem() && user.getMainHandItem().getItem().getFoodProperties().getNutrition() > 0) {
+            if (user.isUsingItem() && user.getMainHandItem().getFoodProperties(user) != null) {
+                if (user.isUsingItem() && user.getMainHandItem().getFoodProperties(user).nutrition() > 0) {
                     if (ClientNetworking.getAppropriateConfig().greenDaySettings.eatingCancelsMold) {
                         this.discard();
                         ((PowersGreenDay) ((StandUser) user).roundabout$getStandPowers()).setCooldown(PowerIndex.SKILL_4, ClientNetworking.getAppropriateConfig().greenDaySettings.moldSpreadForceCooldown);

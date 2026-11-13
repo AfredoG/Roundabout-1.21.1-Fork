@@ -1,0 +1,8 @@
+{
+  "sound_event": "roundabout:hallelujah",
+  "description": {
+    "translate": "item.roundabout.music_disc_hallelujah.desc"
+  },
+  "length_in_seconds": 4380,
+  "comparator_output": 1
+}

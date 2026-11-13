@@ -2236,7 +2236,7 @@ public class PowersKingCrimson extends BlockGrabPreset {
 
             Item item = stack.getItem();
 
-            if (item.getFoodProperties() != null || item instanceof BowlFoodItem || item instanceof PotionItem
+            if (stack.getFoodProperties(player) != null || item instanceof BowlFoodItem || item instanceof PotionItem
                     || item instanceof MilkBucketItem || item instanceof SpyglassItem || item instanceof ChorusFruitItem) {
                 // Force the normal vanilla completion logic
                 ((StandUser) player).rdbt$completeUsingItem();

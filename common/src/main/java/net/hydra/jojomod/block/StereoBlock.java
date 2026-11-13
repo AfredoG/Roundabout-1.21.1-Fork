@@ -6,7 +6,10 @@ import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.RecordItem;
+import net.hydra.jojomod.util.MusicDiscData;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.stats.Stats;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -32,6 +35,13 @@ import javax.annotation.Nullable;
 
 /**The specs of the Stereo are almost identical to MC jukebox code, out of need to function the same way*/
 public class StereoBlock extends JukeboxBlock {
+    private static final com.mojang.serialization.MapCodec<JukeboxBlock> STEREO_CODEC = simpleCodec(StereoBlock::new);
+
+    @Override
+    public com.mojang.serialization.MapCodec<JukeboxBlock> codec() {
+        return STEREO_CODEC;
+    }
+
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
     protected static final VoxelShape SHAPEA = Block.box(5.0, 0.1, 1.0, 11.0, 6.0, 15.0);
     protected static final VoxelShape SHAPEB = Block.box(1.0, 0.1, 5.0, 15.0, 6.0, 11.0);
@@ -99,7 +109,21 @@ public class StereoBlock extends JukeboxBlock {
         return $$1.getValue(HAS_RECORD) ? createTickerHelper($$2, ModBlocks.STEREO_BLOCK_ENTITY, StereoBlockEntity::playRecordTick) : null;
     }
     @Override
-    public InteractionResult use(BlockState $$0, Level $$1, BlockPos $$2, Player $$3, InteractionHand $$4, BlockHitResult $$5) {
+    protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos,
+            Player player, InteractionHand hand, BlockHitResult hit) {
+        if (state.getValue(HAS_RECORD)) return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+        if (!MusicDiscData.isDisc(stack)) return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+        if (!(level.getBlockEntity(pos) instanceof StereoBlockEntity stereo)) return ItemInteractionResult.FAIL;
+        if (!level.isClientSide) {
+            stereo.setTheItem(stack.copyWithCount(1));
+            stack.consume(1, player);
+            player.awardStat(Stats.PLAY_RECORD);
+        }
+        return ItemInteractionResult.sidedSuccess(level.isClientSide);
+    }
+
+    @Override
+    public InteractionResult useWithoutItem(BlockState $$0, Level $$1, BlockPos $$2, Player $$3, BlockHitResult $$5) {
         if ($$0.getValue(HAS_RECORD) && $$1.getBlockEntity($$2) instanceof StereoBlockEntity $$6) {
 
             $$6.popOutRecord();
@@ -132,8 +156,9 @@ public class StereoBlock extends JukeboxBlock {
 
     @Override
     public int getAnalogOutputSignal(BlockState $$0, Level $$1, BlockPos $$2) {
-        if ($$1.getBlockEntity($$2) instanceof StereoBlockEntity $$3 && $$3.getFirstItem().getItem() instanceof RecordItem $$4) {
-            return $$4.getAnalogOutput();
+        if ($$1.getBlockEntity($$2) instanceof StereoBlockEntity stereo) {
+            return MusicDiscData.song(stereo.getTheItem(), $$1.registryAccess())
+                    .map(song -> song.value().comparatorOutput()).orElse(0);
         }
 
         return 0;

@@ -21,7 +21,6 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.RecordItem;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 
@@ -69,7 +68,7 @@ public final class WhitesnakeControlInventory {
         if (stack.getItem() instanceof StandDiscItem
                 || stack.getItem() instanceof AbstractBodyDiscItem
                 || stack.getItem() instanceof CommandDiscItem
-                || stack.getItem() instanceof RecordItem) return true;
+                || net.hydra.jojomod.util.MusicDiscData.isDisc(stack)) return true;
         String path = BuiltInRegistries.ITEM.getKey(stack.getItem()).getPath();
         return path.endsWith("disc") || path.contains("disc_");
     }

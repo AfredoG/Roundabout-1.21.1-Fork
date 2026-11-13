@@ -1,0 +1,8 @@
+{
+  "sound_event": "roundabout:chaka_hftf",
+  "description": {
+    "translate": "item.roundabout.music_disc_chaka_hftf.desc"
+  },
+  "length_in_seconds": 3720,
+  "comparator_output": 1
+}

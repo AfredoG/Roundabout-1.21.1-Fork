@@ -8,7 +8,7 @@
 - Gradle help: успешно.
 - Подготовка исходников и классов Minecraft/NeoForge: успешно.
 - processResources: успешно; проверены метаданные, access transformer, mixin-конфигурации и 141 рецепт.
-- compileJava: НЕУСПЕШНО, 1064 ошибки, 18 предупреждений (последняя полная проверка текущих исходников).
+- compileJava: НЕУСПЕШНО, 1006 ошибок, 18 предупреждений (последняя полная проверка текущих исходников).
 - JDK 21 и Gradle восстановлены; подготовка Minecraft/NeoForge и processResources прошли в новой среде.
 - JAR для установки: отсутствует.
 - Запуск клиента и выделенного сервера полного мода: не выполнен (компиляция не проходит).
@@ -22,8 +22,8 @@
 
 | Ошибка | Количество |
 |---|---:|
-| cannot find symbol | 614 |
-| method does not override or implement a method from a supertype | 138 |
+| cannot find symbol | 571 |
+| method does not override or implement a method from a supertype | 137 |
 | minecraft has private access in Gui | 11 |
 | method isCorrectToolForDrops in class Item cannot be applied to given types; | 9 |
 | incompatible types: ResourceKey<Enchantment> cannot be converted to Holder<Enchantment> | 7 |
@@ -33,10 +33,10 @@
 | incompatible types: ItemStack cannot be converted to ItemCost | 6 |
 | package minecraft does not exist | 6 |
 | incompatible types: Reference<SoundEvent> cannot be converted to SoundEvent | 5 |
-| invalid method reference | 5 |
-| incompatible types: MobEffect cannot be converted to Holder<MobEffect> | 5 |
 | incompatible types: double cannot be converted to LivingEntity | 5 |
-| method getFoodProperties in interface IItemExtension cannot be applied to given types; | 5 |
+| incompatible types: BlockGetter cannot be converted to LevelReader | 5 |
+| incompatible types: EquipmentSlot cannot be converted to ItemStack | 5 |
+| invalid method reference | 5 |
 
 ## Что требуется закончить
 
@@ -117,3 +117,19 @@
 - git diff --check проходит. Клиент/сервер не запускались; JAR для игры отсутствует.
 
 Продолжать с port/build-errors.txt: музыка и RecordItem, рендеринг/GUI, предметы и эффекты зачарований, события NeoForge. У Manhattan Transfer остаётся перенос захвата/выпуска стрел (getKnockback/setKnockback и createArrow с оружием), что отдельно отмечено компилятором. До игры требуется проверка всех mixin, сохранения/загрузки, сетевой синхронизации и поведения предметов.
+
+
+## Последний этап — 12 ноября 2026: музыка и еда
+
+Этот раздел уточняет предыдущие планы: основная миграция RecordItem выполнена.
+
+- Музыкальные диски используют JUKEBOX_PLAYABLE и три записи динамического реестра jukebox_song. Сохранены исходные идентификаторы предметов, звуки, переводы, comparator_output и длительности (2840/4380/3720 секунд, как в старых конструкторах RecordItem).
+- MusicDiscData централизует получение композиции из компонента стека. Whitesnake, бросаемые предметы, бомбы и инвентарь распознают диски по компоненту. MusicDiscController отслеживает композицию, включая смену компонента у того же Item.
+- StereoBlock: установка диска перенесена из mixin удалённого RecordItem в useItemOn; расход предмета, статистика и извлечение сохранены. Старый mixin удалён из конфигурации.
+- StereoBlockEntity: интерфейс одиночного контейнера, загрузка предмета с реестрами, событие воспроизведения с ID композиции, длительность и компаратор через JukeboxSong. Сохранены старые NBT-ключи и сигнал; исправлена очистка контейнера. Невалидный диск останавливает воспроизведение.
+- Еда: alwaysEdible, ленивые поставщики эффектов, Holder для MobEffectInstance, питание из ItemStack.getFoodProperties(entity). Мясо для волков перенесено в minecraft:wolf_food; особая еда терьера сохранена. Питательность Stray Cat читается до уменьшения стека.
+- compileJava: 1064 → 1025 → 1006 ошибок, 18 предупреждений. В MusicDiscData, MusicDiscController, StereoBlock, StereoBlockEntity, ForgeItems, ModFoodComponents, MoldSporesEntity ошибок Java нет. Исходники не исключались из компиляции.
+- processResources успешно. Все три JSON-композиции и wolf_food совпадают с исходниками в обработанном каталоге ресурсов; ссылки на звуки и ключи переводов проверены. git diff --check проходит.
+- Игровое поведение и mixin ещё не проверены. Полный мод не компилируется; готового JAR нет.
+
+Следующие задачи: ForgeEatingMixin (новый путь потребления еды и насыщение), геометрия/атрибуты сущностей, зачарования и захват стрел Manhattan Transfer, GUI/рендеринг и события NeoForge. Затем обязательны запуск клиента/сервера, проверка mixin, сохранения мира и сети. Для стерео отдельно проверить вставку/извлечение, creative, красный камень, загрузку мира и окончание композиции; для Whitesnake — смену диска и дистанцию слушателей.

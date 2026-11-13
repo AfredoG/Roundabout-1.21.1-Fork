@@ -429,12 +429,13 @@ public class StrayCatEntity extends TamableAnimal implements RangedAttackMob {
 
             return $$4 ? InteractionResult.CONSUME : InteractionResult.PASS;
         } else if (this.isTame()) {
-            if (this.isFood($$2) && this.getHealth() < this.getMaxHealth() && !this.getSleeping()) {
+            var food = $$2.getFoodProperties(this);
+            if (food != null && this.isFood($$2) && this.getHealth() < this.getMaxHealth() && !this.getSleeping()) {
                 if (!$$0.getAbilities().instabuild) {
                     $$2.shrink(1);
                 }
 
-                this.heal((float)$$3.getFoodProperties().getNutrition());
+                this.heal((float)food.nutrition());
                 return InteractionResult.SUCCESS;
             } else {
                 if (this.getPotted() && $$0.isCrouching()) {

@@ -26,7 +26,6 @@ import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.RecordItem;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.JukeboxBlockEntity;
@@ -231,10 +230,10 @@ public class BombPlantedItemEntity extends Entity implements TraceableEntity {
                     BlockPos pos = this.getBlockPosBelowThatAffectsMyMovement();
                     BlockState state = this.level().getBlockState(pos);
                     $$2 = state.getBlock().getFriction() * 0.98F;
-                    if (this.getItem().getItem() instanceof RecordItem && state.hasBlockEntity()) {
+                    if (net.hydra.jojomod.util.MusicDiscData.isDisc(this.getItem()) && state.hasBlockEntity()) {
                         BlockEntity BE = level().getBlockEntity(pos);
 
-                        if (BE instanceof JukeboxBlockEntity je && je.getFirstItem().isEmpty()) {
+                        if (BE instanceof JukeboxBlockEntity je && je.getTheItem().isEmpty()) {
                             je.setItem(0,this.getItem());
                             if (host != null && ((StandUser)host).roundabout$getStandPowers() instanceof PowersKillerQueen KQ) {
                                 KQ.transferItem2BlockBom(pos);
@@ -246,7 +245,7 @@ public class BombPlantedItemEntity extends Entity implements TraceableEntity {
                             state = this.level().getBlockState(pos);
                             if (state.hasBlockEntity()) {
                                 BE = level().getBlockEntity(pos);
-                                if (BE instanceof StereoBlockEntity je && je.getFirstItem().isEmpty()) {
+                                if (BE instanceof StereoBlockEntity je && je.getTheItem().isEmpty()) {
                                     je.setItem(0, this.getItem());
                                     if (host != null && ((StandUser) host).roundabout$getStandPowers() instanceof PowersKillerQueen KQ) {
                                         KQ.transferItem2BlockBom(pos);

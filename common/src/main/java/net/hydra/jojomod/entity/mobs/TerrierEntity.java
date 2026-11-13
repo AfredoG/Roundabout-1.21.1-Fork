@@ -48,7 +48,8 @@ public class TerrierEntity extends Wolf {
     @Override
     public boolean isFood(ItemStack stack) {
         Item item = stack.getItem();
-        return item.isEdible() && (Objects.requireNonNull(item.getFoodProperties()).isMeat() || stack.is(ModItems.COFFEE_GUM));
+        return stack.getFoodProperties(this) != null
+                && (stack.is(net.minecraft.tags.ItemTags.WOLF_FOOD) || stack.is(ModItems.COFFEE_GUM));
     }
 
     @Override
