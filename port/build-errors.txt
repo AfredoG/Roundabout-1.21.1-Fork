@@ -132,26 +132,6 @@ common/src/main/java/net/hydra/jojomod/stand/powers/PowersKillerQueen.java:1247:
                                ^
   symbol:   method canBeDepleted()
   location: class Item
-common/src/main/java/net/hydra/jojomod/stand/powers/PowersKillerQueen.java:1347: error: cannot find symbol
-                float f = Mth.clamp(0.3F + EnchantmentHelper.getSneakingSpeedBonus(this.getSelf()), 0.0F, 1.0F);
-                                                            ^
-  symbol:   method getSneakingSpeedBonus(LivingEntity)
-  location: class EnchantmentHelper
-common/src/main/java/net/hydra/jojomod/stand/powers/PowersKillerQueen.java:1354: error: cannot find symbol
-                float f = Mth.clamp(0.3F + EnchantmentHelper.getSneakingSpeedBonus(this.getSelf()), 0.0F, 1.0F);
-                                                            ^
-  symbol:   method getSneakingSpeedBonus(LivingEntity)
-  location: class EnchantmentHelper
-common/src/main/java/net/hydra/jojomod/stand/powers/PowersKillerQueen.java:1362: error: cannot find symbol
-                float f = Mth.clamp(0.3F + EnchantmentHelper.getSneakingSpeedBonus(this.getSelf()), 0.0F, 1.0F);
-                                                            ^
-  symbol:   method getSneakingSpeedBonus(LivingEntity)
-  location: class EnchantmentHelper
-common/src/main/java/net/hydra/jojomod/stand/powers/PowersKillerQueen.java:1369: error: cannot find symbol
-                float f = Mth.clamp(0.3F + EnchantmentHelper.getSneakingSpeedBonus(this.getSelf()), 0.0F, 1.0F);
-                                                            ^
-  symbol:   method getSneakingSpeedBonus(LivingEntity)
-  location: class EnchantmentHelper
 common/src/main/java/net/hydra/jojomod/stand/powers/PowersKillerQueen.java:2693: error: cannot find symbol
                 dontOwn = !(item.hasTag() && StrayCatItem.validateStrayCatOwner(item, self));
                                 ^
@@ -180,16 +160,6 @@ common/src/main/java/net/hydra/jojomod/stand/powers/PowersDiverDown.java:641: er
                                     ^
   symbol:   method getCategory()
   location: interface Holder<MobEffect>
-common/src/main/java/net/hydra/jojomod/stand/powers/PowersDiverDown.java:1891: error: cannot find symbol
-                float f = Mth.clamp(0.3F + EnchantmentHelper.getSneakingSpeedBonus(this.getSelf()), 0.0F, 1.0F);
-                                                            ^
-  symbol:   method getSneakingSpeedBonus(LivingEntity)
-  location: class EnchantmentHelper
-common/src/main/java/net/hydra/jojomod/stand/powers/PowersDiverDown.java:1909: error: cannot find symbol
-            float sneakSpeed = Mth.clamp(0.3F + EnchantmentHelper.getSneakingSpeedBonus(this.getSelf()), 0.0F, 1.0F);
-                                                                 ^
-  symbol:   method getSneakingSpeedBonus(LivingEntity)
-  location: class EnchantmentHelper
 common/src/main/java/net/hydra/jojomod/stand/powers/PowersDiverDown.java:4655: error: cannot find symbol
             if (!effect.getEffect().isInstantenous()) {
                                    ^
@@ -797,31 +767,11 @@ common/src/main/java/net/hydra/jojomod/entity/corpses/FallenPhantom.java:333: er
                ^
   symbol:   variable MobType
   location: class FallenPhantom
-common/src/main/java/net/hydra/jojomod/stand/powers/PowersMagiciansRed.java:409: error: cannot find symbol
-                float f = Mth.clamp(0.3F + EnchantmentHelper.getSneakingSpeedBonus(this.getSelf()), 0.0F, 1.0F);
-                                                            ^
-  symbol:   method getSneakingSpeedBonus(LivingEntity)
-  location: class EnchantmentHelper
-common/src/main/java/net/hydra/jojomod/stand/powers/PowersMagiciansRed.java:416: error: cannot find symbol
-                float f = Mth.clamp(0.3F + EnchantmentHelper.getSneakingSpeedBonus(this.getSelf()), 0.0F, 1.0F);
-                                                            ^
-  symbol:   method getSneakingSpeedBonus(LivingEntity)
-  location: class EnchantmentHelper
-common/src/main/java/net/hydra/jojomod/stand/powers/PowersMagiciansRed.java:425: error: cannot find symbol
-                float f = Mth.clamp(0.3F + EnchantmentHelper.getSneakingSpeedBonus(this.getSelf()), 0.0F, 1.0F);
-                                                            ^
-  symbol:   method getSneakingSpeedBonus(LivingEntity)
-  location: class EnchantmentHelper
 common/src/main/java/net/hydra/jojomod/stand/powers/PowersMagiciansRed.java:2727: error: cannot find symbol
                     ((IAbstractArrowAccess)aa).roundabout$GetPickupItem().getItem().canBeDepleted()
                                                                                    ^
   symbol:   method canBeDepleted()
   location: class Item
-common/src/main/java/net/hydra/jojomod/stand/powers/PowersSoftAndWet.java:2026: error: cannot find symbol
-                float f = Mth.clamp(0.3F + EnchantmentHelper.getSneakingSpeedBonus(this.getSelf()), 0.0F, 1.0F);
-                                                            ^
-  symbol:   method getSneakingSpeedBonus(LivingEntity)
-  location: class EnchantmentHelper
 common/src/main/java/net/hydra/jojomod/entity/pathfinding/TuskHoleEntity.java:319: error: getVisualShape(BlockState,BlockGetter,BlockPos,CollisionContext) has protected access in BlockBehaviour
                     double height = bs.getBlock().getVisualShape(bs,this.level(),this.blockPosition(), CollisionContext.of(this)).max(Direction.Axis.Y);
                                                  ^
@@ -1036,16 +986,6 @@ common/src/main/java/net/hydra/jojomod/stand/powers/PowersKingCrimson.java:2239:
                                                                            ^
   symbol:   class BowlFoodItem
   location: class PowersKingCrimson
-common/src/main/java/net/hydra/jojomod/stand/powers/PowersKingCrimson.java:4016: error: cannot find symbol
-                float f = Mth.clamp(0.3F + EnchantmentHelper.getSneakingSpeedBonus(this.getSelf()), 0.0F, 1.0F);
-                                                            ^
-  symbol:   method getSneakingSpeedBonus(LivingEntity)
-  location: class EnchantmentHelper
-common/src/main/java/net/hydra/jojomod/stand/powers/PowersKingCrimson.java:4025: error: cannot find symbol
-                float f = Mth.clamp(0.3F + EnchantmentHelper.getSneakingSpeedBonus(this.getSelf()), 0.0F, 1.0F);
-                                                            ^
-  symbol:   method getSneakingSpeedBonus(LivingEntity)
-  location: class EnchantmentHelper
 common/src/main/java/net/hydra/jojomod/entity/zombie_minion/BaseMinion.java:520: error: method does not override or implement a method from a supertype
     @Override
     ^
@@ -2860,16 +2800,6 @@ common/src/main/java/net/hydra/jojomod/stand/powers/PowersAnubis.java:2352: erro
                                       ^
   symbol:   method getTagElement(String)
   location: variable disc of type ItemStack
-common/src/main/java/net/hydra/jojomod/stand/powers/PowersPurpleHaze.java:1356: error: cannot find symbol
-            float f = Mth.clamp(0.3F + EnchantmentHelper.getSneakingSpeedBonus(this.getSelf()), 0.0F, 1.0F);
-                                                        ^
-  symbol:   method getSneakingSpeedBonus(LivingEntity)
-  location: class EnchantmentHelper
-common/src/main/java/net/hydra/jojomod/stand/powers/PowersPurpleHaze.java:1360: error: cannot find symbol
-                float f = Mth.clamp(0.3F + EnchantmentHelper.getSneakingSpeedBonus(this.getSelf()), 0.0F, 1.0F);
-                                                            ^
-  symbol:   method getSneakingSpeedBonus(LivingEntity)
-  location: class EnchantmentHelper
 common/src/main/java/net/hydra/jojomod/stand/powers/PowersOasis.java:353: error: isCollisionShapeFullBlock(BlockState,BlockGetter,BlockPos) has protected access in BlockBehaviour
                     if (blockState.getBlock().isCollisionShapeFullBlock(blockState,this.self.level(),packetBlockPos)
                                              ^
@@ -2889,31 +2819,11 @@ common/src/main/java/net/hydra/jojomod/stand/powers/PowersD4C.java:1207: error: 
 common/src/main/java/net/hydra/jojomod/stand/powers/PowersD4C.java:1690: error: incompatible types: Holder<SoundEvent> cannot be converted to SoundEvent
             playSoundIfPossible(self.level(),null, pl.blockPosition(), SoundEvents.ARMOR_EQUIP_LEATHER,
                                                                                   ^
-common/src/main/java/net/hydra/jojomod/stand/powers/PowersD4C.java:2602: error: cannot find symbol
-                float f = Mth.clamp(0.3F + EnchantmentHelper.getSneakingSpeedBonus(this.getSelf()), 0.0F, 1.0F);
-                                                            ^
-  symbol:   method getSneakingSpeedBonus(LivingEntity)
-  location: class EnchantmentHelper
-common/src/main/java/net/hydra/jojomod/stand/powers/PowersD4C.java:2609: error: cannot find symbol
-                float f = Mth.clamp(0.3F + EnchantmentHelper.getSneakingSpeedBonus(this.getSelf()), 0.0F, 1.0F);
-                                                            ^
-  symbol:   method getSneakingSpeedBonus(LivingEntity)
-  location: class EnchantmentHelper
 common/src/main/java/net/hydra/jojomod/stand/powers/presets/TWAndSPSharedPowers.java:270: error: cannot find symbol
                                         blk.use(state, this.getSelf().level(), bpos, PE, PE.getUsedItemHand(), blockHit);
                                            ^
   symbol:   method use(BlockState,Level,BlockPos,Player,InteractionHand,BlockHitResult)
   location: variable blk of type Block
-common/src/main/java/net/hydra/jojomod/stand/powers/presets/TWAndSPSharedPowers.java:588: error: cannot find symbol
-                float f = Mth.clamp(0.3F + EnchantmentHelper.getSneakingSpeedBonus(this.getSelf()), 0.0F, 1.0F);
-                                                            ^
-  symbol:   method getSneakingSpeedBonus(LivingEntity)
-  location: class EnchantmentHelper
-common/src/main/java/net/hydra/jojomod/stand/powers/presets/TWAndSPSharedPowers.java:595: error: cannot find symbol
-                float f = Mth.clamp(0.3F + EnchantmentHelper.getSneakingSpeedBonus(this.getSelf()), 0.0F, 1.0F);
-                                                            ^
-  symbol:   method getSneakingSpeedBonus(LivingEntity)
-  location: class EnchantmentHelper
 common/src/main/java/net/hydra/jojomod/stand/powers/PowersStarPlatinum.java:740: error: incompatible types: Reference<SoundEvent> cannot be converted to SoundEvent
                                                             this.getSelf().getZ(), SoundEvents.GENERIC_EXPLODE, this.getSelf().getSoundSource(), 2.0F, 1.0F);
                                                                                               ^
@@ -2938,16 +2848,6 @@ common/src/main/java/net/hydra/jojomod/stand/powers/PowersWhitesnake.java:2255: 
                                             ^
   symbol:   method use(Level,Player,InteractionHand,BlockHitResult)
   location: class BlockState
-common/src/main/java/net/hydra/jojomod/stand/powers/PowersWhitesnake.java:2375: error: cannot find symbol
-                float sneakSpeed = Mth.clamp(0.3F + EnchantmentHelper.getSneakingSpeedBonus(self), 0.0F, 1.0F);
-                                                                     ^
-  symbol:   method getSneakingSpeedBonus(LivingEntity)
-  location: class EnchantmentHelper
-common/src/main/java/net/hydra/jojomod/stand/powers/PowersWhitesnake.java:2380: error: cannot find symbol
-            float sneakSpeed = Mth.clamp(0.3F + EnchantmentHelper.getSneakingSpeedBonus(self), 0.0F, 1.0F);
-                                                                 ^
-  symbol:   method getSneakingSpeedBonus(LivingEntity)
-  location: class EnchantmentHelper
 common/src/main/java/net/hydra/jojomod/stand/powers/PowersManhattanTransfer.java:950: error: incompatible types: double cannot be converted to LivingEntity
                                             Arrow $$11 = new Arrow(this.getSelf().level(), ME.getX(), ME.getY(), ME.getZ());
                                                                                                   ^
@@ -3872,7 +3772,7 @@ Note: Recompile with -Xlint:deprecation for details.
 Note: Some input files use unchecked or unsafe operations.
 Note: Recompile with -Xlint:unchecked for details.
 Note: Some messages have been simplified; recompile with -Xdiags:verbose to get full output
-846 errors
+826 errors
 18 warnings
 
 > Task :compileJava FAILED

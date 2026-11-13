@@ -1353,11 +1353,11 @@ public class PowersPurpleHaze extends NewPunchingStand {
             basis *= 0.0f;
         }
         if (this.getActivePower() == PowerIndex.POWER_2_SNEAK && this.getSelf().isCrouching()) {
-            float f = Mth.clamp(0.3F + EnchantmentHelper.getSneakingSpeedBonus(this.getSelf()), 0.0F, 1.0F);
+            float f = net.hydra.jojomod.util.MovementSpeed.sneaking(this.getSelf());
             basis *= 1 / f;
         } else if (this.activePower == PowerIndex.SNEAK_ATTACK_CHARGE){
             if (this.getSelf().isCrouching()) {
-                float f = Mth.clamp(0.3F + EnchantmentHelper.getSneakingSpeedBonus(this.getSelf()), 0.0F, 1.0F);
+                float f = net.hydra.jojomod.util.MovementSpeed.sneaking(this.getSelf());
                 float g = 1 / f;
                 basis *= g;
             }

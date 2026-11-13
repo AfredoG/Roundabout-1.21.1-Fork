@@ -1888,7 +1888,7 @@ public class PowersDiverDown extends NewPunchingStand {
         if (this.activePower == PowerIndex.SNEAK_ATTACK_CHARGE) {
             if (this.getSelf().isCrouching()) {
                 // gets the sneak speed i think
-                float f = Mth.clamp(0.3F + EnchantmentHelper.getSneakingSpeedBonus(this.getSelf()), 0.0F, 1.0F);
+                float f = net.hydra.jojomod.util.MovementSpeed.sneaking(this.getSelf());
                 // turns f into it's reciprocal.
                 // (ngl, i don't understand why the guy that made this code didn't just do that
                 // in the f thing itself, but it works so i also don't care.)
@@ -1906,7 +1906,7 @@ public class PowersDiverDown extends NewPunchingStand {
         }
         if (inZipMode()) {
             // I FREAKING HATE math
-            float sneakSpeed = Mth.clamp(0.3F + EnchantmentHelper.getSneakingSpeedBonus(this.getSelf()), 0.0F, 1.0F);
+            float sneakSpeed = net.hydra.jojomod.util.MovementSpeed.sneaking(this.getSelf());
             float enchantmentMultiplier = 0.3F / sneakSpeed;
 
             if (isHoldingSneak()) {

@@ -2372,12 +2372,12 @@ public class PowersWhitesnake extends BlockGrabPreset {
     public float inputSpeedModifiers(float basis) {
         if (activePower == PowerIndex.SNEAK_ATTACK_CHARGE) {
             if (!autoMode && self.isCrouching()) {
-                float sneakSpeed = Mth.clamp(0.3F + EnchantmentHelper.getSneakingSpeedBonus(self), 0.0F, 1.0F);
+                float sneakSpeed = net.hydra.jojomod.util.MovementSpeed.sneaking(self);
                 basis /= sneakSpeed;
             }
             basis *= 0.3F;
         } else if (activePower == PowerIndex.POWER_1_SNEAK && !autoMode && self.isCrouching()) {
-            float sneakSpeed = Mth.clamp(0.3F + EnchantmentHelper.getSneakingSpeedBonus(self), 0.0F, 1.0F);
+            float sneakSpeed = net.hydra.jojomod.util.MovementSpeed.sneaking(self);
             basis /= sneakSpeed;
         }
         return super.inputSpeedModifiers(basis);
