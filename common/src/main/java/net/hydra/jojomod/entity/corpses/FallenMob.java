@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
 import java.util.UUID;
 import java.util.stream.Stream;
 
-public class FallenMob extends PathfinderMob implements NeutralMob {
+public class FallenMob extends PathfinderMob implements NeutralMob, net.hydra.jojomod.access.WaterBreathingOverride {
     public int ticksThroughPhases = 0;
     public int ticksThroughPlacer = 0;
     public Entity placer;
@@ -287,7 +287,7 @@ public class FallenMob extends PathfinderMob implements NeutralMob {
         }
     }
     @Override
-    public boolean canBreatheUnderwater(){
+    public boolean roundabout$canBreatheUnderwater(){
         return true;
     }
     public boolean getTicksThroughPlacer() {

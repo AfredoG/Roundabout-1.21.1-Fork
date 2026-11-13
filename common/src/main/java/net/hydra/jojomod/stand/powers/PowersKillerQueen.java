@@ -2739,7 +2739,7 @@ public class PowersKillerQueen extends NewPunchingStand {
 
                 if (strayCatData.contains(StrayCatItem.OWNER_UUID_TAG)) {
                     stray.setOwnerUUID(strayCatData.getUUID(StrayCatItem.OWNER_UUID_TAG));
-                    stray.setTame(true);
+                    stray.setTame(true, true);
                 }
                 if (strayCatData.contains(StrayCatItem.HEALTH_TAG)) {
                     stray.setHealth(strayCatData.getFloat(StrayCatItem.HEALTH_TAG));

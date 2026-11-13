@@ -161,8 +161,9 @@ public class FallenZombie extends FallenMob{
         return this.isBaby() ? 0.0 : -0.45;
     }
     @Override
-    protected float getStandingEyeHeight(Pose $$0, EntityDimensions $$1) {
-        return this.isBaby() ? 0.93F : 1.74F;
+    protected EntityDimensions getDefaultDimensions(Pose pose) {
+        EntityDimensions dimensions = super.getDefaultDimensions(pose);
+        return dimensions.withEyeHeight(this.isBaby() ? 0.93F : 1.74F);
     }
 
     @Override

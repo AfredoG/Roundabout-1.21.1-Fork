@@ -77,7 +77,7 @@ public class SheerHeartAttackEntity extends StandEntity {
 
 	public SheerHeartAttackEntity(EntityType<? extends StandEntity> $$0, Level $$1) {
 		super($$0, $$1);
-		this.setMaxUpStep(1.4F);
+		this.getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.STEP_HEIGHT).setBaseValue(1.4F);
 	}
 
 	@Override

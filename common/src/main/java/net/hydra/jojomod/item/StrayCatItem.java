@@ -197,7 +197,7 @@ public class StrayCatItem extends Item {
 
                 if (tag.contains(OWNER_UUID_TAG)) {
                     stray.setOwnerUUID(tag.getUUID(OWNER_UUID_TAG));
-                    stray.setTame(true);
+                    stray.setTame(true, true);
                 }
                 if (tag.contains(HEALTH_TAG)) {
                     stray.setHealth(tag.getFloat(HEALTH_TAG));

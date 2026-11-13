@@ -110,8 +110,9 @@ public class FallenPhantom extends FallenMob implements PlayerRideableJumping {
     }
 
     @Override
-    protected float getStandingEyeHeight(Pose $$0, EntityDimensions $$1) {
-        return $$1.height() * 0.35f;
+    protected EntityDimensions getDefaultDimensions(Pose pose) {
+        EntityDimensions dimensions = super.getDefaultDimensions(pose);
+        return dimensions.withEyeHeight(dimensions.height() * 0.35f);
     }
     @Override
     public boolean onClimbable() {

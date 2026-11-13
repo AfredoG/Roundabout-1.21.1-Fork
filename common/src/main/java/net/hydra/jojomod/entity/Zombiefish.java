@@ -57,8 +57,9 @@ public class Zombiefish extends PathfinderMob {
     }
 
     @Override
-    protected float getStandingEyeHeight(Pose $$0, EntityDimensions $$1) {
-        return 0.13F;
+    protected EntityDimensions getDefaultDimensions(Pose pose) {
+        EntityDimensions dimensions = super.getDefaultDimensions(pose);
+        return dimensions.withEyeHeight(0.13F);
     }
 
     public static AttributeSupplier.Builder createAttributes() {

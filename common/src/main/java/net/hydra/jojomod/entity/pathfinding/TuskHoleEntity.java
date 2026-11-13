@@ -73,13 +73,14 @@ public class TuskHoleEntity extends GroundPathfindingStandAttackEntity {
     public TuskHoleEntity(Level $$1, LivingEntity user) {
         super(ModEntities.TUSK_HOLE, $$1);
         this.setUser(user);
-        this.setMaxUpStep(1);
+        this.getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.STEP_HEIGHT).setBaseValue(1);
     }
 
 
     @Override
-    protected float getStandingEyeHeight(Pose $$0, EntityDimensions $$1) {
-        return 0.6F;
+    protected EntityDimensions getDefaultDimensions(Pose pose) {
+        EntityDimensions dimensions = super.getDefaultDimensions(pose);
+        return dimensions.withEyeHeight(0.6F);
     }
 
     @Override

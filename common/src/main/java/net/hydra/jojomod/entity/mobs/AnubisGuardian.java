@@ -112,7 +112,7 @@ public class AnubisGuardian extends AbstractIllager implements RangedAttackMob {
     public AnubisGuardian(EntityType<? extends AbstractIllager> $$0, Level $$1) {
         super($$0, $$1);
         StandArrowItem.grantStand(ModItems.STAND_DISC_ANUBIS.getDefaultInstance(),this);
-        this.setMaxUpStep(1.5F);
+        this.getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.STEP_HEIGHT).setBaseValue(1.5F);
     }
     public static AttributeSupplier.Builder createAttributes() {return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 50.0).add(Attributes.ARMOR,6).add(Attributes.ATTACK_DAMAGE, 5.0);}
 

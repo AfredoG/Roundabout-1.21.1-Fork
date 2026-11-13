@@ -2639,8 +2639,12 @@ public abstract class StandUserEntity extends Entity implements StandUser {
     }
 
     // Zombies still should have the limited underwater penalty
-    @Inject(method = "canBreatheUnderwater", at = @At(value = "HEAD"), cancellable = true, require = 0)
+    @Inject(method = "canBreatheUnderwater()Z", at = @At(value = "HEAD"), cancellable = true)
     public void roundabout$canBreatheUnderwater(CallbackInfoReturnable<Boolean> cir) {
+        if (rdbt$this() instanceof net.hydra.jojomod.access.WaterBreathingOverride breathing) {
+            cir.setReturnValue(breathing.roundabout$canBreatheUnderwater());
+            return;
+        }
         if (FateTypes.isZombie(rdbt$this())) {
             cir.setReturnValue(false);
         }
@@ -4387,22 +4391,19 @@ public abstract class StandUserEntity extends Entity implements StandUser {
      * Hex prevents eating effects from golden apples. Once you reach level 3
      * (commands only), all foods lose them
      */
-    @Inject(method = "addEatEffect", at = @At(value = "HEAD"), cancellable = true, require = 0)
-    protected void roundabout$addEatEffect(ItemStack $$0, Level $$1, LivingEntity $$2, CallbackInfo ci) {
-
+    @org.spongepowered.asm.mixin.injection.ModifyArgs(method = "eat(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/food/FoodProperties;)Lnet/minecraft/world/item/ItemStack;",
+            at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/LivingEntity;addEatEffect(Lnet/minecraft/world/food/FoodProperties;)V"))
+    protected void roundabout$addEatEffect(org.spongepowered.asm.mixin.injection.invoke.arg.Args args,
+                                         Level level, ItemStack stack, net.minecraft.world.food.FoodProperties food) {
         if (((IEntityAndData) this).roundabout$getTrueInvisibility() > -1 &&
                 ClientNetworking.getAppropriateConfig().achtungSettings.revealLocationWhenFinishedEating) {
             ((IEntityAndData) this).roundabout$setTrueInvisibility(-1);
         }
-        if (this.hasEffect(ModEffects.HEX)) {
-            int hexLevel = this.getEffect(ModEffects.HEX).getAmplifier();
-            if ((hexLevel >= 0 && $$0.is(Items.ENCHANTED_GOLDEN_APPLE)) || (hexLevel >= 1 && $$0.is(Items.GOLDEN_APPLE))
-                    || hexLevel >= 2) {
-                ci.cancel();
-                return;
-            }
+        if (net.hydra.jojomod.util.FoodEffects.blockedByHex((LivingEntity) (Object) this, stack)) {
+            args.set(0, net.hydra.jojomod.util.FoodEffects.withoutEffects(args.get(0)));
+            return;
         }
-        roundabout$getStandPowers().eatEffectIntercept($$0, $$1, $$2);
+        roundabout$getStandPowers().eatEffectIntercept(stack, level, (LivingEntity) (Object) this);
     }
 
     @Unique

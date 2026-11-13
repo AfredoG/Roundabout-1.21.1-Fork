@@ -49,7 +49,7 @@ import org.joml.Vector3f;
 
 import java.util.UUID;
 
-public abstract class StandEntity extends Mob implements NoVibrationEntity {
+public abstract class StandEntity extends Mob implements NoVibrationEntity, net.hydra.jojomod.access.WaterBreathingOverride {
     /**The entity code for a stand. Not to be confused with StandPowers, which contain
      * the actual ability data of stands, this code exists more for the physical
      * entities.*/
@@ -734,7 +734,7 @@ public abstract class StandEntity extends Mob implements NoVibrationEntity {
     }
 
     @Override
-    public boolean canBreatheUnderwater() {
+    public boolean roundabout$canBreatheUnderwater() {
         return true;
     }
 

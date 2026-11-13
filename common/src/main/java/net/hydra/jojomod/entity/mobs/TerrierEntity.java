@@ -40,7 +40,7 @@ public class TerrierEntity extends Wolf {
         Wolf wolfEntity = ModEntities.TERRIER_DOG.create(serverWorld);
         if (wolfEntity != null && (uUID = this.getOwnerUUID()) != null) {
             wolfEntity.setOwnerUUID(uUID);
-            wolfEntity.setTame(true);
+            wolfEntity.setTame(true, true);
         }
         return wolfEntity;
     }

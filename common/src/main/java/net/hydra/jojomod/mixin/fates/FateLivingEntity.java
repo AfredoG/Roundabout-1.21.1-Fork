@@ -23,12 +23,12 @@ public abstract class FateLivingEntity extends Entity {
 
 
     /**vampires can't get direct potion effects from food*/
-    @Inject(method = "addEatEffect(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/LivingEntity;)V", at = @At(value = "HEAD"), cancellable = true)
-    protected void rdbt$addEatEffect(ItemStack $$0, Level $$1, LivingEntity $$2, CallbackInfo ci) {
-        if (FateTypes.hasBloodHunger((LivingEntity) (Object) this)){
-            if (MainUtil.isEdibleToVampires($$0))
-                return;
-            ci.cancel();
+    @org.spongepowered.asm.mixin.injection.ModifyArgs(method = "eat(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/food/FoodProperties;)Lnet/minecraft/world/item/ItemStack;",
+            at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/LivingEntity;addEatEffect(Lnet/minecraft/world/food/FoodProperties;)V"))
+    protected void rdbt$addEatEffect(org.spongepowered.asm.mixin.injection.invoke.arg.Args args,
+                                   Level level, ItemStack stack, net.minecraft.world.food.FoodProperties food) {
+        if (net.hydra.jojomod.util.FoodEffects.blockedByBloodHunger((LivingEntity) (Object) this, stack)) {
+            args.set(0, net.hydra.jojomod.util.FoodEffects.withoutEffects(args.get(0)));
         }
     }
     /**vampires getSlowerWhileDrowning*/

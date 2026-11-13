@@ -61,7 +61,7 @@ import org.jetbrains.annotations.NotNull;
 import javax.annotation.Nullable;
 import java.util.UUID;
 
-public class BaseMinion extends PathfinderMob {
+public class BaseMinion extends PathfinderMob implements net.hydra.jojomod.access.WaterBreathingOverride {
     public Entity controller;
     public UUID controller2;
     public boolean homeSet = false;
@@ -122,7 +122,7 @@ public class BaseMinion extends PathfinderMob {
         this.goalSelector.addGoal(12, new LookAtPlayerGoal(this, Mob.class, 8.0F));
    }
     @Override
-    public boolean canBreatheUnderwater(){
+    public boolean roundabout$canBreatheUnderwater(){
         return true;
     }
 

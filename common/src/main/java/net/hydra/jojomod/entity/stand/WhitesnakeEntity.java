@@ -255,28 +255,20 @@ public class WhitesnakeEntity extends FollowingStandEntity {
     }
 
     @Override
-    public EntityDimensions getDimensions(Pose pose) {
+    public EntityDimensions getDefaultDimensions(Pose pose) {
         if (isMeltingModeActive()) {
-            return EntityDimensions.scalable(0.6F, 1.0F);
+            return EntityDimensions.scalable(0.6F, 1.0F).withEyeHeight(0.85F);
         }
         if (isRemoteControlled() && pose == Pose.SWIMMING) {
-            return EntityDimensions.scalable(0.6F, 0.6F);
+            return EntityDimensions.scalable(0.6F, 0.6F).withEyeHeight(0.4F);
         }
         if (isRemoteControlled() && pose == Pose.CROUCHING) {
-            return EntityDimensions.scalable(0.6F, 1.5F);
+            return EntityDimensions.scalable(0.6F, 1.5F).withEyeHeight(1.27F);
         }
         if (isRemoteControlled()) {
-            return EntityDimensions.scalable(0.6F, 1.8F);
+            return EntityDimensions.scalable(0.6F, 1.8F).withEyeHeight(1.62F);
         }
-        return super.getDimensions(pose);
-    }
-
-    @Override
-    protected float getStandingEyeHeight(Pose pose, EntityDimensions dimensions) {
-        if (isMeltingModeActive()) return 0.85F;
-        if (isRemoteControlled() && pose == Pose.SWIMMING) return 0.4F;
-        if (isRemoteControlled()) return pose == Pose.CROUCHING ? 1.27F : 1.62F;
-        return super.getStandingEyeHeight(pose, dimensions);
+        return super.getDefaultDimensions(pose);
     }
 
     public void controlJump() {
@@ -620,7 +612,7 @@ public class WhitesnakeEntity extends FollowingStandEntity {
     }
 
     @Override
-    public boolean canBreatheUnderwater() {
+    public boolean roundabout$canBreatheUnderwater() {
         return !isRemoteControlled();
     }
 

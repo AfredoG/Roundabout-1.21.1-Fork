@@ -289,7 +289,7 @@ public class KillerQueenEntity extends FollowingStandEntity {
     }
 
     @Override
-    public EntityDimensions getDimensions(Pose pose) {
+    public EntityDimensions getDefaultDimensions(Pose pose) {
         if (getPlantedBitesTheDust()
                 || this.getAnimation() == BITES_THE_DUST_FOLLOW || this.getAnimation() == BITES_THE_DUST_FOLLOW_LOOP || this.getAnimation() == BITES_THE_DUST_IDLE) {
 
@@ -297,7 +297,7 @@ public class KillerQueenEntity extends FollowingStandEntity {
 
         }
 
-        return super.getDimensions(pose);
+        return super.getDefaultDimensions(pose);
     }
 
 

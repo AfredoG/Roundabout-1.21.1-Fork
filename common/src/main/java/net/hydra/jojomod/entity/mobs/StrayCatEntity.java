@@ -50,7 +50,7 @@ import java.util.*;
 public class StrayCatEntity extends TamableAnimal implements RangedAttackMob {
     public StrayCatEntity(EntityType<? extends TamableAnimal> $$0, Level $$1) {
         super($$0, $$1);
-        this.setMaxUpStep(0.0F);
+        this.getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.STEP_HEIGHT).setBaseValue(0.0F);
     }
 
     private static final EntityDataAccessor<Byte> BREED = SynchedEntityData.defineId(StrayCatEntity.class,

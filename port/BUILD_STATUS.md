@@ -8,7 +8,7 @@
 - Gradle help: успешно.
 - Подготовка исходников и классов Minecraft/NeoForge: успешно.
 - processResources: успешно; проверены метаданные, access transformer, mixin-конфигурации и 141 рецепт.
-- compileJava: НЕУСПЕШНО, 1006 ошибок, 18 предупреждений (последняя полная проверка текущих исходников).
+- compileJava: НЕУСПЕШНО, 961 ошибка, 18 предупреждений (последняя полная проверка текущих исходников).
 - JDK 21 и Gradle восстановлены; подготовка Minecraft/NeoForge и processResources прошли в новой среде.
 - JAR для установки: отсутствует.
 - Запуск клиента и выделенного сервера полного мода: не выполнен (компиляция не проходит).
@@ -22,8 +22,8 @@
 
 | Ошибка | Количество |
 |---|---:|
-| cannot find symbol | 571 |
-| method does not override or implement a method from a supertype | 137 |
+| cannot find symbol | 547 |
+| method does not override or implement a method from a supertype | 129 |
 | minecraft has private access in Gui | 11 |
 | method isCorrectToolForDrops in class Item cannot be applied to given types; | 9 |
 | incompatible types: ResourceKey<Enchantment> cannot be converted to Holder<Enchantment> | 7 |
@@ -33,10 +33,10 @@
 | incompatible types: ItemStack cannot be converted to ItemCost | 6 |
 | package minecraft does not exist | 6 |
 | incompatible types: Reference<SoundEvent> cannot be converted to SoundEvent | 5 |
-| incompatible types: double cannot be converted to LivingEntity | 5 |
 | incompatible types: BlockGetter cannot be converted to LevelReader | 5 |
-| incompatible types: EquipmentSlot cannot be converted to ItemStack | 5 |
 | invalid method reference | 5 |
+| incompatible types: double cannot be converted to LivingEntity | 5 |
+| incompatible types: EquipmentSlot cannot be converted to ItemStack | 5 |
 
 ## Что требуется закончить
 
@@ -133,3 +133,20 @@
 - Игровое поведение и mixin ещё не проверены. Полный мод не компилируется; готового JAR нет.
 
 Следующие задачи: ForgeEatingMixin (новый путь потребления еды и насыщение), геометрия/атрибуты сущностей, зачарования и захват стрел Manhattan Transfer, GUI/рендеринг и события NeoForge. Затем обязательны запуск клиента/сервера, проверка mixin, сохранения мира и сети. Для стерео отдельно проверить вставку/извлечение, creative, красный камень, загрузку мира и окончание композиции; для Whitesnake — смену диска и дистанцию слушателей.
+
+
+## Последний этап — 13 ноября 2026: потребление еды и геометрия
+
+- Среда восстановлена из полного архива 43c396c. JDK 21.0.6, Gradle 8.14.3 и зависимости загружены заново. При запуске в рабочей среде устаревший GRADLE_OPTS указывал на недоступный browser-proxy; сборку удалось запустить с текущим HTTP(S)_PROXY. Настройки прокси не внесены в проект.
+- ForgeEatingMixin теперь перенаправляет только FoodData.eat(FoodProperties) внутри Player.eat(Level, ItemStack, FoodProperties). Расход предмета, контейнер после еды, статистика, звук и критерии достижений остаются в штатном коде. Владелец FoodData устанавливается до пополнения голода.
+- FoodValues переводит абсолютные saturation points компонента обратно в прежний коэффициент для бонуса Pearl Jam. Сохранены ограничения питания (6) и коэффициента насыщения (1.2), коэффициент 1.5 и округление. 57 численных случаев проверены отдельным Java-запуском, включая нулевую питательность и значения на ограничениях.
+- FateFoodDataMixin перехватывает общий add(int,float), а не старый eat(int,float): это охватывает оба пути питания 1.21. Переданное насыщение уже абсолютное и не умножается повторно. Стирание времени и отдельное насыщение вампира сохранены.
+- Эффекты еды: FateLivingEntity и StandUserEntity используют ModifyArgs у вызова addEatEffect(FoodProperties), получая исходный ItemStack из окружающего eat. Блокировка вампирами и Hex убирает только список эффектов, не расход еды. Pearl Jam срабатывает после штатных эффектов и до уменьшения стека; соблюдает обе блокировки. Эффекты/частицы еды и напитков выполняются на сервере. Подсказки и отметка pearljamfood используют TooltipContext и CUSTOM_DATA.
+- Удалённые setMaxUpStep заменены STEP_HEIGHT; наличие атрибута подтверждено в createLivingAttributes. Обновлены три вызова setTame с применением эффектов приручения.
+- Размеры California King Bed, Killer Queen и Whitesnake переведены на getDefaultDimensions. Для Whitesnake сохранены особые высоты глаз при плавании, приседании, управлении и плавлении. Ещё семь старых getStandingEyeHeight перенесены в EntityDimensions.withEyeHeight.
+- WaterBreathingOverride сохраняет динамическое поведение прежних override метода canBreatheUnderwater, ставшего final. Общий mixin вызывает его до проверки тегов; Whitesnake дышит под водой только вне удалённого управления, как раньше. Путь NeoForge canDrownInFluidType(WATER) вызывает этот же метод, что подтверждено исходниками. Прочие жидкости не затронуты.
+- Точки вызова и сигнатуры проверены по подготовленным исходникам Minecraft/NeoForge 1.21.1 и javap. Это не проверка фактического применения mixin при старте игры.
+- compileJava: 1006 → 980 → 968 → 961 ошибка, 18 предупреждений. FoodValues, FoodEffects, ForgeEatingMixin, FateFoodDataMixin, три Energized*Mixin и WaterBreathingOverride не имеют ошибок Java. Исходники из сборки не исключались. git diff --check проходит.
+- Полный мод ещё не собирается; клиент/сервер не запускались, игрового JAR нет.
+
+Следующие задачи: оставшаяся геометрия/attachments и рендеринг, замена MobType тегами и динамическими проверками, зачарования/стрелы Manhattan Transfer, оставшиеся ItemStack API и события NeoForge. При первом запуске проверить применение ModifyArgs, запрет эффектов Hex/вампира, Pearl Jam, еду с контейнером, управление Whitesnake под водой и масштабирование сущностей. build-errors.txt соответствует последней компиляции.

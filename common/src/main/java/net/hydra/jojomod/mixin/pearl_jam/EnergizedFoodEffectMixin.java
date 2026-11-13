@@ -35,9 +35,14 @@ public class EnergizedFoodEffectMixin {
     @Final
     public static int PLAYER_HURT_EXPERIENCE_TIME;
 
-    @Inject(method = "addEatEffect", at = @At(value = "TAIL"))
-    protected void energizedFoodInject(ItemStack $$0, Level $$1, LivingEntity $$2, CallbackInfo ci) {
-        if ($$0.hasTag()) {
+    @Inject(method = "eat(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/food/FoodProperties;)Lnet/minecraft/world/item/ItemStack;",
+            at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/LivingEntity;addEatEffect(Lnet/minecraft/world/food/FoodProperties;)V", shift = At.Shift.AFTER))
+    protected void energizedFoodInject(Level $$1, ItemStack $$0, net.minecraft.world.food.FoodProperties food,
+                                      org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable<ItemStack> cir) {
+        LivingEntity $$2 = (LivingEntity) (Object) this;
+        if ($$1.isClientSide() || net.hydra.jojomod.util.FoodEffects.blockedByBloodHunger($$2, $$0)
+                || net.hydra.jojomod.util.FoodEffects.blockedByHex($$2, $$0)) return;
+        if (net.hydra.jojomod.util.ItemData.has($$0)) {
             if (net.hydra.jojomod.util.ItemData.copy($$0).contains("pearljamfood")) {
                 Random random = new Random();
                 Pair<ParticleOptions, String> pair;

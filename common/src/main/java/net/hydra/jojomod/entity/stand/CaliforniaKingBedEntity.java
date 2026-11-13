@@ -88,12 +88,12 @@ public class CaliforniaKingBedEntity extends FollowingStandEntity {
         lastanim = getAnimation();
     }
     @Override
-    public EntityDimensions getDimensions(Pose pose) {
+    public EntityDimensions getDefaultDimensions(Pose pose) {
         if (this.getAnimation() == SLEEP) {
             return EntityDimensions.fixed(3F,0.7F);
         }
 
-        return super.getDimensions(pose);
+        return super.getDefaultDimensions(pose);
     }
 
     public float yaw = 0;

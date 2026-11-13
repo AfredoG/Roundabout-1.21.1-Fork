@@ -31,7 +31,7 @@ public class AxolotlMinion extends BaseMinion  implements LerpingModel {
         this.setPathfindingMalus(PathType.WATER, 0.0F);
         this.moveControl = new SmoothSwimmingMoveControl(this, 85, 10, 0.1F, 0.5F, false);
         this.lookControl = new SmoothSwimmingLookControl(this, 20);
-        this.setMaxUpStep(1.0F);
+        this.getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.STEP_HEIGHT).setBaseValue(1.0F);
     }
 
     private final Map<String, Vector3f> modelRotationValues = Maps.newHashMap();
@@ -39,7 +39,7 @@ public class AxolotlMinion extends BaseMinion  implements LerpingModel {
     public Map<String, Vector3f> getModelRotationValues() {
         return this.modelRotationValues;
     }
-    public boolean canBreatheUnderwater() {
+    public boolean roundabout$canBreatheUnderwater() {
         return true;
     }
 
@@ -80,8 +80,9 @@ public class AxolotlMinion extends BaseMinion  implements LerpingModel {
         return (double)1.5F + (double)$$0.getBbWidth() * (double)2.0F;
     }
     @Override
-    protected float getStandingEyeHeight(Pose $$0, EntityDimensions $$1) {
-        return $$1.height() * 0.655F;
+    protected EntityDimensions getDefaultDimensions(Pose pose) {
+        EntityDimensions dimensions = super.getDefaultDimensions(pose);
+        return dimensions.withEyeHeight(dimensions.height() * 0.655F);
     }
 
     public int getMaxHeadXRot() {

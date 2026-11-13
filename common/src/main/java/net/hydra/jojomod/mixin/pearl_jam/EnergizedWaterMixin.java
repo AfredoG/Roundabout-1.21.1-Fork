@@ -41,9 +41,9 @@ import java.util.concurrent.ThreadLocalRandom;
 @Mixin(PotionItem.class)
 public class EnergizedWaterMixin {
     @Inject(method = "appendHoverText", at = @At(value = "HEAD"), cancellable = true)
-    public void appendWaterLore(ItemStack $$0, Level $$1, List<Component> $$2, TooltipFlag $$3, CallbackInfo ci) {
-        if ($$0.hasTag()) {
-            if ($$0.getTag().contains("pearljamfood")) {
+    public void appendWaterLore(ItemStack $$0, net.minecraft.world.item.Item.TooltipContext $$1, List<Component> $$2, TooltipFlag $$3, CallbackInfo ci) {
+        if (net.hydra.jojomod.util.ItemData.has($$0)) {
+            if (net.hydra.jojomod.util.ItemData.copy($$0).contains("pearljamfood")) {
                 if (MainUtil.foodCuresThat.containsKey($$0.getItem()) || MainUtil.foodAddsThat.containsKey($$0.getItem()) || MainUtil.specialFoodRemoves.containsKey($$0.getItem())) {
                     if (MainUtil.foodCuresThat.containsKey($$0.getItem())) {
                         List<net.minecraft.core.Holder<MobEffect>> effects = MainUtil.foodCuresThat.get($$0.getItem());
@@ -64,7 +64,7 @@ public class EnergizedWaterMixin {
                         }
                     }
                 } else {
-                    $$2.add(Component.translatable("text.roundabout.pearl_jam.cure_lore", Component.translatable(MainUtil.pearlJamFallback.getDescriptionId()).withStyle(ChatFormatting.GOLD)));
+                    $$2.add(Component.translatable("text.roundabout.pearl_jam.cure_lore", Component.translatable(MainUtil.pearlJamFallback.value().getDescriptionId()).withStyle(ChatFormatting.GOLD)));
                 }
                 if ($$0.getItem().getName($$0).getString().equals("Water Bottle")){ci.cancel();}
             }
@@ -73,7 +73,8 @@ public class EnergizedWaterMixin {
     }
     @Inject(method = "finishUsingItem", at = @At("HEAD"))
     public void energizedWaterEffect(ItemStack $$0, Level $$1, LivingEntity $$2, CallbackInfoReturnable<ItemStack> cir){
-        if ($$0.hasTag()) {
+        if ($$1.isClientSide()) return;
+        if (net.hydra.jojomod.util.ItemData.has($$0)) {
             if (net.hydra.jojomod.util.ItemData.copy($$0).contains("pearljamfood")) {
                 Random random = new Random();
                 Pair<ParticleOptions, String> pair;

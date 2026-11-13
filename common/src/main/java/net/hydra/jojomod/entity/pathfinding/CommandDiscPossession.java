@@ -30,7 +30,7 @@ public final class CommandDiscPossession extends GroundPathfindingStandAttackEnt
     public CommandDiscPossession(EntityType<? extends CommandDiscPossession> type, Level level) {
         super(type, level);
         setLifeSpan(CommandDiscController.ATTACK_COMMAND_DURATION);
-        setMaxUpStep(1.5F);
+        this.getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.STEP_HEIGHT).setBaseValue(1.5F);
     }
 
     public CommandDiscPossession(Level level, ServerPlayer player, LivingEntity target) {

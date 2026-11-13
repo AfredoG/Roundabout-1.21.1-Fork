@@ -753,7 +753,7 @@ public class PowersWhitesnake extends BlockGrabPreset {
         whitesnake.setControlInput(input.leftImpulse, input.forwardImpulse);
         entity.setShiftKeyDown(input.shiftKeyDown);
         entity.setPose(input.shiftKeyDown ? Pose.CROUCHING : Pose.STANDING);
-        entity.setMaxUpStep(0.6F);
+        entity.getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.STEP_HEIGHT).setBaseValue(0.6F);
         boolean sprinting = !meltingMode && !input.shiftKeyDown && input.forwardImpulse > 0.0F
                 && Minecraft.getInstance().options.keySprint.isDown();
         entity.setSprinting(sprinting);

@@ -53,7 +53,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import javax.annotation.Nullable;
 import java.util.*;
 
-public class RoadRollerEntity extends LivingEntity implements PlayerRideable {
+public class RoadRollerEntity extends LivingEntity implements PlayerRideable, net.hydra.jojomod.access.WaterBreathingOverride {
     private ItemStack roadRollerItem = new ItemStack(ModItems.ROAD_ROLLER);
     private boolean inputLeft;
     private boolean inputRight;
@@ -190,8 +190,9 @@ public class RoadRollerEntity extends LivingEntity implements PlayerRideable {
     }
 
     @Override
-    protected float getStandingEyeHeight(Pose $$0, EntityDimensions $$1) {
-        return 0.65F;
+    protected EntityDimensions getDefaultDimensions(Pose pose) {
+        EntityDimensions dimensions = super.getDefaultDimensions(pose);
+        return dimensions.withEyeHeight(0.65F);
     }
 
     private float lastYaw = 0f;
@@ -343,7 +344,7 @@ public class RoadRollerEntity extends LivingEntity implements PlayerRideable {
     }
 
     @Override
-    public boolean canBreatheUnderwater() {
+    public boolean roundabout$canBreatheUnderwater() {
         return true;
     }
 

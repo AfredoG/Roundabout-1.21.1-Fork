@@ -957,8 +957,8 @@ public class SilverChariotEntity extends FollowingStandEntity {
     }
 
     @Override
-    public boolean canBreatheUnderwater() {
-        return super.canBreatheUnderwater();
+    public boolean roundabout$canBreatheUnderwater() {
+        return super.roundabout$canBreatheUnderwater();
     }
 
     @Override
