@@ -16,7 +16,7 @@ import net.minecraft.world.level.material.Fluid;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.CommonHooks;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
-import net.neoforged.bus.api.Event;
+import net.neoforged.neoforge.common.util.TriState;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.loading.FMLLoader;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -30,9 +30,8 @@ public class ForgePlatformHelper implements IPlatformHelper {
                                        ServerboundPlayerActionPacket.Action action) {
         PlayerInteractEvent.LeftClickBlock event = CommonHooks.onLeftClickBlock(player, pos, direction, action);
         return !event.isCanceled() && (player.isCreative()
-                || event.getResult() != Event.Result.DENY
-                && event.getUseBlock() != Event.Result.DENY
-                && event.getUseItem() != Event.Result.DENY);
+                || event.getUseBlock() != TriState.FALSE
+                && event.getUseItem() != TriState.FALSE);
     }
 
     public String getPlatformName() {
@@ -67,8 +66,8 @@ public class ForgePlatformHelper implements IPlatformHelper {
     @SuppressWarnings("removal")
     public boolean getFluidTagPushCode(Entity ent, TagKey<Fluid> $$0, double $$1){
         ent.updateFluidHeightAndDoFluidPushing();
-        if($$0 == FluidTags.WATER) return ent.isInFluidType(net.neoforged.neoforge.common.NeoForgeMod.WATER_TYPE.get());
-        else if ($$0 == FluidTags.LAVA) return ent.isInFluidType(net.neoforged.neoforge.common.NeoForgeMod.LAVA_TYPE.get());
+        if($$0 == FluidTags.WATER) return ent.isInFluidType(net.neoforged.neoforge.common.NeoForgeMod.WATER_TYPE.value());
+        else if ($$0 == FluidTags.LAVA) return ent.isInFluidType(net.neoforged.neoforge.common.NeoForgeMod.LAVA_TYPE.value());
         else return false;
     }
 

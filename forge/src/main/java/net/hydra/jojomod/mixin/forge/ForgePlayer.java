@@ -25,6 +25,7 @@ import net.minecraft.tags.FluidTags;
 import net.minecraft.world.effect.MobEffectUtil;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -81,10 +82,10 @@ public abstract class ForgePlayer extends LivingEntity {
                         || (curse == LocacacaCurseIndex.LEFT_HAND && this.getMainArm() == HumanoidArm.LEFT)) {
                     if (f > 1.0F) {
                         overwrite = true;
-                        int i = EnchantmentHelper.getBlockEfficiency(this);
+                        float efficiency = (float)this.getAttributeValue(Attributes.MINING_EFFICIENCY);
                         ItemStack itemstack = this.getMainHandItem();
-                        if (i > 0 && !itemstack.isEmpty()) {
-                            f += (float) (i * i + 1);
+                        if (efficiency > 0 && !itemstack.isEmpty()) {
+                            f += efficiency;
                             f*= 0.6F;
                         }
                     }
@@ -132,10 +133,10 @@ public abstract class ForgePlayer extends LivingEntity {
 
         if (overwrite){
             if (f > 1.0F) {
-                int i = EnchantmentHelper.getBlockEfficiency(this);
+                float efficiency = (float)this.getAttributeValue(Attributes.MINING_EFFICIENCY);
                 ItemStack itemstack = this.getMainHandItem();
-                if (i > 0 && !itemstack.isEmpty()) {
-                    f += (float)(i * i + 1);
+                if (efficiency > 0 && !itemstack.isEmpty()) {
+                    f += efficiency;
                 }
             }
             if (MobEffectUtil.hasDigSpeed(this)) {
@@ -162,8 +163,9 @@ public abstract class ForgePlayer extends LivingEntity {
                 f *= f1;
             }
 
-            if (this.isEyeInFluid(FluidTags.WATER) && !EnchantmentHelper.hasAquaAffinity(this)) {
-                f /= 5.0F;
+            f *= (float)this.getAttributeValue(Attributes.BLOCK_BREAK_SPEED);
+            if (this.isEyeInFluid(FluidTags.WATER)) {
+                f *= (float)this.getAttributeValue(Attributes.SUBMERGED_MINING_SPEED);
             }
 
             if (!this.onGround()) {

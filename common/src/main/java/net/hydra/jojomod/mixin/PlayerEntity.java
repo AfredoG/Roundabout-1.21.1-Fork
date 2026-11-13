@@ -1702,8 +1702,9 @@ public abstract class PlayerEntity extends LivingEntity implements IPlayerEntity
         }
 
 
-        if (this.isEyeInFluid(FluidTags.WATER) && !EnchantmentHelper.hasAquaAffinity(this)) {
-            mspeed /= 5.0F;
+        mspeed *= (float)this.getAttributeValue(Attributes.BLOCK_BREAK_SPEED);
+        if (this.isEyeInFluid(FluidTags.WATER)) {
+            mspeed *= (float)this.getAttributeValue(Attributes.SUBMERGED_MINING_SPEED);
         }
 
         if (!this.onGround()) {
@@ -1762,8 +1763,9 @@ public abstract class PlayerEntity extends LivingEntity implements IPlayerEntity
             mspeed= powers.getPickMiningSpeed()*3;
         }
 
-        if (this.isEyeInFluid(FluidTags.WATER) && !EnchantmentHelper.hasAquaAffinity(this)) {
-            mspeed /= 5.0F;
+        mspeed *= (float)this.getAttributeValue(Attributes.BLOCK_BREAK_SPEED);
+        if (this.isEyeInFluid(FluidTags.WATER)) {
+            mspeed *= (float)this.getAttributeValue(Attributes.SUBMERGED_MINING_SPEED);
         }
 
         if (!this.onGround()) {
