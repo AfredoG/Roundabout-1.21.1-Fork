@@ -1,9 +1,7 @@
 package net.hydra.jojomod.client.models.layers;
 
-import com.google.common.collect.Maps;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import net.hydra.jojomod.access.IEntityAndData;
 import net.hydra.jojomod.access.IPlayerEntity;
 import net.hydra.jojomod.client.ClientPlatform;
 import net.hydra.jojomod.client.ClientUtil;
@@ -13,7 +11,7 @@ import net.hydra.jojomod.event.index.ShapeShifts;
 import net.hydra.jojomod.event.powers.StandUserClient;
 import net.hydra.jojomod.event.powers.TimeStop;
 import net.hydra.jojomod.item.MaskItem;
-import net.hydra.jojomod.networking.ModPacketHandler;
+import net.hydra.jojomod.platform.services.IPlatformHelperClient;
 import net.hydra.jojomod.util.config.ConfigManager;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.Model;
@@ -26,22 +24,17 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.client.renderer.texture.TextureAtlas;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.resources.model.ModelManager;
+import net.minecraft.core.Holder;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
-import net.minecraft.world.item.DyeableArmorItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.armortrim.ArmorTrim;
 import org.spongepowered.asm.mixin.Unique;
 
-import javax.annotation.Nullable;
-import java.util.Map;
-import java.util.Objects;
-
 public class HumanoidLikeArmorLayer<T extends JojoNPC, M extends PlayerLikeModel<T>, A extends HumanoidModel<T>> extends RenderLayer<T, M> {
-    private static final Map<String, ResourceLocation> ARMOR_LOCATION_CACHE = Maps.newHashMap();
     private final A innerModel;
     private final A outerModel;
     private final TextureAtlas armorTrimAtlas;
@@ -117,54 +110,46 @@ public class HumanoidLikeArmorLayer<T extends JojoNPC, M extends PlayerLikeModel
             roundabout$ModifyEntity = false;
         }
         if (ConfigManager.getClientConfig().renderArmorOnPlayerCloneAbilities) {
-            this.renderArmorPiece($$0, $$1, $$3, EquipmentSlot.CHEST, $$2, this.getArmorModel(EquipmentSlot.CHEST));
-            this.renderArmorPiece($$0, $$1, $$3, EquipmentSlot.LEGS, $$2, this.getArmorModel(EquipmentSlot.LEGS));
-            this.renderArmorPiece($$0, $$1, $$3, EquipmentSlot.FEET, $$2, this.getArmorModel(EquipmentSlot.FEET));
-            this.renderArmorPiece($$0, $$1, $$3, EquipmentSlot.HEAD, $$2, this.getArmorModel(EquipmentSlot.HEAD));
+            this.renderArmorPiece($$0, $$1, $$3, EquipmentSlot.CHEST, $$2, this.getArmorModel(EquipmentSlot.CHEST), $$4, $$5, $$6, $$7, $$8, $$9);
+            this.renderArmorPiece($$0, $$1, $$3, EquipmentSlot.LEGS, $$2, this.getArmorModel(EquipmentSlot.LEGS), $$4, $$5, $$6, $$7, $$8, $$9);
+            this.renderArmorPiece($$0, $$1, $$3, EquipmentSlot.FEET, $$2, this.getArmorModel(EquipmentSlot.FEET), $$4, $$5, $$6, $$7, $$8, $$9);
+            this.renderArmorPiece($$0, $$1, $$3, EquipmentSlot.HEAD, $$2, this.getArmorModel(EquipmentSlot.HEAD), $$4, $$5, $$6, $$7, $$8, $$9);
         }
     }
 
-    private void renderArmorPiece(PoseStack $$0, MultiBufferSource $$1, T entity, EquipmentSlot slot, int $$4, A model) {
+    private void renderArmorPiece(PoseStack $$0, MultiBufferSource $$1, T entity, EquipmentSlot slot, int $$4, A model,
+                                  float limbSwing, float limbSwingAmount, float partialTick,
+                                  float ageInTicks, float netHeadYaw, float headPitch) {
         ItemStack itemStack = store(entity.getItemBySlot(slot));
         if (itemStack.getItem() instanceof ArmorItem armorItem) {
             if (armorItem.getEquipmentSlot() == slot) {
                 this.getParentModel().copyPropertiesTo2(model);
                 this.setPartVisibility(model, slot);
-                net.minecraft.client.model.Model model2 = ClientPlatform.PLATFORM_ACCESS_CLIENT.getArmorModelHook(entity, itemStack, slot, model);
-                Model usethis = model;
-                if (model2 != null){
-                    usethis = model2;
+                IPlatformHelperClient platform = ClientPlatform.PLATFORM_ACCESS_CLIENT;
+                Model armorModel = platform.getArmorModelHook(entity, itemStack, slot, model);
+                if (armorModel == null) {
+                    armorModel = model;
                 }
-                boolean flag = this.usesInnerModel(slot);
-                if (Objects.equals(ModPacketHandler.PLATFORM_ACCESS.getPlatformName(), "Forge") && armorItem instanceof net.minecraft.world.item.DyeableLeatherItem){
-                    int i = ((net.minecraft.world.item.DyeableLeatherItem)armorItem).getColor(itemStack);
-                    float f = (float)(i >> 16 & 255) / 255.0F;
-                    float f1 = (float)(i >> 8 & 255) / 255.0F;
-                    float f2 = (float)(i & 255) / 255.0F;
-
-                    this.renderModel($$0, $$1, $$4, armorItem, usethis, flag, f, f1, f2, null,
-                            entity, itemStack, slot
-                    );
-                } else if (armorItem instanceof DyeableArmorItem $$10) {
-                    int $$11 = $$10.getColor(itemStack);
-                    float $$12 = (float)($$11 >> 16 & 0xFF) / 255.0F;
-                    float $$13 = (float)($$11 >> 8 & 0xFF) / 255.0F;
-                    float $$14 = (float)($$11 & 0xFF) / 255.0F;
-                    this.renderModel($$0, $$1, $$4, armorItem, usethis, flag, $$12, $$13, $$14, null,
-                            entity, itemStack, slot
-                            );
-                    this.renderModel($$0, $$1, $$4, armorItem, usethis, flag, 1.0F, 1.0F, 1.0F, "overlay",
-                            entity, itemStack, slot
-                            );
-                } else {
-                    this.renderModel($$0, $$1, $$4, armorItem, usethis, flag, 1.0F, 1.0F, 1.0F, null,
-                            entity, itemStack, slot
-                            );
+                boolean inner = this.usesInnerModel(slot);
+                ArmorMaterial material = armorItem.getMaterial().value();
+                platform.setupArmorModelAnimations(entity, itemStack, slot, armorModel,
+                        limbSwing, limbSwingAmount, partialTick, ageInTicks, netHeadYaw, headPitch);
+                int fallbackColor = platform.getDefaultArmorDyeColor(itemStack);
+                for (int layerIndex = 0; layerIndex < material.layers().size(); layerIndex++) {
+                    ArmorMaterial.Layer layer = material.layers().get(layerIndex);
+                    int color = platform.getArmorLayerTintColor(itemStack, entity, layer, layerIndex, fallbackColor);
+                    if (color != 0) {
+                        ResourceLocation texture = platform.getArmorTexture(entity, itemStack, layer, inner, slot);
+                        this.renderModel($$0, $$1, $$4, armorModel, color, texture);
+                    }
                 }
 
-                ArmorTrim.getTrim(entity.level().registryAccess(), itemStack).ifPresent($$6x -> this.renderTrim(armorItem.getMaterial(), $$0, $$1, $$4, $$6x, model, flag));
+                ArmorTrim trim = itemStack.get(DataComponents.TRIM);
+                if (trim != null) {
+                    this.renderTrim(armorItem.getMaterial(), $$0, $$1, $$4, trim, armorModel, inner);
+                }
                 if (itemStack.hasFoil()) {
-                    this.renderGlint($$0, $$1, $$4, model);
+                    this.renderGlint($$0, $$1, $$4, armorModel);
                 }
             }
         }
@@ -220,37 +205,21 @@ public class HumanoidLikeArmorLayer<T extends JojoNPC, M extends PlayerLikeModel
         }
     }
 
-    private void renderModel(
-            PoseStack $$0, MultiBufferSource $$1, int $$2, ArmorItem $$3, Model $$4, boolean $$5, float $$6, float $$7, float $$8, @Nullable String $$9,
-            Entity ent, ItemStack stack, EquipmentSlot slot
-    ) {
-        if (Objects.equals(ModPacketHandler.PLATFORM_ACCESS.getPlatformName(), "Forge")) {
-            ResourceLocation rl = getArmorResource(ent,stack,slot,$$9);
-            if (rl != null){
-                renderModel($$0,$$1,$$2,$$3,$$4,$$5,$$6,$$7,$$8,rl);
-            } else {
-                VertexConsumer $$10 = $$1.getBuffer(RenderType.armorCutoutNoCull(this.getArmorLocation($$3, $$5, $$9)));
-                $$4.renderToBuffer($$0, $$10, $$2, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(1.0F, $$6, $$7, $$8));
-            }
-        } else {
-            VertexConsumer $$10 = $$1.getBuffer(RenderType.armorCutoutNoCull(this.getArmorLocation($$3, $$5, $$9)));
-            $$4.renderToBuffer($$0, $$10, $$2, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(1.0F, $$6, $$7, $$8));
-        }
+    private void renderModel(PoseStack pose, MultiBufferSource buffers, int light, Model model,
+                             int argbColor, ResourceLocation texture) {
+        VertexConsumer vertices = buffers.getBuffer(RenderType.armorCutoutNoCull(texture));
+        model.renderToBuffer(pose, vertices, light, OverlayTexture.NO_OVERLAY, argbColor);
     }
 
-    private void renderModel(PoseStack p_289664_, MultiBufferSource p_289689_, int p_289681_, ArmorItem p_289650_, net.minecraft.client.model.Model p_289658_, boolean p_289668_, float p_289678_, float p_289674_, float p_289693_, ResourceLocation armorResource) {
-        VertexConsumer vertexconsumer = p_289689_.getBuffer(RenderType.armorCutoutNoCull(armorResource));
-        p_289658_.renderToBuffer(p_289664_, vertexconsumer, p_289681_, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(1.0F, p_289678_, p_289674_, p_289693_));
+    private void renderTrim(Holder<ArmorMaterial> material, PoseStack pose, MultiBufferSource buffers, int light,
+                            ArmorTrim trim, Model model, boolean inner) {
+        TextureAtlasSprite sprite = this.armorTrimAtlas.getSprite(inner ? trim.innerTexture(material) : trim.outerTexture(material));
+        VertexConsumer vertices = sprite.wrap(buffers.getBuffer(Sheets.armorTrimsSheet(trim.pattern().value().decal())));
+        model.renderToBuffer(pose, vertices, light, OverlayTexture.NO_OVERLAY);
     }
 
-    private void renderTrim(ArmorMaterial $$0, PoseStack $$1, MultiBufferSource $$2, int $$3, ArmorTrim $$4, A $$5, boolean $$6) {
-        TextureAtlasSprite $$7 = this.armorTrimAtlas.getSprite($$6 ? $$4.innerTexture($$0) : $$4.outerTexture($$0));
-        VertexConsumer $$8 = $$7.wrap($$2.getBuffer(Sheets.armorTrimsSheet()));
-        $$5.renderToBuffer($$1, $$8, $$3, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(1.0F, 1.0F, 1.0F, 1.0F));
-    }
-
-    private void renderGlint(PoseStack $$0, MultiBufferSource $$1, int $$2, A $$3) {
-        $$3.renderToBuffer($$0, $$1.getBuffer(RenderType.armorEntityGlint()), $$2, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(1.0F, 1.0F, 1.0F, 1.0F));
+    private void renderGlint(PoseStack pose, MultiBufferSource buffers, int light, Model model) {
+        model.renderToBuffer(pose, buffers.getBuffer(RenderType.armorEntityGlint()), light, OverlayTexture.NO_OVERLAY);
     }
 
     private A getArmorModel(EquipmentSlot $$0) {
@@ -261,29 +230,4 @@ public class HumanoidLikeArmorLayer<T extends JojoNPC, M extends PlayerLikeModel
         return $$0 == EquipmentSlot.LEGS;
     }
 
-    private ResourceLocation getArmorLocation(ArmorItem $$0, boolean $$1, @Nullable String $$2) {
-        String $$3 = "textures/models/armor/" + $$0.getMaterial().getName() + "_layer_" + ($$1 ? 2 : 1) + ($$2 == null ? "" : "_" + $$2) + ".png";
-        return ARMOR_LOCATION_CACHE.computeIfAbsent($$3, ResourceLocation::new);
-    }
-    public ResourceLocation getArmorResource(net.minecraft.world.entity.Entity entity, ItemStack stack, EquipmentSlot slot, @Nullable String type) {
-            ArmorItem item = (ArmorItem) stack.getItem();
-            String texture = item.getMaterial().getName();
-            String domain = "minecraft";
-            int idx = texture.indexOf(':');
-            if (idx != -1) {
-                domain = texture.substring(0, idx);
-                texture = texture.substring(idx + 1);
-            }
-            String s1 = String.format(java.util.Locale.ROOT, "%s:textures/models/armor/%s_layer_%d%s.png", domain, texture, (usesInnerModel(slot) ? 2 : 1), type == null ? "" : String.format(java.util.Locale.ROOT, "_%s", type));
-
-            s1 = ClientPlatform.PLATFORM_ACCESS_CLIENT.getArmorTexture(entity,stack,s1,slot,type);
-            ResourceLocation resourcelocation = ARMOR_LOCATION_CACHE.get(s1);
-
-            if (resourcelocation == null && s1 != null) {
-                resourcelocation = ResourceLocation.parse(s1);
-                ARMOR_LOCATION_CACHE.put(s1, resourcelocation);
-            }
-
-            return resourcelocation;
-    }
 }

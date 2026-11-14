@@ -8,7 +8,7 @@
 - Gradle help: успешно.
 - Подготовка исходников и классов Minecraft/NeoForge: успешно.
 - processResources: успешно; проверены метаданные, access transformer, mixin-конфигурации и 141 рецепт.
-- compileJava: НЕУСПЕШНО, 630 ошибок, 18 предупреждений (последняя полная проверка текущих исходников).
+- compileJava: НЕУСПЕШНО, 618 ошибок, 18 предупреждений (последняя полная проверка текущих исходников).
 - JDK 21 и Gradle восстановлены; подготовка Minecraft/NeoForge и processResources прошли в новой среде.
 - JAR для установки: отсутствует.
 - Запуск клиента и выделенного сервера полного мода: не выполнен (компиляция не проходит).
@@ -22,7 +22,7 @@
 
 | Ошибка | Количество |
 |---|---:|
-| cannot find symbol | 302 |
+| cannot find symbol | 295 |
 | method does not override or implement a method from a supertype | 116 |
 | method isCorrectToolForDrops in class Item cannot be applied to given types; | 9 |
 | incompatible types: ResourceKey<Enchantment> cannot be converted to Holder<Enchantment> | 7 |
@@ -339,3 +339,13 @@
 - Последние блоки частиц, неба/рук, знамён, прозрачности моделей, прицеливания и HallucinatoryAcidProjectileModel не имеют ошибок Java. Актуальный полный журнал снова сохранён в build-errors.txt. git diff --check проходит; ресурсы не менялись.
 - При повторном восстановлении окружения proxy properties нужно передать и в аргументах Gradle: локальные системные настройки Gradle могут перекрывать JAVA_TOOL_OPTIONS старым адресом proxy. Это только особенность рабочей среды, build scripts проекта не менялись.
 - Исходники уже сохранены в коммитах e6cea05, cbd8c8e и a6f112e; эта запись фиксирует их совместную проверку. Игра и применение mixin не запускались; готового JAR нет. Следующие блоки: слои брони, GUI и оставшиеся клиентские API, аудит renderLevel, сущности/предметы/зачарования.
+
+
+## Контрольная точка — броня клонов и NPC (15 ноября 2026)
+
+- HumanoidLikeArmorLayer перебирает ArmorMaterial.layers(), использует Holder материала и DataComponents.TRIM; выбор inner/outer texture и decal отделки соответствует 1.21.1. Ручная сборка путей по удалённому getName и DyeableArmorItem/DyeableLeatherItem удалена. Выбранная сторонним модом Model используется также для отделки и блеска.
+- Через IPlatformHelperClient передаются получение текстуры каждого слоя, базового цвета, цвета слоя и setupModelAnimations. NeoForge-реализация вызывает ClientHooks/IClientItemExtensions, включая пропуск слоя с цветом 0 и единственное получение fallbackColor на предмет. Общие defaults учитывают DYEABLE/DyedItemColor и dyeable-флаг слоя; common-код не привязан к NeoForge-классам.
+- FabricPlatformHelperClient больше не реализует устаревший String-getArmorTexture, использует default общего интерфейса. Это согласование общего API, а не проверка или завершение Fabric-порта; собирается только цель NeoForge.
+- Сохранены копирование позы, видимость частей, маски, настройки показа брони и снимки ItemStack в остановленном времени. Актуальные параметры анимации передаются расширению предмета.
+- API сверены с HumanoidArmorLayer/ArmorMaterial и IClientItemExtensions/ClientHooks NeoForge 21.1.265. Полная compileJava: **618 ошибок, 18 предупреждений**, было 630/18. В HumanoidLikeArmorLayer, IPlatformHelperClient и ForgePlatformHelperClient ошибок Java нет. git diff --check проходит; ресурсы не менялись.
+- В игре ещё проверить все слоты, окрашенную кожаную броню и overlay, отделку/decal, зачарованный блеск, многослойный материал и модовую модель/текстуру/анимацию, смену экипировки в TS. Готового JAR нет.
