@@ -1,153 +1,75 @@
 package net.hydra.jojomod.mixin.forge;
 
-import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.hydra.jojomod.client.ClientUtil;
 import net.hydra.jojomod.client.StandIcons;
-import net.hydra.jojomod.client.hud.StandHudRender;
 import net.hydra.jojomod.event.index.FateTypes;
 import net.hydra.jojomod.event.index.PowerTypes;
 import net.hydra.jojomod.event.powers.StandUser;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.tags.FluidTags;
+import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.effect.MobEffectUtil;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.food.FoodData;
-import net.neoforged.neoforge.client.gui.overlay.ForgeGui;
-import net.neoforged.neoforge.client.gui.overlay.GuiOverlayManager;
-import net.neoforged.neoforge.client.gui.overlay.NamedGuiOverlay;
-import org.checkerframework.checker.units.qual.A;
+import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
-import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-@Mixin(ForgeGui.class)
-public abstract class ForgeForgeGui extends Gui {
-
+// NeoForge 1.21.1 adds HUD layers directly to Gui; ForgeGui no longer exists.
+@Mixin(Gui.class)
+public abstract class ForgeForgeGui {
+    @Shadow @Final private Minecraft minecraft;
+    @Shadow @Final private RandomSource random;
+    @Shadow private int tickCount;
     @Shadow(remap = false) public int rightHeight;
 
-    public ForgeForgeGui(Minecraft p_232355_, ItemRenderer p_232356_) {
-        super(p_232355_, p_232356_);
+    @Shadow
+    private Player getCameraPlayer() {
+        throw new AssertionError();
     }
 
-    @Inject(method = "renderFood(IILnet/minecraft/client/gui/GuiGraphics;)V", at = @At(value = "HEAD"), remap = false, cancellable = true)
-    public void roundabout$renderFood(int width, int height, GuiGraphics guiGraphics, CallbackInfo ci) {
-        Player player = (Player) this.minecraft.getCameraEntity();
-        if (player != null){
-            if (FateTypes.hasBloodHunger(player)){
-                ci.cancel();
-                minecraft.getProfiler().push("food");
-                RenderSystem.enableBlend();
+    @Inject(method = "renderFood(Lnet/minecraft/client/gui/GuiGraphics;Lnet/minecraft/world/entity/player/Player;II)V",
+            at = @At("HEAD"), cancellable = true)
+    private void roundabout$renderFood(GuiGraphics graphics, Player player, int top, int right, CallbackInfo ci) {
+        if (!FateTypes.hasBloodHunger(player)) return;
+        ci.cancel();
+        RenderSystem.enableBlend();
+        ClientUtil.renderHungerStuff(graphics, player, right, top,
+                random.nextInt(3), player.getFoodData().getFoodLevel(), tickCount);
+        RenderSystem.disableBlend();
+        // The caller, renderFoodLevel, owns profiling and the rightHeight increment.
+    }
 
-                FoodData stats = minecraft.player.getFoodData();
-                int level = stats.getFoodLevel();
+    @Inject(method = "renderAirLevel(Lnet/minecraft/client/gui/GuiGraphics;)V", at = @At("TAIL"), remap = false)
+    private void roundabout$renderAir(GuiGraphics graphics, CallbackInfo ci) {
+        Player player = getCameraPlayer();
+        if (player == null || minecraft.level == null || !PowerTypes.hasStandActive(player)) return;
+        StandUser standUser = (StandUser) player;
+        int oxygen = standUser.roundabout$getStandPowers().getAirAmount();
+        int capacity = standUser.roundabout$getStandPowers().getMaxAirAmount();
+        if (oxygen < 0 || capacity <= 0) return;
 
-                int left = width / 2 + 91;
-                int top = height - rightHeight;
-                rightHeight += 10;
+        boolean needsAir = !player.canBreatheUnderwater() && !MobEffectUtil.hasWaterBreathing(player)
+                && !player.getAbilities().invulnerable;
+        if (!(player.isEyeInFluid(FluidTags.WATER) && needsAir) && oxygen >= capacity) return;
 
-
-                ClientUtil.renderHungerStuff(guiGraphics,player,left,top,
-                        this.random.nextInt(3),level,this.tickCount);
-
-                RenderSystem.disableBlend();
-                minecraft.getProfiler().pop();
-            }
+        // NeoForge has already reserved space for food, vehicle hearts and vanilla air.
+        int left = graphics.guiWidth() / 2 + 6;
+        // A 15px bar needs 6px more above the next standard 9px HUD row.
+        int top = graphics.guiHeight() - rightHeight - 6;
+        int airWidth = Mth.floor(81.0D * Mth.clamp(oxygen, 0, capacity) / capacity);
+        RenderSystem.enableBlend();
+        if (oxygen > 0) {
+            graphics.blit(StandIcons.JOJO_ICONS, left, top, 165, 171, 4 + airWidth, 15);
         }
-    }
-
-    @Inject(method = "renderAir(IILnet/minecraft/client/gui/GuiGraphics;)V", at = @At(value = "INVOKE",
-            target="Lcom/mojang/blaze3d/systems/RenderSystem;disableBlend()V",shift = At.Shift.BEFORE), remap = false)
-    public void roundabout$renderAir(int width, int height, GuiGraphics guiGraphics, CallbackInfo ci) {
-        if (minecraft.player != null && minecraft.level != null){
-            int oxygenBonus = ((StandUser)minecraft.player).roundabout$getStandPowers().getAirAmount();
-            int maxOxygenBonus = ((StandUser)minecraft.player).roundabout$getStandPowers().getMaxAirAmount();
-            if (oxygenBonus > -1 && PowerTypes.hasStandActive(minecraft.player)) {
-                int $$28 = minecraft.player.getMaxAirSupply();
-                int $$29 = Math.min(minecraft.player.getAirSupply(), $$28);
-                boolean $$3 = !minecraft.player.canBreatheUnderwater() && !MobEffectUtil.hasWaterBreathing(minecraft.player) &&
-                        (!minecraft.player.getAbilities().invulnerable);
-                if ((minecraft.player.isEyeInFluid(FluidTags.WATER) && $$3)  || oxygenBonus < maxOxygenBonus) {
-                    LivingEntity $$21 = roundabout$getPlayerVehicleWithHealth();
-                    int $$22 = roundabout$getVehicleMaxHearts($$21);
-                    int $$30 = roundabout$etVisibleVehicleHeartRows($$22) - 1;
-                    int $$9 = this.screenWidth / 2 + 6;
-                    int $$10 = this.screenHeight - 39;
-                    int $$16 = $$10 - 10;
-                    $$16 -= $$30 * 10;
-
-                    if ($$22 == 0) {
-                        $$16 -= 10;
-                    }
-
-                    int airWidth = (int) Math.floor(((double) 81 /maxOxygenBonus)*oxygenBonus);
-
-                    if (oxygenBonus > 0) {
-                        guiGraphics.blit(StandIcons.JOJO_ICONS, $$9, $$16 - 3, 165, 171, 4+airWidth, 15);
-                    }
-                    guiGraphics.blit(StandIcons.JOJO_ICONS, $$9, $$16 - 3, 165, 186, 89, 15);
-                }
-            }
-        }
-    }
-
-    @Inject(method = "pre",at = @At(value = "HEAD"),remap = false, cancellable = true )
-    private void roundabout$stopGuiCancelling(NamedGuiOverlay overlay, GuiGraphics guiGraphics, CallbackInfoReturnable<Boolean> cir) {
-        /// this should allow for specifically stopping cancellations, but it doesn't seem to want to cooperate
-
-
-    }
-
-    @Unique
-    private LivingEntity roundabout$getPlayerVehicleWithHealth() {
-        Player player = roundabout$getCameraPlayer();
-        if (player != null) {
-            Entity entity = player.getVehicle();
-            if (entity == null) {
-                return null;
-            }
-
-            if (entity instanceof LivingEntity) {
-                return (LivingEntity)entity;
-            }
-        }
-
-        return null;
-    }
-
-
-    @Unique
-    private int roundabout$getVehicleMaxHearts(LivingEntity p_93023_) {
-        if (p_93023_ != null && p_93023_.showVehicleHealth()) {
-            float f = p_93023_.getMaxHealth();
-            int i = (int)(f + 0.5F) / 2;
-            if (i > 30) {
-                i = 30;
-            }
-
-            return i;
-        } else {
-            return 0;
-        }
-    }
-
-    @Unique
-    private int roundabout$etVisibleVehicleHeartRows(int p_93013_) {
-        return (int)Math.ceil((double)p_93013_ / 10.0D);
-    }
-
-
-    @Unique
-    private Player roundabout$getCameraPlayer() {
-        return !(this.minecraft.getCameraEntity() instanceof Player) ? null : (Player)this.minecraft.getCameraEntity();
+        graphics.blit(StandIcons.JOJO_ICONS, left, top, 165, 186, 89, 15);
+        RenderSystem.disableBlend();
+        rightHeight += 15;
     }
 }

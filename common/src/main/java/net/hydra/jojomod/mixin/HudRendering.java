@@ -421,8 +421,8 @@ public abstract class HudRendering implements IHudAccess {
 
     private void rdbt$renderTex(TextureAtlasSprite $$0, PoseStack $$1) {
         RenderSystem.setShaderTexture(0, $$0.atlasLocation());
-        RenderSystem.setShader(GameRenderer::getPositionColorTexShader);
-        BufferBuilder $$2 = Tesselator.getInstance().getBuilder();
+        RenderSystem.setShader(GameRenderer::getPositionTexColorShader);
+        BufferBuilder $$2 = Tesselator.getInstance().begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX_COLOR);
         float $$3 = 0.1F;
         float $$4 = -1.0F;
         float $$5 = 1.0F;
@@ -434,12 +434,11 @@ public abstract class HudRendering implements IHudAccess {
         float $$11 = $$0.getV0();
         float $$12 = $$0.getV1();
         Matrix4f $$13 = $$1.last().pose();
-        $$2.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX_COLOR);
-        $$2.vertex($$13, -1.0F, -1.0F, -0.5F).setColor(0.1F, 0.1F, 0.1F, 1.0F).setUv($$10, $$12);
-        $$2.vertex($$13, 1.0F, -1.0F, -0.5F).setColor(0.1F, 0.1F, 0.1F, 1.0F).setUv($$9, $$12);
-        $$2.vertex($$13, 1.0F, 1.0F, -0.5F).setColor(0.1F, 0.1F, 0.1F, 1.0F).setUv($$9, $$11);
-        $$2.vertex($$13, -1.0F, 1.0F, -0.5F).setColor(0.1F, 0.1F, 0.1F, 1.0F).setUv($$10, $$11);
-        BufferUploader.drawWithShader($$2.end());
+        $$2.addVertex($$13, -1.0F, -1.0F, -0.5F).setColor(0.1F, 0.1F, 0.1F, 1.0F).setUv($$10, $$12);
+        $$2.addVertex($$13, 1.0F, -1.0F, -0.5F).setColor(0.1F, 0.1F, 0.1F, 1.0F).setUv($$9, $$12);
+        $$2.addVertex($$13, 1.0F, 1.0F, -0.5F).setColor(0.1F, 0.1F, 0.1F, 1.0F).setUv($$9, $$11);
+        $$2.addVertex($$13, -1.0F, 1.0F, -0.5F).setColor(0.1F, 0.1F, 0.1F, 1.0F).setUv($$10, $$11);
+        BufferUploader.drawWithShader($$2.buildOrThrow());
     }
 
     @Inject(method = "renderTextureOverlay", at = @At(value = "HEAD"), cancellable = true)

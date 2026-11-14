@@ -73,28 +73,10 @@ import net.neoforged.neoforge.event.entity.player.SleepingTimeCheckEvent;
                                                  ^
   symbol:   class SleepingTimeCheckEvent
   location: package net.neoforged.neoforge.event.entity.player
-forge/src/main/java/net/hydra/jojomod/mixin/forge/ForgeForgeGui.java:21: error: package net.neoforged.neoforge.client.gui.overlay does not exist
-import net.neoforged.neoforge.client.gui.overlay.ForgeGui;
-                                                ^
-forge/src/main/java/net/hydra/jojomod/mixin/forge/ForgeForgeGui.java:22: error: package net.neoforged.neoforge.client.gui.overlay does not exist
-import net.neoforged.neoforge.client.gui.overlay.GuiOverlayManager;
-                                                ^
-forge/src/main/java/net/hydra/jojomod/mixin/forge/ForgeForgeGui.java:23: error: package net.neoforged.neoforge.client.gui.overlay does not exist
-import net.neoforged.neoforge.client.gui.overlay.NamedGuiOverlay;
-                                                ^
-forge/src/main/java/net/hydra/jojomod/mixin/forge/ForgeForgeGui.java:104: error: cannot find symbol
-    private void roundabout$stopGuiCancelling(NamedGuiOverlay overlay, GuiGraphics guiGraphics, CallbackInfoReturnable<Boolean> cir) {
-                                              ^
-  symbol:   class NamedGuiOverlay
-  location: class ForgeForgeGui
 common/src/main/java/net/hydra/jojomod/mixin/items/WarHammerCanEnchant.java:13: error: cannot find symbol
 @Mixin(DamageEnchantment.class)
        ^
   symbol: class DamageEnchantment
-forge/src/main/java/net/hydra/jojomod/mixin/forge/ForgeForgeGui.java:33: error: cannot find symbol
-@Mixin(ForgeGui.class)
-       ^
-  symbol: class ForgeGui
 common/src/main/java/net/zetalasis/client/shader/RCoreShader.java:16: error: cannot find symbol
         this.program = new ShaderInstance(provider, name, DefaultVertexFormat.POSITION_COLOR_TEX);
                                                                              ^
@@ -2422,47 +2404,6 @@ common/src/main/java/net/hydra/jojomod/mixin/achtung/AchtungGameRenderer.java:62
                                                        ^
   symbol:   method hasFarPickRange()
   location: variable gameMode of type MultiPlayerGameMode
-common/src/main/java/net/hydra/jojomod/mixin/HudRendering.java:424: error: invalid method reference
-        RenderSystem.setShader(GameRenderer::getPositionColorTexShader);
-                               ^
-  cannot find symbol
-    symbol:   method getPositionColorTexShader()
-    location: class GameRenderer
-common/src/main/java/net/hydra/jojomod/mixin/HudRendering.java:425: error: cannot find symbol
-        BufferBuilder $$2 = Tesselator.getInstance().getBuilder();
-                                                    ^
-  symbol:   method getBuilder()
-  location: class Tesselator
-common/src/main/java/net/hydra/jojomod/mixin/HudRendering.java:437: error: cannot find symbol
-        $$2.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX_COLOR);
-           ^
-  symbol:   method begin(Mode,VertexFormat)
-  location: variable $$2 of type BufferBuilder
-common/src/main/java/net/hydra/jojomod/mixin/HudRendering.java:438: error: cannot find symbol
-        $$2.vertex($$13, -1.0F, -1.0F, -0.5F).setColor(0.1F, 0.1F, 0.1F, 1.0F).setUv($$10, $$12);
-           ^
-  symbol:   method vertex(Matrix4f,float,float,float)
-  location: variable $$2 of type BufferBuilder
-common/src/main/java/net/hydra/jojomod/mixin/HudRendering.java:439: error: cannot find symbol
-        $$2.vertex($$13, 1.0F, -1.0F, -0.5F).setColor(0.1F, 0.1F, 0.1F, 1.0F).setUv($$9, $$12);
-           ^
-  symbol:   method vertex(Matrix4f,float,float,float)
-  location: variable $$2 of type BufferBuilder
-common/src/main/java/net/hydra/jojomod/mixin/HudRendering.java:440: error: cannot find symbol
-        $$2.vertex($$13, 1.0F, 1.0F, -0.5F).setColor(0.1F, 0.1F, 0.1F, 1.0F).setUv($$9, $$11);
-           ^
-  symbol:   method vertex(Matrix4f,float,float,float)
-  location: variable $$2 of type BufferBuilder
-common/src/main/java/net/hydra/jojomod/mixin/HudRendering.java:441: error: cannot find symbol
-        $$2.vertex($$13, -1.0F, 1.0F, -0.5F).setColor(0.1F, 0.1F, 0.1F, 1.0F).setUv($$10, $$11);
-           ^
-  symbol:   method vertex(Matrix4f,float,float,float)
-  location: variable $$2 of type BufferBuilder
-common/src/main/java/net/hydra/jojomod/mixin/HudRendering.java:442: error: cannot find symbol
-        BufferUploader.drawWithShader($$2.end());
-                                         ^
-  symbol:   method end()
-  location: variable $$2 of type BufferBuilder
 common/src/main/java/net/hydra/jojomod/mixin/manhattan/ChannelingTridentFix.java:131: error: cannot find symbol
                     int loyalty = EnchantmentHelper.getLoyalty(this.getPickupItem());
                                                    ^
@@ -3350,82 +3291,11 @@ forge/src/main/java/net/hydra/jojomod/mixin/forge/DimensionResourceKeyD4CForge.j
                                                                                                                                                                                                                                                                                                                                                                                               ^
   symbol:   method getChunkStatistics()
   location: variable levelRenderer of type LevelRenderer
-forge/src/main/java/net/hydra/jojomod/mixin/forge/ForgeForgeGui.java:39: error: constructor Gui in class Gui cannot be applied to given types;
-        super(p_232355_, p_232356_);
-        ^
-  required: Minecraft
-  found:    Minecraft,ItemRenderer
-  reason: actual and formal argument lists differ in length
-forge/src/main/java/net/hydra/jojomod/mixin/forge/ForgeForgeGui.java:44: error: minecraft has private access in Gui
-        Player player = (Player) this.minecraft.getCameraEntity();
-                                     ^
-forge/src/main/java/net/hydra/jojomod/mixin/forge/ForgeForgeGui.java:48: error: minecraft has private access in Gui
-                minecraft.getProfiler().push("food");
-                ^
-forge/src/main/java/net/hydra/jojomod/mixin/forge/ForgeForgeGui.java:51: error: package minecraft does not exist
-                FoodData stats = minecraft.player.getFoodData();
-                                          ^
-forge/src/main/java/net/hydra/jojomod/mixin/forge/ForgeForgeGui.java:60: error: tickCount has private access in Gui
-                        this.random.nextInt(3),level,this.tickCount);
-                                                         ^
-forge/src/main/java/net/hydra/jojomod/mixin/forge/ForgeForgeGui.java:60: error: random has private access in Gui
-                        this.random.nextInt(3),level,this.tickCount);
-                            ^
-forge/src/main/java/net/hydra/jojomod/mixin/forge/ForgeForgeGui.java:63: error: minecraft has private access in Gui
-                minecraft.getProfiler().pop();
-                ^
-forge/src/main/java/net/hydra/jojomod/mixin/forge/ForgeForgeGui.java:71: error: minecraft has private access in Gui
-        if (minecraft.player != null && minecraft.level != null){
-            ^
-forge/src/main/java/net/hydra/jojomod/mixin/forge/ForgeForgeGui.java:71: error: minecraft has private access in Gui
-        if (minecraft.player != null && minecraft.level != null){
-                                        ^
-forge/src/main/java/net/hydra/jojomod/mixin/forge/ForgeForgeGui.java:72: error: minecraft has private access in Gui
-            int oxygenBonus = ((StandUser)minecraft.player).roundabout$getStandPowers().getAirAmount();
-                                          ^
-forge/src/main/java/net/hydra/jojomod/mixin/forge/ForgeForgeGui.java:73: error: minecraft has private access in Gui
-            int maxOxygenBonus = ((StandUser)minecraft.player).roundabout$getStandPowers().getMaxAirAmount();
-                                             ^
-forge/src/main/java/net/hydra/jojomod/mixin/forge/ForgeForgeGui.java:74: error: minecraft has private access in Gui
-            if (oxygenBonus > -1 && PowerTypes.hasStandActive(minecraft.player)) {
-                                                              ^
-forge/src/main/java/net/hydra/jojomod/mixin/forge/ForgeForgeGui.java:75: error: package minecraft does not exist
-                int $$28 = minecraft.player.getMaxAirSupply();
-                                    ^
-forge/src/main/java/net/hydra/jojomod/mixin/forge/ForgeForgeGui.java:76: error: package minecraft does not exist
-                int $$29 = Math.min(minecraft.player.getAirSupply(), $$28);
-                                             ^
-forge/src/main/java/net/hydra/jojomod/mixin/forge/ForgeForgeGui.java:77: error: package minecraft does not exist
-                boolean $$3 = !minecraft.player.canBreatheUnderwater() && !MobEffectUtil.hasWaterBreathing(minecraft.player) &&
-                                        ^
-forge/src/main/java/net/hydra/jojomod/mixin/forge/ForgeForgeGui.java:77: error: minecraft has private access in Gui
-                boolean $$3 = !minecraft.player.canBreatheUnderwater() && !MobEffectUtil.hasWaterBreathing(minecraft.player) &&
-                                                                                                           ^
-forge/src/main/java/net/hydra/jojomod/mixin/forge/ForgeForgeGui.java:78: error: package minecraft does not exist
-                        (!minecraft.player.getAbilities().invulnerable);
-                                   ^
-forge/src/main/java/net/hydra/jojomod/mixin/forge/ForgeForgeGui.java:79: error: package minecraft does not exist
-                if ((minecraft.player.isEyeInFluid(FluidTags.WATER) && $$3)  || oxygenBonus < maxOxygenBonus) {
-                              ^
-forge/src/main/java/net/hydra/jojomod/mixin/forge/ForgeForgeGui.java:83: error: cannot find symbol
-                    int $$9 = this.screenWidth / 2 + 6;
-                                  ^
-  symbol: variable screenWidth
-forge/src/main/java/net/hydra/jojomod/mixin/forge/ForgeForgeGui.java:84: error: cannot find symbol
-                    int $$10 = this.screenHeight - 39;
-                                   ^
-  symbol: variable screenHeight
-forge/src/main/java/net/hydra/jojomod/mixin/forge/ForgeForgeGui.java:151: error: minecraft has private access in Gui
-        return !(this.minecraft.getCameraEntity() instanceof Player) ? null : (Player)this.minecraft.getCameraEntity();
-                     ^
-forge/src/main/java/net/hydra/jojomod/mixin/forge/ForgeForgeGui.java:151: error: minecraft has private access in Gui
-        return !(this.minecraft.getCameraEntity() instanceof Player) ? null : (Player)this.minecraft.getCameraEntity();
-                                                                                          ^
 Note: Some input files use or override a deprecated API.
 Note: Recompile with -Xlint:deprecation for details.
 Note: Some input files use unchecked or unsafe operations.
 Note: Recompile with -Xlint:unchecked for details.
 Note: Some messages have been simplified; recompile with -Xdiags:verbose to get full output
-752 errors
+717 errors
 18 warnings
 

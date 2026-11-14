@@ -8,7 +8,7 @@
 - Gradle help: успешно.
 - Подготовка исходников и классов Minecraft/NeoForge: успешно.
 - processResources: успешно; проверены метаданные, access transformer, mixin-конфигурации и 141 рецепт.
-- compileJava: НЕУСПЕШНО, 752 ошибок, 18 предупреждений (последняя полная проверка текущих исходников).
+- compileJava: НЕУСПЕШНО, 717 ошибок, 18 предупреждений (последняя полная проверка текущих исходников).
 - JDK 21 и Gradle восстановлены; подготовка Minecraft/NeoForge и processResources прошли в новой среде.
 - JAR для установки: отсутствует.
 - Запуск клиента и выделенного сервера полного мода: не выполнен (компиляция не проходит).
@@ -22,21 +22,21 @@
 
 | Ошибка | Количество |
 |---|---:|
-| cannot find symbol | 383 |
+| cannot find symbol | 372 |
 | method does not override or implement a method from a supertype | 118 |
-| minecraft has private access in Gui | 11 |
 | method isCorrectToolForDrops in class Item cannot be applied to given types; | 9 |
 | incompatible types: ResourceKey<Enchantment> cannot be converted to Holder<Enchantment> | 7 |
 | isCollisionShapeFullBlock(BlockState,BlockGetter,BlockPos) has protected access in BlockBehaviour | 6 |
-| package minecraft does not exist | 6 |
 | incompatible types: Reference<SoundEvent> cannot be converted to SoundEvent | 5 |
 | incompatible types: double cannot be converted to LivingEntity | 5 |
 | incompatible types: EquipmentSlot cannot be converted to ItemStack | 5 |
 | incompatible types: BlockGetter cannot be converted to LevelReader | 5 |
-| invalid method reference | 5 |
 | method createArrow in class ArrowItem cannot be applied to given types; | 4 |
 | method getDamage in interface IItemExtension cannot be applied to given types; | 4 |
 | method getMobArrow in class ProjectileUtil cannot be applied to given types; | 4 |
+| invalid method reference | 4 |
+| incompatible types: ResourceKey<BannerPattern> cannot be converted to Holder<BannerPattern> | 4 |
+| method renderNameTag in class EntityRenderer<T> cannot be applied to given types; | 4 |
 
 
 ## Что требуется закончить
@@ -279,3 +279,15 @@
 - git diff --check проходит. Ресурсы не менялись. Игровой запуск и применение mixin ещё не проверены; не считать сверку байткода тестом реального выпадения добычи.
 - Исходники блока сохранены в GitHub коммитом fe0f329, актуальная диагностика — port/build-errors.txt. Далее: оставшиеся событийные/клиентские API, рендеринг, MobType и зачарования.
 - При восстановлении среды обязательно сначала fetch и сверка локальной ветки с origin/port/neoforge-1.21.1: здесь повторно восстанавливался старый локальный снимок 4eeb5fa, тогда как GitHub уже содержал cb9b771. Единственная локальная правка совпадала с удалённым файлом; она не потеряна. Источник актуального прогресса — удалённая ветка.
+
+
+## Контрольная точка — HUD NeoForge (14 ноября 2026)
+
+- ForgeForgeGui теперь нацелен на Gui, без наследования от удалённого ForgeGui. Minecraft/random/tickCount доступны через shadow; rightHeight — поле, добавленное NeoForge. Пустой старый hook pre удалён вместе с несуществующими типами overlay API. Имя файла/запись mixin сохранены.
+- Кровавый голод перехватывает актуальный renderFood(GuiGraphics, Player, int, int), использует переданного игрока и координаты. Профилирование и увеличение rightHeight выполняет renderFoodLevel, поэтому обработчик не делает их второй раз.
+- Запас воздуха стенда выводится в TAIL renderAirLevel. Используется camera player, резервирование 15px в rightHeight учитывает еду, здоровье транспорта и обычные пузырьки воздуха; поправка 6px соответствует разнице высот 15px и стандартного 9px ряда. Есть защита от нулевой ёмкости и ограничение ширины заполнения.
+- HudRendering.rdbt$renderTex: актуальный getPositionTexColorShader, Tesselator.begin, addVertex и buildOrThrow. UV, цвет и порядок четырёх вершин сохранены.
+- По исходникам и байткоду Gui проверены имена/типы shadow-полей и дескрипторы renderFood/renderAirLevel/getCameraPlayer; специфичные для NeoForge элементы используют remap=false. Обязательность инъекций не ослаблялась.
+- Полная compileJava: **717 ошибок, 18 предупреждений**, было 752/18. ForgeForgeGui и HudRendering не имеют ошибок Java; git diff --check проходит. Ресурсы не менялись.
+- Игровой запуск ещё не выполнен. После получения рабочей сборки проверить кровавый голод, отсутствие наложения воздуха на здоровье транспорта, масштаб GUI, подводное дыхание и неполный запас вне воды. Также остаётся аудит других common HUD-инъекций/теневых полей: NeoForge разделил renderPlayerHealth на отдельные слои, отсутствие ошибок Java не доказывает их применимость при запуске.
+- Следующие блоки: оставшиеся клиентские API/рендеринг, MobType/зачарования и сон. Актуальная диагностика — port/build-errors.txt.
