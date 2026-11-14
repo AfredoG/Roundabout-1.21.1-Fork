@@ -9,6 +9,7 @@ import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.FastColor;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -31,9 +32,9 @@ public abstract class AchtungModelPart {
 
 
     @Inject(
-            method = "render(Lcom/mojang/blaze3d/vertex/PoseStack;Lcom/mojang/blaze3d/vertex/VertexConsumer;IIFFFF)V",
+            method = "render(Lcom/mojang/blaze3d/vertex/PoseStack;Lcom/mojang/blaze3d/vertex/VertexConsumer;III)V",
             at = @At("HEAD"), cancellable = true)
-    public void roundabout$modifyAlpha(PoseStack $$0, VertexConsumer $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float originalAlpha, CallbackInfo ci) {
+    public void roundabout$modifyAlpha(PoseStack $$0, VertexConsumer $$1, int $$2, int $$3, int argbColor, CallbackInfo ci) {
         float ether = ClientUtil.getThrowFadeToTheEther();
         int frozenLevel =  ClientUtil.frozenLevel;
         if (ether <= 0){
@@ -50,22 +51,19 @@ public abstract class AchtungModelPart {
                 ClientUtil.saveBufferTexture = null;
             }
 
-            originalAlpha = ether;
+            int color = frozenLevel > 0
+                    ? FastColor.ARGB32.colorFromFloat(ether, 0.7F, 0.85F, 1.0F)
+                    : FastColor.ARGB32.color((int) (ether * 255.0F), argbColor);
             if (this.visible) {
                 if (!this.cubes.isEmpty() || !this.children.isEmpty()) {
                     ClientUtil.pushPoseAndCooperate($$0,13);
                     this.translateAndRotate($$0);
-                    if (frozenLevel >0){
-                        $$4 = 0.7F;
-                        $$5 = 0.85F;
-                        $$6 = 1.0F;
-                    }
                     if (!this.skipDraw) {
-                        this.compile($$0.last(), newConsumer, $$2, $$3, $$4, $$5, $$6, originalAlpha);
+                        this.compile($$0.last(), newConsumer, $$2, $$3, color);
                     }
 
                     for (ModelPart $$8 : this.children.values()) {
-                        $$8.render($$0, newConsumer, $$2, $$3, net.minecraft.util.FastColor.ARGB32.colorFromFloat(originalAlpha, $$4, $$5, $$6));
+                        $$8.render($$0, newConsumer, $$2, $$3, color);
                     }
 
                     ClientUtil.popPoseAndCooperate($$0,13);
@@ -94,5 +92,5 @@ public abstract class AchtungModelPart {
 
     @Shadow public boolean skipDraw;
 
-    @Shadow protected abstract void compile(PoseStack.Pose $$0, VertexConsumer $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7);
+    @Shadow private void compile(PoseStack.Pose pose, VertexConsumer vertices, int light, int overlay, int argbColor) {}
 }

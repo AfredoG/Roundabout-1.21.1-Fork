@@ -1,12 +1,9 @@
 package net.hydra.jojomod.client.models.visages.parts;
 
-import com.google.common.collect.Lists;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.math.Axis;
 import net.hydra.jojomod.client.models.PsuedoHierarchicalModel;
-import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.CubeListBuilder;
@@ -16,35 +13,25 @@ import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.Sheets;
-import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.resources.model.Material;
 import net.minecraft.client.resources.model.ModelBakery;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.ListTag;
-import net.minecraft.resources.ResourceKey;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.BannerItem;
-import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BannerBlock;
 import net.minecraft.world.level.block.WallBannerBlock;
 import net.minecraft.world.level.block.entity.BannerBlockEntity;
-import net.minecraft.world.level.block.entity.BannerPattern;
-import net.minecraft.world.level.block.entity.BannerPatterns;
+import net.minecraft.world.level.block.entity.BannerPatternLayers;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.RotationSegment;
 import net.minecraft.world.phys.Vec3;
 import org.spongepowered.asm.mixin.Unique;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import javax.annotation.Nullable;
-import java.util.List;
 
 public class BannerFlagModel extends PsuedoHierarchicalModel {
     private static final int BANNER_WIDTH = 20;
@@ -80,8 +67,7 @@ public class BannerFlagModel extends PsuedoHierarchicalModel {
                                         MultiBufferSource $$3, int $$4, int $$5, float scale) {
         if (stack.getItem() instanceof BannerItem bi && bi.getBlock() instanceof BannerBlock bb) {
             long $$9 = $$9 = $$0.getGameTime();
-            List<Pair<Holder<BannerPattern>, DyeColor>> $$6 = rdbt$createPatterns(bi.getColor(),
-                    rdbt$getItemPatterns(stack));
+            BannerPatternLayers $$6 = stack.getOrDefault(DataComponents.BANNER_PATTERNS, BannerPatternLayers.EMPTY);
             float $$7 = 0.6666667F;
 
             $$2.pushPose();
@@ -94,40 +80,13 @@ public class BannerFlagModel extends PsuedoHierarchicalModel {
             this.flag.y = -32.0F;
             this.flag.yScale = scale;
 
-            renderPatterns($$2, $$3, $$4, $$5, this.flag, ModelBakery.BANNER_BASE, true, $$6);
+            renderPatterns($$2, $$3, $$4, $$5, this.flag, ModelBakery.BANNER_BASE, true, bi.getColor(), $$6);
             $$2.popPose();
             $$2.popPose();
         }
-    }
-    @Unique
-    @Nullable
-    private static ListTag rdbt$getItemPatterns(ItemStack $$0) {
-        ListTag $$1 = null;
-        CompoundTag $$2 = BlockItem.getBlockEntityData($$0);
-        if ($$2 != null && $$2.contains("Patterns", 9)) {
-            $$1 = $$2.getList("Patterns", 10).copy();
-        }
-
-        return $$1;
-    }
-    private static List<Pair<Holder<BannerPattern>, DyeColor>> rdbt$createPatterns(DyeColor $$0, @Nullable ListTag $$1) {
-        List<Pair<Holder<BannerPattern>, DyeColor>> $$2 = Lists.newArrayList();
-        $$2.add(Pair.of(BuiltInRegistries.BANNER_PATTERN.getHolderOrThrow(BannerPatterns.BASE), $$0));
-        if ($$1 != null) {
-            for (int $$3 = 0; $$3 < $$1.size(); $$3++) {
-                CompoundTag $$4 = $$1.getCompound($$3);
-                Holder<BannerPattern> $$5 = BannerPattern.byHash($$4.getString("Pattern"));
-                if ($$5 != null) {
-                    int $$6 = $$4.getInt("Color");
-                    $$2.add(Pair.of($$5, DyeColor.byId($$6)));
-                }
-            }
-        }
-
-        return $$2;
     }
     public void render(BannerBlockEntity $$0, float $$1, PoseStack $$2, MultiBufferSource $$3, int $$4, int $$5) {
-        List<Pair<Holder<BannerPattern>, DyeColor>> $$6 = $$0.getPatterns();
+        BannerPatternLayers $$6 = $$0.getPatterns();
         float $$7 = 0.6666667F;
         boolean $$8 = $$0.getLevel() == null;
         $$2.pushPose();
@@ -162,15 +121,15 @@ public class BannerFlagModel extends PsuedoHierarchicalModel {
         float $$16 = ((float)Math.floorMod((long)($$15.getX() * 7 + $$15.getY() * 9 + $$15.getZ() * 13) + $$9, 100L) + $$1) / 100.0F;
         this.flag.xRot = (-0.0125F + 0.01F * Mth.cos((float) (Math.PI * 2) * $$16)) * (float) Math.PI;
         this.flag.y = -32.0F;
-        renderPatterns($$2, $$3, $$4, $$5, this.flag, ModelBakery.BANNER_BASE, true, $$6);
+        renderPatterns($$2, $$3, $$4, $$5, this.flag, ModelBakery.BANNER_BASE, true, $$0.getBaseColor(), $$6);
         $$2.popPose();
         $$2.popPose();
     }
 
     public static void renderPatterns(
-            PoseStack $$0, MultiBufferSource $$1, int $$2, int $$3, ModelPart $$4, Material $$5, boolean $$6, List<Pair<Holder<BannerPattern>, DyeColor>> $$7
+            PoseStack $$0, MultiBufferSource $$1, int $$2, int $$3, ModelPart $$4, Material $$5, boolean $$6, DyeColor baseColor, BannerPatternLayers $$7
     ) {
-        renderPatterns($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, false);
+        renderPatterns($$0, $$1, $$2, $$3, $$4, $$5, $$6, baseColor, $$7, false);
     }
 
     public static void renderPatterns(
@@ -181,18 +140,18 @@ public class BannerFlagModel extends PsuedoHierarchicalModel {
             ModelPart $$4,
             Material $$5,
             boolean $$6,
-            List<Pair<Holder<BannerPattern>, DyeColor>> $$7,
+            DyeColor baseColor,
+            BannerPatternLayers $$7,
             boolean $$8
     ) {
         $$4.render($$0, $$5.buffer($$1, RenderType::entitySolid, $$8), $$2, $$3);
 
-        for (int $$9 = 0; $$9 < 17 && $$9 < $$7.size(); $$9++) {
-            Pair<Holder<BannerPattern>, DyeColor> $$10 = $$7.get($$9);
-            float[] $$11 = $$10.getSecond().getTextureDiffuseColors();
-            $$10.getFirst()
-                    .unwrapKey()
-                    .map($$1x -> $$6 ? Sheets.getBannerMaterial((ResourceKey<BannerPattern>)$$1x) : Sheets.getShieldMaterial((ResourceKey<BannerPattern>)$$1x))
-                    .ifPresent($$6x -> $$4.render($$0, $$6x.buffer($$1, RenderType::entityNoOutline), $$2, $$3, $$11[0], $$11[1], $$11[2], 1.0F));
+        Material baseMaterial = $$6 ? Sheets.BANNER_BASE : Sheets.SHIELD_BASE;
+        $$4.render($$0, baseMaterial.buffer($$1, RenderType::entityNoOutline), $$2, $$3, baseColor.getTextureDiffuseColor());
+        for (int i = 0; i < MAX_PATTERNS && i < $$7.layers().size(); i++) {
+            BannerPatternLayers.Layer layer = $$7.layers().get(i);
+            Material material = $$6 ? Sheets.getBannerMaterial(layer.pattern()) : Sheets.getShieldMaterial(layer.pattern());
+            $$4.render($$0, material.buffer($$1, RenderType::entityNoOutline), $$2, $$3, layer.color().getTextureDiffuseColor());
         }
     }
 

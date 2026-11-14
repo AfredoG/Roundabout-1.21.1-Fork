@@ -27,8 +27,15 @@ public abstract class PsuedoHierarchicalModel extends Model {
     }
 
     @Override
-    public void renderToBuffer(PoseStack $$0, VertexConsumer $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-        this.root().render($$0, $$1, $$2, $$3, net.minecraft.util.FastColor.ARGB32.colorFromFloat($$7, $$4, $$5, $$6));
+    public void renderToBuffer(PoseStack poseStack, VertexConsumer vertices, int light, int overlay, int argbColor) {
+        this.root().render(poseStack, vertices, light, overlay, argbColor);
+    }
+
+    // Keep upstream float-colour call sites while implementing the 1.21 Model contract.
+    public void renderToBuffer(PoseStack poseStack, VertexConsumer vertices, int light, int overlay,
+                               float red, float green, float blue, float alpha) {
+        this.renderToBuffer(poseStack, vertices, light, overlay,
+                net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, red, green, blue));
     }
 
     public abstract ModelPart root();

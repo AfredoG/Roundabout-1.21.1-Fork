@@ -2,7 +2,6 @@ package net.hydra.jojomod.mixin.time_stop;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.math.Axis;
 import net.hydra.jojomod.event.powers.TimeStop;
 import net.minecraft.client.model.geom.ModelPart;
@@ -12,12 +11,11 @@ import net.minecraft.client.renderer.blockentity.BannerRenderer;
 import net.minecraft.client.resources.model.Material;
 import net.minecraft.client.resources.model.ModelBakery;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.block.BannerBlock;
 import net.minecraft.world.level.block.WallBannerBlock;
 import net.minecraft.world.level.block.entity.BannerBlockEntity;
-import net.minecraft.world.level.block.entity.BannerPattern;
+import net.minecraft.world.level.block.entity.BannerPatternLayers;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.RotationSegment;
 import org.spongepowered.asm.mixin.Final;
@@ -27,7 +25,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import java.util.List;
 
 @Mixin(BannerRenderer.class)
 public class TimeStopBannerRenderer {
@@ -41,7 +38,7 @@ public class TimeStopBannerRenderer {
                                   MultiBufferSource $$3, int $$4, int $$5, CallbackInfo ci) {
         if ($$0.getLevel() != null && ((TimeStop)$$0.getLevel()).inTimeStopRange($$0.getBlockPos())) {
             ci.cancel();
-            List<Pair<Holder<BannerPattern>, DyeColor>> $$6 = $$0.getPatterns();
+            BannerPatternLayers $$6 = $$0.getPatterns();
             float $$7 = 0.6666667F;
             boolean $$8 = $$0.getLevel() == null;
             $$2.pushPose();
@@ -74,7 +71,7 @@ public class TimeStopBannerRenderer {
             this.bar.render($$2, $$14, $$4, $$5);
             BlockPos $$15 = $$0.getBlockPos();
             this.flag.y = -32.0F;
-            renderPatterns($$2, $$3, $$4, $$5, this.flag, ModelBakery.BANNER_BASE, true, $$6);
+            renderPatterns($$2, $$3, $$4, $$5, this.flag, ModelBakery.BANNER_BASE, true, $$0.getBaseColor(), $$6);
             $$2.popPose();
             $$2.popPose();
         }
@@ -98,7 +95,7 @@ public class TimeStopBannerRenderer {
     private ModelPart bar;
     @Shadow
     public static void renderPatterns(
-            PoseStack $$0, MultiBufferSource $$1, int $$2, int $$3, ModelPart $$4, Material $$5, boolean $$6, List<Pair<Holder<BannerPattern>, DyeColor>> $$7
+            PoseStack $$0, MultiBufferSource $$1, int $$2, int $$3, ModelPart $$4, Material $$5, boolean $$6, DyeColor baseColor, BannerPatternLayers $$7
     ) {
     }
 }
