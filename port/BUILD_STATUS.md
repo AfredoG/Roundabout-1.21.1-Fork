@@ -323,3 +323,11 @@
 - AchtungModelPart перехватывает render с packed ARGB, а shadow compile соответствует новому API. Сохранены нулевая видимость, смена буфера, исходное правило alpha=ether и голубой цвет заморозки; дочерние части получают тот же цвет.
 - Исходники BannerRenderer/BannerPatternLayers/DyeColor/Sheets/ModelPart сверены с 1.21.1. javap подтвердил обе перегрузки renderPatterns и точные render/compile ModelPart. git diff --check проходит. Полная compileJava ожидает восстановление Maven/Gradle-кэша; build-errors.txt пока относится к сохранённым 655 ошибкам до двух последних блоков.
 - В игре проверить базовый цвет без узоров, несколько цветных слоёв, предел 16, datapack-узор, узоры щита при прозрачности, знамёна в TS, BannerFlagModel и прозрачность/заморозку моделей с дочерними частями. Отдельно остаются прежние взаимодействия двух banner mixin при одновременных TS/Achtung. Игровой запуск ещё не выполнен.
+
+
+## Контрольная точка — прицеливание и модель снаряда (15 ноября 2026)
+
+- AchtungGameRenderer больше не повторяет старый pick с getPickRange/hasFarPickRange и фиксированными расстояниями. В актуальном pick(Entity, double, double, float) добавляется условие существования цели к исходному predicate ProjectileUtil. Штатный GameRenderer сохраняет дальность блоков/сущностей из атрибутов игрока, препятствия, фильтрацию расстояния и обновление hitResult/crosshairPickEntity. Без игрока исходный predicate возвращается как есть.
+- javap подтвердил точный дескриптор pick, единственный целевой вызов ProjectileUtil.getEntityHitResult и оба последующих filterHitResult. Index=4 соответствует аргументу Predicate. Обязательность инъекций не изменялась.
+- HallucinatoryAcidProjectileModel реализует Model.renderToBuffer с packed ARGB для внутренней и внешней геометрии. Специальные renderInner/renderOuter и выбор render type в рендерере оставлены прежними.
+- git diff --check проходит. Полная компиляция ещё восстанавливает Minecraft/NeoForge после сброса среды; итоговый журнал будет сохранён отдельно. После успешной сборки проверить прицеливание сквозь скрытую сущность к доступной цели, препятствия, разную дальность блоков и сущностей, creative/survival и модификаторы атрибутов.

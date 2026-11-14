@@ -51,8 +51,8 @@ public class HallucinatoryAcidProjectileModel extends Model {
 
     @Override
     public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight,
-                               int packedOverlay, float red, float green, float blue, float alpha) {
-        inner.render(poseStack, vertexConsumer, packedLight, packedOverlay, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, red, green, blue));
-        outer.render(poseStack, vertexConsumer, packedLight, packedOverlay, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, red, green, blue));
+                               int packedOverlay, int argbColor) {
+        inner.render(poseStack, vertexConsumer, packedLight, packedOverlay, argbColor);
+        outer.render(poseStack, vertexConsumer, packedLight, packedOverlay, argbColor);
     }
 }
