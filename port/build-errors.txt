@@ -1,9 +1,4 @@
 > Task :compileJava
-common/src/main/java/net/hydra/jojomod/client/gui/FogInventoryScreen.java:21: error: cannot find symbol
-import net.minecraft.client.searchtree.SearchRegistry;
-                                      ^
-  symbol:   class SearchRegistry
-  location: package net.minecraft.client.searchtree
 common/src/main/java/net/hydra/jojomod/entity/zombie_minion/BaseMinion.java:521: error: cannot find symbol
     public MobType getMobType() {
            ^
@@ -548,31 +543,6 @@ common/src/main/java/net/hydra/jojomod/client/gui/BlackSabbathPlayerInventoryScr
   required: GuiGraphics,int,int,int,int,int,float,float,float,LivingEntity
   found:    GuiGraphics,int,int,int,float,float,BlackSabbathEntity
   reason: actual and formal argument lists differ in length
-common/src/main/java/net/hydra/jojomod/client/gui/PauseTSScreen.java:79: error: cannot find symbol
-            return new OptionsScreen(this, this.minecraft.options);
-                       ^
-  symbol:   class OptionsScreen
-  location: class PauseTSScreen
-common/src/main/java/net/hydra/jojomod/client/gui/PauseTSScreen.java:101: error: cannot find symbol
-        boolean flag1 = this.minecraft.isConnectedToRealms();
-                                      ^
-  symbol:   method isConnectedToRealms()
-  location: variable minecraft of type Minecraft
-common/src/main/java/net/hydra/jojomod/client/gui/PauseTSScreen.java:104: error: cannot find symbol
-            this.minecraft.clearLevel(new GenericDirtMessageScreen(SAVING_LEVEL));
-                                          ^
-  symbol:   class GenericDirtMessageScreen
-  location: class PauseTSScreen
-common/src/main/java/net/hydra/jojomod/client/gui/PauseTSScreen.java:106: error: cannot find symbol
-            this.minecraft.clearLevel();
-                          ^
-  symbol:   method clearLevel()
-  location: variable minecraft of type Minecraft
-common/src/main/java/net/hydra/jojomod/client/gui/PauseTSScreen.java:135: error: cannot find symbol
-            p_281899_.blit(AbstractWidget.WIDGETS_LOCATION, this.disconnectButton.getX() + this.disconnectButton.getWidth() - 17, this.disconnectButton.getY() + 3, 182, 24, 15, 15);
-                                         ^
-  symbol:   variable WIDGETS_LOCATION
-  location: class AbstractWidget
 common/src/main/java/net/hydra/jojomod/event/index/PowerTypes.java:385: error: incompatible types: Reference<SoundEvent> cannot be converted to SoundEvent
                                 SoundEvents.GENERIC_EXPLODE, SoundSource.PLAYERS, 1.0F, 1F);
                                            ^
@@ -620,41 +590,6 @@ common/src/main/java/net/hydra/jojomod/client/gui/NailColorChangeScreen.java:344
                   ^
   symbol:   method mulPoseMatrix(Matrix4f)
   location: class PoseStack
-common/src/main/java/net/hydra/jojomod/client/gui/FogInventoryScreen.java:118: error: cannot find symbol
-                this.searchBox.tick();
-                              ^
-  symbol:   method tick()
-  location: variable searchBox of type EditBox
-common/src/main/java/net/hydra/jojomod/client/gui/FogInventoryScreen.java:128: error: method moveCursorToEnd in class EditBox cannot be applied to given types;
-            this.searchBox.moveCursorToEnd();
-                          ^
-  required: boolean
-  found:    no arguments
-  reason: actual and formal argument lists differ in length
-common/src/main/java/net/hydra/jojomod/client/gui/FogInventoryScreen.java:387: error: cannot find symbol
-                $$1 = this.minecraft.getSearchTree(SearchRegistry.CREATIVE_TAGS);
-                                                   ^
-  symbol:   variable SearchRegistry
-  location: class FogInventoryScreen
-common/src/main/java/net/hydra/jojomod/client/gui/FogInventoryScreen.java:390: error: cannot find symbol
-                $$1 = this.minecraft.getSearchTree(SearchRegistry.CREATIVE_NAMES);
-                                                   ^
-  symbol:   variable SearchRegistry
-  location: class FogInventoryScreen
-common/src/main/java/net/hydra/jojomod/client/gui/FogInventoryScreen.java:573: error: method does not override or implement a method from a supertype
-    @Override
-    ^
-common/src/main/java/net/hydra/jojomod/client/gui/FogInventoryScreen.java:644: error: method getTooltipLines in class ItemStack cannot be applied to given types;
-        List<Component> $$6 = $$0.getTooltipLines(this.minecraft.player, $$5);
-                                 ^
-  required: TooltipContext,Player,TooltipFlag
-  found:    LocalPlayer,TooltipFlag
-  reason: actual and formal argument lists differ in length
-common/src/main/java/net/hydra/jojomod/client/gui/FogInventoryScreen.java:769: error: cannot find symbol
-                    ? $$1.isItemEnabled($$0.level().enabledFeatures()) && $$1.getTagElement("CustomCreativeLock") == null
-                                                                             ^
-  symbol:   method getTagElement(String)
-  location: variable $$1 of type ItemStack
 common/src/main/java/net/hydra/jojomod/client/gui/PowerInventoryScreen.java:320: error: cannot find symbol
         $$0.pose().mulPoseMatrix(new Matrix4f().scaling((float)$$3, (float)$$3, (float)(-$$3)));
                   ^
@@ -2826,6 +2761,6 @@ Note: Recompile with -Xlint:deprecation for details.
 Note: Some input files use unchecked or unsafe operations.
 Note: Recompile with -Xlint:unchecked for details.
 Note: Some messages have been simplified; recompile with -Xdiags:verbose to get full output
-618 errors
+605 errors
 18 warnings
 

@@ -2,16 +2,39 @@ package net.hydra.jojomod.platform.services;
 
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.Model;
+import net.minecraft.client.multiplayer.SessionSearchTrees;
+import net.minecraft.client.searchtree.SearchTree;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ArmorMaterial;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.client.ClientHooks;
+import net.neoforged.neoforge.client.CreativeModeTabSearchRegistry;
 import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
 
 public class ForgePlatformHelperClient implements IPlatformHelperClient {
+    @Override
+    public void updateCreativeSearchTrees(SessionSearchTrees searchTrees, HolderLookup.Provider lookup) {
+        for (CreativeModeTab tab : CreativeModeTabs.allTabs()) {
+            if (tab.hasSearchBar()) {
+                var items = java.util.List.copyOf(tab.getDisplayItems());
+                searchTrees.updateCreativeTooltips(lookup, items, CreativeModeTabSearchRegistry.getNameSearchKey(tab));
+                searchTrees.updateCreativeTags(items, CreativeModeTabSearchRegistry.getTagSearchKey(tab));
+            }
+        }
+    }
+
+    @Override
+    public SearchTree<ItemStack> getCreativeSearchTree(SessionSearchTrees searchTrees, CreativeModeTab tab, boolean tags) {
+        return tags ? searchTrees.creativeTagSearch(CreativeModeTabSearchRegistry.getTagSearchKey(tab))
+                : searchTrees.creativeNameSearch(CreativeModeTabSearchRegistry.getNameSearchKey(tab));
+    }
+
     @Override
     public <T extends LivingEntity, M extends HumanoidModel<T>, A extends HumanoidModel<T>> Model getArmorModelHook
             (T entity, ItemStack itemStack, EquipmentSlot slot, A model) {

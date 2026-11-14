@@ -7,6 +7,7 @@ import com.mojang.datafixers.util.Pair;
 import net.hydra.jojomod.Roundabout;
 import net.hydra.jojomod.block.FogBlock;
 import net.hydra.jojomod.client.ClientUtil;
+import net.hydra.jojomod.client.ClientPlatform;
 import net.hydra.jojomod.event.index.PacketDataIndex;
 import net.hydra.jojomod.item.FogBlockItem;
 import net.hydra.jojomod.item.ModItems;
@@ -18,7 +19,9 @@ import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.screens.inventory.CreativeInventoryListener;
 import net.minecraft.client.gui.screens.inventory.EffectRenderingInventoryScreen;
-import net.minecraft.client.searchtree.SearchRegistry;
+import net.minecraft.client.multiplayer.ClientPacketListener;
+import net.minecraft.client.multiplayer.SessionSearchTrees;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.client.searchtree.SearchTree;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
@@ -43,7 +46,8 @@ import java.util.*;
 import java.util.function.Predicate;
 
 public class FogInventoryScreen extends EffectRenderingInventoryScreen<FogInventoryScreen.ItemPickerMenu> {
-    private static final ResourceLocation CREATIVE_TABS_LOCATION = ResourceLocation.parse("textures/gui/container/creative_inventory/tabs.png");
+    private static final ResourceLocation SCROLLER_SPRITE = ResourceLocation.withDefaultNamespace("container/creative_inventory/scroller");
+    private static final ResourceLocation SCROLLER_DISABLED_SPRITE = ResourceLocation.withDefaultNamespace("container/creative_inventory/scroller_disabled");
 
     private static final int NUM_ROWS = 5;
     private static final int NUM_COLS = 9;
@@ -73,25 +77,31 @@ public class FogInventoryScreen extends EffectRenderingInventoryScreen<FogInvent
         this.imageHeight = 136;
         this.imageWidth = 195;
         this.displayOperatorCreativeTab = $$2;
-        CreativeModeTabs.tryRebuildTabContents($$1, this.hasPermissions($$0), $$0.level().registryAccess());
+        ClientPacketListener connection = Minecraft.getInstance().getConnection();
+        this.tryRebuildTabContents(connection != null ? connection.searchTrees() : null,
+                $$1, this.hasPermissions($$0), $$0.level().registryAccess());
     }
 
     private boolean hasPermissions(Player $$0) {
         return $$0.canUseGameMasterBlocks() && this.displayOperatorCreativeTab;
     }
 
-    private void tryRefreshInvalidatedTabs(FeatureFlagSet $$0, boolean $$1, HolderLookup.Provider $$2) {
+    private boolean tryRebuildTabContents(@Nullable SessionSearchTrees searchTrees, FeatureFlagSet features,
+                                         boolean permissions, HolderLookup.Provider lookup) {
+        if (!CreativeModeTabs.tryRebuildTabContents(features, permissions, lookup)) {
+            return false;
+        }
+        if (searchTrees != null) {
+            ClientPlatform.PLATFORM_ACCESS_CLIENT.updateCreativeSearchTrees(searchTrees, lookup);
+        }
+        return true;
+    }
 
-            for (CreativeModeTab $$3 : CreativeModeTabs.allTabs()) {
-                Collection<ItemStack> $$4 = $$3.getDisplayItems();
-                if ($$3 == selectedTab) {
-                    if ($$3.getType() == CreativeModeTab.Type.CATEGORY && $$4.isEmpty()) {
-                        this.selectTab(CreativeModeTabs.getDefaultTab());
-                    } else {
-                        this.refreshCurrentTabContents($$4);
-                    }
-                }
-            }
+    private void tryRefreshInvalidatedTabs(FeatureFlagSet features, boolean permissions, HolderLookup.Provider lookup) {
+        ClientPacketListener connection = this.minecraft.getConnection();
+        if (this.tryRebuildTabContents(connection != null ? connection.searchTrees() : null, features, permissions, lookup)) {
+            this.refreshCurrentTabContents(selectedTab.getDisplayItems());
+        }
     }
 
     private void refreshCurrentTabContents(Collection<ItemStack> $$0) {
@@ -115,7 +125,6 @@ public class FogInventoryScreen extends EffectRenderingInventoryScreen<FogInvent
                 );
             }
 
-                this.searchBox.tick();
         }
     }
 
@@ -125,7 +134,7 @@ public class FogInventoryScreen extends EffectRenderingInventoryScreen<FogInvent
             return;
         }
         if (this.isCreativeSlot($$0)) {
-            this.searchBox.moveCursorToEnd();
+            this.searchBox.moveCursorToEnd(false);
             this.searchBox.setHighlightPos(0);
         }
 
@@ -381,13 +390,15 @@ public class FogInventoryScreen extends EffectRenderingInventoryScreen<FogInvent
         if ($$0.isEmpty()) {
             this.menu.items.addAll(selectedTab.getDisplayItems());
         } else {
-            SearchTree<ItemStack> $$1;
-            if ($$0.startsWith("#")) {
+            ClientPacketListener connection = this.minecraft.getConnection();
+            SearchTree<ItemStack> $$1 = SearchTree.empty();
+            boolean tags = $$0.startsWith("#");
+            if (tags) {
                 $$0 = $$0.substring(1);
-                $$1 = this.minecraft.getSearchTree(SearchRegistry.CREATIVE_TAGS);
                 this.updateVisibleTags($$0);
-            } else {
-                $$1 = this.minecraft.getSearchTree(SearchRegistry.CREATIVE_NAMES);
+            }
+            if (connection != null) {
+                $$1 = ClientPlatform.PLATFORM_ACCESS_CLIENT.getCreativeSearchTree(connection.searchTrees(), selectedTab, tags);
             }
 
 
@@ -571,7 +582,7 @@ public class FogInventoryScreen extends EffectRenderingInventoryScreen<FogInvent
     }
 
     @Override
-    public boolean mouseScrolled(double $$0, double $$1, double $$2) {
+    public boolean mouseScrolled(double $$0, double $$1, double horizontalScroll, double $$2) {
         if (!this.canScroll()) {
             return false;
         } else {
@@ -621,7 +632,6 @@ public class FogInventoryScreen extends EffectRenderingInventoryScreen<FogInvent
                     this.minecraft.player.level().registryAccess()
             );
         }
-        this.renderBackground($$0, $$1, $$2, $$3);
         super.render($$0, $$1, $$2, $$3);
 
 
@@ -641,7 +651,7 @@ public class FogInventoryScreen extends EffectRenderingInventoryScreen<FogInvent
         boolean $$3 = true;
         TooltipFlag.Default $$4 = this.minecraft.options.advancedItemTooltips ? TooltipFlag.Default.ADVANCED : TooltipFlag.Default.NORMAL;
         TooltipFlag $$5 = $$1 ? $$4.asCreative() : $$4;
-        List<Component> $$6 = $$0.getTooltipLines(this.minecraft.player, $$5);
+        List<Component> $$6 = $$0.getTooltipLines(Item.TooltipContext.of(this.minecraft.level), this.minecraft.player, $$5);
         if ($$2 && $$1) {
             return $$6;
         } else {
@@ -678,7 +688,7 @@ public class FogInventoryScreen extends EffectRenderingInventoryScreen<FogInvent
         int $$6 = this.topPos + 18;
         int $$7 = $$6 + 112;
         if (selectedTab.canScroll()) {
-            drawContext.blit(CREATIVE_TABS_LOCATION, $$5, $$6 + (int)((float)($$7 - $$6 - 17) * this.scrollOffs), 232 + (this.canScroll() ? 0 : 12), 0, 12, 15);
+            drawContext.blitSprite(this.canScroll() ? SCROLLER_SPRITE : SCROLLER_DISABLED_SPRITE, $$5, $$6 + (int)((float)($$7 - $$6 - 17) * this.scrollOffs), 12, 15);
         }
 
     }
@@ -742,7 +752,9 @@ public class FogInventoryScreen extends EffectRenderingInventoryScreen<FogInvent
             $$8 += this.imageHeight - 4;
         }
 
-        $$0.blit(CREATIVE_TABS_LOCATION, $$7, $$8, $$5, $$6, 26, 32);
+        ResourceLocation tabSprite = ResourceLocation.withDefaultNamespace("container/creative_inventory/tab_"
+                + ($$3 ? "top_" : "bottom_") + ($$2 ? "selected_" : "unselected_") + (Mth.clamp($$4, 0, 6) + 1));
+        $$0.blitSprite(tabSprite, $$7, $$8, 26, 32);
         ClientUtil.pushPoseAndCooperate($$0.pose(),50);
         $$0.pose().translate(0.0F, 0.0F, 100.0F);
         $$7 += 5;
@@ -766,7 +778,7 @@ public class FogInventoryScreen extends EffectRenderingInventoryScreen<FogInvent
         public boolean mayPickup(Player $$0) {
             ItemStack $$1 = this.getItem();
             return super.mayPickup($$0) && !$$1.isEmpty()
-                    ? $$1.isItemEnabled($$0.level().enabledFeatures()) && $$1.getTagElement("CustomCreativeLock") == null
+                    ? $$1.isItemEnabled($$0.level().enabledFeatures()) && !$$1.has(DataComponents.CREATIVE_SLOT_LOCK)
                     : $$1.isEmpty();
         }
     }

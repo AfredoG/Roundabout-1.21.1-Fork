@@ -8,7 +8,7 @@
 - Gradle help: успешно.
 - Подготовка исходников и классов Minecraft/NeoForge: успешно.
 - processResources: успешно; проверены метаданные, access transformer, mixin-конфигурации и 141 рецепт.
-- compileJava: НЕУСПЕШНО, 618 ошибок, 18 предупреждений (последняя полная проверка текущих исходников).
+- compileJava: НЕУСПЕШНО, 605 ошибок, 18 предупреждений (последняя полная проверка текущих исходников).
 - JDK 21 и Gradle восстановлены; подготовка Minecraft/NeoForge и processResources прошли в новой среде.
 - JAR для установки: отсутствует.
 - Запуск клиента и выделенного сервера полного мода: не выполнен (компиляция не проходит).
@@ -22,8 +22,8 @@
 
 | Ошибка | Количество |
 |---|---:|
-| cannot find symbol | 295 |
-| method does not override or implement a method from a supertype | 116 |
+| cannot find symbol | 285 |
+| method does not override or implement a method from a supertype | 115 |
 | method isCorrectToolForDrops in class Item cannot be applied to given types; | 9 |
 | incompatible types: ResourceKey<Enchantment> cannot be converted to Holder<Enchantment> | 7 |
 | isCollisionShapeFullBlock(BlockState,BlockGetter,BlockPos) has protected access in BlockBehaviour | 6 |
@@ -349,3 +349,15 @@
 - Сохранены копирование позы, видимость частей, маски, настройки показа брони и снимки ItemStack в остановленном времени. Актуальные параметры анимации передаются расширению предмета.
 - API сверены с HumanoidArmorLayer/ArmorMaterial и IClientItemExtensions/ClientHooks NeoForge 21.1.265. Полная compileJava: **618 ошибок, 18 предупреждений**, было 630/18. В HumanoidLikeArmorLayer, IPlatformHelperClient и ForgePlatformHelperClient ошибок Java нет. git diff --check проходит; ресурсы не менялись.
 - В игре ещё проверить все слоты, окрашенную кожаную броню и overlay, отделку/decal, зачарованный блеск, многослойный материал и модовую модель/текстуру/анимацию, смену экипировки в TS. Готового JAR нет.
+
+
+## Контрольная точка — инвентарь тумана и меню TS (15 ноября 2026)
+
+- FogInventoryScreen использует SessionSearchTrees текущего соединения. NeoForge-адаптер выбирает собственные ключи индексов имён/тегов для выбранной вкладки через CreativeModeTabSearchRegistry; при перестроении содержимого обновляет индексы всех вкладок с поиском. Общий default остаётся на vanilla-индексах, без NeoForge-импортов в common.
+- Перестроение выполняется при CreativeModeTabs.tryRebuildTabContents, без повторного поиска на каждом кадре/тике. Пустая вкладка тумана остаётся пустой, без перехода к стандартной вкладке обычных предметов. Сохранены поиск по имени/#тегу, фильтр FogBlockItem, положение прокрутки при обновлении и сброс при новом запросе.
+- Перенесены EditBox.moveCursorToEnd(false), четыре аргумента mouseScrolled, Item.TooltipContext и DataComponents.CREATIVE_SLOT_LOCK. Удалён прежний EditBox.tick. Скроллеры/табы используют GUI-спрайты вместо удалённого tabs.png.
+- PauseTSScreen использует OptionsScreen из нового пакета, Minecraft.disconnect/GenericMessageScreen и сохранённый ServerData для выбора возврата из Realms. Значок черновика жалобы — icon/draft_report. isPauseScreen=false и tickAllTimeStops сохранены.
+- Screen.render теперь сам вызывает renderBackground: убраны дополнительные вызовы из обоих экранов. Для компактного режима PauseTSScreen фон отключён через override renderBackground; полный режим рисует его один раз.
+- По исходникам сверены CreativeModeInventoryScreen, PauseScreen, Screen и SessionSearchTrees. В Minecraft resources JAR проверено наличие 31 используемого/выбираемого GUI-спрайта. Полная compileJava: **605 ошибок, 18 предупреждений**, было 618/18. Четыре изменённых Java-класса не имеют ошибок компиляции; git diff --check проходит. Новые ресурсы не добавлялись, processResources повторно не запускался.
+- После рабочей сборки проверить поиск по именам/тегам после входа, смены языка и обновления вкладок, колесо/перетаскивание/resize, блокированные слоты и подсказки; меню TS, опции, выход из одиночной игры/сервера/Realms и черновик жалобы. Сейчас клиента/сервера и готового JAR всё ещё нет.
+- Продолжение: оставшиеся клиентские API (ZPlayerRender/scoreboard/скины), обязательные renderLevel/HUD mixin, сущности/предметы, MobType/зачарования и сон. Источник состояния — origin/port/neoforge-1.21.1; перед любыми правками после восстановления среды сделать fetch и сравнить локальные изменения с удалёнными.

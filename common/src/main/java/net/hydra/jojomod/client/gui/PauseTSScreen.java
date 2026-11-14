@@ -5,7 +5,9 @@ import net.hydra.jojomod.event.powers.TimeStop;
 import net.minecraft.SharedConstants;
 import net.minecraft.Util;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.components.AbstractWidget;
+import net.minecraft.client.gui.screens.options.OptionsScreen;
+import net.minecraft.client.multiplayer.ServerData;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.StringWidget;
 import net.minecraft.client.gui.layouts.FrameLayout;
@@ -21,6 +23,7 @@ import javax.annotation.Nullable;
 import java.util.function.Supplier;
 
 public class PauseTSScreen extends Screen {
+    private static final ResourceLocation DRAFT_REPORT_SPRITE = ResourceLocation.withDefaultNamespace("icon/draft_report");
     private static final int COLUMNS = 2;
     private static final int MENU_PADDING_TOP = 50;
     private static final int BUTTON_PADDING = 4;
@@ -98,18 +101,18 @@ public class PauseTSScreen extends Screen {
 
     private void onDisconnect() {
         boolean flag = this.minecraft.isLocalServer();
-        boolean flag1 = this.minecraft.isConnectedToRealms();
+        ServerData serverData = this.minecraft.getCurrentServer();
         this.minecraft.level.disconnect();
         if (flag) {
-            this.minecraft.clearLevel(new GenericDirtMessageScreen(SAVING_LEVEL));
+            this.minecraft.disconnect(new GenericMessageScreen(SAVING_LEVEL));
         } else {
-            this.minecraft.clearLevel();
+            this.minecraft.disconnect();
         }
 
         TitleScreen titlescreen = new TitleScreen();
         if (flag) {
             this.minecraft.setScreen(titlescreen);
-        } else if (flag1) {
+        } else if (serverData != null && serverData.isRealm()) {
             this.minecraft.setScreen(new RealmsMainScreen(titlescreen));
         } else {
             this.minecraft.setScreen(new JoinMultiplayerScreen(titlescreen));
@@ -126,15 +129,18 @@ public class PauseTSScreen extends Screen {
     }
 
     public void render(GuiGraphics p_281899_, int p_281431_, int p_283183_, float p_281435_) {
-        if (this.showPauseMenu) {
-            this.renderBackground(p_281899_, p_281431_, p_283183_, p_281435_);
-        }
-
         super.render(p_281899_, p_281431_, p_283183_, p_281435_);
         if (this.showPauseMenu && this.minecraft != null && this.minecraft.getReportingContext().hasDraftReport() && this.disconnectButton != null) {
-            p_281899_.blit(AbstractWidget.WIDGETS_LOCATION, this.disconnectButton.getX() + this.disconnectButton.getWidth() - 17, this.disconnectButton.getY() + 3, 182, 24, 15, 15);
+            p_281899_.blitSprite(DRAFT_REPORT_SPRITE, this.disconnectButton.getX() + this.disconnectButton.getWidth() - 17, this.disconnectButton.getY() + 3, 15, 15);
         }
 
+    }
+
+    @Override
+    public void renderBackground(GuiGraphics graphics, int mouseX, int mouseY, float partialTick) {
+        if (this.showPauseMenu) {
+            super.renderBackground(graphics, mouseX, mouseY, partialTick);
+        }
     }
 
     private Button openScreenButton(Component p_262567_, Supplier<Screen> p_262581_) {
