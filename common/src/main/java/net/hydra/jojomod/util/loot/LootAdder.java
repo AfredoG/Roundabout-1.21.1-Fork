@@ -4,6 +4,9 @@ import net.hydra.jojomod.access.ILootPool;
 import net.hydra.jojomod.block.ModBlocks;
 import net.hydra.jojomod.item.ModItems;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.core.registries.Registries;
+import java.util.Arrays;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.storage.loot.BuiltInLootTables;
@@ -28,9 +31,10 @@ public class LootAdder {
     public LootPool getPool() {return pool;}
     public ResourceLocation[] getSources() {return sources;}
 
-    public LootAdder(LootPool pool,Field config, ResourceLocation... sources) {
+    @SafeVarargs
+    public LootAdder(LootPool pool,Field config, ResourceKey<LootTable>... sources) {
         this.pool = pool;
-        this.sources = sources;
+        this.sources = Arrays.stream(sources).map(ResourceKey::location).toArray(ResourceLocation[]::new);
     }
 
     public void applyPool(Consumer<ItemStack> consumer, LootContext context) {
@@ -38,8 +42,10 @@ public class LootAdder {
     }
 
     public boolean isValidLocation(Level level, LootTable table) {
+        if (level.getServer() == null || table == LootTable.EMPTY) return false;
         for(ResourceLocation source : this.sources) {
-            if (level.getServer().getLootData().getLootTable(source).equals(table)) {
+            if (level.getServer().reloadableRegistries()
+                    .getLootTable(ResourceKey.create(Registries.LOOT_TABLE, source)) == table) {
                 return true;
             }
         }

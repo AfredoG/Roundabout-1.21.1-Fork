@@ -6,7 +6,7 @@ import net.hydra.jojomod.util.loot.BrushingLoot;
 import net.hydra.jojomod.util.loot.WanderingTrades;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.trading.MerchantOffer;
@@ -38,7 +38,7 @@ public abstract class BrushableBlockMixin extends BlockEntity {
     private @Nullable Direction hitDirection;
 
     @Shadow
-    private @Nullable ResourceLocation lootTable;
+    private @Nullable ResourceKey<LootTable> lootTable;
 
     @Shadow
     private long lootTableSeed;
@@ -48,7 +48,7 @@ public abstract class BrushableBlockMixin extends BlockEntity {
     }
 
     @Unique
-    private ResourceLocation roundabout$saveLootTable;
+    private ResourceKey<LootTable> roundabout$saveLootTable;
 
     @Inject(method = "unpackLootTable",at = @At("HEAD"))
     private void roundabout$saveLootTable(Player $$0, CallbackInfo ci) {
@@ -57,6 +57,7 @@ public abstract class BrushableBlockMixin extends BlockEntity {
 
     @Inject(method = "unpackLootTable",at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/entity/BrushableBlockEntity;setChanged()V"))
     private void roundabout$addBrushingLoot(Player $$0, CallbackInfo ci) {
+        if (roundabout$saveLootTable == null || this.level == null || this.level.getServer() == null) return;
         BrushingLoot.updateBrushingLoot();
 
 
@@ -77,7 +78,7 @@ public abstract class BrushableBlockMixin extends BlockEntity {
         if (moddedLoot != null) {
             ItemStack item = null;
 
-            LootTable table = this.level.getServer().getLootData().getLootTable(this.roundabout$saveLootTable);
+            LootTable table = this.level.getServer().reloadableRegistries().getLootTable(this.roundabout$saveLootTable);
 
             int size = ((ILootTable) table).roundabout$getSize();
 

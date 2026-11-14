@@ -4,6 +4,8 @@ import net.hydra.jojomod.Roundabout;
 import net.hydra.jojomod.item.ModItems;
 import net.hydra.jojomod.registry.ForgeItems;
 import net.minecraft.data.PackOutput;
+import net.minecraft.core.HolderLookup;
+import java.util.concurrent.CompletableFuture;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.functions.LootItemConditionalFunction;
@@ -18,8 +20,8 @@ import net.neoforged.neoforge.common.data.GlobalLootModifierProvider;
 import net.neoforged.neoforge.common.loot.LootTableIdCondition;
 
 public class GlobalLootModProvider extends GlobalLootModifierProvider {
-    public GlobalLootModProvider(PackOutput output) {
-        super(output, Roundabout.MOD_ID);
+    public GlobalLootModProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
+        super(output, registries, Roundabout.MOD_ID);
     }
 
     @Override

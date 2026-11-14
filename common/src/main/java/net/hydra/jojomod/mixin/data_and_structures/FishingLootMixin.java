@@ -24,6 +24,7 @@ public abstract class FishingLootMixin extends Entity {
 
     @Inject(method = "retrieve",at = @At("HEAD"))
     private void roundabout$fuckYouCase(ItemStack $$0, CallbackInfoReturnable<Integer> cir) {
-        LootTable table = this.level().getServer().getLootData().getLootTable(BuiltInLootTables.FISHING);
+        if (this.level().getServer() == null) return;
+        LootTable table = this.level().getServer().reloadableRegistries().getLootTable(BuiltInLootTables.FISHING);
     }
 }
