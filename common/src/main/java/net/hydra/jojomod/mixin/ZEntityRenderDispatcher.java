@@ -1,6 +1,5 @@
 package net.hydra.jojomod.mixin;
 
-import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.*;
 import com.mojang.math.Axis;
 import net.hydra.jojomod.Roundabout;
@@ -21,7 +20,6 @@ import net.hydra.jojomod.event.powers.TimeStop;
 import net.hydra.jojomod.stand.powers.PowersTusk;
 import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
@@ -178,10 +176,6 @@ public abstract class ZEntityRenderDispatcher {
         byte bt = ((StandUser) $$2).roundabout$getOnStandFire();
         if (bt > 0) {
             ClientUtil.pushPoseAndCooperate($$0,14);
-            BufferBuilder bufferbuilder = Tesselator.getInstance().getBuilder();
-            RenderSystem.depthMask(true);
-            //this only applies on stand fire
-            RenderSystem.enableBlend();
 
             $$0.mulPose(Axis.YP.rotationDegrees(-this.camera.getYRot()));
 
@@ -204,9 +198,9 @@ public abstract class ZEntityRenderDispatcher {
             float v1 = (frame + 1) * frameHeight;
             float $$10 = 0.0F;
             int $$11 = 0;
+            // The entity RenderType supplies the shader, texture, blend state and buffered draw.
             VertexConsumer vertexConsumer;
 
-            RenderSystem.setShader(GameRenderer::getPositionColorTexShader);
             if (bt == StandFireType.BLUE.id){
                 vertexConsumer = $$1.getBuffer(RenderType.entityTranslucent(Roundabout.location("textures/block/stand_fire_blue_0.png")));
             } else if (bt == StandFireType.PURPLE.id){
@@ -223,28 +217,10 @@ public abstract class ZEntityRenderDispatcher {
 
             for (PoseStack.Pose matrices = $$0.last(); $$8 > 0.0F; $$11++) {
 
-                RenderSystem.setShader(GameRenderer::getPositionColorTexShader);
-                if (bt == StandFireType.BLUE.id){
-                    RenderSystem.setShaderTexture(0, Roundabout.location("textures/block/stand_fire_blue_0.png"));
-                } else if (bt == StandFireType.PURPLE.id){
-                    RenderSystem.setShaderTexture(0, Roundabout.location("textures/block/stand_fire_purple_0.png"));
-                } else if (bt == StandFireType.GREEN.id){
-                    RenderSystem.setShaderTexture(0, Roundabout.location("textures/block/stand_fire_green_0.png"));
-                } else if (bt == StandFireType.DREAD.id){
-                    RenderSystem.setShaderTexture(0, Roundabout.location("textures/block/stand_fire_dread_0.png"));
-                } else if (bt == StandFireType.CREAM.id){
-                    RenderSystem.setShaderTexture(0, Roundabout.location("textures/block/stand_fire_cream_0.png"));
-                } else {
-                    RenderSystem.setShaderTexture(0, Roundabout.location("textures/block/stand_fire_0.png"));
-                }
-
-                bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX_COLOR);
                 fireVertex(vertexConsumer, matrices, $$6 - 0.0F, 0.0F - $$9, $$10, u0, v1);
                 fireVertex(vertexConsumer, matrices,-$$6 - 0.0F, 0.0F - $$9, $$10, u1, v1);
                 fireVertex(vertexConsumer, matrices, -$$6 - 0.0F, 1.4F - $$9, $$10, u1, v0);
                 fireVertex(vertexConsumer, matrices, $$6 - 0.0F, 1.4F - $$9, $$10, u0, v0);
-
-                BufferUploader.drawWithShader(bufferbuilder.end());
 
                 $$8 -= 0.45F;
                 $$9 -= 0.45F;

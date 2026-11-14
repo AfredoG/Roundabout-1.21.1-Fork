@@ -2,6 +2,7 @@ package net.hydra.jojomod.client;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.BufferBuilder;
+import com.mojang.blaze3d.vertex.BufferUploader;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.Tesselator;
@@ -246,8 +247,7 @@ public class ClientEffectUtil {
         RenderSystem.lineWidth(5F);
 
         Tesselator tesselator = Tesselator.getInstance();
-        BufferBuilder bufferBuilder = tesselator.getBuilder();
-        bufferBuilder.begin(VertexFormat.Mode.DEBUG_LINES, DefaultVertexFormat.POSITION_COLOR);
+        BufferBuilder bufferBuilder = tesselator.begin(VertexFormat.Mode.DEBUG_LINES, DefaultVertexFormat.POSITION_COLOR);
 
         for (BlockPos pos : blockPositions) {
             float x0 = pos.getX();
@@ -297,7 +297,7 @@ public class ClientEffectUtil {
             bufferBuilder.addVertex(matrix, x0, y1, z1).setColor(r, g, b, a);
         }
 
-        tesselator.end();
+        BufferUploader.drawWithShader(bufferBuilder.buildOrThrow());
 
         // Restore OpenGL state
         RenderSystem.lineWidth(1.0F);

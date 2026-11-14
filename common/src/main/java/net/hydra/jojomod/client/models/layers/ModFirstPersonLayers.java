@@ -27,7 +27,7 @@ public class ModFirstPersonLayers {
     private static void vertex(
             VertexConsumer $$0, Matrix4f $$1, PoseStack.Pose $$2, float $$3, float $$4, float $$5, int $$6, int $$7, int $$8, float $$9, float $$10
     ) {
-        $$0.vertex($$1, $$3, $$4, $$5)
+        $$0.addVertex($$1, $$3, $$4, $$5)
                 .setColor($$6, $$7, $$8, 255)
                 .setUv($$9, $$10)
                 .setOverlay(OverlayTexture.NO_OVERLAY)

@@ -56,25 +56,25 @@ public class PunchImpactParticle extends TextureSheetParticle {
         float $$16 = this.getV1();
         int $$17 = this.getLightColor($$2);
 
-        $$0.vertex((double)$$9[0].x(), (double)$$9[0].y(), (double)$$9[0].z())
+        $$0.addVertex($$9[0].x(), $$9[0].y(), $$9[0].z())
                 .setUv($$14, $$16)
                 .setColor(this.rCol, this.gCol, this.bCol, this.alpha)
                 .setLight($$17)
                 ;
 
-        $$0.vertex((double)$$9[1].x(), (double)$$9[1].y(), (double)$$9[1].z())
+        $$0.addVertex($$9[1].x(), $$9[1].y(), $$9[1].z())
                 .setUv($$14, $$15)
                 .setColor(this.rCol, this.gCol, this.bCol, this.alpha)
                 .setLight($$17)
                 ;
 
-        $$0.vertex((double)$$9[2].x(), (double)$$9[2].y(), (double)$$9[2].z())
+        $$0.addVertex($$9[2].x(), $$9[2].y(), $$9[2].z())
                 .setUv($$13, $$15)
                 .setColor(this.rCol, this.gCol, this.bCol, this.alpha)
                 .setLight($$17)
                 ;
 
-        $$0.vertex((double)$$9[3].x(), (double)$$9[3].y(), (double)$$9[3].z())
+        $$0.addVertex($$9[3].x(), $$9[3].y(), $$9[3].z())
                 .setUv($$13, $$16)
                 .setColor(this.rCol, this.gCol, this.bCol, this.alpha)
                 .setLight($$17)

@@ -5,7 +5,7 @@ Imported on 2026-11-13 into AfredoG/Roundabout-1.21.1-Fork, branch `port/neoforg
 ## Status
 
 This is an INCOMPLETE development port: Minecraft 1.21.1, NeoForge 21.1.265, Java 21, Gradle 8.14.3.
-Last full compilation after subsequent port fixes: 717 Java errors and 18 warnings. No playable JAR; client and dedicated server have not been validated.
+Last full compilation after subsequent port fixes: 655 Java errors and 18 warnings. No playable JAR; client and dedicated server have not been validated.
 See BUILD_STATUS.md and build-errors.txt for diagnostics and remaining work.
 This import changes no mod source code and does not constitute a new build test.
 
@@ -45,7 +45,7 @@ git remote add upstream https://github.com/Hydraheads/RoundaboutMod.git
 Read port/BUILD_STATUS.md, port/build-errors.txt, and the existing port documentation before editing.
 Follow existing port/update_upstream.py workflow for upstream updates; retain upstream history.
 Use Java 21 and the standalone neoforge Gradle project. Restore dependencies when needed.
-Next work: remaining rendering APIs (VertexConsumer/BufferBuilder), MobType/enchantments and NeoForge events.
+Next work: particle time-stop and sky/hand rendering mixin descriptors, remaining client APIs, MobType/enchantments and NeoForge events.
 Do not exclude failing classes or disable required mixins to manufacture a successful build.
 
 Save small coherent checkpoints frequently to this remote port branch, including current diagnostics and next steps.

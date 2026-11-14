@@ -101,7 +101,7 @@ public class StandArrowRenderer<T extends StandArrowEntity> extends EntityRender
 
     public void vertex(Matrix4f $$0, PoseStack.Pose $$1, VertexConsumer $$2, int $$3, int $$4, int $$5, float $$6, float $$7, int $$8, int $$9, int $$10, int $$11,
                        int alpha) {
-        $$2.vertex($$0, (float)$$3, (float)$$4, (float)$$5)
+        $$2.addVertex($$0, (float)$$3, (float)$$4, (float)$$5)
                 .setColor(255, 255, 255, alpha)
                 .setUv($$6, $$7)
                 .setOverlay(OverlayTexture.NO_OVERLAY)

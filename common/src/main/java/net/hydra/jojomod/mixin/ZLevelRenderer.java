@@ -452,7 +452,6 @@ public abstract class ZLevelRenderer implements ILevelRenderer {
                     RenderSystem.depthMask(false);
                     RenderSystem.setShader(GameRenderer::getPositionTexColorShader);
                     Tesselator tess = Tesselator.getInstance();
-                    BufferBuilder bufferBuilder = tess.getBuilder();
                     RenderSystem.setShaderTexture(0, StandIcons.SKYBOX[0]);
 
                     for (int integer = 0; integer < 6; ++integer) {
@@ -496,12 +495,12 @@ public abstract class ZLevelRenderer implements ILevelRenderer {
                         }
 
                         Matrix4f stack = $$0.last().pose();
-                        bufferBuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX_COLOR);
+                        BufferBuilder bufferBuilder = tess.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX_COLOR);
                         bufferBuilder.addVertex(stack, -100.0F, -100.0F, -100.0F).setUv(0.0F, 0.0F).setColor(1F, 1F, 1F, alpha);
                         bufferBuilder.addVertex(stack, -100.0F, -100.0F, 100.0F).setUv(0.0F, 1).setColor(1F, 1F, 1F, alpha);
                         bufferBuilder.addVertex(stack, 100.0F, -100.0F, 100.0F).setUv(1, 1).setColor(1F, 1F, 1F, alpha);
                         bufferBuilder.addVertex(stack, 100.0F, -100.0F, -100.0F).setUv(1, 0.0F).setColor(1F, 1F, 1F, alpha);
-                        BufferUploader.drawWithShader(bufferBuilder.end());
+                        BufferUploader.drawWithShader(bufferBuilder.buildOrThrow());
                         $$0.popPose();
                     }
 

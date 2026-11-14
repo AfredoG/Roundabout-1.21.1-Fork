@@ -58,7 +58,7 @@ public class PlayerLikeBeeStingLayer <T extends JojoNPC, M extends PlayerLikeMod
     }
 
     private static void vertex(VertexConsumer $$0, Matrix4f $$1, PoseStack.Pose $$2, float $$3, int $$4, float $$5, float $$6, int $$7) {
-        $$0.vertex($$1, $$3, (float)$$4, 0.0F)
+        $$0.addVertex($$1, $$3, (float)$$4, 0.0F)
                 .setColor(255, 255, 255, 255)
                 .setUv($$5, $$6)
                 .setOverlay(OverlayTexture.NO_OVERLAY)

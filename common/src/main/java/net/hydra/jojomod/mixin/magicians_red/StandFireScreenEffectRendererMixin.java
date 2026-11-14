@@ -38,8 +38,7 @@ public abstract class StandFireScreenEffectRendererMixin {
     private static void roundabout$renderFire(Minecraft mc, PoseStack pose, Player pl) {
         byte bt = ((StandUser) pl).roundabout$getOnStandFire();
         if (bt > 0 && ConfigManager.getClientConfig().magiciansRedRenderOnFireInFirstPerson) {
-            BufferBuilder bufferbuilder = Tesselator.getInstance().getBuilder();
-            RenderSystem.setShader(GameRenderer::getPositionColorTexShader);
+            RenderSystem.setShader(GameRenderer::getPositionTexColorShader);
             RenderSystem.depthFunc(GL20C.GL_ALWAYS);
             RenderSystem.depthMask(false);
             RenderSystem.enableBlend();
@@ -74,12 +73,12 @@ public abstract class StandFireScreenEffectRendererMixin {
                 pose.mulPose(Axis.YP.rotationDegrees((float) (i * 2 - 1) * 10.0F));
                 Matrix4f matrix4f = pose.last().pose();
 
-                bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX_COLOR);
+                BufferBuilder bufferbuilder = Tesselator.getInstance().begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX_COLOR);
                 bufferbuilder.addVertex(matrix4f, -0.5F, -0.5F, -0.5F).setColor(1.0F, 1.0F, 1.0F, 0.9F).setUv(u0, v1);
                 bufferbuilder.addVertex(matrix4f,  0.5F, -0.5F, -0.5F).setColor(1.0F, 1.0F, 1.0F, 0.9F).setUv(u1, v1);
                 bufferbuilder.addVertex(matrix4f,  0.5F,  0.5F, -0.5F).setColor(1.0F, 1.0F, 1.0F, 0.9F).setUv(u1, v0);
                 bufferbuilder.addVertex(matrix4f, -0.5F,  0.5F, -0.5F).setColor(1.0F, 1.0F, 1.0F, 0.9F).setUv(u0, v0);
-                BufferUploader.drawWithShader(bufferbuilder.end());
+                BufferUploader.drawWithShader(bufferbuilder.buildOrThrow());
                 ClientUtil.popPoseAndCooperate(pose,20);
             }
 

@@ -8,7 +8,7 @@
 - Gradle help: успешно.
 - Подготовка исходников и классов Minecraft/NeoForge: успешно.
 - processResources: успешно; проверены метаданные, access transformer, mixin-конфигурации и 141 рецепт.
-- compileJava: НЕУСПЕШНО, 717 ошибок, 18 предупреждений (последняя полная проверка текущих исходников).
+- compileJava: НЕУСПЕШНО, 655 ошибок, 18 предупреждений (последняя полная проверка текущих исходников).
 - JDK 21 и Gradle восстановлены; подготовка Minecraft/NeoForge и processResources прошли в новой среде.
 - JAR для установки: отсутствует.
 - Запуск клиента и выделенного сервера полного мода: не выполнен (компиляция не проходит).
@@ -22,7 +22,7 @@
 
 | Ошибка | Количество |
 |---|---:|
-| cannot find symbol | 372 |
+| cannot find symbol | 314 |
 | method does not override or implement a method from a supertype | 118 |
 | method isCorrectToolForDrops in class Item cannot be applied to given types; | 9 |
 | incompatible types: ResourceKey<Enchantment> cannot be converted to Holder<Enchantment> | 7 |
@@ -34,9 +34,9 @@
 | method createArrow in class ArrowItem cannot be applied to given types; | 4 |
 | method getDamage in interface IItemExtension cannot be applied to given types; | 4 |
 | method getMobArrow in class ProjectileUtil cannot be applied to given types; | 4 |
-| invalid method reference | 4 |
 | incompatible types: ResourceKey<BannerPattern> cannot be converted to Holder<BannerPattern> | 4 |
 | method renderNameTag in class EntityRenderer<T> cannot be applied to given types; | 4 |
+| incompatible types: Attribute cannot be converted to Holder<Attribute> | 3 |
 
 
 ## Что требуется закончить
@@ -291,3 +291,14 @@
 - Полная compileJava: **717 ошибок, 18 предупреждений**, было 752/18. ForgeForgeGui и HudRendering не имеют ошибок Java; git diff --check проходит. Ресурсы не менялись.
 - Игровой запуск ещё не выполнен. После получения рабочей сборки проверить кровавый голод, отсутствие наложения воздуха на здоровье транспорта, масштаб GUI, подводное дыхание и неполный запас вне воды. Также остаётся аудит других common HUD-инъекций/теневых полей: NeoForge разделил renderPlayerHealth на отдельные слои, отсутствие ошибок Java не доказывает их применимость при запуске.
 - Следующие блоки: оставшиеся клиентские API/рендеринг, MobType/зачарования и сон. Актуальная диагностика — port/build-errors.txt.
+
+
+## Контрольная точка — вершины и буферы рендеринга (14 ноября 2026)
+
+- Девять типов частиц (Air/Baby/Cold Crackle, Diver Down Final, Energy Ripple, Golden Spiral, Heartbeat, Punch Impact/Miss) отправляют четыре вершины через addVertex с float-координатами Vector3f. Порядок вершин, UV, цвет, свет и анимация сохранены.
+- Перенесены VertexConsumer-помощники StandArrowRenderer, ModFirstPersonLayers и PlayerLikeBeeStingLayer; вызовы собственных методов vertex не переименовывались. Матрицы нормалей уже используют PoseStack.Pose.
+- Экранный огонь и skybox создают новый BufferBuilder для каждой порции геометрии через Tesselator.begin и завершают её buildOrThrow. Та же схема применена к четырёхугольнику оверлея TimeStopGameRenderer и подсветке блоков ClientEffectUtil; последняя проверяет непустой список до создания буфера. Используется существующий getPositionTexColorShader.
+- Огонь на сущности уже записывает вершины в MultiBufferSource.entityTranslucent. Удалены параллельное создание/отрисовка пустого Tesselator-буфера и ручное переключение shader/texture/blend: состояние и отрисовкой владеет выбранный RenderType. Это предотвращает ошибку пустого MeshData при механической замене end на buildOrThrow.
+- API и жизненный цикл сверены с VertexConsumer, Tesselator, BufferUploader, EntityRenderDispatcher и ScreenEffectRenderer из подготовленных исходников Minecraft/NeoForge 1.21.1.
+- Полная compileJava: **655 ошибок, 18 предупреждений**, было 717/18. Во всех 17 изменённых Java-файлах нет ошибок компиляции; git diff --check проходит. Ресурсы не менялись.
+- Игрового запуска ещё нет. Отдельно остаётся перенос сигнатур mixin: renderSky теперь принимает Matrix4f вместо PoseStack, renderItemInHand — Camera/float/Matrix4f, ParticleEngine.render — новый NeoForge overload с frustum/predicate. Следующий этап — эти точки интеграции; ошибки других классов по-прежнему блокируют JAR.

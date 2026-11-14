@@ -2038,186 +2038,6 @@ common/src/main/java/net/hydra/jojomod/block/GamblingTableBlock.java:161: error:
 common/src/main/java/net/hydra/jojomod/block/GamblingTableBlock.java:160: error: method does not override or implement a method from a supertype
     @Override
     ^
-common/src/main/java/net/hydra/jojomod/particles/DiverDownFinalParticle.java:58: error: cannot find symbol
-        $$0.vertex((double)$$9[0].x(), (double)$$9[0].y(), (double)$$9[0].z())
-           ^
-  symbol:   method vertex(double,double,double)
-  location: variable $$0 of type VertexConsumer
-common/src/main/java/net/hydra/jojomod/particles/DiverDownFinalParticle.java:64: error: cannot find symbol
-        $$0.vertex((double)$$9[1].x(), (double)$$9[1].y(), (double)$$9[1].z())
-           ^
-  symbol:   method vertex(double,double,double)
-  location: variable $$0 of type VertexConsumer
-common/src/main/java/net/hydra/jojomod/particles/DiverDownFinalParticle.java:70: error: cannot find symbol
-        $$0.vertex((double)$$9[2].x(), (double)$$9[2].y(), (double)$$9[2].z())
-           ^
-  symbol:   method vertex(double,double,double)
-  location: variable $$0 of type VertexConsumer
-common/src/main/java/net/hydra/jojomod/particles/DiverDownFinalParticle.java:76: error: cannot find symbol
-        $$0.vertex((double)$$9[3].x(), (double)$$9[3].y(), (double)$$9[3].z())
-           ^
-  symbol:   method vertex(double,double,double)
-  location: variable $$0 of type VertexConsumer
-common/src/main/java/net/hydra/jojomod/particles/HeartbeatParticle.java:56: error: cannot find symbol
-        $$0.vertex((double)$$9[0].x(), (double)$$9[0].y(), (double)$$9[0].z())
-           ^
-  symbol:   method vertex(double,double,double)
-  location: variable $$0 of type VertexConsumer
-common/src/main/java/net/hydra/jojomod/particles/HeartbeatParticle.java:62: error: cannot find symbol
-        $$0.vertex((double)$$9[1].x(), (double)$$9[1].y(), (double)$$9[1].z())
-           ^
-  symbol:   method vertex(double,double,double)
-  location: variable $$0 of type VertexConsumer
-common/src/main/java/net/hydra/jojomod/particles/HeartbeatParticle.java:68: error: cannot find symbol
-        $$0.vertex((double)$$9[2].x(), (double)$$9[2].y(), (double)$$9[2].z())
-           ^
-  symbol:   method vertex(double,double,double)
-  location: variable $$0 of type VertexConsumer
-common/src/main/java/net/hydra/jojomod/particles/HeartbeatParticle.java:74: error: cannot find symbol
-        $$0.vertex((double)$$9[3].x(), (double)$$9[3].y(), (double)$$9[3].z())
-           ^
-  symbol:   method vertex(double,double,double)
-  location: variable $$0 of type VertexConsumer
-common/src/main/java/net/hydra/jojomod/particles/PunchMissParticle.java:56: error: cannot find symbol
-        $$0.vertex((double)$$9[0].x(), (double)$$9[0].y(), (double)$$9[0].z())
-           ^
-  symbol:   method vertex(double,double,double)
-  location: variable $$0 of type VertexConsumer
-common/src/main/java/net/hydra/jojomod/particles/PunchMissParticle.java:62: error: cannot find symbol
-        $$0.vertex((double)$$9[1].x(), (double)$$9[1].y(), (double)$$9[1].z())
-           ^
-  symbol:   method vertex(double,double,double)
-  location: variable $$0 of type VertexConsumer
-common/src/main/java/net/hydra/jojomod/particles/PunchMissParticle.java:68: error: cannot find symbol
-        $$0.vertex((double)$$9[2].x(), (double)$$9[2].y(), (double)$$9[2].z())
-           ^
-  symbol:   method vertex(double,double,double)
-  location: variable $$0 of type VertexConsumer
-common/src/main/java/net/hydra/jojomod/particles/PunchMissParticle.java:74: error: cannot find symbol
-        $$0.vertex((double)$$9[3].x(), (double)$$9[3].y(), (double)$$9[3].z())
-           ^
-  symbol:   method vertex(double,double,double)
-  location: variable $$0 of type VertexConsumer
-common/src/main/java/net/hydra/jojomod/particles/PunchImpactParticle.java:59: error: cannot find symbol
-        $$0.vertex((double)$$9[0].x(), (double)$$9[0].y(), (double)$$9[0].z())
-           ^
-  symbol:   method vertex(double,double,double)
-  location: variable $$0 of type VertexConsumer
-common/src/main/java/net/hydra/jojomod/particles/PunchImpactParticle.java:65: error: cannot find symbol
-        $$0.vertex((double)$$9[1].x(), (double)$$9[1].y(), (double)$$9[1].z())
-           ^
-  symbol:   method vertex(double,double,double)
-  location: variable $$0 of type VertexConsumer
-common/src/main/java/net/hydra/jojomod/particles/PunchImpactParticle.java:71: error: cannot find symbol
-        $$0.vertex((double)$$9[2].x(), (double)$$9[2].y(), (double)$$9[2].z())
-           ^
-  symbol:   method vertex(double,double,double)
-  location: variable $$0 of type VertexConsumer
-common/src/main/java/net/hydra/jojomod/particles/PunchImpactParticle.java:77: error: cannot find symbol
-        $$0.vertex((double)$$9[3].x(), (double)$$9[3].y(), (double)$$9[3].z())
-           ^
-  symbol:   method vertex(double,double,double)
-  location: variable $$0 of type VertexConsumer
-common/src/main/java/net/hydra/jojomod/particles/GoldenSpiralParticle.java:65: error: cannot find symbol
-        $$0.vertex( $$9[0].x(),  $$9[0].y(),  $$9[0].z())
-           ^
-  symbol:   method vertex(float,float,float)
-  location: variable $$0 of type VertexConsumer
-common/src/main/java/net/hydra/jojomod/particles/GoldenSpiralParticle.java:71: error: cannot find symbol
-        $$0.vertex( $$9[1].x(),  $$9[1].y(),  $$9[1].z())
-           ^
-  symbol:   method vertex(float,float,float)
-  location: variable $$0 of type VertexConsumer
-common/src/main/java/net/hydra/jojomod/particles/GoldenSpiralParticle.java:77: error: cannot find symbol
-        $$0.vertex( $$9[2].x(),  $$9[2].y(),  $$9[2].z())
-           ^
-  symbol:   method vertex(float,float,float)
-  location: variable $$0 of type VertexConsumer
-common/src/main/java/net/hydra/jojomod/particles/GoldenSpiralParticle.java:83: error: cannot find symbol
-        $$0.vertex( $$9[3].x(),  $$9[3].y(),  $$9[3].z())
-           ^
-  symbol:   method vertex(float,float,float)
-  location: variable $$0 of type VertexConsumer
-common/src/main/java/net/hydra/jojomod/particles/AirCrackleParticle.java:56: error: cannot find symbol
-        $$0.vertex((double)$$9[0].x(), (double)$$9[0].y(), (double)$$9[0].z())
-           ^
-  symbol:   method vertex(double,double,double)
-  location: variable $$0 of type VertexConsumer
-common/src/main/java/net/hydra/jojomod/particles/AirCrackleParticle.java:62: error: cannot find symbol
-        $$0.vertex((double)$$9[1].x(), (double)$$9[1].y(), (double)$$9[1].z())
-           ^
-  symbol:   method vertex(double,double,double)
-  location: variable $$0 of type VertexConsumer
-common/src/main/java/net/hydra/jojomod/particles/AirCrackleParticle.java:68: error: cannot find symbol
-        $$0.vertex((double)$$9[2].x(), (double)$$9[2].y(), (double)$$9[2].z())
-           ^
-  symbol:   method vertex(double,double,double)
-  location: variable $$0 of type VertexConsumer
-common/src/main/java/net/hydra/jojomod/particles/AirCrackleParticle.java:74: error: cannot find symbol
-        $$0.vertex((double)$$9[3].x(), (double)$$9[3].y(), (double)$$9[3].z())
-           ^
-  symbol:   method vertex(double,double,double)
-  location: variable $$0 of type VertexConsumer
-common/src/main/java/net/hydra/jojomod/particles/BabyCrackleParticle.java:58: error: cannot find symbol
-            $$0.vertex((double) $$9[0].x(), (double) $$9[0].y(), (double) $$9[0].z())
-               ^
-  symbol:   method vertex(double,double,double)
-  location: variable $$0 of type VertexConsumer
-common/src/main/java/net/hydra/jojomod/particles/BabyCrackleParticle.java:64: error: cannot find symbol
-            $$0.vertex((double) $$9[1].x(), (double) $$9[1].y(), (double) $$9[1].z())
-               ^
-  symbol:   method vertex(double,double,double)
-  location: variable $$0 of type VertexConsumer
-common/src/main/java/net/hydra/jojomod/particles/BabyCrackleParticle.java:70: error: cannot find symbol
-            $$0.vertex((double) $$9[2].x(), (double) $$9[2].y(), (double) $$9[2].z())
-               ^
-  symbol:   method vertex(double,double,double)
-  location: variable $$0 of type VertexConsumer
-common/src/main/java/net/hydra/jojomod/particles/BabyCrackleParticle.java:76: error: cannot find symbol
-            $$0.vertex((double) $$9[3].x(), (double) $$9[3].y(), (double) $$9[3].z())
-               ^
-  symbol:   method vertex(double,double,double)
-  location: variable $$0 of type VertexConsumer
-common/src/main/java/net/hydra/jojomod/particles/EnergyRippleParticle.java:74: error: cannot find symbol
-        $$0.vertex((double)$$9[0].x(), (double)$$9[0].y(), (double)$$9[0].z())
-           ^
-  symbol:   method vertex(double,double,double)
-  location: variable $$0 of type VertexConsumer
-common/src/main/java/net/hydra/jojomod/particles/EnergyRippleParticle.java:80: error: cannot find symbol
-        $$0.vertex((double)$$9[1].x(), (double)$$9[1].y(), (double)$$9[1].z())
-           ^
-  symbol:   method vertex(double,double,double)
-  location: variable $$0 of type VertexConsumer
-common/src/main/java/net/hydra/jojomod/particles/EnergyRippleParticle.java:86: error: cannot find symbol
-        $$0.vertex((double)$$9[2].x(), (double)$$9[2].y(), (double)$$9[2].z())
-           ^
-  symbol:   method vertex(double,double,double)
-  location: variable $$0 of type VertexConsumer
-common/src/main/java/net/hydra/jojomod/particles/EnergyRippleParticle.java:92: error: cannot find symbol
-        $$0.vertex((double)$$9[3].x(), (double)$$9[3].y(), (double)$$9[3].z())
-           ^
-  symbol:   method vertex(double,double,double)
-  location: variable $$0 of type VertexConsumer
-common/src/main/java/net/hydra/jojomod/particles/ColdCrackleParticle.java:57: error: cannot find symbol
-            $$0.vertex((double) $$9[0].x(), (double) $$9[0].y(), (double) $$9[0].z())
-               ^
-  symbol:   method vertex(double,double,double)
-  location: variable $$0 of type VertexConsumer
-common/src/main/java/net/hydra/jojomod/particles/ColdCrackleParticle.java:63: error: cannot find symbol
-            $$0.vertex((double) $$9[1].x(), (double) $$9[1].y(), (double) $$9[1].z())
-               ^
-  symbol:   method vertex(double,double,double)
-  location: variable $$0 of type VertexConsumer
-common/src/main/java/net/hydra/jojomod/particles/ColdCrackleParticle.java:69: error: cannot find symbol
-            $$0.vertex((double) $$9[2].x(), (double) $$9[2].y(), (double) $$9[2].z())
-               ^
-  symbol:   method vertex(double,double,double)
-  location: variable $$0 of type VertexConsumer
-common/src/main/java/net/hydra/jojomod/particles/ColdCrackleParticle.java:75: error: cannot find symbol
-            $$0.vertex((double) $$9[3].x(), (double) $$9[3].y(), (double) $$9[3].z())
-               ^
-  symbol:   method vertex(double,double,double)
-  location: variable $$0 of type VertexConsumer
 common/src/main/java/net/hydra/jojomod/mixin/StandUserEntity.java:2011: error: cannot find symbol
         if (item.isEdible() || item instanceof PotionItem) {
                 ^
@@ -2334,27 +2154,6 @@ common/src/main/java/net/hydra/jojomod/mixin/WorldTickServer.java:257: error: me
   required: double,double,double,float,float,int
   found:    double,double,double,float,float,int,boolean
   reason: actual and formal argument lists differ in length
-common/src/main/java/net/hydra/jojomod/mixin/magicians_red/StandFireScreenEffectRendererMixin.java:41: error: cannot find symbol
-            BufferBuilder bufferbuilder = Tesselator.getInstance().getBuilder();
-                                                                  ^
-  symbol:   method getBuilder()
-  location: class Tesselator
-common/src/main/java/net/hydra/jojomod/mixin/magicians_red/StandFireScreenEffectRendererMixin.java:42: error: invalid method reference
-            RenderSystem.setShader(GameRenderer::getPositionColorTexShader);
-                                   ^
-  cannot find symbol
-    symbol:   method getPositionColorTexShader()
-    location: class GameRenderer
-common/src/main/java/net/hydra/jojomod/mixin/magicians_red/StandFireScreenEffectRendererMixin.java:77: error: cannot find symbol
-                bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX_COLOR);
-                             ^
-  symbol:   method begin(Mode,VertexFormat)
-  location: variable bufferbuilder of type BufferBuilder
-common/src/main/java/net/hydra/jojomod/mixin/magicians_red/StandFireScreenEffectRendererMixin.java:82: error: cannot find symbol
-                BufferUploader.drawWithShader(bufferbuilder.end());
-                                                           ^
-  symbol:   method end()
-  location: variable bufferbuilder of type BufferBuilder
 common/src/main/java/net/hydra/jojomod/mixin/anubis/AnubisDropsMixin.java:51: error: cannot find symbol
                         stack.getTag().putFloat("CustomModelData",skin);
                              ^
@@ -2581,33 +2380,6 @@ common/src/main/java/net/hydra/jojomod/mixin/whitesnake/control/WhitesnakeSoundL
                                                ^
   symbol:   method setListenerPosition(Vec3)
   location: variable listener of type Listener
-common/src/main/java/net/hydra/jojomod/mixin/ZEntityRenderDispatcher.java:181: error: cannot find symbol
-            BufferBuilder bufferbuilder = Tesselator.getInstance().getBuilder();
-                                                                  ^
-  symbol:   method getBuilder()
-  location: class Tesselator
-common/src/main/java/net/hydra/jojomod/mixin/ZEntityRenderDispatcher.java:209: error: invalid method reference
-            RenderSystem.setShader(GameRenderer::getPositionColorTexShader);
-                                   ^
-  cannot find symbol
-    symbol:   method getPositionColorTexShader()
-    location: class GameRenderer
-common/src/main/java/net/hydra/jojomod/mixin/ZEntityRenderDispatcher.java:226: error: invalid method reference
-                RenderSystem.setShader(GameRenderer::getPositionColorTexShader);
-                                       ^
-  cannot find symbol
-    symbol:   method getPositionColorTexShader()
-    location: class GameRenderer
-common/src/main/java/net/hydra/jojomod/mixin/ZEntityRenderDispatcher.java:241: error: cannot find symbol
-                bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX_COLOR);
-                             ^
-  symbol:   method begin(Mode,VertexFormat)
-  location: variable bufferbuilder of type BufferBuilder
-common/src/main/java/net/hydra/jojomod/mixin/ZEntityRenderDispatcher.java:247: error: cannot find symbol
-                BufferUploader.drawWithShader(bufferbuilder.end());
-                                                           ^
-  symbol:   method end()
-  location: variable bufferbuilder of type BufferBuilder
 common/src/main/java/net/hydra/jojomod/mixin/ZMob.java:342: error: cannot find symbol
                     $$1 += EnchantmentHelper.getDamageBonus(this.getMainHandItem(), ((LivingEntity)$$0).getMobType());
                                                                                                        ^
@@ -2725,47 +2497,6 @@ common/src/main/java/net/hydra/jojomod/mixin/time_stop/TimeStopParticleEngine.ja
 common/src/main/java/net/hydra/jojomod/mixin/time_stop/TimeStopBannerRenderer.java:44: error: incompatible types: BannerPatternLayers cannot be converted to List<Pair<Holder<BannerPattern>,DyeColor>>
             List<Pair<Holder<BannerPattern>, DyeColor>> $$6 = $$0.getPatterns();
                                                                              ^
-common/src/main/java/net/hydra/jojomod/mixin/time_stop/TimeStopGameRenderer.java:129: error: invalid method reference
-        RenderSystem.setShader(GameRenderer::getPositionColorTexShader);
-                               ^
-  cannot find symbol
-    symbol:   method getPositionColorTexShader()
-    location: class GameRenderer
-common/src/main/java/net/hydra/jojomod/mixin/time_stop/TimeStopGameRenderer.java:130: error: cannot find symbol
-        BufferBuilder $$2 = Tesselator.getInstance().getBuilder();
-                                                    ^
-  symbol:   method getBuilder()
-  location: class Tesselator
-common/src/main/java/net/hydra/jojomod/mixin/time_stop/TimeStopGameRenderer.java:142: error: cannot find symbol
-        $$2.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX_COLOR);
-           ^
-  symbol:   method begin(Mode,VertexFormat)
-  location: variable $$2 of type BufferBuilder
-common/src/main/java/net/hydra/jojomod/mixin/time_stop/TimeStopGameRenderer.java:143: error: cannot find symbol
-        $$2.vertex($$13, -1.0F, -1.0F, -0.5F).setColor(0.1F, 0.1F, 0.1F, 1.0F).setUv($$10, $$12);
-           ^
-  symbol:   method vertex(Matrix4f,float,float,float)
-  location: variable $$2 of type BufferBuilder
-common/src/main/java/net/hydra/jojomod/mixin/time_stop/TimeStopGameRenderer.java:144: error: cannot find symbol
-        $$2.vertex($$13, 1.0F, -1.0F, -0.5F).setColor(0.1F, 0.1F, 0.1F, 1.0F).setUv($$9, $$12);
-           ^
-  symbol:   method vertex(Matrix4f,float,float,float)
-  location: variable $$2 of type BufferBuilder
-common/src/main/java/net/hydra/jojomod/mixin/time_stop/TimeStopGameRenderer.java:145: error: cannot find symbol
-        $$2.vertex($$13, 1.0F, 1.0F, -0.5F).setColor(0.1F, 0.1F, 0.1F, 1.0F).setUv($$9, $$11);
-           ^
-  symbol:   method vertex(Matrix4f,float,float,float)
-  location: variable $$2 of type BufferBuilder
-common/src/main/java/net/hydra/jojomod/mixin/time_stop/TimeStopGameRenderer.java:146: error: cannot find symbol
-        $$2.vertex($$13, -1.0F, 1.0F, -0.5F).setColor(0.1F, 0.1F, 0.1F, 1.0F).setUv($$10, $$11);
-           ^
-  symbol:   method vertex(Matrix4f,float,float,float)
-  location: variable $$2 of type BufferBuilder
-common/src/main/java/net/hydra/jojomod/mixin/time_stop/TimeStopGameRenderer.java:147: error: cannot find symbol
-        BufferUploader.drawWithShader($$2.end());
-                                         ^
-  symbol:   method end()
-  location: variable $$2 of type BufferBuilder
 common/src/main/java/net/hydra/jojomod/mixin/WorldTickClient.java:219: error: method lerpTo in class Entity cannot be applied to given types;
                 $$0.lerpTo($$0.getX(),$$0.getY(),$$0.getZ(),$$0.getYRot(),$$0.getXRot(),3,false);
                    ^
@@ -2812,21 +2543,6 @@ common/src/main/java/net/hydra/jojomod/mixin/ZPlayerRender.java:1531: error: can
                               ^
   symbol:   method getTag()
   location: variable visage of type ItemStack
-common/src/main/java/net/hydra/jojomod/mixin/ZLevelRenderer.java:455: error: cannot find symbol
-                    BufferBuilder bufferBuilder = tess.getBuilder();
-                                                      ^
-  symbol:   method getBuilder()
-  location: variable tess of type Tesselator
-common/src/main/java/net/hydra/jojomod/mixin/ZLevelRenderer.java:499: error: cannot find symbol
-                        bufferBuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX_COLOR);
-                                     ^
-  symbol:   method begin(Mode,VertexFormat)
-  location: variable bufferBuilder of type BufferBuilder
-common/src/main/java/net/hydra/jojomod/mixin/ZLevelRenderer.java:504: error: cannot find symbol
-                        BufferUploader.drawWithShader(bufferBuilder.end());
-                                                                   ^
-  symbol:   method end()
-  location: variable bufferBuilder of type BufferBuilder
 common/src/main/java/net/hydra/jojomod/mixin/stand_users/PowersEnchantmentHelper.java:22: error: incompatible types: ResourceKey<Enchantment> cannot be converted to Holder<Enchantment>
                         EnchantmentHelper.getEnchantmentLevel(Enchantments.KNOCKBACK, $$0), knockback);
                                                                           ^
@@ -2860,21 +2576,6 @@ common/src/main/java/net/hydra/jojomod/mixin/ZAbstractFish.java:23: error: canno
                              ^
   symbol:   method getOrCreateTag()
   location: variable $$0 of type ItemStack
-common/src/main/java/net/hydra/jojomod/client/ClientEffectUtil.java:249: error: cannot find symbol
-        BufferBuilder bufferBuilder = tesselator.getBuilder();
-                                                ^
-  symbol:   method getBuilder()
-  location: variable tesselator of type Tesselator
-common/src/main/java/net/hydra/jojomod/client/ClientEffectUtil.java:250: error: cannot find symbol
-        bufferBuilder.begin(VertexFormat.Mode.DEBUG_LINES, DefaultVertexFormat.POSITION_COLOR);
-                     ^
-  symbol:   method begin(Mode,VertexFormat)
-  location: variable bufferBuilder of type BufferBuilder
-common/src/main/java/net/hydra/jojomod/client/ClientEffectUtil.java:300: error: cannot find symbol
-        tesselator.end();
-                  ^
-  symbol:   method end()
-  location: variable tesselator of type Tesselator
 common/src/main/java/net/hydra/jojomod/client/gui/HairColorChangeScreen.java:390: error: cannot find symbol
         $$0.pose().mulPoseMatrix(new Matrix4f().scaling((float)$$3, (float)$$3, (float)(-$$3)));
                   ^
@@ -3075,11 +2776,6 @@ public class HallucinatoryAcidProjectileModel extends Model {
 common/src/main/java/net/hydra/jojomod/client/models/projectile/HallucinatoryAcidProjectileModel.java:52: error: method does not override or implement a method from a supertype
     @Override
     ^
-common/src/main/java/net/hydra/jojomod/client/models/projectile/renderers/StandArrowRenderer.java:104: error: cannot find symbol
-        $$2.vertex($$0, (float)$$3, (float)$$4, (float)$$5)
-           ^
-  symbol:   method vertex(Matrix4f,float,float,float)
-  location: variable $$2 of type VertexConsumer
 common/src/main/java/net/hydra/jojomod/client/models/layers/HumanoidLikeArmorLayer.java:139: error: cannot find symbol
                 if (Objects.equals(ModPacketHandler.PLATFORM_ACCESS.getPlatformName(), "Forge") && armorItem instanceof net.minecraft.world.item.DyeableLeatherItem){
                                                                                                                                                 ^
@@ -3129,19 +2825,9 @@ common/src/main/java/net/hydra/jojomod/client/models/layers/HumanoidLikeArmorLay
                                                ^
   symbol:   method getName()
   location: interface Holder<ArmorMaterial>
-common/src/main/java/net/hydra/jojomod/client/models/layers/playerlike/PlayerLikeBeeStingLayer.java:61: error: cannot find symbol
-        $$0.vertex($$1, $$3, (float)$$4, 0.0F)
-           ^
-  symbol:   method vertex(Matrix4f,float,float,float)
-  location: variable $$0 of type VertexConsumer
 common/src/main/java/net/hydra/jojomod/client/models/layers/playerlike/PlayerLikeArrowLayer.java:30: error: incompatible types: double cannot be converted to LivingEntity
         Arrow $$9 = new Arrow($$3.level(), $$3.getX(), $$3.getY(), $$3.getZ());
                                                    ^
-common/src/main/java/net/hydra/jojomod/client/models/layers/ModFirstPersonLayers.java:30: error: cannot find symbol
-        $$0.vertex($$1, $$3, $$4, $$5)
-           ^
-  symbol:   method vertex(Matrix4f,float,float,float)
-  location: variable $$0 of type VertexConsumer
 common/src/main/java/net/hydra/jojomod/client/models/mobs/renderers/TerrierEntityRenderer.java:29: error: method setColor in class ColorableAgeableListModel<E> cannot be applied to given types;
             (this.model).setColor(h, h, h);
                         ^
@@ -3296,6 +2982,6 @@ Note: Recompile with -Xlint:deprecation for details.
 Note: Some input files use unchecked or unsafe operations.
 Note: Recompile with -Xlint:unchecked for details.
 Note: Some messages have been simplified; recompile with -Xdiags:verbose to get full output
-717 errors
+655 errors
 18 warnings
 
