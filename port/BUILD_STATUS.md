@@ -8,7 +8,7 @@
 - Gradle help: успешно.
 - Подготовка исходников и классов Minecraft/NeoForge: успешно.
 - processResources: успешно; проверены метаданные, access transformer, mixin-конфигурации и 141 рецепт.
-- compileJava: НЕУСПЕШНО, 766 ошибок, 18 предупреждений (последняя полная проверка текущих исходников).
+- compileJava: НЕУСПЕШНО, 752 ошибок, 18 предупреждений (последняя полная проверка текущих исходников).
 - JDK 21 и Gradle восстановлены; подготовка Minecraft/NeoForge и processResources прошли в новой среде.
 - JAR для установки: отсутствует.
 - Запуск клиента и выделенного сервера полного мода: не выполнен (компиляция не проходит).
@@ -22,21 +22,21 @@
 
 | Ошибка | Количество |
 |---|---:|
-| cannot find symbol | 387 |
+| cannot find symbol | 383 |
 | method does not override or implement a method from a supertype | 118 |
 | minecraft has private access in Gui | 11 |
 | method isCorrectToolForDrops in class Item cannot be applied to given types; | 9 |
 | incompatible types: ResourceKey<Enchantment> cannot be converted to Holder<Enchantment> | 7 |
-| constructor LootAdder in class LootAdder cannot be applied to given types; | 7 |
 | isCollisionShapeFullBlock(BlockState,BlockGetter,BlockPos) has protected access in BlockBehaviour | 6 |
 | package minecraft does not exist | 6 |
-| incompatible types: BlockGetter cannot be converted to LevelReader | 5 |
 | incompatible types: Reference<SoundEvent> cannot be converted to SoundEvent | 5 |
-| invalid method reference | 5 |
-| incompatible types: EquipmentSlot cannot be converted to ItemStack | 5 |
 | incompatible types: double cannot be converted to LivingEntity | 5 |
+| incompatible types: EquipmentSlot cannot be converted to ItemStack | 5 |
+| incompatible types: BlockGetter cannot be converted to LevelReader | 5 |
+| invalid method reference | 5 |
 | method createArrow in class ArrowItem cannot be applied to given types; | 4 |
 | method getDamage in interface IItemExtension cannot be applied to given types; | 4 |
+| method getMobArrow in class ProjectileUtil cannot be applied to given types; | 4 |
 
 
 ## Что требуется закончить
@@ -270,3 +270,12 @@
 - Сверены исходники ReloadableServerRegistries, LootTable, BrushableBlockEntity и GlobalLootModifierProvider. Тип entries и захват RandomSource/List/MutableInt до List.size сверены с байткодом LootPool. CAPTURE_FAILHARD и обязательность инъекций сохранены. git diff --check проходит.
 - Полная compileJava ещё ожидается: среда снова восстановилась из старого снимка, состояние cb9b771 получено из GitHub, зависимости загружаются заново. 766 ошибок в build-errors.txt пока относятся к предыдущей проверке. После завершения обновить диагностику.
 - В игре ещё требуется проверить сундуки, шесть археологических таблиц, рыбалку (обычный и заменённый datapack пул), /reload. Готового JAR нет.
+
+
+## Проверка блока добычи (14 ноября 2026)
+
+- Полная compileJava: **752 ошибки, 18 предупреждений**, было 766/18. LootAdder, GlobalLootModProvider, BrushableBlockMixin, LootPoolMixin и FishingLootMixin ошибок Java не имеют. Подготовка Minecraft/NeoForge прошла на Azul JDK 21.0.6 и Gradle 8.14.3.
+- Дополнительно проверен байткод BrushableBlockEntity: поле lootTable имеет ResourceKey, setChanged вызывается после очистки поля; сохранение ключа в HEAD позволяет использовать его при добавлении добычи.
+- git diff --check проходит. Ресурсы не менялись. Игровой запуск и применение mixin ещё не проверены; не считать сверку байткода тестом реального выпадения добычи.
+- Исходники блока сохранены в GitHub коммитом fe0f329, актуальная диагностика — port/build-errors.txt. Далее: оставшиеся событийные/клиентские API, рендеринг, MobType и зачарования.
+- При восстановлении среды обязательно сначала fetch и сверка локальной ветки с origin/port/neoforge-1.21.1: здесь повторно восстанавливался старый локальный снимок 4eeb5fa, тогда как GitHub уже содержал cb9b771. Единственная локальная правка совпадала с удалённым файлом; она не потеряна. Источник актуального прогресса — удалённая ветка.
