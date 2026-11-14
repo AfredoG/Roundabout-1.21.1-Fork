@@ -8,7 +8,7 @@
 - Gradle help: успешно.
 - Подготовка исходников и классов Minecraft/NeoForge: успешно.
 - processResources: успешно; проверены метаданные, access transformer, mixin-конфигурации и 141 рецепт.
-- compileJava: НЕУСПЕШНО, 655 ошибок, 18 предупреждений (последняя полная проверка текущих исходников).
+- compileJava: НЕУСПЕШНО, 630 ошибок, 18 предупреждений (последняя полная проверка текущих исходников).
 - JDK 21 и Gradle восстановлены; подготовка Minecraft/NeoForge и processResources прошли в новой среде.
 - JAR для установки: отсутствует.
 - Запуск клиента и выделенного сервера полного мода: не выполнен (компиляция не проходит).
@@ -22,8 +22,8 @@
 
 | Ошибка | Количество |
 |---|---:|
-| cannot find symbol | 314 |
-| method does not override or implement a method from a supertype | 118 |
+| cannot find symbol | 302 |
+| method does not override or implement a method from a supertype | 116 |
 | method isCorrectToolForDrops in class Item cannot be applied to given types; | 9 |
 | incompatible types: ResourceKey<Enchantment> cannot be converted to Holder<Enchantment> | 7 |
 | isCollisionShapeFullBlock(BlockState,BlockGetter,BlockPos) has protected access in BlockBehaviour | 6 |
@@ -34,9 +34,9 @@
 | method createArrow in class ArrowItem cannot be applied to given types; | 4 |
 | method getDamage in interface IItemExtension cannot be applied to given types; | 4 |
 | method getMobArrow in class ProjectileUtil cannot be applied to given types; | 4 |
-| incompatible types: ResourceKey<BannerPattern> cannot be converted to Holder<BannerPattern> | 4 |
 | method renderNameTag in class EntityRenderer<T> cannot be applied to given types; | 4 |
-| incompatible types: Attribute cannot be converted to Holder<Attribute> | 3 |
+| method saveWithoutMetadata in class BlockEntity cannot be applied to given types; | 3 |
+| method finalizeSpawn in class AgeableMob cannot be applied to given types; | 3 |
 
 
 ## Что требуется закончить
@@ -331,3 +331,11 @@
 - javap подтвердил точный дескриптор pick, единственный целевой вызов ProjectileUtil.getEntityHitResult и оба последующих filterHitResult. Index=4 соответствует аргументу Predicate. Обязательность инъекций не изменялась.
 - HallucinatoryAcidProjectileModel реализует Model.renderToBuffer с packed ARGB для внутренней и внешней геометрии. Специальные renderInner/renderOuter и выбор render type в рендерере оставлены прежними.
 - git diff --check проходит. Полная компиляция ещё восстанавливает Minecraft/NeoForge после сброса среды; итоговый журнал будет сохранён отдельно. После успешной сборки проверить прицеливание сквозь скрытую сущность к доступной цели, препятствия, разную дальность блоков и сущностей, creative/survival и модификаторы атрибутов.
+
+
+## Полная проверка после восстановления среды (15 ноября 2026)
+
+- Восстановлены Gradle 8.14.3 (SHA-256 дистрибутива проверен) и Maven/NeoForm-кэш. Подготовка Minecraft/NeoForge выполнена заново на Azul JDK 21.0.6. Полная compileJava дала **630 ошибок, 18 предупреждений**, было 655/18 в последнем сохранённом журнале (промежуточная проверка до сброса среды — 650/18).
+- Последние блоки частиц, неба/рук, знамён, прозрачности моделей, прицеливания и HallucinatoryAcidProjectileModel не имеют ошибок Java. Актуальный полный журнал снова сохранён в build-errors.txt. git diff --check проходит; ресурсы не менялись.
+- При повторном восстановлении окружения proxy properties нужно передать и в аргументах Gradle: локальные системные настройки Gradle могут перекрывать JAVA_TOOL_OPTIONS старым адресом proxy. Это только особенность рабочей среды, build scripts проекта не менялись.
+- Исходники уже сохранены в коммитах e6cea05, cbd8c8e и a6f112e; эта запись фиксирует их совместную проверку. Игра и применение mixin не запускались; готового JAR нет. Следующие блоки: слои брони, GUI и оставшиеся клиентские API, аудит renderLevel, сущности/предметы/зачарования.
