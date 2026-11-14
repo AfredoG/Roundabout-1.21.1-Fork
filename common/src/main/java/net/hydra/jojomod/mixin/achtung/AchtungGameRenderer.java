@@ -1,9 +1,7 @@
 package net.hydra.jojomod.mixin.achtung;
 
-import com.mojang.blaze3d.vertex.PoseStack;
 import net.hydra.jojomod.client.ClientUtil;
 import net.hydra.jojomod.event.index.PowerTypes;
-import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.core.BlockPos;
@@ -34,8 +32,8 @@ public abstract class AchtungGameRenderer {
      * spill-over areas in case mods are canceling things. This is the tail end of the renderItemInHand
      * function.
      */
-    @Inject(method = "renderItemInHand", at = @At(value = "TAIL"))
-    private void roundabout$renderItemInHand(PoseStack $$0, Camera $$1, float $$2, CallbackInfo ci)
+    @Inject(method = "renderItemInHand(Lnet/minecraft/client/Camera;FLorg/joml/Matrix4f;)V", at = @At(value = "TAIL"))
+    private void roundabout$renderItemInHand(CallbackInfo ci)
     {
         ClientUtil.setThrowFadeToTheEther(1);
         ClientUtil.hideInvis = false;

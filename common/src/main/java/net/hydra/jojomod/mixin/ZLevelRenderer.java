@@ -413,7 +413,7 @@ public abstract class ZLevelRenderer implements ILevelRenderer {
     }
     @Inject(method = "renderClouds",
             at = @At(value = "HEAD"),cancellable = true)
-    private void roundabout$renderClouds(PoseStack $$0, Matrix4f $$1, float $$2, double $$3, double $$4, double $$5, CallbackInfo ci) {
+    private void roundabout$renderClouds(CallbackInfo ci) {
         if (ClientUtil.isUsingTimeErase) {
             ci.cancel();
         }
@@ -427,10 +427,11 @@ public abstract class ZLevelRenderer implements ILevelRenderer {
     }
 
 
-        @Inject(method = "renderSky",
-            at = @At(value = "RETURN"),cancellable = true)
-    private void roundabout$renderSky(PoseStack $$0, Matrix4f $$1, float $$2, Camera $$3, boolean $$4, Runnable $$5, CallbackInfo ci) {
-
+    @Inject(method = "renderSky(Lorg/joml/Matrix4f;Lorg/joml/Matrix4f;FLnet/minecraft/client/Camera;ZLjava/lang/Runnable;)V",
+            at = @At(value = "RETURN"))
+    private void roundabout$renderSky(Matrix4f modelView, Matrix4f $$1, float $$2, Camera $$3, boolean $$4, Runnable $$5, CallbackInfo ci) {
+        PoseStack $$0 = new PoseStack();
+        $$0.mulPose(modelView);
 
         if (ClientUtil.renderTimeErase()) {
             if (!$$4) {

@@ -47,8 +47,7 @@ public class TimeStopGameRenderer {
         //$$0 is matrcices, $$1 is tickdelta
         if (!roundabout$cleared) {
             if (minecraft.player != null && ((TimeStop) minecraft.player.level()).CanTimeStopEntity(minecraft.player)) {
-                if (this.minecraft.getCameraEntity() instanceof LivingEntity) {
-                    Player $$2 = (Player) this.minecraft.getCameraEntity();
+                if (this.minecraft.getCameraEntity() instanceof LivingEntity $$2) {
                     $$1 = ((IEntityAndData) $$2).roundabout$getPreTSTick();
                     //recursive logic, set to true is important even if the compiler doesnt know it
                     roundabout$cleared = true;
@@ -76,9 +75,8 @@ public class TimeStopGameRenderer {
         }
     }
 
-    @Inject(method = "renderItemInHand", at = @At(value = "HEAD"), cancellable = true)
-    private void roundabout$RenderHandsWithItems(PoseStack $$0, Camera $$1, float $$2, CallbackInfo ci){
-        //$$0 is matrcices, $$1 is tickdelta
+    @Inject(method = "renderItemInHand(Lnet/minecraft/client/Camera;FLorg/joml/Matrix4f;)V", at = @At(value = "HEAD"), cancellable = true)
+    private void roundabout$RenderHandsWithItems(Camera $$1, float $$2, Matrix4f modelView, CallbackInfo ci){
 
         ClientUtil.isBlocked = false;
 
@@ -115,8 +113,11 @@ public class TimeStopGameRenderer {
                     Entity Ent = this.minecraft.getCameraEntity();
                     $$2 = ((IEntityAndData) Ent).roundabout$getPreTSTick();
                     roundabout$cleared = true;
-                    this.renderItemInHand($$0, $$1, $$2);
-                    roundabout$cleared = false;
+                    try {
+                        this.renderItemInHand($$1, $$2, modelView);
+                    } finally {
+                        roundabout$cleared = false;
+                    }
                 }
                 ci.cancel();
                 return;
@@ -151,7 +152,7 @@ public class TimeStopGameRenderer {
      * */
 
     @Shadow
-    public void renderItemInHand(PoseStack $$0, Camera $$1, float $$2) {}
+    private void renderItemInHand(Camera camera, float partialTick, Matrix4f modelView) {}
 
 
     @Shadow
