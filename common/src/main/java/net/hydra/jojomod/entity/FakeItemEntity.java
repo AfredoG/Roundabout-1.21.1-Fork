@@ -6,6 +6,7 @@ import net.hydra.jojomod.event.index.PowerTypes;
 import net.hydra.jojomod.event.powers.StandUser;
 import net.hydra.jojomod.util.MainUtil;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -30,6 +31,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.portal.DimensionTransition;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.Vec3;
 
@@ -195,7 +197,7 @@ public class FakeItemEntity extends Entity implements TraceableEntity {
     }
 
     @Override
-    protected BlockPos getBlockPosBelowThatAffectsMyMovement() {
+    public BlockPos getBlockPosBelowThatAffectsMyMovement() {
         return this.getOnPos(0.999999F);
     }
 
@@ -240,14 +242,9 @@ public class FakeItemEntity extends Entity implements TraceableEntity {
         }
     }
 
-    public static boolean areMergable(ItemStack $$0, ItemStack $$1) {
-        if (!$$1.is($$0.getItem())) {
-            return false;
-        } else if ($$1.getCount() + $$0.getCount() > $$1.getMaxStackSize()) {
-            return false;
-        } else {
-            return $$1.hasTag() ^ $$0.hasTag() ? false : !$$1.hasTag() || $$1.getTag().equals($$0.getTag());
-        }
+    public static boolean areMergable(ItemStack first, ItemStack second) {
+        // Vanilla checks both the stack limit and all data components.
+        return ItemEntity.areMergable(first, second);
     }
 
     public static ItemStack merge(ItemStack $$0, ItemStack $$1, int $$2) {
@@ -275,7 +272,7 @@ public class FakeItemEntity extends Entity implements TraceableEntity {
 
     @Override
     public boolean fireImmune() {
-        return this.getItem().getItem().isFireResistant() || super.fireImmune();
+        return this.getItem().has(DataComponents.FIRE_RESISTANT) || super.fireImmune();
     }
 
     @Override
@@ -284,7 +281,7 @@ public class FakeItemEntity extends Entity implements TraceableEntity {
             return false;
         } else if (!this.getItem().isEmpty() && this.getItem().is(Items.NETHER_STAR) && $$0.is(DamageTypeTags.IS_EXPLOSION)) {
             return false;
-        } else if (!this.getItem().getItem().canBeHurtBy($$0)) {
+        } else if (!this.getItem().canBeHurtBy($$0)) {
             return false;
         } else if (this.level().isClientSide) {
             return true;
@@ -371,7 +368,7 @@ public class FakeItemEntity extends Entity implements TraceableEntity {
 
     @Nullable
     @Override
-    public Entity changeDimension(ServerLevel $$0) {
+    public Entity changeDimension(DimensionTransition $$0) {
         Entity $$1 = super.changeDimension($$0);
         if (!this.level().isClientSide && $$1 instanceof FakeItemEntity) {
             ((FakeItemEntity)$$1).mergeWithNeighbours();

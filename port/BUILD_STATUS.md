@@ -8,7 +8,7 @@
 - Gradle help: успешно.
 - Подготовка исходников и классов Minecraft/NeoForge: успешно.
 - processResources: успешно; проверены метаданные, access transformer, mixin-конфигурации и 141 рецепт.
-- compileJava: НЕУСПЕШНО, 571 ошибок, 18 предупреждений (актуальный полный журнал сохранён в build-errors.txt).
+- compileJava: НЕУСПЕШНО, 553 ошибок, 18 предупреждений (актуальный полный журнал сохранён в build-errors.txt).
 - JDK 21 и Gradle восстановлены; подготовка Minecraft/NeoForge и processResources прошли в новой среде.
 - JAR для установки: отсутствует.
 - Запуск клиента и выделенного сервера полного мода: не выполнен (компиляция не проходит).
@@ -18,12 +18,12 @@
 Список ошибок — build-errors.txt. Ошибки могут быть каскадными; их число не является оценкой процента готовности.
 Текущая проверка выполнена на Azul JDK 21.0.6 и Gradle 8.14.3; зависимости восстановлены заново.
 
-## Категории актуального полного журнала (571 ошибок)
+## Категории актуального полного журнала (553 ошибок)
 
 | Ошибка | Количество |
 |---|---:|
-| cannot find symbol | 266 |
-| method does not override or implement a method from a supertype | 115 |
+| cannot find symbol | 257 |
+| method does not override or implement a method from a supertype | 113 |
 | method isCorrectToolForDrops in class Item cannot be applied to given types; | 9 |
 | incompatible types: ResourceKey<Enchantment> cannot be converted to Holder<Enchantment> | 7 |
 | isCollisionShapeFullBlock(BlockState,BlockGetter,BlockPos) has protected access in BlockBehaviour | 6 |
@@ -442,3 +442,14 @@
 - После успешной сборки проверить TS/Locacaca/Stand Virus, броню/поглощение/верховую езду, кровавый голод и кислород, все замены полос и обычный XP, прыжок, DiscSeal, heat/Infinite Spin, управляемый Whitesnake и плавление, карту Lyin Eyes, Warhammer, давление JJF, spectator и изменение GUI scale. Работа клиента ещё не проверена.
 
 - Повторная полная compileJava расширенного блока HUD: **571 ошибка, 18 предупреждений**; во всех пяти изменённых Java-файлах ошибок нет. processResources прошёл (up-to-date), git diff --check проходит. Это проверка Java и целей инъекций, не запуск Mixin/игры. Следующий этап: оставшиеся screen/gameplay API, включая MobType/зачарования, сущности, сон и перемещение между измерениями.
+
+
+## Контрольная точка — выброшенные предметы и компоненты (15 ноября 2026)
+
+- FakeItemEntity сравнивает стеки через штатный ItemEntity.areMergable: проверяются предел стака, тип и все компоненты, включая CUSTOM_DATA, имя и зачарования. Старое сравнение произвольного NBT удалено. FakeItemEntity и BombPlantedItemEntity используют FIRE_RESISTANT и ItemStack.canBeHurtBy, что сохраняет проверку компонента и NeoForge item hook.
+- Перенос FakeItemEntity между измерениями принимает DimensionTransition и сохраняет последующее объединение соседних имитаций; запрет перехода BombPlantedItemEntity перенесён на canChangeDimensions(Level, Level). Видимость getBlockPosBelowThatAffectsMyMovement соответствует public API 1.21.1.
+- MaskItemEntity использует transmuteCopy для смывания крови: сохранены количество и component patch. FancyLighterItemEntity копирует полный ItemStack, меняет сохранённый компонент состояния и публикует через setItem. Оба обработчика обновляют существующий ItemEntity вместо discard/addFreshEntity; поэтому не теряют thrower/cachedThrower, pickup target/delay, возраст, движение, поворот и прочие данные сущности. Устаревшие UUID-вызовы setThrower и лишние Shadow удалены.
+- Пересечение котлов проверяется anyMatch: одно превращение на тик, без повторного порождения сущности при нескольких подходящих блоках. Условия воды/дождя/водяного котла и прежнее условие состояния зажигалки сохранены.
+- Источник 1.21.1 подтверждает: transmuteCopy переносит count/component patch, copy сохраняет полную карту компонентов, setItem обновляет SynchedEntityData; canBeHurtBy вызывает NeoForge hook и проверяет FIRE_RESISTANT. javap подтвердил tick/getItem/setItem, areMergable и новые дескрипторы переходов между измерениями. Это не проверка сетевой доставки в запущенной игре.
+- Полная compileJava — **553 ошибки, 18 предупреждений**, было 571/18. Во всех четырёх изменённых классах ошибок нет. Актуальный журнал и таблица обновлены; git diff --check проходит. Готового JAR пока нет.
+- После рабочей сборки проверить маску/зажигалку в воде, дожде и котле с именем и CUSTOM_DATA, количество больше единицы, pickup restrictions и прежний возраст; компоненты и предел объединения имитаций, огонь/лаву, портал имитаций и запрет перехода предмета-бомбы. Далее остаются MobType/зачарования, атрибуты/предметы, движения/измерения сущностей, прочие GUI/mixin и обязательный запуск клиента/сервера.

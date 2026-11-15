@@ -6,6 +6,7 @@ import net.hydra.jojomod.event.index.PowerTypes;
 import net.hydra.jojomod.event.powers.StandUser;
 import net.hydra.jojomod.stand.powers.PowersKillerQueen;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -296,7 +297,7 @@ public class BombPlantedItemEntity extends Entity implements TraceableEntity {
     }
 
     @Override
-    protected BlockPos getBlockPosBelowThatAffectsMyMovement() {
+    public BlockPos getBlockPosBelowThatAffectsMyMovement() {
         return this.getOnPos(0.999999F);
     }
 
@@ -312,7 +313,7 @@ public class BombPlantedItemEntity extends Entity implements TraceableEntity {
 
     @Override
     public boolean fireImmune() {
-        return this.getItem().getItem().isFireResistant() || super.fireImmune();
+        return this.getItem().has(DataComponents.FIRE_RESISTANT) || super.fireImmune();
     }
 
     @Override
@@ -321,7 +322,7 @@ public class BombPlantedItemEntity extends Entity implements TraceableEntity {
             return false;
         } else if (!this.getItem().isEmpty() && this.getItem().is(Items.NETHER_STAR) && $$0.is(DamageTypeTags.IS_EXPLOSION)) {
             return false;
-        } else if (!this.getItem().getItem().canBeHurtBy($$0)) {
+        } else if (!this.getItem().canBeHurtBy($$0)) {
             return false;
         } else if (this.level().isClientSide) {
             return true;
@@ -416,7 +417,7 @@ public class BombPlantedItemEntity extends Entity implements TraceableEntity {
     }
 
     @Override
-    public boolean canChangeDimensions() {
+    public boolean canChangeDimensions(Level from, Level to) {
         return false;
     }
 

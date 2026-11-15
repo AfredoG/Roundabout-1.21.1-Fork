@@ -224,24 +224,6 @@ common/src/main/java/net/hydra/jojomod/entity/substand/SheerHeartAttackEntity.ja
 common/src/main/java/net/hydra/jojomod/entity/substand/SheerHeartAttackEntity.java:1235: error: method does not override or implement a method from a supertype
 	@Override public boolean canBeLeashed(Player p_21418_) { return false;}
 	^
-common/src/main/java/net/hydra/jojomod/entity/BombPlantedItemEntity.java:299: error: getBlockPosBelowThatAffectsMyMovement() in BombPlantedItemEntity cannot override getBlockPosBelowThatAffectsMyMovement() in Entity
-    protected BlockPos getBlockPosBelowThatAffectsMyMovement() {
-                       ^
-  attempting to assign weaker access privileges; was public
-common/src/main/java/net/hydra/jojomod/entity/BombPlantedItemEntity.java:315: error: cannot find symbol
-        return this.getItem().getItem().isFireResistant() || super.fireImmune();
-                                       ^
-  symbol:   method isFireResistant()
-  location: class Item
-common/src/main/java/net/hydra/jojomod/entity/BombPlantedItemEntity.java:324: error: method canBeHurtBy in interface IItemExtension cannot be applied to given types;
-        } else if (!this.getItem().getItem().canBeHurtBy($$0)) {
-                                            ^
-  required: ItemStack,DamageSource
-  found:    DamageSource
-  reason: actual and formal argument lists differ in length
-common/src/main/java/net/hydra/jojomod/entity/BombPlantedItemEntity.java:418: error: method does not override or implement a method from a supertype
-    @Override
-    ^
 common/src/main/java/net/hydra/jojomod/entity/stand/BlackSabbathEntity.java:772: error: cannot find symbol
                     if (blackSabbathFirstSlot.getItem() instanceof TridentItem tr && EnchantmentHelper.getLoyalty(blackSabbathFirstSlot) > 0) {
                                                                                                       ^
@@ -836,52 +818,6 @@ common/src/main/java/net/hydra/jojomod/entity/projectile/RoadRollerEntity.java:2
 common/src/main/java/net/hydra/jojomod/entity/projectile/RoadRollerEntity.java:882: error: method does not override or implement a method from a supertype
     @Override
     ^
-common/src/main/java/net/hydra/jojomod/entity/FakeItemEntity.java:198: error: getBlockPosBelowThatAffectsMyMovement() in FakeItemEntity cannot override getBlockPosBelowThatAffectsMyMovement() in Entity
-    protected BlockPos getBlockPosBelowThatAffectsMyMovement() {
-                       ^
-  attempting to assign weaker access privileges; was public
-common/src/main/java/net/hydra/jojomod/entity/FakeItemEntity.java:249: error: cannot find symbol
-            return $$1.hasTag() ^ $$0.hasTag() ? false : !$$1.hasTag() || $$1.getTag().equals($$0.getTag());
-                      ^
-  symbol:   method hasTag()
-  location: variable $$1 of type ItemStack
-common/src/main/java/net/hydra/jojomod/entity/FakeItemEntity.java:249: error: cannot find symbol
-            return $$1.hasTag() ^ $$0.hasTag() ? false : !$$1.hasTag() || $$1.getTag().equals($$0.getTag());
-                                     ^
-  symbol:   method hasTag()
-  location: variable $$0 of type ItemStack
-common/src/main/java/net/hydra/jojomod/entity/FakeItemEntity.java:249: error: cannot find symbol
-            return $$1.hasTag() ^ $$0.hasTag() ? false : !$$1.hasTag() || $$1.getTag().equals($$0.getTag());
-                                                             ^
-  symbol:   method hasTag()
-  location: variable $$1 of type ItemStack
-common/src/main/java/net/hydra/jojomod/entity/FakeItemEntity.java:249: error: cannot find symbol
-            return $$1.hasTag() ^ $$0.hasTag() ? false : !$$1.hasTag() || $$1.getTag().equals($$0.getTag());
-                                                                             ^
-  symbol:   method getTag()
-  location: variable $$1 of type ItemStack
-common/src/main/java/net/hydra/jojomod/entity/FakeItemEntity.java:249: error: cannot find symbol
-            return $$1.hasTag() ^ $$0.hasTag() ? false : !$$1.hasTag() || $$1.getTag().equals($$0.getTag());
-                                                                                                 ^
-  symbol:   method getTag()
-  location: variable $$0 of type ItemStack
-common/src/main/java/net/hydra/jojomod/entity/FakeItemEntity.java:278: error: cannot find symbol
-        return this.getItem().getItem().isFireResistant() || super.fireImmune();
-                                       ^
-  symbol:   method isFireResistant()
-  location: class Item
-common/src/main/java/net/hydra/jojomod/entity/FakeItemEntity.java:287: error: method canBeHurtBy in interface IItemExtension cannot be applied to given types;
-        } else if (!this.getItem().getItem().canBeHurtBy($$0)) {
-                                            ^
-  required: ItemStack,DamageSource
-  found:    DamageSource
-  reason: actual and formal argument lists differ in length
-common/src/main/java/net/hydra/jojomod/entity/FakeItemEntity.java:373: error: method does not override or implement a method from a supertype
-    @Override
-    ^
-common/src/main/java/net/hydra/jojomod/entity/FakeItemEntity.java:375: error: incompatible types: ServerLevel cannot be converted to DimensionTransition
-        Entity $$1 = super.changeDimension($$0);
-                                           ^
 common/src/main/java/net/hydra/jojomod/entity/mobs/StrayCatEntity.java:132: error: method does not override or implement a method from a supertype
     @Override
     ^
@@ -1789,22 +1725,6 @@ common/src/main/java/net/hydra/jojomod/mixin/items/StandArrowBowItem.java:55: er
                                                                                       ^
   symbol:   variable FLAMING_ARROWS
   location: class Enchantments
-common/src/main/java/net/hydra/jojomod/mixin/items/MaskItemEntity.java:64: error: cannot find symbol
-        stack2.setTag(stack.getTag());
-                           ^
-  symbol:   method getTag()
-  location: variable stack of type ItemStack
-common/src/main/java/net/hydra/jojomod/mixin/items/MaskItemEntity.java:69: error: incompatible types: @org.jetbrains.annotations.Nullable UUID cannot be converted to Entity
-        $$4.setThrower(this.thrower);
-                           ^
-common/src/main/java/net/hydra/jojomod/mixin/items/FancyLighterItemEntity.java:80: error: cannot find symbol
-            stack2.setTag(stack.getTag());
-                               ^
-  symbol:   method getTag()
-  location: variable stack of type ItemStack
-common/src/main/java/net/hydra/jojomod/mixin/items/FancyLighterItemEntity.java:85: error: incompatible types: @org.jetbrains.annotations.Nullable UUID cannot be converted to Entity
-            $$4.setThrower(this.thrower);
-                               ^
 common/src/main/java/net/hydra/jojomod/mixin/StandUserEntity.java:2011: error: cannot find symbol
         if (item.isEdible() || item instanceof PotionItem) {
                 ^
@@ -2563,6 +2483,6 @@ Note: Recompile with -Xlint:deprecation for details.
 Note: Some input files use unchecked or unsafe operations.
 Note: Recompile with -Xlint:unchecked for details.
 Note: Some messages have been simplified; recompile with -Xdiags:verbose to get full output
-571 errors
+553 errors
 18 warnings
 
