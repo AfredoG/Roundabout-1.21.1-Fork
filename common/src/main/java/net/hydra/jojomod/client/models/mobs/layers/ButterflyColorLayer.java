@@ -21,13 +21,13 @@ public class ButterflyColorLayer<T extends Butterfly, M extends EntityModel<T>> 
     @Override
     public void render(PoseStack poseStack, MultiBufferSource buffer, int packedLight, T entity, float limbSwing, float limbSwingAmount, float partialTick, float ageInTicks, float netHeadYaw, float headPitch) {
         ResourceLocation texture = this.provider.getTexture(entity);
-        float[] rgb = this.provider.getColor(entity);
+        int argbColor = this.provider.getColor(entity);
 
         coloredCutoutModelCopyLayerRender(
                 this.getParentModel(), this.getParentModel(),
                 texture, poseStack, buffer, packedLight, entity,
                 limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, partialTick,
-                rgb[0], rgb[1], rgb[2]
+                argbColor
         );
     }
 }

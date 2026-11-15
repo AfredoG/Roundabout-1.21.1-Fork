@@ -47,8 +47,8 @@ public class ButterflyRenderer extends MobRenderer<Butterfly, ButterflyModel<But
                 return BODY_TEXTURES[entity.getPatternVariant()];
             }
             @Override
-            public float[] getColor(Butterfly entity) {
-                return entity.getBodyColor().getTextureDiffuseColors();
+            public int getColor(Butterfly entity) {
+                return entity.getBodyColor().getTextureDiffuseColor();
             }
         }));
 
@@ -58,8 +58,8 @@ public class ButterflyRenderer extends MobRenderer<Butterfly, ButterflyModel<But
                 return INNER_WING_PATTERNS[entity.getPatternVariant()];
             }
             @Override
-            public float[] getColor(Butterfly entity) {
-                return entity.getInnerWingColor().getTextureDiffuseColors();
+            public int getColor(Butterfly entity) {
+                return entity.getInnerWingColor().getTextureDiffuseColor();
             }
         }));
 
@@ -69,8 +69,8 @@ public class ButterflyRenderer extends MobRenderer<Butterfly, ButterflyModel<But
                 return OUTER_WING_PATTERNS[entity.getPatternVariant()];
             }
             @Override
-            public float[] getColor(Butterfly entity) {
-                return entity.getOuterWingColor().getTextureDiffuseColors();
+            public int getColor(Butterfly entity) {
+                return entity.getOuterWingColor().getTextureDiffuseColor();
             }
         }));
     }
@@ -82,6 +82,6 @@ public class ButterflyRenderer extends MobRenderer<Butterfly, ButterflyModel<But
 
     public interface TextureAndColorProvider {
         ResourceLocation getTexture(Butterfly entity);
-        float[] getColor(Butterfly entity);
+        int getColor(Butterfly entity);
     }
 }
