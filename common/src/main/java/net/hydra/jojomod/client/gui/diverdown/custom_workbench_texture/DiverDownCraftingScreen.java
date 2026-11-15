@@ -4,6 +4,7 @@ import net.hydra.jojomod.Roundabout;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.ImageButton;
 import net.minecraft.client.gui.screens.inventory.CraftingScreen;
+import net.minecraft.client.gui.screens.recipebook.RecipeBookComponent;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
@@ -30,7 +31,7 @@ public class DiverDownCraftingScreen extends CraftingScreen {
 
         this.addRenderableWidget(new ImageButton(
                 this.leftPos + 5,
-                this.height / 2 - 49, 20, 18, 0, 168, 19, TEXTURE,
+                this.height / 2 - 49, 20, 18, RecipeBookComponent.RECIPE_BUTTON_SPRITES,
                 (button) -> {
                     this.getRecipeBookComponent().toggleVisibility();
                     this.leftPos = this.getRecipeBookComponent().updateScreenPosition(this.width, this.imageWidth);

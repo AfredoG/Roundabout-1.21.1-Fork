@@ -49,7 +49,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.ClickType;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
-import org.joml.Matrix4f;
 import org.joml.Quaternionf;
 
 import javax.annotation.Nullable;
@@ -317,13 +316,12 @@ public class PowerInventoryScreen
     public static void renderEntityInInventory2(GuiGraphics $$0, int $$1, int $$2, int $$3, Quaternionf $$4, @Nullable Quaternionf $$5, LivingEntity $$6) {
         $$0.pose().pushPose();
         $$0.pose().translate((double)$$1, (double)$$2, 50.0);
-        $$0.pose().mulPoseMatrix(new Matrix4f().scaling((float)$$3, (float)$$3, (float)(-$$3)));
+        $$0.pose().scale((float)$$3, (float)$$3, (float)(-$$3));
         $$0.pose().mulPose($$4);
         Lighting.setupForEntityInInventory();
         EntityRenderDispatcher $$7 = Minecraft.getInstance().getEntityRenderDispatcher();
         if ($$5 != null) {
-            $$5.conjugate();
-            $$7.overrideCameraOrientation($$5);
+            $$7.overrideCameraOrientation($$5.conjugate(new Quaternionf()).rotateY((float) Math.PI));
         }
 
         $$7.setRenderShadow(false);
@@ -380,8 +378,6 @@ public class PowerInventoryScreen
 
 
         //leftPos+=leftposModifier;
-
-        this.renderBackground(context, mouseX, mouseY, delta);
 
          super.render(context, mouseX, mouseY, delta);
 
@@ -690,13 +686,12 @@ public class PowerInventoryScreen
     public static void renderEntityInInventory(GuiGraphics $$0, int $$1, int $$2, int $$3, Quaternionf $$4, @Nullable Quaternionf $$5, LivingEntity $$6) {
         $$0.pose().pushPose();
         $$0.pose().translate((double)$$1, (double)$$2, 50.0);
-        $$0.pose().mulPoseMatrix(new Matrix4f().scaling((float)$$3, (float)$$3, (float)(-$$3)));
+        $$0.pose().scale((float)$$3, (float)$$3, (float)(-$$3));
         $$0.pose().mulPose($$4);
         Lighting.setupForEntityInInventory();
         EntityRenderDispatcher $$7 = Minecraft.getInstance().getEntityRenderDispatcher();
         if ($$5 != null) {
-            $$5.conjugate();
-            $$7.overrideCameraOrientation($$5);
+            $$7.overrideCameraOrientation($$5.conjugate(new Quaternionf()).rotateY((float) Math.PI));
         }
 
         $$7.setRenderShadow(false);

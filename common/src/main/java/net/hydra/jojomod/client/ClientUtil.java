@@ -50,6 +50,7 @@ import net.hydra.jojomod.util.HeatUtil;
 import net.hydra.jojomod.util.gravity.GravityAPI;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.PlayerModel;
@@ -1128,7 +1129,7 @@ public class ClientUtil {
         }
     }
     public static List<Component> getTooltipFromItem(Minecraft p_281881_, ItemStack p_282833_) {
-        return p_282833_.getTooltipLines(p_281881_.player, p_281881_.options.advancedItemTooltips ? TooltipFlag.Default.ADVANCED : TooltipFlag.Default.NORMAL);
+        return Screen.getTooltipFromItem(p_281881_, p_282833_);
     }
     public static boolean getDirectionRight(LivingEntity self){
 

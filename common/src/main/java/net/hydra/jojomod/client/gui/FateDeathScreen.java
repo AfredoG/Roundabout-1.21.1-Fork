@@ -5,18 +5,19 @@ import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 import net.hydra.jojomod.Roundabout;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.components.AbstractWidget;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.*;
 import net.minecraft.network.chat.ClickEvent;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
+import net.minecraft.resources.ResourceLocation;
 
 import javax.annotation.Nullable;
 import java.util.List;
 
 public class FateDeathScreen extends Screen {
+    private static final ResourceLocation DRAFT_REPORT_SPRITE = ResourceLocation.withDefaultNamespace("icon/draft_report");
     private int delayTicker;
     private final Component causeOfDeath;
     private final boolean hardcore;
@@ -116,13 +117,18 @@ public class FateDeathScreen extends Screen {
             this.minecraft.level.disconnect();
         }
 
-        this.minecraft.clearLevel(new GenericDirtMessageScreen(Component.translatable("menu.savingLevel")));
+        this.minecraft.disconnect(new GenericMessageScreen(Component.translatable("menu.savingLevel")));
         this.minecraft.setScreen(new TitleScreen());
     }
 
     @Override
-    public void render(GuiGraphics $$0, int $$1, int $$2, float $$3) {
+    public void renderBackground(GuiGraphics $$0, int $$1, int $$2, float $$3) {
         $$0.fillGradient(0, 0, this.width, this.height, 1615855616, -1602211792);
+    }
+
+    @Override
+    public void render(GuiGraphics $$0, int $$1, int $$2, float $$3) {
+        super.render($$0, $$1, $$2, $$3);
         $$0.pose().pushPose();
         $$0.pose().scale(2.0F, 2.0F, 2.0F);
         $$0.drawCenteredString(this.font, this.title, this.width / 2 / 2, 30, 16777215);
@@ -137,14 +143,11 @@ public class FateDeathScreen extends Screen {
             $$0.renderComponentHoverEffect(this.font, $$4, $$1, $$2);
         }
 
-        super.render($$0, $$1, $$2, $$3);
         if (this.exitToTitleButton != null && this.minecraft.getReportingContext().hasDraftReport()) {
-            $$0.blit(
-                    AbstractWidget.WIDGETS_LOCATION,
+            $$0.blitSprite(
+                    DRAFT_REPORT_SPRITE,
                     this.exitToTitleButton.getX() + this.exitToTitleButton.getWidth() - 17,
                     this.exitToTitleButton.getY() + 3,
-                    182,
-                    24,
                     15,
                     15
             );

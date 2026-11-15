@@ -19,7 +19,7 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 
-import static net.minecraft.client.gui.screens.inventory.InventoryScreen.renderEntityInInventoryFollowsMouse;
+import static net.hydra.jojomod.client.gui.PowerInventoryScreen.renderEntityInInventoryFollowsMouse2;
 
 
 public class BlackSabbathPlayerInventoryScreen
@@ -45,7 +45,7 @@ public class BlackSabbathPlayerInventoryScreen
         if(((StandUser)player).roundabout$getStandPowers() instanceof PowersBlackSabbath) {
         if(((StandUser)player).roundabout$getStand() instanceof BlackSabbathEntity bs) {
             int scaleInt = bs.getSkin() == BlackSabbathEntity.SANTA ? 20 : 24;
-            renderEntityInInventoryFollowsMouse(
+            renderEntityInInventoryFollowsMouse2(
                     $$0, $$4 + 34, $$5 + 67, scaleInt, (float)($$4 + 51) - this.xMouse, (float)($$5 + 75 - 50) - this.yMouse, bs
             );
         }
@@ -59,7 +59,6 @@ public class BlackSabbathPlayerInventoryScreen
 
     @Override
     public void render(GuiGraphics $$0, int $$1, int $$2, float $$3) {
-        this.renderBackground($$0, $$1, $$2, $$3);
         this.xMouse = (float)$$1;
         this.yMouse = (float)$$2;
         super.render($$0, $$1, $$2, $$3);

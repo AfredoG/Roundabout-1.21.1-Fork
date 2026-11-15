@@ -20,7 +20,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.zetalasis.networking.message.api.ModMessageEvents;
-import org.joml.Matrix4f;
 import org.joml.Quaternionf;
 
 import javax.annotation.Nullable;
@@ -211,7 +210,7 @@ public class NailColorChangeScreen extends Screen {
     }
     @Override
     public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float delta) {
-        renderBackground(guiGraphics, mouseX, mouseY, delta);
+        super.render(guiGraphics, mouseX, mouseY, delta);
 
         guiGraphics.pose().pushPose();
         RenderSystem.enableBlend();
@@ -219,7 +218,6 @@ public class NailColorChangeScreen extends Screen {
         int l = this.height / 2 - 111;
         guiGraphics.blit(CORPSE_CHOOSER_LOCATION, k, l, 0.0f, 0.0f, 113, 26, 256, 256);
         guiGraphics.pose().popPose();
-        super.render(guiGraphics, mouseX, mouseY, delta);
         guiGraphics.drawCenteredString(this.font, Component.translatable("roundabout.nail"), this.width / 2 -2, this.height / 2 - 31 - 76, -1);
 
 
@@ -341,13 +339,12 @@ public class NailColorChangeScreen extends Screen {
     public static void renderEntityInInventory(GuiGraphics $$0, int $$1, int $$2, int $$3, Quaternionf $$4, @Nullable Quaternionf $$5, LivingEntity $$6) {
         $$0.pose().pushPose();
         $$0.pose().translate((double)$$1, (double)$$2, 50.0);
-        $$0.pose().mulPoseMatrix(new Matrix4f().scaling((float)$$3, (float)$$3, (float)(-$$3)));
+        $$0.pose().scale((float)$$3, (float)$$3, (float)(-$$3));
         $$0.pose().mulPose($$4);
         Lighting.setupForEntityInInventory();
         EntityRenderDispatcher $$7 = Minecraft.getInstance().getEntityRenderDispatcher();
         if ($$5 != null) {
-            $$5.conjugate();
-            $$7.overrideCameraOrientation($$5);
+            $$7.overrideCameraOrientation($$5.conjugate(new Quaternionf()).rotateY((float) Math.PI));
         }
 
         $$7.setRenderShadow(false);

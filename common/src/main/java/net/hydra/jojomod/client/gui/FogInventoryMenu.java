@@ -160,7 +160,7 @@ public class FogInventoryMenu extends RecipeBookMenu<net.minecraft.world.item.cr
                 if (!this.moveItemStackTo(slotStack, 9, 45, false)) {
                     return ItemStack.EMPTY;
                 }
-            } else if (equipmentSlot.getType() == EquipmentSlot.Type.ARMOR && !this.slots.get(8 - equipmentSlot.getIndex()).hasItem()) {
+            } else if (equipmentSlot.getType() == EquipmentSlot.Type.HUMANOID_ARMOR && !this.slots.get(8 - equipmentSlot.getIndex()).hasItem()) {
                 int $$6 = 8 - equipmentSlot.getIndex();
                 if (!this.moveItemStackTo(slotStack, $$6, $$6 + 1, false)) {
                     return ItemStack.EMPTY;

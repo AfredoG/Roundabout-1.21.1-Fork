@@ -31,8 +31,8 @@ public class ConfigListWidget extends ContainerObjectSelectionList<ConfigListWid
     public static int constant2 = constant1-40;
 
     public ConfigListWidget(ConfigScreen parent, Minecraft client, ConfigType selectedType) {
-        super(client, constant1, parent.height, 20, parent.height - 40, 32);
-        this.setLeftPos((parent.width - constant1) / 2);
+        super(client, constant1, Math.max(0, parent.height - 60), 20, 32);
+        this.setX((parent.width - constant1) / 2);
         this.parent = parent;
         this.configType = selectedType;
 

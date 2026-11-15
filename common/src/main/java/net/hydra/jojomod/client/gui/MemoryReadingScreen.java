@@ -40,19 +40,22 @@ public final class MemoryReadingScreen extends Screen {
         this.hand = hand;
         this.reading = DiscItemData.getMemoryReading(this.disc);
         this.kind = reading.getByte(DiscItemData.READING_KIND);
-        if (kind == DiscItemData.READING_PLAYER
+    }
+
+    @Override
+    protected void init() {
+        inventory.clear();
+        if (minecraft != null && minecraft.level != null && kind == DiscItemData.READING_PLAYER
                 && reading.contains(DiscItemData.READING_INVENTORY, Tag.TAG_LIST)) {
             ListTag items = reading.getList(DiscItemData.READING_INVENTORY, Tag.TAG_COMPOUND);
             for (int index = 0; index < items.size(); index++) {
                 CompoundTag saved = items.getCompound(index);
                 int slot = saved.getInt(DiscItemData.READING_SLOT);
-                if (slot >= 0 && slot < inventory.size()) inventory.set(slot, ItemStack.of(saved));
+                if (slot >= 0 && slot < inventory.size()) {
+                    inventory.set(slot, ItemStack.parseOptional(minecraft.level.registryAccess(), saved));
+                }
             }
         }
-    }
-
-    @Override
-    protected void init() {
         if (minecraft == null || !MemoryDiscConversionService.canConvert(minecraft.player)) return;
 
         String buttonText;
@@ -78,14 +81,22 @@ public final class MemoryReadingScreen extends Screen {
     }
 
     @Override
-    public void render(GuiGraphics graphics, int mouseX, int mouseY, float delta) {
-        renderBackground(graphics, mouseX, mouseY, delta);
+    public void renderBackground(GuiGraphics graphics, int mouseX, int mouseY, float delta) {
+        super.renderBackground(graphics, mouseX, mouseY, delta);
         int panelHeight = kind == DiscItemData.READING_PLAYER ? PLAYER_PANEL_HEIGHT : MOB_PANEL_HEIGHT;
         int left = (width - PANEL_WIDTH) / 2;
         int top = (height - panelHeight) / 2;
         int textureU = kind == DiscItemData.READING_PLAYER ? 0 : MOB_PANEL_U;
         graphics.blit(BACKGROUND, left, top, textureU, 0, PANEL_WIDTH, panelHeight,
                 TEXTURE_WIDTH, TEXTURE_HEIGHT);
+    }
+
+    @Override
+    public void render(GuiGraphics graphics, int mouseX, int mouseY, float delta) {
+        super.render(graphics, mouseX, mouseY, delta);
+        int panelHeight = kind == DiscItemData.READING_PLAYER ? PLAYER_PANEL_HEIGHT : MOB_PANEL_HEIGHT;
+        int left = (width - PANEL_WIDTH) / 2;
+        int top = (height - panelHeight) / 2;
         Component title = Component.translatable("screen.roundabout.memory_reading");
         graphics.drawString(font, title, width / 2 - font.width(title) / 2,
                 top + 8, 0x404040, false);
@@ -105,7 +116,6 @@ public final class MemoryReadingScreen extends Screen {
                     left + 10, top + 42, 0x555555, false);
         }
         if (!hovered.isEmpty()) graphics.renderTooltip(font, hovered, mouseX, mouseY);
-        super.render(graphics, mouseX, mouseY, delta);
     }
 
     private void renderPlayerDetails(GuiGraphics graphics, int left, int top) {

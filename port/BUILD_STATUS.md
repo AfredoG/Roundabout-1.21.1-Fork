@@ -8,7 +8,7 @@
 - Gradle help: успешно.
 - Подготовка исходников и классов Minecraft/NeoForge: успешно.
 - processResources: успешно; проверены метаданные, access transformer, mixin-конфигурации и 141 рецепт.
-- compileJava: НЕУСПЕШНО, 587 ошибок, 18 предупреждений (актуальный полный журнал сохранён в build-errors.txt).
+- compileJava: НЕУСПЕШНО, 571 ошибок, 18 предупреждений (актуальный полный журнал сохранён в build-errors.txt).
 - JDK 21 и Gradle восстановлены; подготовка Minecraft/NeoForge и processResources прошли в новой среде.
 - JAR для установки: отсутствует.
 - Запуск клиента и выделенного сервера полного мода: не выполнен (компиляция не проходит).
@@ -18,11 +18,11 @@
 Список ошибок — build-errors.txt. Ошибки могут быть каскадными; их число не является оценкой процента готовности.
 Текущая проверка выполнена на Azul JDK 21.0.6 и Gradle 8.14.3; зависимости восстановлены заново.
 
-## Категории актуального полного журнала (587 ошибок)
+## Категории актуального полного журнала (571 ошибок)
 
 | Ошибка | Количество |
 |---|---:|
-| cannot find symbol | 277 |
+| cannot find symbol | 266 |
 | method does not override or implement a method from a supertype | 115 |
 | method isCorrectToolForDrops in class Item cannot be applied to given types; | 9 |
 | incompatible types: ResourceKey<Enchantment> cannot be converted to Holder<Enchantment> | 7 |
@@ -393,3 +393,16 @@
 - Полная compileJava — **587 ошибок, 18 предупреждений**, было 594/18. Во всех шести изменённых классах ошибок Java нет; полный журнал и таблица обновлены, git diff --check проходит. Ресурсы не менялись.
 - После рабочей сборки проверить подписи при всех шести направлениях гравитации и near/far, маски/масштаб клонов, имя Whitesnake, мокрых/сухих терьеров, декоративные стрелы и reload core shaders. Готового JAR нет.
 - Продолжение: интерфейсы инвентарей/внешности и конфигурации, затем renderLevel/HUD mixin и оставшиеся сущности/предметы. Перед возобновлением выполнить fetch ветки порта.
+
+
+## Контрольная точка — экраны инвентарей, внешности и настроек (15 ноября 2026)
+
+- ClientUtil делегирует подсказки штатному Screen.getTooltipFromItem, сохраняя TooltipContext текущего мира и NeoForge ClientTooltipFlag. FogInventoryMenu различает HUMANOID_ARMOR и ANIMAL_ARMOR при быстром переносе, как InventoryMenu 1.21.1.
+- В HairColorChangeScreen, NailColorChangeScreen, ModificationVisageScreen и двух helper-методах PowerInventoryScreen используется PoseStack.scale с отрицательным Z, обновляющий также нормали. Ориентация камеры предпросмотра соответствует InventoryScreen 1.21.1: conjugate на копии и rotateY(PI), без изменения входного quaternion.
+- BlackSabbathPlayerInventoryScreen использует уже существующий переносимый helper PowerInventoryScreen.renderEntityInInventoryFollowsMouse2: прежние пиксельные координаты, масштабы 20/24 и точка слежения за мышью сохранены. Удалена повторная отрисовка фона в этом экране и PowerInventoryScreen; в трёх экранах внешности super.render вызывается перед панелями один раз.
+- MemoryReadingScreen читает сохранённый инвентарь через ItemStack.parseOptional с registryAccess мира на init, когда Minecraft уже привязан к экрану; при resize инвентарь предварительно очищается с сохранением 41 слота NonNullList. Нет обращения к неинициализированному minecraft из конструктора. Панель рисуется в renderBackground, затем кнопки, содержимое и подсказки; фон не перекрывает кнопки преобразования дисков.
+- FateDeathScreen использует disconnect/GenericMessageScreen и GUI-спрайт icon/draft_report. Градиент вынесен в renderBackground, текст и hover-effect больше не перекрываются повторным фоном. Задержка кнопок и прежнее поведение возрождения сохранены.
+- DiverDownCraftingScreen передаёт актуальные WidgetSprites в ImageButton, сохраняя собственную отрисовку двух областей исходной текстуры и переключение книги рецептов. ConfigListWidget задаёт высоту viewport height-60, верх 20 и setX; ConfigScreen не рисует фон и зарегистрированный список повторно.
+- Удаление modifications в копии предмета проходит через ItemData.update, без старого removeTagKey. Новых ресурсов нет; наличие draft_report спрайта проверено в Minecraft resources JAR. API/порядок отрисовки сверены с Screen, AbstractContainerScreen, InventoryScreen, DeathScreen, AbstractSelectionList и NonNullList 1.21.1.
+- Полная compileJava — **571 ошибка, 18 предупреждений**, было 587/18 (в начале текущего продолжения 601/18). Во всех двенадцати изменённых Java-классах ошибок нет. Полный журнал и таблица обновлены, git diff --check проходит. Клиент/сервер ещё не запускаются, готового JAR нет.
+- После рабочей сборки проверить масштаб/освещение и имена в предпросмотрах, все варианты Black Sabbath, sliders/save/cancel/resize, предметы с компонентами на memory disc и подсказки, кнопку преобразования, книгу рецептов и конфигурацию при разных GUI scale, экран смерти и выход. Отдельно предстоит аудит прочих screen render и renderLevel/HUD mixin.

@@ -79,8 +79,6 @@ public class ConfigScreen extends Screen {
 
     @Override
     public void render(GuiGraphics drawContext, int mouseX, int mouseY, float tickDelta) {
-        this.renderBackground(drawContext, mouseX, mouseY, tickDelta);
-        this.listWidget.render(drawContext, mouseX, mouseY, tickDelta);
         super.render(drawContext, mouseX, mouseY, tickDelta);
     }
 }

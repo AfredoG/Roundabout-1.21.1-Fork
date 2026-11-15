@@ -2023,92 +2023,6 @@ common/src/main/java/net/hydra/jojomod/entity/goals/MinionFollowCommanderGoal.ja
                                         ^
   symbol:   method getBlockPathTypeStatic(LevelReader,MutableBlockPos)
   location: class WalkNodeEvaluator
-common/src/main/java/net/hydra/jojomod/client/ClientUtil.java:1131: error: method getTooltipLines in class ItemStack cannot be applied to given types;
-        return p_282833_.getTooltipLines(p_281881_.player, p_281881_.options.advancedItemTooltips ? TooltipFlag.Default.ADVANCED : TooltipFlag.Default.NORMAL);
-                        ^
-  required: TooltipContext,Player,TooltipFlag
-  found:    LocalPlayer,p_281881_.[...]ORMAL
-  reason: actual and formal argument lists differ in length
-common/src/main/java/net/hydra/jojomod/client/ClientUtil.java:1131: error: incompatible types: LocalPlayer cannot be converted to TooltipContext
-        return p_282833_.getTooltipLines(p_281881_.player, p_281881_.options.advancedItemTooltips ? TooltipFlag.Default.ADVANCED : TooltipFlag.Default.NORMAL);
-                                                  ^
-common/src/main/java/net/hydra/jojomod/client/gui/ModificationVisageScreen.java:163: error: cannot find symbol
-                delStack.removeTagKey("modifications");
-                        ^
-  symbol:   method removeTagKey(String)
-  location: variable delStack of type ItemStack
-common/src/main/java/net/hydra/jojomod/client/gui/ModificationVisageScreen.java:517: error: cannot find symbol
-        $$0.pose().mulPoseMatrix(new Matrix4f().scaling((float)$$3, (float)$$3, (float)(-$$3)));
-                  ^
-  symbol:   method mulPoseMatrix(Matrix4f)
-  location: class PoseStack
-common/src/main/java/net/hydra/jojomod/client/gui/MemoryReadingScreen.java:49: error: cannot find symbol
-                if (slot >= 0 && slot < inventory.size()) inventory.set(slot, ItemStack.of(saved));
-                                                                                       ^
-  symbol:   method of(CompoundTag)
-  location: class ItemStack
-common/src/main/java/net/hydra/jojomod/client/gui/FateDeathScreen.java:119: error: cannot find symbol
-        this.minecraft.clearLevel(new GenericDirtMessageScreen(Component.translatable("menu.savingLevel")));
-                                      ^
-  symbol:   class GenericDirtMessageScreen
-  location: class FateDeathScreen
-common/src/main/java/net/hydra/jojomod/client/gui/FateDeathScreen.java:143: error: cannot find symbol
-                    AbstractWidget.WIDGETS_LOCATION,
-                                  ^
-  symbol:   variable WIDGETS_LOCATION
-  location: class AbstractWidget
-common/src/main/java/net/hydra/jojomod/client/gui/diverdown/custom_workbench_texture/DiverDownCraftingScreen.java:31: error: no suitable constructor found for ImageButton(int,int,int,int,int,int,int,ResourceLocation,(button)->[...]9); })
-        this.addRenderableWidget(new ImageButton(
-                                 ^
-    constructor ImageButton.ImageButton(int,int,int,int,WidgetSprites,OnPress) is not applicable
-      (actual and formal argument lists differ in length)
-    constructor ImageButton.ImageButton(int,int,int,int,WidgetSprites,OnPress,Component) is not applicable
-      (actual and formal argument lists differ in length)
-    constructor ImageButton.ImageButton(int,int,WidgetSprites,OnPress,Component) is not applicable
-      (actual and formal argument lists differ in length)
-common/src/main/java/net/hydra/jojomod/client/gui/NailColorChangeScreen.java:344: error: cannot find symbol
-        $$0.pose().mulPoseMatrix(new Matrix4f().scaling((float)$$3, (float)$$3, (float)(-$$3)));
-                  ^
-  symbol:   method mulPoseMatrix(Matrix4f)
-  location: class PoseStack
-common/src/main/java/net/hydra/jojomod/client/gui/HairColorChangeScreen.java:390: error: cannot find symbol
-        $$0.pose().mulPoseMatrix(new Matrix4f().scaling((float)$$3, (float)$$3, (float)(-$$3)));
-                  ^
-  symbol:   method mulPoseMatrix(Matrix4f)
-  location: class PoseStack
-common/src/main/java/net/hydra/jojomod/client/gui/BlackSabbathPlayerInventoryScreen.java:48: error: method renderEntityInInventoryFollowsMouse in class InventoryScreen cannot be applied to given types;
-            renderEntityInInventoryFollowsMouse(
-            ^
-  required: GuiGraphics,int,int,int,int,int,float,float,float,LivingEntity
-  found:    GuiGraphics,int,int,int,float,float,BlackSabbathEntity
-  reason: actual and formal argument lists differ in length
-common/src/main/java/net/hydra/jojomod/client/gui/config/ConfigListWidget.java:34: error: constructor ContainerObjectSelectionList in class ContainerObjectSelectionList<E> cannot be applied to given types;
-        super(client, constant1, parent.height, 20, parent.height - 40, 32);
-        ^
-  required: Minecraft,int,int,int,int
-  found:    Minecraft,int,int,int,int,int
-  reason: actual and formal argument lists differ in length
-  where E is a type-variable:
-    E extends Entry<E> declared in class ContainerObjectSelectionList
-common/src/main/java/net/hydra/jojomod/client/gui/config/ConfigListWidget.java:35: error: cannot find symbol
-        this.setLeftPos((parent.width - constant1) / 2);
-            ^
-  symbol: method setLeftPos(int)
-common/src/main/java/net/hydra/jojomod/client/gui/FogInventoryMenu.java:163: error: cannot find symbol
-            } else if (equipmentSlot.getType() == EquipmentSlot.Type.ARMOR && !this.slots.get(8 - equipmentSlot.getIndex()).hasItem()) {
-                                                                    ^
-  symbol:   variable ARMOR
-  location: class Type
-common/src/main/java/net/hydra/jojomod/client/gui/PowerInventoryScreen.java:320: error: cannot find symbol
-        $$0.pose().mulPoseMatrix(new Matrix4f().scaling((float)$$3, (float)$$3, (float)(-$$3)));
-                  ^
-  symbol:   method mulPoseMatrix(Matrix4f)
-  location: class PoseStack
-common/src/main/java/net/hydra/jojomod/client/gui/PowerInventoryScreen.java:693: error: cannot find symbol
-        $$0.pose().mulPoseMatrix(new Matrix4f().scaling((float)$$3, (float)$$3, (float)(-$$3)));
-                  ^
-  symbol:   method mulPoseMatrix(Matrix4f)
-  location: class PoseStack
 common/src/main/java/net/hydra/jojomod/mixin/WorldTickServer.java:257: error: method lerpTo in class Entity cannot be applied to given types;
                     $$0.lerpTo($$0.getX(),$$0.getY(),$$0.getZ(),$$0.getYRot(),$$0.getXRot(),3,false);
                        ^
@@ -2649,6 +2563,6 @@ Note: Recompile with -Xlint:deprecation for details.
 Note: Some input files use unchecked or unsafe operations.
 Note: Recompile with -Xlint:unchecked for details.
 Note: Some messages have been simplified; recompile with -Xdiags:verbose to get full output
-587 errors
+571 errors
 18 warnings
 
