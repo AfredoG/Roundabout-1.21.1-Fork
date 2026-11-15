@@ -25,7 +25,7 @@ public class AirPressureHudMixin {
     @Unique private static final int WIDTH = 30;
     @Unique private static final int HEIGHT = 80;
 
-    @Inject(method = "renderHotbar", at = @At("TAIL"))
+    @Inject(method = "renderHotbar", at = @At("TAIL"), remap = false)
     private void jjf$renderAirPressure(GuiGraphics graphics, DeltaTracker deltaTracker, CallbackInfo ci) {
         Minecraft minecraft = Minecraft.getInstance();
         if (minecraft.player == null || !(minecraft.player instanceof ZeroGravityAccess access)) {

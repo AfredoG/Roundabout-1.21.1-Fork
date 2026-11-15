@@ -116,7 +116,7 @@ public abstract class HudRendering implements IHudAccess {
     private boolean rdbt$fadingIn = false;
 
     /** The stand move HUD renders with the hotbar so that it may exist in all gamemodes.*/
-    @Inject(method = "renderHotbar", at = @At(value = "HEAD"))
+    @Inject(method = "renderHotbar", at = @At(value = "HEAD"), remap = false)
     private void roundabout$renderHotbarMixin(GuiGraphics $$1, DeltaTracker deltaTracker, CallbackInfo info) {
 
 
@@ -385,7 +385,7 @@ public abstract class HudRendering implements IHudAccess {
         RenderSystem.enableBlend();
     }
 
-    @Inject(method = "renderHotbar", at = @At(value = "TAIL"))
+    @Inject(method = "renderHotbar", at = @At(value = "TAIL"), remap = false)
     private void roundabout$renderHotbarTailMixin(GuiGraphics graphics, DeltaTracker deltaTracker, CallbackInfo info) {
 
         // for counting gun ammo
