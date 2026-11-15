@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
 
 @Mixin(value = Camera.class, priority = 2000)
 public abstract class SilverChariotControlCameraMixin {
-    @ModifyVariable(method = "setRotation(FF)V", at = @At("HEAD"), argsOnly = true, ordinal = 0)
+    @ModifyVariable(method = "setRotation*", at = @At("HEAD"), argsOnly = true, ordinal = 0)
     private float roundaboutSilverChariot$cameraYaw(float original) {
         if (!SilverChariotClient.hasCameraLook()) return original;
         return Minecraft.getInstance().options.getCameraType() == CameraType.THIRD_PERSON_FRONT
@@ -18,7 +18,7 @@ public abstract class SilverChariotControlCameraMixin {
                 : SilverChariotClient.getCameraYaw();
     }
 
-    @ModifyVariable(method = "setRotation(FF)V", at = @At("HEAD"), argsOnly = true, ordinal = 1)
+    @ModifyVariable(method = "setRotation*", at = @At("HEAD"), argsOnly = true, ordinal = 1)
     private float roundaboutSilverChariot$cameraPitch(float original) {
         if (!SilverChariotClient.hasCameraLook()) return original;
         return Minecraft.getInstance().options.getCameraType() == CameraType.THIRD_PERSON_FRONT

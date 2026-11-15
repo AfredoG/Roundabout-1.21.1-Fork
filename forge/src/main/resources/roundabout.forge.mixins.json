@@ -18,7 +18,6 @@
     "ForgeClientPacketListener",
     "ForgeFireBlock",
     "ForgeForgeGui",
-    "ForgeGameRendererMixin",
     "ForgeHumanoidArmorLayer",
     "ForgeKillsScreenInputsFix",
     "ForgeScreenEffectRenderer",

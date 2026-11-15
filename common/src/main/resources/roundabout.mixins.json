@@ -490,7 +490,6 @@
     "whitesnake.OldLocalPlayerSprintMixin",
     "whitesnake.control.MemoryMouseHandler",
     "whitesnake.control.WhitesnakeControlCameraMixin",
-    "whitesnake.control.WhitesnakeControlGravityCameraMixin",
     "whitesnake.control.WhitesnakeControlMinecraftMixin",
     "whitesnake.control.WhitesnakeControlMiningTargetMixin",
     "whitesnake.control.WhitesnakeSoundListenerMixin",
