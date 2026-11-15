@@ -62,7 +62,7 @@ public final class WhitesnakeDisguiseRenderer
         if (entity.isDisguiseMining()) entity.swingingArm = InteractionHand.MAIN_HAND;
         super.render(entity, yaw, partialTick, poseStack, buffers, packedLight);
         entity.swingingArm = previousSwingingArm;
-        renderNameTag(entity, Component.literal(entity.getDisguiseName()), poseStack, buffers, packedLight);
+        renderNameTag(entity, Component.literal(entity.getDisguiseName()), poseStack, buffers, packedLight, partialTick);
     }
 
     @Override

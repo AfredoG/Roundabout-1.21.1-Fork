@@ -2109,38 +2109,6 @@ common/src/main/java/net/hydra/jojomod/client/gui/PowerInventoryScreen.java:693:
                   ^
   symbol:   method mulPoseMatrix(Matrix4f)
   location: class PoseStack
-common/src/main/java/net/hydra/jojomod/client/models/layers/playerlike/PlayerLikeArrowLayer.java:30: error: incompatible types: double cannot be converted to LivingEntity
-        Arrow $$9 = new Arrow($$3.level(), $$3.getX(), $$3.getY(), $$3.getZ());
-                                                   ^
-common/src/main/java/net/hydra/jojomod/client/models/stand/renderers/WhitesnakeDisguiseRenderer.java:65: error: method renderNameTag in class EntityRenderer<T> cannot be applied to given types;
-        renderNameTag(entity, Component.literal(entity.getDisguiseName()), poseStack, buffers, packedLight);
-        ^
-  required: WhitesnakeEntity,Component,PoseStack,MultiBufferSource,int,float
-  found:    WhitesnakeEntity,MutableComponent,PoseStack,MultiBufferSource,int
-  reason: actual and formal argument lists differ in length
-  where T is a type-variable:
-    T extends Entity declared in class EntityRenderer
-common/src/main/java/net/hydra/jojomod/client/models/substand/renderers/CloneRenderer.java:443: error: cannot find symbol
-                    if (visage.getTag() != null) {
-                              ^
-  symbol:   method getTag()
-  location: variable visage of type ItemStack
-common/src/main/java/net/hydra/jojomod/client/models/mobs/renderers/TerrierEntityRenderer.java:29: error: method setColor in class ColorableAgeableListModel<E> cannot be applied to given types;
-            (this.model).setColor(h, h, h);
-                        ^
-  required: int
-  found:    float,float,float
-  reason: actual and formal argument lists differ in length
-  where E is a type-variable:
-    E extends Entity declared in class ColorableAgeableListModel
-common/src/main/java/net/hydra/jojomod/client/models/mobs/renderers/TerrierEntityRenderer.java:34: error: method setColor in class ColorableAgeableListModel<E> cannot be applied to given types;
-            (this.model).setColor(1.0f, 1.0f, 1.0f);
-                        ^
-  required: int
-  found:    float,float,float
-  reason: actual and formal argument lists differ in length
-  where E is a type-variable:
-    E extends Entity declared in class ColorableAgeableListModel
 common/src/main/java/net/hydra/jojomod/mixin/WorldTickServer.java:257: error: method lerpTo in class Entity cannot be applied to given types;
                     $$0.lerpTo($$0.getX(),$$0.getY(),$$0.getZ(),$$0.getYRot(),$$0.getXRot(),3,false);
                        ^
@@ -2294,11 +2262,6 @@ common/src/main/java/net/hydra/jojomod/mixin/stand_users/ZVillager.java:307: err
 common/src/main/java/net/hydra/jojomod/mixin/stand_users/PowersEnchantmentHelper.java:22: error: incompatible types: ResourceKey<Enchantment> cannot be converted to Holder<Enchantment>
                         EnchantmentHelper.getEnchantmentLevel(Enchantments.KNOCKBACK, $$0), knockback);
                                                                           ^
-common/src/main/java/net/zetalasis/client/shader/RCoreShader.java:16: error: cannot find symbol
-        this.program = new ShaderInstance(provider, name, DefaultVertexFormat.POSITION_COLOR_TEX);
-                                                                             ^
-  symbol:   variable POSITION_COLOR_TEX
-  location: class DefaultVertexFormat
 common/src/main/java/net/hydra/jojomod/mixin/whitesnake/control/WhitesnakeSoundListenerMixin.java:38: error: cannot find symbol
                 executor.execute(() -> listener.setListenerPosition(position));
                                                ^
@@ -2502,13 +2465,6 @@ common/src/main/java/net/hydra/jojomod/mixin/gravity/GravityLlamaMixin.java:37: 
                                                           ^
   symbol:   method getMyRidingOffset()
   location: variable $$0 of type Entity
-common/src/main/java/net/hydra/jojomod/mixin/gravity/client/GravityEntityRendererMixin.java:49: error: cannot find symbol
-            float $$7 = $$0.getNameTagOffsetY();
-                           ^
-  symbol:   method getNameTagOffsetY()
-  location: variable $$0 of type T
-  where T is a type-variable:
-    T extends Entity declared in class GravityEntityRendererMixin
 common/src/main/java/net/hydra/jojomod/mixin/gravity/client/GravityClientPlayNetworkHandlerMixin.java:75: error: no suitable constructor found for Explosion(ClientLevel,<null>,double,double,double,float,List<BlockPos>)
         Explosion $$1 = new Explosion(this.minecraft.level, null, $$0.getX(), $$0.getY(), $$0.getZ(), $$0.getPower(), $$0.getToBlow());
                         ^
@@ -2693,6 +2649,6 @@ Note: Recompile with -Xlint:deprecation for details.
 Note: Some input files use unchecked or unsafe operations.
 Note: Recompile with -Xlint:unchecked for details.
 Note: Some messages have been simplified; recompile with -Xdiags:verbose to get full output
-594 errors
+587 errors
 18 warnings
 

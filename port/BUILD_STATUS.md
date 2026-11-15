@@ -8,7 +8,7 @@
 - Gradle help: успешно.
 - Подготовка исходников и классов Minecraft/NeoForge: успешно.
 - processResources: успешно; проверены метаданные, access transformer, mixin-конфигурации и 141 рецепт.
-- compileJava: НЕУСПЕШНО, 594 ошибок, 18 предупреждений (актуальный полный журнал сохранён в build-errors.txt).
+- compileJava: НЕУСПЕШНО, 587 ошибок, 18 предупреждений (актуальный полный журнал сохранён в build-errors.txt).
 - JDK 21 и Gradle восстановлены; подготовка Minecraft/NeoForge и processResources прошли в новой среде.
 - JAR для установки: отсутствует.
 - Запуск клиента и выделенного сервера полного мода: не выполнен (компиляция не проходит).
@@ -18,11 +18,11 @@
 Список ошибок — build-errors.txt. Ошибки могут быть каскадными; их число не является оценкой процента готовности.
 Текущая проверка выполнена на Azul JDK 21.0.6 и Gradle 8.14.3; зависимости восстановлены заново.
 
-## Категории актуального полного журнала (594 ошибок)
+## Категории актуального полного журнала (587 ошибок)
 
 | Ошибка | Количество |
 |---|---:|
-| cannot find symbol | 280 |
+| cannot find symbol | 277 |
 | method does not override or implement a method from a supertype | 115 |
 | method isCorrectToolForDrops in class Item cannot be applied to given types; | 9 |
 | incompatible types: ResourceKey<Enchantment> cannot be converted to Holder<Enchantment> | 7 |
@@ -30,9 +30,9 @@
 | incompatible types: Reference<SoundEvent> cannot be converted to SoundEvent | 5 |
 | incompatible types: BlockGetter cannot be converted to LevelReader | 5 |
 | incompatible types: EquipmentSlot cannot be converted to ItemStack | 5 |
-| incompatible types: double cannot be converted to LivingEntity | 5 |
 | method createArrow in class ArrowItem cannot be applied to given types; | 4 |
 | method getDamage in interface IItemExtension cannot be applied to given types; | 4 |
+| incompatible types: double cannot be converted to LivingEntity | 4 |
 | method getMobArrow in class ProjectileUtil cannot be applied to given types; | 4 |
 | method getUpdateTag in class BlockEntity cannot be applied to given types; | 3 |
 | method saveWithoutMetadata in class BlockEntity cannot be applied to given types; | 3 |
@@ -382,3 +382,14 @@
 - После рабочей сборки проверить обычные/заменённые имена, все настройки скрытия, objective belowName (включая пользовательский формат и отсутствующий score), поворот головы и TS, размеры ModificationMaskItem. Игра ещё не запускалась.
 
 - Проверка этого этапа завершена: полная compileJava — **594 ошибки, 18 предупреждений**, было 601/18. В ZPlayerRender ошибок Java нет. Подлинный полный журнал и таблица категорий обновлены; утраченный журнал предыдущего этапа больше не нужен для продолжения. Игровые и Mixin runtime-проверки остаются впереди.
+
+
+## Контрольная точка — рендереры сущностей и гравитационные подписи (15 ноября 2026)
+
+- GravityEntityRendererMixin больше не копирует старый renderNameTag целиком. Redirect меняет только cameraOrientation: при обычной гравитации возвращает исходный кватернион, при остальных направлениях сохраняет прежнюю формулу на новой копии. Штатные NAME_TAG attachments, partialTick, NeoForge distance hook, фон и направление текста остаются в EntityRenderer 1.21.1.
+- javap подтвердил точный дескриптор renderNameTag с IF)V и единственный вызов cameraOrientation. Сигнатура Redirect захватывает dispatcher и аргументы метода; сверена с документацией SpongePowered Mixin. Применение mixin в работающем клиенте ещё не проверено.
+- CloneRenderer читает modifications через ItemData одним снимком, сохраняя формулы роста/ширины и исключение для FogCloneEntity. WhitesnakeDisguiseRenderer передаёт partialTick в подпись.
+- TerrierEntityRenderer использует непрозрачный packed ARGB для мокрой шерсти и сбрасывает tint в -1, как WolfRenderer. PlayerLikeArrowLayer создаёт декоративную Arrow с ItemStack.EMPTY/null, как vanilla ArrowLayer. RCoreShader использует POSITION_TEX_COLOR; ShaderInstance 1.21.1 привязывает атрибуты по их именам, GLSL-входы Position/Color/UV0 сохранены.
+- Полная compileJava — **587 ошибок, 18 предупреждений**, было 594/18. Во всех шести изменённых классах ошибок Java нет; полный журнал и таблица обновлены, git diff --check проходит. Ресурсы не менялись.
+- После рабочей сборки проверить подписи при всех шести направлениях гравитации и near/far, маски/масштаб клонов, имя Whitesnake, мокрых/сухих терьеров, декоративные стрелы и reload core shaders. Готового JAR нет.
+- Продолжение: интерфейсы инвентарей/внешности и конфигурации, затем renderLevel/HUD mixin и оставшиеся сущности/предметы. Перед возобновлением выполнить fetch ветки порта.

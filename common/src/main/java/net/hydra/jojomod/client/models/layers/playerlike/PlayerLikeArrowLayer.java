@@ -10,6 +10,7 @@ import net.minecraft.client.renderer.entity.LivingEntityRenderer;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.projectile.Arrow;
+import net.minecraft.world.item.ItemStack;
 
 public class PlayerLikeArrowLayer<T extends JojoNPC, M extends PlayerLikeModel<T>> extends PlayerLikeStuckInBodyLayer<T, M> {
     private final EntityRenderDispatcher dispatcher;
@@ -27,7 +28,7 @@ public class PlayerLikeArrowLayer<T extends JojoNPC, M extends PlayerLikeModel<T
     @Override
     protected void renderStuckItem(PoseStack $$0, MultiBufferSource $$1, int $$2, Entity $$3, float $$4, float $$5, float $$6, float $$7) {
         float $$8 = Mth.sqrt($$4 * $$4 + $$6 * $$6);
-        Arrow $$9 = new Arrow($$3.level(), $$3.getX(), $$3.getY(), $$3.getZ());
+        Arrow $$9 = new Arrow($$3.level(), $$3.getX(), $$3.getY(), $$3.getZ(), ItemStack.EMPTY, null);
         $$9.setYRot((float)(Math.atan2((double)$$4, (double)$$6) * 180.0F / (float)Math.PI));
         $$9.setXRot((float)(Math.atan2((double)$$5, (double)$$8) * 180.0F / (float)Math.PI));
         $$9.yRotO = $$9.getYRot();

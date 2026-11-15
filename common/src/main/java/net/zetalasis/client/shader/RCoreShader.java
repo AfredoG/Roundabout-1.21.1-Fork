@@ -13,7 +13,7 @@ public class RCoreShader {
     private final ShaderInstance program;
 
     public RCoreShader(ResourceProvider provider, String name) throws IOException {
-        this.program = new ShaderInstance(provider, name, DefaultVertexFormat.POSITION_COLOR_TEX);
+        this.program = new ShaderInstance(provider, name, DefaultVertexFormat.POSITION_TEX_COLOR);
     }
 
     public ShaderInstance getProgram()

@@ -25,6 +25,7 @@ import net.hydra.jojomod.item.MaskItem;
 import net.hydra.jojomod.item.ModItems;
 import net.hydra.jojomod.item.ModificationMaskItem;
 import net.hydra.jojomod.stand.powers.PowersGreenDay;
+import net.hydra.jojomod.util.ItemData;
 import net.hydra.jojomod.util.SkinUtil;
 import net.hydra.jojomod.util.config.ConfigManager;
 import net.minecraft.client.Minecraft;
@@ -440,14 +441,11 @@ public class CloneRenderer<T extends CloneEntity> extends LivingEntityRenderer<T
         if (visage != null && !visage.isEmpty()) {
             if (visage.getItem() instanceof MaskItem MI) {
                 if (MI instanceof ModificationMaskItem MD){
-                    if (visage.getTag() != null) {
-                        CompoundTag tag = net.hydra.jojomod.util.ItemData.elementOrEmpty(visage, "modifications");
-                        if (tag.contains("height") || tag.contains("width")) {
-                            int height = net.hydra.jojomod.util.ItemData.elementOrEmpty(visage, "modifications").getInt("height");
-                            int width = net.hydra.jojomod.util.ItemData.elementOrEmpty(visage, "modifications").getInt("width");
-                            $$1.scale(0.798F + (((float) width) * 0.001F), 0.7F + (((float) height) * 0.001F), 0.798F + (((float) width) * 0.001F));
-
-                        }
+                    CompoundTag tag = ItemData.elementOrEmpty(visage, "modifications");
+                    if (tag.contains("height") || tag.contains("width")) {
+                        int height = tag.getInt("height");
+                        int width = tag.getInt("width");
+                        $$1.scale(0.798F + (((float) width) * 0.001F), 0.7F + (((float) height) * 0.001F), 0.798F + (((float) width) * 0.001F));
                     }
                 } else {
                     VisageData vd = MI.visageData.generateVisageData(entity);
