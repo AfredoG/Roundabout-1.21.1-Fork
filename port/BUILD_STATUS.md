@@ -8,7 +8,7 @@
 - Gradle help: успешно.
 - Подготовка исходников и классов Minecraft/NeoForge: успешно.
 - processResources: успешно; проверены метаданные, access transformer, mixin-конфигурации и 141 рецепт.
-- compileJava: НЕУСПЕШНО, 601 ошибка, 18 предупреждений (последняя выполненная проверка; сохранённый полный журнал ниже пока относится к 605 ошибкам).
+- compileJava: НЕУСПЕШНО, 594 ошибок, 18 предупреждений (актуальный полный журнал сохранён в build-errors.txt).
 - JDK 21 и Gradle восстановлены; подготовка Minecraft/NeoForge и processResources прошли в новой среде.
 - JAR для установки: отсутствует.
 - Запуск клиента и выделенного сервера полного мода: не выполнен (компиляция не проходит).
@@ -18,25 +18,25 @@
 Список ошибок — build-errors.txt. Ошибки могут быть каскадными; их число не является оценкой процента готовности.
 Текущая проверка выполнена на Azul JDK 21.0.6 и Gradle 8.14.3; зависимости восстановлены заново.
 
-## Категории последнего сохранённого полного журнала (605 ошибок)
+## Категории актуального полного журнала (594 ошибок)
 
 | Ошибка | Количество |
 |---|---:|
-| cannot find symbol | 285 |
+| cannot find symbol | 280 |
 | method does not override or implement a method from a supertype | 115 |
 | method isCorrectToolForDrops in class Item cannot be applied to given types; | 9 |
 | incompatible types: ResourceKey<Enchantment> cannot be converted to Holder<Enchantment> | 7 |
 | isCollisionShapeFullBlock(BlockState,BlockGetter,BlockPos) has protected access in BlockBehaviour | 6 |
 | incompatible types: Reference<SoundEvent> cannot be converted to SoundEvent | 5 |
-| incompatible types: double cannot be converted to LivingEntity | 5 |
-| incompatible types: EquipmentSlot cannot be converted to ItemStack | 5 |
 | incompatible types: BlockGetter cannot be converted to LevelReader | 5 |
+| incompatible types: EquipmentSlot cannot be converted to ItemStack | 5 |
+| incompatible types: double cannot be converted to LivingEntity | 5 |
 | method createArrow in class ArrowItem cannot be applied to given types; | 4 |
 | method getDamage in interface IItemExtension cannot be applied to given types; | 4 |
 | method getMobArrow in class ProjectileUtil cannot be applied to given types; | 4 |
-| method renderNameTag in class EntityRenderer<T> cannot be applied to given types; | 4 |
+| method getUpdateTag in class BlockEntity cannot be applied to given types; | 3 |
 | method saveWithoutMetadata in class BlockEntity cannot be applied to given types; | 3 |
-| method finalizeSpawn in class AgeableMob cannot be applied to given types; | 3 |
+| no suitable constructor found for SwordItem(Tier,int,float,Properties) | 3 |
 
 
 ## Что требуется закончить
@@ -380,3 +380,5 @@
 - Масштаб ModificationMaskItem читает один снимок modifications через ItemData.elementOrEmpty; удалён старый getTag guard. Пустой компонент не меняет масштаб; формулы height/width сохранены.
 - Сверены PlayerRenderer/EntityRenderer/ItemData. javap подтвердил полный дескриптор цели с IF)V; git diff --check проходит. Полная compileJava запущена после восстановления Gradle/зависимостей, результат будет сохранён отдельно. Последний полный журнал пока относится к 605 ошибкам, последняя выполненная проверка до этого блока — 601/18.
 - После рабочей сборки проверить обычные/заменённые имена, все настройки скрытия, objective belowName (включая пользовательский формат и отсутствующий score), поворот головы и TS, размеры ModificationMaskItem. Игра ещё не запускалась.
+
+- Проверка этого этапа завершена: полная compileJava — **594 ошибки, 18 предупреждений**, было 601/18. В ZPlayerRender ошибок Java нет. Подлинный полный журнал и таблица категорий обновлены; утраченный журнал предыдущего этапа больше не нужен для продолжения. Игровые и Mixin runtime-проверки остаются впереди.
