@@ -32,11 +32,11 @@
 | incompatible types: EquipmentSlot cannot be converted to ItemStack | 5 |
 | method createArrow in class ArrowItem cannot be applied to given types; | 4 |
 | method getDamage in interface IItemExtension cannot be applied to given types; | 4 |
-| incompatible types: double cannot be converted to LivingEntity | 4 |
 | method getMobArrow in class ProjectileUtil cannot be applied to given types; | 4 |
-| method getUpdateTag in class BlockEntity cannot be applied to given types; | 3 |
+| incompatible types: double cannot be converted to LivingEntity | 4 |
 | method saveWithoutMetadata in class BlockEntity cannot be applied to given types; | 3 |
-| no suitable constructor found for SwordItem(Tier,int,float,Properties) | 3 |
+| incompatible types: Attribute cannot be converted to Holder<Attribute> | 3 |
+| method finalizeSpawn in class AgeableMob cannot be applied to given types; | 3 |
 
 
 ## Что требуется закончить
@@ -428,5 +428,5 @@
 - Whitesnake/Silver Chariot меняют yaw/pitch в обоих setRotation overload через wildcard; преобразование в зеркальном третьем лице остаётся прежним и идемпотентно при делегировании FF -> FFF. Гравитация выбирается по действующему POV, включая Whitesnake/Manhattan Transfer, а не по телу игрока: отдельная поправка focus^-1 * controlled больше не нужна.
 - ForgeGameRendererMixin и WhitesnakeControlGravityCameraMixin удалены вместе с их регистрациями: их ручной world rotation заменён штатным view matrix от уже скорректированной Camera. Это устранение дублирования перенесённой логики; оставшиеся camera mixin и defaultRequire=1 сохранены.
 - Проверка исходников и javap: setup имеет один setPosition(DDD) и по одному getViewXRot/getViewYRot, partialTickTime записывается до setRotation(FFF); единственный rotationYXZ находится в FFF и предшествует обновлению трёх осей камеры. События ComputeCameraAngles и getDetachedCameraDistance сохранены штатным setup. Обе mixin JSON корректны; git diff --check проходит.
-- Пока сохранение исходников: Gradle/JDK восстановлены, зависимости/артефакты ещё восстанавливаются. compileJava и processResources для этого блока будут выполнены и записаны следующим checkpoint. Последний подтверждённый результат до него — 571/18. Клиент ещё не запускался.
+- Проверка завершена: processResources успешно, повторная полная compileJava — **571 ошибка, 18 предупреждений**, без новых ошибок после блока камеры. Во всех шести изменённых Java-классах ошибок нет. Актуальный полный журнал сохранён. В обработанных ресурсах проверено отсутствие регистраций двух удалённых дублирующих mixin, required=true и defaultRequire=1 сохранены. Клиент ещё не запускался; это не проверка применения Mixin во время запуска.
 - В игре после рабочей сборки проверить шесть направлений и анимацию смены гравитации, фрустум/руку/частицы, first/third-person и mirrored, разный масштаб и стены, roll от другого мода, body/POV с разной гравитацией, Whitesnake/Silver Chariot/Manhattan Transfer, выход/смерть стенда, остановку времени и пассажира.
