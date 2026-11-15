@@ -45,7 +45,7 @@ git remote add upstream https://github.com/Hydraheads/RoundaboutMod.git
 Read port/BUILD_STATUS.md, port/build-errors.txt, and the existing port documentation before editing.
 Follow existing port/update_upstream.py workflow for upstream updates; retain upstream history.
 Use Java 21 and the standalone neoforge Gradle project. Restore dependencies when needed.
-Next work: remaining client APIs (player rendering/scoreboards/skins), renderLevel and HUD mixin audit, MobType/enchantments and sleep.
+Next work: jointly port GravityGameRendererMixin, ForgeGameRendererMixin and WhitesnakeControlGravityCameraMixin (old renderLevel/PoseStack targets remain); audit HudRendering shadows/layers and remaining screen rendering; then MobType, enchantments, entities and sleep. See the final BUILD_STATUS.md checkpoint for exact targets and validation.
 Do not exclude failing classes or disable required mixins to manufacture a successful build.
 
 Save small coherent checkpoints frequently to this remote port branch, including current diagnostics and next steps.

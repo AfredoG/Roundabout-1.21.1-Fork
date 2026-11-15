@@ -1,6 +1,5 @@
 package net.hydra.jojomod.mixin.shaders;
 
-import com.mojang.blaze3d.vertex.PoseStack;
 import net.hydra.jojomod.Roundabout;
 import net.hydra.jojomod.access.IShaderGameRenderer;
 import net.hydra.jojomod.client.ClientUtil;
@@ -12,6 +11,7 @@ import net.hydra.jojomod.stand.powers.PowersKingCrimson;
 import net.hydra.jojomod.util.config.ClientConfig;
 import net.hydra.jojomod.util.config.ConfigManager;
 import net.minecraft.client.Camera;
+import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.CameraType;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GameRenderer;
@@ -41,8 +41,6 @@ import java.util.Objects;
 @Mixin(GameRenderer.class)
 public abstract class ShaderGameRenderer implements IShaderGameRenderer {
 
-    @Shadow private int tick;
-
     @Shadow protected abstract double getFov(Camera camera, float f, boolean bl);
 
     /**Enables handling of shader logic and access to shader related function,
@@ -68,9 +66,10 @@ public abstract class ShaderGameRenderer implements IShaderGameRenderer {
     }
 
 
-    @Inject(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/renderer/LevelRenderer;doEntityOutline()V", shift = At.Shift.BEFORE))
-    private void roundabout$renderShaders(float tickDelta, long $$1, boolean renderLevel, CallbackInfo ci)
+    @Inject(method = "render(Lnet/minecraft/client/DeltaTracker;Z)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/renderer/LevelRenderer;doEntityOutline()V", shift = At.Shift.BEFORE))
+    private void roundabout$renderShaders(DeltaTracker deltaTracker, boolean renderLevel, CallbackInfo ci)
     {
+        float tickDelta = deltaTracker.getGameTimeDeltaPartialTick(true);
         TimestopShaderManager.renderAll(tickDelta);
 
         RenderCallbackRegistry.roundabout$GAME_RENDERER_FINISH(tickDelta);
@@ -171,8 +170,8 @@ public abstract class ShaderGameRenderer implements IShaderGameRenderer {
         }
     }
 
-    @Inject(method = "renderLevel", at = @At(value = "HEAD"), cancellable = true)
-    private void roundabout$renderLevel(float $$0, long $$1, PoseStack $$2, CallbackInfo ci) {
+    @Inject(method = "renderLevel(Lnet/minecraft/client/DeltaTracker;)V", at = @At(value = "HEAD"))
+    private void roundabout$renderLevel(CallbackInfo ci) {
         // TODO: copy the old depth buffer to a texture
         roundabout$frameCount++;
     }

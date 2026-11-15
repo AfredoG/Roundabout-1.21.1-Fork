@@ -1,7 +1,6 @@
 package net.hydra.jojomod.mixin.shaders;
 
 import com.google.common.collect.ImmutableList;
-import com.mojang.blaze3d.vertex.PoseStack;
 import net.hydra.jojomod.client.ClientNetworking;
 import net.hydra.jojomod.event.TimeStopInstance;
 import net.hydra.jojomod.event.powers.StandUser;
@@ -11,6 +10,7 @@ import net.hydra.jojomod.stand.powers.presets.TWAndSPSharedPowers;
 import net.hydra.jojomod.util.config.ClientConfig;
 import net.hydra.jojomod.util.config.ConfigManager;
 import net.minecraft.client.Camera;
+import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.GameRenderer;
@@ -34,11 +34,14 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class ShaderLevelRenderer {
     @Shadow @Nullable private ClientLevel level;
 
-    @Inject(method = "renderLevel", at = {
-            @At(value = "INVOKE", target = "Lcom/mojang/blaze3d/platform/Lighting;setupLevel(Lorg/joml/Matrix4f;)V", shift = At.Shift.AFTER),
-            @At(value = "INVOKE", target = "Lcom/mojang/blaze3d/platform/Lighting;setupNetherLevel(Lorg/joml/Matrix4f;)V", shift = At.Shift.AFTER)
+    @Inject(method = "renderLevel(Lnet/minecraft/client/DeltaTracker;ZLnet/minecraft/client/Camera;Lnet/minecraft/client/renderer/GameRenderer;Lnet/minecraft/client/renderer/LightTexture;Lorg/joml/Matrix4f;Lorg/joml/Matrix4f;)V", at = {
+            @At(value = "INVOKE", target = "Lcom/mojang/blaze3d/platform/Lighting;setupLevel()V", shift = At.Shift.AFTER),
+            @At(value = "INVOKE", target = "Lcom/mojang/blaze3d/platform/Lighting;setupNetherLevel()V", shift = At.Shift.AFTER)
     })
-    private void roundabout$renderShaders2(PoseStack $$0, float partialTick, long $$2, boolean $$3, Camera $$4, GameRenderer $$5, LightTexture $$6, Matrix4f $$7, CallbackInfo ci){
+    private void roundabout$renderShaders2(DeltaTracker deltaTracker, boolean renderBlockOutline, Camera camera,
+                                            GameRenderer gameRenderer, LightTexture lightTexture,
+                                            Matrix4f modelViewMatrix, Matrix4f projectionMatrix, CallbackInfo ci){
+        float partialTick = deltaTracker.getGameTimeDeltaPartialTick(false);
         roundabout$setDepthbuffer();
 
         if (Minecraft.getInstance().player == null)

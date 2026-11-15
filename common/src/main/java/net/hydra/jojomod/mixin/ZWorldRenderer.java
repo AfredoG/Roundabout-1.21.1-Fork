@@ -11,6 +11,7 @@ import net.hydra.jojomod.event.powers.TimeStop;
 import net.hydra.jojomod.stand.powers.PowersD4C;
 import net.hydra.jojomod.stand.powers.PowersDiverDown;
 import net.minecraft.client.Camera;
+import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.*;
@@ -31,14 +32,12 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
 @Mixin(LevelRenderer.class)
 public class ZWorldRenderer {
     /** Get rid of the animation jitter of stopped mobs and chests thru deltatick */
 
     @Shadow
-    @Final
     private ClientLevel level;
 
     @Shadow
@@ -69,7 +68,7 @@ public class ZWorldRenderer {
     }
 
     @Shadow
-    public boolean isChunkCompiled(BlockPos p_202431_) {
+    public boolean isSectionCompiled(BlockPos p_202431_) {
         return false;
     }
 
@@ -128,9 +127,10 @@ public class ZWorldRenderer {
     }
 
     /** Interpolate Time during/after timestop or made in heaven */
-    @Inject(method = "renderLevel", at = @At(value = "HEAD"), cancellable = true)
-    private void roundaboutRenderLevel(PoseStack $$0, float $$1, long $$2, boolean $$3, Camera $$4,
-            GameRenderer $$5, LightTexture $$6, Matrix4f $$7, CallbackInfo ci) {
+    @Inject(method = "renderLevel(Lnet/minecraft/client/DeltaTracker;ZLnet/minecraft/client/Camera;Lnet/minecraft/client/renderer/GameRenderer;Lnet/minecraft/client/renderer/LightTexture;Lorg/joml/Matrix4f;Lorg/joml/Matrix4f;)V", at = @At(value = "HEAD"), cancellable = true)
+    private void roundaboutRenderLevel(DeltaTracker deltaTracker, boolean renderBlockOutline, Camera camera,
+            GameRenderer gameRenderer, LightTexture lightTexture, Matrix4f modelViewMatrix, Matrix4f projectionMatrix, CallbackInfo ci) {
+        float partialTick = deltaTracker.getGameTimeDeltaPartialTick(false);
         IDayInterpolationClientLevelData levelTimeData = ((IDayInterpolationClientLevelData) this.level.getLevelData());
         if (levelTimeData.roundabout$getRoundaboutInterpolatingDaytime()) {
             /*
@@ -142,7 +142,7 @@ public class ZWorldRenderer {
                 long distance = dayTime - dayTimeOld;
                 if (Math.abs(distance) > 1L) {
                     levelTimeData.roundabout$setRoundaboutDayTimeActual((long) (dayTimeOld
-                            + $$1 * Math.min(distance, levelTimeData.roundabout$getInterpolationMaxStep())));
+                            + partialTick * Math.min(distance, levelTimeData.roundabout$getInterpolationMaxStep())));
                     // levelTimeData.roundabout$setRoundaboutDayTimeActual((long)
                     // Mth.lerp((double)$$1, dayTimeOld, dayTime));
                 } else {
@@ -153,17 +153,18 @@ public class ZWorldRenderer {
 
     }
 
-    @Inject(method = "renderLevel", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/renderer/debug/DebugRenderer;render(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource$BufferSource;DDD)V", shift = At.Shift.BEFORE))
+    @Inject(method = "renderLevel(Lnet/minecraft/client/DeltaTracker;ZLnet/minecraft/client/Camera;Lnet/minecraft/client/renderer/GameRenderer;Lnet/minecraft/client/renderer/LightTexture;Lorg/joml/Matrix4f;Lorg/joml/Matrix4f;)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/renderer/debug/DebugRenderer;render(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource$BufferSource;DDD)V", shift = At.Shift.BEFORE))
     private void roundabout$renderPurpleBox(
-            PoseStack poseStack,
-            float partialTick,
-            long finishTimeNano,
+            DeltaTracker deltaTracker,
             boolean renderBlockOutline,
             Camera camera,
             GameRenderer gameRenderer,
             LightTexture lightTexture,
+            Matrix4f modelViewMatrix,
             Matrix4f projectionMatrix,
             CallbackInfo ci) {
+        // The camera matrix is already applied by LevelRenderer to the RenderSystem stack.
+        PoseStack poseStack = new PoseStack();
         Minecraft mc = Minecraft.getInstance();
 
         if (mc.level == null) {
@@ -233,9 +234,8 @@ public class ZWorldRenderer {
         }
     }
 
-    @Inject(method = "renderLevel", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/renderer/MultiBufferSource$BufferSource;endLastBatch()V", ordinal = 0, shift = At.Shift.BEFORE), locals = LocalCapture.CAPTURE_FAILHARD)
-    private void roundabout$RenderLevelEntities(PoseStack $$0, float $$1, long $$2, boolean $$3, Camera $$4,
-            GameRenderer $$5, LightTexture $$6, Matrix4f $$7, CallbackInfo ci) {
+    @Inject(method = "renderLevel(Lnet/minecraft/client/DeltaTracker;ZLnet/minecraft/client/Camera;Lnet/minecraft/client/renderer/GameRenderer;Lnet/minecraft/client/renderer/LightTexture;Lorg/joml/Matrix4f;Lorg/joml/Matrix4f;)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/renderer/MultiBufferSource$BufferSource;endLastBatch()V", ordinal = 0, shift = At.Shift.BEFORE))
+    private void roundabout$RenderLevelEntities(CallbackInfo ci) {
         /*
          * Vec3 vec3 = $$4.getPosition();
          * double d0 = vec3.x();
@@ -262,7 +262,7 @@ public class ZWorldRenderer {
          * 
          * BlockPos blockpos = entity.blockPosition();
          * if ((this.level.isOutsideBuildHeight(blockpos.getY()) ||
-         * this.isChunkCompiled(blockpos)) && (entity != $$4.getEntity() ||
+         * this.isSectionCompiled(blockpos)) && (entity != $$4.getEntity() ||
          * $$4.isDetached() || $$4.getEntity() instanceof LivingEntity &&
          * ((LivingEntity)$$4.getEntity()).isSleeping()) && (!(entity instanceof
          * LocalPlayer) || $$4.getEntity() == entity || (entity == minecraft.player &&
