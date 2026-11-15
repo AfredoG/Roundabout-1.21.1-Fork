@@ -3,6 +3,7 @@ package net.hydra.jojomod.mixin.whitesnake.memory;
 import net.hydra.jojomod.client.StandIcons;
 import net.hydra.jojomod.event.powers.StandUser;
 import net.hydra.jojomod.access.DiscBearer;
+import net.hydra.jojomod.access.IHudAccess;
 import net.hydra.jojomod.event.powers.whitesnake.disc.WhitesnakeDiscUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
@@ -19,8 +20,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(Gui.class)
 public abstract class DiscSealHudMixin {
     @Shadow @Final private Minecraft minecraft;
-    @Shadow private int screenWidth;
-    @Shadow private int screenHeight;
 
     @Inject(method = "renderExperienceBar", at = @At("HEAD"), cancellable = true)
     private void roundaboutWhitesnake$renderDiscSeal(GuiGraphics context, int x, CallbackInfo ci) {
@@ -55,10 +54,11 @@ public abstract class DiscSealHudMixin {
         }
         maximum = Math.max(1, maximum);
         int filled = (int) Math.floor((182.0D / maximum) * (maximum - remaining));
-        int y = screenHeight - 29;
+        int y = context.guiHeight() - 29;
         context.blit(StandIcons.JOJO_ICONS, x, y, 0, 90, 182, 5);
         if (filled > 0) context.blit(StandIcons.JOJO_ICONS, x, y, 0, 95, filled, 5);
-        context.blit(StandIcons.JOJO_ICONS, screenWidth / 2 - 5, screenHeight - 36, 183, 60, 9, 9);
+        context.blit(StandIcons.JOJO_ICONS, context.guiWidth() / 2 - 5, context.guiHeight() - 36, 183, 60, 9, 9);
+        ((IHudAccess) this).roundabout$hideExperienceLevel();
         return true;
     }
 }

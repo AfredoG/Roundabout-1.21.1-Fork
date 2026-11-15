@@ -5,12 +5,13 @@ import net.hydra.jojomod.event.powers.jumpingJackFlash.ZeroGravityAccess;
 import net.hydra.jojomod.event.powers.jumpingJackFlash.ZeroGravityState;
 import net.hydra.jojomod.event.powers.jumpingJackFlash.ZeroGravitySync;
 import com.mojang.blaze3d.systems.RenderSystem;
+import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.resources.ResourceLocation;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -18,20 +19,14 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(Gui.class)
 public class AirPressureHudMixin {
 
-    private static final ResourceLocation TEXTURE =
+    @Unique private static final ResourceLocation TEXTURE =
             ResourceLocation.fromNamespaceAndPath("roundabout", "textures/gui/icons/jjf/air_pressure_meter.png");
 
-    private static final int WIDTH = 30;
-    private static final int HEIGHT = 80;
-
-    @Shadow
-    private int screenWidth;
-
-    @Shadow
-    private int screenHeight;
+    @Unique private static final int WIDTH = 30;
+    @Unique private static final int HEIGHT = 80;
 
     @Inject(method = "renderHotbar", at = @At("TAIL"))
-    private void jjf$renderAirPressure(float partialTick, GuiGraphics graphics, CallbackInfo ci) {
+    private void jjf$renderAirPressure(GuiGraphics graphics, DeltaTracker deltaTracker, CallbackInfo ci) {
         Minecraft minecraft = Minecraft.getInstance();
         if (minecraft.player == null || !(minecraft.player instanceof ZeroGravityAccess access)) {
             return;
@@ -43,8 +38,8 @@ public class AirPressureHudMixin {
         }
 
         float pressure = AirPressureSystem.getPressure(state);
-        int x = screenWidth - WIDTH - 12;
-        int y = screenHeight / 2 - HEIGHT / 2;
+        int x = graphics.guiWidth() - WIDTH - 12;
+        int y = graphics.guiHeight() / 2 - HEIGHT / 2;
         int fill = Math.round(HEIGHT * pressure);
         int damageLineY = y + HEIGHT
                 - Math.round(HEIGHT * AirPressureSystem.getDamageStartFraction());

@@ -7,4 +7,7 @@ public interface  IHudAccess {
     public void roundabout$setFlashAlpha(float flashAlpha);
 
     public void roundabout$setOtherFlashAlpha(float otherFlashAlpha);
+
+    /** A replacement bar owns the level/icon area for the current HUD frame. */
+    void roundabout$hideExperienceLevel();
 }

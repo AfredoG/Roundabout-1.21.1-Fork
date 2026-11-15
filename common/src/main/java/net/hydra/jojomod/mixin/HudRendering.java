@@ -37,7 +37,7 @@ import net.hydra.jojomod.util.MainUtil;
 import net.hydra.jojomod.util.config.ClientConfig;
 import net.hydra.jojomod.util.config.ConfigManager;
 import net.hydra.jojomod.util.gravity.RotationUtil;
-import net.minecraft.Util;
+import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.Gui;
@@ -47,16 +47,12 @@ import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.FluidTags;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.PlayerRideableJumping;
-import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.food.FoodData;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.block.Blocks;
@@ -75,14 +71,18 @@ public abstract class HudRendering implements IHudAccess {
     /** Code for when the client renders its huds*/
     @Shadow
     @Final
-    @Mutable
     private Minecraft minecraft;
     @Shadow
     private int tickCount;
-    @Shadow
-    private int screenWidth;
-    @Shadow
-    private int screenHeight;
+    @Unique
+    private int roundabout$getScreenWidth() {
+        return minecraft.getWindow().getGuiScaledWidth();
+    }
+
+    @Unique
+    private int roundabout$getScreenHeight() {
+        return minecraft.getWindow().getGuiScaledHeight();
+    }
 
     @Unique
     private float roundabout$flashAlpha = 0f;
@@ -91,6 +91,14 @@ public abstract class HudRendering implements IHudAccess {
 
     @Unique
     private boolean roundabout$Redo = false;
+
+    @Unique
+    private boolean roundabout$hideExperienceLevel;
+
+    @Inject(method = "render", at = @At("HEAD"))
+    private void roundabout$beginHudFrame(CallbackInfo ci) {
+        roundabout$hideExperienceLevel = false;
+    }
 
     @Shadow
     @Final
@@ -109,7 +117,7 @@ public abstract class HudRendering implements IHudAccess {
 
     /** The stand move HUD renders with the hotbar so that it may exist in all gamemodes.*/
     @Inject(method = "renderHotbar", at = @At(value = "HEAD"))
-    private void roundabout$renderHotbarMixin(float $$0, GuiGraphics $$1, CallbackInfo info) {
+    private void roundabout$renderHotbarMixin(GuiGraphics $$1, DeltaTracker deltaTracker, CallbackInfo info) {
 
 
         if (this.minecraft.player != null) {
@@ -368,17 +376,17 @@ public abstract class HudRendering implements IHudAccess {
              StandPowers powers = user.roundabout$getStandPowers();
                 if (powers.timeRewindOverlayTicks > -1) {
                     RenderSystem.enableBlend();
-                    this.renderTextureOverlay($$1, StandIcons.TIME_REWIND, powers.getOverlayFromOverlayTicks($$0));
+                    this.renderTextureOverlay($$1, StandIcons.TIME_REWIND, powers.getOverlayFromOverlayTicks(deltaTracker.getGameTimeDeltaPartialTick(false)));
                 }
 
         }
-        StandHudRender.renderStandHud($$1, minecraft, this.getCameraPlayer(), screenWidth, screenHeight, tickCount, this.getVehicleMaxHearts(this.getPlayerVehicleWithHealth()), roundabout$flashAlpha, roundabout$otherFlashAlpha);
+        StandHudRender.renderStandHud($$1, minecraft, this.getCameraPlayer(), roundabout$getScreenWidth(), roundabout$getScreenHeight(), tickCount, this.getVehicleMaxHearts(this.getPlayerVehicleWithHealth()), roundabout$flashAlpha, roundabout$otherFlashAlpha);
 
         RenderSystem.enableBlend();
     }
 
     @Inject(method = "renderHotbar", at = @At(value = "TAIL"))
-    private void roundabout$renderHotbarTailMixin(float partialTick, GuiGraphics graphics, CallbackInfo info) {
+    private void roundabout$renderHotbarTailMixin(GuiGraphics graphics, DeltaTracker deltaTracker, CallbackInfo info) {
 
         // for counting gun ammo
 
@@ -410,8 +418,8 @@ public abstract class HudRendering implements IHudAccess {
                 int textWidth = this.getFont().width(ammoText);
                 int paddingRight = 15;
                 int paddingBottom = 20;
-                int x = this.screenWidth - textWidth - paddingRight;
-                int y = this.screenHeight - paddingBottom;
+                int x = this.roundabout$getScreenWidth() - textWidth - paddingRight;
+                int y = this.roundabout$getScreenHeight() - paddingBottom;
 
                 // prints :0
                 graphics.drawString(this.getFont(), ammoText, x, y, color, true);
@@ -443,7 +451,8 @@ public abstract class HudRendering implements IHudAccess {
 
     @Inject(method = "renderTextureOverlay", at = @At(value = "HEAD"), cancellable = true)
     private void roundabout$renderOverlaysHttan(GuiGraphics $$0, ResourceLocation $$1, float $$2, CallbackInfo info) {
-        if (((StandUser) this.minecraft.player ).roundabout$getStandPowers() instanceof PowersManhattanTransfer PM) {
+        if (this.minecraft.player != null
+                && ((StandUser) this.minecraft.player).roundabout$getStandPowers() instanceof PowersManhattanTransfer PM) {
             if (PM.isPiloting()) {
                 info.cancel();
             }
@@ -454,7 +463,7 @@ public abstract class HudRendering implements IHudAccess {
         RenderSystem.disableDepthTest();
         RenderSystem.depthMask(false);
         $$0.setColor(r, g, b, opacity);
-        $$0.blit($$1, 0, 0, -90, 0.0F, 0.0F, this.screenWidth, this.screenHeight, this.screenWidth, this.screenHeight);
+        $$0.blit($$1, 0, 0, -90, 0.0F, 0.0F, this.roundabout$getScreenWidth(), this.roundabout$getScreenHeight(), this.roundabout$getScreenWidth(), this.roundabout$getScreenHeight());
         RenderSystem.depthMask(true);
         RenderSystem.enableDepthTest();
         $$0.setColor(1.0F, 1.0F, 1.0F, 1.0F);
@@ -468,7 +477,7 @@ public abstract class HudRendering implements IHudAccess {
         return new float[]{r, g, b};
     }
     @Inject(method = "renderEffects", at = @At("HEAD"), cancellable = true)
-    private void roundabout$renderOverlay(GuiGraphics $$0, CallbackInfo ci) {
+    private void roundabout$renderOverlay(GuiGraphics $$0, DeltaTracker deltaTracker, CallbackInfo ci) {
         if (ClientNetworking.getAppropriateConfig().whitesnakeSettings.hallucinationHidesEffects
                 && minecraft.player != null && minecraft.player.hasEffect(ModEffects.HALLUCINATION)) {
             ci.cancel();
@@ -564,18 +573,19 @@ public abstract class HudRendering implements IHudAccess {
     @Inject(method = "renderExperienceBar", at = @At(value = "HEAD"), cancellable = true)
     public void roundabout$RenderExperienceBar(GuiGraphics $$0, int $$1, CallbackInfo ci){
         if (roundabout$RenderBars($$0, $$1)){
+            roundabout$hideExperienceLevel();
             roundabout$RenderHeatBars($$0, $$1);
+            roundabout$infiniteSpinHud($$0, $$1);
             ci.cancel();
         }
-        roundabout$infiniteSpinHud($$0,$$1);
     }
     @Inject(method = "renderJumpMeter", at = @At(value = "HEAD"), cancellable = true)
     public void roundabout$RenderMountJumpBar(PlayerRideableJumping $$0, GuiGraphics $$1, int $$2, CallbackInfo ci){
         if (roundabout$RenderBars($$1, $$2)){
             roundabout$RenderHeatBars($$1, $$2);
+            roundabout$infiniteSpinHud($$1, $$2);
             ci.cancel();
         }
-        roundabout$infiniteSpinHud($$1,$$2);
 
     }
 
@@ -583,18 +593,17 @@ public abstract class HudRendering implements IHudAccess {
     private void roundabout$infiniteSpinHud(GuiGraphics graphics, int x) {
         StandUser user = ((StandUser) minecraft.player);
         StandPowers standPowers = user.roundabout$getStandPowers();
-        GeneralPowers powers = ((IPowersPlayer) minecraft.player).rdbt$getPowers();
         if (standPowers != null && standPowers.getInfiniteSpin() > 0 ) {
-            StandHudRender.renderInfiniteSpinHUD(graphics,screenWidth,screenHeight,x,standPowers);
+            StandHudRender.renderInfiniteSpinHUD(graphics,roundabout$getScreenWidth(),roundabout$getScreenHeight(),x,standPowers);
         }
     }
 
-    @Inject(method = "renderExperienceBar", at = @At(value = "TAIL"), cancellable = true)
+    @Inject(method = "renderExperienceBar", at = @At(value = "TAIL"))
     public void roundabout$RenderExperienceBar2(GuiGraphics $$0, int $$1, CallbackInfo ci){
         roundabout$RenderHeatBars($$0, $$1);
         roundabout$infiniteSpinHud($$0,$$1);
     }
-    @Inject(method = "renderJumpMeter", at = @At(value = "TAIL"), cancellable = true)
+    @Inject(method = "renderJumpMeter", at = @At(value = "TAIL"))
     public void roundabout$RenderMountJumpBar2(PlayerRideableJumping $$0, GuiGraphics $$1, int $$2, CallbackInfo ci){
         roundabout$RenderHeatBars($$1, $$2);
         roundabout$infiniteSpinHud($$1,$$2);
@@ -604,172 +613,31 @@ public abstract class HudRendering implements IHudAccess {
     @Shadow
     private void renderHearts(GuiGraphics $$0, Player $$1, int $$2, int $$3, int $$4, int $$5, float $$6, int $$7, int $$8, int $$9, boolean $$10) {}
 
-    @Shadow
-    private void renderPlayerHealth(GuiGraphics $$0) {}
-
-    @Shadow
-    private int getVisibleVehicleHeartRows(int $$0) {
-        return 0;
-    }
-
-        /**desaturate hearts when time is stopped*/
-    @Inject(method = "renderPlayerHealth", at = @At(value = "HEAD"), cancellable = true)
-    public void roundabout$renderHealth(GuiGraphics $$0, CallbackInfo ci){
-        if (minecraft.player != null && minecraft.level != null){
-           if (!roundabout$Redo) {
-                if (((TimeStop) minecraft.level).CanTimeStopEntity(minecraft.player)) {
-                    roundabout$Redo = true;
-                    $$0.setColor(0.7F, 0.7F, 0.7F, 1.0F);
-                    renderPlayerHealth($$0);
-                    $$0.setColor(1.0F, 1.0F, 1.0F, 1.0F);
-                    roundabout$Redo = false;
-                    ci.cancel();
-                    return;
-                }
-           }
+    // NeoForge lays out health, armor, food and air in independent layers. Tint only
+    // renderHearts so the health layer reserves its space and updates blink state once.
+    @Inject(method = "renderHearts", at = @At("HEAD"), cancellable = true)
+    private void roundabout$renderStoppedHearts(GuiGraphics graphics, Player player, int x, int y,
+            int rowHeight, int regeneration, float maxHealth, int health, int displayHealth,
+            int absorption, boolean blinking, CallbackInfo ci) {
+        if (roundabout$Redo || minecraft.level == null
+                || !((TimeStop) minecraft.level).CanTimeStopEntity(player)) return;
+        roundabout$Redo = true;
+        graphics.setColor(0.7F, 0.7F, 0.7F, 1.0F);
+        try {
+            renderHearts(graphics, player, x, y, rowHeight, regeneration, maxHealth,
+                    health, displayHealth, absorption, blinking);
+        } finally {
+            graphics.setColor(1.0F, 1.0F, 1.0F, 1.0F);
+            roundabout$Redo = false;
         }
+        ci.cancel();
     }
 
-
-    @Inject(method = "renderPlayerHealth", at = @At(value = "HEAD"), cancellable = true)
-    private void rdbt$renderPlayerHealthX(GuiGraphics $$0, CallbackInfo ci) {
-
-        Player $$1 = this.getCameraPlayer();
-        if ($$1 != null) {
-            if (!FateTypes.hasBloodHunger($$1))
-                return;
-            ci.cancel();
-            int $$2 = Mth.ceil($$1.getHealth());
-            boolean $$3 = this.healthBlinkTime > (long)this.tickCount && (this.healthBlinkTime - (long)this.tickCount) / 3L % 2L == 1L;
-            long $$4 = Util.getMillis();
-            if ($$2 < this.lastHealth && $$1.invulnerableTime > 0) {
-                this.lastHealthTime = $$4;
-                this.healthBlinkTime = (long)(this.tickCount + 20);
-            } else if ($$2 > this.lastHealth && $$1.invulnerableTime > 0) {
-                this.lastHealthTime = $$4;
-                this.healthBlinkTime = (long)(this.tickCount + 10);
-            }
-
-            if ($$4 - this.lastHealthTime > 1000L) {
-                this.lastHealth = $$2;
-                this.displayHealth = $$2;
-                this.lastHealthTime = $$4;
-            }
-
-            this.lastHealth = $$2;
-            int $$5 = this.displayHealth;
-            this.random.setSeed((long)(this.tickCount * 312871));
-            FoodData $$6 = $$1.getFoodData();
-            int $$7 = $$6.getFoodLevel();
-            int $$8 = this.screenWidth / 2 - 91;
-            int $$9 = this.screenWidth / 2 + 91;
-            int $$10 = this.screenHeight - 39;
-            float $$11 = Math.max((float)$$1.getAttributeValue(Attributes.MAX_HEALTH), (float)Math.max($$5, $$2));
-            int $$12 = Mth.ceil($$1.getAbsorptionAmount());
-            int $$13 = Mth.ceil(($$11 + (float)$$12) / 2.0F / 10.0F);
-            int $$14 = Math.max(10 - ($$13 - 2), 3);
-            int $$15 = $$10 - ($$13 - 1) * $$14 - 10;
-            int $$16 = $$10 - 10;
-            int $$17 = $$1.getArmorValue();
-            int $$18 = -1;
-            if ($$1.hasEffect(MobEffects.REGENERATION)) {
-                $$18 = this.tickCount % Mth.ceil($$11 + 5.0F);
-            }
-
-            this.minecraft.getProfiler().push("armor");
-
-            for (int $$19 = 0; $$19 < 10; $$19++) {
-                if ($$17 > 0) {
-                    int $$20 = $$8 + $$19 * 8;
-                    if ($$19 * 2 + 1 < $$17) {
-                        $$0.blit(GUI_ICONS_LOCATION, $$20, $$15, 34, 9, 9, 9);
-                    }
-
-                    if ($$19 * 2 + 1 == $$17) {
-                        $$0.blit(GUI_ICONS_LOCATION, $$20, $$15, 25, 9, 9, 9);
-                    }
-
-                    if ($$19 * 2 + 1 > $$17) {
-                        $$0.blit(GUI_ICONS_LOCATION, $$20, $$15, 16, 9, 9, 9);
-                    }
-                }
-            }
-
-            this.minecraft.getProfiler().popPush("health");
-            this.renderHearts($$0, $$1, $$8, $$10, $$14, $$18, $$11, $$2, $$5, $$12, $$3);
-            LivingEntity $$21 = this.getPlayerVehicleWithHealth();
-            int $$22 = this.getVehicleMaxHearts($$21);
-            if ($$22 == 0) {
-                this.minecraft.getProfiler().popPush("food");
-                ClientUtil.renderHungerStuff($$0,$$1,$$9,$$10,this.random.nextInt(3),$$7,this.tickCount);
-
-                $$16 -= 10;
-            }
-
-            this.minecraft.getProfiler().popPush("air");
-            int $$28 = $$1.getMaxAirSupply();
-            int $$29 = Math.min($$1.getAirSupply(), $$28);
-            if ($$1.isEyeInFluid(FluidTags.WATER) || $$29 < $$28) {
-                int $$30 = this.getVisibleVehicleHeartRows($$22) - 1;
-                $$16 -= $$30 * 10;
-                int $$31 = Mth.ceil((double)($$29 - 2) * 10.0 / (double)$$28);
-                int $$32 = Mth.ceil((double)$$29 * 10.0 / (double)$$28) - $$31;
-
-                for (int $$33 = 0; $$33 < $$31 + $$32; $$33++) {
-                    if ($$33 < $$31) {
-                        $$0.blit(GUI_ICONS_LOCATION, $$9 - $$33 * 8 - 9, $$16, 16, 18, 9, 9);
-                    } else {
-                        $$0.blit(GUI_ICONS_LOCATION, $$9 - $$33 * 8 - 9, $$16, 25, 18, 9, 9);
-                    }
-                }
-            }
-
-            this.minecraft.getProfiler().pop();
-        }
-        rdbt$renderHealth2Common($$0);
-    }
-
-    @Unique
-    public void rdbt$renderHealth2Common(GuiGraphics $$0){
-        if (minecraft.player != null && minecraft.level != null){
-            int oxygenBonus = ((StandUser)minecraft.player).roundabout$getStandPowers().getAirAmount();
-            int maxOxygenBonus = ((StandUser)minecraft.player).roundabout$getStandPowers().getMaxAirAmount();
-            if (oxygenBonus > -1 && PowerTypes.hasStandActive(minecraft.player)) {
-                int $$28 = minecraft.player.getMaxAirSupply();
-                int $$29 = Math.min(minecraft.player.getAirSupply(), $$28);
-                if (minecraft.player.isEyeInFluid(FluidTags.WATER) || $$29 < $$28 || oxygenBonus < maxOxygenBonus) {
-                    LivingEntity $$21 = this.getPlayerVehicleWithHealth();
-                    int $$22 = this.getVehicleMaxHearts($$21);
-                    int $$30 = this.getVisibleVehicleHeartRows($$22) - 1;
-                    int $$9 = this.screenWidth / 2 + 6;
-                    int $$10 = this.screenHeight - 39;
-                    int $$16 = $$10 - 10;
-                    $$16 -= $$30 * 10;
-
-                    if ($$22 == 0) {
-                        $$16 -= 10;
-                    }
-
-                    int airWidth = (int) Math.floor(((double) 81 /maxOxygenBonus)*oxygenBonus);
-
-                    if (oxygenBonus > 0) {
-                        $$0.blit(StandIcons.JOJO_ICONS, $$9, $$16 - 3, 165, 171, 4+airWidth, 15);
-                    }
-                    $$0.blit(StandIcons.JOJO_ICONS, $$9, $$16 - 3, 165, 186, 89, 15);
-                }
-            }
-        }
-    }
-
-
-    @Inject(method = "renderPlayerHealth", at = @At(value = "TAIL"))
-    public void roundabout$renderHealth2(GuiGraphics $$0, CallbackInfo ci){
-        rdbt$renderHealth2Common($$0);
-    }
+    // Blood hunger and bonus oxygen use NeoForge's food/air layers in ForgeForgeGui.
 
     @Unique
     private void roundabout$RenderHeatBars(GuiGraphics context, int x){
-        StandHudRender.renderHeatHud(context, minecraft, this.getCameraPlayer(), screenWidth, screenHeight, tickCount, x, roundabout$flashAlpha, roundabout$otherFlashAlpha, ((StandUserClientPlayer) minecraft.player).roundabout$getLastClashPower());
+        StandHudRender.renderHeatHud(context, minecraft, this.getCameraPlayer(), roundabout$getScreenWidth(), roundabout$getScreenHeight(), tickCount, x, roundabout$flashAlpha, roundabout$otherFlashAlpha, ((StandUserClientPlayer) minecraft.player).roundabout$getLastClashPower());
 
     }
     @Unique
@@ -808,29 +676,29 @@ public abstract class HudRendering implements IHudAccess {
             boolean isTSEntity = ((TimeStop) minecraft.level).isTimeStoppingEntity(minecraft.player);
             if (((TimeStop) minecraft.level).CanTimeStopEntity(minecraft.player)) {
 
-                StandHudRender.renderTSHud(context, minecraft, this.getCameraPlayer(), screenWidth, screenHeight, tickCount, x, roundabout$flashAlpha, roundabout$otherFlashAlpha, false, this.getFont());
+                StandHudRender.renderTSHud(context, minecraft, this.getCameraPlayer(), roundabout$getScreenWidth(), roundabout$getScreenHeight(), tickCount, x, roundabout$flashAlpha, roundabout$otherFlashAlpha, false, this.getFont());
                 return true;
             } if (user.roundabout$getPossessor() instanceof AnubisPossessorEntity possessor && possessor.getTarget() != null) {
-                StandHudRender.renderPossessionHud(context,minecraft,getCameraPlayer(),screenWidth,screenHeight,x);
+                StandHudRender.renderPossessionHud(context,minecraft,getCameraPlayer(),roundabout$getScreenWidth(),roundabout$getScreenHeight(),x);
                 return true;
             } else if (user.roundabout$getStandPowers() instanceof PowersAnubis PA && PA.playTime > 0) {
-                StandHudRender.renderRecordingHud(context,minecraft,getCameraPlayer(),screenWidth,screenHeight,x);
+                StandHudRender.renderRecordingHud(context,minecraft,getCameraPlayer(),roundabout$getScreenWidth(),roundabout$getScreenHeight(),x);
                 return true;
             } else if (user.roundabout$isClashing()) {
                 ((StandUserClientPlayer) minecraft.player).roundabout$setClashDisplayExtraTimestamp(this.minecraft.player.tickCount);
                 float c = (user.roundabout$getStandPowers().getClashProgress());
                 ((StandUserClientPlayer) minecraft.player).roundabout$setLastClashPower(c);
-                StandHudRender.renderClashHud(context, minecraft, this.getCameraPlayer(), screenWidth, screenHeight, tickCount, x, roundabout$flashAlpha, roundabout$otherFlashAlpha, c);
+                StandHudRender.renderClashHud(context, minecraft, this.getCameraPlayer(), roundabout$getScreenWidth(), roundabout$getScreenHeight(), tickCount, x, roundabout$flashAlpha, roundabout$otherFlashAlpha, c);
                 return true;
             } else if (((StandUserClientPlayer) minecraft.player).roundabout$getClashDisplayExtraTimestamp() >= minecraft.player.tickCount - 20) {
-                StandHudRender.renderClashHud(context, minecraft, this.getCameraPlayer(), screenWidth, screenHeight, tickCount, x, roundabout$flashAlpha, roundabout$otherFlashAlpha, ((StandUserClientPlayer) minecraft.player).roundabout$getLastClashPower());
+                StandHudRender.renderClashHud(context, minecraft, this.getCameraPlayer(), roundabout$getScreenWidth(), roundabout$getScreenHeight(), tickCount, x, roundabout$flashAlpha, roundabout$otherFlashAlpha, ((StandUserClientPlayer) minecraft.player).roundabout$getLastClashPower());
                 return true;
             } else if (user.roundabout$isGuarding()) {
                 if (!(user.roundabout$getStandPowers() instanceof PowersRatt && PowerTypes.hasStandActivelyEquipped(minecraft.player))) {
-                    StandHudRender.renderGuardHud(context, minecraft, this.getCameraPlayer(), screenWidth, screenHeight, tickCount, x, roundabout$flashAlpha, roundabout$otherFlashAlpha,showComboAmt);
+                    StandHudRender.renderGuardHud(context, minecraft, this.getCameraPlayer(), roundabout$getScreenWidth(), roundabout$getScreenHeight(), tickCount, x, roundabout$flashAlpha, roundabout$otherFlashAlpha,showComboAmt);
                     if (showComboAmt){
                         if (powers instanceof PunchingGeneralPowers pgp) {
-                            StandHudRender.renderComboHudNumber(context, minecraft, this.getCameraPlayer(), screenWidth, screenHeight, x, pgp);
+                            StandHudRender.renderComboHudNumber(context, minecraft, this.getCameraPlayer(), roundabout$getScreenWidth(), roundabout$getScreenHeight(), x, pgp);
                         }
                     }
                     return true;
@@ -838,35 +706,35 @@ public abstract class HudRendering implements IHudAccess {
             } else if (isTSEntity || (user.roundabout$getStandPowers().getMaxTSTime() > 0
                     && (user.roundabout$getStandPowers().getActivePower() == PowerIndex.SPECIAL) ||  user.roundabout$getStandPowers().getActivePower() == PowerIndex.LEAD_IN)) {
 
-                StandHudRender.renderTSHud(context, minecraft, this.getCameraPlayer(), screenWidth, screenHeight, tickCount, x, roundabout$flashAlpha, roundabout$otherFlashAlpha, true, this.getFont());
+                StandHudRender.renderTSHud(context, minecraft, this.getCameraPlayer(), roundabout$getScreenWidth(), roundabout$getScreenHeight(), tickCount, x, roundabout$flashAlpha, roundabout$otherFlashAlpha, true, this.getFont());
                 return true;
             }else if (user.roundabout$getGrabbedSoul()){
-                StandHudRender.renderBlockedStandHud(context, minecraft, this.getCameraPlayer(), screenWidth, screenHeight, tickCount, x, roundabout$flashAlpha, roundabout$otherFlashAlpha);
+                StandHudRender.renderBlockedStandHud(context, minecraft, this.getCameraPlayer(), roundabout$getScreenWidth(), roundabout$getScreenHeight(), tickCount, x, roundabout$flashAlpha, roundabout$otherFlashAlpha);
                 return true;
             } else if (minecraft.player.getVehicle() != null && minecraft.player.getVehicle() instanceof StandEntity SE && SE.canRestrainWhileMounted()){
 
-                StandHudRender.renderGrabbedHud(context, minecraft, this.getCameraPlayer(), screenWidth, screenHeight, tickCount, x, roundabout$flashAlpha, roundabout$otherFlashAlpha);
+                StandHudRender.renderGrabbedHud(context, minecraft, this.getCameraPlayer(), roundabout$getScreenWidth(), roundabout$getScreenHeight(), tickCount, x, roundabout$flashAlpha, roundabout$otherFlashAlpha);
                 return true;
             } else if (user.roundabout$isSealed() && !user.roundabout$getGrabbedSoul()){
 
-                StandHudRender.renderSealedDiscHud(context, minecraft, this.getCameraPlayer(), screenWidth, screenHeight, tickCount, x, roundabout$flashAlpha, roundabout$otherFlashAlpha);
+                StandHudRender.renderSealedDiscHud(context, minecraft, this.getCameraPlayer(), roundabout$getScreenWidth(), roundabout$getScreenHeight(), tickCount, x, roundabout$flashAlpha, roundabout$otherFlashAlpha);
                 return true;
             } else if (user.roundabout$getStandPowers().isPiloting() && user.roundabout$getStandPowers().shouldRenderPilotingHud()){
                 if (this.getCameraPlayer() != null) {
-                    StandHudRender.renderDistanceHUDPiloting(context, minecraft, this.getCameraPlayer(), screenWidth, screenHeight, tickCount, x, user.roundabout$getStandPowers().getPilotingStand());
+                    StandHudRender.renderDistanceHUDPiloting(context, minecraft, this.getCameraPlayer(), roundabout$getScreenWidth(), roundabout$getScreenHeight(), tickCount, x, user.roundabout$getStandPowers().getPilotingStand());
                 }
                 return true;
             } else if (user.roundabout$getStandPowers() instanceof PowersSoftAndWet PW && user.roundabout$getEffectiveCombatMode() &&  PowerTypes.hasStandActivelyEquipped(minecraft.player)){
-                StandHudRender.renderShootModeSoftAndWet(context, minecraft, this.getCameraPlayer(), screenWidth, screenHeight, x, PW);
+                StandHudRender.renderShootModeSoftAndWet(context, minecraft, this.getCameraPlayer(), roundabout$getScreenWidth(), roundabout$getScreenHeight(), x, PW);
                 return true;
             } else if (user.roundabout$getStandPowers() instanceof PowersCream PC && PC.insideVoidInt > 0){
-                StandHudRender.renderCreamVoidTimerHud(context, minecraft, this.getCameraPlayer(), screenWidth, screenHeight, x, PC);
+                StandHudRender.renderCreamVoidTimerHud(context, minecraft, this.getCameraPlayer(), roundabout$getScreenWidth(), roundabout$getScreenHeight(), x, PC);
                 return true;
             } else if (user.roundabout$getStandPowers() instanceof PowersCream PC && PC.transformTimer > 0) {
-                StandHudRender.renderCreamTransformTimerHud(context, minecraft, this.getCameraPlayer(), screenWidth, screenHeight, x, PC);
+                StandHudRender.renderCreamTransformTimerHud(context, minecraft, this.getCameraPlayer(), roundabout$getScreenWidth(), roundabout$getScreenHeight(), x, PC);
                 return true;
             } else if (powers.replaceHudActively()){
-                powers.getReplacementHUD(context,this.getCameraPlayer(),screenWidth,screenHeight,x,removeNum);
+                powers.getReplacementHUD(context,this.getCameraPlayer(),roundabout$getScreenWidth(),roundabout$getScreenHeight(),x,removeNum);
                 if (removeNum){
                     if (displayCombatTicks){
                         if (user.roundabout$getStandPowers() instanceof PowersSoftAndWet PW) {
@@ -874,8 +742,8 @@ public abstract class HudRendering implements IHudAccess {
                                     context,
                                     minecraft,
                                     this.getCameraPlayer(),
-                                    screenWidth,
-                                    screenHeight,
+                                    roundabout$getScreenWidth(),
+                                    roundabout$getScreenHeight(),
                                     x,
                                     PW
                             );
@@ -885,51 +753,51 @@ public abstract class HudRendering implements IHudAccess {
                                     context,
                                     minecraft,
                                     this.getCameraPlayer(),
-                                    screenWidth,
-                                    screenHeight,
+                                    roundabout$getScreenWidth(),
+                                    roundabout$getScreenHeight(),
                                     x,
                                     PE
                             );
                         }
                     } else if (showComboAmt){
                         if (powers instanceof PunchingGeneralPowers pgp) {
-                            StandHudRender.renderComboHudNumber(context, minecraft, this.getCameraPlayer(), screenWidth, screenHeight, x, pgp);
+                            StandHudRender.renderComboHudNumber(context, minecraft, this.getCameraPlayer(), roundabout$getScreenWidth(), roundabout$getScreenHeight(), x, pgp);
                         }
                     }
                 }
                 return true;
             } else if (fate.replaceHudActively()){
-                fate.getReplacementHUD(context,this.getCameraPlayer(),screenWidth,screenHeight,x,removeNum);
+                fate.getReplacementHUD(context,this.getCameraPlayer(),roundabout$getScreenWidth(),roundabout$getScreenHeight(),x,removeNum);
                 return true;
             } else if (user.roundabout$getStandPowers().replaceHudActively()) {
-                user.roundabout$getStandPowers().getReplacementHUD(context, this.getCameraPlayer(), screenWidth, screenHeight, x, removeNum);
+                user.roundabout$getStandPowers().getReplacementHUD(context, this.getCameraPlayer(), roundabout$getScreenWidth(), roundabout$getScreenHeight(), x, removeNum);
                 return true;
             } else if (boundTo != null && user.rdbt$getBoundType(boundTo) == 1){
-                StandHudRender.renderCKBDistance(context,this.getCameraPlayer(),screenWidth,screenHeight,x,boundTo.getId());
+                StandHudRender.renderCKBDistance(context,this.getCameraPlayer(),roundabout$getScreenWidth(),roundabout$getScreenHeight(),x,boundTo.getId());
                 return true;
             } else if (((IEntityAndData)minecraft.player).roundabout$getTrueInvisibility() > -1){
-                StandHudRender.renderInvisibilityHUD(context,this.getCameraPlayer(),screenWidth,screenHeight,x);
+                StandHudRender.renderInvisibilityHUD(context,this.getCameraPlayer(),roundabout$getScreenWidth(),roundabout$getScreenHeight(),x);
                 return true;
             } else if (PowerTypes.isInD4CWorldWithRender(minecraft.player)){
-                StandHudRender.renderForeignWorldTimer(context,this.getCameraPlayer(),screenWidth,screenHeight,x,removeNum);
+                StandHudRender.renderForeignWorldTimer(context,this.getCameraPlayer(),roundabout$getScreenWidth(),roundabout$getScreenHeight(),x,removeNum);
                 return true;
             } else if (user.roundabout$getGuardPoints() < user.roundabout$getMaxGuardPoints()){
-                StandHudRender.renderGuardHud(context, minecraft, this.getCameraPlayer(), screenWidth, screenHeight, tickCount, x, roundabout$flashAlpha, roundabout$otherFlashAlpha,showComboAmt);
+                StandHudRender.renderGuardHud(context, minecraft, this.getCameraPlayer(), roundabout$getScreenWidth(), roundabout$getScreenHeight(), tickCount, x, roundabout$flashAlpha, roundabout$otherFlashAlpha,showComboAmt);
                 if (showComboAmt){
                     if (powers instanceof PunchingGeneralPowers pgp) {
-                        StandHudRender.renderComboHudNumber(context, minecraft, this.getCameraPlayer(), screenWidth, screenHeight, x, pgp);
+                        StandHudRender.renderComboHudNumber(context, minecraft, this.getCameraPlayer(), roundabout$getScreenWidth(), roundabout$getScreenHeight(), x, pgp);
                     }
                 }
                 return true;
             } else if (minecraft.player.getVehicle() != null && minecraft.player.getVehicle() instanceof RoadRollerEntity RRE && RRE.getPavingBoolean()) {
-                StandHudRender.renderRoadRollerHud(context, minecraft, this.getCameraPlayer(), screenWidth, screenHeight, tickCount, x, roundabout$flashAlpha, roundabout$otherFlashAlpha,  RRE);
+                StandHudRender.renderRoadRollerHud(context, minecraft, this.getCameraPlayer(), roundabout$getScreenWidth(), roundabout$getScreenHeight(), tickCount, x, roundabout$flashAlpha, roundabout$otherFlashAlpha,  RRE);
                 return true;
             } else if (ClientUtil.getRoadRollerPickingRRE() != null && ClientUtil.getRoadRollerPickingRRE() instanceof RoadRollerEntity && ClientUtil.getRoadRollerPickingRRE().getPickupBoolean()==minecraft.player.getId()) {
-                StandHudRender.renderRoadRollerPickupHud(context, minecraft, this.getCameraPlayer(), screenWidth, screenHeight, tickCount, x, roundabout$flashAlpha, roundabout$otherFlashAlpha,  ClientUtil.getRoadRollerPickingRRE());
+                StandHudRender.renderRoadRollerPickupHud(context, minecraft, this.getCameraPlayer(), roundabout$getScreenWidth(), roundabout$getScreenHeight(), tickCount, x, roundabout$flashAlpha, roundabout$otherFlashAlpha,  ClientUtil.getRoadRollerPickingRRE());
                 return true;
             } else if (((IPlayerEntity)minecraft.player).roundabout$getDisplayExp() && user.roundabout$hasAStand()){
 
-                StandHudRender.renderExpHud(context, minecraft, this.getCameraPlayer(), screenWidth, screenHeight, tickCount, x, roundabout$flashAlpha, roundabout$otherFlashAlpha, removeNum);
+                StandHudRender.renderExpHud(context, minecraft, this.getCameraPlayer(), roundabout$getScreenWidth(), roundabout$getScreenHeight(), tickCount, x, roundabout$flashAlpha, roundabout$otherFlashAlpha, removeNum);
                 if (displayCombatTicks) {
 
                     if (displayCombatTicks) {
@@ -939,8 +807,8 @@ public abstract class HudRendering implements IHudAccess {
                                     context,
                                     minecraft,
                                     this.getCameraPlayer(),
-                                    screenWidth,
-                                    screenHeight,
+                                    roundabout$getScreenWidth(),
+                                    roundabout$getScreenHeight(),
                                     x,
                                     PW
                             );
@@ -950,8 +818,8 @@ public abstract class HudRendering implements IHudAccess {
                                     context,
                                     minecraft,
                                     this.getCameraPlayer(),
-                                    screenWidth,
-                                    screenHeight,
+                                    roundabout$getScreenWidth(),
+                                    roundabout$getScreenHeight(),
                                     x,
                                     PE
                             );
@@ -960,15 +828,15 @@ public abstract class HudRendering implements IHudAccess {
                 }
                 return true;
             } else if (removeNum) {
-                StandHudRender.renderExperienceBar(minecraft, screenWidth, screenHeight, context);
+                StandHudRender.renderExperienceBar(minecraft, roundabout$getScreenWidth(), roundabout$getScreenHeight(), context);
                 if (displayCombatTicks) {
                     if (user.roundabout$getStandPowers() instanceof PowersSoftAndWet PW) {
                         StandHudRender.renderShootModeLightSoftAndWet(
                                 context,
                                 minecraft,
                                 this.getCameraPlayer(),
-                                screenWidth,
-                                screenHeight,
+                                roundabout$getScreenWidth(),
+                                roundabout$getScreenHeight(),
                                 x,
                                 PW
                         );
@@ -978,16 +846,15 @@ public abstract class HudRendering implements IHudAccess {
                                 context,
                                 minecraft,
                                 this.getCameraPlayer(),
-                                screenWidth,
-                                screenHeight,
+                                roundabout$getScreenWidth(),
+                                roundabout$getScreenHeight(),
                                 x,
                                 PE
                         );
                     }
                 } else if (showComboAmt){
                     if (((IPowersPlayer)minecraft.player).rdbt$getPowers() instanceof PunchingGeneralPowers pgp) {
-                        roundabout$RenderHeatBars(context, x);
-                        StandHudRender.renderComboHudNumber(context, minecraft, this.getCameraPlayer(), screenWidth, screenHeight, x, pgp);
+                        StandHudRender.renderComboHudNumber(context, minecraft, this.getCameraPlayer(), roundabout$getScreenWidth(), roundabout$getScreenHeight(), x, pgp);
                     }
                 }
                 return true;
@@ -997,34 +864,46 @@ public abstract class HudRendering implements IHudAccess {
     }
 
 
-    @Inject(method = "renderExperienceBar", at = @At(value = "INVOKE",
-            target = "Lnet/minecraft/util/profiling/ProfilerFiller;pop()V", shift = At.Shift.AFTER),
-            cancellable = true)
-    public void roundabout$renderExperienceBar2(GuiGraphics $$0, int $$1, CallbackInfo ci){
-        if (((StandUser) minecraft.player).roundabout$getLeapTicks() > -1){
-            int k = screenWidth/2 - 5;
-            int l = screenHeight - 31 - 5;
-            $$0.blit(StandIcons.JOJO_ICONS, k, l, 183, 40, 9, 9);
+    // 1.21.1 renders the numeric level after the bar in its own HUD layer.
+    @Inject(method = "renderExperienceLevel", at = @At("HEAD"), cancellable = true)
+    private void roundabout$renderExperienceLevel(GuiGraphics graphics, DeltaTracker deltaTracker, CallbackInfo ci) {
+        if (roundabout$hideExperienceLevel) {
+            ci.cancel();
+            return;
+        }
+        if (minecraft.player != null && isExperienceBarVisible()
+                && ((StandUser) minecraft.player).roundabout$getLeapTicks() > -1) {
+            int x = graphics.guiWidth() / 2 - 5;
+            int y = graphics.guiHeight() - 36;
+            graphics.blit(StandIcons.JOJO_ICONS, x, y, 183, 40, 9, 9);
             ci.cancel();
         }
     }
 
-    public Entity rdbt$tempEnt = null;
+    @Shadow
+    private boolean isExperienceBarVisible() {
+        throw new AssertionError();
+    }
+
+    @Unique
+    private Entity rdbt$tempEnt;
+    @Unique
+    private boolean roundabout$forcedCrosshairEntity;
     @Inject(method = "renderCrosshair", at = @At(value = "HEAD"), cancellable = true)
-    private void rdbt$renderCrosshairMixin(GuiGraphics $$0, CallbackInfo info) {
+    private void rdbt$renderCrosshairMixin(GuiGraphics $$0, DeltaTracker deltaTracker, CallbackInfo info) {
         // updated the mixin to be cancellable so i can hide the crosshair in map mode while it's active
         // lyin eyes map
         if (this.minecraft.player != null
                 && ((StandUser) this.minecraft.player).roundabout$getStandPowers() instanceof PowersLyinEyes LE
                 && LE.getMapModeClient()
                 && LE.isActive()) {
-            LyinEyesMapOverlay.renderMap($$0, this.minecraft.getTimer().getGameTimeDeltaPartialTick(true));
+            LyinEyesMapOverlay.renderMap($$0, deltaTracker.getGameTimeDeltaPartialTick(true));
             info.cancel();
             return;
         }
         //See ForgeForgeGui
         RenderSystem.defaultBlendFunc();
-        StandHudRender.renderAttackHud($$0, this.getCameraPlayer(), screenWidth, screenHeight, tickCount, this.getVehicleMaxHearts(this.getPlayerVehicleWithHealth()), roundabout$flashAlpha, roundabout$otherFlashAlpha);
+        StandHudRender.renderAttackHud($$0, this.getCameraPlayer(), roundabout$getScreenWidth(), roundabout$getScreenHeight(), tickCount, this.getVehicleMaxHearts(this.getPlayerVehicleWithHealth()), roundabout$flashAlpha, roundabout$otherFlashAlpha);
 
 
         if (this.minecraft.player != null) {
@@ -1071,6 +950,7 @@ public abstract class HudRendering implements IHudAccess {
 
             if (shouldForceRender) {
                 rdbt$tempEnt = this.minecraft.crosshairPickEntity;
+                roundabout$forcedCrosshairEntity = true;
                 this.minecraft.crosshairPickEntity = this.minecraft.player;
             }
         }
@@ -1078,11 +958,12 @@ public abstract class HudRendering implements IHudAccess {
     }
 
     @Inject(method = "renderCrosshair", at = @At(value = "TAIL"))
-    private void rdbt$renderCrosshairMixinTail(GuiGraphics $$0, CallbackInfo info) {
+    private void rdbt$renderCrosshairMixinTail(GuiGraphics $$0, DeltaTracker deltaTracker, CallbackInfo info) {
         //See ForgeForgeGui
-        if (rdbt$tempEnt !=null){
+        if (roundabout$forcedCrosshairEntity){
             this.minecraft.crosshairPickEntity = rdbt$tempEnt;
             rdbt$tempEnt = null;
+            roundabout$forcedCrosshairEntity = false;
         }
     }
 
@@ -1103,15 +984,10 @@ public abstract class HudRendering implements IHudAccess {
 
     @Shadow public abstract Font getFont();
 
-    @Shadow private long healthBlinkTime;
-
-    @Shadow private int lastHealth;
-
-    @Shadow private long lastHealthTime;
-
-    @Shadow private int displayHealth;
-
-    @Shadow @Final private static ResourceLocation GUI_ICONS_LOCATION;
+    @Override
+    public void roundabout$hideExperienceLevel() {
+        roundabout$hideExperienceLevel = true;
+    }
 
     @Override
     public void roundabout$setFlashAlpha(float flashAlpha) {
