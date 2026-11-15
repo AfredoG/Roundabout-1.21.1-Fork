@@ -20,6 +20,7 @@ import net.hydra.jojomod.item.ModItems;
 import net.hydra.jojomod.item.ModificationMaskItem;
 import net.hydra.jojomod.stand.powers.*;
 import net.hydra.jojomod.util.SkinUtil;
+import net.hydra.jojomod.util.ItemData;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.*;
 import net.minecraft.client.model.geom.ModelLayers;
@@ -35,6 +36,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.numbers.StyledFormat;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.*;
@@ -50,7 +52,8 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.scores.Objective;
-import net.minecraft.world.scores.Score;
+import net.minecraft.world.scores.DisplaySlot;
+import net.minecraft.world.scores.ReadOnlyScoreInfo;
 import net.minecraft.world.scores.Scoreboard;
 import org.jetbrains.annotations.Nullable;
 import org.joml.Vector3f;
@@ -745,31 +748,32 @@ public abstract class ZPlayerRender<T extends LivingEntity, M extends EntityMode
             ci.cancel();
         }
     }
-    protected void roundabout$renderNameTagSpecial(AbstractClientPlayer $$0, Component $$1, PoseStack $$2, MultiBufferSource $$3, int $$4) {
+    protected void roundabout$renderNameTagSpecial(AbstractClientPlayer $$0, Component $$1, PoseStack $$2, MultiBufferSource $$3, int $$4, float partialTick) {
         double $$5 = this.entityRenderDispatcher.distanceToSqr($$0);
         ClientUtil.pushPoseAndCooperate($$2,16);
         if ($$5 < 100.0) {
             Scoreboard $$6 = $$0.getScoreboard();
-            Objective $$7 = $$6.getDisplayObjective(2);
+            Objective $$7 = $$6.getDisplayObjective(DisplaySlot.BELOW_NAME);
             if ($$7 != null) {
-                Score $$8 = $$6.getOrCreatePlayerScore($$0.getScoreboardName(), $$7);
+                ReadOnlyScoreInfo $$8 = $$6.getPlayerScoreInfo($$0, $$7);
+                Component score = ReadOnlyScoreInfo.safeFormatValue($$8, $$7.numberFormatOrDefault(StyledFormat.NO_STYLE));
                 super.renderNameTag(
-                        $$0, Component.literal(Integer.toString($$8.getScore())).append(CommonComponents.SPACE).append($$7.getDisplayName()), $$2, $$3, $$4
+                        $$0, Component.empty().append(score).append(CommonComponents.SPACE).append($$7.getDisplayName()), $$2, $$3, $$4, partialTick
                 );
                 $$2.translate(0.0F, 9.0F * 1.15F * 0.025F, 0.0F);
             }
         }
 
-        super.renderNameTag($$0, $$1, $$2, $$3, $$4);
+        super.renderNameTag($$0, $$1, $$2, $$3, $$4, partialTick);
         ClientUtil.popPoseAndCooperate($$2,16);
     }
-    @Inject(method = "renderNameTag(Lnet/minecraft/client/player/AbstractClientPlayer;Lnet/minecraft/network/chat/Component;Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;I)V", at = @At(value = "HEAD"),cancellable = true)
-    private void roundabout$renderNameTag(AbstractClientPlayer $$0, Component $$1, PoseStack $$2, MultiBufferSource $$3, int $$4, CallbackInfo ci) {
+    @Inject(method = "renderNameTag(Lnet/minecraft/client/player/AbstractClientPlayer;Lnet/minecraft/network/chat/Component;Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;IF)V", at = @At(value = "HEAD"),cancellable = true)
+    private void roundabout$renderNameTag(AbstractClientPlayer $$0, Component $$1, PoseStack $$2, MultiBufferSource $$3, int $$4, float partialTick, CallbackInfo ci) {
         if ($$0 instanceof StandUser su && su.roundabout$isDisguised()) {
             GameProfile profile = su.roundabout$getDisguiseProfile();
             if (profile != null && profile.getName() != null && !profile.getName().isEmpty()) {
                 if ($$0 != Minecraft.getInstance().player && !$$0.isInvisible() && !Minecraft.getInstance().options.hideGui) {
-                    this.roundabout$renderNameTagSpecial($$0, Component.literal(profile.getName()), $$2, $$3, $$4);
+                    this.roundabout$renderNameTagSpecial($$0, Component.literal(profile.getName()), $$2, $$3, $$4, partialTick);
                 }
                 ci.cancel();
                 return;
@@ -828,7 +832,7 @@ public abstract class ZPlayerRender<T extends LivingEntity, M extends EntityMode
                     if (ClientNetworking.getAppropriateConfig().nameTagSettings.renderActualCharactersNameUsingVisages) {
                         if (this.shouldShowName($$0)) {
                             Component comp = ME.getDisplayNameTag();
-                            this.roundabout$renderNameTagSpecial($$0, comp, $$2, $$3, $$4);
+                            this.roundabout$renderNameTagSpecial($$0, comp, $$2, $$3, $$4, partialTick);
                             ci.cancel();
                             return;
                         }
@@ -1078,18 +1082,18 @@ public abstract class ZPlayerRender<T extends LivingEntity, M extends EntityMode
         }
 
     @Unique
-    public void roundabout$corpseShowName(AbstractClientPlayer $$0, PoseStack $$3, MultiBufferSource $$4, int $$5){
+    public void roundabout$corpseShowName(AbstractClientPlayer $$0, PoseStack $$3, MultiBufferSource $$4, int $$5, float partialTick){
         if (Minecraft.getInstance().player !=null && Minecraft.getInstance().player.isCreative() &&
                 ClientNetworking.getAppropriateConfig() != null && ClientNetworking.getAppropriateConfig().nameTagSettings != null &&
                 ClientNetworking.getAppropriateConfig().nameTagSettings.bypassAllNametagHidesInCreativeMode) {
             if (this.shouldShowName($$0)) {
-                this.renderNameTag($$0, $$0.getDisplayName(), $$3, $$4, $$5);
+                this.renderNameTag($$0, $$0.getDisplayName(), $$3, $$4, $$5, partialTick);
             }
         } else {
             if (ClientNetworking.getAppropriateConfig() != null && ClientNetworking.getAppropriateConfig().nameTagSettings != null) {
                 if (ClientNetworking.getAppropriateConfig().nameTagSettings.renderNameTagsWhenJusticeMorphed) {
                     if (this.shouldShowName($$0)) {
-                        this.renderNameTag($$0, $$0.getDisplayName(), $$3, $$4, $$5);
+                        this.renderNameTag($$0, $$0.getDisplayName(), $$3, $$4, $$5, partialTick);
                     }
                 }
             }
@@ -1176,7 +1180,7 @@ public abstract class ZPlayerRender<T extends LivingEntity, M extends EntityMode
                         roundabout$getShapeShift($$0).setAggressive(!tem.isEmpty() && tem.getMaxDamage() > 0);
                         roundabout$renderEntityForce1($$1, $$2, $$3, $$4, roundabout$getShapeShift($$0), $$0, $$5);
                         ci.cancel();
-                        roundabout$corpseShowName($$0, $$3, $$4, $$5);
+                        roundabout$corpseShowName($$0, $$3, $$4, $$5, $$2);
                     }
                 } else if (shift == ShapeShifts.VILLAGER) {
                     if (Minecraft.getInstance().level != null && (!(roundabout$getShapeShift($$0) instanceof Villager))) {
@@ -1195,7 +1199,7 @@ public abstract class ZPlayerRender<T extends LivingEntity, M extends EntityMode
                         }
                         roundabout$renderEntityForce1($$1, $$2, $$3, $$4, roundabout$getShapeShift($$0), $$0, $$5);
                         ci.cancel();
-                        roundabout$corpseShowName($$0, $$3, $$4, $$5);
+                        roundabout$corpseShowName($$0, $$3, $$4, $$5, $$2);
                     }
                 } else if (shift == ShapeShifts.SKELETON) {
                     if (Minecraft.getInstance().level != null && (!(roundabout$getShapeShift($$0) instanceof Skeleton))) {
@@ -1206,7 +1210,7 @@ public abstract class ZPlayerRender<T extends LivingEntity, M extends EntityMode
                         roundabout$getShapeShift($$0).setAggressive(!tem.isEmpty() && tem.getMaxDamage() > 0);
                         roundabout$renderEntityForce1($$1, $$2, $$3, $$4, roundabout$getShapeShift($$0), $$0, $$5);
                         ci.cancel();
-                        roundabout$corpseShowName($$0, $$3, $$4, $$5);
+                        roundabout$corpseShowName($$0, $$3, $$4, $$5, $$2);
                     }
                 } else if (shift == ShapeShifts.WITHER_SKELETON) {
                     if (Minecraft.getInstance().level != null && (!(roundabout$getShapeShift($$0) instanceof WitherSkeleton))) {
@@ -1217,7 +1221,7 @@ public abstract class ZPlayerRender<T extends LivingEntity, M extends EntityMode
                         roundabout$getShapeShift($$0).setAggressive(!tem.isEmpty() && tem.getMaxDamage() > 0);
                         roundabout$renderEntityForce1($$1, $$2, $$3, $$4, roundabout$getShapeShift($$0), $$0, $$5);
                         ci.cancel();
-                        roundabout$corpseShowName($$0, $$3, $$4, $$5);
+                        roundabout$corpseShowName($$0, $$3, $$4, $$5, $$2);
                     }
                 } else if (shift == ShapeShifts.STRAY) {
                     if (Minecraft.getInstance().level != null && (!(roundabout$getShapeShift($$0) instanceof Stray))) {
@@ -1228,7 +1232,7 @@ public abstract class ZPlayerRender<T extends LivingEntity, M extends EntityMode
                         roundabout$getShapeShift($$0).setAggressive(!tem.isEmpty() && tem.getMaxDamage() > 0);
                         roundabout$renderEntityForce1($$1, $$2, $$3, $$4, roundabout$getShapeShift($$0), $$0, $$5);
                         ci.cancel();
-                        roundabout$corpseShowName($$0, $$3, $$4, $$5);
+                        roundabout$corpseShowName($$0, $$3, $$4, $$5, $$2);
                     }
                 } else if (shift == ShapeShifts.OVA) {
                     if (Minecraft.getInstance().level != null && (!(roundabout$getShapeShift($$0) instanceof OVAEnyaNPC))) {
@@ -1242,7 +1246,7 @@ public abstract class ZPlayerRender<T extends LivingEntity, M extends EntityMode
                             assertOnPlayerLike(ve, $$0, $$1, $$2, $$3, $$4, $$5,
                                     roundabout$getShapeShift($$0));
                             ci.cancel();
-                            roundabout$corpseShowName($$0, $$3, $$4, $$5);
+                            roundabout$corpseShowName($$0, $$3, $$4, $$5, $$2);
                         }
                     }
                 }
@@ -1528,13 +1532,11 @@ public abstract class ZPlayerRender<T extends LivingEntity, M extends EntityMode
         if (visage != null && !visage.isEmpty()) {
             if (visage.getItem() instanceof MaskItem MI) {
                 if (MI instanceof ModificationMaskItem MD){
-                    if (visage.getTag() != null) {
-                        CompoundTag tag = net.hydra.jojomod.util.ItemData.elementOrEmpty(visage, "modifications");
-                        if (tag.contains("height") || tag.contains("width")) {
-                            int height = net.hydra.jojomod.util.ItemData.elementOrEmpty(visage, "modifications").getInt("height");
-                            int width = net.hydra.jojomod.util.ItemData.elementOrEmpty(visage, "modifications").getInt("width");
-                            $$1.scale(0.798F + (((float) width) * 0.001F), 0.7F + (((float) height) * 0.001F), 0.798F + (((float) width) * 0.001F));
-                        }
+                    CompoundTag tag = ItemData.elementOrEmpty(visage, "modifications");
+                    if (tag.contains("height") || tag.contains("width")) {
+                        int height = tag.getInt("height");
+                        int width = tag.getInt("width");
+                        $$1.scale(0.798F + (((float) width) * 0.001F), 0.7F + (((float) height) * 0.001F), 0.798F + (((float) width) * 0.001F));
                     }
                 } else {
                     VisageData vd = MI.visageData.generateVisageData($$0);
