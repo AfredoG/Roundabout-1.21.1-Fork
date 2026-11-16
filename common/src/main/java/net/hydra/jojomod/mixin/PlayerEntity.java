@@ -1058,7 +1058,7 @@ public abstract class PlayerEntity extends LivingEntity implements IPlayerEntity
         if (!this.isInvulnerableTo($$0) && $$1 > 0) {
 
 
-            if ($$0.getEntity() instanceof Player pe && !$$0.isIndirect()
+            if ($$0.getEntity() instanceof Player pe && $$0.isDirect()
                     && !$$0.is(DamageTypes.THORNS)){
                 if (((StandUser)pe).roundabout$getStandPowers().interceptSuccessfulDamageDealtEvent($$0,$$1, ((LivingEntity)(Object)this))){
                     ci.cancel();
@@ -1086,7 +1086,7 @@ public abstract class PlayerEntity extends LivingEntity implements IPlayerEntity
 
 
             Entity bound = userthis.roundabout$getBoundTo();
-            if (bound != null && !$$0.isIndirect() && !$$0.is(ModDamageTypes.STAND_FIRE)){
+            if (bound != null && $$0.isDirect() && !$$0.is(ModDamageTypes.STAND_FIRE)){
                 if (userthis.rdbt$getBoundType(bound) == 2) {
                     userthis.roundabout$dropString();
                 }

@@ -38,7 +38,7 @@ public abstract class MemoryServerPlayerGameMode {
                 cir.setReturnValue(InteractionResult.FAIL);
                 return;
             }
-            if (stack.isEdible() && powers.isAutoMode()) {
+            if (stack.getFoodProperties(player) != null && powers.isAutoMode()) {
                 cir.setReturnValue(InteractionResult.FAIL);
                 return;
             }

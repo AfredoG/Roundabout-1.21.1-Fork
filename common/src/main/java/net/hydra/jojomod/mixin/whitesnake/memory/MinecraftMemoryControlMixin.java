@@ -31,7 +31,7 @@ public abstract class MinecraftMemoryControlMixin {
         if (player != null
                 && ((StandUser) player).roundabout$getStandPowers() instanceof PowersWhitesnake powers
                 && powers.isAutoMode()
-                && (player.getMainHandItem().isEdible() || player.getOffhandItem().isEdible())) {
+                && (player.getMainHandItem().getFoodProperties(player) != null || player.getOffhandItem().getFoodProperties(player) != null)) {
             ci.cancel();
             return;
         }

@@ -1475,7 +1475,7 @@ public class AbilityScapeBasis {
     public void cancelConsumableItem(LivingEntity entity){
         ItemStack itemStack = entity.getUseItem();
         Item item = itemStack.getItem();
-        if (item.isEdible() || item instanceof PotionItem) {
+        if (itemStack.getFoodProperties(entity) != null || item instanceof PotionItem) {
             entity.releaseUsingItem();
             if (entity instanceof Player) {
                 entity.stopUsingItem();
@@ -3337,7 +3337,7 @@ public class AbilityScapeBasis {
         return canCombatModeUse(stack.getItem());
     }
     public boolean canCombatModeUse(Item item) {
-        return item.isEdible() || item instanceof HarpoonItem || item instanceof TridentItem
+        return item.components().has(net.minecraft.core.component.DataComponents.FOOD) || item instanceof HarpoonItem || item instanceof TridentItem
                 || item instanceof KnifeItem;
     }
     public float getBrawlPunchAngle(){

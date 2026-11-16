@@ -966,7 +966,7 @@ private void setStupidTicksSon(int ticks){stupidTicksSon = ticks;}
                 Vec3 candidate = new Vec3(x, y, z);
                 BlockPos bpos = BlockPos.containing(x, y - 0.1, z);
                 var blockState = this.self.level().getBlockState(bpos);
-                AABB yesbox = ModEntities.BLACK_SABBATH.getAABB(lent.getX(), Mth.floor(lent.getY()), lent.getZ());
+                AABB yesbox = ModEntities.BLACK_SABBATH.getDimensions().makeBoundingBox(lent.getX(), Mth.floor(lent.getY()), lent.getZ());
                 AABB testBox = yesbox.move(
                         candidate.x - lent.getX(),
                         candidate.y - lent.getY(),
@@ -985,7 +985,7 @@ private void setStupidTicksSon(int ticks){stupidTicksSon = ticks;}
                         Vec3 candidate2 = new Vec3(x2, y2, z2);
                         BlockPos bpos2 = BlockPos.containing(x, y2 - 0.1, z);
                         var blockState2 = this.self.level().getBlockState(bpos2);
-                        AABB yesbox2 = ModEntities.BLACK_SABBATH.getAABB(lent.getX(), lent.getY(), lent.getZ());
+                        AABB yesbox2 = ModEntities.BLACK_SABBATH.getDimensions().makeBoundingBox(lent.getX(), lent.getY(), lent.getZ());
                         AABB testBox2 = yesbox2.move(
                                 candidate2.x - lent.getX(),
                                 candidate2.y - lent.getY(),

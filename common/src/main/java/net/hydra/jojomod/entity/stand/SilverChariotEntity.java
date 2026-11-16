@@ -1109,7 +1109,7 @@ public class SilverChariotEntity extends FollowingStandEntity {
                 hurtTime = 10;
                 hurtDuration = 10;
                 level().broadcastEntityEvent(this, (byte) 2);
-                if (source.getEntity() instanceof Mob attacker && !source.isIndirect()) {
+                if (source.getEntity() instanceof Mob attacker && source.isDirect()) {
                     knockback(0.4F, attacker.getX() - getX(), attacker.getZ() - getZ());
                 }
                 hurtMarked = true;

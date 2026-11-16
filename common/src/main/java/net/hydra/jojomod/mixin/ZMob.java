@@ -699,7 +699,7 @@ public abstract class ZMob extends LivingEntity implements IMob {
         if (ent instanceof LivingEntity LE){
             setTarget(LE);
             if (this.targetSelector != null) {
-                Stream<WrappedGoal> wrappedGoalStream = this.targetSelector.getRunningGoals();
+                Stream<WrappedGoal> wrappedGoalStream = this.targetSelector.getAvailableGoals().stream().filter(WrappedGoal::isRunning);
                 wrappedGoalStream.forEach(wrappedGoal -> {
                     Goal goal = wrappedGoal.getGoal();
                     this.roundabout$enforceGoalTarget(goal, LE);
@@ -727,7 +727,7 @@ public abstract class ZMob extends LivingEntity implements IMob {
             setTarget(null);
 
             if (this.targetSelector != null) {
-                Stream<WrappedGoal> wrappedGoalStream = this.targetSelector.getRunningGoals();
+                Stream<WrappedGoal> wrappedGoalStream = this.targetSelector.getAvailableGoals().stream().filter(WrappedGoal::isRunning);
                 wrappedGoalStream.forEach(this::roundabout$removeGoalTarget);
             }
             Optional<? extends ExpirableValue<?>> $$x = brain.getMemories().get(MemoryModuleType.ANGRY_AT);

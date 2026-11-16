@@ -133,7 +133,7 @@ public class BlockWallEntity extends Entity {
 
     public boolean updated = false;
     @Override
-    public void lerpTo(double $$0, double $$1, double $$2, float $$3, float $$4, int $$5, boolean $$6) {
+    public void lerpTo(double $$0, double $$1, double $$2, float $$3, float $$4, int $$5) {
         this.lerpX = $$0;
         this.lerpY = $$1;
         this.lerpZ = $$2;

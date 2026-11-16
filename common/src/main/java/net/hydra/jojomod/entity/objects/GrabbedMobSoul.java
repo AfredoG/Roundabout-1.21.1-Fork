@@ -60,7 +60,7 @@ public class GrabbedMobSoul extends StandEntity{
     public boolean mayInteract(Level $$0, BlockPos pos) { return false;}
 
     @Override
-    public boolean canChangeDimensions() {
+    public boolean canChangeDimensions(Level from, Level to) {
         return false;
     }
 

@@ -216,7 +216,7 @@ public abstract class WorldTickClient extends Level implements IClientLevel {
                 $$0.yo = $$0.getY();
                 $$0.zo = $$0.getZ();
                 ((IBoatAccess)$$0).roundabout$TickLerp();
-                $$0.lerpTo($$0.getX(),$$0.getY(),$$0.getZ(),$$0.getYRot(),$$0.getXRot(),3,false);
+                $$0.lerpTo($$0.getX(),$$0.getY(),$$0.getZ(),$$0.getYRot(),$$0.getXRot(),3);
                 $$0.walkDistO = $$0.walkDist;
                 $$0.xRotO = $$0.getXRot();
                 $$0.yRotO = $$0.getYRot();

@@ -128,7 +128,7 @@ public class SoftAndWetBubbleEntity extends AbstractHurtingProjectile implements
 
     /**Bubbles Don't alert skulk at all*/
     @Override
-    public void gameEvent(GameEvent $$0, @Nullable Entity $$1) {
+    public void gameEvent(net.minecraft.core.Holder<GameEvent> $$0, @Nullable Entity $$1) {
     }
 
     @Override

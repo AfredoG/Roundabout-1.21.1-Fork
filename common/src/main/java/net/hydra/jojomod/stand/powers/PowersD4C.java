@@ -1161,7 +1161,7 @@ public class PowersD4C extends NewPunchingStand {
 
                 Vec3 candidate = new Vec3(x, y, z);
 
-                AABB yesbox = EntityType.HORSE.getAABB(self.getX(),self.getY(),self.getZ());
+                AABB yesbox = EntityType.HORSE.getDimensions().makeBoundingBox(self.getX(),self.getY(),self.getZ());
 
                 AABB testBox = yesbox.move(
                         candidate.x - self.getX(),
@@ -1204,7 +1204,7 @@ public class PowersD4C extends NewPunchingStand {
 
                 Vec3 candidate = new Vec3(x, y, z);
 
-                AABB yesbox = EntityType.PLAYER.getAABB(self.getX(),self.getY(),self.getZ());
+                AABB yesbox = EntityType.PLAYER.getDimensions().makeBoundingBox(self.getX(),self.getY(),self.getZ());
 
                 AABB testBox = yesbox.move(
                         candidate.x - self.getX(),

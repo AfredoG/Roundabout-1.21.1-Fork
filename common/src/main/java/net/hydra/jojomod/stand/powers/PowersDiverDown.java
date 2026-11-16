@@ -4652,7 +4652,7 @@ public class PowersDiverDown extends NewPunchingStand {
         for (MobEffectInstance effect : effects) {
             int newDuration = effect.getDuration();
             // make potions with durations longer
-            if (!effect.getEffect().isInstantenous()) {
+            if (!effect.getEffect().value().isInstantenous()) {
                 newDuration = (int) (effect.getDuration() + 600); // extra 30 seconds
             }
             int newAmplifier = effect.getAmplifier() + ClientNetworking.getAppropriateConfig().diverDownSettings.potionStrengthBoost;

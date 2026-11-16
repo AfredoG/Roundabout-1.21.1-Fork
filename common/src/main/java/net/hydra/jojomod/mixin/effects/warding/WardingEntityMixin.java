@@ -18,9 +18,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(Entity.class)
 public abstract class WardingEntityMixin {
-    /**Warding cancels being set on fire outside the context of fire or lava*/
-    @Inject(method = "setSecondsOnFire(I)V", at = @At(value = "HEAD"),cancellable = true)
-    public void rdbt$setSecondsOnFire(int $$0, CallbackInfo ci) {
+    /** Both seconds-based and tick-based ignition pass through igniteForTicks in 1.21.1. */
+    @Inject(method = "igniteForTicks(I)V", at = @At(value = "HEAD"),cancellable = true)
+    public void rdbt$igniteForTicks(int $$0, CallbackInfo ci) {
         if (((net.minecraft.world.entity.Entity)(Object)this) instanceof LivingEntity LE){
             if (((StandUser)LE).roundabout$getStandPowers().surpassesFire()){
                 ci.cancel();

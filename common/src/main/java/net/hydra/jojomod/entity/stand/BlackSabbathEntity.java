@@ -815,7 +815,7 @@ public class BlackSabbathEntity extends StandEntity implements HasCustomInventor
                     if (damageImmunityTicks < 1) {
                         if(pb.moveMode == 3 && this.getHealth() < this.getMaxHealth()) {
                             setDamageImmunityTicks(10);
-                            setSecondsOnFire(0);
+                            igniteForSeconds(0);
                             if(!this.level().isClientSide){
                                 heal(1);
                             }
@@ -828,7 +828,7 @@ public class BlackSabbathEntity extends StandEntity implements HasCustomInventor
                         if(pb.moveMode == 3 && this.getHealth() < this.getMaxHealth()) {
                             setDamageImmunityTicks(10);
                             if(!this.level().isClientSide){
-                                setSecondsOnFire(0);
+                                igniteForSeconds(0);
                                 heal(1);
                             }
                         }
@@ -1265,7 +1265,7 @@ public class BlackSabbathEntity extends StandEntity implements HasCustomInventor
                     Vec3 candidate = new Vec3(x, y, z);
                     BlockPos bpos = BlockPos.containing(x, y - 0.1, z);
                     var blockState = this.level().getBlockState(bpos);
-                    AABB yesbox = ModEntities.BLACK_SABBATH.getAABB(lent.getX(), lent.getY(), lent.getZ());
+                    AABB yesbox = ModEntities.BLACK_SABBATH.getDimensions().makeBoundingBox(lent.getX(), lent.getY(), lent.getZ());
                     AABB testBox = yesbox.move(
                             candidate.x - lent.getX(),
                             candidate.y - lent.getY(),
@@ -1279,7 +1279,7 @@ public class BlackSabbathEntity extends StandEntity implements HasCustomInventor
                             Vec3 candidate2 = new Vec3(x, y2, z);
                             BlockPos bpos2 = BlockPos.containing(x, y2 - 0.1, z);
                             var blockState2 = this.level().getBlockState(bpos2);
-                            AABB yesbox2 = ModEntities.BLACK_SABBATH.getAABB(lent.getX(), lent.getY(), lent.getZ());
+                            AABB yesbox2 = ModEntities.BLACK_SABBATH.getDimensions().makeBoundingBox(lent.getX(), lent.getY(), lent.getZ());
                             AABB testBox2 = yesbox2.move(
                                     candidate2.x - lent.getX(),
                                     candidate2.y - lent.getY(),
@@ -1349,7 +1349,7 @@ public class BlackSabbathEntity extends StandEntity implements HasCustomInventor
                                             if (!isBlackSabbathUnderLight()) {
                                                 setRidingEntity(shadowHidTarget());
                                                 setRiding(true);
-                                                setSecondsOnFire(0);
+                                                igniteForSeconds(0);
                                                 setUnrender(true);
                                             }
                                         }
@@ -1416,11 +1416,11 @@ public class BlackSabbathEntity extends StandEntity implements HasCustomInventor
                                     if(getGrabbing() == 0) {
                                         if (MainUtil.cheapDistanceTo2(this.getX(), this.getZ(), targetSabbath().getX(), targetSabbath().getZ()) > 2.5 || !hasLineOfSight(targetSabbath())) {
                                             setUnrender(true);
-                                            setSecondsOnFire(0);
+                                            igniteForSeconds(0);
                                         } else {
                                             if (((this.getY() > targetSabbath().getY() && !hasLineOfSight(targetSabbath())) || targetSabbath().getY() - this.getY() > 9) && MainUtil.cheapDistanceTo2(this.getX(), this.getZ(), targetSabbath().getX(), targetSabbath().getZ()) > 1.5) {
                                                 setUnrender(true);
-                                                setSecondsOnFire(0);
+                                                igniteForSeconds(0);
                                             } else {
                                                 if (lungeTicks < 1) {
                                                     if (getUnrender()) {

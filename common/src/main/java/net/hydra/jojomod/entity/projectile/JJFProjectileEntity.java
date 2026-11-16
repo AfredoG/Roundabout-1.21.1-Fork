@@ -891,7 +891,7 @@ public class JJFProjectileEntity extends ThrowableItemProjectile {
         } else if (ammo.is(Items.WET_SPONGE)) {
             target.clearFire();
             pushTarget(target, 0.45D);
-        } else if (ammo.is(Items.SCUTE)) {
+        } else if (ammo.is(Items.TURTLE_SCUTE)) {
             hurtTarget(target, 1.5F);
             pushTarget(target, 0.35D);
         } else if (ammo.is(Items.RABBIT_FOOT)) {
@@ -1176,8 +1176,8 @@ public class JJFProjectileEntity extends ThrowableItemProjectile {
 
     private void applyDirectPotion(LivingEntity target, double strength) {
         for (MobEffectInstance effect : PotionData.getMobEffects(getItem())) {
-            if (effect.getEffect().isInstantenous()) {
-                effect.getEffect().applyInstantenousEffect(
+            if (effect.getEffect().value().isInstantenous()) {
+                effect.getEffect().value().applyInstantenousEffect(
                         getOwner(),
                         getOwner(),
                         target,
@@ -1227,8 +1227,8 @@ public class JJFProjectileEntity extends ThrowableItemProjectile {
             double strength = 1.0D - distance / radius;
 
             for (MobEffectInstance effect : PotionData.getMobEffects(getItem())) {
-                if (effect.getEffect().isInstantenous()) {
-                    effect.getEffect().applyInstantenousEffect(
+                if (effect.getEffect().value().isInstantenous()) {
+                    effect.getEffect().value().applyInstantenousEffect(
                             getOwner(),
                             getOwner(),
                             living,

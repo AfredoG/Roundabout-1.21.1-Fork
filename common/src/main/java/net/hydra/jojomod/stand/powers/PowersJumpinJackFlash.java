@@ -921,7 +921,7 @@ public class PowersJumpinJackFlash extends NewPunchingStand {
                 || stack.is(Items.SLIME_BLOCK)
                 || stack.is(Items.SPONGE)
                 || stack.is(Items.WET_SPONGE)
-                || stack.is(Items.SCUTE)
+                || stack.is(Items.TURTLE_SCUTE)
                 || stack.is(Items.RABBIT_FOOT)
                 || stack.is(Items.PHANTOM_MEMBRANE)
                 || stack.is(Items.SHULKER_SHELL)
@@ -1034,7 +1034,7 @@ public class PowersJumpinJackFlash extends NewPunchingStand {
                 || item.is(Items.POINTED_DRIPSTONE) || item.is(Items.AMETHYST_SHARD)) return 5;
         if (item.is(Items.GRAVEL) || item.is(Items.BRICK)
                 || item.is(Items.NETHER_BRICK) || item.is(Items.FLINT)
-                || item.is(Items.CACTUS) || item.is(Items.SCUTE)
+                || item.is(Items.CACTUS) || item.is(Items.TURTLE_SCUTE)
                 || item.is(Items.COPPER_INGOT) || item.is(Items.END_ROD)
                 || item.is(Items.MAGMA_CREAM)) return 3;
         return 1;

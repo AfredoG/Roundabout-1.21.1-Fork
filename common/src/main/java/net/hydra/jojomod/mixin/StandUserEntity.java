@@ -2008,7 +2008,7 @@ public abstract class StandUserEntity extends Entity implements StandUser {
     public void roundabout$cancelConsumableItem(LivingEntity entity) {
         ItemStack itemStack = entity.getUseItem();
         Item item = itemStack.getItem();
-        if (item.isEdible() || item instanceof PotionItem) {
+        if (itemStack.getFoodProperties(entity) != null || item instanceof PotionItem) {
             entity.releaseUsingItem();
             if (entity instanceof Player) {
                 ((Player) entity).stopUsingItem();
@@ -4212,7 +4212,7 @@ public abstract class StandUserEntity extends Entity implements StandUser {
             }
         }
 
-        if ($$0.getEntity() instanceof Player pe && !$$0.isIndirect()
+        if ($$0.getEntity() instanceof Player pe && $$0.isDirect()
                 && !$$0.is(DamageTypes.THORNS) && !$$0.is(ModDamageTypes.CORPSE) &&
                 !$$0.is(ModDamageTypes.CORPSE_EXPLOSION) &&
                 !$$0.is(ModDamageTypes.CORPSE_ARROW)) {

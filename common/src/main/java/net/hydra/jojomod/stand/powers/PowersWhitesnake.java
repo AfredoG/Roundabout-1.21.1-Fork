@@ -446,7 +446,7 @@ public class PowersWhitesnake extends BlockGrabPreset {
         }
         if (autoMode) prepareStandForRemoteControl(stand);
         if (autoMode && self instanceof Player player && player.isUsingItem()
-                && player.getUseItem().isEdible()) {
+                && player.getUseItem().getFoodProperties(player) != null) {
             player.stopUsingItem();
         }
         clearAutoModeTargets();

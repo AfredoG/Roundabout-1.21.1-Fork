@@ -220,7 +220,7 @@ public class RoadRollerEntity extends LivingEntity implements PlayerRideable, ne
     }
 
     @Override
-    public void setSecondsOnFire(int seconds) {
+    public void igniteForTicks(int ticks) {
     }
 
     @Override

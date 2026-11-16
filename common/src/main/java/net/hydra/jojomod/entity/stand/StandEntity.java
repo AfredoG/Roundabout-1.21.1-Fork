@@ -1046,7 +1046,7 @@ public abstract class StandEntity extends Mob implements NoVibrationEntity, net.
 
     @Override
     @javax.annotation.Nullable
-    public Entity changeDimension(ServerLevel $$0) {
+    public Entity changeDimension(net.minecraft.world.level.portal.DimensionTransition $$0) {
         if (this.level() instanceof ServerLevel && !this.isRemoved()) {
 
             ejectPassengers();

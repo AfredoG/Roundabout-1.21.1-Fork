@@ -79,7 +79,7 @@ public abstract class RoundaboutPainting extends HangingEntity {
     }
 
     @Override
-    public void lerpTo(double $$0, double $$1, double $$2, float $$3, float $$4, int $$5, boolean $$6) {
+    public void lerpTo(double $$0, double $$1, double $$2, float $$3, float $$4, int $$5) {
         this.setPos($$0, $$1, $$2);
     }
 

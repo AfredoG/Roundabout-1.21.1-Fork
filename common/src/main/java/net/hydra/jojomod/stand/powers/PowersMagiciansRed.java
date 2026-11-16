@@ -2724,7 +2724,7 @@ public class PowersMagiciansRed extends NewPunchingStand {
         for (Entity value : entities) {
             if (!value.isRemoved() && value instanceof Projectile && !(value instanceof Fireball) && !(value instanceof UnburnableProjectile)
                     && !(value instanceof AbstractArrow aa && ((IAbstractArrowAccess)aa).roundabout$GetPickupItem() != null &&
-                    ((IAbstractArrowAccess)aa).roundabout$GetPickupItem().getItem().canBeDepleted()
+                    ((IAbstractArrowAccess)aa).roundabout$GetPickupItem().getMaxDamage() > 0
                     )
             ){
                 Vec2 lookVec = new Vec2(getLookAtEntityYaw(User, value), getLookAtEntityPitch(User, value));

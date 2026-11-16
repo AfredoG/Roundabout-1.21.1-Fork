@@ -227,7 +227,7 @@ public class RattEntity extends StandEntity {
     }
 
     @Override
-    public @Nullable Entity changeDimension(ServerLevel $$0) {
+    public @Nullable Entity changeDimension(net.minecraft.world.level.portal.DimensionTransition $$0) {
         if (this.getUser() != null) {
             StandUser SU = (StandUser) this.getUser();
             if (SU.roundabout$getStandPowers() instanceof PowersRatt PR) {

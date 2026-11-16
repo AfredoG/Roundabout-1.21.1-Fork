@@ -131,7 +131,7 @@ public class GEBeeEntity extends Bee implements GELifeform {
     protected void registerGoals() {
         super.registerGoals();
         // lobotomize the bee so that it won't try to fight the target pathfinding
-        this.goalSelector.getRunningGoals().forEach(WrappedGoal::stop);
+        this.goalSelector.getAvailableGoals().stream().filter(WrappedGoal::isRunning).forEach(WrappedGoal::stop);
     }
 
     @Override

@@ -3201,7 +3201,7 @@ public class PowersSilverChariot extends NewPunchingStand {
         for (Entity value : entities) {
             if (!value.isRemoved() && value instanceof Projectile && !(value instanceof UnburnableProjectile)
                     && !(value instanceof AbstractArrow aa && ((IAbstractArrowAccess)aa).roundabout$GetPickupItem() != null &&
-                    ((IAbstractArrowAccess)aa).roundabout$GetPickupItem().getItem().canBeDepleted()
+                    ((IAbstractArrowAccess)aa).roundabout$GetPickupItem().getMaxDamage() > 0
             )
             ){
                 Vec2 lookVec = new Vec2(getLookAtEntityYaw(user, value), getLookAtEntityPitch(user, value));

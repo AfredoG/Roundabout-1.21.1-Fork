@@ -107,7 +107,7 @@ public class PHCapsuleEntity extends ThrowableProjectile implements UnburnablePr
     }
 
     @Override
-    public void gameEvent(GameEvent $$0, @Nullable Entity $$1) {
+    public void gameEvent(net.minecraft.core.Holder<GameEvent> $$0, @Nullable Entity $$1) {
     }
 
 

@@ -849,7 +849,7 @@ public abstract class InputEvents implements IInputEvents {
                             ItemStack $$1 = this.player.getItemInHand($$0);
                 if ((((IPlayerEntity)player).roundabout$getDodgeTime() > -1 ||
                                     ((StandUser)player).roundabout$getLeapTicks() > -1) &&
-                                    ($$1.getItem().isEdible()
+                                    ($$1.getFoodProperties(this.player) != null
                                             || ($$1.getItem() instanceof PotionItem))){
                     ci.cancel();
                                 return;
@@ -911,7 +911,7 @@ public abstract class InputEvents implements IInputEvents {
 
                                                 if ((((IPlayerEntity) player).roundabout$getDodgeTime() > -1 ||
                                                         ((StandUser) player).roundabout$getLeapTicks() > -1) &&
-                                                        ($$1.getItem().isEdible()
+                                                        ($$1.getFoodProperties(this.player) != null
                                                                 || ($$1.getItem() instanceof PotionItem))) {
                                                     return;
                                                 }

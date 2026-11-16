@@ -8,7 +8,7 @@
 - Gradle help: успешно.
 - Подготовка исходников и классов Minecraft/NeoForge: успешно.
 - processResources: успешно; проверены метаданные, access transformer, mixin-конфигурации и 141 рецепт.
-- compileJava: НЕУСПЕШНО, 477 ошибок, 18 предупреждений (актуальный полный журнал сохранён в build-errors.txt).
+- compileJava: НЕУСПЕШНО, 420 ошибок, 18 предупреждений (актуальный полный журнал сохранён в build-errors.txt).
 - JDK 21 и Gradle восстановлены; подготовка Minecraft/NeoForge и processResources прошли в новой среде.
 - JAR для установки: отсутствует.
 - Запуск клиента и выделенного сервера полного мода: не выполнен (компиляция не проходит).
@@ -18,12 +18,12 @@
 Список ошибок — build-errors.txt. Ошибки могут быть каскадными; их число не является оценкой процента готовности.
 Текущая проверка выполнена на Azul JDK 21.0.6 и Gradle 8.14.3; зависимости восстановлены заново.
 
-## Категории актуального полного журнала (477 ошибок)
+## Категории актуального полного журнала (420 ошибок)
 
 | Ошибка | Количество |
 |---|---:|
-| cannot find symbol | 255 |
-| method does not override or implement a method from a supertype | 70 |
+| cannot find symbol | 213 |
+| method does not override or implement a method from a supertype | 57 |
 | method isCorrectToolForDrops in class Item cannot be applied to given types; | 9 |
 | incompatible types: ResourceKey<Enchantment> cannot be converted to Holder<Enchantment> | 7 |
 | incompatible types: Reference<SoundEvent> cannot be converted to SoundEvent | 5 |
@@ -463,3 +463,13 @@
 - Семь getUpdateTag передают HolderLookup.Provider далее в сохранение данных. У InvisiBlockEntity восстановление вызывает loadWithComponents с реестрами уровня, а update tag использует ключ OriginalState, который читает loadAdditional. Шесть внешних вызовов collision shape переведены с защищённого метода Block на BlockState.
 - Проверка завершена: JDK 21.0.6/Gradle 8.14.3 и Minecraft/NeoForge восстановлены. processResources прошёл; полная compileJava — **477 ошибок, 18 предупреждений**, было 553/18 (снижение на 76). Актуальный журнал и таблица сохранены. javap по Mojang-mapped Minecraft 1.21.1 подтвердил сигнатуры pathfinding, pick-block, bonemeal, разрушения и registry-aware NBT; тела изменённых методов проверены. git diff --check проходит. Полный мод ещё не запускается.
 - После успешной сборки проверить двери/проволоку/туман при поиске пути, pick-block растений/шахмат/hand block/Oasis, костную муку и Whitesnake, составные статуи/столы/стул в creative/survival, синхронизацию данных блок-сущностей и восстановление скрытых контейнеров.
+
+
+## Контрольная точка — общие API сущностей, эффектов и предметов (16 ноября 2026)
+
+- Группа небольших правок в 38 Java-файлах. Пять проверок прямого урона используют isDirect; четыре обхода целей ИИ сохраняют фильтр WrappedGoal.isRunning поверх getAvailableGoals().stream(), чтобы не останавливать/обрабатывать неактивные цели. Шесть bounding box типов строятся через getDimensions().makeBoundingBox; SCUTE заменён TURTLE_SCUTE в трёх местах.
+- Пять override lerpTo и оба вызова из TS tick перешли на шесть аргументов. Три запрета перехода между измерениями принимают исходный/целевой Level; StandEntity и RattEntity принимают DimensionTransition, сохраняя отзыв стенда, выбрасывание переносимых предметов и очистку. Три запрета игровых событий снарядов используют Holder<GameEvent>.
+- Пять обращений к мгновенным эффектам разыменовывают Holder через value(). Black Sabbath использует igniteForSeconds; Road Roller запрещает igniteForTicks, поскольку igniteForSeconds в 1.21.1 final и делегирует туда. Warding подключается к igniteForTicks(I)V с сохранением условий огня/лавы и surpassesFire; обе новые формы поджога охвачены.
+- Проверки еды с доступным ItemStack/сущностью используют getFoodProperties(entity), включая NeoForge hook, Hex, Whitesnake, уклонение/прыжок и Pearl Jam. Неиспользуемый Shadow Item.isEdible удалён. В Item-only canCombatModeUse сохранена проверка стандартного FOOD и виртуальная диспетчеризация ограничений Ratt/Tusk/Anubis. Проверки типа прочного инструмента используют getMaxDamage()>0, сохраняя защиту также для UNBREAKABLE, как старый Item.canBeDepleted.
+- API и семантика проверены по собранным исходникам Minecraft/NeoForge 21.1.265. Полная compileJava: **420 ошибок, 18 предупреждений**, было 477/18; суммарно от начала пакетов 553 -> 420. Актуальный полный журнал и таблица сохранены. git diff --check проходит. Порт ещё не собирается, запуска клиента/сервера нет.
+- Проверить после успешной сборки: прямые/косвенные атаки, сброс целей GE/мобов, TS-интерполяцию, границы призыва Black Sabbath/D4C, запрет порталов объектов и отзыв стендов, отсутствие событий пузырей, мгновенные эффекты JJF, Warding/Road Roller/Black Sabbath, Hex на полном голоде, автопилот Whitesnake, съедобные стеки с компонентами и защиту инструментов/снарядов с UNBREAKABLE.
