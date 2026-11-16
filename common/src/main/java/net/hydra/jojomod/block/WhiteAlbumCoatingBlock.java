@@ -1,5 +1,7 @@
 package net.hydra.jojomod.block;
 
+import net.minecraft.world.ItemInteractionResult;
+import net.hydra.jojomod.util.BlockInteractionCompat;
 import net.hydra.jojomod.event.powers.StandUser;
 import net.hydra.jojomod.stand.powers.PowersWhiteAlbum;
 import net.hydra.jojomod.util.MainUtil;
@@ -186,6 +188,18 @@ public class WhiteAlbumCoatingBlock
     }
 
     @Override
+    protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos,
+            Player player, InteractionHand hand, BlockHitResult hit) {
+        return BlockInteractionCompat.fromLegacyResult(use(state, level, pos, player, hand, hit));
+    }
+
+    @Override
+    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos,
+            Player player, BlockHitResult hit) {
+        return use(state, level, pos, player, InteractionHand.MAIN_HAND, hit);
+    }
+
+    // Keep the upstream interaction in one shared handler for both phases.
     public InteractionResult use(BlockState state,
                                  Level level,
                                  BlockPos pos,
@@ -224,6 +238,6 @@ public class WhiteAlbumCoatingBlock
 
         }
 
-        return super.use(state, level, pos, player, hand, hit);
+        return super.useWithoutItem(state, level, pos, player, hit);
     }
 }

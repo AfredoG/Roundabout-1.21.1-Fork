@@ -1,5 +1,8 @@
 package net.hydra.jojomod.block;
 
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.ItemInteractionResult;
+import net.hydra.jojomod.util.BlockInteractionCompat;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
@@ -45,6 +48,19 @@ public class KingBedBlock extends BedBlock {
         return !$$0.isClientSide() ? createTickerHelper($$2, ModBlocks.KING_BED_BLOCK_ENTITY, KingBedBlockEntity::tickThis) : null;
     }
 
+    @Override
+    protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos,
+            Player player, InteractionHand hand, BlockHitResult hit) {
+        return BlockInteractionCompat.fromLegacyResult(use(state, level, pos, player, hand, hit));
+    }
+
+    @Override
+    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos,
+            Player player, BlockHitResult hit) {
+        return use(state, level, pos, player, InteractionHand.MAIN_HAND, hit);
+    }
+
+    // Keep the upstream interaction in one shared handler for both phases.
     public InteractionResult use(BlockState $$0, Level $$1, BlockPos $$2, Player $$3, InteractionHand $$4, BlockHitResult $$5) {
         if ($$1.isClientSide) {
             return InteractionResult.CONSUME;

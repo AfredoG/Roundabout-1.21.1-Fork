@@ -1,5 +1,6 @@
 package net.hydra.jojomod.stand.powers;
 
+import net.hydra.jojomod.util.BlockInteractionCompat;
 import net.hydra.jojomod.Roundabout;
 import net.hydra.jojomod.access.IPlayerEntity;
 import net.hydra.jojomod.client.ClientNetworking;
@@ -438,7 +439,7 @@ public class Powers20thCenturyBoy extends NewDashPreset {
                                     new Vec3(targetPos.getX(), targetPos.getY(), targetPos.getZ()), Direction.UP,
                                     targetPos, false);
 
-                            block.use(state, this.getSelf().level(), targetPos, PE, PE.getUsedItemHand(), blockHit);
+                            BlockInteractionCompat.use(state, this.getSelf().level(), targetPos, PE, PE.getUsedItemHand(), blockHit);
                         } else if (block instanceof RedstoneLampBlock lamp) {
                             boolean lit = state.getValue(RedstoneLampBlock.LIT);
                             level.setBlock(targetPos, state.setValue(RedstoneLampBlock.LIT, !lit), 3);

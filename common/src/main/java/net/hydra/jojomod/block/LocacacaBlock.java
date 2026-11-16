@@ -1,5 +1,7 @@
 package net.hydra.jojomod.block;
 
+import net.minecraft.world.ItemInteractionResult;
+import net.hydra.jojomod.util.BlockInteractionCompat;
 import net.hydra.jojomod.item.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
@@ -95,6 +97,18 @@ public class LocacacaBlock extends BushBlock
 
     @SuppressWarnings("deprecation")
     @Override
+    protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos,
+            Player player, InteractionHand hand, BlockHitResult hit) {
+        return BlockInteractionCompat.fromLegacyResult(use(state, level, pos, player, hand, hit));
+    }
+
+    @Override
+    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos,
+            Player player, BlockHitResult hit) {
+        return use(state, level, pos, player, InteractionHand.MAIN_HAND, hit);
+    }
+
+    // Keep the upstream interaction in one shared handler for both phases.
     public InteractionResult use(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult) {
         boolean bl;
         int i = blockState.getValue(AGE);
@@ -111,7 +125,7 @@ public class LocacacaBlock extends BushBlock
             level.gameEvent(GameEvent.BLOCK_CHANGE, blockPos, GameEvent.Context.of(player, blockState2));
             return InteractionResult.sidedSuccess(level.isClientSide);
         }
-        return super.use(blockState, level, blockPos, player, interactionHand, blockHitResult);
+        return super.useWithoutItem(blockState, level, blockPos, player, blockHitResult);
     }
 
     @Override

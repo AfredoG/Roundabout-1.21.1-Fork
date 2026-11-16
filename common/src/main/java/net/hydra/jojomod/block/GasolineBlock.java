@@ -1,5 +1,7 @@
 package net.hydra.jojomod.block;
 
+import net.minecraft.world.ItemInteractionResult;
+import net.hydra.jojomod.util.BlockInteractionCompat;
 import net.hydra.jojomod.Roundabout;
 import net.hydra.jojomod.entity.projectile.MatchEntity;
 import net.hydra.jojomod.event.powers.ModDamageTypes;
@@ -168,12 +170,24 @@ public class GasolineBlock extends Block {
 
     @SuppressWarnings("deprecation")
     @Override
+    protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos,
+            Player player, InteractionHand hand, BlockHitResult hit) {
+        return BlockInteractionCompat.fromLegacyResult(use(state, level, pos, player, hand, hit));
+    }
+
+    @Override
+    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos,
+            Player player, BlockHitResult hit) {
+        return use(state, level, pos, player, InteractionHand.MAIN_HAND, hit);
+    }
+
+    // Keep the upstream interaction in one shared handler for both phases.
     public InteractionResult use(BlockState $$0, Level $$1, BlockPos $$2, Player $$3, InteractionHand $$4, BlockHitResult $$5) {
         ItemStack $$6 = $$3.getItemInHand($$4);
         if (!($$6.is(Items.FLINT_AND_STEEL) && !$$3.getCooldowns().isOnCooldown(Items.FLINT_AND_STEEL))
                 &&
                 !($$6.is(Items.FIRE_CHARGE) && !$$3.getCooldowns().isOnCooldown(Items.FIRE_CHARGE))) {
-            return super.use($$0, $$1, $$2, $$3, $$4, $$5);
+            return super.useWithoutItem($$0, $$1, $$2, $$3, $$5);
         } else {
             if (!$$1.isClientSide) {
                 MainUtil.gasExplode($$0, (ServerLevel) $$1, $$2, 0, 2, 4, MainUtil.gasDamageMultiplier()*14);

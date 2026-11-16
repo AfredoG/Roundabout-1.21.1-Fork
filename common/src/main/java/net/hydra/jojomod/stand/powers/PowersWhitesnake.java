@@ -1,5 +1,6 @@
 package net.hydra.jojomod.stand.powers;
 
+import net.hydra.jojomod.util.BlockInteractionCompat;
 import com.google.common.collect.Lists;
 import net.hydra.jojomod.access.IClientEntity;
 import net.hydra.jojomod.access.IGravityEntity;
@@ -1871,7 +1872,7 @@ public class PowersWhitesnake extends BlockGrabPreset {
         if (state.getBlock() instanceof LeverBlock || state.getBlock() instanceof ButtonBlock
                 || state.getBlock() instanceof DoorBlock || state.getBlock() instanceof TrapDoorBlock
                 || state.getBlock() instanceof FenceGateBlock) {
-            state.getBlock().use(state, self.level(), pos, player, player.getUsedItemHand(), hit);
+            BlockInteractionCompat.use(state, self.level(), pos, player, player.getUsedItemHand(), hit);
             ((StandUser) self).roundabout$tryPower(PowerIndex.NONE, true);
         }
     }
@@ -2252,7 +2253,7 @@ public class PowersWhitesnake extends BlockGrabPreset {
                 ClipContext.Block.OUTLINE, ClipContext.Fluid.ANY, stand));
         if (verified.getType() != HitResult.Type.BLOCK
                 || !verified.getBlockPos().equals(blockPos)) return false;
-        self.level().getBlockState(blockPos).use(self.level(), player, InteractionHand.MAIN_HAND, blockHit);
+        BlockInteractionCompat.use(self.level().getBlockState(blockPos), self.level(), blockPos, player, InteractionHand.MAIN_HAND, blockHit);
         return true;
     }
 

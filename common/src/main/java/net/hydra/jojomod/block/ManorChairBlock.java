@@ -1,5 +1,8 @@
 package net.hydra.jojomod.block;
 
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.ItemInteractionResult;
+import net.hydra.jojomod.util.BlockInteractionCompat;
 import net.hydra.jojomod.access.IGravityEntity;
 import net.hydra.jojomod.access.IPlayerEntity;
 import net.minecraft.core.BlockPos;
@@ -165,6 +168,18 @@ public class ManorChairBlock extends Block implements SimpleWaterloggedBlock {
     }
 
     @Override
+    protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos,
+            Player player, InteractionHand hand, BlockHitResult hit) {
+        return BlockInteractionCompat.fromLegacyResult(use(state, level, pos, player, hand, hit));
+    }
+
+    @Override
+    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos,
+            Player player, BlockHitResult hit) {
+        return use(state, level, pos, player, InteractionHand.MAIN_HAND, hit);
+    }
+
+    // Keep the upstream interaction in one shared handler for both phases.
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         BlockPos targetPos = pos;
         BlockState targetState = state;

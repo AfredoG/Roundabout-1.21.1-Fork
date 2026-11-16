@@ -1,5 +1,8 @@
 package net.hydra.jojomod.block;
 
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.ItemInteractionResult;
+import net.hydra.jojomod.util.BlockInteractionCompat;
 import com.google.common.collect.ImmutableMap;
 import it.unimi.dsi.fastutil.floats.Float2FloatFunction;
 import net.hydra.jojomod.Roundabout;
@@ -35,7 +38,19 @@ public class ChessBoardBlock extends Block implements EntityBlock {
         return new ChessBoardBlockEntity($$0, $$1);
     }
 	
-	@Override
+    @Override
+    protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos,
+            Player player, InteractionHand hand, BlockHitResult hit) {
+        return BlockInteractionCompat.fromLegacyResult(use(state, level, pos, player, hand, hit));
+    }
+
+    @Override
+    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos,
+            Player player, BlockHitResult hit) {
+        return use(state, level, pos, player, InteractionHand.MAIN_HAND, hit);
+    }
+
+    // Keep the upstream interaction in one shared handler for both phases.
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
 		return InteractionResult.SUCCESS;
 	}

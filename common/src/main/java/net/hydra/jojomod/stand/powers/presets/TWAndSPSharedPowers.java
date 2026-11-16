@@ -1,5 +1,6 @@
 package net.hydra.jojomod.stand.powers.presets;
 
+import net.hydra.jojomod.util.BlockInteractionCompat;
 import net.hydra.jojomod.access.IGravityEntity;
 import net.hydra.jojomod.access.ILivingEntityAccess;
 import net.hydra.jojomod.access.IPlayerEntity;
@@ -267,7 +268,7 @@ public class TWAndSPSharedPowers extends BlockGrabPreset{
                                             || (blk instanceof DoorBlock) || (blk instanceof TrapDoorBlock)
                                             || (blk instanceof FenceGateBlock))
                                             && this.getSelf() instanceof Player PE) {
-                                        blk.use(state, this.getSelf().level(), bpos, PE, PE.getUsedItemHand(), blockHit);
+                                        BlockInteractionCompat.use(state, this.getSelf().level(), bpos, PE, PE.getUsedItemHand(), blockHit);
                                         ((StandUser) this.getSelf()).roundabout$tryPower(PowerIndex.NONE, true);
                                         return;
                                     }

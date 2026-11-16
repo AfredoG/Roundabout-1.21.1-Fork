@@ -1,5 +1,6 @@
 package net.hydra.jojomod.entity.projectile;
 
+import net.hydra.jojomod.util.BlockInteractionCompat;
 import net.hydra.jojomod.entity.JJFGunpowderCloudEntity;
 
 import net.hydra.jojomod.entity.ModEntities;
@@ -1553,8 +1554,8 @@ public class JJFProjectileEntity extends ThrowableItemProjectile {
         if (getOwner() instanceof Player player
                 && (state.getBlock() instanceof ButtonBlock
                 || state.getBlock() instanceof LeverBlock)) {
-            state.use(
-                    level(),
+            BlockInteractionCompat.use(
+                    state, level(), pos,
                     player,
                     InteractionHand.MAIN_HAND,
                     result

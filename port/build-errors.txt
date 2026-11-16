@@ -334,16 +334,6 @@ common/src/main/java/net/hydra/jojomod/entity/stand/BlackSabbathEntity.java:2072
                                                               ^
   symbol:   method hasBindingCurse(ItemStack)
   location: class EnchantmentHelper
-common/src/main/java/net/hydra/jojomod/stand/powers/PowersWhitesnake.java:1874: error: cannot find symbol
-            state.getBlock().use(state, self.level(), pos, player, player.getUsedItemHand(), hit);
-                            ^
-  symbol:   method use(BlockState,Level,BlockPos,Player,InteractionHand,BlockHitResult)
-  location: class Block
-common/src/main/java/net/hydra/jojomod/stand/powers/PowersWhitesnake.java:2255: error: cannot find symbol
-        self.level().getBlockState(blockPos).use(self.level(), player, InteractionHand.MAIN_HAND, blockHit);
-                                            ^
-  symbol:   method use(Level,Player,InteractionHand,BlockHitResult)
-  location: class BlockState
 common/src/main/java/net/hydra/jojomod/entity/visages/JojoNPC.java:470: error: method writeInventoryToTag in interface InventoryCarrier cannot be applied to given types;
         this.writeInventoryToTag(p_35481_);
             ^
@@ -760,11 +750,6 @@ common/src/main/java/net/hydra/jojomod/entity/corpses/FallenSpider.java:240: err
                ^
   symbol:   variable MobType
   location: class FallenSpider
-common/src/main/java/net/hydra/jojomod/stand/powers/presets/TWAndSPSharedPowers.java:270: error: cannot find symbol
-                                        blk.use(state, this.getSelf().level(), bpos, PE, PE.getUsedItemHand(), blockHit);
-                                           ^
-  symbol:   method use(BlockState,Level,BlockPos,Player,InteractionHand,BlockHitResult)
-  location: variable blk of type Block
 common/src/main/java/net/hydra/jojomod/stand/powers/PowersTheWorld.java:1337: error: incompatible types: double cannot be converted to LivingEntity
                                         Arrow $$7 = new Arrow(this.getSelf().level(), pos.x, pos.y, pos.z);
                                                                                          ^
@@ -794,11 +779,6 @@ common/src/main/java/net/hydra/jojomod/stand/powers/PowersGoldExperience.java:58
 common/src/main/java/net/hydra/jojomod/stand/powers/PowersStarPlatinum.java:740: error: incompatible types: Reference<SoundEvent> cannot be converted to SoundEvent
                                                             this.getSelf().getZ(), SoundEvents.GENERIC_EXPLODE, this.getSelf().getSoundSource(), 2.0F, 1.0F);
                                                                                               ^
-common/src/main/java/net/hydra/jojomod/stand/powers/Powers20thCenturyBoy.java:441: error: cannot find symbol
-                            block.use(state, this.getSelf().level(), targetPos, PE, PE.getUsedItemHand(), blockHit);
-                                 ^
-  symbol:   method use(BlockState,Level,BlockPos,Player,InteractionHand,BlockHitResult)
-  location: variable block of type Block
 common/src/main/java/net/hydra/jojomod/stand/powers/PowersCalifornia.java:165: error: cannot find symbol
                 CompoundTag tag = invStack.getTag();
                                           ^
@@ -1220,13 +1200,6 @@ common/src/main/java/net/hydra/jojomod/block/ProtectionSavedData.java:20: error:
 common/src/main/java/net/hydra/jojomod/block/ProtectionSavedData.java:74: error: method does not override or implement a method from a supertype
     @Override
     ^
-common/src/main/java/net/hydra/jojomod/block/WhiteAlbumCoatingBlock.java:188: error: method does not override or implement a method from a supertype
-    @Override
-    ^
-common/src/main/java/net/hydra/jojomod/block/WhiteAlbumCoatingBlock.java:227: error: cannot find symbol
-        return super.use(state, level, pos, player, hand, hit);
-                    ^
-  symbol: method use(BlockState,Level,BlockPos,Player,InteractionHand,BlockHitResult)
 common/src/main/java/net/hydra/jojomod/block/ChessPieceBlock.java:33: error: ChessPieceBlock is not abstract and does not override abstract method codec() in BaseEntityBlock
 public class ChessPieceBlock extends BaseEntityBlock {
        ^
@@ -1250,13 +1223,6 @@ public final class HallucinatoryAcidBlock extends BaseEntityBlock implements Sim
 common/src/main/java/net/hydra/jojomod/block/HallucinatoryAcidWallBlock.java:38: error: HallucinatoryAcidWallBlock is not abstract and does not override abstract method codec() in BaseEntityBlock
 public final class HallucinatoryAcidWallBlock extends BaseEntityBlock implements SimpleWaterloggedBlock {
              ^
-common/src/main/java/net/hydra/jojomod/block/GasolineBlock.java:170: error: method does not override or implement a method from a supertype
-    @Override
-    ^
-common/src/main/java/net/hydra/jojomod/block/GasolineBlock.java:176: error: cannot find symbol
-            return super.use($$0, $$1, $$2, $$3, $$4, $$5);
-                        ^
-  symbol: method use(BlockState,Level,BlockPos,Player,InteractionHand,BlockHitResult)
 common/src/main/java/net/hydra/jojomod/block/GoddessStatueBlock.java:35: error: GoddessStatueBlock is not abstract and does not override abstract method codec() in HorizontalDirectionalBlock
 public class GoddessStatueBlock extends HorizontalDirectionalBlock {
        ^
@@ -1269,12 +1235,9 @@ public class StreetWallSignBlock extends HorizontalDirectionalBlock implements S
 common/src/main/java/net/hydra/jojomod/block/MirrorBlock.java:29: error: MirrorBlock is not abstract and does not override abstract method codec() in BaseEntityBlock
 public class MirrorBlock extends BaseEntityBlock implements SimpleWaterloggedBlock {
        ^
-common/src/main/java/net/hydra/jojomod/block/InvisiBlock.java:43: error: InvisiBlock is not abstract and does not override abstract method codec() in BaseEntityBlock
+common/src/main/java/net/hydra/jojomod/block/InvisiBlock.java:45: error: InvisiBlock is not abstract and does not override abstract method codec() in BaseEntityBlock
 public class InvisiBlock extends BaseEntityBlock {
        ^
-common/src/main/java/net/hydra/jojomod/block/InvisiBlock.java:117: error: method does not override or implement a method from a supertype
-    @Override
-    ^
 common/src/main/java/net/hydra/jojomod/block/handBlock/AbstractHandBlock.java:38: error: AbstractHandBlock is not abstract and does not override abstract method codec() in BaseEntityBlock
 public class AbstractHandBlock extends BaseEntityBlock {
        ^
@@ -1293,94 +1256,43 @@ public class StandFireBlock extends BaseEntityBlock {
 common/src/main/java/net/hydra/jojomod/block/StoneMaskBlock.java:40: error: StoneMaskBlock is not abstract and does not override abstract method codec() in HorizontalDirectionalBlock
 public class StoneMaskBlock extends HorizontalDirectionalBlock implements SimpleWaterloggedBlock {
        ^
-common/src/main/java/net/hydra/jojomod/block/BloodyStoneMaskBlock.java:56: error: method does not override or implement a method from a supertype
-    @Override
-    ^
-common/src/main/java/net/hydra/jojomod/block/CoffinBlock.java:52: error: method does not override or implement a method from a supertype
-    @Override
-    ^
-common/src/main/java/net/hydra/jojomod/block/FancyLighterBlock.java:41: error: FancyLighterBlock is not abstract and does not override abstract method codec() in BaseEntityBlock
+common/src/main/java/net/hydra/jojomod/block/FancyLighterBlock.java:43: error: FancyLighterBlock is not abstract and does not override abstract method codec() in BaseEntityBlock
 public class FancyLighterBlock extends BaseEntityBlock implements CancelDataDrivenDropLimits {
        ^
-common/src/main/java/net/hydra/jojomod/block/FancyLighterBlock.java:217: error: method does not override or implement a method from a supertype
-    @Override
-    ^
-common/src/main/java/net/hydra/jojomod/block/FancyLighterBlock.java:248: error: cannot find symbol
+common/src/main/java/net/hydra/jojomod/block/FancyLighterBlock.java:262: error: cannot find symbol
                 CompoundTag compoundtag = stack.getTagElement("UserIdUUID");
                                                ^
   symbol:   method getTagElement(String)
   location: variable stack of type ItemStack
-common/src/main/java/net/hydra/jojomod/block/FancyLighterBlock.java:249: error: cannot find symbol
+common/src/main/java/net/hydra/jojomod/block/FancyLighterBlock.java:263: error: cannot find symbol
                 if (!stack.hasTag()) {
                           ^
   symbol:   method hasTag()
   location: variable stack of type ItemStack
-common/src/main/java/net/hydra/jojomod/block/CultivationPotBlock.java:72: error: method does not override or implement a method from a supertype
-    @Override
-    ^
-common/src/main/java/net/hydra/jojomod/block/MelonParfaitBlock.java:70: error: method does not override or implement a method from a supertype
-    @Override
-    ^
 common/src/main/java/net/hydra/jojomod/block/OasisMudBlock.java:22: error: OasisMudBlock is not abstract and does not override abstract method codec() in BaseEntityBlock
 public class OasisMudBlock extends BaseEntityBlock {
        ^
 common/src/main/java/net/hydra/jojomod/block/PoisonTrailMushroomBlock.java:27: error: PoisonTrailMushroomBlock is not abstract and does not override abstract method codec() in BushBlock
 public class PoisonTrailMushroomBlock extends BushBlock {
        ^
-common/src/main/java/net/hydra/jojomod/block/PlantBlock.java:31: error: PlantBlock is not abstract and does not override abstract method codec() in BushBlock
+common/src/main/java/net/hydra/jojomod/block/PlantBlock.java:33: error: PlantBlock is not abstract and does not override abstract method codec() in BushBlock
 public class PlantBlock
        ^
-common/src/main/java/net/hydra/jojomod/block/PlantBlock.java:77: error: method does not override or implement a method from a supertype
-    @Override
-    ^
-common/src/main/java/net/hydra/jojomod/block/PlantBlock.java:94: error: cannot find symbol
-        return super.use(blockState, level, blockPos, player, interactionHand, blockHitResult);
-                    ^
-  symbol: method use(BlockState,Level,BlockPos,Player,InteractionHand,BlockHitResult)
-common/src/main/java/net/hydra/jojomod/block/ChessBoardBlock.java:38: error: method does not override or implement a method from a supertype
-	@Override
-	^
-common/src/main/java/net/hydra/jojomod/block/ManorTableBlock.java:30: error: ManorTableBlock is not abstract and does not override abstract method codec() in CrossCollisionBlock
+common/src/main/java/net/hydra/jojomod/block/ManorTableBlock.java:32: error: ManorTableBlock is not abstract and does not override abstract method codec() in CrossCollisionBlock
 public class ManorTableBlock extends CrossCollisionBlock {
        ^
-common/src/main/java/net/hydra/jojomod/block/ManorTableBlock.java:92: error: method does not override or implement a method from a supertype
-    @Override
-    ^
-common/src/main/java/net/hydra/jojomod/block/LocacacaBlock.java:34: error: LocacacaBlock is not abstract and does not override abstract method codec() in BushBlock
+common/src/main/java/net/hydra/jojomod/block/LocacacaBlock.java:36: error: LocacacaBlock is not abstract and does not override abstract method codec() in BushBlock
 public class LocacacaBlock extends BushBlock
        ^
-common/src/main/java/net/hydra/jojomod/block/LocacacaBlock.java:97: error: method does not override or implement a method from a supertype
-    @Override
-    ^
-common/src/main/java/net/hydra/jojomod/block/LocacacaBlock.java:114: error: cannot find symbol
-        return super.use(blockState, level, blockPos, player, interactionHand, blockHitResult);
-                    ^
-  symbol: method use(BlockState,Level,BlockPos,Player,InteractionHand,BlockHitResult)
 common/src/main/java/net/hydra/jojomod/block/AjaOreBlock.java:17: error: constructor DropExperienceBlock in class DropExperienceBlock cannot be applied to given types;
         super($$0);
         ^
   required: IntProvider,Properties
   found:    Properties
   reason: actual and formal argument lists differ in length
-common/src/main/java/net/hydra/jojomod/block/GamblingTableBlock.java:33: error: GamblingTableBlock is not abstract and does not override abstract method codec() in HorizontalDirectionalBlock
+common/src/main/java/net/hydra/jojomod/block/GamblingTableBlock.java:35: error: GamblingTableBlock is not abstract and does not override abstract method codec() in HorizontalDirectionalBlock
 public class GamblingTableBlock extends HorizontalDirectionalBlock implements EntityBlock {
        ^
-common/src/main/java/net/hydra/jojomod/block/GamblingTableBlock.java:130: error: method does not override or implement a method from a supertype
-    @Override
-    ^
-common/src/main/java/net/hydra/jojomod/block/FleshBlock.java:180: error: method does not override or implement a method from a supertype
-    @Override
-    ^
-common/src/main/java/net/hydra/jojomod/block/FrozenBlock.java:33: error: method does not override or implement a method from a supertype
-    @Override
-    ^
-common/src/main/java/net/hydra/jojomod/block/FrozenBlock.java:97: error: cannot find symbol
-        return super.use(state, level, pos, player, hand, hit);
-                    ^
-  symbol: method use(BlockState,Level,BlockPos,Player,InteractionHand,BlockHitResult)
-common/src/main/java/net/hydra/jojomod/block/ManorChairBlock.java:167: error: method does not override or implement a method from a supertype
-    @Override
-    ^
 common/src/main/java/net/hydra/jojomod/block/ClimbingWireBlock.java:25: error: ClimbingWireBlock is not abstract and does not override abstract method codec() in HorizontalDirectionalBlock
 public class ClimbingWireBlock extends HorizontalDirectionalBlock {
        ^
@@ -1499,28 +1411,23 @@ common/src/main/java/net/hydra/jojomod/entity/projectile/ThrownObjectEntity.java
   required: ItemStack,SoundSource
   found:    SoundSource
   reason: actual and formal argument lists differ in length
-common/src/main/java/net/hydra/jojomod/entity/projectile/JJFProjectileEntity.java:113: error: method does not override or implement a method from a supertype
+common/src/main/java/net/hydra/jojomod/entity/projectile/JJFProjectileEntity.java:114: error: method does not override or implement a method from a supertype
     @Override
     ^
-common/src/main/java/net/hydra/jojomod/entity/projectile/JJFProjectileEntity.java:118: error: method ignoreExplosion in class Entity cannot be applied to given types;
+common/src/main/java/net/hydra/jojomod/entity/projectile/JJFProjectileEntity.java:119: error: method ignoreExplosion in class Entity cannot be applied to given types;
         return super.ignoreExplosion();
                     ^
   required: Explosion
   found:    no arguments
   reason: actual and formal argument lists differ in length
-common/src/main/java/net/hydra/jojomod/entity/projectile/JJFProjectileEntity.java:1290: error: incompatible types: ParticleType<ColorParticleOption> cannot be converted to ParticleOptions
+common/src/main/java/net/hydra/jojomod/entity/projectile/JJFProjectileEntity.java:1291: error: incompatible types: ParticleType<ColorParticleOption> cannot be converted to ParticleOptions
         cloud.setParticle(ParticleTypes.ENTITY_EFFECT);
                                        ^
-common/src/main/java/net/hydra/jojomod/entity/projectile/JJFProjectileEntity.java:1452: error: cannot find symbol
+common/src/main/java/net/hydra/jojomod/entity/projectile/JJFProjectileEntity.java:1453: error: cannot find symbol
         EntityType<?> type = egg.getType(stack.getTag());
                                               ^
   symbol:   method getTag()
   location: variable stack of type ItemStack
-common/src/main/java/net/hydra/jojomod/entity/projectile/JJFProjectileEntity.java:1556: error: cannot find symbol
-            state.use(
-                 ^
-  symbol:   method use(Level,Player,InteractionHand,BlockHitResult)
-  location: variable state of type BlockState
 common/src/main/java/net/hydra/jojomod/entity/BombPlantedArrow.java:26: error: incompatible types: double cannot be converted to LivingEntity
         super($$0, $$1, $$2, $$3);
                    ^
@@ -1949,6 +1856,6 @@ Note: Recompile with -Xlint:deprecation for details.
 Note: Some input files use unchecked or unsafe operations.
 Note: Recompile with -Xlint:unchecked for details.
 Note: Some messages have been simplified; recompile with -Xdiags:verbose to get full output
-420 errors
+394 errors
 18 warnings
 
