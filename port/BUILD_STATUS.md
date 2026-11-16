@@ -8,7 +8,7 @@
 - Gradle help: успешно.
 - Подготовка исходников и классов Minecraft/NeoForge: успешно.
 - processResources: успешно; проверены метаданные, access transformer, mixin-конфигурации и 141 рецепт.
-- compileJava: НЕУСПЕШНО, 553 ошибок, 18 предупреждений (актуальный полный журнал сохранён в build-errors.txt).
+- compileJava: НЕУСПЕШНО, 477 ошибок, 18 предупреждений (актуальный полный журнал сохранён в build-errors.txt).
 - JDK 21 и Gradle восстановлены; подготовка Minecraft/NeoForge и processResources прошли в новой среде.
 - JAR для установки: отсутствует.
 - Запуск клиента и выделенного сервера полного мода: не выполнен (компиляция не проходит).
@@ -18,25 +18,25 @@
 Список ошибок — build-errors.txt. Ошибки могут быть каскадными; их число не является оценкой процента готовности.
 Текущая проверка выполнена на Azul JDK 21.0.6 и Gradle 8.14.3; зависимости восстановлены заново.
 
-## Категории актуального полного журнала (553 ошибок)
+## Категории актуального полного журнала (477 ошибок)
 
 | Ошибка | Количество |
 |---|---:|
-| cannot find symbol | 257 |
-| method does not override or implement a method from a supertype | 113 |
+| cannot find symbol | 255 |
+| method does not override or implement a method from a supertype | 70 |
 | method isCorrectToolForDrops in class Item cannot be applied to given types; | 9 |
 | incompatible types: ResourceKey<Enchantment> cannot be converted to Holder<Enchantment> | 7 |
-| isCollisionShapeFullBlock(BlockState,BlockGetter,BlockPos) has protected access in BlockBehaviour | 6 |
 | incompatible types: Reference<SoundEvent> cannot be converted to SoundEvent | 5 |
-| incompatible types: BlockGetter cannot be converted to LevelReader | 5 |
 | incompatible types: EquipmentSlot cannot be converted to ItemStack | 5 |
 | method createArrow in class ArrowItem cannot be applied to given types; | 4 |
 | method getDamage in interface IItemExtension cannot be applied to given types; | 4 |
 | method getMobArrow in class ProjectileUtil cannot be applied to given types; | 4 |
 | incompatible types: double cannot be converted to LivingEntity | 4 |
-| method saveWithoutMetadata in class BlockEntity cannot be applied to given types; | 3 |
-| incompatible types: Attribute cannot be converted to Holder<Attribute> | 3 |
 | method finalizeSpawn in class AgeableMob cannot be applied to given types; | 3 |
+| incompatible types: Attribute cannot be converted to Holder<Attribute> | 3 |
+| incompatible types: CompoundTag cannot be converted to CustomData | 3 |
+| no suitable constructor found for SwordItem(Tier,int,float,Properties) | 3 |
+| incompatible types: RecipeHolder<CraftingRecipe> cannot be converted to CraftingRecipe | 2 |
 
 
 ## Что требуется закончить
@@ -461,5 +461,5 @@
 - 23 реализации isPathfindable переведены на BlockState/PathComputationType; условия AIR/LAND/WATER, OPEN/IN_FOG и вызов super у BarbedWireBundle сохранены. Учтены также старые методы без @Override, которые не попадали в журнал ошибок. Для перенесённых override добавлены отсутствовавшие аннотации, чтобы будущий дрейф API обнаруживался компилятором.
 - Девять getCloneItemStack принимают LevelReader; три isValidBonemealTarget и вызов Whitesnake больше не используют удалённый флаг стороны. Восемь playerWillDestroy возвращают результат super после исходной логики разрушения частей/контейнера/эффектов. Ничего не заменялось заглушками.
 - Семь getUpdateTag передают HolderLookup.Provider далее в сохранение данных. У InvisiBlockEntity восстановление вызывает loadWithComponents с реестрами уровня, а update tag использует ключ OriginalState, который читает loadAdditional. Шесть внешних вызовов collision shape переведены с защищённого метода Block на BlockState.
-- Это промежуточное сохранение исходников: Gradle/JDK и Minecraft/NeoForge восстанавливаются заново, новый журнал компиляции пока не получен. Сверены миграционный справочник NeoForge и тела всех изменённых методов; git diff --check проходит. Следующий checkpoint обязан записать результат полной compileJava и проверку сигнатур 1.21.1.
+- Проверка завершена: JDK 21.0.6/Gradle 8.14.3 и Minecraft/NeoForge восстановлены. processResources прошёл; полная compileJava — **477 ошибок, 18 предупреждений**, было 553/18 (снижение на 76). Актуальный журнал и таблица сохранены. javap по Mojang-mapped Minecraft 1.21.1 подтвердил сигнатуры pathfinding, pick-block, bonemeal, разрушения и registry-aware NBT; тела изменённых методов проверены. git diff --check проходит. Полный мод ещё не запускается.
 - После успешной сборки проверить двери/проволоку/туман при поиске пути, pick-block растений/шахмат/hand block/Oasis, костную муку и Whitesnake, составные статуи/столы/стул в creative/survival, синхронизацию данных блок-сущностей и восстановление скрытых контейнеров.
