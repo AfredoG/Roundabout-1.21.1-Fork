@@ -350,7 +350,7 @@ public class PowersOasis extends NewDashPreset {
                     BlockPos blockPos = packetBlockPos.offset(x, y, z);
                     BlockState blockState = this.self.level().getBlockState(blockPos);
 
-                    if (blockState.getBlock().isCollisionShapeFullBlock(blockState,this.self.level(),packetBlockPos)
+                    if (blockState.isCollisionShapeFullBlock(this.self.level(),packetBlockPos)
                             && !(blockState.getBlock() instanceof OasisMudBlock)) {
 
                         if (this.self.level() instanceof ServerLevel serverLevel) {
@@ -496,7 +496,7 @@ public class PowersOasis extends NewDashPreset {
 
 
                         if (!MainUtil.isBlockBlacklisted(blockState)
-                                && blockState.getBlock().isCollisionShapeFullBlock(blockState,this.self.level(),packetBlockPos)
+                                && blockState.isCollisionShapeFullBlock(this.self.level(),packetBlockPos)
                                 && blockState.getBlock().defaultDestroyTime() >= 0) {
 
                             if (blockState.hasProperty(BlockStateProperties.SNOWY)) {

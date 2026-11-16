@@ -1415,7 +1415,7 @@ public class PowersWhitesnake extends BlockGrabPreset {
         if (origin.distanceToSqr(Vec3.atCenterOf(pos)) > 4.0D) return false;
         BlockState state = self.level().getBlockState(pos);
         if (!(state.getBlock() instanceof CropBlock growable)
-                || !growable.isValidBonemealTarget(self.level(), pos, state, false)) return false;
+                || !growable.isValidBonemealTarget(self.level(), pos, state)) return false;
         if (self.level() instanceof ServerLevel) {
             timeSparkCropPos = pos.immutable();
             timeSparkCropTicks = 60;

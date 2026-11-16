@@ -104,13 +104,14 @@ public class AbstractHandBlock extends BaseEntityBlock {
         return this.type;
     }
 
-    public boolean isPathfindable(BlockState p_48750_, BlockGetter p_48751_, BlockPos p_48752_, PathComputationType p_48753_) {
+    @Override
+    public boolean isPathfindable(BlockState p_48750_, PathComputationType p_48753_) {
         return false;
     }
 
 
     @Override
-    public ItemStack getCloneItemStack(BlockGetter level, BlockPos pos, BlockState state) {
+    public ItemStack getCloneItemStack(net.minecraft.world.level.LevelReader level, BlockPos pos, BlockState state) {
         if (level.getBlockEntity(pos) instanceof HandBlockEntity $$5) {
             ItemStack stack = $$5.getStoredStack();
             if (stack != null){

@@ -257,8 +257,7 @@ public class PowersAchtungBaby extends NewDashPreset {
                     BlockState state = this.getSelf().level().getBlockState(pos);
                     if (stack.getItem() instanceof BlockItem blockItem) {
                         if (MainUtil.getIsGamemodeApproriateForGrief(this.self)) {
-                            if (!blockItem.getBlock().isCollisionShapeFullBlock(
-                                    blockItem.getBlock().defaultBlockState(),this.self.level(),pos)){
+                            if (!blockItem.getBlock().defaultBlockState().isCollisionShapeFullBlock(this.self.level(),pos)){
                                 return false;
                             }
                             if(this.getSelf() instanceof Player plr) {
@@ -376,7 +375,7 @@ public class PowersAchtungBaby extends NewDashPreset {
                                 BlockState oldState = this.self.level().getBlockState(targetPos);
 
                                 // Example: Replace dirt with glowstone
-                                if (!oldState.isAir() && !(oldState.getBlock() instanceof RoundaboutAttackBlock) && !oldState.is(Blocks.OBSIDIAN) && oldState.getBlock().isCollisionShapeFullBlock(oldState, this.self.level(), targetPos)
+                                if (!oldState.isAir() && !(oldState.getBlock() instanceof RoundaboutAttackBlock) && !oldState.is(Blocks.OBSIDIAN) && oldState.isCollisionShapeFullBlock(this.self.level(), targetPos)
                                         && this.self.level().getBlockEntity(targetPos) == null && !MainUtil.confirmIsOre(oldState)) {
                                     BlockState replaced = sl.getBlockState(targetPos);
                                     BlockEntity replacedEntity = sl.getBlockEntity(targetPos);

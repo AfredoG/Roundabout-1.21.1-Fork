@@ -35,8 +35,8 @@ public class ChessPieceBlockEntity extends BlockEntity {
         return ModBlocks.CHESS_PIECE_BLOCK_ENTITY;
     }
     @Override
-    public CompoundTag getUpdateTag() {
-        return saveWithoutMetadata();
+    public CompoundTag getUpdateTag(net.minecraft.core.HolderLookup.Provider registries) {
+        return saveWithoutMetadata(registries);
     }
     public void popOutRecord() {
         if (this.level == null || this.level.isClientSide) {

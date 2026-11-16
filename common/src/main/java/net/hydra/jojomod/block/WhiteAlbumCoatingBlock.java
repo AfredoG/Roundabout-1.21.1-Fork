@@ -76,7 +76,7 @@ public class WhiteAlbumCoatingBlock
     }
 
     @Override
-    public boolean isPathfindable(BlockState $$0, BlockGetter $$1, BlockPos $$2, PathComputationType $$3) {
+    public boolean isPathfindable(BlockState $$0, PathComputationType $$3) {
         return true;
     }
 
@@ -181,7 +181,7 @@ public class WhiteAlbumCoatingBlock
     }
 
     @Override
-    public ItemStack getCloneItemStack(BlockGetter blockGetter, BlockPos blockPos, BlockState blockState) {
+    public ItemStack getCloneItemStack(net.minecraft.world.level.LevelReader blockGetter, BlockPos blockPos, BlockState blockState) {
         return ItemStack.EMPTY;
     }
 

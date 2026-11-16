@@ -49,7 +49,7 @@ public class CultivationPotBlock extends Block implements BonemealableBlock {
         return blockState.getValue(AGE) < 1;
     }
     @Override
-    public boolean isValidBonemealTarget(LevelReader levelReader, BlockPos blockPos, BlockState blockState, boolean bl) {
+    public boolean isValidBonemealTarget(LevelReader levelReader, BlockPos blockPos, BlockState blockState) {
         return blockState.getValue(AGE) < 1 && !blockState.getBlock().equals(ModBlocks.CULTIVATION_POT);
     }
     @Override
@@ -172,7 +172,7 @@ public class CultivationPotBlock extends Block implements BonemealableBlock {
     }
 
     @Override
-    public ItemStack getCloneItemStack(BlockGetter $$0, BlockPos $$1, BlockState $$2) {
+    public ItemStack getCloneItemStack(net.minecraft.world.level.LevelReader $$0, BlockPos $$1, BlockState $$2) {
         return this.isEmpty() ? super.getCloneItemStack($$0, $$1, $$2) : new ItemStack(this.content);
     }
 
@@ -182,7 +182,7 @@ public class CultivationPotBlock extends Block implements BonemealableBlock {
     }
 
     @Override
-    public boolean isPathfindable(BlockState $$0, BlockGetter $$1, BlockPos $$2, PathComputationType $$3) {
+    public boolean isPathfindable(BlockState $$0, PathComputationType $$3) {
         return false;
     }
 }

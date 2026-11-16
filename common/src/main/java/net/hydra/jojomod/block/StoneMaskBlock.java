@@ -207,7 +207,7 @@ public class StoneMaskBlock extends HorizontalDirectionalBlock implements Simple
 
     @SuppressWarnings("deprecation")
     @Override
-    public boolean isPathfindable(BlockState $$0, BlockGetter $$1, BlockPos $$2, PathComputationType $$3) {
+    public boolean isPathfindable(BlockState $$0, PathComputationType $$3) {
         return true;
     }
     @Override

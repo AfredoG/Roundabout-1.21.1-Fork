@@ -59,7 +59,7 @@ public class FogBlock extends Block {
     }
 
     @Override
-    public boolean isPathfindable(BlockState $$0, BlockGetter $$1, BlockPos $$2, PathComputationType $$3) {
+    public boolean isPathfindable(BlockState $$0, PathComputationType $$3) {
         return !($$0.getValue(IN_FOG));
     }
     @Override

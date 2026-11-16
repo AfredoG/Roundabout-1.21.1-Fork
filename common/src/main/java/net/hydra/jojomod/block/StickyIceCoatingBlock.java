@@ -41,7 +41,7 @@ public class StickyIceCoatingBlock
     }
 
     @Override
-    public boolean isPathfindable(BlockState $$0, BlockGetter $$1, BlockPos $$2, PathComputationType $$3) {
+    public boolean isPathfindable(BlockState $$0, PathComputationType $$3) {
         return true;
     }
     public void entityInside(BlockState $$0, Level $$1, BlockPos $$2, Entity $$3) {

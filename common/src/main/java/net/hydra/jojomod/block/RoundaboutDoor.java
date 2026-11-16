@@ -91,12 +91,13 @@ public class RoundaboutDoor extends Block {
         }
     }
 
-    public void playerWillDestroy(Level $$0, BlockPos $$1, BlockState $$2, Player $$3) {
+    @Override
+    public BlockState playerWillDestroy(Level $$0, BlockPos $$1, BlockState $$2, Player $$3) {
         if (!$$0.isClientSide && $$3.isCreative()) {
             preventCreativeDropFromBottomPart($$0, $$1, $$2, $$3);
         }
 
-        super.playerWillDestroy($$0, $$1, $$2, $$3);
+        return super.playerWillDestroy($$0, $$1, $$2, $$3);
     }
     protected static void preventCreativeDropFromBottomPart(Level $$0, BlockPos $$1, BlockState $$2, Player $$3) {
         DoubleBlockHalf $$4 = $$2.getValue(HALF);
@@ -111,7 +112,8 @@ public class RoundaboutDoor extends Block {
         }
     }
 
-    public boolean isPathfindable(BlockState $$0, BlockGetter $$1, BlockPos $$2, PathComputationType $$3) {
+    @Override
+    public boolean isPathfindable(BlockState $$0, PathComputationType $$3) {
         switch ($$3) {
             case LAND -> {
                 return (Boolean)$$0.getValue(OPEN);

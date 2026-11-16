@@ -331,8 +331,8 @@ public class GamblingTableBlockEntity extends BlockEntity implements Container, 
     // packet syncs
 
     @Override
-    public CompoundTag getUpdateTag() {
-        return saveWithoutMetadata();
+    public CompoundTag getUpdateTag(net.minecraft.core.HolderLookup.Provider registries) {
+        return saveWithoutMetadata(registries);
     }
 
     @Override

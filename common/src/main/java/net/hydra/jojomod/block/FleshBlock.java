@@ -55,7 +55,7 @@ public class FleshBlock
     }
 
     @Override
-    public boolean isPathfindable(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, PathComputationType pathComputationType) {
+    public boolean isPathfindable(BlockState blockState, PathComputationType pathComputationType) {
         return switch (pathComputationType) {
             case LAND -> true;
             case WATER, AIR -> false;

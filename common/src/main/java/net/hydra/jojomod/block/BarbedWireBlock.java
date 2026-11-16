@@ -146,7 +146,7 @@ public class BarbedWireBlock extends RotatedPillarBlock
 
     @SuppressWarnings("deprecation")
     @Override
-    public boolean isPathfindable(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, PathComputationType pathComputationType) {
+    public boolean isPathfindable(BlockState blockState, PathComputationType pathComputationType) {
         return true;
     }
 

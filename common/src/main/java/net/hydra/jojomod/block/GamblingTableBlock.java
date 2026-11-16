@@ -158,7 +158,7 @@ public class GamblingTableBlock extends HorizontalDirectionalBlock implements En
     }
 
     @Override
-    public void playerWillDestroy(Level level, BlockPos pos, BlockState state, Player player) {
+    public BlockState playerWillDestroy(Level level, BlockPos pos, BlockState state, Player player) {
         if (!level.isClientSide() && player.isCreative()) {
             Direction facing = state.getValue(FACING);
             GamblingTablePart part = state.getValue(PART);
@@ -179,7 +179,7 @@ public class GamblingTableBlock extends HorizontalDirectionalBlock implements En
                 }
             }
         }
-        super.playerWillDestroy(level, pos, state, player);
+        return super.playerWillDestroy(level, pos, state, player);
     }
 
     @Override

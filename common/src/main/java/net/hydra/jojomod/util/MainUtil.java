@@ -4842,7 +4842,7 @@ public class MainUtil {
         return !MainUtil.isBlockBlacklisted(state)
                 && (!(standPower instanceof BlockGrabPreset BGP)
                         || blockPos.distSqr(user.getOnPos()) <= BGP.getGrabRange())
-                && state.getBlock().isCollisionShapeFullBlock(state, user.level(), blockPos)
+                && state.isCollisionShapeFullBlock(user.level(), blockPos)
                 && !state.is(Blocks.REINFORCED_DEEPSLATE)
                 && !(state.getBlock() instanceof InfestedBlock)
                 && !user.hasEffect(MobEffects.DIG_SLOWDOWN)

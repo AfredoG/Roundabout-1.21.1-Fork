@@ -125,7 +125,7 @@ public class ClimbingWireBlock extends HorizontalDirectionalBlock {
         }
 
     @Override
-    public boolean isPathfindable(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, PathComputationType pathComputationType) {
+    public boolean isPathfindable(BlockState blockState, PathComputationType pathComputationType) {
         if (Objects.requireNonNull(pathComputationType) == PathComputationType.LAND) {
             return blockState.getValue(OPEN);
         }

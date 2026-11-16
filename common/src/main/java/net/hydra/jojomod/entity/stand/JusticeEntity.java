@@ -249,7 +249,7 @@ public class JusticeEntity extends FollowingStandEntity {
     @SuppressWarnings("deprecation")
     public boolean getFullBlock(BlockState bs, BlockPos bp){
         Block blk = bs.getBlock();
-        return (bs.isSolid() && (blk.isCollisionShapeFullBlock(bs,this.level(),bp) ||
+        return (bs.isSolid() && (bs.isCollisionShapeFullBlock(this.level(),bp) ||
                 (blk instanceof SlabBlock ||
                         blk instanceof StairBlock)));
 

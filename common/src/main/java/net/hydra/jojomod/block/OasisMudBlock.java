@@ -98,7 +98,7 @@ public class OasisMudBlock extends BaseEntityBlock {
     }
 
     @Override
-    public ItemStack getCloneItemStack(BlockGetter level, BlockPos blockPos, BlockState blockState) {
+    public ItemStack getCloneItemStack(net.minecraft.world.level.LevelReader level, BlockPos blockPos, BlockState blockState) {
         BlockState copiedBlockState = getCopiedBlockState(blockState, level, blockPos);
 
         if (copiedBlockState != null) {
@@ -110,7 +110,7 @@ public class OasisMudBlock extends BaseEntityBlock {
 
 /*
     @Override
-    public boolean isPathfindable(BlockState state, BlockGetter level, BlockPos pos, PathComputationType type) {
+    public boolean isPathfindable(BlockState state, PathComputationType type) {
         return true;
     }
 

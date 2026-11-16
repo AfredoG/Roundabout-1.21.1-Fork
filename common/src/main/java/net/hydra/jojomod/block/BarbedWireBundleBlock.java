@@ -104,7 +104,7 @@ public class BarbedWireBundleBlock extends Block {
 
     @SuppressWarnings("deprecation")
     @Override
-    public boolean isPathfindable(BlockState $$0, BlockGetter $$1, BlockPos $$2, PathComputationType $$3) {
-        return $$3 == PathComputationType.AIR && !this.hasCollision ? true : super.isPathfindable($$0, $$1, $$2, $$3);
+    public boolean isPathfindable(BlockState $$0, PathComputationType $$3) {
+        return $$3 == PathComputationType.AIR && !this.hasCollision ? true : super.isPathfindable($$0, $$3);
     }
 }

@@ -59,7 +59,7 @@ public class StreetSignBlock extends HorizontalDirectionalBlock implements Cance
 
 
     @Override
-    public void playerWillDestroy(Level $$0, BlockPos $$1, BlockState $$2, Player $$3) {
+    public BlockState playerWillDestroy(Level $$0, BlockPos $$1, BlockState $$2, Player $$3) {
         if (!$$0.isClientSide && $$3.isCreative()) {
             StreetSignPart $$4 = $$2.getValue(PART);
             if ($$4 == StreetSignPart.BOTTOM) {
@@ -80,7 +80,7 @@ public class StreetSignBlock extends HorizontalDirectionalBlock implements Cance
             }
         }
 
-        super.playerWillDestroy($$0, $$1, $$2, $$3);
+        return super.playerWillDestroy($$0, $$1, $$2, $$3);
     }
 
 
@@ -172,7 +172,7 @@ public class StreetSignBlock extends HorizontalDirectionalBlock implements Cance
 
     @SuppressWarnings("deprecation")
     @Override
-    public boolean isPathfindable(BlockState $$0, BlockGetter $$1, BlockPos $$2, PathComputationType $$3) {
+    public boolean isPathfindable(BlockState $$0, PathComputationType $$3) {
         return false;
     }
 

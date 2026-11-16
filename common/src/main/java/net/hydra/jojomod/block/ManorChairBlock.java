@@ -96,7 +96,7 @@ public class ManorChairBlock extends Block implements SimpleWaterloggedBlock {
     }
 
     @Override
-    public void playerWillDestroy(Level level, BlockPos pos, BlockState state, Player player) {
+    public BlockState playerWillDestroy(Level level, BlockPos pos, BlockState state, Player player) {
         DoubleBlockHalf half = state.getValue(HALF);
         BlockPos otherPos = (half == DoubleBlockHalf.LOWER) ? pos.above() : pos.below();
         BlockState otherState = level.getBlockState(otherPos);
@@ -105,7 +105,7 @@ public class ManorChairBlock extends Block implements SimpleWaterloggedBlock {
             level.destroyBlock(otherPos, !player.isCreative());
         }
 
-        super.playerWillDestroy(level, pos, state, player);
+        return super.playerWillDestroy(level, pos, state, player);
     }
 
 

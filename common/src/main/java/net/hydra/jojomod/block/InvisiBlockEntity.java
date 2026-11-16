@@ -62,7 +62,7 @@ public class InvisiBlockEntity extends BlockEntity {
             if (originalTag != null) {
                 BlockEntity restored = level.getBlockEntity(worldPosition);
                 if (restored != null) {
-                    restored.load(originalTag);
+                    restored.loadWithComponents(originalTag, level.registryAccess());
                 }
             }
             restoreParticles();
@@ -134,7 +134,7 @@ public class InvisiBlockEntity extends BlockEntity {
                     BlockEntity restored = level.getBlockEntity(worldPosition);
                     level.scheduleTick(worldPosition, originalState.getBlock(), 1);
                     if (restored != null) {
-                        restored.load(originalTag);
+                        restored.loadWithComponents(originalTag, level.registryAccess());
                     }
                 }
             }
@@ -145,9 +145,9 @@ public class InvisiBlockEntity extends BlockEntity {
     }
 
     @Override
-    public CompoundTag getUpdateTag() {
-        CompoundTag tag = super.getUpdateTag();
-        tag.put("stored_state", NbtUtils.writeBlockState(this.originalState));
+    public CompoundTag getUpdateTag(net.minecraft.core.HolderLookup.Provider registries) {
+        CompoundTag tag = super.getUpdateTag(registries);
+        tag.put("OriginalState", NbtUtils.writeBlockState(this.originalState));
         return tag;
     }
 

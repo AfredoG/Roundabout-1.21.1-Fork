@@ -182,12 +182,12 @@ public class InvisiBlock extends BaseEntityBlock {
     }
 
     @Override
-    public void playerWillDestroy(Level $$0, BlockPos $$1, BlockState $$2, Player $$3) {
+    public BlockState playerWillDestroy(Level $$0, BlockPos $$1, BlockState $$2, Player $$3) {
         if (!$$0.isClientSide() && !$$3.isCreative() && $$2.getValue(UNSTABLE)) {
             explode($$0, $$1);
         }
 
-        super.playerWillDestroy($$0, $$1, $$2, $$3);
+        return super.playerWillDestroy($$0, $$1, $$2, $$3);
     }
 
     @Override

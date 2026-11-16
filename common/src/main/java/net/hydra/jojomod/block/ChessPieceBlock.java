@@ -69,7 +69,7 @@ public class ChessPieceBlock extends BaseEntityBlock {
     }
 
     @Override
-    public ItemStack getCloneItemStack(BlockGetter level, BlockPos pos, BlockState state) {
+    public ItemStack getCloneItemStack(net.minecraft.world.level.LevelReader level, BlockPos pos, BlockState state) {
         if (level.getBlockEntity(pos) instanceof ChessPieceBlockEntity $$5) {
             ItemStack stack = $$5.getStoredStack();
             if (stack != null){

@@ -99,7 +99,7 @@ public class WhiteAlbumIceWallBlock
     }
 
     @Override
-    public ItemStack getCloneItemStack(BlockGetter blockGetter, BlockPos blockPos, BlockState blockState) {
+    public ItemStack getCloneItemStack(net.minecraft.world.level.LevelReader blockGetter, BlockPos blockPos, BlockState blockState) {
         return ItemStack.EMPTY;
     }
 }

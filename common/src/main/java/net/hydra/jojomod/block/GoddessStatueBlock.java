@@ -61,7 +61,7 @@ public class GoddessStatueBlock extends HorizontalDirectionalBlock {
     }
 
     @Override
-    public void playerWillDestroy(Level $$0, BlockPos $$1, BlockState $$2, Player $$3) {
+    public BlockState playerWillDestroy(Level $$0, BlockPos $$1, BlockState $$2, Player $$3) {
         if (!$$0.isClientSide && $$3.isCreative()) {
             GoddessStatuePart $$4 = $$2.getValue(PART);
             if ($$4 == GoddessStatuePart.BOTTOM) {
@@ -111,7 +111,7 @@ public class GoddessStatueBlock extends HorizontalDirectionalBlock {
             }
         }
 
-        super.playerWillDestroy($$0, $$1, $$2, $$3);
+        return super.playerWillDestroy($$0, $$1, $$2, $$3);
     }
 
 
@@ -188,7 +188,7 @@ public class GoddessStatueBlock extends HorizontalDirectionalBlock {
 
     @SuppressWarnings("deprecation")
     @Override
-    public boolean isPathfindable(BlockState $$0, BlockGetter $$1, BlockPos $$2, PathComputationType $$3) {
+    public boolean isPathfindable(BlockState $$0, PathComputationType $$3) {
         return false;
     }
 

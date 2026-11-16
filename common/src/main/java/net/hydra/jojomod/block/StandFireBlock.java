@@ -362,12 +362,12 @@ public class StandFireBlock extends BaseEntityBlock {
     }
 
     @Override
-    public void playerWillDestroy(Level $$0, BlockPos $$1, BlockState $$2, Player $$3) {
+    public BlockState playerWillDestroy(Level $$0, BlockPos $$1, BlockState $$2, Player $$3) {
         if (!$$0.isClientSide()) {
             $$0.levelEvent(null, 1009, $$1, 0);
         }
 
-        super.playerWillDestroy($$0, $$1, $$2, $$3);
+        return super.playerWillDestroy($$0, $$1, $$2, $$3);
     }
 
     public static boolean canBePlacedAt(Level $$0, BlockPos $$1, Direction $$2) {
