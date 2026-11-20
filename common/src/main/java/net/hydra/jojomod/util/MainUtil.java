@@ -1,5 +1,7 @@
 package net.hydra.jojomod.util;
 
+import net.hydra.jojomod.util.EnchantmentCompat;
+import net.minecraft.tags.EntityTypeTags;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
@@ -1324,7 +1326,7 @@ public class MainUtil {
 
     // if splattered vampire blood can resurrect a mob when they die
     public static boolean canMobResurrectWithBlood(Entity mob) {
-        if (mob instanceof Mob mb && (mb.getMobType() == MobType.UNDEAD || mb instanceof ZombieHorse))
+        if (mob instanceof Mob mb && ((mb.getType().is(EntityTypeTags.UNDEAD) || FateTypes.isZombie(mb)) || mb instanceof ZombieHorse))
             return false;
         return true;
     }
@@ -2543,7 +2545,7 @@ public class MainUtil {
                             if (value instanceof Player) {
                                 np *= 0.31F;
                             }
-                            int f = EnchantmentHelper.getEnchantmentLevel(Enchantments.FIRE_PROTECTION,
+                            int f = EnchantmentCompat.equipmentLevel(Enchantments.FIRE_PROTECTION,
                                     (LivingEntity) value);
                             np = (float) (np * (1 - (f * 0.045)));
                         }

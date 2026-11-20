@@ -125,8 +125,8 @@ public class TotemOfDoomEntity extends Entity implements ItemSupplier {
                             ItemStack off = LV.getOffhandItem();
 
                             // checks if the player is holding a trident, and if the trident has riptide. pretty simple
-                            boolean isRiptideTrident = (main.getItem() instanceof TridentItem && EnchantmentHelper.getRiptide(main) > 0)
-                                    || (off.getItem() instanceof TridentItem && EnchantmentHelper.getRiptide(off) > 0);
+                            boolean isRiptideTrident = (main.getItem() instanceof TridentItem && EnchantmentHelper.getTridentSpinAttackStrength(main, LV) > 0)
+                                    || (off.getItem() instanceof TridentItem && EnchantmentHelper.getTridentSpinAttackStrength(off, LV) > 0);
 
                             if (isRiptideTrident) {
                                 ((StandUser) LV).roundabout$stopAutoSpinAttack();

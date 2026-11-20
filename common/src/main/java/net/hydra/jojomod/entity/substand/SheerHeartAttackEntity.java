@@ -1,5 +1,6 @@
 package net.hydra.jojomod.entity.substand;
 
+import net.minecraft.tags.EntityTypeTags;
 import net.hydra.jojomod.Roundabout;
 import net.hydra.jojomod.access.IGravityEntity;
 import net.hydra.jojomod.access.IPlayerEntity;
@@ -1030,13 +1031,14 @@ public class SheerHeartAttackEntity extends StandEntity {
 
 			boolean undeadAndArthropodIgnore = ClientNetworking.getAppropriateConfig().killerQueenSettings.sheerHeartAttackSeenUndeadAndArthropod;
 
-			MobType mobType = LE.getMobType();
+			boolean coldMob = LE.getType().is(EntityTypeTags.UNDEAD) || FateTypes.isZombie(LE)
+					|| LE.getType().is(EntityTypeTags.ARTHROPOD);
 			if (undeadAndArthropodIgnore
-					&& (mobType.equals(MobType.UNDEAD) || mobType.equals(MobType.ARTHROPOD)
+					&& (coldMob
 					|| (LE instanceof FallenMob) ) || (LE instanceof FallenMob FM && !FM.getActivated())
 					|| FateTypes.isVampire(LE) || FateTypes.isZombie(LE)) { points -= 30;}
 			if (!undeadAndArthropodIgnore
-					&& (mobType.equals(MobType.UNDEAD) || mobType.equals(MobType.ARTHROPOD))) {
+					&& (coldMob)) {
 				points -= 10;
 			}
 		}

@@ -1,5 +1,6 @@
 package net.hydra.jojomod.entity.substand;
 
+import net.hydra.jojomod.util.EnchantmentCompat;
 import net.hydra.jojomod.util.ItemDurability;
 import net.hydra.jojomod.Roundabout;
 import net.hydra.jojomod.block.RoundaboutDoor;
@@ -729,7 +730,7 @@ public class SeperatedArmEntity extends StandEntity {
                         ;
                     }
                     if ($$1 instanceof LivingEntity $$3) {
-                        int f = EnchantmentHelper.getEnchantmentLevel(Enchantments.PROJECTILE_PROTECTION, $$3);
+                        int f = EnchantmentCompat.equipmentLevel(Enchantments.PROJECTILE_PROTECTION, $$3);
                         $$2 = (float) ($$2 * (1 - (f * 0.03)));
 
                     }
@@ -756,8 +757,7 @@ public class SeperatedArmEntity extends StandEntity {
                         if ($$1 instanceof LivingEntity $$7) {
                             $$1.setDeltaMovement($$1.getDeltaMovement().multiply(0.4, 0.4, 0.4));
                             if ($$4 instanceof LivingEntity) {
-                                EnchantmentHelper.doPostHurtEffects($$7, $$4);
-                                EnchantmentHelper.doPostDamageEffects((LivingEntity) $$4, $$7);
+                                EnchantmentCompat.postAttack(this.level(), $$7, $$5, this.getMainHandItem());
                             }
 
                         }

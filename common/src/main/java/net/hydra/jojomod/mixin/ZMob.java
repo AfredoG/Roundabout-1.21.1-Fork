@@ -1,5 +1,6 @@
 package net.hydra.jojomod.mixin;
 
+import net.hydra.jojomod.util.EnchantmentCompat;
 import com.google.common.collect.ImmutableMap;
 import com.mojang.serialization.Dynamic;
 import net.hydra.jojomod.Roundabout;
@@ -319,16 +320,6 @@ public abstract class ZMob extends LivingEntity implements IMob {
         MainUtil.loadMobData($$0,this);
     }
 
-    @Shadow
-    private void maybeDisableShield(Player $$0, ItemStack $$1, ItemStack $$2) {
-
-    }
-
-    @Override
-    public void roundabout$maybeDisableShield(Player $$0, ItemStack $$1, ItemStack $$2) {
-        maybeDisableShield($$0,$$1,$$2);
-    }
-
     @Inject(method = "doHurtTarget", at = @At(value = "HEAD"), cancellable = true)
     private void roundabout$TryAttack(Entity $$0, CallbackInfoReturnable<Boolean> ci) {
             if (MainUtil.forceAggression(this)){
@@ -343,17 +334,13 @@ public abstract class ZMob extends LivingEntity implements IMob {
                 if (this.getAttributes().hasAttribute(Attributes.ATTACK_KNOCKBACK)){
                     $$2 = (float)this.getAttributeValue(Attributes.ATTACK_KNOCKBACK);
                 }
-                if ($$0 instanceof LivingEntity) {
-                    $$1 += EnchantmentHelper.getDamageBonus(this.getMainHandItem(), ((LivingEntity)$$0).getMobType());
-                    $$2 += (float)EnchantmentHelper.getKnockbackBonus(this);
+                DamageSource source = this.damageSources().mobAttack(this);
+                $$1 = EnchantmentCompat.modifyDamage(this.level(), this.getMainHandItem(), $$0, source, $$1);
+                if ($$0 instanceof LivingEntity && this.level() instanceof ServerLevel serverLevel) {
+                    $$2 = EnchantmentHelper.modifyKnockback(serverLevel, this.getMainHandItem(), $$0, source, $$2);
                 }
 
-                int $$3 = EnchantmentHelper.getFireAspect(this);
-                if ($$3 > 0) {
-                    $$0.igniteForSeconds($$3 * 4);
-                }
-
-                boolean $$4 = $$0.hurt(this.damageSources().mobAttack(this), $$1);
+                boolean $$4 = $$0.hurt(source, $$1);
                 if ($$4) {
                     if ($$2 > 0.0F && $$0 instanceof LivingEntity) {
                         ((LivingEntity)$$0)
@@ -365,11 +352,7 @@ public abstract class ZMob extends LivingEntity implements IMob {
                         this.setDeltaMovement(this.getDeltaMovement().multiply(0.6, 1.0, 0.6));
                     }
 
-                    if ($$0 instanceof Player $$5) {
-                        this.maybeDisableShield($$5, this.getMainHandItem(), $$5.isUsingItem() ? $$5.getUseItem() : ItemStack.EMPTY);
-                    }
-
-                    this.doEnchantDamageEffects(this, $$0);
+                    EnchantmentCompat.postAttack(this.level(), $$0, source, this.getMainHandItem());
                     this.setLastHurtMob($$0);
                 }
 

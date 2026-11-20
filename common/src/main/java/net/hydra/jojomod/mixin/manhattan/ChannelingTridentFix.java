@@ -1,5 +1,6 @@
 package net.hydra.jojomod.mixin.manhattan;
 
+import net.hydra.jojomod.util.EnchantmentCompat;
 import net.hydra.jojomod.access.AccessThrownTrident;
 import net.hydra.jojomod.access.IPlayerEntity;
 import net.hydra.jojomod.entity.stand.BlackSabbathEntity;
@@ -128,7 +129,7 @@ import java.util.List;
 
                 ThrownTrident thrownTr = (ThrownTrident) (Object) (this);
                 if(!this.level().isClientSide() && roundabout$getReturnToBlackSabbath()){
-                    int loyalty = EnchantmentHelper.getLoyalty(this.getPickupItem());
+                    int loyalty = EnchantmentCompat.tridentReturnAcceleration(this.getPickupItem(), this);
                     if(getLoyalSabbath() == 0 && loyalty > 0) {
                         if(!this.level().isClientSide) {
                             setBlackSabbath((byte) loyalty);

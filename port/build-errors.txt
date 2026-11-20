@@ -1,57 +1,7 @@
-common/src/main/java/net/hydra/jojomod/entity/corpses/FallenSpider.java:239: error: cannot find symbol
-    public MobType getMobType() {
-           ^
-  symbol:   class MobType
-  location: class FallenSpider
-common/src/main/java/net/hydra/jojomod/entity/corpses/FallenSkeleton.java:105: error: cannot find symbol
-    public MobType getMobType() {
-           ^
-  symbol:   class MobType
-  location: class FallenSkeleton
-common/src/main/java/net/hydra/jojomod/entity/corpses/FallenZombie.java:170: error: cannot find symbol
-    public MobType getMobType() {
-           ^
-  symbol:   class MobType
-  location: class FallenZombie
-common/src/main/java/net/hydra/jojomod/entity/corpses/FallenPhantom.java:332: error: cannot find symbol
-    public MobType getMobType() {
-           ^
-  symbol:   class MobType
-  location: class FallenPhantom
-common/src/main/java/net/hydra/jojomod/entity/zombie_minion/BaseMinion.java:521: error: cannot find symbol
-    public MobType getMobType() {
-           ^
-  symbol:   class MobType
-  location: class BaseMinion
-common/src/main/java/net/hydra/jojomod/entity/Zombiefish.java:119: error: cannot find symbol
-    public MobType getMobType() {
-           ^
-  symbol:   class MobType
-  location: class Zombiefish
-common/src/main/java/net/hydra/jojomod/mixin/gravity/GravityExplosionMixin.java:15: error: cannot find symbol
-import net.minecraft.world.item.enchantment.ProtectionEnchantment;
-                                           ^
-  symbol:   class ProtectionEnchantment
-  location: package net.minecraft.world.item.enchantment
 common/src/main/java/net/hydra/jojomod/mixin/gravity/GravityCamelMixin.java:19: error: cannot find symbol
 public abstract class GravityCamelMixin  extends AbstractHorse implements PlayerRideableJumping, RiderShieldingMount, Saddleable {
                                                                                                  ^
   symbol: class RiderShieldingMount
-common/src/main/java/net/hydra/jojomod/mixin/StandUserEntity.java:2635: error: cannot find symbol
-    public void roundabout$getMobType(CallbackInfoReturnable<MobType> cir) {
-                                                             ^
-  symbol:   class MobType
-  location: class StandUserEntity
-common/src/main/java/net/hydra/jojomod/mixin/items/WarHammerCanEnchant.java:6: error: cannot find symbol
-import net.minecraft.world.item.enchantment.DamageEnchantment;
-                                           ^
-  symbol:   class DamageEnchantment
-  location: package net.minecraft.world.item.enchantment
-common/src/main/java/net/hydra/jojomod/item/GlaiveItem.java:25: error: cannot find symbol
-import net.minecraft.world.entity.MobType;
-                                 ^
-  symbol:   class MobType
-  location: package net.minecraft.world.entity
 forge/src/main/java/net/hydra/jojomod/mixin/forge/ForgeServerPlayer.java:43: error: cannot find symbol
     private void roundabout$changeDim(ServerLevel p_9180_, net.neoforged.neoforge.common.util.ITeleporter teleporter, CallbackInfoReturnable<Entity> cir) {
                                                                                              ^
@@ -62,32 +12,13 @@ import net.neoforged.neoforge.event.entity.player.SleepingTimeCheckEvent;
                                                  ^
   symbol:   class SleepingTimeCheckEvent
   location: package net.neoforged.neoforge.event.entity.player
-common/src/main/java/net/hydra/jojomod/mixin/items/WarHammerCanEnchant.java:13: error: cannot find symbol
-@Mixin(DamageEnchantment.class)
-       ^
-  symbol: class DamageEnchantment
-common/src/main/java/net/hydra/jojomod/entity/stand/BlackSabbathEntity.java:773: error: cannot find symbol
-                    if (blackSabbathFirstSlot.getItem() instanceof TridentItem tr && EnchantmentHelper.getLoyalty(blackSabbathFirstSlot) > 0) {
-                                                                                                      ^
-  symbol:   method getLoyalty(ItemStack)
-  location: class EnchantmentHelper
-common/src/main/java/net/hydra/jojomod/entity/stand/BlackSabbathEntity.java:952: error: cannot find symbol
-                || this.getHeldItemSabbath().is(ModItems.KNIFE_BUNDLE) || this.getHeldItemSabbath().getItem() instanceof TridentItem && EnchantmentHelper.getRiptide(getHeldItemSabbath()) <= 0 && !(getHeldItemSabbath().getDamageValue() >= getHeldItemSabbath().getMaxDamage() - 1)
-                                                                                                                                                         ^
-  symbol:   method getRiptide(ItemStack)
-  location: class EnchantmentHelper
-common/src/main/java/net/hydra/jojomod/entity/stand/BlackSabbathEntity.java:1746: error: method createArrow in class ArrowItem cannot be applied to given types;
+common/src/main/java/net/hydra/jojomod/entity/stand/BlackSabbathEntity.java:1747: error: method createArrow in class ArrowItem cannot be applied to given types;
                     AbstractArrow $$11 = $$10.createArrow(bs.getUser().level(), item, bs.getUser());
                                              ^
   required: Level,ItemStack,LivingEntity,ItemStack
   found:    Level,ItemStack,LivingEntity
   reason: actual and formal argument lists differ in length
-common/src/main/java/net/hydra/jojomod/entity/stand/BlackSabbathEntity.java:1778: error: cannot find symbol
-                            if (EnchantmentHelper.getLoyalty(item) > 0) {
-                                                 ^
-  symbol:   method getLoyalty(ItemStack)
-  location: class EnchantmentHelper
-common/src/main/java/net/hydra/jojomod/entity/stand/BlackSabbathEntity.java:1782: error: no suitable method found for playSound(<null>,ThrownTrident,Holder<SoundEvent>,SoundSource,float,float)
+common/src/main/java/net/hydra/jojomod/entity/stand/BlackSabbathEntity.java:1783: error: no suitable method found for playSound(<null>,ThrownTrident,Holder<SoundEvent>,SoundSource,float,float)
                             bs.level().playSound(null, $$7, SoundEvents.TRIDENT_THROW, SoundSource.PLAYERS, 1.0F, 1.0F);
                                       ^
     method Level.playSound(Entity,BlockPos,SoundEvent,SoundSource,float,float) is not applicable
@@ -98,28 +29,10 @@ common/src/main/java/net/hydra/jojomod/entity/stand/BlackSabbathEntity.java:1782
       (argument mismatch; ThrownTrident cannot be converted to double)
     method Level.playSound(Player,Entity,SoundEvent,SoundSource,float,float) is not applicable
       (argument mismatch; Holder<SoundEvent> cannot be converted to SoundEvent)
-common/src/main/java/net/hydra/jojomod/entity/stand/BlackSabbathEntity.java:1947: error: incompatible types: ResourceKey<Enchantment> cannot be converted to Holder<Enchantment>
-            int ench = EnchantmentHelper.getItemEnchantmentLevel(Enchantments.FIRE_ASPECT, item);
-                                                                             ^
-common/src/main/java/net/hydra/jojomod/entity/stand/BlackSabbathEntity.java:2017: error: non-static method getEquipmentSlotForItem(ItemStack) cannot be referenced from a static context
+common/src/main/java/net/hydra/jojomod/entity/stand/BlackSabbathEntity.java:2015: error: non-static method getEquipmentSlotForItem(ItemStack) cannot be referenced from a static context
                             EquipmentSlot equipmentslot = Mob.getEquipmentSlotForItem(i);
                                                              ^
-common/src/main/java/net/hydra/jojomod/entity/stand/BlackSabbathEntity.java:2033: error: cannot find symbol
-                                        itemDamage += EnchantmentHelper.getDamageBonus(i, ((LivingEntity) e).getMobType());
-                                                                                                            ^
-  symbol:   method getMobType()
-  location: class LivingEntity
-common/src/main/java/net/hydra/jojomod/entity/stand/BlackSabbathEntity.java:2037: error: cannot find symbol
-                                        itemDamage += EnchantmentHelper.getDamageBonus(i, ((LivingEntity) e).getMobType());
-                                                                                                            ^
-  symbol:   method getMobType()
-  location: class LivingEntity
-common/src/main/java/net/hydra/jojomod/entity/stand/BlackSabbathEntity.java:2041: error: cannot find symbol
-                                        itemDamage += EnchantmentHelper.getDamageBonus(i, ((LivingEntity) e).getMobType());
-                                                                                                            ^
-  symbol:   method getMobType()
-  location: class LivingEntity
-common/src/main/java/net/hydra/jojomod/entity/stand/BlackSabbathEntity.java:2071: error: non-static method getEquipmentSlotForItem(ItemStack) cannot be referenced from a static context
+common/src/main/java/net/hydra/jojomod/entity/stand/BlackSabbathEntity.java:2066: error: non-static method getEquipmentSlotForItem(ItemStack) cannot be referenced from a static context
                                         EquipmentSlot equipmentslot = Mob.getEquipmentSlotForItem(i);
                                                                          ^
 common/src/main/java/net/hydra/jojomod/entity/projectile/RoadRollerEntity.java:882: error: method does not override or implement a method from a supertype
@@ -157,53 +70,13 @@ common/src/main/java/net/hydra/jojomod/stand/powers/PowersDiverDown.java:4774: e
 common/src/main/java/net/hydra/jojomod/stand/powers/PowersDiverDown.java:4829: error: incompatible types: RecipeHolder<CraftingRecipe> cannot be converted to CraftingRecipe
         for (CraftingRecipe recipe : recipeManager.getAllRecipesFor(RecipeType.CRAFTING)) {
                                                                    ^
-common/src/main/java/net/hydra/jojomod/entity/projectile/StrayCatAirBubble.java:465: error: cannot find symbol
-                        EnchantmentHelper.doPostHurtEffects($$7, user);
-                                         ^
-  symbol:   method doPostHurtEffects(LivingEntity,Entity)
-  location: class EnchantmentHelper
-common/src/main/java/net/hydra/jojomod/entity/projectile/StrayCatAirBubble.java:466: error: cannot find symbol
-                        EnchantmentHelper.doPostDamageEffects((LivingEntity) user, $$7);
-                                         ^
-  symbol:   method doPostDamageEffects(LivingEntity,LivingEntity)
-  location: class EnchantmentHelper
-common/src/main/java/net/hydra/jojomod/entity/substand/SheerHeartAttackEntity.java:946: error: method isPathfindable in class BlockStateBase cannot be applied to given types;
+common/src/main/java/net/hydra/jojomod/entity/substand/SheerHeartAttackEntity.java:947: error: method isPathfindable in class BlockStateBase cannot be applied to given types;
 				if (BS.isPathfindable(this.level(), this.blockTarget, PathComputationType.LAND)) {
 				      ^
   required: PathComputationType
   found:    Level,BlockPos,PathComputationType
   reason: actual and formal argument lists differ in length
-common/src/main/java/net/hydra/jojomod/entity/substand/SheerHeartAttackEntity.java:1033: error: cannot find symbol
-			MobType mobType = LE.getMobType();
-			^
-  symbol:   class MobType
-  location: class SheerHeartAttackEntity
-common/src/main/java/net/hydra/jojomod/entity/substand/SheerHeartAttackEntity.java:1033: error: cannot find symbol
-			MobType mobType = LE.getMobType();
-			                    ^
-  symbol:   method getMobType()
-  location: variable LE of type LivingEntity
-common/src/main/java/net/hydra/jojomod/entity/substand/SheerHeartAttackEntity.java:1035: error: cannot find symbol
-					&& (mobType.equals(MobType.UNDEAD) || mobType.equals(MobType.ARTHROPOD)
-					                   ^
-  symbol:   variable MobType
-  location: class SheerHeartAttackEntity
-common/src/main/java/net/hydra/jojomod/entity/substand/SheerHeartAttackEntity.java:1035: error: cannot find symbol
-					&& (mobType.equals(MobType.UNDEAD) || mobType.equals(MobType.ARTHROPOD)
-					                                                     ^
-  symbol:   variable MobType
-  location: class SheerHeartAttackEntity
-common/src/main/java/net/hydra/jojomod/entity/substand/SheerHeartAttackEntity.java:1039: error: cannot find symbol
-					&& (mobType.equals(MobType.UNDEAD) || mobType.equals(MobType.ARTHROPOD))) {
-					                   ^
-  symbol:   variable MobType
-  location: class SheerHeartAttackEntity
-common/src/main/java/net/hydra/jojomod/entity/substand/SheerHeartAttackEntity.java:1039: error: cannot find symbol
-					&& (mobType.equals(MobType.UNDEAD) || mobType.equals(MobType.ARTHROPOD))) {
-					                                                     ^
-  symbol:   variable MobType
-  location: class SheerHeartAttackEntity
-common/src/main/java/net/hydra/jojomod/entity/substand/SheerHeartAttackEntity.java:1235: error: method does not override or implement a method from a supertype
+common/src/main/java/net/hydra/jojomod/entity/substand/SheerHeartAttackEntity.java:1237: error: method does not override or implement a method from a supertype
 	@Override public boolean canBeLeashed(Player p_21418_) { return false;}
 	^
 common/src/main/java/net/hydra/jojomod/entity/stand/SilverChariotEntity.java:907: error: method does not override or implement a method from a supertype
@@ -220,86 +93,36 @@ common/src/main/java/net/hydra/jojomod/entity/stand/SilverChariotEntity.java:941
         return super.getPassengersRidingOffset();
                     ^
   symbol: method getPassengersRidingOffset()
-common/src/main/java/net/hydra/jojomod/entity/corpses/FallenMob.java:104: error: getTeam() in FallenMob cannot override getTeam() in Entity
+common/src/main/java/net/hydra/jojomod/entity/corpses/FallenMob.java:105: error: getTeam() in FallenMob cannot override getTeam() in Entity
     public Team getTeam() {
                 ^
   return type Team is not compatible with PlayerTeam
-common/src/main/java/net/hydra/jojomod/entity/corpses/FallenMob.java:103: error: method does not override or implement a method from a supertype
+common/src/main/java/net/hydra/jojomod/entity/corpses/FallenMob.java:104: error: method does not override or implement a method from a supertype
     @Override
     ^
-common/src/main/java/net/hydra/jojomod/entity/corpses/FallenMob.java:172: error: method does not override or implement a method from a supertype
+common/src/main/java/net/hydra/jojomod/entity/corpses/FallenMob.java:173: error: method does not override or implement a method from a supertype
     @Override
     ^
-common/src/main/java/net/hydra/jojomod/entity/corpses/FallenMob.java:175: error: cannot find symbol
+common/src/main/java/net/hydra/jojomod/entity/corpses/FallenMob.java:176: error: cannot find symbol
             return super.getMyRidingOffset()+0.2F;
                         ^
   symbol: method getMyRidingOffset()
-common/src/main/java/net/hydra/jojomod/entity/corpses/FallenMob.java:177: error: cannot find symbol
+common/src/main/java/net/hydra/jojomod/entity/corpses/FallenMob.java:178: error: cannot find symbol
         return super.getMyRidingOffset();
                     ^
   symbol: method getMyRidingOffset()
-common/src/main/java/net/hydra/jojomod/entity/corpses/FallenMob.java:354: error: cannot find symbol
-            $$2 += (float)EnchantmentHelper.getKnockbackBonus(this);
-                                           ^
-  symbol:   method getKnockbackBonus(FallenMob)
-  location: class EnchantmentHelper
-common/src/main/java/net/hydra/jojomod/entity/corpses/FallenMob.java:357: error: cannot find symbol
-        int $$3 = EnchantmentHelper.getFireAspect(this);
-                                   ^
-  symbol:   method getFireAspect(FallenMob)
-  location: class EnchantmentHelper
-common/src/main/java/net/hydra/jojomod/entity/corpses/FallenMob.java:386: error: cannot find symbol
-                this.doEnchantDamageEffects(this, $$0);
-                    ^
-  symbol: method doEnchantDamageEffects(FallenMob,Entity)
-common/src/main/java/net/hydra/jojomod/entity/corpses/FallenMob.java:416: error: cannot find symbol
-                this.doEnchantDamageEffects(this, $$0);
-                    ^
-  symbol: method doEnchantDamageEffects(FallenMob,Entity)
 common/src/main/java/net/hydra/jojomod/entity/corpses/FallenSpider.java:153: error: method does not override or implement a method from a supertype
     @Override
     ^
-common/src/main/java/net/hydra/jojomod/entity/corpses/FallenSpider.java:238: error: method does not override or implement a method from a supertype
-    @Override
-    ^
-common/src/main/java/net/hydra/jojomod/entity/corpses/FallenSpider.java:240: error: cannot find symbol
-        return MobType.ARTHROPOD;
-               ^
-  symbol:   variable MobType
-  location: class FallenSpider
-common/src/main/java/net/hydra/jojomod/entity/corpses/FallenSkeleton.java:104: error: method does not override or implement a method from a supertype
-    @Override
-    ^
-common/src/main/java/net/hydra/jojomod/entity/corpses/FallenSkeleton.java:106: error: cannot find symbol
-        return MobType.UNDEAD;
-               ^
-  symbol:   variable MobType
-  location: class FallenSkeleton
-common/src/main/java/net/hydra/jojomod/entity/corpses/FallenSkeleton.java:124: error: method getMobArrow in class ProjectileUtil cannot be applied to given types;
+common/src/main/java/net/hydra/jojomod/entity/corpses/FallenSkeleton.java:120: error: method getMobArrow in class ProjectileUtil cannot be applied to given types;
         return ProjectileUtil.getMobArrow(this, $$0, $$1);
                              ^
   required: LivingEntity,ItemStack,float,ItemStack
   found:    FallenSkeleton,ItemStack,float
   reason: actual and formal argument lists differ in length
-common/src/main/java/net/hydra/jojomod/entity/corpses/FallenZombie.java:169: error: method does not override or implement a method from a supertype
-    @Override
-    ^
-common/src/main/java/net/hydra/jojomod/entity/corpses/FallenZombie.java:171: error: cannot find symbol
-        return MobType.UNDEAD;
-               ^
-  symbol:   variable MobType
-  location: class FallenZombie
 common/src/main/java/net/hydra/jojomod/entity/corpses/FallenPhantom.java:281: error: method does not override or implement a method from a supertype
     @Override
     ^
-common/src/main/java/net/hydra/jojomod/entity/corpses/FallenPhantom.java:331: error: method does not override or implement a method from a supertype
-    @Override
-    ^
-common/src/main/java/net/hydra/jojomod/entity/corpses/FallenPhantom.java:333: error: cannot find symbol
-        return MobType.UNDEAD;
-               ^
-  symbol:   variable MobType
-  location: class FallenPhantom
 common/src/main/java/net/hydra/jojomod/entity/visages/JojoNPC.java:470: error: method writeInventoryToTag in interface InventoryCarrier cannot be applied to given types;
         this.writeInventoryToTag(p_35481_);
             ^
@@ -324,68 +147,22 @@ common/src/main/java/net/hydra/jojomod/entity/pathfinding/TuskHoleEntity.java:31
 common/src/main/java/net/hydra/jojomod/entity/pathfinding/TuskHoleEntity.java:444: error: method does not override or implement a method from a supertype
     @Override
     ^
-common/src/main/java/net/hydra/jojomod/entity/projectile/StandArrowEntity.java:185: error: cannot find symbol
+common/src/main/java/net/hydra/jojomod/entity/projectile/StandArrowEntity.java:186: error: cannot find symbol
                     if (this.getKnockback() > 0) {
                             ^
   symbol: method getKnockback()
-common/src/main/java/net/hydra/jojomod/entity/projectile/StandArrowEntity.java:187: error: cannot find symbol
+common/src/main/java/net/hydra/jojomod/entity/projectile/StandArrowEntity.java:188: error: cannot find symbol
                         Vec3 $$12 = this.getDeltaMovement().multiply(1.0, 0.0, 1.0).normalize().scale((double) this.getKnockback() * 0.6 * $$11);
                                                                                                                    ^
   symbol: method getKnockback()
-common/src/main/java/net/hydra/jojomod/entity/projectile/StandArrowEntity.java:194: error: cannot find symbol
-                        EnchantmentHelper.doPostHurtEffects($$10, $$5);
-                                         ^
-  symbol:   method doPostHurtEffects(LivingEntity,Entity)
-  location: class EnchantmentHelper
-common/src/main/java/net/hydra/jojomod/entity/projectile/StandArrowEntity.java:195: error: cannot find symbol
-                        EnchantmentHelper.doPostDamageEffects((LivingEntity) $$5, $$10);
-                                         ^
-  symbol:   method doPostDamageEffects(LivingEntity,LivingEntity)
-  location: class EnchantmentHelper
-common/src/main/java/net/hydra/jojomod/entity/projectile/KnifeEntity.java:147: error: cannot find symbol
+common/src/main/java/net/hydra/jojomod/entity/projectile/KnifeEntity.java:148: error: cannot find symbol
         this.setPierceLevel((byte)0);
             ^
   symbol: method setPierceLevel(byte)
-common/src/main/java/net/hydra/jojomod/entity/projectile/KnifeEntity.java:149: error: cannot find symbol
+common/src/main/java/net/hydra/jojomod/entity/projectile/KnifeEntity.java:150: error: cannot find symbol
         this.setShotFromCrossbow(false);
             ^
   symbol: method setShotFromCrossbow(boolean)
-common/src/main/java/net/hydra/jojomod/entity/projectile/KnifeEntity.java:212: error: incompatible types: ResourceKey<Enchantment> cannot be converted to Holder<Enchantment>
-            int f = EnchantmentHelper.getEnchantmentLevel(Enchantments.PROJECTILE_PROTECTION, $$3);
-                                                                      ^
-common/src/main/java/net/hydra/jojomod/entity/projectile/KnifeEntity.java:216: error: cannot find symbol
-            $$2 += EnchantmentHelper.getDamageBonus(this.knifeItem, $$3.getMobType());
-                                                                       ^
-  symbol:   method getMobType()
-  location: variable $$3 of type LivingEntity
-common/src/main/java/net/hydra/jojomod/entity/projectile/KnifeEntity.java:242: error: cannot find symbol
-                    EnchantmentHelper.doPostHurtEffects($$7, $$4);
-                                     ^
-  symbol:   method doPostHurtEffects(LivingEntity,Entity)
-  location: class EnchantmentHelper
-common/src/main/java/net/hydra/jojomod/entity/projectile/KnifeEntity.java:243: error: cannot find symbol
-                    EnchantmentHelper.doPostDamageEffects((LivingEntity) $$4, $$7);
-                                     ^
-  symbol:   method doPostDamageEffects(LivingEntity,LivingEntity)
-  location: class EnchantmentHelper
-common/src/main/java/net/hydra/jojomod/entity/TotemOfDoomEntity.java:128: error: cannot find symbol
-                            boolean isRiptideTrident = (main.getItem() instanceof TridentItem && EnchantmentHelper.getRiptide(main) > 0)
-                                                                                                                  ^
-  symbol:   method getRiptide(ItemStack)
-  location: class EnchantmentHelper
-common/src/main/java/net/hydra/jojomod/entity/TotemOfDoomEntity.java:129: error: cannot find symbol
-                                    || (off.getItem() instanceof TridentItem && EnchantmentHelper.getRiptide(off) > 0);
-                                                                                                 ^
-  symbol:   method getRiptide(ItemStack)
-  location: class EnchantmentHelper
-common/src/main/java/net/hydra/jojomod/entity/zombie_minion/BaseMinion.java:520: error: method does not override or implement a method from a supertype
-    @Override
-    ^
-common/src/main/java/net/hydra/jojomod/entity/zombie_minion/BaseMinion.java:522: error: cannot find symbol
-        return MobType.UNDEAD;
-               ^
-  symbol:   variable MobType
-  location: class BaseMinion
 common/src/main/java/net/hydra/jojomod/entity/zombie_minion/DogMinion.java:61: error: cannot find symbol
                     this.gameEvent(GameEvent.ENTITY_SHAKE);
                                             ^
@@ -394,14 +171,6 @@ common/src/main/java/net/hydra/jojomod/entity/zombie_minion/DogMinion.java:61: e
 common/src/main/java/net/hydra/jojomod/entity/Zombiefish.java:54: error: method does not override or implement a method from a supertype
     @Override
     ^
-common/src/main/java/net/hydra/jojomod/entity/Zombiefish.java:118: error: method does not override or implement a method from a supertype
-    @Override
-    ^
-common/src/main/java/net/hydra/jojomod/entity/Zombiefish.java:120: error: cannot find symbol
-        return MobType.UNDEAD;
-               ^
-  symbol:   variable MobType
-  location: class Zombiefish
 common/src/main/java/net/hydra/jojomod/entity/zombie_minion/AxolotlMinion.java:78: error: method does not override or implement a method from a supertype
     @Override
     ^
@@ -485,76 +254,50 @@ common/src/main/java/net/hydra/jojomod/entity/paintings/RoundaboutPainting.java:
 common/src/main/java/net/hydra/jojomod/entity/paintings/RoundaboutPainting.java:91: error: method does not override or implement a method from a supertype
     @Override
     ^
-common/src/main/java/net/hydra/jojomod/util/MainUtil.java:996: error: cannot find symbol
+common/src/main/java/net/hydra/jojomod/util/MainUtil.java:998: error: cannot find symbol
                 CompoundTag compoundtag = BlockItem.getBlockEntityData(itemstack);
                                                    ^
   symbol:   method getBlockEntityData(ItemStack)
   location: class BlockItem
-common/src/main/java/net/hydra/jojomod/util/MainUtil.java:1003: error: method saveToItem in class BlockEntity cannot be applied to given types;
+common/src/main/java/net/hydra/jojomod/util/MainUtil.java:1005: error: method saveToItem in class BlockEntity cannot be applied to given types;
                             blockentity.saveToItem(itemstack);
                                        ^
   required: ItemStack,Provider
   found:    ItemStack
   reason: actual and formal argument lists differ in length
-common/src/main/java/net/hydra/jojomod/util/MainUtil.java:1077: error: cannot find symbol
+common/src/main/java/net/hydra/jojomod/util/MainUtil.java:1079: error: cannot find symbol
                     ent.setItemSlot(EquipmentSlot.HEAD, ItemStack.EMPTY);
                        ^
   symbol:   method setItemSlot(EquipmentSlot,ItemStack)
   location: variable ent of type Entity
-common/src/main/java/net/hydra/jojomod/util/MainUtil.java:1327: error: cannot find symbol
-        if (mob instanceof Mob mb && (mb.getMobType() == MobType.UNDEAD || mb instanceof ZombieHorse))
-                                        ^
-  symbol:   method getMobType()
-  location: variable mb of type Mob
-common/src/main/java/net/hydra/jojomod/util/MainUtil.java:1327: error: cannot find symbol
-        if (mob instanceof Mob mb && (mb.getMobType() == MobType.UNDEAD || mb instanceof ZombieHorse))
-                                                         ^
-  symbol:   variable MobType
-  location: class MainUtil
-common/src/main/java/net/hydra/jojomod/util/MainUtil.java:1753: error: cannot find symbol
+common/src/main/java/net/hydra/jojomod/util/MainUtil.java:1755: error: cannot find symbol
             ItemStack itemstack = ItemStack.of(compoundtag);
                                            ^
   symbol:   method of(CompoundTag)
   location: class ItemStack
-common/src/main/java/net/hydra/jojomod/util/MainUtil.java:1761: error: cannot find symbol
+common/src/main/java/net/hydra/jojomod/util/MainUtil.java:1763: error: cannot find symbol
             ItemStack itemstack = ItemStack.of(compoundtag);
                                            ^
   symbol:   method of(CompoundTag)
   location: class ItemStack
-common/src/main/java/net/hydra/jojomod/util/MainUtil.java:1797: error: incompatible types: CompoundTag cannot be converted to Provider
+common/src/main/java/net/hydra/jojomod/util/MainUtil.java:1799: error: incompatible types: CompoundTag cannot be converted to Provider
                     MainUtil.saveToDiscData(liv, discy).save(compoundtag));
                                                              ^
-common/src/main/java/net/hydra/jojomod/util/MainUtil.java:1805: error: incompatible types: CompoundTag cannot be converted to Provider
+common/src/main/java/net/hydra/jojomod/util/MainUtil.java:1807: error: incompatible types: CompoundTag cannot be converted to Provider
             tag.put("roundabout.StandRejectionDisc", mob.roundabout$getRejectionStandDisc().save(compoundtag));
                                                                                                  ^
-common/src/main/java/net/hydra/jojomod/util/MainUtil.java:2546: error: incompatible types: ResourceKey<Enchantment> cannot be converted to Holder<Enchantment>
-                            int f = EnchantmentHelper.getEnchantmentLevel(Enchantments.FIRE_PROTECTION,
-                                                                                      ^
-common/src/main/java/net/hydra/jojomod/entity/substand/SeperatedArmEntity.java:549: error: method pull in class LeverBlock cannot be applied to given types;
+common/src/main/java/net/hydra/jojomod/entity/substand/SeperatedArmEntity.java:550: error: method pull in class LeverBlock cannot be applied to given types;
                         ((LeverBlock) level().getBlockState(IsArmContactingBlock()).getBlock()).pull(level().getBlockState(IsArmContactingBlock()), this.level(), IsArmContactingBlock());
                                                                                                ^
   required: BlockState,Level,BlockPos,Player
   found:    BlockState,Level,BlockPos
   reason: actual and formal argument lists differ in length
-common/src/main/java/net/hydra/jojomod/entity/substand/SeperatedArmEntity.java:552: error: method press in class ButtonBlock cannot be applied to given types;
+common/src/main/java/net/hydra/jojomod/entity/substand/SeperatedArmEntity.java:553: error: method press in class ButtonBlock cannot be applied to given types;
                         ((ButtonBlock) level().getBlockState(IsArmContactingBlock()).getBlock()).press(level().getBlockState(IsArmContactingBlock()), this.level(), IsArmContactingBlock());
                                                                                                 ^
   required: BlockState,Level,BlockPos,Player
   found:    BlockState,Level,BlockPos
   reason: actual and formal argument lists differ in length
-common/src/main/java/net/hydra/jojomod/entity/substand/SeperatedArmEntity.java:732: error: incompatible types: ResourceKey<Enchantment> cannot be converted to Holder<Enchantment>
-                        int f = EnchantmentHelper.getEnchantmentLevel(Enchantments.PROJECTILE_PROTECTION, $$3);
-                                                                                  ^
-common/src/main/java/net/hydra/jojomod/entity/substand/SeperatedArmEntity.java:759: error: cannot find symbol
-                                EnchantmentHelper.doPostHurtEffects($$7, $$4);
-                                                 ^
-  symbol:   method doPostHurtEffects(LivingEntity,Entity)
-  location: class EnchantmentHelper
-common/src/main/java/net/hydra/jojomod/entity/substand/SeperatedArmEntity.java:760: error: cannot find symbol
-                                EnchantmentHelper.doPostDamageEffects((LivingEntity) $$4, $$7);
-                                                 ^
-  symbol:   method doPostDamageEffects(LivingEntity,LivingEntity)
-  location: class EnchantmentHelper
 common/src/main/java/net/hydra/jojomod/entity/visages/CloneEntity.java:65: error: method does not override or implement a method from a supertype
     @Override
     ^
@@ -621,32 +364,19 @@ common/src/main/java/net/hydra/jojomod/event/SoftExplosion.java:72: error: no su
       (actual and formal argument lists differ in length)
     constructor Explosion.Explosion(Level,Entity,DamageSource,ExplosionDamageCalculator,double,double,double,float,boolean,BlockInteraction,ParticleOptions,ParticleOptions,Holder<SoundEvent>) is not applicable
       (actual and formal argument lists differ in length)
-common/src/main/java/net/hydra/jojomod/entity/projectile/ThrownObjectEntity.java:293: error: method createArrow in class ArrowItem cannot be applied to given types;
+common/src/main/java/net/hydra/jojomod/entity/projectile/ThrownObjectEntity.java:294: error: method createArrow in class ArrowItem cannot be applied to given types;
                 AbstractArrow $$11 = $$10.createArrow(thrower.level(), item, thrower);
                                          ^
   required: Level,ItemStack,LivingEntity,ItemStack
   found:    Level,ItemStack,LivingEntity
   reason: actual and formal argument lists differ in length
-common/src/main/java/net/hydra/jojomod/entity/projectile/ThrownObjectEntity.java:738: error: cannot find symbol
-                    damage+= EnchantmentHelper.getDamageBonus(this.getItem(), ((LivingEntity)ent).getMobType());
-                                                                                                 ^
-  symbol:   method getMobType()
-  location: class LivingEntity
-common/src/main/java/net/hydra/jojomod/entity/projectile/ThrownObjectEntity.java:740: error: cannot find symbol
-                    damage+= EnchantmentHelper.getDamageBonus(this.getItem(), MobType.UNDEFINED);
-                                                                              ^
-  symbol:   variable MobType
-  location: class ThrownObjectEntity
-common/src/main/java/net/hydra/jojomod/entity/projectile/ThrownObjectEntity.java:817: error: incompatible types: ResourceKey<Enchantment> cannot be converted to Holder<Enchantment>
-            int ench = EnchantmentHelper.getItemEnchantmentLevel(Enchantments.FIRE_ASPECT, this.getItem());
-                                                                             ^
-common/src/main/java/net/hydra/jojomod/entity/projectile/ThrownObjectEntity.java:1093: error: method canBeLeashed in class Mob cannot be applied to given types;
+common/src/main/java/net/hydra/jojomod/entity/projectile/ThrownObjectEntity.java:1091: error: method canBeLeashed in class Mob cannot be applied to given types;
             if (entity.canBeLeashed(player)) {
                       ^
   required: no arguments
   found:    Player
   reason: actual and formal argument lists differ in length
-common/src/main/java/net/hydra/jojomod/entity/projectile/ThrownObjectEntity.java:1106: error: method equipSaddle in interface Saddleable cannot be applied to given types;
+common/src/main/java/net/hydra/jojomod/entity/projectile/ThrownObjectEntity.java:1104: error: method equipSaddle in interface Saddleable cannot be applied to given types;
                     $$4.equipSaddle(SoundSource.NEUTRAL);
                        ^
   required: ItemStack,SoundSource
@@ -883,48 +613,35 @@ common/src/main/java/net/hydra/jojomod/mixin/justice/JusticeFogRenderer.java:162
                                                           ^
   symbol:   method getFactorData()
   location: variable mi of type MobEffectInstance
-common/src/main/java/net/hydra/jojomod/mixin/manhattan/ChannelingTridentFix.java:131: error: cannot find symbol
-                    int loyalty = EnchantmentHelper.getLoyalty(this.getPickupItem());
-                                                   ^
-  symbol:   method getLoyalty(ItemStack)
-  location: class EnchantmentHelper
-common/src/main/java/net/hydra/jojomod/mixin/stand_users/PowersEnchantmentHelper.java:22: error: incompatible types: ResourceKey<Enchantment> cannot be converted to Holder<Enchantment>
-                        EnchantmentHelper.getEnchantmentLevel(Enchantments.KNOCKBACK, $$0), knockback);
-                                                                          ^
 common/src/main/java/net/hydra/jojomod/mixin/stand_users/LoweringItemInHandRenderer.java:42: error: cannot find symbol
                     if ((itemStack3.getItem() instanceof Vanishable) && !(itemStack3.getItem() instanceof CrossbowItem)
                                                          ^
   symbol:   class Vanishable
   location: class LoweringItemInHandRenderer
-common/src/main/java/net/hydra/jojomod/mixin/StandUserEntity.java:2637: error: cannot find symbol
-            cir.setReturnValue(MobType.UNDEAD);
-                               ^
-  symbol:   variable MobType
-  location: class StandUserEntity
-common/src/main/java/net/hydra/jojomod/mixin/StandUserEntity.java:5480: error: incompatible types: Holder<Attribute> cannot be converted to Attribute
+common/src/main/java/net/hydra/jojomod/mixin/StandUserEntity.java:5487: error: incompatible types: Holder<Attribute> cannot be converted to Attribute
                                     (float) this.getAttributeValue(Attributes.ARMOR_TOUGHNESS)));
                                                                              ^
-common/src/main/java/net/hydra/jojomod/mixin/StandUserEntity.java:5479: error: method getDamageAfterAbsorb in class CombatRules cannot be applied to given types;
+common/src/main/java/net/hydra/jojomod/mixin/StandUserEntity.java:5486: error: method getDamageAfterAbsorb in class CombatRules cannot be applied to given types;
                             damageAmount += (CombatRules.getDamageAfterAbsorb(power, (float) this.getArmorValue(),
                                                         ^
   required: LivingEntity,float,DamageSource,float,float
   found:    float,float,float
   reason: actual and formal argument lists differ in length
-common/src/main/java/net/hydra/jojomod/mixin/StandUserEntity.java:6169: error: incompatible types: MobEffect cannot be converted to Holder<MobEffect>
+common/src/main/java/net/hydra/jojomod/mixin/StandUserEntity.java:6176: error: incompatible types: MobEffect cannot be converted to Holder<MobEffect>
             for (net.minecraft.core.Holder<MobEffect> ex : exclude) {
                                                            ^
-common/src/main/java/net/hydra/jojomod/mixin/StandUserEntity.java:6368: error: method rdbt$reduceOtherEffectDurations in class StandUserEntity cannot be applied to given types;
+common/src/main/java/net/hydra/jojomod/mixin/StandUserEntity.java:6375: error: method rdbt$reduceOtherEffectDurations in class StandUserEntity cannot be applied to given types;
                     rdbt$reduceOtherEffectDurations(40, ModEffects.DISTORTION_VIRUS, ModEffects.VIRUS_IMMUNITY);
                     ^
   required: int,MobEffect[]
   found:    int,Holder<MobEffect>,Holder<MobEffect>
   reason: varargs mismatch; Holder<MobEffect> cannot be converted to MobEffect
-common/src/main/java/net/hydra/jojomod/mixin/StandUserEntity.java:6429: error: cannot find symbol
+common/src/main/java/net/hydra/jojomod/mixin/StandUserEntity.java:6436: error: cannot find symbol
                     int $$1 = EnchantmentHelper.getRespiration(((LivingEntity) (Object) this));
                                                ^
   symbol:   method getRespiration(LivingEntity)
   location: class EnchantmentHelper
-common/src/main/java/net/hydra/jojomod/mixin/StandUserEntity.java:6450: error: cannot find symbol
+common/src/main/java/net/hydra/jojomod/mixin/StandUserEntity.java:6457: error: cannot find symbol
                 int $$1 = EnchantmentHelper.getRespiration(((LivingEntity) (Object) this));
                                            ^
   symbol:   method getRespiration(LivingEntity)
@@ -944,25 +661,6 @@ common/src/main/java/net/hydra/jojomod/mixin/achtung/AchtungItemRenderer.java:23
       (actual and formal argument lists differ in length)
     method VertexConsumer.addVertex(Matrix4f,float,float,float) is not applicable
       (actual and formal argument lists differ in length)
-common/src/main/java/net/hydra/jojomod/mixin/ZMob.java:347: error: cannot find symbol
-                    $$1 += EnchantmentHelper.getDamageBonus(this.getMainHandItem(), ((LivingEntity)$$0).getMobType());
-                                                                                                       ^
-  symbol:   method getMobType()
-  location: class LivingEntity
-common/src/main/java/net/hydra/jojomod/mixin/ZMob.java:348: error: cannot find symbol
-                    $$2 += (float)EnchantmentHelper.getKnockbackBonus(this);
-                                                   ^
-  symbol:   method getKnockbackBonus(ZMob)
-  location: class EnchantmentHelper
-common/src/main/java/net/hydra/jojomod/mixin/ZMob.java:351: error: cannot find symbol
-                int $$3 = EnchantmentHelper.getFireAspect(this);
-                                           ^
-  symbol:   method getFireAspect(ZMob)
-  location: class EnchantmentHelper
-common/src/main/java/net/hydra/jojomod/mixin/ZMob.java:372: error: cannot find symbol
-                    this.doEnchantDamageEffects(this, $$0);
-                        ^
-  symbol: method doEnchantDamageEffects(ZMob,Entity)
 common/src/main/java/net/hydra/jojomod/mixin/ZLivingEntityRenderer.java:437: error: cannot find symbol
                         float yDiff = targetY - entity.getNameTagOffsetY();
                                                       ^
@@ -999,11 +697,6 @@ common/src/main/java/net/hydra/jojomod/mixin/items/StandArrowBowItem.java:55: er
                                                                                       ^
   symbol:   variable FLAMING_ARROWS
   location: class Enchantments
-common/src/main/java/net/hydra/jojomod/stand/powers/PowersBlackSabbath.java:1017: error: cannot find symbol
-                || blackFS.is(ModItems.KNIFE_BUNDLE) || blackFS.getItem() instanceof TridentItem && EnchantmentHelper.getRiptide(blackFS) <= 0 && !(blackFS.getDamageValue() >= blackFS.getMaxDamage() - 1)) && !(blackFS.is(ItemStack.EMPTY.getItem())
-                                                                                                                     ^
-  symbol:   method getRiptide(ItemStack)
-  location: class EnchantmentHelper
 common/src/main/java/net/hydra/jojomod/stand/powers/PowersPearlJam.java:195: error: cannot find symbol
                 float height = LE.getNameTagOffsetY() + 0.275F;
                                  ^
@@ -1073,24 +766,9 @@ common/src/main/java/net/hydra/jojomod/item/NewLocacacaItem.java:166: error: can
 common/src/main/java/net/hydra/jojomod/item/FirearmItem.java:157: error: incompatible types: EquipmentSlot is not a functional interface
             itemStack.hurtAndBreak(1, player, p -> {});
                      ^
-common/src/main/java/net/hydra/jojomod/item/GlaiveItem.java:131: error: cannot find symbol
-                    $$2 = EnchantmentHelper.getDamageBonus($$0, ((LivingEntity) target).getMobType());
-                                                                                       ^
-  symbol:   method getMobType()
-  location: class LivingEntity
-common/src/main/java/net/hydra/jojomod/item/GlaiveItem.java:133: error: cannot find symbol
-                    $$2 = EnchantmentHelper.getDamageBonus($$0, MobType.UNDEFINED);
-                                                                ^
-  symbol:   variable MobType
-  location: class GlaiveItem
 common/src/main/java/net/hydra/jojomod/item/RoundaboutArrowItem.java:17: error: method does not override or implement a method from a supertype
     @Override
     ^
-common/src/main/java/net/hydra/jojomod/item/HarpoonItem.java:106: error: cannot find symbol
-        } else if (EnchantmentHelper.getRiptide($$3) > 0 && !$$1.isInWaterOrRain()) {
-                                    ^
-  symbol:   method getRiptide(ItemStack)
-  location: class EnchantmentHelper
 common/src/main/java/net/hydra/jojomod/item/MemoryChessPieceItem.java:258: error: method getExperienceReward in class LivingEntity cannot be applied to given types;
                     tag.putInt("experience",livingEntity.getExperienceReward());
                                                         ^
@@ -1207,5 +885,5 @@ Note: Recompile with -Xlint:deprecation for details.
 Note: Some input files use unchecked or unsafe operations.
 Note: Recompile with -Xlint:unchecked for details.
 Note: Some messages have been simplified; recompile with -Xdiags:verbose to get full output
-251 errors
+181 errors
 18 warnings

@@ -115,10 +115,6 @@ public class Zombiefish extends PathfinderMob {
         return InfestedBlock.isCompatibleHostBlock($$1.getBlockState($$0.below())) ? 10.0F : super.getWalkTargetValue($$0, $$1);
     }
 
-    @Override
-    public MobType getMobType() {
-        return MobType.UNDEAD;
-    }
 
     @Override
     public void setTarget(@Nullable LivingEntity $$0) {

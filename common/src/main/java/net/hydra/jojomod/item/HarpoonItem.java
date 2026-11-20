@@ -103,7 +103,7 @@ public class HarpoonItem extends Item {
         ItemStack $$3 = $$1.getItemInHand($$2);
         if ($$3.getDamageValue() >= $$3.getMaxDamage() - 1) {
             return InteractionResultHolder.fail($$3);
-        } else if (EnchantmentHelper.getRiptide($$3) > 0 && !$$1.isInWaterOrRain()) {
+        } else if (EnchantmentHelper.getTridentSpinAttackStrength($$3, $$1) > 0 && !$$1.isInWaterOrRain()) {
             return InteractionResultHolder.fail($$3);
         } else {
             $$1.startUsingItem($$2);

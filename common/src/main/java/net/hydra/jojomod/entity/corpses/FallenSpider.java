@@ -235,10 +235,6 @@ public class FallenSpider extends FallenMob implements PlayerRideableJumping {
         }
     }
 
-    @Override
-    public MobType getMobType() {
-        return MobType.ARTHROPOD;
-    }
 
     @Override
     public boolean canBeAffected(MobEffectInstance $$0) {

@@ -1,5 +1,6 @@
 package net.hydra.jojomod.entity.projectile;
 
+import net.hydra.jojomod.util.EnchantmentCompat;
 import net.hydra.jojomod.util.ItemDurability;
 import net.hydra.jojomod.access.IMob;
 import net.hydra.jojomod.client.ClientNetworking;
@@ -191,8 +192,7 @@ public class StandArrowEntity extends AbstractArrow {
                     }
 
                     if (!this.level().isClientSide && $$5 instanceof LivingEntity) {
-                        EnchantmentHelper.doPostHurtEffects($$10, $$5);
-                        EnchantmentHelper.doPostDamageEffects((LivingEntity) $$5, $$10);
+                        EnchantmentCompat.postAttack(this.level(), $$10, $$6, this.getWeaponItem());
                     }
 
                     this.doPostHurtEffects($$10);

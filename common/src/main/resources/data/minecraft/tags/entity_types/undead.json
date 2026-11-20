@@ -1,0 +1,16 @@
+{
+  "replace": false,
+  "values": [
+    "roundabout:zombiefish",
+    "roundabout:fallen_zombie",
+    "roundabout:fallen_skeleton",
+    "roundabout:fallen_phantom",
+    "roundabout:villager_minion",
+    "roundabout:ocelot_minion",
+    "roundabout:parrot_minion",
+    "roundabout:chicken_minion",
+    "roundabout:axolotl_minion",
+    "roundabout:dog_minion",
+    "roundabout:zombie_aesthetician"
+  ]
+}

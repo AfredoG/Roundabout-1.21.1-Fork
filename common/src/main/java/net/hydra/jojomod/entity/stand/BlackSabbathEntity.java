@@ -1,5 +1,6 @@
 package net.hydra.jojomod.entity.stand;
 
+import net.hydra.jojomod.util.EnchantmentCompat;
 import net.hydra.jojomod.util.ItemCombatData;
 import net.hydra.jojomod.access.AccessThrownTrident;
 import net.hydra.jojomod.access.IInstrumentItemAccess;
@@ -770,7 +771,7 @@ public class BlackSabbathEntity extends StandEntity implements HasCustomInventor
                     }
                 }
                 if(!level().isClientSide() && !getTridentLoyalty()) {
-                    if (blackSabbathFirstSlot.getItem() instanceof TridentItem tr && EnchantmentHelper.getLoyalty(blackSabbathFirstSlot) > 0) {
+                    if (blackSabbathFirstSlot.getItem() instanceof TridentItem tr && EnchantmentCompat.tridentReturnAcceleration(blackSabbathFirstSlot, this) > 0) {
                         setTridentLoyalty(true);
                     } else if (blackSabbathFirstSlot.getItem() instanceof HarpoonItem) {
                         setTridentLoyalty(true);
@@ -949,7 +950,7 @@ public class BlackSabbathEntity extends StandEntity implements HasCustomInventor
             SynchedEntityData.defineId(BlackSabbathEntity.class, EntityDataSerializers.BOOLEAN);
     public final Boolean getThrowable() {
         return (this.getHeldItemSabbath().getItem() instanceof ArrowItem && !(this.getHeldItemSabbath().getItem() instanceof RoundaboutArrowItem) || this.getHeldItemSabbath().getItem() instanceof KnifeItem
-                || this.getHeldItemSabbath().is(ModItems.KNIFE_BUNDLE) || this.getHeldItemSabbath().getItem() instanceof TridentItem && EnchantmentHelper.getRiptide(getHeldItemSabbath()) <= 0 && !(getHeldItemSabbath().getDamageValue() >= getHeldItemSabbath().getMaxDamage() - 1)
+                || this.getHeldItemSabbath().is(ModItems.KNIFE_BUNDLE) || this.getHeldItemSabbath().getItem() instanceof TridentItem && EnchantmentHelper.getTridentSpinAttackStrength(getHeldItemSabbath(), this) <= 0 && !(getHeldItemSabbath().getDamageValue() >= getHeldItemSabbath().getMaxDamage() - 1)
                 || this.getHeldItemSabbath().getItem() instanceof EggItem || this.getHeldItemSabbath().getItem() instanceof SnowballItem || this.getHeldItemSabbath().getItem() instanceof ThrowablePotionItem
                 || this.getHeldItemSabbath().getItem() instanceof EnderpearlItem || this.getHeldItemSabbath().getItem() instanceof GasolineBucketItem || this.getHeldItemSabbath().getItem() instanceof GasolineCanItem
                 || this.getHeldItemSabbath().getItem() instanceof MatchItem || this.getHeldItemSabbath().is(ModItems.MATCH_BUNDLE) || this.getHeldItemSabbath().getItem() instanceof FleshBucketItem
@@ -1775,7 +1776,7 @@ public class BlackSabbathEntity extends StandEntity implements HasCustomInventor
                             ThrownTrident $$7 = new ThrownTrident(bs.getUser().level(), bs.getUser(), item);
                             $$7.setPos(bs.position().x, bs.getEyeY() - 0.1, bs.position().z);
                             $$7.shootFromRotation(bs, X, Y, 0.0F, 2.5F, 1.0F);
-                            if (EnchantmentHelper.getLoyalty(item) > 0) {
+                            if (EnchantmentCompat.tridentReturnAcceleration(item, $$7) > 0) {
                                 bs.setTridentReturn($$7);
                             }
                             bs.level().addFreshEntity($$7);
@@ -1934,19 +1935,16 @@ public class BlackSabbathEntity extends StandEntity implements HasCustomInventor
 
     private void swordHit(float damage, LivingEntity attacked, Entity attacker, ItemStack item){
         if(this.getUser() != null) {
-            if(attacker instanceof Player){
-                attacked.hurt(ModDamageTypes.of(level(), DamageTypes.PLAYER_ATTACK, this.getUser()), damage + 1);
-            } else {
-                attacked.hurt(ModDamageTypes.of(level(), DamageTypes.MOB_ATTACK, this.getUser()), damage + 1);
+            DamageSource source = ModDamageTypes.of(level(),
+                    attacker instanceof Player ? DamageTypes.PLAYER_ATTACK : DamageTypes.MOB_ATTACK, this.getUser());
+            float enchantedDamage = EnchantmentCompat.modifyDamage(level(), item, attacked, source, damage + 1);
+            if (attacked.hurt(source, enchantedDamage)) {
+                EnchantmentCompat.postAttack(level(), attacked, source, item);
             }
             attacked.invulnerableTime = 0;
             attacked.hurt(ModDamageTypes.of(level(), ModDamageTypes.STAND, this.getUser()), 2);
             if (item.getItem() instanceof GlaiveItem) {
                 MainUtil.makeBleed(attacked, 0, 300, this.getUser());
-            }
-            int ench = EnchantmentHelper.getItemEnchantmentLevel(Enchantments.FIRE_ASPECT, item);
-            if (ench >= 1) {
-                attacked.igniteForSeconds((ench) * 4);
             }
         }
     }
@@ -2030,15 +2028,12 @@ public class BlackSabbathEntity extends StandEntity implements HasCustomInventor
                                 if (meleeInteractionTicks == 130 || meleeInteractionTicks == 85 && !(i.getItem() instanceof GlaiveItem || i.getItem() instanceof WarhammerItem) || meleeInteractionTicks == 175) {
                                     if (i.getItem() instanceof SwordItem SI) {
                                         itemDamage = ItemCombatData.attackDamage(i);
-                                        itemDamage += EnchantmentHelper.getDamageBonus(i, ((LivingEntity) e).getMobType());
                                         swordHit(itemDamage, e, this.getUser(), i);
                                     } else if (i.getItem() instanceof DiggerItem SI) {
                                         itemDamage = ItemCombatData.attackDamage(i);
-                                        itemDamage += EnchantmentHelper.getDamageBonus(i, ((LivingEntity) e).getMobType());
                                         swordHit(itemDamage, e, this.getUser(), i);
                                     } else if (i.getItem() instanceof GlaiveItem SI) {
                                         itemDamage = ItemCombatData.attackDamage(i);
-                                        itemDamage += EnchantmentHelper.getDamageBonus(i, ((LivingEntity) e).getMobType());
                                         swordHit(itemDamage, e, this.getUser(), i);
                                     }
                                     if (i.getItem() instanceof WarhammerItem) {

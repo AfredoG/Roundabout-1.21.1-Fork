@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "roundabout:wooden_war_hammer",
+    "roundabout:stone_war_hammer",
+    "roundabout:iron_war_hammer",
+    "roundabout:golden_war_hammer",
+    "roundabout:diamond_war_hammer",
+    "roundabout:netherite_war_hammer"
+  ]
+}

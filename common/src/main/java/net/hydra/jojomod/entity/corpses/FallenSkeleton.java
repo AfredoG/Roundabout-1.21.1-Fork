@@ -101,10 +101,6 @@ public class FallenSkeleton extends FallenMob implements RangedAttackMob  {
             this.playSound(this.getStepSound(), 0.15F, 1.0F);
         }
     }
-    @Override
-    public MobType getMobType() {
-        return MobType.UNDEAD;
-    }
 
 
     @Override

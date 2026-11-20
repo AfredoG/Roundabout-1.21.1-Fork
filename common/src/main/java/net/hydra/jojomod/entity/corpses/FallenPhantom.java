@@ -328,10 +328,6 @@ public class FallenPhantom extends FallenMob implements PlayerRideableJumping {
         }
     }
 
-    @Override
-    public MobType getMobType() {
-        return MobType.UNDEAD;
-    }
 
     protected float playerJumpPendingScale;
 

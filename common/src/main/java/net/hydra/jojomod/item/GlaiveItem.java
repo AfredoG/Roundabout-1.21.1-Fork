@@ -1,5 +1,7 @@
 package net.hydra.jojomod.item;
 
+import net.minecraft.world.damagesource.DamageSource;
+import net.hydra.jojomod.util.EnchantmentCompat;
 import net.hydra.jojomod.Roundabout;
 import net.hydra.jojomod.block.ModBlocks;
 import net.hydra.jojomod.client.ClientNetworking;
@@ -22,7 +24,6 @@ import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.MobType;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
@@ -126,15 +127,10 @@ public class GlaiveItem extends SwordItem {
 
             if (target != null) {
                 float power = (float) player.getAttributeValue(Attributes.ATTACK_DAMAGE);
-                float $$2;
-                if (target instanceof LivingEntity) {
-                    $$2 = EnchantmentHelper.getDamageBonus($$0, ((LivingEntity) target).getMobType());
-                } else {
-                    $$2 = EnchantmentHelper.getDamageBonus($$0, MobType.UNDEFINED);
-                }
-                power += $$2;
+                DamageSource source = ModDamageTypes.of($$1, ModDamageTypes.GLAIVE, player);
+                power = EnchantmentCompat.modifyDamage($$1, $$0, target, source, power);
                 power += this.chargeDamage;
-                if (target.hurt(ModDamageTypes.of($$1, ModDamageTypes.GLAIVE, player), power)) {
+                if (target.hurt(source, power)) {
                     if (!player.isCreative()) {
                         ItemStack item = player.getInventory().getItem((player.getInventory().findSlotMatchingItem($$0)));
                         item.hurtAndBreak(1, player, net.minecraft.world.entity.LivingEntity.getSlotForHand(player.getUsedItemHand()));

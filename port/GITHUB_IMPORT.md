@@ -5,7 +5,7 @@ Imported on 2026-11-13 into AfredoG/Roundabout-1.21.1-Fork, branch `port/neoforg
 ## Status
 
 This is an INCOMPLETE development port: Minecraft 1.21.1, NeoForge 21.1.265, Java 21, Gradle 8.14.3.
-Last executed full compilation after subsequent port fixes: 251 Java errors and 18 warnings. The authentic full log is saved in build-errors.txt. No playable JAR; client and dedicated server have not been validated.
+Last executed full compilation after subsequent port fixes: 181 Java errors and 18 warnings. The authentic full log is saved in build-errors.txt. No playable JAR; client and dedicated server have not been validated.
 See BUILD_STATUS.md and build-errors.txt for diagnostics and remaining work.
 This import changes no mod source code and does not constitute a new build test.
 

@@ -8,7 +8,7 @@
 - Gradle help: успешно.
 - Подготовка исходников и классов Minecraft/NeoForge: успешно.
 - processResources: успешно; проверены метаданные, access transformer, mixin-конфигурации и 141 рецепт.
-- compileJava: НЕУСПЕШНО, 251 ошибок, 18 предупреждений (актуальный полный журнал сохранён в build-errors.txt).
+- compileJava: НЕУСПЕШНО, 181 ошибок, 18 предупреждений (актуальный полный журнал сохранён в build-errors.txt).
 - JDK 21 и Gradle восстановлены; подготовка Minecraft/NeoForge и processResources прошли в новой среде.
 - JAR для установки: отсутствует.
 - Запуск клиента и выделенного сервера полного мода: не выполнен (компиляция не проходит).
@@ -18,13 +18,12 @@
 Список ошибок — build-errors.txt. Ошибки могут быть каскадными; их число не является оценкой процента готовности.
 Текущая проверка выполнена на Azul JDK 21.0.6 и Gradle 8.14.3; зависимости восстановлены заново.
 
-## Категории актуального полного журнала (251 ошибок)
+## Категории актуального полного журнала (181 ошибок)
 
 | Ошибка | Количество |
 |---|---:|
-| cannot find symbol | 137 |
-| method does not override or implement a method from a supertype | 30 |
-| incompatible types: ResourceKey<Enchantment> cannot be converted to Holder<Enchantment> | 7 |
+| cannot find symbol | 79 |
+| method does not override or implement a method from a supertype | 24 |
 | incompatible types: Reference<SoundEvent> cannot be converted to SoundEvent | 5 |
 | method createArrow in class ArrowItem cannot be applied to given types; | 4 |
 | method getMobArrow in class ProjectileUtil cannot be applied to given types; | 4 |
@@ -37,6 +36,7 @@
 | incompatible types: Holder<SoundEvent> cannot be converted to SoundEvent | 2 |
 | method getExperienceReward in class LivingEntity cannot be applied to given types; | 2 |
 | no suitable method found for playSound(<null>,ThrownTrident,Holder<SoundEvent>,SoundSource,float,float) | 1 |
+| no suitable method found for fromJson(String) | 1 |
 
 
 ## Что требуется закончить
@@ -521,3 +521,16 @@
 - Итоговая полная compileJava: **251 ошибка, 18 предупреждений**. Цепочка за продолжение: **394 -> 368 -> 308 -> 279 -> 251**, минус **143** ошибки. Диагностики сравнивались по файлам, типам и символам: новых групп/увеличений нет. git diff --check проходит. Журнал и таблица актуальны.
 - Запуск этой группы не проверял игру и применение mixin. После успешной сборки проверить сохранение/загрузку шахмат/дисков, синхронизацию Pearl Jam, последний фейерверк в руке, головы/картины/яйца призыва, сломанные предметы и зачарования прочности, все варианты спавна/превращения NPC, дополнительные дропы и Looting. Полный мод ещё не собирается; играбельного JAR нет.
 - Дальше: MobType и динамическая нежить; эффекты зачарований/стрел/трезубца; посадка и геометрия сущностей; остатки сохранения инвентарей и NeoForge event API. Не считать количество ошибок процентом готовности и не ослаблять mixin ради сборки.
+
+
+## Контрольная точка: типы мобов и боевые зачарования (2026-11-20)
+
+- Полная компиляция: 251 → 183 → 181 ошибок, 18 предупреждений. Удалено 70 диагностик; новых категорий ошибок по сравнению с исходным журналом нет.
+- Удалённый MobType заменён тегами entity_type: нежить (включая шесть видов миньонов, Zombiefish, три вида Fallen и ZombieAesthetician) и FallenSpider. JSON остаются в исходных каталогах upstream; processResources переносит пути в формат 1.21.1.
+- Для зомби-превращения отдельной сущности сохранены инверсия лечения/урона, иммунитет к яду/регенерации и чувствительность к Smite. EntityPredicate учитывает зомби-состояние только для тегов undead/sensitive_to_smite; обычные и прямые проверки типов продолжают работать штатно.
+- Урон глефы, ножей, метаемого оружия, Black Sabbath и агрессивных мобов использует EnchantmentHelper.modifyDamage с настоящими DamageSource и ItemStack. Эффекты после попадания перенесены на doPostAttackEffectsWithItemSource; серверная проверка вынесена в EnchantmentCompat. Сохранены особые коэффициенты защиты мода.
+- Отбрасывание способностей теперь расширяет modifyKnockback: сохраняет базовую силу и не складывается повторно с более сильным зачарованием. Усиление не применяется к попаданиям обычных снарядов.
+- Верность/Тягун трезубцев переведены на эффекты зачарований. Молотам добавлен тег enchantable/sharp_weapon взамен mixin удалённого DamageEnchantment.
+- Удалён Shadow уже отсутствующего Mob.maybeDisableShield и его мост: в 1.21.1 отключение щита при блокировании уже выполняет Player.blockUsingShield.
+- processResources: успешно. Содержимое всех трёх новых тегов проверено в собранных ресурсах. По исходникам 1.21.1 проверены сигнатуры четырёх изменённых целей mixin и единственный перехватываемый вызов EntityTypePredicate.matches.
+- Это проверка компиляции, ресурсов и целей API. Запуск полного мода и поведение зачарований в игре ещё не проверены; готового JAR нет.

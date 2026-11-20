@@ -1,5 +1,6 @@
 package net.hydra.jojomod.entity.corpses;
 
+import net.hydra.jojomod.util.EnchantmentCompat;
 import net.hydra.jojomod.Roundabout;
 import net.hydra.jojomod.access.IMob;
 import net.hydra.jojomod.access.IPermaCasting;
@@ -349,15 +350,9 @@ public class FallenMob extends PathfinderMob implements NeutralMob, net.hydra.jo
 
 
         float $$1 = (float)this.getAttributeValue(Attributes.ATTACK_DAMAGE);
-        float $$2 = (float)this.getAttributeValue(Attributes.ATTACK_KNOCKBACK);
-        if ($$0 instanceof LivingEntity) {
-            $$2 += (float)EnchantmentHelper.getKnockbackBonus(this);
-        }
-
-        int $$3 = EnchantmentHelper.getFireAspect(this);
-        if ($$3 > 0) {
-            $$0.igniteForSeconds($$3 * 4);
-        }
+        DamageSource source = getMainHandItem().isEmpty()
+                ? ModDamageTypes.of(this.level(), ModDamageTypes.CORPSE, this) : this.damageSources().mobAttack(this);
+        float $$2 = this.getKnockback($$0, source);
 
         Entity ent2 = this;
         if (getController() > 0 && getController() != $$0.getId()){
@@ -367,7 +362,7 @@ public class FallenMob extends PathfinderMob implements NeutralMob, net.hydra.jo
 
         if (!getMainHandItem().isEmpty()){
             /**If you give it an item, fights with it instead*/
-            boolean $$4 = $$0.hurt(this.damageSources().mobAttack(this), $$1);
+            boolean $$4 = $$0.hurt(source, $$1);
             if ($$4) {
                 if ($$2 > 0.0F && $$0 instanceof LivingEntity) {
                     ((LivingEntity)$$0)
@@ -379,11 +374,7 @@ public class FallenMob extends PathfinderMob implements NeutralMob, net.hydra.jo
                     this.setDeltaMovement(this.getDeltaMovement().multiply(0.6, 1.0, 0.6));
                 }
 
-                if ($$0 instanceof Player $$5) {
-                    ((IMob)this).roundabout$maybeDisableShield($$5, this.getMainHandItem(), $$5.isUsingItem() ? $$5.getUseItem() : ItemStack.EMPTY);
-                }
-
-                this.doEnchantDamageEffects(this, $$0);
+                EnchantmentCompat.postAttack(this.level(), $$0, source, this.getMainHandItem());
                 this.setLastHurtMob($$0);
             }
 
@@ -413,7 +404,7 @@ public class FallenMob extends PathfinderMob implements NeutralMob, net.hydra.jo
                         }
                 }
 
-                this.doEnchantDamageEffects(this, $$0);
+                EnchantmentCompat.postAttack(this.level(), $$0, source, this.getMainHandItem());
                 this.setLastHurtMob($$0);
             }
             return $$4;

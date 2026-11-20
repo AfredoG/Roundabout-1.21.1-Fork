@@ -2630,11 +2630,18 @@ public abstract class StandUserEntity extends Entity implements StandUser {
         }
     }
 
-    // Zombies are undead
-    @Inject(method = "getMobType", at = @At(value = "HEAD"), cancellable = true, require = 0)
-    public void roundabout$getMobType(CallbackInfoReturnable<MobType> cir) {
+    // Zombie fate is per entity; static undead species are covered by entity-type tags.
+    @Inject(method = "isInvertedHealAndHarm", at = @At("HEAD"), cancellable = true)
+    public void roundabout$zombieHealing(CallbackInfoReturnable<Boolean> cir) {
         if (FateTypes.isZombie(rdbt$this())) {
-            cir.setReturnValue(MobType.UNDEAD);
+            cir.setReturnValue(true);
+        }
+    }
+
+    @Inject(method = "canBeAffected", at = @At("HEAD"), cancellable = true)
+    public void roundabout$zombieEffects(MobEffectInstance effect, CallbackInfoReturnable<Boolean> cir) {
+        if (FateTypes.isZombie(rdbt$this()) && (effect.is(MobEffects.POISON) || effect.is(MobEffects.REGENERATION))) {
+            cir.setReturnValue(false);
         }
     }
 

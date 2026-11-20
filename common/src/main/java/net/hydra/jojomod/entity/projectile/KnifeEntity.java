@@ -1,5 +1,6 @@
 package net.hydra.jojomod.entity.projectile;
 
+import net.hydra.jojomod.util.EnchantmentCompat;
 import com.google.common.collect.Sets;
 import net.hydra.jojomod.access.IAbstractArrowAccess;
 import net.hydra.jojomod.client.ClientNetworking;
@@ -208,16 +209,16 @@ public class KnifeEntity extends AbstractArrow {
             $$2 = (float) (3F * (ClientNetworking.getAppropriateConfig().itemSettings.knifeDamageOnMobs *0.01));;
         }
 
+        Entity $$4 = this.getOwner();
+        DamageSource $$5 = ModDamageTypes.of($$1.level(), ModDamageTypes.KNIFE, $$4);
         if ($$1 instanceof LivingEntity $$3) {
-            int f = EnchantmentHelper.getEnchantmentLevel(Enchantments.PROJECTILE_PROTECTION, $$3);
+            int f = EnchantmentCompat.equipmentLevel(Enchantments.PROJECTILE_PROTECTION, $$3);
             $$2 = (float) ($$2 * (1-(f*0.03)));
 
 
-            $$2 += EnchantmentHelper.getDamageBonus(this.knifeItem, $$3.getMobType());
+            $$2 = EnchantmentCompat.modifyDamage(this.level(), this.knifeItem, $$3, $$5, $$2);
         }
 
-        Entity $$4 = this.getOwner();
-        DamageSource $$5 = ModDamageTypes.of($$1.level(), ModDamageTypes.KNIFE, $$4);
         SoundEvent $$6 = ModSounds.KNIFE_IMPACT_EVENT;
         Vec3 DM = $$1.getDeltaMovement();
         if ($$1.hurt($$5, $$2)) {
@@ -239,8 +240,7 @@ public class KnifeEntity extends AbstractArrow {
             if ($$1 instanceof LivingEntity $$7) {
                 $$1.setDeltaMovement($$1.getDeltaMovement().multiply(0.4,0.4,0.4));
                 if ($$4 instanceof LivingEntity) {
-                    EnchantmentHelper.doPostHurtEffects($$7, $$4);
-                    EnchantmentHelper.doPostDamageEffects((LivingEntity) $$4, $$7);
+                    EnchantmentCompat.postAttack(this.level(), $$7, $$5, this.knifeItem);
                 }
 
                 this.doPostHurtEffects($$7);

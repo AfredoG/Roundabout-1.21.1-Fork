@@ -1,5 +1,6 @@
 package net.hydra.jojomod.entity.projectile;
 
+import net.hydra.jojomod.util.EnchantmentCompat;
 import net.hydra.jojomod.util.ItemDurability;
 import net.hydra.jojomod.util.ItemCombatData;
 import net.hydra.jojomod.Roundabout;
@@ -734,11 +735,8 @@ private void bridgePlace(BlockHitResult $$0,Player P) {
                 damage = 7;
             }
             if (enchant){
-                if (ent instanceof LivingEntity){
-                    damage+= EnchantmentHelper.getDamageBonus(this.getItem(), ((LivingEntity)ent).getMobType());
-                } else {
-                    damage+= EnchantmentHelper.getDamageBonus(this.getItem(), MobType.UNDEFINED);
-                }
+                damage = EnchantmentCompat.modifyDamage(this.level(), this.getItem(), ent,
+                        ModDamageTypes.of(this.level(), ModDamageTypes.THROWN_OBJECT, this.getOwner()), damage);
             }
         }
         if (getStyle() == SOFTTHROW){
@@ -814,7 +812,7 @@ private void bridgePlace(BlockHitResult $$0,Player P) {
         boolean fire = false;
         boolean onFire = $$1.isOnFire();
         if (!this.getItem().isEmpty()) {
-            int ench = EnchantmentHelper.getItemEnchantmentLevel(Enchantments.FIRE_ASPECT, this.getItem());
+            int ench = EnchantmentCompat.itemLevel(Enchantments.FIRE_ASPECT, this.getItem(), this.level());
             if (ench >= 1) {
                 $$1.igniteForSeconds((ench) * 4);
                 fire = true;

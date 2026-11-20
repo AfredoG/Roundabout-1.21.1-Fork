@@ -166,8 +166,4 @@ public class FallenZombie extends FallenMob{
         return dimensions.withEyeHeight(this.isBaby() ? 0.93F : 1.74F);
     }
 
-    @Override
-    public MobType getMobType() {
-        return MobType.UNDEAD;
-    }
 }

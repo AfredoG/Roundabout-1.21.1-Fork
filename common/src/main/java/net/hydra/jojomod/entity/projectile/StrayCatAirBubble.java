@@ -1,5 +1,6 @@
 package net.hydra.jojomod.entity.projectile;
 
+import net.hydra.jojomod.util.EnchantmentCompat;
 import net.hydra.jojomod.access.*;
 import net.hydra.jojomod.client.ClientNetworking;
 import net.hydra.jojomod.entity.UnburnableProjectile;
@@ -462,8 +463,7 @@ public class StrayCatAirBubble extends AbstractHurtingProjectile implements Unbu
                     }
 
                     if (user instanceof LivingEntity) {
-                        EnchantmentHelper.doPostHurtEffects($$7, user);
-                        EnchantmentHelper.doPostDamageEffects((LivingEntity) user, $$7);
+                        EnchantmentCompat.postAttack(this.level(), $$7, dmg, ((LivingEntity) user).getMainHandItem());
                     }
                     if (user instanceof LivingEntity LE && this.isPlanted) {
                         if (((StandUser) LE).roundabout$getStandPowers() instanceof PowersKillerQueen KQ && this.isKillerQueenBubble) {
