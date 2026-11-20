@@ -1,5 +1,6 @@
 package net.hydra.jojomod.block;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -12,6 +13,13 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 
 public class AjaOreBlock extends DropExperienceBlock {
+    public static final MapCodec<AjaOreBlock> CODEC = simpleCodec(AjaOreBlock::new);
+
+    @Override
+    public MapCodec<? extends AjaOreBlock> codec() {
+        return CODEC;
+    }
+
     public static final BooleanProperty LIT = ModBlocks.LIT;
     public AjaOreBlock(Properties $$0) {
         super(net.minecraft.util.valueproviders.ConstantInt.of(0), $$0);

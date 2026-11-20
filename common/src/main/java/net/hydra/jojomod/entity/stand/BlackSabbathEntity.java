@@ -1,5 +1,6 @@
 package net.hydra.jojomod.entity.stand;
 
+import net.hydra.jojomod.util.ItemCombatData;
 import net.hydra.jojomod.access.AccessThrownTrident;
 import net.hydra.jojomod.access.IInstrumentItemAccess;
 import net.hydra.jojomod.access.IPlayerEntity;
@@ -2028,15 +2029,15 @@ public class BlackSabbathEntity extends StandEntity implements HasCustomInventor
                             if (!(i.getDamageValue() >= i.getMaxDamage() - 1)) {
                                 if (meleeInteractionTicks == 130 || meleeInteractionTicks == 85 && !(i.getItem() instanceof GlaiveItem || i.getItem() instanceof WarhammerItem) || meleeInteractionTicks == 175) {
                                     if (i.getItem() instanceof SwordItem SI) {
-                                        itemDamage = SI.getDamage();
+                                        itemDamage = ItemCombatData.attackDamage(i);
                                         itemDamage += EnchantmentHelper.getDamageBonus(i, ((LivingEntity) e).getMobType());
                                         swordHit(itemDamage, e, this.getUser(), i);
                                     } else if (i.getItem() instanceof DiggerItem SI) {
-                                        itemDamage = SI.getAttackDamage();
+                                        itemDamage = ItemCombatData.attackDamage(i);
                                         itemDamage += EnchantmentHelper.getDamageBonus(i, ((LivingEntity) e).getMobType());
                                         swordHit(itemDamage, e, this.getUser(), i);
                                     } else if (i.getItem() instanceof GlaiveItem SI) {
-                                        itemDamage = SI.getDamage();
+                                        itemDamage = ItemCombatData.attackDamage(i);
                                         itemDamage += EnchantmentHelper.getDamageBonus(i, ((LivingEntity) e).getMobType());
                                         swordHit(itemDamage, e, this.getUser(), i);
                                     }

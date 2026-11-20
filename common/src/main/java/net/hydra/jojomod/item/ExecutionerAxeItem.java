@@ -4,6 +4,6 @@ import net.minecraft.world.item.*;
 
 public class ExecutionerAxeItem extends AxeItem {
     public ExecutionerAxeItem(Tier $$0, float $$1, float $$2, Properties $$3, float chargeDamage) {
-        super($$0, $$1, $$2, $$3);
+        super($$0, $$3.attributes(DiggerItem.createAttributes($$0, $$1, $$2)));
     }
 }

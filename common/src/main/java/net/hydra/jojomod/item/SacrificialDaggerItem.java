@@ -1,7 +1,6 @@
 package net.hydra.jojomod.item;
 
-import com.google.common.collect.ImmutableMultimap;
-import com.google.common.collect.Multimap;
+import net.hydra.jojomod.util.ItemCombatData;
 import net.hydra.jojomod.entity.projectile.BloodSplatterEntity;
 import net.hydra.jojomod.event.index.FateTypes;
 import net.hydra.jojomod.event.powers.ModDamageTypes;
@@ -15,9 +14,6 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.attributes.Attribute;
-import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
@@ -28,19 +24,10 @@ public class SacrificialDaggerItem extends TieredItem {
     /**It is basically a hybrid speedy weapon + shears that also inflicts bleed on strike*/
 
     private final float attackDamage;
-    private final Multimap<Attribute, AttributeModifier> defaultModifiers;
 
     public SacrificialDaggerItem(Tier $$0, float $$1, float $$2, Properties $$3) {
-        super($$0, $$3);
-        $$3.defaultDurability(40);
+        super($$0, $$3.attributes(ItemCombatData.weaponAttributes($$1 + $$0.getAttackDamageBonus(), $$2)));
         this.attackDamage = $$1 + $$0.getAttackDamageBonus();
-        ImmutableMultimap.Builder<Attribute, AttributeModifier> $$4 = ImmutableMultimap.builder();
-        $$4.put(
-                Attributes.ATTACK_DAMAGE,
-                new AttributeModifier(BASE_ATTACK_DAMAGE_UUID, "Weapon modifier", (double)this.attackDamage, AttributeModifier.Operation.ADDITION)
-        );
-        $$4.put(Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_UUID, "Weapon modifier", (double)$$2, AttributeModifier.Operation.ADDITION));
-        this.defaultModifiers = $$4.build();
     }
 
     public float getDamage() {
@@ -54,10 +41,6 @@ public class SacrificialDaggerItem extends TieredItem {
 
     public static final float SHOOT_POWER = 0.9F;
 
-    @Override
-    public Multimap<Attribute, AttributeModifier> getDefaultAttributeModifiers(EquipmentSlot $$0) {
-        return $$0 == EquipmentSlot.MAINHAND ? this.defaultModifiers : super.getDefaultAttributeModifiers($$0);
-    }
 
     @Override
     public void releaseUsing(ItemStack $$0, Level $$1, LivingEntity $$2, int $$3) {
@@ -140,7 +123,7 @@ public class SacrificialDaggerItem extends TieredItem {
     }
 
     @Override
-    public boolean isCorrectToolForDrops(BlockState $$0) {
+    public boolean isCorrectToolForDrops(ItemStack stack, BlockState $$0) {
         return $$0.is(Blocks.COBWEB) || $$0.is(Blocks.REDSTONE_WIRE) || $$0.is(Blocks.TRIPWIRE);
     }
 

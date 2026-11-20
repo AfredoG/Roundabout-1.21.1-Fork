@@ -40,12 +40,12 @@ public class GlaiveItem extends SwordItem {
     private final float chargeDamage;
 
     public GlaiveItem(Tier $$0, float $$1, float $$2, Properties $$3, float chargeDamage) {
-        super($$0, (int) $$1, $$2, $$3);
+        super($$0, $$3.attributes(SwordItem.createAttributes($$0, (int) $$1, $$2)));
         this.chargeDamage =chargeDamage;
     }
 
     public GlaiveItem(Tier $$0, int $$1, float $$2, Properties $$3, float chargeDamage) {
-        super($$0, $$1, $$2, $$3);
+        super($$0, $$3.attributes(SwordItem.createAttributes($$0, $$1, $$2)));
         this.chargeDamage =chargeDamage;
     }
     public int getBurnTime(ItemStack stack, @Nullable RecipeType<?> recipeType) {

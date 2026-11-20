@@ -32,7 +32,7 @@ public class WarhammerItem extends DiggerItem  {
     /**The hammer joseph uses against wamuu in the chariot fight
      * inputevents contains its code to vault up blocks and entities*/
     public WarhammerItem(Tier $$0, float $$1, float $$2, Item.Properties $$3) {
-        super($$1, $$2, $$0, BlockTags.MINEABLE_WITH_PICKAXE, $$3);
+        super($$0, BlockTags.MINEABLE_WITH_PICKAXE, $$3.attributes(DiggerItem.createAttributes($$0, $$1, $$2)));
     }
 
     @Override
@@ -53,9 +53,9 @@ public class WarhammerItem extends DiggerItem  {
         return !$$3.isCreative();
     }
     @Override
-    public boolean isCorrectToolForDrops(BlockState blockState) {
+    public boolean isCorrectToolForDrops(ItemStack stack, BlockState blockState) {
         if (MainUtil.confirmIsOre(blockState)){
-            return super.isCorrectToolForDrops(blockState);
+            return super.isCorrectToolForDrops(stack, blockState);
         }
         return false;
     }

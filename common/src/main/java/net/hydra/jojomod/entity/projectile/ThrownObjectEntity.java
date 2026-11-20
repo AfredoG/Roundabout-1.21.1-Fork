@@ -1,5 +1,6 @@
 package net.hydra.jojomod.entity.projectile;
 
+import net.hydra.jojomod.util.ItemCombatData;
 import net.hydra.jojomod.Roundabout;
 import net.hydra.jojomod.access.IPlayerEntity;
 import net.hydra.jojomod.access.ISuperThrownAbstractArrow;
@@ -694,13 +695,13 @@ private void bridgePlace(BlockHitResult $$0,Player P) {
         } else {
             boolean enchant = false;
             if (this.getItem().getItem() instanceof SwordItem){
-                damage = (float) (5+ (((SwordItem)this.getItem().getItem()).getDamage()*1.5));
+                damage = (float) (5+ (ItemCombatData.attackDamage(this.getItem())*1.5));
                 enchant = true;
             } else if (this.getItem().getItem() instanceof DiggerItem){
-                damage = (float) (5+ (((DiggerItem)this.getItem().getItem()).getAttackDamage()*1.5));
+                damage = (float) (5+ (ItemCombatData.attackDamage(this.getItem())*1.5));
                 enchant = true;
             } else if (this.getItem().getItem() instanceof GlaiveItem){
-                damage = (float) (5+ (((GlaiveItem)this.getItem().getItem()).getDamage()*1.5));
+                damage = (float) (5+ (ItemCombatData.attackDamage(this.getItem())*1.5));
                 enchant = true;
             } else if (this.getItem().is(Items.IRON_NUGGET)){
                 damage = 10;

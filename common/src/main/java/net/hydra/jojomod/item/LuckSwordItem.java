@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.Shadow;
 public class LuckSwordItem extends SwordItem {
 
     public LuckSwordItem(Tier $$0, float $$1, float $$2, Properties $$3) {
-        super($$0, (int) $$1, $$2, $$3);
+        super($$0, $$3.attributes(SwordItem.createAttributes($$0, (int) $$1, $$2)));
     }
 
 

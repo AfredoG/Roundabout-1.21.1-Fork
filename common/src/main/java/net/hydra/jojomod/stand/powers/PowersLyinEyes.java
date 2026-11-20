@@ -35,10 +35,9 @@ public class PowersLyinEyes extends NewDashPreset {
     // for mob ai, a new attribute is needed to increase the detection range
     private static final net.minecraft.world.entity.ai.attributes.AttributeModifier DETECTION_BOOST =
             new net.minecraft.world.entity.ai.attributes.AttributeModifier(
-                    java.util.UUID.fromString("d8f3b2a0-4e2a-4b9d-8f2c-1a2b3c4d5e6f"),
-                    "Lyin Eyes Range Boost",
+                    net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("roundabout", "lyin_eyes_range_boost"),
                     20.0D,
-                    net.minecraft.world.entity.ai.attributes.AttributeModifier.Operation.ADDITION
+                    net.minecraft.world.entity.ai.attributes.AttributeModifier.Operation.ADD_VALUE
             );
     // stand summoning variable
     private int summonOverlayTicks = 0;
@@ -446,7 +445,7 @@ public class PowersLyinEyes extends NewDashPreset {
             net.minecraft.world.entity.ai.attributes.AttributeInstance followRangeAttr =
                     this.self.getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.FOLLOW_RANGE);
 
-            if (followRangeAttr != null && !followRangeAttr.hasModifier(DETECTION_BOOST)) {
+            if (followRangeAttr != null && !followRangeAttr.hasModifier(DETECTION_BOOST.id())) {
                 followRangeAttr.addTransientModifier(DETECTION_BOOST);
             }
         }

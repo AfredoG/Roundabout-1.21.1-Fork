@@ -14,6 +14,7 @@ public final class ForgeBlockTypes {
             DeferredRegister.create(Registries.BLOCK_TYPE, Roundabout.MOD_ID);
 
     static {
+        BLOCK_TYPES.register("aja_ore", () -> AjaOreBlock.CODEC);
         BLOCK_TYPES.register("bloody_stone_mask", () -> BloodyStoneMaskBlock.CODEC);
         BLOCK_TYPES.register("bubble_scaffold", () -> BubbleScaffoldBlock.CODEC);
         BLOCK_TYPES.register("chamomile_plant", () -> ChamomilePlantBlock.CODEC);

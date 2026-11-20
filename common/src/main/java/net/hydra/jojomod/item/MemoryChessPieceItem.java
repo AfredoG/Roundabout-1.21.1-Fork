@@ -49,7 +49,7 @@ import java.util.UUID;
 
 public class MemoryChessPieceItem extends BlockItem {
     public MemoryChessPieceItem(Block $$0, Properties $$1) {
-        super($$0,$$1.defaultDurability(3));
+        super($$0,$$1.durability(3));
     }
 
     @Override

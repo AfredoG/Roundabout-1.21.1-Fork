@@ -8,7 +8,7 @@
 - Gradle help: успешно.
 - Подготовка исходников и классов Minecraft/NeoForge: успешно.
 - processResources: успешно; проверены метаданные, access transformer, mixin-конфигурации и 141 рецепт.
-- compileJava: НЕУСПЕШНО, 394 ошибок, 18 предупреждений (актуальный полный журнал сохранён в build-errors.txt).
+- compileJava: НЕУСПЕШНО, 308 ошибок, 18 предупреждений (актуальный полный журнал сохранён в build-errors.txt).
 - JDK 21 и Gradle восстановлены; подготовка Minecraft/NeoForge и processResources прошли в новой среде.
 - JAR для установки: отсутствует.
 - Запуск клиента и выделенного сервера полного мода: не выполнен (компиляция не проходит).
@@ -18,25 +18,25 @@
 Список ошибок — build-errors.txt. Ошибки могут быть каскадными; их число не является оценкой процента готовности.
 Текущая проверка выполнена на Azul JDK 21.0.6 и Gradle 8.14.3; зависимости восстановлены заново.
 
-## Категории актуального полного журнала (394 ошибок)
+## Категории актуального полного журнала (308 ошибок)
 
 | Ошибка | Количество |
 |---|---:|
-| cannot find symbol | 203 |
-| method does not override or implement a method from a supertype | 41 |
-| method isCorrectToolForDrops in class Item cannot be applied to given types; | 9 |
+| cannot find symbol | 177 |
+| method does not override or implement a method from a supertype | 34 |
 | incompatible types: ResourceKey<Enchantment> cannot be converted to Holder<Enchantment> | 7 |
 | incompatible types: Reference<SoundEvent> cannot be converted to SoundEvent | 5 |
-| incompatible types: EquipmentSlot cannot be converted to ItemStack | 5 |
 | method createArrow in class ArrowItem cannot be applied to given types; | 4 |
-| method getDamage in interface IItemExtension cannot be applied to given types; | 4 |
 | method getMobArrow in class ProjectileUtil cannot be applied to given types; | 4 |
 | incompatible types: double cannot be converted to LivingEntity | 4 |
 | method finalizeSpawn in class AgeableMob cannot be applied to given types; | 3 |
-| incompatible types: Attribute cannot be converted to Holder<Attribute> | 3 |
 | incompatible types: CompoundTag cannot be converted to CustomData | 3 |
-| no suitable constructor found for SwordItem(Tier,int,float,Properties) | 3 |
+| non-static method getEquipmentSlotForItem(ItemStack) cannot be referenced from a static context | 2 |
 | incompatible types: RecipeHolder<CraftingRecipe> cannot be converted to CraftingRecipe | 2 |
+| incompatible types: int cannot be converted to ServerEntity | 2 |
+| method finalizeSpawn in class Mob cannot be applied to given types; | 2 |
+| method finalizeSpawn in class Zombie cannot be applied to given types; | 2 |
+| incompatible types: CompoundTag cannot be converted to Provider | 2 |
 
 
 ## Что требуется закончить
@@ -494,3 +494,16 @@
 - Все новые кодеки и прежний кодек StereoBlock зарегистрированы в NeoForge BLOCK_TYPE через отдельный ForgeBlockTypes; реестр подключён к mod bus. Идентификаторы блоков и сериализация состояний мира не менялись.
 - Конструктор AjaOreBlock явно передаёт нулевой опыт, как прежний конструктор DropExperienceBlock(Properties).
 - Это промежуточное сохранение исходников. Зависимости после очистки среды восстанавливаются; обновлённая полная компиляция ещё не завершилась. Счётчик 394/18 и build-errors.txt пока относятся к проверке 16 ноября. git diff --check проходит.
+
+
+## Контрольная точка — атрибуты оружия и инструменты, 20 ноября 2026
+
+- Первый пакет кодеков проверен полной compileJava: 394 -> 368 ошибок, 18 предупреждений. Дополнен собственный кодек AjaOreBlock; всего в ForgeBlockTypes зарегистрированы 32 кодека (31 новый и прежний StereoBlock).
+- Ножницы, жертвенный кинжал, гарпун и знак получают ATTRIBUTE_MODIFIERS через общий ItemCombatData с прежними значениями урона/скорости и слотом MAINHAND. Glaive/LuckSword, ExecutionerAxe и Warhammer используют штатные createAttributes в новых конструкторах. Неактуальные Multimap/UUID overrides удалены; индивидуальные компоненты стека теперь учитываются штатным API. Bowler Hat сохраняет отсутствие бонусов.
+- Сохраняется фактическая прочность TieredItem от материала: прежние вызовы defaultDurability после super уже не влияли на созданный предмет, поэтому удалены. Для помады и двух типов шахматных предметов прочность 6/3/3 задаётся до super.
+- ItemCombatData.attackDamage читает только ATTACK_DAMAGE для MAINHAND, без базового урона владельца и зачарований. На него переведены шесть обращений Black Sabbath и ThrownObjectEntity к удалённым getter оружия.
+- Ножницы, кинжал и молот принимают ItemStack в isCorrectToolForDrops. Восемь проверок уровня добычи стенда используют стандартные стеки кирок; молот проверяет фактический выбранный стек. Сохранены ограничение молота рудами и запрет добычи каменной маски. GRASS заменён SHORT_GRASS.
+- Lyin Eyes использует стабильный ResourceLocation модификатора, ADD_VALUE и hasModifier(id). У BCSoldier getAttributeValue принимает Holder<Attribute>, поэтому множители здоровья/скорости связки снова переопределяют метод LivingEntity.
+- Полная compileJava: **308 ошибок, 18 предупреждений** (было 368/18; суммарно 394 -> 308). Сравнение диагностик по файлам, типам и символам не обнаружило новых ошибок. git diff --check проходит.
+- ItemCombatDataCheck прошёл **13 сценариев** против реальных классов NeoForge 21.1.265: стандартные мечи/кирки, пустой стек, отсутствие атрибутов, четыре набора оружия, исключение OFFHAND. Для повторения нужны Java 21, compileClasspath проекта и client-extra resources JAR; harness создаёт пустой LoadingModList и выполняет Minecraft Bootstrap. Полный мод при этом не загружается, тест не является запуском клиента/сервера.
+- После рабочей сборки проверить подсказки и урон оружия в обеих руках, атрибуты изменённых стеков, добычу всех уровней стенда/молота, боевое использование вещей Black Sabbath, связку солдат и Lyin Eyes. Дальше — остатки ItemStack/NBT/износа и spawn hooks.

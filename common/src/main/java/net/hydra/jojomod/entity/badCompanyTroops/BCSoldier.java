@@ -189,7 +189,8 @@ public class BCSoldier extends BCTroop implements RangedAttackMob {
         });
     }
 
-    public double getAttributeValue(Attribute $$0) {
+    @Override
+    public double getAttributeValue(net.minecraft.core.Holder<Attribute> $$0) {
         if (getBundle()){
             if ($$0.equals(Attributes.MAX_HEALTH)) {
                 return this.getAttributes().getValue($$0) * 6;

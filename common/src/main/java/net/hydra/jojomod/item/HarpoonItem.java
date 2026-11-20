@@ -1,7 +1,6 @@
 package net.hydra.jojomod.item;
 
-import com.google.common.collect.ImmutableMultimap;
-import com.google.common.collect.Multimap;
+import net.hydra.jojomod.util.ItemCombatData;
 import net.hydra.jojomod.entity.projectile.HarpoonEntity;
 import net.hydra.jojomod.entity.projectile.ThrownObjectEntity;
 import net.hydra.jojomod.event.ModParticles;
@@ -22,9 +21,6 @@ import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MoverType;
-import net.minecraft.world.entity.ai.attributes.Attribute;
-import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.projectile.ThrownTrident;
@@ -37,14 +33,9 @@ import net.minecraft.world.phys.Vec3;
 public class HarpoonItem extends Item {
     public static final int THROW_THRESHOLD_TIME = 10;
     public static final float SHOOT_POWER = 2.5F;
-    private final Multimap<Attribute, AttributeModifier> defaultModifiers;
 
     public HarpoonItem(Item.Properties $$0) {
-        super($$0);
-        ImmutableMultimap.Builder<Attribute, AttributeModifier> $$1 = ImmutableMultimap.builder();
-        $$1.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_UUID, "Tool modifier", 6.0, AttributeModifier.Operation.ADDITION));
-        $$1.put(Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_UUID, "Tool modifier", -2.7F, AttributeModifier.Operation.ADDITION));
-        this.defaultModifiers = $$1.build();
+        super($$0.attributes(ItemCombatData.weaponAttributes(6.0, -2.7F)));
     }
 
     @Override
@@ -135,10 +126,6 @@ public class HarpoonItem extends Item {
         return true;
     }
 
-    @Override
-    public Multimap<Attribute, AttributeModifier> getDefaultAttributeModifiers(EquipmentSlot $$0) {
-        return $$0 == EquipmentSlot.MAINHAND ? this.defaultModifiers : super.getDefaultAttributeModifiers($$0);
-    }
 
     @Override
     public int getEnchantmentValue() {

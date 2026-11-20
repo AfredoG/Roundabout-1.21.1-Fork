@@ -18,7 +18,7 @@ import net.minecraft.world.level.Level;
 
 public class LuckyLipstickItem extends Item {
     public LuckyLipstickItem(Item.Properties $$0) {
-        super($$0.defaultDurability(6));
+        super($$0.durability(6));
     }
 
     @Override
