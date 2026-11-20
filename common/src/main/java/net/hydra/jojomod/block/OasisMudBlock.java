@@ -1,5 +1,6 @@
 package net.hydra.jojomod.block;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.player.Player;
@@ -20,6 +21,13 @@ import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import org.jetbrains.annotations.Nullable;
 
 public class OasisMudBlock extends BaseEntityBlock {
+    public static final MapCodec<OasisMudBlock> CODEC = simpleCodec(OasisMudBlock::new);
+
+    @Override
+    public MapCodec<? extends OasisMudBlock> codec() {
+        return CODEC;
+    }
+
 
     public static final BooleanProperty COPYING = BooleanProperty.create("copying");
     public static final IntegerProperty LEVEL = BlockStateProperties.LEVEL;

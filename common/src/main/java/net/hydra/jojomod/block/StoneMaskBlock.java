@@ -1,5 +1,6 @@
 package net.hydra.jojomod.block;
 
+import com.mojang.serialization.MapCodec;
 import net.hydra.jojomod.item.BloodyStoneMaskBlockItem;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
@@ -38,6 +39,13 @@ import java.util.function.Predicate;
 
 
 public class StoneMaskBlock extends HorizontalDirectionalBlock implements SimpleWaterloggedBlock {
+    public static final MapCodec<StoneMaskBlock> CODEC = simpleCodec(StoneMaskBlock::new);
+
+    @Override
+    public MapCodec<? extends StoneMaskBlock> codec() {
+        return CODEC;
+    }
+
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     protected static final VoxelShape EAST_AABB = Block.box(0.0, 4, 3.5, 5.5, 12, 12.5);

@@ -1,5 +1,6 @@
 package net.hydra.jojomod.block;
 
+import com.mojang.serialization.MapCodec;
 import com.google.common.collect.ImmutableMap;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
@@ -51,6 +52,13 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class StandFireBlock extends BaseEntityBlock {
+    public static final MapCodec<StandFireBlock> CODEC = simpleCodec(StandFireBlock::new);
+
+    @Override
+    public MapCodec<? extends StandFireBlock> codec() {
+        return CODEC;
+    }
+
     private final float fireDamage;
     @Override
     public void onRemove(BlockState $$0, Level $$1, BlockPos $$2, BlockState $$3, boolean $$4) {

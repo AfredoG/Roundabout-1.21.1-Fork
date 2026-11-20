@@ -14,7 +14,7 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 public class AjaOreBlock extends DropExperienceBlock {
     public static final BooleanProperty LIT = ModBlocks.LIT;
     public AjaOreBlock(Properties $$0) {
-        super($$0);
+        super(net.minecraft.util.valueproviders.ConstantInt.of(0), $$0);
         this.registerDefaultState(this.stateDefinition.any().setValue(LIT, Boolean.valueOf(false))
         );
     }

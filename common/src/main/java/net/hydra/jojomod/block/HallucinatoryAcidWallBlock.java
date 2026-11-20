@@ -1,5 +1,6 @@
 package net.hydra.jojomod.block;
 
+import com.mojang.serialization.MapCodec;
 import net.hydra.jojomod.client.ClientNetworking;
 import net.hydra.jojomod.entity.stand.WhitesnakeEntity;
 import net.hydra.jojomod.event.index.PowerIndex;
@@ -36,6 +37,13 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
 public final class HallucinatoryAcidWallBlock extends BaseEntityBlock implements SimpleWaterloggedBlock {
+    public static final MapCodec<HallucinatoryAcidWallBlock> CODEC = simpleCodec(HallucinatoryAcidWallBlock::new);
+
+    @Override
+    public MapCodec<? extends HallucinatoryAcidWallBlock> codec() {
+        return CODEC;
+    }
+
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final IntegerProperty SKIN = IntegerProperty.create("skin", 0, WhitesnakeEntity.FLESHSNAKE_SKIN);
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;

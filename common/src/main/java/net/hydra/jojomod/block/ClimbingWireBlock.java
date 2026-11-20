@@ -1,5 +1,6 @@
 package net.hydra.jojomod.block;
 
+import com.mojang.serialization.MapCodec;
 
 import net.hydra.jojomod.Roundabout;
 import net.minecraft.core.BlockPos;
@@ -23,6 +24,13 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import java.util.Objects;
 
 public class ClimbingWireBlock extends HorizontalDirectionalBlock {
+    public static final MapCodec<ClimbingWireBlock> CODEC = simpleCodec(ClimbingWireBlock::new);
+
+    @Override
+    public MapCodec<? extends ClimbingWireBlock> codec() {
+        return CODEC;
+    }
+
     public static final BooleanProperty OPEN = BlockStateProperties.OPEN;
     protected static final VoxelShape EAST_OPEN_AABB = Block.box(0.0, 0.0, 0.0, 1.0, 16.0, 16.0);
     protected static final VoxelShape WEST_OPEN_AABB = Block.box(15.0, 0.0, 0.0, 16.0, 16.0, 16.0);

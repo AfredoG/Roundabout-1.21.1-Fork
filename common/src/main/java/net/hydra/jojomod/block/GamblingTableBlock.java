@@ -1,5 +1,6 @@
 package net.hydra.jojomod.block;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.world.ItemInteractionResult;
 import net.hydra.jojomod.util.BlockInteractionCompat;
 import net.minecraft.core.BlockPos;
@@ -33,6 +34,13 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
 public class GamblingTableBlock extends HorizontalDirectionalBlock implements EntityBlock {
+    public static final MapCodec<GamblingTableBlock> CODEC = simpleCodec(GamblingTableBlock::new);
+
+    @Override
+    public MapCodec<? extends GamblingTableBlock> codec() {
+        return CODEC;
+    }
+
     public static final EnumProperty<GamblingTablePart> PART = ModBlocks.GAMBLING_TABLE_PART;
 
     // the 3 things at the end is for the actual size of the individual block

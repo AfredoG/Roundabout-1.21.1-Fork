@@ -35,7 +35,7 @@ import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AbstractHandBlock extends BaseEntityBlock {
+public abstract class AbstractHandBlock extends BaseEntityBlock {
     public static final int MAX = RotationSegment.getMaxSegmentIndex();
     private static final int ROTATIONS;
     public static final IntegerProperty ROTATION;

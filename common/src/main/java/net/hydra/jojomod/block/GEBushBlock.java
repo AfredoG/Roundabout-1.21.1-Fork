@@ -1,5 +1,6 @@
 package net.hydra.jojomod.block;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
@@ -23,6 +24,13 @@ import javax.annotation.Nullable;
 import java.util.UUID;
 
 public class GEBushBlock extends BushBlock implements EntityBlock {
+    public static final MapCodec<GEBushBlock> CODEC = simpleCodec(GEBushBlock::new);
+
+    @Override
+    public MapCodec<? extends GEBushBlock> codec() {
+        return CODEC;
+    }
+
     protected static final VoxelShape SHAPE = Block.box(2.0D, 0.0D, 2.0D, 14.0D, 13.0D, 14.0D);
 
     public GEBushBlock(BlockBehaviour.Properties properties) {

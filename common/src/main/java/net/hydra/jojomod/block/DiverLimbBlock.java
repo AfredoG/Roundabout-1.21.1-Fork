@@ -1,5 +1,6 @@
 package net.hydra.jojomod.block;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -23,6 +24,13 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import javax.annotation.Nullable;
 
 public class DiverLimbBlock extends BaseEntityBlock {
+    public static final MapCodec<DiverLimbBlock> CODEC = simpleCodec(DiverLimbBlock::new);
+
+    @Override
+    public MapCodec<? extends DiverLimbBlock> codec() {
+        return CODEC;
+    }
+
     //note to self: DiverLimbBlock defines the properties of the block. DiverLimbBlockEntity actually puts them in the world.
     private static final VoxelShape STABLE_SHAPE;
     public static final BooleanProperty TRIGGERED;

@@ -1,5 +1,6 @@
 package net.hydra.jojomod.block;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -27,6 +28,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MirrorBlock extends BaseEntityBlock implements SimpleWaterloggedBlock {
+    public static final MapCodec<MirrorBlock> CODEC = simpleCodec(MirrorBlock::new);
+
+    @Override
+    public MapCodec<? extends MirrorBlock> codec() {
+        return CODEC;
+    }
+
 
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;

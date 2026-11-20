@@ -1,5 +1,6 @@
 package net.hydra.jojomod.block;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.world.ItemInteractionResult;
 import net.hydra.jojomod.util.BlockInteractionCompat;
 import net.minecraft.core.BlockPos;
@@ -25,6 +26,13 @@ import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
 
 public class BloodyStoneMaskBlock extends StoneMaskBlock{
+    public static final MapCodec<BloodyStoneMaskBlock> CODEC = simpleCodec(BloodyStoneMaskBlock::new);
+
+    @Override
+    public MapCodec<? extends BloodyStoneMaskBlock> codec() {
+        return CODEC;
+    }
+
     protected BloodyStoneMaskBlock(Properties $$0) {
         super($$0);
     }

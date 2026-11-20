@@ -45,6 +45,7 @@ public class RoundaboutModForge {
         ForgeEffects.POTION_EFFECTS.register(bus);
         ForgeEntities.ENTITY_TYPES.register(bus);
         ForgeSounds.SOUNDS.register(bus);
+        ForgeBlockTypes.BLOCK_TYPES.register(bus);
         ForgeBlocks.BLOCKS.register(bus);
         ForgeBlocks.BLOCK_ENTITIES.register(bus);
         ForgeItems.ARMOR_MATERIALS.register(bus);

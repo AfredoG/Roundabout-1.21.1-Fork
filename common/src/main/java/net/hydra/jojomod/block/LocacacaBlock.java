@@ -1,5 +1,6 @@
 package net.hydra.jojomod.block;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.world.ItemInteractionResult;
 import net.hydra.jojomod.util.BlockInteractionCompat;
 import net.hydra.jojomod.item.ModItems;
@@ -35,6 +36,13 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class LocacacaBlock extends BushBlock
         implements BonemealableBlock {
+    public static final MapCodec<LocacacaBlock> CODEC = simpleCodec(LocacacaBlock::new);
+
+    @Override
+    public MapCodec<? extends LocacacaBlock> codec() {
+        return CODEC;
+    }
+
     private static final float HURT_SPEED_THRESHOLD = 0.003f;
     public static final int MAX_AGE = 4;
     public static final IntegerProperty AGE = BlockStateProperties.AGE_4;

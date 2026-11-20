@@ -1,5 +1,6 @@
 package net.hydra.jojomod.block;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.world.ItemInteractionResult;
 import net.hydra.jojomod.util.BlockInteractionCompat;
 import net.minecraft.core.BlockPos;
@@ -30,6 +31,13 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class ManorTableBlock extends CrossCollisionBlock {
+    public static final MapCodec<ManorTableBlock> CODEC = simpleCodec(ManorTableBlock::new);
+
+    @Override
+    public MapCodec<? extends ManorTableBlock> codec() {
+        return CODEC;
+    }
+
 
     protected static final VoxelShape SHAPE = Block.box(0.0, 13, 0.0, 16.0, 16.0, 16.0);
     public ManorTableBlock(BlockBehaviour.Properties $$0) {

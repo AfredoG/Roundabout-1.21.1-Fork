@@ -1,5 +1,6 @@
 package net.hydra.jojomod.block;
 
+import com.mojang.serialization.MapCodec;
 import com.google.common.collect.ImmutableMap;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.Entity;
@@ -30,6 +31,13 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class BubbleScaffoldBlock extends BaseEntityBlock {
+    public static final MapCodec<BubbleScaffoldBlock> CODEC = simpleCodec(BubbleScaffoldBlock::new);
+
+    @Override
+    public MapCodec<? extends BubbleScaffoldBlock> codec() {
+        return CODEC;
+    }
+
 
     private static final VoxelShape STABLE_SHAPE;
     public static final BooleanProperty TRIGGERED;

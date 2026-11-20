@@ -1,5 +1,6 @@
 package net.hydra.jojomod.block;
 
+import com.mojang.serialization.MapCodec;
 import net.hydra.jojomod.client.ClientNetworking;
 
 import net.hydra.jojomod.event.index.PowerIndex;
@@ -42,6 +43,13 @@ import net.hydra.jojomod.event.ModParticles;
 import org.jetbrains.annotations.Nullable;
 
 public final class HallucinatoryAcidBlock extends BaseEntityBlock implements SimpleWaterloggedBlock {
+    public static final MapCodec<HallucinatoryAcidBlock> CODEC = simpleCodec(HallucinatoryAcidBlock::new);
+
+    @Override
+    public MapCodec<? extends HallucinatoryAcidBlock> codec() {
+        return CODEC;
+    }
+
     private static final int[][] SPREAD_DIRECTIONS = new int[][]{
             {-1, -1}, {0, -1}, {1, -1},
             {-1, 0}, {1, 0},

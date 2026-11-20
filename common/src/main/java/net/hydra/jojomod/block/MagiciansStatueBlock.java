@@ -1,5 +1,6 @@
 package net.hydra.jojomod.block;
 
+import com.mojang.serialization.MapCodec;
 import net.hydra.jojomod.event.powers.ModDamageTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -26,6 +27,13 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import javax.annotation.Nullable;
 
 public class MagiciansStatueBlock extends HorizontalDirectionalBlock {
+    public static final MapCodec<MagiciansStatueBlock> CODEC = simpleCodec(MagiciansStatueBlock::new);
+
+    @Override
+    public MapCodec<? extends MagiciansStatueBlock> codec() {
+        return CODEC;
+    }
+
     public static final EnumProperty<MagiciansStatuePart> PART = ModBlocks.MAGICIANS_STATUE_PART;
     protected static final VoxelShape BASE = Block.box(2.0, 0, 2.0, 14.0, 16.0, 14.0);
     protected static final VoxelShape TOP = Block.box(2.0, 0, 2.0, 14.0, 16.0, 14.0);

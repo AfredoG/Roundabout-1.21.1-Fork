@@ -1,5 +1,6 @@
 package net.hydra.jojomod.block;
 
+import com.mojang.serialization.MapCodec;
 import net.hydra.jojomod.access.IEntityAndData;
 import net.hydra.jojomod.entity.objects.FallingBannerEntity;
 import net.hydra.jojomod.event.index.PowerTypes;
@@ -36,6 +37,13 @@ import javax.annotation.Nullable;
 
 public class D4CPortalBlock extends BaseEntityBlock
         implements SimpleWaterloggedBlock {
+    public static final MapCodec<D4CPortalBlock> CODEC = simpleCodec(D4CPortalBlock::new);
+
+    @Override
+    public MapCodec<? extends D4CPortalBlock> codec() {
+        return CODEC;
+    }
+
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     protected D4CPortalBlock(Properties $$0) {
         super($$0);

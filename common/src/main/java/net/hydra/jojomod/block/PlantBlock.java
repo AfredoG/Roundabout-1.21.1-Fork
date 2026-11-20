@@ -1,5 +1,6 @@
 package net.hydra.jojomod.block;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.world.ItemInteractionResult;
 import net.hydra.jojomod.util.BlockInteractionCompat;
 import net.hydra.jojomod.item.ModItems;
@@ -33,6 +34,13 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 public class PlantBlock
         extends BushBlock
         implements BonemealableBlock {
+    public static final MapCodec<PlantBlock> CODEC = simpleCodec(PlantBlock::new);
+
+    @Override
+    public MapCodec<? extends PlantBlock> codec() {
+        return CODEC;
+    }
+
     public static final IntegerProperty AGE = BlockStateProperties.AGE_2;
     private static final VoxelShape SAPLING_SHAPE = Block.box(3.0, 0.0, 3.0, 13.0, 8.0, 13.0);
     private static final VoxelShape MID_GROWTH_SHAPE = Block.box(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);

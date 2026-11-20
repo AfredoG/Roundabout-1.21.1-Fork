@@ -1,5 +1,6 @@
 package net.hydra.jojomod.block;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -23,6 +24,13 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
 public class SilverChariotRapierPlatformBlock extends BaseEntityBlock {
+    public static final MapCodec<SilverChariotRapierPlatformBlock> CODEC = simpleCodec(SilverChariotRapierPlatformBlock::new);
+
+    @Override
+    public MapCodec<? extends SilverChariotRapierPlatformBlock> codec() {
+        return CODEC;
+    }
+
     private static final VoxelShape STABLE_SHAPE;
     public static final BooleanProperty TRIGGERED;
 

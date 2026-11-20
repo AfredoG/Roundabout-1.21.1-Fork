@@ -1,5 +1,6 @@
 package net.hydra.jojomod.block;
 
+import com.mojang.serialization.MapCodec;
 import net.hydra.jojomod.item.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.tags.BlockTags;
@@ -11,6 +12,13 @@ import net.minecraft.world.level.block.CactusBlock;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class NewLocacacaBlock extends LocacacaBlock{
+    public static final MapCodec<NewLocacacaBlock> CODEC = simpleCodec(NewLocacacaBlock::new);
+
+    @Override
+    public MapCodec<? extends NewLocacacaBlock> codec() {
+        return CODEC;
+    }
+
     public NewLocacacaBlock(Properties properties) {
         super(properties);
     }

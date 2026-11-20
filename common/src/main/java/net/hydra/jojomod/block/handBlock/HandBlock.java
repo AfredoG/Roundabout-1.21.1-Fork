@@ -1,5 +1,6 @@
 package net.hydra.jojomod.block.handBlock;
 
+import com.mojang.serialization.MapCodec;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.SkullBlock;
@@ -7,6 +8,13 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class HandBlock extends AbstractHandBlock {
+    public static final MapCodec<HandBlock> CODEC = simpleCodec(HandBlock::new);
+
+    @Override
+    public MapCodec<? extends HandBlock> codec() {
+        return CODEC;
+    }
+
 
     public HandBlock(Properties p_56319_) {
         super(Types.PLAYER, p_56319_);

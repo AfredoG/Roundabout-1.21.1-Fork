@@ -1,5 +1,6 @@
 package net.hydra.jojomod.block;
 
+import com.mojang.serialization.MapCodec;
 import net.hydra.jojomod.event.index.FateTypes;
 import net.hydra.jojomod.event.index.PowerTypes;
 import net.minecraft.core.BlockPos;
@@ -25,6 +26,13 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import java.util.Optional;
 
 public class PoisonTrailMushroomBlock extends BushBlock {
+    public static final MapCodec<PoisonTrailMushroomBlock> CODEC = simpleCodec(PoisonTrailMushroomBlock::new);
+
+    @Override
+    public MapCodec<? extends PoisonTrailMushroomBlock> codec() {
+        return CODEC;
+    }
+
 
     protected static final float AABB_OFFSET = 3.0F;
     protected static final VoxelShape SHAPE = Block.box((double)5.0F, (double)0.0F, (double)5.0F, (double)11.0F, (double)6.0F, (double)11.0F);

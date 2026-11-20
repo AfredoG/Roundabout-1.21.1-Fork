@@ -1,5 +1,6 @@
 package net.hydra.jojomod.block;
 
+import com.mojang.serialization.MapCodec;
 import net.hydra.jojomod.access.CancelDataDrivenDropLimits;
 import net.hydra.jojomod.item.ModItems;
 import net.minecraft.core.BlockPos;
@@ -37,6 +38,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StreetSignBlock extends HorizontalDirectionalBlock implements CancelDataDrivenDropLimits {
+    public static final MapCodec<StreetSignBlock> CODEC = simpleCodec(StreetSignBlock::new);
+
+    @Override
+    public MapCodec<? extends StreetSignBlock> codec() {
+        return CODEC;
+    }
+
     public static final EnumProperty<StreetSignPart> PART = ModBlocks.STREET_SIGN_PART;
     public static final IntegerProperty DAMAGED= ModBlocks.DAMAGED;
     protected static final VoxelShape BASE = Block.box(6.0, 0, 6.0, 10.0, 14.0, 10.0);

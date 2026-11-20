@@ -1,5 +1,6 @@
 package net.hydra.jojomod.block;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.world.ItemInteractionResult;
 import net.hydra.jojomod.util.BlockInteractionCompat;
 import net.hydra.jojomod.access.IEntityAndData;
@@ -43,6 +44,13 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import javax.annotation.Nullable;
 
 public class InvisiBlock extends BaseEntityBlock {
+    public static final MapCodec<InvisiBlock> CODEC = simpleCodec(InvisiBlock::new);
+
+    @Override
+    public MapCodec<? extends InvisiBlock> codec() {
+        return CODEC;
+    }
+
     protected InvisiBlock(Properties $$0) {
         super($$0);
         this.registerDefaultState(this.defaultBlockState().setValue(UNSTABLE, Boolean.valueOf(false)));

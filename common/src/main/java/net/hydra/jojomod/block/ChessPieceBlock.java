@@ -1,5 +1,6 @@
 package net.hydra.jojomod.block;
 
+import com.mojang.serialization.MapCodec;
 import net.hydra.jojomod.sound.ModSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -31,6 +32,13 @@ import javax.annotation.Nullable;
 
 /**The specs of the Stereo are almost identical to MC jukebox code, out of need to function the same way*/
 public class ChessPieceBlock extends BaseEntityBlock {
+    public static final MapCodec<ChessPieceBlock> CODEC = simpleCodec(ChessPieceBlock::new);
+
+    @Override
+    public MapCodec<? extends ChessPieceBlock> codec() {
+        return CODEC;
+    }
+
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
     protected static final VoxelShape SHAPEA = Block.box(4.0, 0.1, 4.0, 12.0, 11.0, 12.0);
     protected ChessPieceBlock(Properties $$0) {

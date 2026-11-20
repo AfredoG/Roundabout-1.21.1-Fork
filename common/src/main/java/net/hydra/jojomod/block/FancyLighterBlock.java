@@ -1,5 +1,6 @@
 package net.hydra.jojomod.block;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.world.ItemInteractionResult;
 import net.hydra.jojomod.util.BlockInteractionCompat;
 import net.hydra.jojomod.access.CancelDataDrivenDropLimits;
@@ -41,6 +42,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FancyLighterBlock extends BaseEntityBlock implements CancelDataDrivenDropLimits {
+    public static final MapCodec<FancyLighterBlock> CODEC = simpleCodec(FancyLighterBlock::new);
+
+    @Override
+    public MapCodec<? extends FancyLighterBlock> codec() {
+        return CODEC;
+    }
+
 
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final BooleanProperty LIT = ModBlocks.LIT;

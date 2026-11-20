@@ -35,7 +35,7 @@ import javax.annotation.Nullable;
 
 /**The specs of the Stereo are almost identical to MC jukebox code, out of need to function the same way*/
 public class StereoBlock extends JukeboxBlock {
-    private static final com.mojang.serialization.MapCodec<JukeboxBlock> STEREO_CODEC = simpleCodec(StereoBlock::new);
+    public static final com.mojang.serialization.MapCodec<JukeboxBlock> STEREO_CODEC = simpleCodec(StereoBlock::new);
 
     @Override
     public com.mojang.serialization.MapCodec<JukeboxBlock> codec() {

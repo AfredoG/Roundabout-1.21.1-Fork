@@ -1,5 +1,6 @@
 package net.hydra.jojomod.block;
 
+import com.mojang.serialization.MapCodec;
 import net.hydra.jojomod.access.CancelDataDrivenDropLimits;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -31,6 +32,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StreetWallSignBlock extends HorizontalDirectionalBlock implements SimpleWaterloggedBlock {
+    public static final MapCodec<StreetWallSignBlock> CODEC = simpleCodec(StreetWallSignBlock::new);
+
+    @Override
+    public MapCodec<? extends StreetWallSignBlock> codec() {
+        return CODEC;
+    }
+
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     protected static final VoxelShape BASE = Block.box(2.0, 0, 2.0, 14.0, 14.0, 14.0);
     protected static final VoxelShape TOP = Block.box(2.0, 0, 2.0, 14.0, 14.0, 14.0);
