@@ -1,5 +1,6 @@
 package net.hydra.jojomod.entity.projectile;
 
+import net.hydra.jojomod.util.ItemDurability;
 import net.hydra.jojomod.util.ItemCombatData;
 import net.hydra.jojomod.Roundabout;
 import net.hydra.jojomod.access.IPlayerEntity;
@@ -312,7 +313,7 @@ public class ThrownObjectEntity extends ThrowableItemProjectile {
                     thrower.level().playSound(null, $$11, ModSounds.BLOCK_THROW_EVENT, SoundSource.PLAYERS, 1.0F, 1.3F);
                 }
             } else if (item.is(Items.TRIDENT)) {
-                if (!item.hurt(1, thrower.level().getRandom(), null)) {
+                if (!ItemDurability.damageWithoutBreaking(item, 1, thrower.level(), null)) {
                     ThrownTrident $$7 = new ThrownTrident(thrower.level(), thrower, item);
                     $$7.setPos(pos);
                     $$7.shootFromRotation(thrower, xRot, yRot, 0.0F, 3.0F * mult, getShotAccuracy);
@@ -325,7 +326,7 @@ public class ThrownObjectEntity extends ThrowableItemProjectile {
                     }
                 }
             } else if (item.getItem() instanceof HarpoonItem) {
-                if (!item.hurt(1, thrower.level().getRandom(), null)) {
+                if (!ItemDurability.damageWithoutBreaking(item, 1, thrower.level(), null)) {
                     HarpoonEntity $$7 = new HarpoonEntity(thrower.level(), thrower, item);
                     $$7.setPos(pos);
                     $$7.shootFromRotation(thrower, xRot, yRot, 0.0F, 3.0F * mult, getShotAccuracy);
@@ -947,7 +948,7 @@ private void bridgePlace(BlockHitResult $$0,Player P) {
                         $$7.knockback(0.15f, this.getX() - $$7.getX(), this.getZ() - $$7.getZ());
                     }
                 }
-                if (!(ist.getTag() != null && ist.getTag().getBoolean("Unbreakable"))) {
+                if (!ist.has(net.minecraft.core.component.DataComponents.UNBREAKABLE)) {
                     ItemStack stack = this.getItem();
                     Item tem = stack.getItem();
                     if (stack.isDamageableItem()
@@ -960,7 +961,7 @@ private void bridgePlace(BlockHitResult $$0,Player P) {
                             ){
                             this.dropItem($$1.getOnPos());
                         } else {
-                            if (!this.getItem().hurt(1, this.level().getRandom(), null)) {
+                            if (!ItemDurability.damageWithoutBreaking(this.getItem(), 1, this.level(), null)) {
                                 this.dropItem($$1.getOnPos());
                             }
                         }

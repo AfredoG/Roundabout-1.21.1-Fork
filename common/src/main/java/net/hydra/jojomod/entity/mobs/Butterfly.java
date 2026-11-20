@@ -253,7 +253,7 @@ public class Butterfly extends AmbientCreature {
     }
 
     @Override
-    public SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty, MobSpawnType spawnType, @Nullable SpawnGroupData spawnData, @Nullable CompoundTag dataTag) {
+    public SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty, MobSpawnType spawnType, @Nullable SpawnGroupData spawnData) {
         // randomization
         int randomBody = this.getRandom().nextInt(16);
         int randomInner = this.getRandom().nextInt(16);
@@ -263,7 +263,7 @@ public class Butterfly extends AmbientCreature {
         int packedData = randomBody | (randomInner << 8) | (randomOuter << 16) | (randomTexture << 24);
         this.entityData.set(VARIANT_ID, packedData);
 
-        return super.finalizeSpawn(level, difficulty, spawnType, spawnData, dataTag);
+        return super.finalizeSpawn(level, difficulty, spawnType, spawnData);
     }
 
     //animations

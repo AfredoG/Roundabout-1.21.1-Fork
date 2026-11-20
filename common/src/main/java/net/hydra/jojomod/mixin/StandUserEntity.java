@@ -6745,7 +6745,7 @@ public abstract class StandUserEntity extends Entity implements StandUser {
     public double previousYpos = getY();
 
     @Inject(method = "dropCustomDeathLoot", at = @At(value = "TAIL"), cancellable = true, require = 0)
-    public void DropExtra(DamageSource $$0, int $$1, boolean $$2, CallbackInfo info) {
+    public void DropExtra(ServerLevel serverLevel, DamageSource $$0, boolean $$2, CallbackInfo info) {
         Entity cause = $$0.getEntity();
         DamageType type = $$0.type();
         DamageSource uh = ModDamageTypes.of(this.level(), ModDamageTypes.DISINTEGRATION);
@@ -6760,13 +6760,10 @@ public abstract class StandUserEntity extends Entity implements StandUser {
             } else if (me instanceof WitherSkeleton) {
                 spawnAtLocation(new ItemStack(Items.WITHER_SKELETON_SKULL));
 
-            } else if (me instanceof ServerPlayer) {
+            } else if (me instanceof ServerPlayer player) {
                 ItemStack skull = new ItemStack(Items.PLAYER_HEAD);
-                skull.setTag(new CompoundTag());
-                // PlayerHeadItem
-                CompoundTag tag = skull.getTag();
-                tag.putString("SkullOwner", this.getName().getString());
-                skull.setTag(tag);
+                skull.set(net.minecraft.core.component.DataComponents.PROFILE,
+                        new net.minecraft.world.item.component.ResolvableProfile(player.getGameProfile()));
                 spawnAtLocation(skull);
             } else if (me instanceof Piglin) {
                 spawnAtLocation(new ItemStack(Items.PIGLIN_HEAD));

@@ -1,5 +1,6 @@
 package net.hydra.jojomod.entity.projectile;
 
+import net.hydra.jojomod.util.ItemDurability;
 import net.hydra.jojomod.access.IMob;
 import net.hydra.jojomod.client.ClientNetworking;
 import net.hydra.jojomod.entity.ModEntities;
@@ -123,7 +124,7 @@ public class StandArrowEntity extends AbstractArrow {
                     X = 0.2F;
                     StandArrowItem.grantMobStand(this.getArrow(), this.level(), (LivingEntity) $$1);
                     if (this.pickup == Pickup.ALLOWED) {
-                        this.getArrow().hurt(1, this.level().getRandom(), null);
+                        ItemDurability.damageWithoutBreaking(this.getArrow(), 1, this.level(), null);
                     }
                     this.discard();
                 }
@@ -200,7 +201,7 @@ public class StandArrowEntity extends AbstractArrow {
                 this.playSound(this.getDefaultHitGroundSoundEvent(), 1.0F, 1.2F / (this.random.nextFloat() * 0.2F + 0.9F));
                 if (this.getPierceLevel() <= 0) {
                     if (this.getArrow().getItem() instanceof StandArrowItem && this.pickup == Pickup.ALLOWED) {
-                        this.getArrow().hurt(1, this.level().getRandom(), null);
+                        ItemDurability.damageWithoutBreaking(this.getArrow(), 1, this.level(), null);
                     }
                     this.discard();
                 }

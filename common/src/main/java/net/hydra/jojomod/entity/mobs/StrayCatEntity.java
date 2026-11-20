@@ -675,7 +675,7 @@ public class StrayCatEntity extends TamableAnimal implements RangedAttackMob {
     }
 
     @Override
-    protected void dropCustomDeathLoot(DamageSource $$0, int $$1, boolean $$2) {
+    protected void dropCustomDeathLoot(net.minecraft.server.level.ServerLevel serverLevel, DamageSource $$0, boolean $$2) {
         if (this.getPotted()) {
             this.spawnAtLocation(Items.FLOWER_POT);
         }

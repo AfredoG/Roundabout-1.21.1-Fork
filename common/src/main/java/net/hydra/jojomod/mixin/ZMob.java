@@ -246,7 +246,7 @@ public abstract class ZMob extends LivingEntity implements IMob {
     }
 
     @Inject(method = "dropCustomDeathLoot", at = @At(value = "HEAD"))
-    private void roundabout$dropCustomLoot(DamageSource $$0, int $$1, boolean $$2, CallbackInfo ci) {
+    private void roundabout$dropCustomLoot(ServerLevel serverLevel, DamageSource $$0, boolean $$2, CallbackInfo ci) {
         if (roundabout$isNaturalStandUser){
             if ($$0.getEntity() != null) {
                 if (((StandUser)this).roundabout$hasAStand() && !roundabout$isBred) {
@@ -267,8 +267,13 @@ public abstract class ZMob extends LivingEntity implements IMob {
                             this.spawnAtLocation(ModItems.METEORITE.getDefaultInstance());
                         }
                         if (isStrong) {
-                            if ($$1 > 0) {
-                                for (int i = 0; i < $$1; i++) {
+                            int looting = $$0.getEntity() instanceof LivingEntity killer
+                                    ? EnchantmentHelper.getEnchantmentLevel(serverLevel.registryAccess()
+                                            .lookupOrThrow(net.minecraft.core.registries.Registries.ENCHANTMENT)
+                                            .getOrThrow(net.minecraft.world.item.enchantment.Enchantments.LOOTING), killer)
+                                    : 0;
+                            if (looting > 0) {
+                                for (int i = 0; i < looting; i++) {
                                     if (this.random.nextDouble() < 0.5) {
                                         this.spawnAtLocation(ModItems.METEORITE.getDefaultInstance());
                                     }
@@ -373,7 +378,7 @@ public abstract class ZMob extends LivingEntity implements IMob {
     }
 
     @Inject(method = "finalizeSpawn", at = @At(value = "HEAD"))
-    private void roundabout$finalizeSpawn(ServerLevelAccessor $$0, DifficultyInstance $$1, MobSpawnType $$2, SpawnGroupData $$3, CompoundTag $$4, CallbackInfoReturnable<SpawnGroupData> cir) {
+    private void roundabout$finalizeSpawn(ServerLevelAccessor $$0, DifficultyInstance $$1, MobSpawnType $$2, SpawnGroupData $$3, CallbackInfoReturnable<SpawnGroupData> cir) {
         RandomSource $$5 = $$0.getRandom();
 
 
@@ -398,7 +403,7 @@ public abstract class ZMob extends LivingEntity implements IMob {
                     backup.moveTo(this.getX() + offsetX, this.getY(), this.getZ(), this.getYRot(), 0);
                     backup.finalizeSpawn($$0,
                             $$0.getCurrentDifficultyAt(backup.blockPosition()),
-                            MobSpawnType.MOB_SUMMONED, null, null);
+                            MobSpawnType.MOB_SUMMONED, null);
                     $$0.addFreshEntity(backup);
                 }
             }

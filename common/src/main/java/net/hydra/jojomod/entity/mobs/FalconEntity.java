@@ -84,13 +84,14 @@ public class FalconEntity extends ShoulderRidingEntity implements VariantHolder<
         }
     }
 
-    public SpawnGroupData finalizeSpawn(ServerLevelAccessor p_29389_, DifficultyInstance p_29390_, MobSpawnType p_29391_, SpawnGroupData p_29392_,CompoundTag p_29393_) {
+    @Override
+    public SpawnGroupData finalizeSpawn(ServerLevelAccessor p_29389_, DifficultyInstance p_29390_, MobSpawnType p_29391_, SpawnGroupData p_29392_) {
         this.setVariant(Util.getRandom(Variant.values(), p_29389_.getRandom()));
         if (p_29392_ == null) {
             p_29392_ = new AgeableMob.AgeableMobGroupData(false);
         }
 
-        return super.finalizeSpawn(p_29389_, p_29390_, p_29391_, p_29392_, p_29393_);
+        return super.finalizeSpawn(p_29389_, p_29390_, p_29391_, p_29392_);
     }
 
     @Override

@@ -133,7 +133,8 @@ public class Aesthetician extends StandUsingNPC {
     }
 
     @Nullable
-    public SpawnGroupData finalizeSpawn(ServerLevelAccessor $$0, DifficultyInstance $$1, MobSpawnType $$2, @Nullable SpawnGroupData $$3, @Nullable CompoundTag $$4) {
+    @Override
+    public SpawnGroupData finalizeSpawn(ServerLevelAccessor $$0, DifficultyInstance $$1, MobSpawnType $$2, @Nullable SpawnGroupData $$3) {
 
         if (!(this instanceof AyaNPC) && !$$2.equals(MobSpawnType.CONVERSION)) {
             rollStand();
@@ -148,7 +149,7 @@ public class Aesthetician extends StandUsingNPC {
                 setSkinNumber(5);
             }
         }
-        return super.finalizeSpawn($$0,$$1,$$2,$$3,$$4);
+        return super.finalizeSpawn($$0,$$1,$$2,$$3);
     }
 
     public InteractionResult mobInteract(Player $$0, InteractionHand $$1) {

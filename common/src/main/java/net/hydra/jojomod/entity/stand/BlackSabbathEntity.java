@@ -1836,7 +1836,7 @@ public class BlackSabbathEntity extends StandEntity implements HasCustomInventor
                     bs.level().addFreshEntity($$7);
                     bs.level().playSound(null, $$7, SoundEvents.BUCKET_EMPTY, SoundSource.PLAYERS, 0.85F, 1.0F);
                 } else if(item.getItem() instanceof FleshBucketItem fb){
-                    FleshPileEntity $$7 = new FleshPileEntity(bs, bs.level(),fb.getMaxDamage()-item.getDamageValue());
+                    FleshPileEntity $$7 = new FleshPileEntity(bs, bs.level(),item.getMaxDamage()-item.getDamageValue());
                     $$7.shootFromRotation(bs, X, Y, -7, 0.6F, 1.0F);
                     bs.level().addFreshEntity($$7);
                     bs.level().playSound(null, $$7, SoundEvents.BUCKET_EMPTY, SoundSource.PLAYERS, 0.85F, 1.0F);
@@ -2016,7 +2016,7 @@ public class BlackSabbathEntity extends StandEntity implements HasCustomInventor
                         if(flag3 && e instanceof Player p && !getNotRenderItem()){
                             EquipmentSlot equipmentslot = Mob.getEquipmentSlotForItem(i);
                             ItemStack stack = p.getItemBySlot(equipmentslot);
-                            if (!EnchantmentHelper.hasBindingCurse(i) && stack.isEmpty()) {
+                            if (!EnchantmentHelper.has(i, net.minecraft.world.item.enchantment.EnchantmentEffectComponents.PREVENT_ARMOR_CHANGE) && stack.isEmpty()) {
                                 if (meleeInteractionTicks == 114) {
                                     setShouldSlide(true);
                                 }
@@ -2070,7 +2070,7 @@ public class BlackSabbathEntity extends StandEntity implements HasCustomInventor
                                     if (e instanceof Player p) {
                                         EquipmentSlot equipmentslot = Mob.getEquipmentSlotForItem(i);
                                         ItemStack stack = p.getItemBySlot(equipmentslot);
-                                        if (!EnchantmentHelper.hasBindingCurse(i) && stack.isEmpty()) {
+                                        if (!EnchantmentHelper.has(i, net.minecraft.world.item.enchantment.EnchantmentEffectComponents.PREVENT_ARMOR_CHANGE) && stack.isEmpty()) {
                                             ItemStack itemstackArmor = i.copyAndClear();
                                             e.setItemSlot(equipmentslot, itemstackArmor);
                                             if(!level().isClientSide){

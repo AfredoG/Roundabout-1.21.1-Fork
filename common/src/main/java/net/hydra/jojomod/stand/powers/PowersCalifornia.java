@@ -1,5 +1,6 @@
 package net.hydra.jojomod.stand.powers;
 
+import net.hydra.jojomod.util.ItemData;
 import com.google.common.collect.Lists;
 import com.mojang.serialization.Dynamic;
 import net.hydra.jojomod.access.IMob;
@@ -162,7 +163,7 @@ public class PowersCalifornia extends NewDashPreset {
                     continue;
                 }
 
-                CompoundTag tag = invStack.getTag();
+                CompoundTag tag = ItemData.get(invStack);
                 if (tag != null &&
                         tag.getBoolean("activated") &&
                         tag.hasUUID("victim") &&
@@ -171,6 +172,7 @@ public class PowersCalifornia extends NewDashPreset {
                         tag.putBoolean("activated",false);
 
                         tag.remove("victim");
+                        ItemData.set(invStack, tag);
                         invStack.setDamageValue(0);
                         inv.setItem(i,invStack);
                 }
@@ -1202,7 +1204,7 @@ public class PowersCalifornia extends NewDashPreset {
                         continue;
                     }
 
-                    CompoundTag tag = invStack.getTag();
+                    CompoundTag tag = ItemData.get(invStack);
                     if (tag != null &&
                             tag.hasUUID("victim") &&
                             victimId.equals(tag.getUUID("victim"))) {

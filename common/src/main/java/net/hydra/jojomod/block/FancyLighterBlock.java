@@ -1,5 +1,6 @@
 package net.hydra.jojomod.block;
 
+import net.hydra.jojomod.util.ItemData;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.world.ItemInteractionResult;
 import net.hydra.jojomod.util.BlockInteractionCompat;
@@ -267,8 +268,8 @@ public class FancyLighterBlock extends BaseEntityBlock implements CancelDataDriv
             List<ItemStack> drops = new ArrayList<>();
             ItemStack stack = referenceItem.copy();
             if (sl.getBlockEntity(bpos) instanceof FancyLighterBlockEntity FE) {
-                CompoundTag compoundtag = stack.getTagElement("UserIdUUID");
-                if (!stack.hasTag()) {
+                CompoundTag compoundtag = ItemData.element(stack, "UserIdUUID");
+                if (!ItemData.has(stack)) {
                     if(compoundtag == null || !compoundtag.hasUUID("StuffOther")) {
                         if (FE.getOwner() != null) {
                             net.hydra.jojomod.util.ItemData.putElement(stack, "UserIdUUID", "StuffOther", net.minecraft.nbt.NbtUtils.createUUID(FE.getOwner()));

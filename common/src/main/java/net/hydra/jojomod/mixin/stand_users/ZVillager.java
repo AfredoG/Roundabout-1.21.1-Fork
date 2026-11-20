@@ -1,5 +1,6 @@
 package net.hydra.jojomod.mixin.stand_users;
 
+import net.hydra.jojomod.util.ItemData;
 import com.google.common.collect.ImmutableSet;
 import com.mojang.datafixers.util.Pair;
 import net.hydra.jojomod.Roundabout;
@@ -304,7 +305,7 @@ public abstract class ZVillager extends AbstractVillager implements ReputationEv
                         This.setVillagerXp(This.getVillagerXp()+2);
 
                         roundabout$setAnubisTicks(60);
-                        CompoundTag tag = stack.getTagElement("SkinType");
+                        CompoundTag tag = ItemData.element(stack, "SkinType");
                         if (tag != null) {
                             roundabout$setAnubisType(tag.getByte("SkinType"));
                         }

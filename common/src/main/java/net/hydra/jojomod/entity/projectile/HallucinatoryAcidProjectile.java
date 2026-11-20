@@ -1,5 +1,6 @@
 package net.hydra.jojomod.entity.projectile;
 
+import net.hydra.jojomod.util.ItemData;
 import net.hydra.jojomod.block.HallucinatoryAcidBlock;
 import net.hydra.jojomod.block.HallucinatoryAcidBlockEntity;
 import net.hydra.jojomod.block.HallucinatoryAcidWallBlock;
@@ -55,7 +56,7 @@ public final class HallucinatoryAcidProjectile extends ThrowableItemProjectile {
     }
 
     public static int itemSkin(ItemStack stack) {
-        return stack.hasTag() ? Mth.clamp(stack.getTag().getInt(SKIN_TAG),
+        return ItemData.has(stack) ? Mth.clamp(ItemData.copy(stack).getInt(SKIN_TAG),
                 WhitesnakeEntity.ANIME_SKIN, WhitesnakeEntity.FLESHSNAKE_SKIN) : WhitesnakeEntity.ANIME_SKIN;
     }
 

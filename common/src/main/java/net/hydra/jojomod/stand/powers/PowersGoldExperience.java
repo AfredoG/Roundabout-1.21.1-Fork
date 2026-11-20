@@ -582,7 +582,7 @@ public class PowersGoldExperience extends BlockGrabPreset {
             }
 
             if (livingEntity instanceof Mob mob && this.self.level() instanceof ServerLevel serverLevel) {
-                mob.finalizeSpawn(serverLevel, serverLevel.getCurrentDifficultyAt(mob.blockPosition()), MobSpawnType.MOB_SUMMONED, null, null);
+                mob.finalizeSpawn(serverLevel, serverLevel.getCurrentDifficultyAt(mob.blockPosition()), MobSpawnType.MOB_SUMMONED, null);
             }
 
             this.self.level().addFreshEntity(livingEntity);

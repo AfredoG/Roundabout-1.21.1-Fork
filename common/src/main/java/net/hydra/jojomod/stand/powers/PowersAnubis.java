@@ -1,5 +1,6 @@
 package net.hydra.jojomod.stand.powers;
 
+import net.hydra.jojomod.util.ItemData;
 import com.google.common.collect.Lists;
 import net.hydra.jojomod.Roundabout;
 import net.hydra.jojomod.access.IKeyMapping;
@@ -2349,7 +2350,7 @@ public class PowersAnubis extends NewDashPreset {
 
                 Level lv = PE.level();
                 ItemStack disc = this.getStandUserSelf().roundabout$getStandDisc();
-                CompoundTag tag = disc.getTagElement("Memory");
+                CompoundTag tag = ItemData.element(disc, "Memory");
                 if (tag != null && !((IPlayerEntity)PE).roundabout$getUnlockedBonusSkin()) {
                     if (tag.contains("AnubisSkin")) {
                         ((IPlayerEntity)PE).roundabout$setUnlockedBonusSkin(true);
@@ -2363,6 +2364,7 @@ public class PowersAnubis extends NewDashPreset {
                                 Component.translatable("unlock_skin.roundabout.anubis.traitor"), true);
 
                         tag.remove("AnubisSkin");
+                        ItemData.setElement(disc, "Memory", tag);
                     }
                 }
             }

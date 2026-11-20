@@ -34,7 +34,7 @@ public class StoneMaskBlockItem extends BlockItem {
         ItemStack $$4 = $$2.getItemInHand($$3);
         EquipmentSlot $$5 = getEquipmentSlot();
         ItemStack $$6 = $$2.getItemBySlot($$5);
-        if (!EnchantmentHelper.hasBindingCurse($$6) && !ItemStack.matches($$4, $$6)) {
+        if (!EnchantmentHelper.has($$6, net.minecraft.world.item.enchantment.EnchantmentEffectComponents.PREVENT_ARMOR_CHANGE) && !ItemStack.matches($$4, $$6)) {
             if (!$$1.isClientSide()) {
                 $$2.awardStat(Stats.ITEM_USED.get($$0));
             }

@@ -12,6 +12,13 @@ public final class ItemDurability {
         return damageWithoutBreaking(stack, amount, player.serverLevel(), player);
     }
 
+    /** Durability/enchantment rolls are authoritative on the server. */
+    public static boolean damageWithoutBreaking(ItemStack stack, int amount,
+            net.minecraft.world.level.Level level, @javax.annotation.Nullable ServerPlayer player) {
+        return level instanceof net.minecraft.server.level.ServerLevel serverLevel
+                && damageWithoutBreaking(stack, amount, serverLevel, player);
+    }
+
     public static boolean damageWithoutBreaking(ItemStack stack, int amount,
             net.minecraft.server.level.ServerLevel level, @javax.annotation.Nullable ServerPlayer player) {
         if (!stack.isDamageableItem()) return false;

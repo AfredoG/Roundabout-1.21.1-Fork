@@ -37,9 +37,9 @@ public class AnubisGuardian extends AbstractIllager implements RangedAttackMob {
 
 
     @Override
-    protected void dropCustomDeathLoot(DamageSource $$0, int $$1, boolean $$2) {
+    protected void dropCustomDeathLoot(net.minecraft.server.level.ServerLevel serverLevel, DamageSource $$0, boolean $$2) {
         this.spawnAtLocation(ModItems.ANUBIS_ITEM.getDefaultInstance());
-        super.dropCustomDeathLoot($$0, $$1, $$2);
+        super.dropCustomDeathLoot(serverLevel, $$0, $$2);
     }
 
     public static final EntityDataAccessor<Integer> SUMMONER_ID = SynchedEntityData.defineId(AnubisGuardian.class, EntityDataSerializers.INT);

@@ -1,5 +1,6 @@
 package net.hydra.jojomod.stand.powers;
 
+import net.hydra.jojomod.util.ItemData;
 import com.google.common.collect.Lists;
 
 import com.mojang.blaze3d.systems.RenderSystem;
@@ -2690,7 +2691,7 @@ public class PowersKillerQueen extends NewPunchingStand {
 
 
             if (item.getItem() instanceof StrayCatItem) {
-                dontOwn = !(item.hasTag() && StrayCatItem.validateStrayCatOwner(item, self));
+                dontOwn = !(ItemData.has(item) && StrayCatItem.validateStrayCatOwner(item, self));
                 if (!dontOwn) {
                     CompoundTag data = new CompoundTag();
                     StrayCatItem.getCompoundTagSave(data, item);

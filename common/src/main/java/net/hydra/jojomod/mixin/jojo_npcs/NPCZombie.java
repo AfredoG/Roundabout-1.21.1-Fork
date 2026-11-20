@@ -37,7 +37,7 @@ public abstract class NPCZombie extends Monster {
 
             ZombieAesthetician zombieAesthetician = (ZombieAesthetician)aesthetician.convertTo(ModEntities.ZOMBIE_AESTHETICIAN, false);
             if (zombieAesthetician != null) {
-                zombieAesthetician.finalizeSpawn(serverLevel, serverLevel.getCurrentDifficultyAt(zombieAesthetician.blockPosition()), MobSpawnType.CONVERSION, new Zombie.ZombieGroupData(false, true), (CompoundTag)null);
+                zombieAesthetician.finalizeSpawn(serverLevel, serverLevel.getCurrentDifficultyAt(zombieAesthetician.blockPosition()), MobSpawnType.CONVERSION, new Zombie.ZombieGroupData(false, true));
                 zombieAesthetician.setSkinNumber(aesthetician.getSkinNumber());
                 if (!this.isSilent()) {
                     serverLevel.levelEvent((Player)null, 1026, this.blockPosition(), 0);

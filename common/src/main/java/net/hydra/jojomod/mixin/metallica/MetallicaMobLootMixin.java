@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public abstract class MetallicaMobLootMixin {
 
     @Inject(method = "dropCustomDeathLoot", at = @At("RETURN"))
-    private void roundabout$dropIronNuggetsWithMetallica(DamageSource source, int looting, boolean hitByPlayer, CallbackInfo ci) {
+    private void roundabout$dropIronNuggetsWithMetallica(net.minecraft.server.level.ServerLevel serverLevel, DamageSource source, boolean hitByPlayer, CallbackInfo ci) {
         LivingEntity entity = (LivingEntity) (Object) this;
 
         if (hitByPlayer && source.getEntity() instanceof Player player) {

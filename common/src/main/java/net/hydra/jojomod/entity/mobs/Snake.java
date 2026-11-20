@@ -64,10 +64,9 @@ public class Snake extends Animal {
 
     @Override
     public SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty,
-                                        MobSpawnType spawnType, @Nullable SpawnGroupData spawnData,
-                                        @Nullable CompoundTag dataTag) {
+                                        MobSpawnType spawnType, @Nullable SpawnGroupData spawnData) {
         determineSpawnVariant(level, this.blockPosition());
-        return super.finalizeSpawn(level, difficulty, spawnType, spawnData, dataTag);
+        return super.finalizeSpawn(level, difficulty, spawnType, spawnData);
     }
 
     private void determineSpawnVariant(ServerLevelAccessor level, BlockPos pos) {

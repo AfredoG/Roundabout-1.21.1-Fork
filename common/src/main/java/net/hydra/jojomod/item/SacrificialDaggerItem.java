@@ -1,5 +1,6 @@
 package net.hydra.jojomod.item;
 
+import net.hydra.jojomod.util.ItemDurability;
 import net.hydra.jojomod.util.ItemCombatData;
 import net.hydra.jojomod.entity.projectile.BloodSplatterEntity;
 import net.hydra.jojomod.event.index.FateTypes;
@@ -51,10 +52,10 @@ public class SacrificialDaggerItem extends TieredItem {
                 if ($$5 >= itemTime) {
                     if ($$2 instanceof ServerPlayer SP){
                         if (!SP.getAbilities().instabuild) {
-                            $$0.hurt(1, $$2.level().getRandom(), SP);
+                            ItemDurability.damageWithoutBreaking($$0, 1, SP);
                         }
                     } else {
-                        $$0.hurt(1,$$2.level().getRandom(),null);
+                        ItemDurability.damageWithoutBreaking($$0, 1, $$1, null);
                     }
 
                     if (FateTypes.isDaggerUpgraded($$2)){

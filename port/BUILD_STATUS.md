@@ -8,7 +8,7 @@
 - Gradle help: успешно.
 - Подготовка исходников и классов Minecraft/NeoForge: успешно.
 - processResources: успешно; проверены метаданные, access transformer, mixin-конфигурации и 141 рецепт.
-- compileJava: НЕУСПЕШНО, 308 ошибок, 18 предупреждений (актуальный полный журнал сохранён в build-errors.txt).
+- compileJava: НЕУСПЕШНО, 251 ошибок, 18 предупреждений (актуальный полный журнал сохранён в build-errors.txt).
 - JDK 21 и Gradle восстановлены; подготовка Minecraft/NeoForge и processResources прошли в новой среде.
 - JAR для установки: отсутствует.
 - Запуск клиента и выделенного сервера полного мода: не выполнен (компиляция не проходит).
@@ -18,25 +18,25 @@
 Список ошибок — build-errors.txt. Ошибки могут быть каскадными; их число не является оценкой процента готовности.
 Текущая проверка выполнена на Azul JDK 21.0.6 и Gradle 8.14.3; зависимости восстановлены заново.
 
-## Категории актуального полного журнала (308 ошибок)
+## Категории актуального полного журнала (251 ошибок)
 
 | Ошибка | Количество |
 |---|---:|
-| cannot find symbol | 177 |
-| method does not override or implement a method from a supertype | 34 |
+| cannot find symbol | 137 |
+| method does not override or implement a method from a supertype | 30 |
 | incompatible types: ResourceKey<Enchantment> cannot be converted to Holder<Enchantment> | 7 |
 | incompatible types: Reference<SoundEvent> cannot be converted to SoundEvent | 5 |
 | method createArrow in class ArrowItem cannot be applied to given types; | 4 |
 | method getMobArrow in class ProjectileUtil cannot be applied to given types; | 4 |
 | incompatible types: double cannot be converted to LivingEntity | 4 |
-| method finalizeSpawn in class AgeableMob cannot be applied to given types; | 3 |
-| incompatible types: CompoundTag cannot be converted to CustomData | 3 |
 | non-static method getEquipmentSlotForItem(ItemStack) cannot be referenced from a static context | 2 |
 | incompatible types: RecipeHolder<CraftingRecipe> cannot be converted to CraftingRecipe | 2 |
 | incompatible types: int cannot be converted to ServerEntity | 2 |
-| method finalizeSpawn in class Mob cannot be applied to given types; | 2 |
-| method finalizeSpawn in class Zombie cannot be applied to given types; | 2 |
 | incompatible types: CompoundTag cannot be converted to Provider | 2 |
+| no suitable constructor found for Explosion(ClientLevel,<null>,double,double,double,float,List<BlockPos>) | 2 |
+| incompatible types: Holder<SoundEvent> cannot be converted to SoundEvent | 2 |
+| method getExperienceReward in class LivingEntity cannot be applied to given types; | 2 |
+| no suitable method found for playSound(<null>,ThrownTrident,Holder<SoundEvent>,SoundSource,float,float) | 1 |
 
 
 ## Что требуется закончить
@@ -507,3 +507,17 @@
 - Полная compileJava: **308 ошибок, 18 предупреждений** (было 368/18; суммарно 394 -> 308). Сравнение диагностик по файлам, типам и символам не обнаружило новых ошибок. git diff --check проходит.
 - ItemCombatDataCheck прошёл **13 сценариев** против реальных классов NeoForge 21.1.265: стандартные мечи/кирки, пустой стек, отсутствие атрибутов, четыре набора оружия, исключение OFFHAND. Для повторения нужны Java 21, compileClasspath проекта и client-extra resources JAR; harness создаёт пустой LoadingModList и выполняет Minecraft Bootstrap. Полный мод при этом не загружается, тест не является запуском клиента/сервера.
 - После рабочей сборки проверить подсказки и урон оружия в обеих руках, атрибуты изменённых стеков, добычу всех уровней стенда/молота, боевое использование вещей Black Sabbath, связку солдат и Lyin Eyes. Дальше — остатки ItemStack/NBT/износа и spawn hooks.
+
+
+## Контрольная точка — данные предметов, износ и жизненный цикл, 20 ноября 2026
+
+- Чтение старого ItemStack NBT переведено на ItemData для флагов дисков, кислотных снарядов, владельца Stray Cat/зажигалки, шахмат и скинов Anubis. Изменённые копии тегов California и Memory/AnubisSkin явно записываются обратно; простая замена getTag на copyTag не использовалась.
+- Для ванильных свойств использованы отдельные компоненты: FIREWORKS, ENTITY_DATA у трёх картин, CUSTOM_MODEL_DATA Anubis, UNBREAKABLE, PROFILE головы игрока и ENCHANTMENT_GLINT_OVERRIDE еды Pearl Jam. Рука читает длительность ракеты до расхода последнего предмета. Pearl Jam больше не вызывает enchant(null, 0), а меняет копию ItemStack и передаёт её ItemEntity для синхронизации.
+- SpawnEggItem получает полный ItemStack. Сериализация имени Stray Cat получает registryAccess; прочность Flesh Bucket читается из фактического стека. После этой группы compileJava: **279/18**, было 308/18.
+- Двенадцать вызовов удалённого ItemStack.hurt в руке, Stand Arrow, метаемых предметах, кинжале и нити используют общий ItemDurability.damageWithoutBreaking. Сохраняются проверки creative, флаги результата и самостоятельная обработка разрушения вызывающим кодом; стек helper не уменьшает. Учитываются UNBREAKABLE, эффекты прочности и advancement. Новый overload Level выполняет расчёт только на ServerLevel, без небезопасного cast клиента.
+- Пять override finalizeSpawn перешли на четыре параметра с сохранением выбора варианта/стенда/возрастной группы. Обновлены четыре прямых вызова (включая превращения NPC/GE) и оба mixin Mob/ZombieVillager. Удалённый NBT-параметр в телах обработчиков не использовался.
+- Обновлены два override и четыре mixin dropCustomDeathLoot: ServerLevel, DamageSource, boolean. Дополнительные дропы Stray Cat, Anubis, Metallica и метеоритов сохранены. ZMob получает Looting через Holder из реестра зачарований и EnchantmentHelper.getEnchantmentLevel; бонусные броски метеоритов не теряются из-за удаления старого аргумента looting.
+- Четыре проверки Binding Curse переведены на PREVENT_ARMOR_CHANGE, включая Black Sabbath, маску и превращение Zombie Aesthetician.
+- Итоговая полная compileJava: **251 ошибка, 18 предупреждений**. Цепочка за продолжение: **394 -> 368 -> 308 -> 279 -> 251**, минус **143** ошибки. Диагностики сравнивались по файлам, типам и символам: новых групп/увеличений нет. git diff --check проходит. Журнал и таблица актуальны.
+- Запуск этой группы не проверял игру и применение mixin. После успешной сборки проверить сохранение/загрузку шахмат/дисков, синхронизацию Pearl Jam, последний фейерверк в руке, головы/картины/яйца призыва, сломанные предметы и зачарования прочности, все варианты спавна/превращения NPC, дополнительные дропы и Looting. Полный мод ещё не собирается; играбельного JAR нет.
+- Дальше: MobType и динамическая нежить; эффекты зачарований/стрел/трезубца; посадка и геометрия сущностей; остатки сохранения инвентарей и NeoForge event API. Не считать количество ошибок процентом готовности и не ослаблять mixin ради сборки.

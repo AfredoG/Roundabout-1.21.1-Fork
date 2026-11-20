@@ -1450,7 +1450,7 @@ public class JJFProjectileEntity extends ThrowableItemProjectile {
             return;
         }
 
-        EntityType<?> type = egg.getType(stack.getTag());
+        EntityType<?> type = egg.getType(stack);
         Player player = getOwner() instanceof Player p ? p : null;
 
         type.spawn(

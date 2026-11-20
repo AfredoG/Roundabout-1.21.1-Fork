@@ -4719,12 +4719,12 @@ public class MainUtil {
     }
 
     public static boolean isUnremovableDisc(ItemStack itemStack) {
-        CompoundTag tag = itemStack.getTagElement("Special");
+        CompoundTag tag = ItemData.element(itemStack, "Special");
         return tag != null;
     }
 
     public static boolean isTraitorDisc(ItemStack itemStack) {
-        CompoundTag tag = itemStack.getTagElement("Special");
+        CompoundTag tag = ItemData.element(itemStack, "Special");
         if (tag != null) {
             return tag.getByte("Type") == (byte) 1;
         }

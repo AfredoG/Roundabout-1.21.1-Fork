@@ -51,7 +51,7 @@ public class VanGoughPaintingItem  extends Item {
 
             hangingentity = optional.get();
 
-            CompoundTag compoundtag = itemstack.getTag();
+            var compoundtag = itemstack.get(net.minecraft.core.component.DataComponents.ENTITY_DATA);
             if (compoundtag != null) {
                 EntityType.updateCustomEntityTag(level, player, hangingentity, compoundtag);
             }

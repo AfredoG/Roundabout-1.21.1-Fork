@@ -305,10 +305,11 @@ public class PowersPearlJam extends NewDashPreset {
 
     public void updateFoodEnergize(){
         if (this.attackTimeDuring >= 10 && foodEntity != null){
-            ItemStack foodStack = foodEntity.getItem();
-            foodStack.enchant(null, 0);
+            ItemStack foodStack = foodEntity.getItem().copy();
+            foodStack.set(net.minecraft.core.component.DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true);
             foodEntity.setGlowingTag(true);
-            foodStack.getTag().putBoolean("pearljamfood", true);
+            net.hydra.jojomod.util.ItemData.update(foodStack, tag -> tag.putBoolean("pearljamfood", true));
+            foodEntity.setItem(foodStack);
             foodEntity.setNoGravity(false);
             foodEntity = null;
             setAttackTimeDuring(-1);

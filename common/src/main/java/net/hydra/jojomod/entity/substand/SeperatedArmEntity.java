@@ -1,5 +1,6 @@
 package net.hydra.jojomod.entity.substand;
 
+import net.hydra.jojomod.util.ItemDurability;
 import net.hydra.jojomod.Roundabout;
 import net.hydra.jojomod.block.RoundaboutDoor;
 import net.hydra.jojomod.client.ClientNetworking;
@@ -125,11 +126,12 @@ public class SeperatedArmEntity extends StandEntity {
         if(this.getMainHandItem().getItem() instanceof FireworkRocketItem FRE){
 
             level().playSound(null, this.blockPosition(), SoundEvents.FIREWORK_ROCKET_LAUNCH, SoundSource.PLAYERS, 1.0F, 1.0F);
-            this.getMainHandItem().setCount(this.getMainHandItem().getCount() - 1);
-            CompoundTag fireworks = getMainHandItem().getTag().getCompound("Fireworks");
-            if(fireworks.contains("Flight")){
-                FireworkLaunchTicks = (fireworks.getByte("Flight")) * 20;
+            // Read components before consuming the last rocket in the stack.
+            var fireworks = getMainHandItem().get(net.minecraft.core.component.DataComponents.FIREWORKS);
+            if (fireworks != null) {
+                FireworkLaunchTicks = fireworks.flightDuration() * 20;
             }
+            this.getMainHandItem().shrink(1);
             this.setDeltaMovement((this.getLookAngle().multiply(1.5,1.5,1.5)).add(0,0,0));
         }else{
             this.setDeltaMovement((this.getLookAngle().multiply(1.5,1.5,1.5)).add(0,0.5,0));
@@ -155,11 +157,12 @@ public class SeperatedArmEntity extends StandEntity {
         if(this.getMainHandItem().getItem() instanceof FireworkRocketItem FRE){
 
             level().playSound(null, this.blockPosition(), SoundEvents.FIREWORK_ROCKET_LAUNCH, SoundSource.PLAYERS, 1.0F, 1.0F);
-            this.getMainHandItem().setCount(this.getMainHandItem().getCount() - 1);
-            CompoundTag fireworks = getMainHandItem().getTag().getCompound("Fireworks");
-            if(fireworks.contains("Flight")){
-                FireworkLaunchTicks = (fireworks.getByte("Flight")) * 20;
+            // Read components before consuming the last rocket in the stack.
+            var fireworks = getMainHandItem().get(net.minecraft.core.component.DataComponents.FIREWORKS);
+            if (fireworks != null) {
+                FireworkLaunchTicks = fireworks.flightDuration() * 20;
             }
+            this.getMainHandItem().shrink(1);
             this.setDeltaMovement((this.getLookAngle().multiply(2,2,2)).add(0,0,0));
         }else{
             this.setDeltaMovement((this.getLookAngle().multiply(2,2,2)).add(0,0,0));
@@ -410,7 +413,7 @@ public class SeperatedArmEntity extends StandEntity {
                                     if (Can_activate) {
                                         if (!((Player) user).isCreative()) {
                                             if (!(this.getMainHandItem().getItem() instanceof FleshBucketItem)) {
-                                                this.getMainHandItem().hurt(1, this.level().getRandom(), null);
+                                                ItemDurability.damageWithoutBreaking(this.getMainHandItem(), 1, this.level(), null);
                                             }
                                         }
                                     }
@@ -428,7 +431,7 @@ public class SeperatedArmEntity extends StandEntity {
                                     if (Can_activate) {
                                         if (!((Player) user).isCreative()) {
                                             if (!(this.getMainHandItem().getItem() instanceof FleshBucketItem)) {
-                                                this.getMainHandItem().hurt(1, this.level().getRandom(), null);
+                                                ItemDurability.damageWithoutBreaking(this.getMainHandItem(), 1, this.level(), null);
                                             }
                                         }
                                     }
@@ -446,7 +449,7 @@ public class SeperatedArmEntity extends StandEntity {
                                     if (Can_activate) {
                                         if (!((Player) user).isCreative()) {
                                             if (!(this.getMainHandItem().getItem() instanceof FleshBucketItem)) {
-                                                this.getMainHandItem().hurt(1, this.level().getRandom(), null);
+                                                ItemDurability.damageWithoutBreaking(this.getMainHandItem(), 1, this.level(), null);
                                             }
                                         }
                                     }
@@ -707,7 +710,7 @@ public class SeperatedArmEntity extends StandEntity {
                     if (this.getMainHandItem().isDamageableItem()) {
                         if(!((Player)user).isCreative()) {
                             if(!(this.getMainHandItem().getItem() instanceof FleshBucketItem)) {
-                                this.getMainHandItem().hurt(1, this.level().getRandom(), null);
+                                ItemDurability.damageWithoutBreaking(this.getMainHandItem(), 1, this.level(), null);
                             }
                         }
                     }

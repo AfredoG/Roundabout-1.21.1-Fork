@@ -22,7 +22,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public abstract class AnubisDropsMixin {
 
     @Inject(method = "dropCustomDeathLoot",at = @At(value = "TAIL"))
-    private void roundabout$dropAnubis(DamageSource $$0, int $$1, boolean $$2, CallbackInfo ci) {
+    private void roundabout$dropAnubis(net.minecraft.server.level.ServerLevel serverLevel, DamageSource $$0, boolean $$2, CallbackInfo ci) {
         LivingEntity This = ((LivingEntity) (Object) this);
 
         if (!This.level().isClientSide()) {
@@ -48,7 +48,8 @@ public abstract class AnubisDropsMixin {
                         } else {
                             skin = 2F;
                         }
-                        stack.getTag().putFloat("CustomModelData",skin);
+                        stack.set(net.minecraft.core.component.DataComponents.CUSTOM_MODEL_DATA,
+                                new net.minecraft.world.item.component.CustomModelData((int) skin));
                     }
                     This.spawnAtLocation(stack);
 

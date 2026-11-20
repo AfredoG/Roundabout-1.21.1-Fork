@@ -82,7 +82,7 @@ public class StrayCatItem extends Item {
         }
         tag.putFloat(HEALTH_TAG, stray.getHealth());
         if (stray.getCustomName() != null) {
-            tag.putString(CUSTOM_NAME, Component.Serializer.toJson(stray.getCustomName()));
+            tag.putString(CUSTOM_NAME, Component.Serializer.toJson(stray.getCustomName(), stray.registryAccess()));
         }
 
         /*CompoundTag entityData = new CompoundTag();

@@ -34,7 +34,7 @@ public abstract class NPCZombieVillager extends Zombie implements VillagerDataHo
         }
     }
     @Inject(method = "finalizeSpawn", at = @At(value = "HEAD"))
-    protected void roundabout$finalizeSpawn(ServerLevelAccessor $$0, DifficultyInstance $$1, MobSpawnType $$2, SpawnGroupData $$3, CompoundTag $$4, CallbackInfoReturnable<SpawnGroupData> cir) {
+    protected void roundabout$finalizeSpawn(ServerLevelAccessor $$0, DifficultyInstance $$1, MobSpawnType $$2, SpawnGroupData $$3, CallbackInfoReturnable<SpawnGroupData> cir) {
         if ($$2.equals(MobSpawnType.NATURAL) || $$2.equals(MobSpawnType.CHUNK_GENERATION)) {
             float rand = this.level().random.nextFloat();
             if (rand < (ClientNetworking.getAppropriateConfig().generalStandUserMobSettings.percentOfZombieVillagersThatBecomeZombieAestheticians * 0.01)) {

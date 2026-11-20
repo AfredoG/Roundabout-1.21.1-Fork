@@ -221,7 +221,7 @@ public class ZombieAesthetician extends Zombie {
             EquipmentSlot equipmentSlot = var3[var5];
             ItemStack itemStack = this.getItemBySlot(equipmentSlot);
             if (!itemStack.isEmpty()) {
-                if (EnchantmentHelper.hasBindingCurse(itemStack)) {
+                if (EnchantmentHelper.has(itemStack, net.minecraft.world.item.enchantment.EnchantmentEffectComponents.PREVENT_ARMOR_CHANGE)) {
                     villager.getSlot(equipmentSlot.getIndex() + 300).set(itemStack);
                 } else {
                     double d = (double) this.getEquipmentDropChance(equipmentSlot);
@@ -236,7 +236,7 @@ public class ZombieAesthetician extends Zombie {
             villager.setGossips(this.gossips);
         }
 
-        villager.finalizeSpawn(serverLevel, serverLevel.getCurrentDifficultyAt(villager.blockPosition()), MobSpawnType.CONVERSION, (SpawnGroupData) null, (CompoundTag) null);
+        villager.finalizeSpawn(serverLevel, serverLevel.getCurrentDifficultyAt(villager.blockPosition()), MobSpawnType.CONVERSION, (SpawnGroupData) null);
         villager.refreshBrain(serverLevel);
         if (this.conversionStarter != null) {
             Player player = serverLevel.getPlayerByUUID(this.conversionStarter);
@@ -307,9 +307,10 @@ public class ZombieAesthetician extends Zombie {
         return this.getEntityData().get(ROUNDABOUT$SKIN_NUMBER);
     }
     @Nullable
-    public SpawnGroupData finalizeSpawn(ServerLevelAccessor serverLevelAccessor, DifficultyInstance difficultyInstance, MobSpawnType mobSpawnType, @Nullable SpawnGroupData spawnGroupData, @Nullable CompoundTag compoundTag) {
+    @Override
+    public SpawnGroupData finalizeSpawn(ServerLevelAccessor serverLevelAccessor, DifficultyInstance difficultyInstance, MobSpawnType mobSpawnType, @Nullable SpawnGroupData spawnGroupData) {
         rollStand();
-        return super.finalizeSpawn(serverLevelAccessor, difficultyInstance, mobSpawnType, spawnGroupData, compoundTag);
+        return super.finalizeSpawn(serverLevelAccessor, difficultyInstance, mobSpawnType, spawnGroupData);
     }
 
 }

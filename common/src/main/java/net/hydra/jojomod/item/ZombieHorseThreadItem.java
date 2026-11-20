@@ -1,5 +1,6 @@
 package net.hydra.jojomod.item;
 
+import net.hydra.jojomod.util.ItemDurability;
 import net.hydra.jojomod.client.ClientNetworking;
 import net.hydra.jojomod.event.ModEffects;
 import net.hydra.jojomod.event.ModParticles;
@@ -115,7 +116,7 @@ public class ZombieHorseThreadItem extends Item {
 
                         PE.getCooldowns().addCooldown(this, 60);
                         if (!PE.isCreative()) {
-                            itemstack.hurt(1, PE.level().getRandom(), (ServerPlayer) PE);
+                            ItemDurability.damageWithoutBreaking(itemstack, 1, (ServerPlayer) PE);
                         }
 
                         double Xangle = Math.toRadians(entity.getLookAngle().x);
