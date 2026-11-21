@@ -145,9 +145,9 @@ public class KnifeEntity extends AbstractArrow {
         this.inGround = true;
         this.shakeTime = 7;
         this.setCritArrow(false);
-        this.setPierceLevel((byte)0);
+        ((IAbstractArrowAccess) this).roundabout$setPierceLevel((byte) 0);
         this.setSoundEvent(SoundEvents.ARROW_HIT);
-        this.setShotFromCrossbow(false);
+        ((IAbstractArrowAccess) this).roundabout$setFiredFromWeapon(null);
         ((IAbstractArrowAccess)this).roundabout$resetPiercedEntities();
     }
 

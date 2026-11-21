@@ -291,7 +291,7 @@ public class ThrownObjectEntity extends ThrowableItemProjectile {
                 }
             } else if (item.getItem() instanceof ArrowItem && !(item.getItem() instanceof RoundaboutArrowItem)) {
                 ArrowItem $$10 = (ArrowItem) item.getItem();
-                AbstractArrow $$11 = $$10.createArrow(thrower.level(), item, thrower);
+                AbstractArrow $$11 = $$10.createArrow(thrower.level(), item, thrower, null);
                 $$11.setPos(pos);
                 $$11.shootFromRotation(thrower, xRot, yRot, 0.0F, 3.0F * mult, getShotAccuracy);
                 $$11.setCritArrow(true);

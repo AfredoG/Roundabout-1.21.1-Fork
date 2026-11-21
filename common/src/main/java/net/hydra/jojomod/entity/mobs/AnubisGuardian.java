@@ -1,5 +1,6 @@
 package net.hydra.jojomod.entity.mobs;
 
+import net.minecraft.core.registries.Registries;
 import net.hydra.jojomod.item.ModItems;
 import net.hydra.jojomod.item.StandArrowItem;
 import net.minecraft.nbt.CompoundTag;
@@ -77,13 +78,13 @@ public class AnubisGuardian extends AbstractIllager implements RangedAttackMob {
             case AXE_RUSH -> this.setItemInHand(InteractionHand.MAIN_HAND,Items.DIAMOND_AXE.getDefaultInstance());
             case SWORD_RUSH -> {
                 ItemStack a = new ItemStack(Items.IRON_SWORD);
-                a.enchant(Enchantments.KNOCKBACK,2);
+                a.enchant(this.registryAccess().lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(Enchantments.KNOCKBACK),2);
                 this.setItemInHand(InteractionHand.MAIN_HAND,a);
             }
             case BOW_ATTACK ->{
                 ItemStack a = new ItemStack(Items.BOW);
-                a.enchant(Enchantments.POWER_ARROWS,2);
-                a.enchant(Enchantments.PUNCH_ARROWS,1);
+                a.enchant(this.registryAccess().lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(Enchantments.POWER),2);
+                a.enchant(this.registryAccess().lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(Enchantments.PUNCH),1);
                 this.setItemInHand(InteractionHand.MAIN_HAND,a);
             }
             case FIRE_POT -> this.setItemInHand(InteractionHand.MAIN_HAND,PotionData.setPotion(new ItemStack(Items.POTION), Potions.FIRE_RESISTANCE) );
@@ -180,7 +181,7 @@ public class AnubisGuardian extends AbstractIllager implements RangedAttackMob {
     @Override
     public void performRangedAttack(LivingEntity livingEntity, float f) {
         ItemStack itemStack = this.getProjectile(this.getItemInHand(ProjectileUtil.getWeaponHoldingHand(this, Items.BOW)));
-        AbstractArrow abstractArrow = ProjectileUtil.getMobArrow(this, itemStack, f);
+        AbstractArrow abstractArrow = ProjectileUtil.getMobArrow(this, itemStack, f, this.getItemInHand(ProjectileUtil.getWeaponHoldingHand(this, Items.BOW)));
         double d = livingEntity.getX() - this.getX();
         double e = livingEntity.getY(0.3333333333333333) - abstractArrow.getY();
         double g = livingEntity.getZ() - this.getZ();

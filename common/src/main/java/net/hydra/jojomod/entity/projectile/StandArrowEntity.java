@@ -49,7 +49,12 @@ public class StandArrowEntity extends AbstractArrow {
             EntityDataSerializers.ITEM_STACK);
 
     public StandArrowEntity(Level $$0, LivingEntity $$1) {
-        super(ModEntities.STAND_ARROW, $$1, $$0, new ItemStack(net.hydra.jojomod.item.ModItems.STAND_ARROW), null);
+        this($$0, $$1, new ItemStack(net.hydra.jojomod.item.ModItems.STAND_ARROW), null);
+    }
+
+    public StandArrowEntity(Level level, LivingEntity shooter, ItemStack ammo, @javax.annotation.Nullable ItemStack weapon) {
+        super(ModEntities.STAND_ARROW, shooter, level, ammo.copyWithCount(1), weapon);
+        this.setArrow(ammo.copyWithCount(1));
     }
     public StandArrowEntity(EntityType<? extends StandArrowEntity> $$0, Level $$1) {
         super($$0, $$1);
@@ -93,13 +98,6 @@ public class StandArrowEntity extends AbstractArrow {
     protected void onHitEntity(EntityHitResult $$0) {
         Entity $$1 = $$0.getEntity();
         float $$2 = (float)this.getDeltaMovement().length();
-        int $$3 = Mth.ceil(Mth.clamp((double)$$2 * 2, 0.0, 2.147483647E9));
-
-        if (this.isCritArrow()) {
-            long $$4 = (long)this.random.nextInt($$3 / 2 + 2);
-            $$3 = (int)Math.min($$4 + (long)$$3, 2147483647L);
-        }
-
         Entity $$5 = this.getOwner();
         DamageSource $$6;
         if ($$5 == null) {
@@ -109,6 +107,16 @@ public class StandArrowEntity extends AbstractArrow {
             if ($$5 instanceof LivingEntity) {
                 ((LivingEntity)$$5).setLastHurtMob($$1);
             }
+        }
+
+        float damage = (float) this.getBaseDamage();
+        if (this.getWeaponItem() != null) {
+            damage = EnchantmentCompat.modifyDamage(this.level(), this.getWeaponItem(), $$1, $$6, damage);
+        }
+        int $$3 = Mth.ceil(Mth.clamp((double) $$2 * damage, 0.0, 2.147483647E9));
+        if (this.isCritArrow()) {
+            long $$4 = (long) this.random.nextInt($$3 / 2 + 2);
+            $$3 = (int) Math.min($$4 + (long) $$3, 2147483647L);
         }
 
         boolean $$8 = $$1.getType() == EntityType.ENDERMAN;
@@ -183,13 +191,7 @@ public class StandArrowEntity extends AbstractArrow {
                         StrayCatEntity.tryToSpawnStrayCat(C);
                     }
 
-                    if (this.getKnockback() > 0) {
-                        double $$11 = Math.max(0.0, 1.0 - $$10.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE));
-                        Vec3 $$12 = this.getDeltaMovement().multiply(1.0, 0.0, 1.0).normalize().scale((double) this.getKnockback() * 0.6 * $$11);
-                        if ($$12.lengthSqr() > 0.0) {
-                            $$10.push($$12.x, 0.1, $$12.z);
-                        }
-                    }
+                    this.doKnockback($$10, $$6);
 
                     if (!this.level().isClientSide && $$5 instanceof LivingEntity) {
                         EnchantmentCompat.postAttack(this.level(), $$10, $$6, this.getWeaponItem());

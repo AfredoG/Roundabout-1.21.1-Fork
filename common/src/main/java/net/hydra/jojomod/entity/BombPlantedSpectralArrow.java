@@ -1,5 +1,7 @@
 package net.hydra.jojomod.entity;
 
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.ItemStack;
 import net.hydra.jojomod.event.powers.StandUser;
 import net.hydra.jojomod.stand.powers.PowersKillerQueen;
 import net.minecraft.world.entity.Entity;
@@ -19,11 +21,15 @@ public class BombPlantedSpectralArrow extends SpectralArrow {
     }
 
     public BombPlantedSpectralArrow(Level $$0, LivingEntity $$1) {
-        super($$0, $$1);
+        this($$0, $$1, new ItemStack(Items.SPECTRAL_ARROW));
+    }
+
+    public BombPlantedSpectralArrow(Level level, LivingEntity shooter, ItemStack ammo) {
+        super(level, shooter, ammo.copyWithCount(1), null);
     }
 
     public BombPlantedSpectralArrow(Level $$0, double $$1, double $$2, double $$3) {
-        super($$0, $$1, $$2, $$3);
+        super($$0, $$1, $$2, $$3, new ItemStack(Items.SPECTRAL_ARROW), null);
     }
 
 

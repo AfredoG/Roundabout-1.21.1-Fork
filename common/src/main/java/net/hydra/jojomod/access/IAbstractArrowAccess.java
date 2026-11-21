@@ -23,6 +23,7 @@ public interface IAbstractArrowAccess {
     void rdbt$piercedAndKilledEntities(List<Entity> ent);
     byte roundabout$GetPierceLevel();
     void roundabout$setPierceLevel(byte level);
+    void roundabout$setFiredFromWeapon(@Nullable ItemStack weapon);
     ItemStack roundabout$GetPickupItem();
 
     /**Manhattan Transfer Values*/

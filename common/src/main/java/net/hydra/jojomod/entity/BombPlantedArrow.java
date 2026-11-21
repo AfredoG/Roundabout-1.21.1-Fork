@@ -23,11 +23,15 @@ public class BombPlantedArrow extends Arrow {
     }
 
     public BombPlantedArrow(Level $$0, double $$1, double $$2, double $$3) {
-        super($$0, $$1, $$2, $$3);
+        super($$0, $$1, $$2, $$3, new ItemStack(Items.ARROW), null);
     }
 
     public BombPlantedArrow(Level $$0, LivingEntity $$1) {
-        super($$0, $$1);
+        this($$0, $$1, new ItemStack(Items.ARROW));
+    }
+
+    public BombPlantedArrow(Level level, LivingEntity shooter, ItemStack ammo) {
+        super(level, shooter, ammo.copyWithCount(1), null);
     }
 
     private Collection<MobEffectInstance> effects = null;

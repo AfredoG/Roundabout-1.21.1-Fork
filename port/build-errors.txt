@@ -12,12 +12,6 @@ import net.neoforged.neoforge.event.entity.player.SleepingTimeCheckEvent;
                                                  ^
   symbol:   class SleepingTimeCheckEvent
   location: package net.neoforged.neoforge.event.entity.player
-common/src/main/java/net/hydra/jojomod/entity/stand/BlackSabbathEntity.java:1747: error: method createArrow in class ArrowItem cannot be applied to given types;
-                    AbstractArrow $$11 = $$10.createArrow(bs.getUser().level(), item, bs.getUser());
-                                             ^
-  required: Level,ItemStack,LivingEntity,ItemStack
-  found:    Level,ItemStack,LivingEntity
-  reason: actual and formal argument lists differ in length
 common/src/main/java/net/hydra/jojomod/entity/stand/BlackSabbathEntity.java:1783: error: no suitable method found for playSound(<null>,ThrownTrident,Holder<SoundEvent>,SoundSource,float,float)
                             bs.level().playSound(null, $$7, SoundEvents.TRIDENT_THROW, SoundSource.PLAYERS, 1.0F, 1.0F);
                                       ^
@@ -114,12 +108,6 @@ common/src/main/java/net/hydra/jojomod/entity/corpses/FallenMob.java:178: error:
 common/src/main/java/net/hydra/jojomod/entity/corpses/FallenSpider.java:153: error: method does not override or implement a method from a supertype
     @Override
     ^
-common/src/main/java/net/hydra/jojomod/entity/corpses/FallenSkeleton.java:120: error: method getMobArrow in class ProjectileUtil cannot be applied to given types;
-        return ProjectileUtil.getMobArrow(this, $$0, $$1);
-                             ^
-  required: LivingEntity,ItemStack,float,ItemStack
-  found:    FallenSkeleton,ItemStack,float
-  reason: actual and formal argument lists differ in length
 common/src/main/java/net/hydra/jojomod/entity/corpses/FallenPhantom.java:281: error: method does not override or implement a method from a supertype
     @Override
     ^
@@ -147,22 +135,6 @@ common/src/main/java/net/hydra/jojomod/entity/pathfinding/TuskHoleEntity.java:31
 common/src/main/java/net/hydra/jojomod/entity/pathfinding/TuskHoleEntity.java:444: error: method does not override or implement a method from a supertype
     @Override
     ^
-common/src/main/java/net/hydra/jojomod/entity/projectile/StandArrowEntity.java:186: error: cannot find symbol
-                    if (this.getKnockback() > 0) {
-                            ^
-  symbol: method getKnockback()
-common/src/main/java/net/hydra/jojomod/entity/projectile/StandArrowEntity.java:188: error: cannot find symbol
-                        Vec3 $$12 = this.getDeltaMovement().multiply(1.0, 0.0, 1.0).normalize().scale((double) this.getKnockback() * 0.6 * $$11);
-                                                                                                                   ^
-  symbol: method getKnockback()
-common/src/main/java/net/hydra/jojomod/entity/projectile/KnifeEntity.java:148: error: cannot find symbol
-        this.setPierceLevel((byte)0);
-            ^
-  symbol: method setPierceLevel(byte)
-common/src/main/java/net/hydra/jojomod/entity/projectile/KnifeEntity.java:150: error: cannot find symbol
-        this.setShotFromCrossbow(false);
-            ^
-  symbol: method setShotFromCrossbow(boolean)
 common/src/main/java/net/hydra/jojomod/entity/zombie_minion/DogMinion.java:61: error: cannot find symbol
                     this.gameEvent(GameEvent.ENTITY_SHAKE);
                                             ^
@@ -174,35 +146,16 @@ common/src/main/java/net/hydra/jojomod/entity/Zombiefish.java:54: error: method 
 common/src/main/java/net/hydra/jojomod/entity/zombie_minion/AxolotlMinion.java:78: error: method does not override or implement a method from a supertype
     @Override
     ^
-common/src/main/java/net/hydra/jojomod/entity/mobs/AnubisGuardian.java:36: error: AnubisGuardian is not abstract and does not override abstract method applyRaidBuffs(ServerLevel,int,boolean) in Raider
+common/src/main/java/net/hydra/jojomod/entity/mobs/AnubisGuardian.java:37: error: AnubisGuardian is not abstract and does not override abstract method applyRaidBuffs(ServerLevel,int,boolean) in Raider
 public class AnubisGuardian extends AbstractIllager implements RangedAttackMob {
        ^
-common/src/main/java/net/hydra/jojomod/entity/mobs/AnubisGuardian.java:80: error: incompatible types: ResourceKey<Enchantment> cannot be converted to Holder<Enchantment>
-                a.enchant(Enchantments.KNOCKBACK,2);
-                                      ^
-common/src/main/java/net/hydra/jojomod/entity/mobs/AnubisGuardian.java:85: error: cannot find symbol
-                a.enchant(Enchantments.POWER_ARROWS,2);
-                                      ^
-  symbol:   variable POWER_ARROWS
-  location: class Enchantments
-common/src/main/java/net/hydra/jojomod/entity/mobs/AnubisGuardian.java:86: error: cannot find symbol
-                a.enchant(Enchantments.PUNCH_ARROWS,1);
-                                      ^
-  symbol:   variable PUNCH_ARROWS
-  location: class Enchantments
-common/src/main/java/net/hydra/jojomod/entity/mobs/AnubisGuardian.java:177: error: method does not override or implement a method from a supertype
+common/src/main/java/net/hydra/jojomod/entity/mobs/AnubisGuardian.java:178: error: method does not override or implement a method from a supertype
     @Override
     ^
-common/src/main/java/net/hydra/jojomod/entity/mobs/AnubisGuardian.java:183: error: method getMobArrow in class ProjectileUtil cannot be applied to given types;
-        AbstractArrow abstractArrow = ProjectileUtil.getMobArrow(this, itemStack, f);
-                                                    ^
-  required: LivingEntity,ItemStack,float,ItemStack
-  found:    AnubisGuardian,ItemStack,float
-  reason: actual and formal argument lists differ in length
-common/src/main/java/net/hydra/jojomod/entity/mobs/AnubisGuardian.java:325: error: method does not override or implement a method from a supertype
+common/src/main/java/net/hydra/jojomod/entity/mobs/AnubisGuardian.java:326: error: method does not override or implement a method from a supertype
     @Override
     ^
-common/src/main/java/net/hydra/jojomod/entity/mobs/AnubisGuardian.java:327: error: cannot find symbol
+common/src/main/java/net/hydra/jojomod/entity/mobs/AnubisGuardian.java:328: error: cannot find symbol
         double $$2 = this.getAttackReachSqr($$0);
                          ^
   symbol: method getAttackReachSqr(LivingEntity)
@@ -226,25 +179,6 @@ common/src/main/java/net/hydra/jojomod/entity/mobs/StrayCatEntity.java:138: erro
         return super.getNameTagOffsetY();
                     ^
   symbol: method getNameTagOffsetY()
-common/src/main/java/net/hydra/jojomod/entity/stand/ManhattanTransferEntity.java:274: error: cannot find symbol
-                                        setKnockbackArrow(AA.getKnockback());
-                                                            ^
-  symbol:   method getKnockback()
-  location: variable AA of type AbstractArrow
-common/src/main/java/net/hydra/jojomod/entity/stand/ManhattanTransferEntity.java:439: error: method createArrow in class ArrowItem cannot be applied to given types;
-                AbstractArrow $$11 = $$10.createArrow(thrower.getUser().level(), item, thrower.getUser());
-                                         ^
-  required: Level,ItemStack,LivingEntity,ItemStack
-  found:    Level,ItemStack,LivingEntity
-  reason: actual and formal argument lists differ in length
-common/src/main/java/net/hydra/jojomod/entity/stand/ManhattanTransferEntity.java:442: error: cannot find symbol
-                $$11.setKnockback(thrower.knockbackArrow);
-                    ^
-  symbol:   method setKnockback(int)
-  location: variable $$11 of type AbstractArrow
-common/src/main/java/net/hydra/jojomod/entity/stand/ManhattanTransferEntity.java:443: error: setPierceLevel(byte) has private access in AbstractArrow
-                $$11.setPierceLevel((byte)thrower.piercingArrow);
-                    ^
 common/src/main/java/net/hydra/jojomod/entity/paintings/RoundaboutPainting.java:46: error: method does not override or implement a method from a supertype
     @Override
     ^
@@ -364,12 +298,6 @@ common/src/main/java/net/hydra/jojomod/event/SoftExplosion.java:72: error: no su
       (actual and formal argument lists differ in length)
     constructor Explosion.Explosion(Level,Entity,DamageSource,ExplosionDamageCalculator,double,double,double,float,boolean,BlockInteraction,ParticleOptions,ParticleOptions,Holder<SoundEvent>) is not applicable
       (actual and formal argument lists differ in length)
-common/src/main/java/net/hydra/jojomod/entity/projectile/ThrownObjectEntity.java:294: error: method createArrow in class ArrowItem cannot be applied to given types;
-                AbstractArrow $$11 = $$10.createArrow(thrower.level(), item, thrower);
-                                         ^
-  required: Level,ItemStack,LivingEntity,ItemStack
-  found:    Level,ItemStack,LivingEntity
-  reason: actual and formal argument lists differ in length
 common/src/main/java/net/hydra/jojomod/entity/projectile/ThrownObjectEntity.java:1091: error: method canBeLeashed in class Mob cannot be applied to given types;
             if (entity.canBeLeashed(player)) {
                       ^
@@ -389,25 +317,13 @@ common/src/main/java/net/hydra/jojomod/entity/FakeExperienceOrb.java:123: error:
 common/src/main/java/net/hydra/jojomod/entity/FakeExperienceOrb.java:239: error: incompatible types: ResourceKey<Enchantment> cannot be converted to DataComponentType<?>
         Map.Entry<EquipmentSlot, ItemStack> $$2 = EnchantmentHelper.getRandomItemWith(Enchantments.MENDING, $$0, ItemStack::isDamaged);
                                                                                                   ^
-common/src/main/java/net/hydra/jojomod/entity/BombPlantedArrow.java:26: error: incompatible types: double cannot be converted to LivingEntity
-        super($$0, $$1, $$2, $$3);
-                   ^
-common/src/main/java/net/hydra/jojomod/entity/BombPlantedArrow.java:30: error: incompatible types: Level cannot be converted to EntityType<? extends Arrow>
-        super($$0, $$1);
-              ^
-common/src/main/java/net/hydra/jojomod/entity/BombPlantedArrow.java:35: error: method does not override or implement a method from a supertype
+common/src/main/java/net/hydra/jojomod/entity/BombPlantedArrow.java:39: error: method does not override or implement a method from a supertype
     @Override
     ^
-common/src/main/java/net/hydra/jojomod/entity/BombPlantedArrow.java:37: error: cannot find symbol
+common/src/main/java/net/hydra/jojomod/entity/BombPlantedArrow.java:41: error: cannot find symbol
         super.setEffectsFromItem($$0);
              ^
   symbol: method setEffectsFromItem(ItemStack)
-common/src/main/java/net/hydra/jojomod/entity/BombPlantedSpectralArrow.java:22: error: incompatible types: Level cannot be converted to EntityType<? extends SpectralArrow>
-        super($$0, $$1);
-              ^
-common/src/main/java/net/hydra/jojomod/entity/BombPlantedSpectralArrow.java:26: error: incompatible types: double cannot be converted to LivingEntity
-        super($$0, $$1, $$2, $$3);
-                   ^
 common/src/main/java/net/hydra/jojomod/entity/paintings/VanGoughPainting.java:30: error: VanGoughPainting is not abstract and does not override abstract method calculateBoundingBox(BlockPos,Direction) in HangingEntity
 public class VanGoughPainting extends RoundaboutPainting {
        ^
@@ -566,12 +482,6 @@ common/src/main/java/net/hydra/jojomod/mixin/gravity/GravityEntityMixin.java:872
                                                                ^
   symbol:   method getMyRidingOffset()
   location: variable $$0 of type Entity
-common/src/main/java/net/hydra/jojomod/mixin/gravity/GravityIllusionerMixin.java:45: error: method getMobArrow in class ProjectileUtil cannot be applied to given types;
-        AbstractArrow $$3 = ProjectileUtil.getMobArrow(this, $$2, $$1);
-                                          ^
-  required: LivingEntity,ItemStack,float,ItemStack
-  found:    GravityIllusionerMixin,ItemStack,float
-  reason: actual and formal argument lists differ in length
 common/src/main/java/net/hydra/jojomod/mixin/gravity/GravityPlayerMixin.java:46: error: getDimensions(Pose) in GravityPlayerMixin cannot override getDimensions(Pose) in LivingEntity
     public abstract EntityDimensions getDimensions(Pose pose);
                                      ^
@@ -677,26 +587,6 @@ common/src/main/java/net/hydra/jojomod/mixin/ZLivingEntityRenderer.java:441: err
   where T#1,T#2 are type-variables:
     T#1 extends LivingEntity declared in class ZLivingEntityRenderer
     T#2 extends Entity declared in class EntityRenderer
-common/src/main/java/net/hydra/jojomod/mixin/items/StandArrowBowItem.java:45: error: cannot find symbol
-                            int $$12 = EnchantmentHelper.getItemEnchantmentLevel(Enchantments.POWER_ARROWS, $$0);
-                                                                                             ^
-  symbol:   variable POWER_ARROWS
-  location: class Enchantments
-common/src/main/java/net/hydra/jojomod/mixin/items/StandArrowBowItem.java:50: error: cannot find symbol
-                            int $$13 = EnchantmentHelper.getItemEnchantmentLevel(Enchantments.PUNCH_ARROWS, $$0);
-                                                                                             ^
-  symbol:   variable PUNCH_ARROWS
-  location: class Enchantments
-common/src/main/java/net/hydra/jojomod/mixin/items/StandArrowBowItem.java:52: error: cannot find symbol
-                                $$11.setKnockback($$13);
-                                    ^
-  symbol:   method setKnockback(int)
-  location: variable $$11 of type StandArrowEntity
-common/src/main/java/net/hydra/jojomod/mixin/items/StandArrowBowItem.java:55: error: cannot find symbol
-                            if (EnchantmentHelper.getItemEnchantmentLevel(Enchantments.FLAMING_ARROWS, $$0) > 0) {
-                                                                                      ^
-  symbol:   variable FLAMING_ARROWS
-  location: class Enchantments
 common/src/main/java/net/hydra/jojomod/stand/powers/PowersPearlJam.java:195: error: cannot find symbol
                 float height = LE.getNameTagOffsetY() + 0.275F;
                                  ^
@@ -711,24 +601,12 @@ common/src/main/java/net/hydra/jojomod/stand/powers/PowersCalifornia.java:1127: 
   required: ServerLevel,Entity
   found:    no arguments
   reason: actual and formal argument lists differ in length
-common/src/main/java/net/hydra/jojomod/stand/powers/PowersTheWorld.java:1337: error: incompatible types: double cannot be converted to LivingEntity
-                                        Arrow $$7 = new Arrow(this.getSelf().level(), pos.x, pos.y, pos.z);
-                                                                                         ^
-common/src/main/java/net/hydra/jojomod/stand/powers/PowersJumpinJackFlash.java:1882: error: method getMobArrow in class ProjectileUtil cannot be applied to given types;
-                    ProjectileUtil.getMobArrow(
-                                  ^
-  required: LivingEntity,ItemStack,float,ItemStack
-  found:    Player,ItemStack,float
-  reason: actual and formal argument lists differ in length
 common/src/main/java/net/hydra/jojomod/stand/powers/PowersAchtungBaby.java:382: error: method saveWithFullMetadata in class BlockEntity cannot be applied to given types;
                                     CompoundTag replacedTag = replacedEntity != null ? replacedEntity.saveWithFullMetadata() : null;
                                                                                                      ^
   required: Provider
   found:    no arguments
   reason: actual and formal argument lists differ in length
-common/src/main/java/net/hydra/jojomod/stand/powers/PowersManhattanTransfer.java:950: error: incompatible types: double cannot be converted to LivingEntity
-                                            Arrow $$11 = new Arrow(this.getSelf().level(), ME.getX(), ME.getY(), ME.getZ());
-                                                                                                  ^
 common/src/main/java/net/hydra/jojomod/stand/powers/PowersStarPlatinum.java:740: error: incompatible types: Reference<SoundEvent> cannot be converted to SoundEvent
                                                             this.getSelf().getZ(), SoundEvents.GENERIC_EXPLODE, this.getSelf().getSoundSource(), 2.0F, 1.0F);
                                                                                               ^
@@ -752,12 +630,6 @@ common/src/main/java/net/hydra/jojomod/block/ModBlocks.java:875: error: cannot f
                                                                                             ^
   symbol:   method copy(Block)
   location: class Properties
-common/src/main/java/net/hydra/jojomod/fates/powers/ZombieFate.java:318: error: method createArrow in class ArrowItem cannot be applied to given types;
-                AbstractArrow $$11 = $$10.createArrow(self.level(), stack, self);
-                                         ^
-  required: Level,ItemStack,LivingEntity,ItemStack
-  found:    Level,ItemStack,LivingEntity
-  reason: actual and formal argument lists differ in length
 common/src/main/java/net/hydra/jojomod/item/NewLocacacaItem.java:166: error: cannot find symbol
                                 if (!effectInstance.getEffect().isBeneficial()){
                                                                ^
@@ -766,9 +638,6 @@ common/src/main/java/net/hydra/jojomod/item/NewLocacacaItem.java:166: error: can
 common/src/main/java/net/hydra/jojomod/item/FirearmItem.java:157: error: incompatible types: EquipmentSlot is not a functional interface
             itemStack.hurtAndBreak(1, player, p -> {});
                      ^
-common/src/main/java/net/hydra/jojomod/item/RoundaboutArrowItem.java:17: error: method does not override or implement a method from a supertype
-    @Override
-    ^
 common/src/main/java/net/hydra/jojomod/item/MemoryChessPieceItem.java:258: error: method getExperienceReward in class LivingEntity cannot be applied to given types;
                     tag.putInt("experience",livingEntity.getExperienceReward());
                                                         ^
@@ -885,5 +754,5 @@ Note: Recompile with -Xlint:deprecation for details.
 Note: Some input files use unchecked or unsafe operations.
 Note: Recompile with -Xlint:unchecked for details.
 Note: Some messages have been simplified; recompile with -Xdiags:verbose to get full output
-181 errors
+152 errors
 18 warnings

@@ -947,7 +947,7 @@ public class PowersManhattanTransfer extends NewDashPreset {
                                             $$8.shootFromRotation(ME, ME.shootRotationXHattan, ME.shootRotationYHattan, -3.0F, 0.75F, 0.0F);
                                             ME.level().addFreshEntity($$8);
                                         } else {
-                                            Arrow $$11 = new Arrow(this.getSelf().level(), ME.getX(), ME.getY(), ME.getZ());
+                                            Arrow $$11 = new Arrow(this.getSelf().level(), ME.getX(), ME.getY(), ME.getZ(), new ItemStack(Items.ARROW), null);
                                             $$11.setOwner(this.getSelf());
                                             $$11.setPos(ME.getX(), ME.getY() - 0.15, ME.getZ());
                                             $$11.shootFromRotation(ME, ME.shootRotationXHattan, ME.shootRotationYHattan, 0.0F, 2.5F, 0.0F);

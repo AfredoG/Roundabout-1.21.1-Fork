@@ -1882,7 +1882,8 @@ public class PowersJumpinJackFlash extends NewPunchingStand {
                     ProjectileUtil.getMobArrow(
                             player,
                             firedItem,
-                            1.0F
+                            1.0F,
+                            null
                     );
 
             arrow.pickup =

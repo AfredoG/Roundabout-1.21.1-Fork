@@ -42,7 +42,7 @@ public abstract class GravityIllusionerMixin extends SpellcasterIllager implemen
         ci.cancel();
 
         ItemStack $$2 = this.getProjectile(this.getItemInHand(ProjectileUtil.getWeaponHoldingHand(this, Items.BOW)));
-        AbstractArrow $$3 = ProjectileUtil.getMobArrow(this, $$2, $$1);
+        AbstractArrow $$3 = ProjectileUtil.getMobArrow(this, $$2, $$1, this.getItemInHand(ProjectileUtil.getWeaponHoldingHand(this, Items.BOW)));
         double $$4 = target.position().add(RotationUtil.vecPlayerToWorld(0.0D, target.getBbHeight() * 0.3333333333333333D, 0.0D, gravityDirection)).x - this.getX();
         double $$5 = target.position().add(RotationUtil.vecPlayerToWorld(0.0D, target.getBbHeight() * 0.3333333333333333D, 0.0D, gravityDirection)).y - $$3.getY();
         double $$6 = target.position().add(RotationUtil.vecPlayerToWorld(0.0D, target.getBbHeight() * 0.3333333333333333D, 0.0D, gravityDirection)).z - this.getZ();

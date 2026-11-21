@@ -62,6 +62,7 @@ import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.projectile.Arrow;
 import net.minecraft.world.entity.raid.Raider;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
@@ -1334,7 +1335,7 @@ public class PowersTheWorld extends TWAndSPSharedPowers {
                                             this.getSelf().level().addFreshEntity($$7);
                                         }
                                     } else if (this.getSelf() instanceof Skeleton) {
-                                        Arrow $$7 = new Arrow(this.getSelf().level(), pos.x, pos.y, pos.z);
+                                        Arrow $$7 = new Arrow(this.getSelf().level(), pos.x, pos.y, pos.z, new ItemStack(Items.ARROW), null);
                                         $$7.pickup = AbstractArrow.Pickup.DISALLOWED;
                                         $$7.shootFromRotation(this.getSelf(),
                                                 p,

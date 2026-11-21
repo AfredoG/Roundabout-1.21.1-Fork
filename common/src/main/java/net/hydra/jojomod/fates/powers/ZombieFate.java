@@ -315,7 +315,7 @@ public class ZombieFate extends VampiricFate {
             }
             for (var i = 0; i < loops; i++) {
                 ArrowItem $$10 = (ArrowItem) stack.getItem();
-                AbstractArrow $$11 = $$10.createArrow(self.level(), stack, self);
+                AbstractArrow $$11 = $$10.createArrow(self.level(), stack, self, null);
                 $$11.setPos(MainUtil.getMobCenter(self,0.5F));
                 $$11.shootFromRotation(self, this.self.getXRot(),this.self.getYRot(),
                         -3F, 3F * 1, 13f);

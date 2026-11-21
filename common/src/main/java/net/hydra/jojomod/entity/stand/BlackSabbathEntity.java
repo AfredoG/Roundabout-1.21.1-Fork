@@ -1744,7 +1744,7 @@ public class BlackSabbathEntity extends StandEntity implements HasCustomInventor
                 ItemStack item = bs.getHeldItemSabbath();
                 if (item.getItem() instanceof ArrowItem) {
                     ArrowItem $$10 = (ArrowItem) item.getItem();
-                    AbstractArrow $$11 = $$10.createArrow(bs.getUser().level(), item, bs.getUser());
+                    AbstractArrow $$11 = $$10.createArrow(bs.getUser().level(), item, bs.getUser(), null);
                     $$11.setPos(bs.position().x, bs.getEyeY() - 0.1, bs.position().z);
                     $$11.shootFromRotation(bs, X, Y, 0.0F, 1.5F, 0.5F);
                     $$11.pickup = AbstractArrow.Pickup.ALLOWED;

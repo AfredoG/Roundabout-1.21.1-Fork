@@ -8,7 +8,7 @@
 - Gradle help: успешно.
 - Подготовка исходников и классов Minecraft/NeoForge: успешно.
 - processResources: успешно; проверены метаданные, access transformer, mixin-конфигурации и 141 рецепт.
-- compileJava: НЕУСПЕШНО, 181 ошибок, 18 предупреждений (актуальный полный журнал сохранён в build-errors.txt).
+- compileJava: НЕУСПЕШНО, 152 ошибок, 18 предупреждений (актуальный полный журнал сохранён в build-errors.txt).
 - JDK 21 и Gradle восстановлены; подготовка Minecraft/NeoForge и processResources прошли в новой среде.
 - JAR для установки: отсутствует.
 - Запуск клиента и выделенного сервера полного мода: не выполнен (компиляция не проходит).
@@ -18,16 +18,13 @@
 Список ошибок — build-errors.txt. Ошибки могут быть каскадными; их число не является оценкой процента готовности.
 Текущая проверка выполнена на Azul JDK 21.0.6 и Gradle 8.14.3; зависимости восстановлены заново.
 
-## Категории актуального полного журнала (181 ошибок)
+## Категории актуального полного журнала (152 ошибок)
 
 | Ошибка | Количество |
 |---|---:|
-| cannot find symbol | 79 |
-| method does not override or implement a method from a supertype | 24 |
+| cannot find symbol | 67 |
+| method does not override or implement a method from a supertype | 23 |
 | incompatible types: Reference<SoundEvent> cannot be converted to SoundEvent | 5 |
-| method createArrow in class ArrowItem cannot be applied to given types; | 4 |
-| method getMobArrow in class ProjectileUtil cannot be applied to given types; | 4 |
-| incompatible types: double cannot be converted to LivingEntity | 4 |
 | non-static method getEquipmentSlotForItem(ItemStack) cannot be referenced from a static context | 2 |
 | incompatible types: RecipeHolder<CraftingRecipe> cannot be converted to CraftingRecipe | 2 |
 | incompatible types: int cannot be converted to ServerEntity | 2 |
@@ -37,6 +34,9 @@
 | method getExperienceReward in class LivingEntity cannot be applied to given types; | 2 |
 | no suitable method found for playSound(<null>,ThrownTrident,Holder<SoundEvent>,SoundSource,float,float) | 1 |
 | no suitable method found for fromJson(String) | 1 |
+| method isPathfindable in class BlockStateBase cannot be applied to given types; | 1 |
+| getTeam() in FallenMob cannot override getTeam() in Entity | 1 |
+| method writeInventoryToTag in interface InventoryCarrier cannot be applied to given types; | 1 |
 
 
 ## Что требуется закончить
@@ -534,3 +534,14 @@
 - Удалён Shadow уже отсутствующего Mob.maybeDisableShield и его мост: в 1.21.1 отключение щита при блокировании уже выполняет Player.blockUsingShield.
 - processResources: успешно. Содержимое всех трёх новых тегов проверено в собранных ресурсах. По исходникам 1.21.1 проверены сигнатуры четырёх изменённых целей mixin и единственный перехватываемый вызов EntityTypePredicate.matches.
 - Это проверка компиляции, ресурсов и целей API. Запуск полного мода и поведение зачарований в игре ещё не проверены; готового JAR нет.
+
+
+## Контрольная точка: стрелы и оружие снарядов (2026-11-21)
+
+- Полная compileJava: 181 → 152 ошибки, 18 предупреждений. Исправлен также промежуточный недостающий импорт Items; новых диагностик относительно предыдущей точки нет.
+- RoundaboutArrowItem принимает исходный лук/арбалет и передаёт его StandArrowEntity. Снаряд использует modifyDamage и штатный doKnockback, сохраняя собственные правила достойности и получения стенда.
+- Полная копия BowItem.releaseUsing удалена вместе с прежним mixin: штатный ProjectileWeaponItem вызывает исправленную фабрику стрел, расходует боеприпасы и прочность, применяет зачарования и флаг intangible для творческого режима. Существующий подбор stand/worthy-стрел через PlayerEntity сохранён. Vanilla Infinity проверяет конкретно minecraft:arrow, поэтому stand-стрелы по-прежнему расходуются.
+- Фабрики стрел мобов получают настоящий лук, ручные броски получают null вместо оружия. Обновлены конструкторы обычных и спектральных стрел; бомбы Killer Queen получают копию исходного ItemStack с данными зелий.
+- Manhattan Transfer сохраняет копию оружия перехваченной стрелы и записывает её в NBT. При выстреле копия восстанавливается без повторного запуска projectile-spawn эффектов. При замене/очистке заряда ссылка очищается. Доступ к приватным firedFromWeapon/setPierceLevel оформлен через accessor/invoker.
+- Зачарования оружия AnubisGuardian получаются из registry; имена Power/Punch обновлены.
+- Проверены пути создания/подбора стрел и сигнатуры accessor по исходникам 1.21.1. Полный игровой запуск ещё невозможен из-за оставшихся ошибок; стрельба и перехват требуют проверки в игре после завершения компиляции.

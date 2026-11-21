@@ -15,9 +15,7 @@ public class RoundaboutArrowItem extends ArrowItem {
     }
 
     @Override
-    public AbstractArrow createArrow(Level $$0, ItemStack $$1, LivingEntity $$2) {
-        StandArrowEntity $$3 = new StandArrowEntity($$0, $$2);
-        $$3.setArrow($$1.copy());
-        return $$3;
+    public AbstractArrow createArrow(Level $$0, ItemStack $$1, LivingEntity $$2, @javax.annotation.Nullable ItemStack weapon) {
+        return new StandArrowEntity($$0, $$2, $$1, weapon);
     }
 }

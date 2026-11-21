@@ -117,7 +117,7 @@ public class FallenSkeleton extends FallenMob implements RangedAttackMob  {
     }
 
     protected AbstractArrow getArrow(ItemStack $$0, float $$1) {
-        return ProjectileUtil.getMobArrow(this, $$0, $$1);
+        return ProjectileUtil.getMobArrow(this, $$0, $$1, this.getItemInHand(ProjectileUtil.getWeaponHoldingHand(this, Items.BOW)));
     }
 
     @Override

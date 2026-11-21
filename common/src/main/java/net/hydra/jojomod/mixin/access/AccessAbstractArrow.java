@@ -37,6 +37,10 @@ public abstract class AccessAbstractArrow extends Entity implements IAbstractArr
     @org.spongepowered.asm.mixin.gen.Invoker("setPierceLevel")
     public abstract void roundabout$setPierceLevel(byte level);
 
+    @Override
+    @org.spongepowered.asm.mixin.gen.Accessor("firedFromWeapon")
+    public abstract void roundabout$setFiredFromWeapon(@Nullable ItemStack weapon);
+
 
     /**Allows access to abstract arrow functions and adds logic for dealing with arrows*/
 

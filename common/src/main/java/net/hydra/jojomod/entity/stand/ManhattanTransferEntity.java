@@ -149,6 +149,7 @@ public class ManhattanTransferEntity extends StandEntity {
     @Override
     public void addAdditionalSaveData(CompoundTag $$0) {
         $$0.putBoolean("roundabout.AcquireHeldItem", this.canAcquireHeldItem);
+        $$0.put("roundabout.ManhattanArrowWeapon", this.capturedArrowWeapon.saveOptional(this.registryAccess()));
         $$0.put("roundabout.ManhattanHeldItem", this.getHeldItemManhattan().saveOptional(this.registryAccess()));
         $$0.put("roundabout.ManhattanHeldItemFull", this.getHeldItemManhattanFull().saveOptional(this.registryAccess()));
         super.addAdditionalSaveData($$0);
@@ -164,6 +165,8 @@ public class ManhattanTransferEntity extends StandEntity {
                 ? "roundabout.ManhattanHeldItemFull" : "roundabout.HeldItem");
         this.setHeldItemManhattan(ItemStack.parseOptional(this.registryAccess(), held));
         this.setHeldItemManhattanFull(ItemStack.parseOptional(this.registryAccess(), full));
+        this.capturedArrowWeapon = ItemStack.parseOptional(this.registryAccess(),
+                $$0.getCompound("roundabout.ManhattanArrowWeapon"));
         super.readAdditionalSaveData($$0);
     }
 
@@ -175,6 +178,7 @@ public class ManhattanTransferEntity extends StandEntity {
     }
 
     public final void setHeldItemManhattan(ItemStack stack) {
+        this.capturedArrowWeapon = ItemStack.EMPTY;
         this.entityData.set(HELD_ITEM_MANHATTAN, stack);
     }
 
@@ -219,8 +223,8 @@ public class ManhattanTransferEntity extends StandEntity {
     public int setHatAnimDir = 1;
     public float heighHattanPilotNoMov = 0;
     private boolean isKeyEverPressed = false;
-    int knockbackArrow = 0;
-    void setKnockbackArrow(int necessary){knockbackArrow = necessary;}
+    // Keep the launcher's components; Punch and other effects are evaluated on impact in 1.21.
+    private ItemStack capturedArrowWeapon = ItemStack.EMPTY;
     int piercingArrow = 0;
     boolean isArrowTooSlow = false;
     public StandUser getUserData(LivingEntity User) {
@@ -271,7 +275,8 @@ public class ManhattanTransferEntity extends StandEntity {
                                         }
                                         this.fireTicksPrj = AA.getRemainingFireTicks();
                                         this.setHeldItemManhattan(ii.copyAndClear());
-                                        setKnockbackArrow(AA.getKnockback());
+                                        ItemStack weapon = AA.getWeaponItem();
+                                        capturedArrowWeapon = weapon == null ? ItemStack.EMPTY : weapon.copy();
                                         piercingArrow = AA.getPierceLevel();
                                        // System.out.println(AA.getDeltaMovement().length());
                                         if(AA.getDeltaMovement().length() > 1.5){
@@ -436,11 +441,13 @@ public class ManhattanTransferEntity extends StandEntity {
             }
             if (item.getItem() instanceof ArrowItem) {
                 ArrowItem $$10 = (ArrowItem) item.getItem();
-                AbstractArrow $$11 = $$10.createArrow(thrower.getUser().level(), item, thrower.getUser());
+                AbstractArrow $$11 = $$10.createArrow(thrower.getUser().level(), item, thrower.getUser(), null);
                 $$11.setPos(pos.x, pos.y - 0.15, pos.z);
                 $$11.shootFromRotation(thrower, xRot, yRot, 0.0F, 3F, getShotAccuracy);
-                $$11.setKnockback(thrower.knockbackArrow);
-                $$11.setPierceLevel((byte)thrower.piercingArrow);
+                // Restore the weapon without running projectile-spawn effects a second time.
+                ((IAbstractArrowAccess) $$11).roundabout$setFiredFromWeapon(
+                        thrower.capturedArrowWeapon.isEmpty() ? null : thrower.capturedArrowWeapon.copy());
+                ((IAbstractArrowAccess) $$11).roundabout$setPierceLevel((byte) thrower.piercingArrow);
                 $$11.setCritArrow(false);
                 if(thrower.canAcquireHeldItem){
                     $$11.pickup =AbstractArrow.Pickup.ALLOWED;
