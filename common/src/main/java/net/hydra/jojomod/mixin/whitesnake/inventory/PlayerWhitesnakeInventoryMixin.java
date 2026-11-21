@@ -107,14 +107,14 @@ public abstract class PlayerWhitesnakeInventoryMixin implements WhitesnakeInvent
     @Unique
     private CompoundTag roundaboutWhitesnake$serialize() {
         CompoundTag tag = new CompoundTag();
-        ContainerHelper.saveAllItems(tag, roundaboutWhitesnake$inventory);
+        ContainerHelper.saveAllItems(tag, roundaboutWhitesnake$inventory, ((Player) (Object) this).registryAccess());
         return tag;
     }
 
     @Unique
     private void roundaboutWhitesnake$read(CompoundTag tag) {
         NonNullList<ItemStack> loaded = NonNullList.withSize(WhitesnakeControlInventory.SIZE, ItemStack.EMPTY);
-        ContainerHelper.loadAllItems(tag, loaded);
+        ContainerHelper.loadAllItems(tag, loaded, ((Player) (Object) this).registryAccess());
         loaded.set(0, ItemStack.EMPTY);
         roundaboutWhitesnake$inventory = loaded;
         roundaboutWhitesnake$lastSync = tag.copy();

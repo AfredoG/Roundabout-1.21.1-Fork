@@ -5,7 +5,7 @@ Imported on 2026-11-13 into AfredoG/Roundabout-1.21.1-Fork, branch `port/neoforg
 ## Status
 
 This is an INCOMPLETE development port: Minecraft 1.21.1, NeoForge 21.1.265, Java 21, Gradle 8.14.3.
-Last executed full compilation after subsequent port fixes: 152 Java errors and 18 warnings. The authentic full log is saved in build-errors.txt. No playable JAR; client and dedicated server have not been validated.
+Last executed full compilation after subsequent port fixes: 112 Java errors and 18 warnings. The authentic full log is saved in build-errors.txt. No playable JAR; client and dedicated server have not been validated.
 See BUILD_STATUS.md and build-errors.txt for diagnostics and remaining work.
 This import changes no mod source code and does not constitute a new build test.
 
@@ -45,7 +45,7 @@ git remote add upstream https://github.com/Hydraheads/RoundaboutMod.git
 Read port/BUILD_STATUS.md, port/build-errors.txt, and the existing port documentation before editing.
 Follow existing port/update_upstream.py workflow for upstream updates; retain upstream history.
 Use Java 21 and the standalone neoforge Gradle project. Restore dependencies when needed.
-Next work: MobType replacement (including dynamic undead status), enchantment damage/projectile effects, riding/attachment geometry, remaining inventory persistence and NeoForge events. Block codecs/interactions, camera/HUD, weapon attributes, item custom data, durability and spawn/death callbacks have already received port batches; consult the final BUILD_STATUS.md checkpoints before revisiting them.
+Next work: entity riding/attachment geometry, painting bounding boxes and spawn packets, navigation/AI changes, remaining explosion/rendering APIs and NeoForge events. Registry-aware persistence, inventory slots, protection data, item custom data and combat holders have received port batches; consult the final BUILD_STATUS.md checkpoints before revisiting them.
 Do not exclude failing classes or disable required mixins to manufacture a successful build.
 
 Save small coherent checkpoints frequently to this remote port branch, including current diagnostics and next steps.

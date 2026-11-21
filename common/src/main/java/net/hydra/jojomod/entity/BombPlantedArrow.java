@@ -36,9 +36,8 @@ public class BombPlantedArrow extends Arrow {
 
     private Collection<MobEffectInstance> effects = null;
 
-    @Override
     public void setEffectsFromItem(ItemStack $$0) {
-        super.setEffectsFromItem($$0);
+        this.setPickupItemStack($$0.copyWithCount(1));
         if ($$0.is(Items.TIPPED_ARROW)) {
             effects = PotionData.getCustomEffects($$0);
         }

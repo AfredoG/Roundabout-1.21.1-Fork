@@ -8,7 +8,7 @@
 - Gradle help: успешно.
 - Подготовка исходников и классов Minecraft/NeoForge: успешно.
 - processResources: успешно; проверены метаданные, access transformer, mixin-конфигурации и 141 рецепт.
-- compileJava: НЕУСПЕШНО, 152 ошибок, 18 предупреждений (актуальный полный журнал сохранён в build-errors.txt).
+- compileJava: НЕУСПЕШНО, 112 ошибок, 18 предупреждений (актуальный полный журнал сохранён в build-errors.txt).
 - JDK 21 и Gradle восстановлены; подготовка Minecraft/NeoForge и processResources прошли в новой среде.
 - JAR для установки: отсутствует.
 - Запуск клиента и выделенного сервера полного мода: не выполнен (компиляция не проходит).
@@ -18,25 +18,25 @@
 Список ошибок — build-errors.txt. Ошибки могут быть каскадными; их число не является оценкой процента готовности.
 Текущая проверка выполнена на Azul JDK 21.0.6 и Gradle 8.14.3; зависимости восстановлены заново.
 
-## Категории актуального полного журнала (152 ошибок)
+## Категории актуального полного журнала (112 ошибок)
 
 | Ошибка | Количество |
 |---|---:|
-| cannot find symbol | 67 |
-| method does not override or implement a method from a supertype | 23 |
-| incompatible types: Reference<SoundEvent> cannot be converted to SoundEvent | 5 |
-| non-static method getEquipmentSlotForItem(ItemStack) cannot be referenced from a static context | 2 |
-| incompatible types: RecipeHolder<CraftingRecipe> cannot be converted to CraftingRecipe | 2 |
+| cannot find symbol | 56 |
+| method does not override or implement a method from a supertype | 21 |
 | incompatible types: int cannot be converted to ServerEntity | 2 |
-| incompatible types: CompoundTag cannot be converted to Provider | 2 |
 | no suitable constructor found for Explosion(ClientLevel,<null>,double,double,double,float,List<BlockPos>) | 2 |
-| incompatible types: Holder<SoundEvent> cannot be converted to SoundEvent | 2 |
 | method getExperienceReward in class LivingEntity cannot be applied to given types; | 2 |
-| no suitable method found for playSound(<null>,ThrownTrident,Holder<SoundEvent>,SoundSource,float,float) | 1 |
-| no suitable method found for fromJson(String) | 1 |
 | method isPathfindable in class BlockStateBase cannot be applied to given types; | 1 |
 | getTeam() in FallenMob cannot override getTeam() in Entity | 1 |
-| method writeInventoryToTag in interface InventoryCarrier cannot be applied to given types; | 1 |
+| Snake is not abstract and does not override abstract method isFood(ItemStack) in Animal | 1 |
+| getVisualShape(BlockState,BlockGetter,BlockPos,CollisionContext) has protected access in BlockBehaviour | 1 |
+| AnubisGuardian is not abstract and does not override abstract method applyRaidBuffs(ServerLevel,int,boolean) in Raider | 1 |
+| FalconEntity is not abstract and does not override abstract method isFood(ItemStack) in Animal | 1 |
+| constructor FollowOwnerGoal in class FollowOwnerGoal cannot be applied to given types; | 1 |
+| method pull in class LeverBlock cannot be applied to given types; | 1 |
+| method press in class ButtonBlock cannot be applied to given types; | 1 |
+| jumpFromGround() in KingCrimsonCloneEntity cannot override jumpFromGround() in LivingEntity | 1 |
 
 
 ## Что требуется закончить
@@ -545,3 +545,14 @@
 - Manhattan Transfer сохраняет копию оружия перехваченной стрелы и записывает её в NBT. При выстреле копия восстанавливается без повторного запуска projectile-spawn эффектов. При замене/очистке заряда ссылка очищается. Доступ к приватным firedFromWeapon/setPierceLevel оформлен через accessor/invoker.
 - Зачарования оружия AnubisGuardian получаются из registry; имена Power/Punch обновлены.
 - Проверены пути создания/подбора стрел и сигнатуры accessor по исходникам 1.21.1. Полный игровой запуск ещё невозможен из-за оставшихся ошибок; стрельба и перехват требуют проверки в игре после завершения компиляции.
+
+
+## Контрольная точка: сохранение данных и реестры (2026-11-21)
+
+- Полная compileJava: **152 → 112 ошибок**, 18 предупреждений. Сравнение ошибок по файлам, сообщениям и символам: 40 удалённых, новых диагностик нет. git diff --check проходит.
+- MainUtil сохраняет оба диска через saveOptional/parseOptional с registryAccess; пустой предмет не вызывает исключение save. Whitesnake сериализует разреженный инвентарь с реестрами. У JojoNPC добавлено отсутствовавшее чтение сохранённого инвентаря. Данные блоков и JSON-имена также получают реестры.
+- ProtectionSavedData использует SavedData.Factory и новые сигнатуры. Исправлено удаление из основного списка: удалённая зона защиты больше не записывается обратно при сохранении и не возвращается при загрузке.
+- Звуки, эффекты и атрибуты обращаются к Holder API; рецепты Diver Down извлекаются из RecipeHolder. Survivor передаёт настоящую цель и DamageSource в CombatRules, дыхание использует OXYGEN_BONUS с той же вероятностью расхода, что в 1.21.1. Исключения для Distortion Virus остаются типизированными Holder эффектов.
+- Слот брони Black Sabbath выбирает для фактического игрока; износ огнестрельного оружия получает используемую руку. BombPlantedArrow устанавливает копию исходной стрелы через setPickupItemStack с обновлением цвета и компонентов зелий.
+- PersistenceCheck: **22 проверки прошли** на реальных классах NeoForge 21.1.265. Проверены компоненты и износ предмета, пустой стек, все позиции разреженного инвентаря, граница/перекрытие зон защиты, сохранение и удаление с последующей загрузкой. Для запуска нужны Java 21, compileClasspath и resource JAR Minecraft из stripClient; harness создаёт пустой LoadingModList и выполняет Bootstrap. Полный мод при этом не загружается; интеграция дисков, NPC и Whitesnake в игре ещё не проверена.
+- Клиент/сервер не запускались; играбельного JAR нет. Дальше — геометрия посадки и точек привязки, картины и spawn-пакеты, навигация, взрывы, рендеринг и NeoForge-события.

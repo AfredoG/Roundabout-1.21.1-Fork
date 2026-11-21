@@ -2753,7 +2753,7 @@ public class PowersKillerQueen extends NewPunchingStand {
                 if (strayCatData.contains(StrayCatItem.CUSTOM_NAME, 8)) {
                     String string = strayCatData.getString(StrayCatItem.CUSTOM_NAME);
                     try {
-                        stray.setCustomName(Component.Serializer.fromJson(string));
+                        stray.setCustomName(Component.Serializer.fromJson(string, this.self.registryAccess()));
                     } catch (Exception exception) {
                     }
                 }
@@ -4651,7 +4651,7 @@ public class PowersKillerQueen extends NewPunchingStand {
                 return ModSounds.KQ_MINESWEEPER_EXPLOSION_EVENT;
             }
             case CREEPER_EXPLOSION -> {
-                return SoundEvents.GENERIC_EXPLODE;
+                return SoundEvents.GENERIC_EXPLODE.value();
             }
             case BASE_EXPLOSION -> {
                 return ModSounds.KILLER_QUEEN_EXPLOSION_EVENT;
@@ -4666,7 +4666,7 @@ public class PowersKillerQueen extends NewPunchingStand {
         if (skn == KillerQueenEntity.MINESWEEPER) {
             return ModSounds.KQ_MINESWEEPER_EXPLOSION_EVENT;
         }else if (skn == KillerQueenEntity.CREEPER) {
-            return SoundEvents.GENERIC_EXPLODE;
+            return SoundEvents.GENERIC_EXPLODE.value();
         }
 
         return ModSounds.KILLER_QUEEN_EXPLOSION_EVENT;

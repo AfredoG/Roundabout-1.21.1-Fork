@@ -27,7 +27,7 @@ public class StoneMaskBlockItem extends BlockItem {
     }
 
     public SoundEvent getEquipSound() {
-        return SoundEvents.ARMOR_EQUIP_GENERIC;
+        return SoundEvents.ARMOR_EQUIP_GENERIC.value();
     }
 
     public InteractionResultHolder<ItemStack> swapWithEquipmentSlot(Item $$0, Level $$1, Player $$2, InteractionHand $$3) {

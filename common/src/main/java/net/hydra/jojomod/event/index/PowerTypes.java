@@ -382,7 +382,7 @@ public enum PowerTypes {
                     if (delayTime > 20 && !PowerTypes.originatedFromOurWorld(alt) && (alt.distanceTo(entity) < 1.5 ||
                             delayTime >= 300)){
                         MainUtil.playSoundIfPossible(entity,entity.level(),null, entity.blockPosition(),
-                                SoundEvents.GENERIC_EXPLODE, SoundSource.PLAYERS, 1.0F, 1F);
+                                SoundEvents.GENERIC_EXPLODE.value(), SoundSource.PLAYERS, 1.0F, 1F);
                         //Hear some of it across dimensions to know a collision happened
                         MainUtil.playSoundToAll(entity.level(),null, entity.blockPosition(),
                                 ModSounds.D4C_EXPLOSION_EVENT, SoundSource.PLAYERS, 3.0F, 1F);

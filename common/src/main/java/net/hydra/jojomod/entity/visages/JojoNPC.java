@@ -467,12 +467,13 @@ public class JojoNPC extends AgeableMob implements InventoryCarrier, Npc, Reputa
         p_35481_.put("Gossips", this.gossips.store(NbtOps.INSTANCE));
         p_35481_.putInt("Xp", this.villagerXp);
         p_35481_.putLong("LastGossipDecay", this.lastGossipDecayTime);
-        this.writeInventoryToTag(p_35481_);
+        this.writeInventoryToTag(p_35481_, this.registryAccess());
         p_35481_.putInt("skinNumber", getSkinNumber());
     }
 
     public void readAdditionalSaveData(CompoundTag p_35451_) {
         super.readAdditionalSaveData(p_35451_);
+        this.readInventoryFromTag(p_35451_, this.registryAccess());
 
         if (p_35451_.contains("FoodLevel", 1)) {
             this.foodLevel = p_35451_.getByte("FoodLevel");

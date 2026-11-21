@@ -1,6 +1,7 @@
 package net.hydra.jojomod.block;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.Tag;
@@ -13,13 +14,15 @@ import java.util.*;
 
 public class ProtectionSavedData extends SavedData {
 
+    private static final Factory<ProtectionSavedData> FACTORY =
+            new Factory<>(ProtectionSavedData::new, ProtectionSavedData::load);
+
     private final Map<ChunkPos, List<ProtectionEntry>> byChunk = new HashMap<>();
     private final List<ProtectionEntry> allEntries = new ArrayList<>();
 
     public static ProtectionSavedData get(ServerLevel level) {
         return level.getDataStorage().computeIfAbsent(
-                ProtectionSavedData::load,
-                ProtectionSavedData::new,
+                FACTORY,
                 "protection_data"
         );
     }
@@ -65,6 +68,7 @@ public class ProtectionSavedData extends SavedData {
     }
 
     public void remove(BlockPos pos) {
+        allEntries.removeIf(e -> e.pos.equals(pos));
         for (List<ProtectionEntry> list : byChunk.values()) {
             list.removeIf(e -> e.pos.equals(pos));
         }
@@ -72,7 +76,7 @@ public class ProtectionSavedData extends SavedData {
         setDirty();
     }
     @Override
-    public CompoundTag save(CompoundTag tag) {
+    public CompoundTag save(CompoundTag tag, HolderLookup.Provider registries) {
         ListTag list = new ListTag();
 
         for (ProtectionEntry entry : allEntries) {
@@ -84,7 +88,7 @@ public class ProtectionSavedData extends SavedData {
         tag.put("entries", list);
         return tag;
     }
-    public static ProtectionSavedData load(CompoundTag tag) {
+    public static ProtectionSavedData load(CompoundTag tag, HolderLookup.Provider registries) {
         ProtectionSavedData data = new ProtectionSavedData();
 
         ListTag list = tag.getList("entries", Tag.TAG_COMPOUND);

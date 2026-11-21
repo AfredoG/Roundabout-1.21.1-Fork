@@ -154,7 +154,7 @@ public abstract class FirearmItem extends Item {
         ItemStack itemStack = player.getItemInHand(hand);
         if (getAmmo(itemStack) > 0) {
             player.getCooldowns().addCooldown(this, getFireCooldown());
-            itemStack.hurtAndBreak(1, player, p -> {});
+            itemStack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(hand));
             if (!player.isCreative()) setAmmo(itemStack, getAmmo(itemStack) - 1);
 
             LivingEntity shotSource = player;

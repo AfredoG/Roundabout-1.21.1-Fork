@@ -872,7 +872,7 @@ public class ModBlocks {
                     .noLootTable()
                     .sound(SoundType.SWEET_BERRY_BUSH)
                     .pushReaction(PushReaction.DESTROY));
-    public static GEVineBlock GE_VINE_PROPERTIES = new GEVineBlock(BlockBehaviour.Properties.copy(Blocks.VINE));
+    public static GEVineBlock GE_VINE_PROPERTIES = new GEVineBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.VINE));
     public static StandFireBlock STAND_FIRE_PROPERTIES = new StandFireBlock(
             BlockBehaviour.Properties.of().mapColor(MapColor.FIRE).replaceable().noCollission().instabreak().lightLevel((p_152607_) -> {
                 return 15;

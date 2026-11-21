@@ -112,7 +112,7 @@ public class SacrificialDaggerItem extends TieredItem {
 
         return !$$2.is(BlockTags.LEAVES)
                 && !$$2.is(Blocks.COBWEB)
-                && !$$2.is(Blocks.GRASS)
+                && !$$2.is(Blocks.SHORT_GRASS)
                 && !$$2.is(Blocks.FERN)
                 && !$$2.is(Blocks.DEAD_BUSH)
                 && !$$2.is(Blocks.HANGING_ROOTS)

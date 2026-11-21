@@ -163,7 +163,7 @@ public class NewLocacacaItem extends Item {
 
                             while (collection.hasNext()) {
                                 MobEffectInstance effectInstance = collection.next();
-                                if (!effectInstance.getEffect().isBeneficial()){
+                                if (!effectInstance.getEffect().value().isBeneficial()){
                                     ent.addEffect(effectInstance);
                                     effects.add(effectInstance.getEffect());
                                 }

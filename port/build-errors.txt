@@ -12,58 +12,17 @@ import net.neoforged.neoforge.event.entity.player.SleepingTimeCheckEvent;
                                                  ^
   symbol:   class SleepingTimeCheckEvent
   location: package net.neoforged.neoforge.event.entity.player
-common/src/main/java/net/hydra/jojomod/entity/stand/BlackSabbathEntity.java:1783: error: no suitable method found for playSound(<null>,ThrownTrident,Holder<SoundEvent>,SoundSource,float,float)
-                            bs.level().playSound(null, $$7, SoundEvents.TRIDENT_THROW, SoundSource.PLAYERS, 1.0F, 1.0F);
-                                      ^
-    method Level.playSound(Entity,BlockPos,SoundEvent,SoundSource,float,float) is not applicable
-      (argument mismatch; ThrownTrident cannot be converted to BlockPos)
-    method Level.playSound(Player,BlockPos,SoundEvent,SoundSource,float,float) is not applicable
-      (argument mismatch; ThrownTrident cannot be converted to BlockPos)
-    method Level.playSound(Player,double,double,double,SoundEvent,SoundSource) is not applicable
-      (argument mismatch; ThrownTrident cannot be converted to double)
-    method Level.playSound(Player,Entity,SoundEvent,SoundSource,float,float) is not applicable
-      (argument mismatch; Holder<SoundEvent> cannot be converted to SoundEvent)
-common/src/main/java/net/hydra/jojomod/entity/stand/BlackSabbathEntity.java:2015: error: non-static method getEquipmentSlotForItem(ItemStack) cannot be referenced from a static context
-                            EquipmentSlot equipmentslot = Mob.getEquipmentSlotForItem(i);
-                                                             ^
-common/src/main/java/net/hydra/jojomod/entity/stand/BlackSabbathEntity.java:2066: error: non-static method getEquipmentSlotForItem(ItemStack) cannot be referenced from a static context
-                                        EquipmentSlot equipmentslot = Mob.getEquipmentSlotForItem(i);
-                                                                         ^
 common/src/main/java/net/hydra/jojomod/entity/projectile/RoadRollerEntity.java:882: error: method does not override or implement a method from a supertype
     @Override
     ^
 common/src/main/java/net/hydra/jojomod/entity/projectile/SoftAndWetPlunderBubbleEntity.java:633: error: method does not override or implement a method from a supertype
     @Override
     ^
-common/src/main/java/net/hydra/jojomod/stand/powers/PowersKillerQueen.java:2756: error: no suitable method found for fromJson(String)
-                        stray.setCustomName(Component.Serializer.fromJson(string));
-                                                                ^
-    method Serializer.fromJson(String,Provider) is not applicable
-      (actual and formal argument lists differ in length)
-    method Serializer.fromJson(JsonElement,Provider) is not applicable
-      (actual and formal argument lists differ in length)
-common/src/main/java/net/hydra/jojomod/stand/powers/PowersKillerQueen.java:4654: error: incompatible types: Reference<SoundEvent> cannot be converted to SoundEvent
-                return SoundEvents.GENERIC_EXPLODE;
-                                  ^
-common/src/main/java/net/hydra/jojomod/stand/powers/PowersKillerQueen.java:4669: error: incompatible types: Reference<SoundEvent> cannot be converted to SoundEvent
-            return SoundEvents.GENERIC_EXPLODE;
-                              ^
 common/src/main/java/net/hydra/jojomod/stand/powers/PowersKillerQueen.java:4919: error: cannot find symbol
                     float height = (LE.getNameTagOffsetY() + 0.275F);
                                       ^
   symbol:   method getNameTagOffsetY()
   location: variable LE of type LivingEntity
-common/src/main/java/net/hydra/jojomod/stand/powers/PowersDiverDown.java:641: error: cannot find symbol
-            if (instance.getEffect().getCategory() == MobEffectCategory.HARMFUL) {
-                                    ^
-  symbol:   method getCategory()
-  location: interface Holder<MobEffect>
-common/src/main/java/net/hydra/jojomod/stand/powers/PowersDiverDown.java:4774: error: incompatible types: RecipeHolder<CraftingRecipe> cannot be converted to CraftingRecipe
-            for (CraftingRecipe recipe : recipeManager.getAllRecipesFor(RecipeType.CRAFTING)) {
-                                                                       ^
-common/src/main/java/net/hydra/jojomod/stand/powers/PowersDiverDown.java:4829: error: incompatible types: RecipeHolder<CraftingRecipe> cannot be converted to CraftingRecipe
-        for (CraftingRecipe recipe : recipeManager.getAllRecipesFor(RecipeType.CRAFTING)) {
-                                                                   ^
 common/src/main/java/net/hydra/jojomod/entity/substand/SheerHeartAttackEntity.java:947: error: method isPathfindable in class BlockStateBase cannot be applied to given types;
 				if (BS.isPathfindable(this.level(), this.blockTarget, PathComputationType.LAND)) {
 				      ^
@@ -111,15 +70,6 @@ common/src/main/java/net/hydra/jojomod/entity/corpses/FallenSpider.java:153: err
 common/src/main/java/net/hydra/jojomod/entity/corpses/FallenPhantom.java:281: error: method does not override or implement a method from a supertype
     @Override
     ^
-common/src/main/java/net/hydra/jojomod/entity/visages/JojoNPC.java:470: error: method writeInventoryToTag in interface InventoryCarrier cannot be applied to given types;
-        this.writeInventoryToTag(p_35481_);
-            ^
-  required: CompoundTag,Provider
-  found:    CompoundTag
-  reason: actual and formal argument lists differ in length
-common/src/main/java/net/hydra/jojomod/entity/BlockD4CEntity.java:227: error: incompatible types: Reference<SoundEvent> cannot be converted to SoundEvent
-                                SoundEvents.GENERIC_EXPLODE,
-                                           ^
 common/src/main/java/net/hydra/jojomod/entity/BlockD4CEntity.java:503: error: incompatible types: int cannot be converted to ServerEntity
         return new ClientboundAddEntityPacket(this, Block.getId(this.getBlockState()));
                                                                ^
@@ -188,38 +138,6 @@ common/src/main/java/net/hydra/jojomod/entity/paintings/RoundaboutPainting.java:
 common/src/main/java/net/hydra/jojomod/entity/paintings/RoundaboutPainting.java:91: error: method does not override or implement a method from a supertype
     @Override
     ^
-common/src/main/java/net/hydra/jojomod/util/MainUtil.java:998: error: cannot find symbol
-                CompoundTag compoundtag = BlockItem.getBlockEntityData(itemstack);
-                                                   ^
-  symbol:   method getBlockEntityData(ItemStack)
-  location: class BlockItem
-common/src/main/java/net/hydra/jojomod/util/MainUtil.java:1005: error: method saveToItem in class BlockEntity cannot be applied to given types;
-                            blockentity.saveToItem(itemstack);
-                                       ^
-  required: ItemStack,Provider
-  found:    ItemStack
-  reason: actual and formal argument lists differ in length
-common/src/main/java/net/hydra/jojomod/util/MainUtil.java:1079: error: cannot find symbol
-                    ent.setItemSlot(EquipmentSlot.HEAD, ItemStack.EMPTY);
-                       ^
-  symbol:   method setItemSlot(EquipmentSlot,ItemStack)
-  location: variable ent of type Entity
-common/src/main/java/net/hydra/jojomod/util/MainUtil.java:1755: error: cannot find symbol
-            ItemStack itemstack = ItemStack.of(compoundtag);
-                                           ^
-  symbol:   method of(CompoundTag)
-  location: class ItemStack
-common/src/main/java/net/hydra/jojomod/util/MainUtil.java:1763: error: cannot find symbol
-            ItemStack itemstack = ItemStack.of(compoundtag);
-                                           ^
-  symbol:   method of(CompoundTag)
-  location: class ItemStack
-common/src/main/java/net/hydra/jojomod/util/MainUtil.java:1799: error: incompatible types: CompoundTag cannot be converted to Provider
-                    MainUtil.saveToDiscData(liv, discy).save(compoundtag));
-                                                             ^
-common/src/main/java/net/hydra/jojomod/util/MainUtil.java:1807: error: incompatible types: CompoundTag cannot be converted to Provider
-            tag.put("roundabout.StandRejectionDisc", mob.roundabout$getRejectionStandDisc().save(compoundtag));
-                                                                                                 ^
 common/src/main/java/net/hydra/jojomod/entity/substand/SeperatedArmEntity.java:550: error: method pull in class LeverBlock cannot be applied to given types;
                         ((LeverBlock) level().getBlockState(IsArmContactingBlock()).getBlock()).pull(level().getBlockState(IsArmContactingBlock()), this.level(), IsArmContactingBlock());
                                                                                                ^
@@ -272,9 +190,6 @@ common/src/main/java/net/hydra/jojomod/entity/D4CCloneEntity.java:645: error: ju
     protected void jumpFromGround() {
                    ^
   attempting to assign weaker access privileges; was public
-common/src/main/java/net/hydra/jojomod/event/index/PowerTypes.java:385: error: incompatible types: Reference<SoundEvent> cannot be converted to SoundEvent
-                                SoundEvents.GENERIC_EXPLODE, SoundSource.PLAYERS, 1.0F, 1F);
-                                           ^
 common/src/main/java/net/hydra/jojomod/entity/projectile/JJFProjectileEntity.java:114: error: method does not override or implement a method from a supertype
     @Override
     ^
@@ -317,13 +232,6 @@ common/src/main/java/net/hydra/jojomod/entity/FakeExperienceOrb.java:123: error:
 common/src/main/java/net/hydra/jojomod/entity/FakeExperienceOrb.java:239: error: incompatible types: ResourceKey<Enchantment> cannot be converted to DataComponentType<?>
         Map.Entry<EquipmentSlot, ItemStack> $$2 = EnchantmentHelper.getRandomItemWith(Enchantments.MENDING, $$0, ItemStack::isDamaged);
                                                                                                   ^
-common/src/main/java/net/hydra/jojomod/entity/BombPlantedArrow.java:39: error: method does not override or implement a method from a supertype
-    @Override
-    ^
-common/src/main/java/net/hydra/jojomod/entity/BombPlantedArrow.java:41: error: cannot find symbol
-        super.setEffectsFromItem($$0);
-             ^
-  symbol: method setEffectsFromItem(ItemStack)
 common/src/main/java/net/hydra/jojomod/entity/paintings/VanGoughPainting.java:30: error: VanGoughPainting is not abstract and does not override abstract method calculateBoundingBox(BlockPos,Direction) in HangingEntity
 public class VanGoughPainting extends RoundaboutPainting {
        ^
@@ -490,19 +398,6 @@ common/src/main/java/net/hydra/jojomod/mixin/gravity/GravityPillagerMixin.java:5
         Vector3f vec3f = this.getProjectileShotVector(this, new Vec3(d, g, e), multishotSpray);
                              ^
   symbol: method getProjectileShotVector(GravityPillagerMixin,Vec3,float)
-common/src/main/java/net/hydra/jojomod/mixin/whitesnake/inventory/PlayerWhitesnakeInventoryMixin.java:110: error: no suitable method found for saveAllItems(CompoundTag,NonNullList<ItemStack>)
-        ContainerHelper.saveAllItems(tag, roundaboutWhitesnake$inventory);
-                       ^
-    method ContainerHelper.saveAllItems(CompoundTag,NonNullList<ItemStack>,Provider) is not applicable
-      (actual and formal argument lists differ in length)
-    method ContainerHelper.saveAllItems(CompoundTag,NonNullList<ItemStack>,boolean,Provider) is not applicable
-      (actual and formal argument lists differ in length)
-common/src/main/java/net/hydra/jojomod/mixin/whitesnake/inventory/PlayerWhitesnakeInventoryMixin.java:117: error: method loadAllItems in class ContainerHelper cannot be applied to given types;
-        ContainerHelper.loadAllItems(tag, loaded);
-                       ^
-  required: CompoundTag,NonNullList<ItemStack>,Provider
-  found:    CompoundTag,NonNullList<ItemStack>
-  reason: actual and formal argument lists differ in length
 common/src/main/java/net/hydra/jojomod/mixin/whitesnake/control/WhitesnakeSoundListenerMixin.java:38: error: cannot find symbol
                 executor.execute(() -> listener.setListenerPosition(position));
                                                ^
@@ -528,34 +423,6 @@ common/src/main/java/net/hydra/jojomod/mixin/stand_users/LoweringItemInHandRende
                                                          ^
   symbol:   class Vanishable
   location: class LoweringItemInHandRenderer
-common/src/main/java/net/hydra/jojomod/mixin/StandUserEntity.java:5487: error: incompatible types: Holder<Attribute> cannot be converted to Attribute
-                                    (float) this.getAttributeValue(Attributes.ARMOR_TOUGHNESS)));
-                                                                             ^
-common/src/main/java/net/hydra/jojomod/mixin/StandUserEntity.java:5486: error: method getDamageAfterAbsorb in class CombatRules cannot be applied to given types;
-                            damageAmount += (CombatRules.getDamageAfterAbsorb(power, (float) this.getArmorValue(),
-                                                        ^
-  required: LivingEntity,float,DamageSource,float,float
-  found:    float,float,float
-  reason: actual and formal argument lists differ in length
-common/src/main/java/net/hydra/jojomod/mixin/StandUserEntity.java:6176: error: incompatible types: MobEffect cannot be converted to Holder<MobEffect>
-            for (net.minecraft.core.Holder<MobEffect> ex : exclude) {
-                                                           ^
-common/src/main/java/net/hydra/jojomod/mixin/StandUserEntity.java:6375: error: method rdbt$reduceOtherEffectDurations in class StandUserEntity cannot be applied to given types;
-                    rdbt$reduceOtherEffectDurations(40, ModEffects.DISTORTION_VIRUS, ModEffects.VIRUS_IMMUNITY);
-                    ^
-  required: int,MobEffect[]
-  found:    int,Holder<MobEffect>,Holder<MobEffect>
-  reason: varargs mismatch; Holder<MobEffect> cannot be converted to MobEffect
-common/src/main/java/net/hydra/jojomod/mixin/StandUserEntity.java:6436: error: cannot find symbol
-                    int $$1 = EnchantmentHelper.getRespiration(((LivingEntity) (Object) this));
-                                               ^
-  symbol:   method getRespiration(LivingEntity)
-  location: class EnchantmentHelper
-common/src/main/java/net/hydra/jojomod/mixin/StandUserEntity.java:6457: error: cannot find symbol
-                int $$1 = EnchantmentHelper.getRespiration(((LivingEntity) (Object) this));
-                                           ^
-  symbol:   method getRespiration(LivingEntity)
-  location: class EnchantmentHelper
 common/src/main/java/net/hydra/jojomod/mixin/achtung/AchtungItemRenderer.java:232: error: no suitable method found for addVertex(float,float,float,float,float,float,float,float,float,int,int,float,float,float)
                 vc.addVertex($$36.x(), $$36.y(), $$36.z(), $$27, $$28, $$29, ClientUtil.getThrowFadeToTheEther(), $$34, $$35, $$7, $$33, $$14.x(), $$14.y(), $$14.z());
                   ^
@@ -592,66 +459,18 @@ common/src/main/java/net/hydra/jojomod/stand/powers/PowersPearlJam.java:195: err
                                  ^
   symbol:   method getNameTagOffsetY()
   location: variable LE of type LivingEntity
-common/src/main/java/net/hydra/jojomod/stand/powers/PowersD4C.java:1690: error: incompatible types: Holder<SoundEvent> cannot be converted to SoundEvent
-            playSoundIfPossible(self.level(),null, pl.blockPosition(), SoundEvents.ARMOR_EQUIP_LEATHER,
-                                                                                  ^
 common/src/main/java/net/hydra/jojomod/stand/powers/PowersCalifornia.java:1127: error: method getExperienceReward in class LivingEntity cannot be applied to given types;
                 if (!((StandUser)LE).rdbt$getExperienceTaken() && LE.getExperienceReward() > 0) {
                                                                     ^
   required: ServerLevel,Entity
   found:    no arguments
   reason: actual and formal argument lists differ in length
-common/src/main/java/net/hydra/jojomod/stand/powers/PowersAchtungBaby.java:382: error: method saveWithFullMetadata in class BlockEntity cannot be applied to given types;
-                                    CompoundTag replacedTag = replacedEntity != null ? replacedEntity.saveWithFullMetadata() : null;
-                                                                                                     ^
-  required: Provider
-  found:    no arguments
-  reason: actual and formal argument lists differ in length
-common/src/main/java/net/hydra/jojomod/stand/powers/PowersStarPlatinum.java:740: error: incompatible types: Reference<SoundEvent> cannot be converted to SoundEvent
-                                                            this.getSelf().getZ(), SoundEvents.GENERIC_EXPLODE, this.getSelf().getSoundSource(), 2.0F, 1.0F);
-                                                                                              ^
-common/src/main/java/net/hydra/jojomod/block/ProtectionSavedData.java:14: error: ProtectionSavedData is not abstract and does not override abstract method save(CompoundTag,Provider) in SavedData
-public class ProtectionSavedData extends SavedData {
-       ^
-common/src/main/java/net/hydra/jojomod/block/ProtectionSavedData.java:20: error: method computeIfAbsent in class DimensionDataStorage cannot be applied to given types;
-        return level.getDataStorage().computeIfAbsent(
-                                     ^
-  required: Factory<T>,String
-  found:    Protection[...]:load,Protection[...]::new,String
-  reason: cannot infer type-variable(s) T
-    (actual and formal argument lists differ in length)
-  where T is a type-variable:
-    T extends SavedData declared in method <T>computeIfAbsent(Factory<T>,String)
-common/src/main/java/net/hydra/jojomod/block/ProtectionSavedData.java:74: error: method does not override or implement a method from a supertype
-    @Override
-    ^
-common/src/main/java/net/hydra/jojomod/block/ModBlocks.java:875: error: cannot find symbol
-    public static GEVineBlock GE_VINE_PROPERTIES = new GEVineBlock(BlockBehaviour.Properties.copy(Blocks.VINE));
-                                                                                            ^
-  symbol:   method copy(Block)
-  location: class Properties
-common/src/main/java/net/hydra/jojomod/item/NewLocacacaItem.java:166: error: cannot find symbol
-                                if (!effectInstance.getEffect().isBeneficial()){
-                                                               ^
-  symbol:   method isBeneficial()
-  location: interface Holder<MobEffect>
-common/src/main/java/net/hydra/jojomod/item/FirearmItem.java:157: error: incompatible types: EquipmentSlot is not a functional interface
-            itemStack.hurtAndBreak(1, player, p -> {});
-                     ^
 common/src/main/java/net/hydra/jojomod/item/MemoryChessPieceItem.java:258: error: method getExperienceReward in class LivingEntity cannot be applied to given types;
                     tag.putInt("experience",livingEntity.getExperienceReward());
                                                         ^
   required: ServerLevel,Entity
   found:    no arguments
   reason: actual and formal argument lists differ in length
-common/src/main/java/net/hydra/jojomod/item/SacrificialDaggerItem.java:115: error: cannot find symbol
-                && !$$2.is(Blocks.GRASS)
-                                 ^
-  symbol:   variable GRASS
-  location: class Blocks
-common/src/main/java/net/hydra/jojomod/item/StoneMaskBlockItem.java:30: error: incompatible types: Holder<SoundEvent> cannot be converted to SoundEvent
-        return SoundEvents.ARMOR_EQUIP_GENERIC;
-                          ^
 forge/src/main/java/net/hydra/jojomod/DataGenerators.java:19: warning: [removal] bus() in EventBusSubscriber has been deprecated and marked for removal
 @EventBusSubscriber(modid = Roundabout.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
                                                ^
@@ -754,5 +573,5 @@ Note: Recompile with -Xlint:deprecation for details.
 Note: Some input files use unchecked or unsafe operations.
 Note: Recompile with -Xlint:unchecked for details.
 Note: Some messages have been simplified; recompile with -Xdiags:verbose to get full output
-152 errors
+112 errors
 18 warnings

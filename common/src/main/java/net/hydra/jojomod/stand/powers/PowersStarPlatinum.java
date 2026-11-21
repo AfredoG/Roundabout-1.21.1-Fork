@@ -737,7 +737,7 @@ public class PowersStarPlatinum extends TWAndSPSharedPowers {
                                                     playSoundIfPossible(self.level(),null, this.getSelf().getX(), this.getSelf().getY(),
                                                             this.getSelf().getZ(), ModSounds.UNLOCK_SKIN_EVENT, this.getSelf().getSoundSource(), 2.0F, 1.0F);
                                                     playSoundIfPossible(self.level(),null, this.getSelf().getX(), this.getSelf().getY(),
-                                                            this.getSelf().getZ(), SoundEvents.GENERIC_EXPLODE, this.getSelf().getSoundSource(), 2.0F, 1.0F);
+                                                            this.getSelf().getZ(), SoundEvents.GENERIC_EXPLODE.value(), this.getSelf().getSoundSource(), 2.0F, 1.0F);
                                                     sendParticlesIfPossible(self.level(),ParticleTypes.EXPLOSION, this.getSelf().getX(),
                                                             this.getSelf().getY()+this.getSelf().getEyeHeight(), this.getSelf().getZ(),
                                                             20, 0.7, 0.7, 0.7, 0.2);

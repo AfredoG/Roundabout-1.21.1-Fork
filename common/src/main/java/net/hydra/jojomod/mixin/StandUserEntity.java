@@ -5483,7 +5483,7 @@ public abstract class StandUserEntity extends Entity implements StandUser {
                     if (LE.getMainHandItem() != null && LE.getMainHandItem().isEmpty()) {
                         float power = ClientNetworking.getAppropriateConfig().survivorSettings.bonusDamageWhenPunching;
                         if (power > 0) {
-                            damageAmount += (CombatRules.getDamageAfterAbsorb(power, (float) this.getArmorValue(),
+                            damageAmount += (CombatRules.getDamageAfterAbsorb(rdbt$this(), power, source, (float) this.getArmorValue(),
                                     (float) this.getAttributeValue(Attributes.ARMOR_TOUGHNESS)));
                         }
                         if (MainUtil.getMobBleed(LE)) {
@@ -6163,7 +6163,7 @@ public abstract class StandUserEntity extends Entity implements StandUser {
     public int roundabout$explosionInflatTimer = 0;
 
     @Unique
-    public void rdbt$reduceOtherEffectDurations(int ticks, MobEffect... exclude) {
+    public void rdbt$reduceOtherEffectDurations(int ticks, net.minecraft.core.Holder<MobEffect>... exclude) {
         if (this.activeEffects.isEmpty())
             return;
 
@@ -6433,8 +6433,8 @@ public abstract class StandUserEntity extends Entity implements StandUser {
                         (!$$0P || !((Player) ((LivingEntity) (Object) this)).getAbilities().invulnerable);
                 if ($$3) {
 
-                    int $$1 = EnchantmentHelper.getRespiration(((LivingEntity) (Object) this));
-                    air = $$1 > 0 && this.random.nextInt($$1 + 1) > 0 ? air : air - 1;
+                    double oxygenBonus = this.getAttributeValue(Attributes.OXYGEN_BONUS);
+                    air = oxygenBonus > 0 && this.random.nextDouble() >= 1.0 / (oxygenBonus + 1.0) ? air : air - 1;
                     if (air <= 0) {
                         air = 0;
                     }
@@ -6454,8 +6454,8 @@ public abstract class StandUserEntity extends Entity implements StandUser {
         byte curse = this.roundabout$getLocacacaCurse();
         if (curse > -1) {
             if (curse == LocacacaCurseIndex.CHEST) {
-                int $$1 = EnchantmentHelper.getRespiration(((LivingEntity) (Object) this));
-                $$1 = $$1 > 0 && this.random.nextInt($$1 + 1) > 0 ? $$0 : $$0 - 4;
+                double oxygenBonus = this.getAttributeValue(Attributes.OXYGEN_BONUS);
+                int $$1 = oxygenBonus > 0 && this.random.nextDouble() >= 1.0 / (oxygenBonus + 1.0) ? $$0 : $$0 - 4;
                 if ($$1 < -20) {
                     $$1 = -20;
                 }
@@ -6644,7 +6644,7 @@ public abstract class StandUserEntity extends Entity implements StandUser {
     public abstract int getArmorValue();
 
     @Shadow
-    public abstract double getAttributeValue(Attribute $$0);
+    public abstract double getAttributeValue(net.minecraft.core.Holder<Attribute> $$0);
 
     @Shadow
     @Nullable

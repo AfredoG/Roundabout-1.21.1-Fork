@@ -638,7 +638,7 @@ public class PowersDiverDown extends NewPunchingStand {
     // used for zombie ai
     private boolean hasHarmfulEffects(LivingEntity entity) {
         for (MobEffectInstance instance : entity.getActiveEffects()) {
-            if (instance.getEffect().getCategory() == MobEffectCategory.HARMFUL) {
+            if (instance.getEffect().value().getCategory() == MobEffectCategory.HARMFUL) {
                 return true;
             }
         }
@@ -4771,7 +4771,8 @@ public class PowersDiverDown extends NewPunchingStand {
         }
 
         if (recipeManager != null) {java.util.List<CraftingRecipe> matchingRecipes = new java.util.ArrayList<>();
-            for (CraftingRecipe recipe : recipeManager.getAllRecipesFor(RecipeType.CRAFTING)) {
+            for (var holder : recipeManager.getAllRecipesFor(RecipeType.CRAFTING)) {
+                CraftingRecipe recipe = holder.value();
                 if (recipe.getResultItem(level.registryAccess()).getItem() == targetItem) {
                     matchingRecipes.add(recipe);
                 }
@@ -4826,7 +4827,8 @@ public class PowersDiverDown extends NewPunchingStand {
         Item targetItem = state.getBlock().asItem();
         RecipeManager recipeManager = this.self.getServer().getRecipeManager();
 
-        for (CraftingRecipe recipe : recipeManager.getAllRecipesFor(RecipeType.CRAFTING)) {
+        for (var holder : recipeManager.getAllRecipesFor(RecipeType.CRAFTING)) {
+            CraftingRecipe recipe = holder.value();
             if (recipe.getResultItem(this.self.level().registryAccess()).getItem() == targetItem) {
                 for (Ingredient ingredient : recipe.getIngredients()) {
                     if (!ingredient.isEmpty()) {

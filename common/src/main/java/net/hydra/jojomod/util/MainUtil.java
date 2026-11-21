@@ -995,14 +995,16 @@ public class MainUtil {
                     return;
                 }
 
-                CompoundTag compoundtag = BlockItem.getBlockEntityData(itemstack);
+                CompoundTag compoundtag = itemstack.getOrDefault(
+                        net.minecraft.core.component.DataComponents.BLOCK_ENTITY_DATA,
+                        net.minecraft.world.item.component.CustomData.EMPTY).copyTag();
                 if (!itemstack.isEmpty() && compoundtag != null && compoundtag.contains("x")
                         && compoundtag.contains("y") && compoundtag.contains("z")) {
                     BlockPos blockpos = BlockEntity.getPosFromTag(compoundtag);
                     if (player.level().isLoaded(blockpos)) {
                         BlockEntity blockentity = player.level().getBlockEntity(blockpos);
                         if (blockentity != null) {
-                            blockentity.saveToItem(itemstack);
+                            blockentity.saveToItem(itemstack, player.registryAccess());
                         }
                     }
                 }
@@ -1076,7 +1078,7 @@ public class MainUtil {
 
                 if (!level.isClientSide) {
                     // Remove the helmet
-                    ent.setItemSlot(EquipmentSlot.HEAD, ItemStack.EMPTY);
+                    LE.setItemSlot(EquipmentSlot.HEAD, ItemStack.EMPTY);
                     // Drop item slightly above the player’s head
                     Vec3 pos = ent.position().add(0, ent.getBbHeight() * 0.8, 0);
                     ItemEntity drop = new ItemEntity(level, pos.x, pos.y, pos.z, helmet.copy());
@@ -1752,7 +1754,7 @@ public class MainUtil {
     public static void loadLivingData(CompoundTag tag, StandUser mob, LivingEntity living){
         if (tag.contains("roundabout.StandDisc", 10)) {
             CompoundTag compoundtag = tag.getCompound("roundabout.StandDisc");
-            ItemStack itemstack = ItemStack.of(compoundtag);
+            ItemStack itemstack = ItemStack.parseOptional(living.registryAccess(), compoundtag);
             if (!itemstack.isEmpty() && itemstack.getItem() instanceof StandDiscItem SD) {
                 mob.roundabout$setStandDisc(itemstack);
                 MainUtil.extractDiscData((living), SD, itemstack);
@@ -1760,7 +1762,7 @@ public class MainUtil {
         }
         if (tag.contains("roundabout.StandRejectionDisc", 10)) {
             CompoundTag compoundtag = tag.getCompound("roundabout.StandRejectionDisc");
-            ItemStack itemstack = ItemStack.of(compoundtag);
+            ItemStack itemstack = ItemStack.parseOptional(living.registryAccess(), compoundtag);
             if (!itemstack.isEmpty() && itemstack.getItem() instanceof StandDiscItem SD) {
                 mob.roundabout$setRejectionStandDisc(itemstack);
                 SD.generateStandPowerRejection(living);
@@ -1794,17 +1796,15 @@ public class MainUtil {
     public static CompoundTag saveLivingData(CompoundTag tag, StandUser mob, LivingEntity liv){
         if (!mob.roundabout$getStandDisc().isEmpty() || tag.contains("roundabout.StandDisc", 10)) {
             ItemStack discy = mob.roundabout$getStandDisc();
-            CompoundTag compoundtag = new CompoundTag();
             tag.put("roundabout.StandDisc",
-                    MainUtil.saveToDiscData(liv, discy).save(compoundtag));
+                    MainUtil.saveToDiscData(liv, discy).saveOptional(liv.registryAccess()));
         }
         if ((mob.roundabout$getRejectionStandDisc() != null && !mob.roundabout$getRejectionStandDisc().isEmpty())
                 || tag.contains("roundabout.StandRejectionDisc", 10)) {
-            CompoundTag compoundtag = new CompoundTag();
             if (mob.roundabout$getRejectionStandDisc() == null) {
                 mob.roundabout$setRejectionStandDisc(ItemStack.EMPTY);
             }
-            tag.put("roundabout.StandRejectionDisc", mob.roundabout$getRejectionStandDisc().save(compoundtag));
+            tag.put("roundabout.StandRejectionDisc", mob.roundabout$getRejectionStandDisc().saveOptional(liv.registryAccess()));
         }
 
         CompoundTag compoundtag = tag.getCompound("roundabout");

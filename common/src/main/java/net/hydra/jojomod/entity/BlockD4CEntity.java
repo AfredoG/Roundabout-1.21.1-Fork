@@ -224,7 +224,7 @@ public class BlockD4CEntity extends Entity {
                                 center.x,
                                 center.y,
                                 center.z,
-                                SoundEvents.GENERIC_EXPLODE,
+                                SoundEvents.GENERIC_EXPLODE.value(),
                                 SoundSource.BLOCKS,
                                 1.0F,
                                 1.0F

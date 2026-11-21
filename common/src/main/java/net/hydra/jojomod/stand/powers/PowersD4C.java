@@ -1687,7 +1687,7 @@ public class PowersD4C extends NewPunchingStand {
     public void useUpBanner(ItemStack banner){
         if (self instanceof ServerPlayer pl) {
             pl.getCooldowns().addCooldown(banner.getItem(),getRechargeTime());
-            playSoundIfPossible(self.level(),null, pl.blockPosition(), SoundEvents.ARMOR_EQUIP_LEATHER,
+            playSoundIfPossible(self.level(),null, pl.blockPosition(), SoundEvents.ARMOR_EQUIP_LEATHER.value(),
                     SoundSource.PLAYERS, 1F, 1);
             canHoldBanner = false;
             saveDiscAndSync();
