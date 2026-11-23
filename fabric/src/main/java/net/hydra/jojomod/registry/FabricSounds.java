@@ -306,6 +306,10 @@ public class FabricSounds {
         addSound(ModSounds.CINDERELLA_FAIL_ID, ModSounds.CINDERELLA_FAIL_EVENT);
         addSound(ModSounds.CINDERELLA_VISAGE_CREATION_ID, ModSounds.CINDERELLA_VISAGE_CREATION_EVENT);
 
+        addSound(ModSounds.KING_NOTHING_SUMMON_ID, ModSounds.KING_NOTHING_SUMMON_EVENT);
+        addSound(ModSounds.KING_NOTHING_PHASE_ID, ModSounds.KING_NOTHING_PHASE_EVENT);
+        addSound(ModSounds.KING_NOTHING_DESUMMON_ID, ModSounds.KING_NOTHING_DESUMMON_EVENT);
+
         addSound(ModSounds.MANHATTAN_SUMMON_ID, ModSounds.MANHATTAN_SUMMON_EVENT);
         addSound(ModSounds.MANHATTAN_DODGING_ID, ModSounds.MANHATTAN_DODGING_EVENT);
         addSound(ModSounds.MANHATTAN_VISION_ID, ModSounds.MANHATTAN_VISION_EVENT);
@@ -318,6 +322,9 @@ public class FabricSounds {
         addSound(ModSounds.BLACK_SABBATH_SELECT_REMOVE_ID, ModSounds.BLACK_SABBATH_SELECT_REMOVE_EVENT);
         addSound(ModSounds.BLACK_SABBATH_SELECT_CANCEL_ID, ModSounds.BLACK_SABBATH_SELECT_CANCEL_EVENT);
         addSound(ModSounds.BLACK_SABBATH_SELECT_CONFIRM_ID, ModSounds.BLACK_SABBATH_SELECT_CONFIRM_EVENT);
+        addSound(ModSounds.BLACK_SABBATH_HURT_ID, ModSounds.BLACK_SABBATH_HURT_EVENT);
+        addSound(ModSounds.BLACK_SABBATH_GRAB_ID, ModSounds.BLACK_SABBATH_GRAB_EVENT);
+        addSound(ModSounds.BLACK_SABBATH_STAB_ID, ModSounds.BLACK_SABBATH_STAB_EVENT);
 
         addSound(ModSounds.CENTURY_BOY_SUMMON_ID, ModSounds.CENTURY_BOY_SUMMON_EVENT);
         addSound(ModSounds.CENTURY_BOY_HIT_ID, ModSounds.CENTURY_BOY_HIT_EVENT);
@@ -630,6 +637,20 @@ public class FabricSounds {
         addSound(ModSounds.GOLD_EXPERIENCE_LIFE_CREATION_ID, ModSounds.GOLD_EXPERIENCE_LIFE_CREATION_EVENT);
         addSound(ModSounds.GOLD_EXPERIENCE_LIFE_PUNCH_ID, ModSounds.GOLD_EXPERIENCE_LIFE_PUNCH_EVENT);
         addSound(ModSounds.GOLD_EXPERIENCE_LIFE_PUNCH_WINDUP_ID, ModSounds.GOLD_EXPERIENCE_LIFE_PUNCH_WINDUP_EVENT);
+        addSound(ModSounds.GOLD_EXPERIENCE_MUDA_RUSH_ID, ModSounds.GOLD_EXPERIENCE_MUDA_RUSH_EVENT);
+        addSound(ModSounds.GOLD_EXPERIENCE_MUDA_ID, ModSounds.GOLD_EXPERIENCE_MUDA_EVENT);
+        addSound(ModSounds.GOLD_EXPERIENCE_DNA_GROW_ID, ModSounds.GOLD_EXPERIENCE_DNA_GROW_EVENT);
+        addSound(ModSounds.GOLD_EXPERIENCE_MENU_ID, ModSounds.GOLD_EXPERIENCE_MENU_EVENT);
+        addSound(ModSounds.GOLD_EXPERIENCE_SPIKES_ID, ModSounds.GOLD_EXPERIENCE_SPIKES_EVENT);
+        addSound(ModSounds.GOLD_EXPERIENCE_TREE_ID, ModSounds.GOLD_EXPERIENCE_TREE_EVENT);
+        addSound(ModSounds.GOLD_EXPERIENCE_VINE_ID, ModSounds.GOLD_EXPERIENCE_VINE_EVENT);
+        addSound(ModSounds.RETURN_TO_ZERO_ID, ModSounds.RETURN_TO_ZERO_EVENT);
+        addSound(ModSounds.RETURN_TO_ZERO_REWIND_ID, ModSounds.RETURN_TO_ZERO_REWIND_EVENT);
+        addSound(ModSounds.GER_BARRAGE_HIT_ID, ModSounds.GER_BARRAGE_HIT_EVENT);
+        addSound(ModSounds.GER_BARRAGE_WINDUP_ID, ModSounds.GER_BARRAGE_WINDUP_EVENT);
+        addSound(ModSounds.GER_MUDA_RUSH_ID, ModSounds.GER_MUDA_RUSH_EVENT);
+
+        addSound(ModSounds.GE_REQUIEM_ARROW_ID, ModSounds.GE_REQUIEM_ARROW_EVENT);
 
         addSound(ModSounds.SUMMON_GREEN_DAY_ID, ModSounds.SUMMON_GREEN_DAY_EVENT);
         addSound(ModSounds.SUMMON_WALKING_ID, ModSounds.SUMMON_WALKING_EVENT);
@@ -854,6 +875,9 @@ public class FabricSounds {
         addSound(ModSounds.PURPLE_HAZE_PHASE_3_ID,ModSounds.PURPLE_HAZE_PHASE_3_EVENT);
         addSound(ModSounds.PURPLE_HAZE_SPIT_ID,ModSounds.PURPLE_HAZE_SPIT_EVENT);
 
+        addSound(ModSounds.AL_CHARGE_ID,ModSounds.AL_CHARGE_EVENT);
+        addSound(ModSounds.AL_MOVE_ID,ModSounds.AL_MOVE_EVENT);
+
         addSound(ModSounds.POLNAREFF_SC_SUMMON_1_ID,ModSounds.POLNAREFF_SC_SUMMON_1_EVENT);
         addSound(ModSounds.POLNAREFF_SC_SUMMON_2_ID,ModSounds.POLNAREFF_SC_SUMMON_2_EVENT);
         addSound(ModSounds.POLNAREFF_SC_HURT_1_ID,ModSounds.POLNAREFF_SC_HURT_1_EVENT);
@@ -903,6 +927,8 @@ public class FabricSounds {
         addSound(ModSounds.CTR_RAIN_STEP_1_ID,ModSounds.CTR_RAIN_STEP_1_EVENT);
         addSound(ModSounds.CTR_RAIN_STEP_2_ID,ModSounds.CTR_RAIN_STEP_2_EVENT);
         addSound(ModSounds.CTR_RAIN_STEP_3_ID,ModSounds.CTR_RAIN_STEP_3_EVENT);
+        addSound(ModSounds.CTR_BARRIER_ID,ModSounds.CTR_BARRIER_EVENT);
+        addSound(ModSounds.CTR_FULL_BODY_DODGE_ID,ModSounds.CTR_FULL_BODY_DODGE_EVENT);
 
         addSound(ModSounds.ZOMBIEHORSE_STITCHING_ID,ModSounds.ZOMBIEHORSE_STITCHING_EVENT);
     }

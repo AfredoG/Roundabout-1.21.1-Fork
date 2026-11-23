@@ -1208,12 +1208,9 @@ public abstract class PlayerEntity extends LivingEntity implements IPlayerEntity
             if (rticks < 50){
                 cir.setReturnValue(false);
             }
-        } else if (this.getVehicle() != null && this.getVehicle() instanceof SilverChariotMountEntity scme) {
-            /*
-            if (silverChariot.isSelfCarryModeActive()) {
-                cir.setReturnValue(false);
-            }
-            */
+        }
+        if (this.getVehicle() != null && this.getVehicle() instanceof SilverChariotMountEntity scme) {
+            // cir.setReturnValue(false);
         }
     }
     @Inject(method = "rideTick", at = @At(value = "HEAD"), cancellable = true)
@@ -1243,8 +1240,9 @@ public abstract class PlayerEntity extends LivingEntity implements IPlayerEntity
                     ci.cancel();
                 }
             }
-        } else if (this.getVehicle() != null && this.getVehicle() instanceof SilverChariotEntity scme) {
-            this.setShiftKeyDown(false);
+        } else if (this.getVehicle() != null && this.getVehicle() instanceof SilverChariotMountEntity scme) {
+            // this.setShiftKeyDown(false);
+            // ci.cancel();
         }
     }
     @Inject(method = "getProjectile(Lnet/minecraft/world/item/ItemStack;)Lnet/minecraft/world/item/ItemStack;",
@@ -1261,6 +1259,24 @@ public abstract class PlayerEntity extends LivingEntity implements IPlayerEntity
                     }
                 }
                 cir.setReturnValue(this.getAbilities().instabuild ? new ItemStack(Items.IRON_INGOT) : ItemStack.EMPTY);
+                return;
+            }
+
+            //GE tree imbued arrows get prioritized for crossbows and bows
+            Predicate<ItemStack> heldPredicate = pi.getSupportedHeldProjectiles();
+            for (ItemStack stack : this.inventory.offhand) {
+                if (heldPredicate.test(stack) && PowersGoldExperience.isTreeImbuedProjectileItem(stack)) {
+                    cir.setReturnValue(stack);
+                    return;
+                }
+            }
+            Predicate<ItemStack> allPredicate = pi.getAllSupportedProjectiles();
+            for (int i = 0; i < this.inventory.getContainerSize(); i++) {
+                ItemStack stack = this.inventory.getItem(i);
+                if (allPredicate.test(stack) && PowersGoldExperience.isTreeImbuedProjectileItem(stack)) {
+                    cir.setReturnValue(stack);
+                    return;
+                }
             }
         }
     }
@@ -1601,7 +1617,7 @@ public abstract class PlayerEntity extends LivingEntity implements IPlayerEntity
     @Inject(method = "jumpFromGround", at = @At(value = "HEAD"), cancellable = true)
     protected void roundabout$Jump(CallbackInfo ci) {
         if (((StandUser) this).roundabout$isClashing() || ((StandUser) this).roundabout$getStandPowers().cancelJump()
-                || ((IFatePlayer)this).rdbt$getFatePowers().cancelJump() || ((StandUser)this).roundabout$getGrabbedSoul()
+                || ((IFatePlayer)this).rdbt$getFatePowers().cancelJump() || ((StandUser)this).roundabout$getGrabberSabbath() != 0
         || FateTypes.isTransforming(this) ||
         FateTypes.takesSunlightDamage(this) && FateTypes.isInSunlight(this)
                 && !FateTypes.canCurrentlyAvoidSunlight(this)&& !FateTypes.isHidden(this)) {
@@ -2176,6 +2192,28 @@ public abstract class PlayerEntity extends LivingEntity implements IPlayerEntity
             }
         }
     }
+
+    @Inject(
+            method = "getMainArm",
+            at = @At("HEAD"),
+            cancellable = true
+    )
+    private void roundabout$forceMainArm(CallbackInfoReturnable<HumanoidArm> cir) {
+        // If Silver Chariot is using a part 5 skin, then force the main hand to be left
+        if (roundabout$SilverChariotForceLeftArm()) {
+            cir.setReturnValue(HumanoidArm.LEFT);
+        }
+    }
+
+    @Unique
+    private boolean roundabout$SilverChariotForceLeftArm() {
+        StandUser SU = (StandUser) this;
+        if (SU.roundabout$getStandPowers() instanceof PowersSilverChariot PSC && PowerTypes.hasStandActive(this) && PSC.hasHandsOut() && SilverChariotEntity.isPart5Skin(SU.roundabout$getStandSkin())) {
+            return true;
+        }
+        return false;
+    }
+
     @Shadow
     public HumanoidArm getMainArm() {
         return null;

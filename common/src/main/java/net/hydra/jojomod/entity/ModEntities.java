@@ -75,6 +75,7 @@ public class ModEntities {
     public static EntityType<JumpinJackFlashEntity> JUMPIN_JACK_FLASH;
     public static EntityType<BlockBombEntity> BLOCK_BOMB;
     public static EntityType<SheerHeartAttackEntity> SHEER_HEART_ATTACK;
+    public static EntityType<TrackingCloudEntity> TRACKING_CLOUD;
     public static EntityType<CinderellaEntity> CINDERELLA;
     public static EntityType<CaliforniaKingBedEntity> CALIFORNIA_KING_BED;
     public static EntityType<PlanetWavesEntity> PLANET_WAVES;
@@ -95,6 +96,7 @@ public class ModEntities {
     public static EntityType<WalkingHeartEntity> WALKING_HEART;
     public static EntityType<JusticePirateEntity> JUSTICE_PIRATE;
     public static EntityType<DarkMirageEntity> DARK_MIRAGE;
+    public static EntityType<KingNothingEntity> KING_NOTHING;
     public static EntityType<TuskEntity> TUSK_A1;
     public static EntityType<TuskEntity> TUSK_A2;
     public static EntityType<TuskEntity> TUSK_A3;
@@ -115,6 +117,7 @@ public class ModEntities {
     public static EntityType<DiverKickEntity> DIVER_KICK;
     public static EntityType<BoneProjectileEntity> BONE_PROJECTILE;
     public static EntityType<GoldExperienceEntity> GOLD_EXPERIENCE;
+    public static EntityType<GoldExperienceRequiemEntity> GOLD_EXPERIENCE_REQUIEM;
     public static EntityType<GoldExperienceBetaEntity> GOLD_EXPERIENCE_BETA;
     public static EntityType<GEBrambleEntity> GE_BRAMBLE;
     public static EntityType<GEThornEntity> GE_THORN;
@@ -128,7 +131,7 @@ public class ModEntities {
     public static EntityType<GEButterflyEntity> GE_BUTTERFLY;
     public static EntityType<SilverChariotEntity> SILVER_CHARIOT;
     public static EntityType<SilverChariotEntity> SILVER_CHARIOT_PHARAOH;
-    public static EntityType<SilverChariotRapierShotEntity> SILVER_CHARIOT_RAPIER;
+    public static EntityType<SilverChariotSwordProjectile> SILVER_CHARIOT_SWORD_PROJECTILE;
     public static EntityType<SilverChariotRapierPlatformEntity> SILVER_CHARIOT_RAPIER_PLATFORM;
     public static EntityType<SilverChariotMountEntity> SC_MOUNT;
     public static EntityType<HarpoonEntity> THROWN_HARPOON;
@@ -159,6 +162,8 @@ public class ModEntities {
     public static EntityType<BombPlantedEnderpearl> BOMB_PLANTED_ENDERPEARL;
     public static EntityType<BombPlantedSpectralArrow> BOMB_PLANTED_SPECTRAL_ARROW;
     public static EntityType<VirusSpitEntity> VIRUS_SPIT;
+    public static EntityType<GinkgoBoatEntity> GINKGO_BOAT;
+    public static EntityType<GinkgoChestBoatEntity> GINKGO_CHEST_BOAT;
 
     public static EntityType<IceTwisterEntity> COLD_TWISTER;
     public static EntityType<GentlyWeepsEntity> GENTLY_WEEPS;

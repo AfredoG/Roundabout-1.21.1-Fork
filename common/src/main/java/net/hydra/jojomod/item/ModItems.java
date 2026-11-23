@@ -23,7 +23,7 @@ public class ModItems {
     // 'refreshed' effect durations for foods.
     public static final int CHAMOMILE_DURATION = 150;
     public static final int MINT_DURATION = 150;
-    public static final int TEA_DURATION = 1100;
+    public static final int TEA_DURATION = 900;
 
     public static Item STAND_ARROW;
     public static Item STAND_BEETLE_ARROW;
@@ -87,6 +87,7 @@ public class ModItems {
     public static Item MAX_STAND_DISC_DIVER_DOWN;
     public static Item STAND_DISC_GOLD_EXPERIENCE;
     public static Item MAX_STAND_DISC_GOLD_EXPERIENCE;
+    public static Item CREATIVE_STAND_DISC_GER;
     public static Item STAND_DISC_SILVER_CHARIOT;
     public static Item MAX_STAND_DISC_SILVER_CHARIOT;
     public static Item STAND_DISC_METALLICA;
@@ -95,6 +96,7 @@ public class ModItems {
     public static Item MAX_STAND_DISC_CREAM;
     public static Item STAND_DISC_EMPEROR;
     public static Item MAX_STAND_DISC_EMPEROR;
+    public static Item STAND_DISC_KING_NOTHING;
     public static Item STAND_DISC;
     public static Item SIGHT_DISC;
     public static Item MEMORY_DISC;
@@ -158,6 +160,14 @@ public class ModItems {
     public static Item GINKGO_SIGN;
     public static Item GINKGO_HANGING_SIGN;
     public static Item GINKGO_TRAPDOOR;
+    public static Item AUTUMN_LEAVES;
+    public static Item GINKGO_STAIRS;
+    public static Item GINKGO_SLAB;
+    public static Item GINKGO_FENCE;
+    public static Item GINKGO_FENCE_GATE;
+    public static Item GINKGO_PRESSURE_PLATE;
+    public static Item GINKGO_BUTTON;
+    public static Item GINKGO_FALLEN_LEAVES;
 
     public static Item CAT_REMAINS;
     public static Item OCELOT_REMAINS;
@@ -274,6 +284,7 @@ public class ModItems {
     public static Item GHIACCIO_MASK;
     public static Item JOHNNY_MASK;
     public static Item JOHNGALLIA_MASK;
+    public static Item POLPO_MASK;
     public static Item DOT_HAN_MASK;
     public static Item AVDUL_MASK;
     public static Item LUCY_MASK;
@@ -294,6 +305,7 @@ public class ModItems {
     public static Item BLACKMORE_MASK;
     public static Item GUCCIO_MASK;
     public static Item HATO_MASK;
+    public static Item NORISUKE_MASK;
     public static Item SHIZUKA_MASK;
     public static Item CHAKA_MASK;
     public static Item DAIYA_MASK;
@@ -332,6 +344,9 @@ public class ModItems {
     public static Item FLESH_BUCKET;
     public static Item CHERRIES;
     public static Item ZOMBIE_HORSE_THREAD;
+
+    public static Item GINKGO_BOAT;
+    public static Item GINKGO_CHEST_BOAT;
 
     public static CreativeModeTab FOG_BLOCK_ITEMS;
 
@@ -391,6 +406,7 @@ public class ModItems {
         addToVisageStore(KIRASAKU_MASK,page, characterCostExp, characterCostEmerald);
         addToVisageStore(KOSAKU_MASK,page, characterCostExp, characterCostEmerald);
         addToVisageStore(HAYATO_KAWAJIRI_MASK,page, characterCostExp, characterCostEmerald);
+        addToVisageStore(POLPO_MASK,page, characterCostExp, characterCostEmerald);
         addToVisageStore(MISTA_MASK,page, characterCostExp, characterCostEmerald);
         addToVisageStore(ABBACCHIO_MASK,page, characterCostExp, characterCostEmerald);
         addToVisageStore(FUGO_MASK,page, characterCostExp, characterCostEmerald);
@@ -423,7 +439,7 @@ public class ModItems {
         addToVisageStore(VALENTINE_MASK,page, characterCostExp, characterCostEmerald);
         addToVisageStore(DOT_HAN_MASK,page, characterCostExp, characterCostEmerald);
         addToVisageStore(AVDUL_MASK,page, characterCostExp, characterCostEmerald);
-        //addToVisageStore(BLACKMORE_MASK,page, characterCostExp, characterCostEmerald);
+        addToVisageStore(BLACKMORE_MASK,page, characterCostExp, characterCostEmerald);
 
         page++;
         addToVisageStore(JOSUKE_PART_EIGHT_MASK,page, characterCostExp, characterCostEmerald);

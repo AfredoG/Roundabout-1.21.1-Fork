@@ -374,7 +374,7 @@ public abstract class ZPlayerModel<T extends LivingEntity> extends HumanoidModel
             byte poseEmote = ipe.roundabout$GetPoseEmote();
             boolean pose = poseEmote != Poses.NONE.id;
             if (pose && !P.isPassenger() && !P.isVisuallySwimming() && !P.isFallFlying()) {
-                if (poseEmote != Poses.SITTING.id) {
+                if (poseEmote != Poses.SITTING.id && poseEmote != Poses.FULLBODYDODGE.id) {
                     this.head.resetPose();
                 }
                 this.body.resetPose();
@@ -492,6 +492,9 @@ public abstract class ZPlayerModel<T extends LivingEntity> extends HumanoidModel
                     } else {
                         SU.roundabout$getWornStandAnimation().stop();
                     }
+                }
+                if (SU.roundabout$getStandPowers() instanceof PowersSilverChariot PSC && PowerTypes.hasStandActive(P) && PSC.hasHandsOut()) {
+
                 }
                 if (SU.roundabout$hasSpringLegs() && !P.isPassenger() && !P.isSleeping()) {
                     this.leftLeg.resetPose();

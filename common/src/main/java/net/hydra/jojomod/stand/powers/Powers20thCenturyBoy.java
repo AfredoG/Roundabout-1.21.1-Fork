@@ -1,7 +1,7 @@
 package net.hydra.jojomod.stand.powers;
 
 import com.google.common.collect.Lists;
-import net.hydra.jojomod.Roundabout;
+import net.hydra.jojomod.access.ILivingEntityAccess;
 import net.hydra.jojomod.access.IPlayerEntity;
 import net.hydra.jojomod.client.ClientNetworking;
 import net.hydra.jojomod.client.ClientUtil;
@@ -16,6 +16,7 @@ import net.hydra.jojomod.event.index.SoundIndex;
 import net.hydra.jojomod.event.powers.ModDamageTypes;
 import net.hydra.jojomod.event.powers.StandPowers;
 import net.hydra.jojomod.event.powers.StandUser;
+import net.hydra.jojomod.item.FirearmItem;
 import net.hydra.jojomod.sound.ModSounds;
 import net.hydra.jojomod.stand.powers.elements.PowerContext;
 import net.hydra.jojomod.stand.powers.presets.NewDashPreset;
@@ -45,6 +46,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.monster.Skeleton;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
@@ -97,14 +99,13 @@ public class Powers20thCenturyBoy extends NewDashPreset {
     @Override
     public void onStandSummon(boolean desummon) {
         super.onStandSummon(desummon);
-        setInvincibleState(false);
+        setInvincibleState(false, true);
     }
 
     @Override
     public void onStandSwitch() {
         super.onStandSwitch();
-        setInvincibleState(false);
-        Roundabout.LOGGER.info("On stand switch");
+        setInvincibleState(false, true);
     }
 
 
@@ -121,7 +122,6 @@ public class Powers20thCenturyBoy extends NewDashPreset {
     @Override
     public void readAdditionalSaveData(CompoundTag tag) {
         super.readAdditionalSaveData(tag);
-        Roundabout.LOGGER.info("data read, client: " + isClient());
 
         if (tag.contains("currentDefenseTicks")) { currentDefenseTicks = tag.getInt("currentDefenseTicks"); }
         if (tag.contains("staticMode")) { staticMode = tag.getInt("staticMode"); }
@@ -366,8 +366,24 @@ public class Powers20thCenturyBoy extends NewDashPreset {
         setInvincibleState(invincible, false);
     }
     public void setInvincibleState(boolean invincible, boolean loading) {
+        if (isDazed(self)) { return; }
+
+        if (self instanceof Mob) {
+            if (invincible == invincibleState) {
+                return;
+            }
+        }
+
+        self.dismountTo(self.getX(), self.getY(), self.getZ());
+        ((ILivingEntityAccess) self).roundabout$setSharedFlag(7, false);
+
         invincibleState = invincible;
         if (invincible) {
+            if (this.self.getItemInHand(this.self.getUsedItemHand()).getItem() instanceof FirearmItem){
+                ItemStack stack = this.self.getItemInHand(this.self.getUsedItemHand());
+                FirearmItem gun = (FirearmItem) stack.getItem();
+                gun.cancelReload(stack, (Player) this.self);
+            }
             switch (mode) {
                 case 1 -> {
                     staticMode = 1;
@@ -681,6 +697,10 @@ public class Powers20thCenturyBoy extends NewDashPreset {
 
     @Override public boolean cancelSprintParticles() {return invincibleState;}
 
+    @Override
+    public boolean cancelItemUse() {
+        return invincibleState;
+    }
 
     private int stallingTicks = 0;
 
@@ -743,7 +763,6 @@ public class Powers20thCenturyBoy extends NewDashPreset {
             double dist = attackTarget.distanceTo(this.getSelf());
             boolean isSkel = this.getSelf() instanceof Skeleton;
 
-
             if (isSkel) {
                 staticMode = 3;
                 mode = 3;
@@ -753,23 +772,28 @@ public class Powers20thCenturyBoy extends NewDashPreset {
             }
 
             if (gticks <= 0){
-
                 if (currentDefenseTicks < 40) {
-                    setInvincibleState(false);
+                    if (invincibleState) {
+                        setInvincibleState(false, true);
+                    }
                 } else if (currentDefenseTicks > 100 || invincibleState) {
                     if (isSkel) {
-                        if (invincibleState && dist > 6) {
-                            setInvincibleState(false);
-                            gticks += 80;
+                        if (dist > 6) {
+                            if (invincibleState) {
+                                setInvincibleState(false, true);
+                                gticks += 80;
+                            }
                         } else if (!invincibleState) {
-                            setInvincibleState(true);
+                            setInvincibleState(true,true);
                         }
                     } else {
-                        if (invincibleState && dist <= 2) {
-                            setInvincibleState(false);
-                            gticks += 80;
-                        } else if (!invincibleState) {
-                            setInvincibleState(true);
+                        if (dist <= 2) {
+                            if (invincibleState) {
+                                setInvincibleState(false, true);
+                                gticks += 80;
+                            }
+                        } else if (!invincibleState && dist > 2) {
+                            setInvincibleState(true, true);
                         }
                     }
                 }
@@ -904,7 +928,7 @@ public class Powers20thCenturyBoy extends NewDashPreset {
             } else {
                 level.playSound(null, this.getSelf().blockPosition(), ModSounds.CENTURY_BOY_HIT_EVENT, SoundSource.PLAYERS, 1F, 1.0F);
             }
-            deflectTicks += 8;
+            deflectTicks += 4;
         }
     }
 

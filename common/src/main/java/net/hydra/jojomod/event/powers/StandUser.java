@@ -1,6 +1,7 @@
 package net.hydra.jojomod.event.powers;
 
 import com.mojang.authlib.GameProfile;
+import net.hydra.jojomod.entity.LifePunchCloneEntity;
 import net.hydra.jojomod.entity.projectile.SoftAndWetPlunderBubbleEntity;
 import net.hydra.jojomod.entity.stand.FollowingStandEntity;
 import net.hydra.jojomod.entity.stand.StandEntity;
@@ -37,6 +38,7 @@ public interface StandUser {
     void roundabout$removeQueForTargetDeletion();
     void roundabout$onStandOutLookAround(StandEntity passenger);
     boolean roundabout$getUniqueStandModeToggle();
+    void roundabout$setStuckSpeedMulti(Vec3 vec);
     void roundabout$setUniqueStandModeToggle(boolean mode);
     boolean roundabout$skipFriction();
     void rdbt$onSyncedDataUpdated2(EntityDataAccessor<?> $$0);
@@ -101,7 +103,7 @@ public interface StandUser {
     void roundabout$updateStandDisc(ItemStack stack);
     void roundabout$setStandSkinLight(byte skin);
     void roundabout$setIdlePosLight(byte pos);
-    void roundabout$setMetallicaInvisibility(int fade);
+    //void roundabout$setMetallicaInvisibility(int fade);
     int roundabout$getMetallicaInvisibility();
     void roundabout$setMetalMeter(float amount);
     float roundabout$getMetalMeter();
@@ -352,11 +354,13 @@ public interface StandUser {
     void roundabout$setTrueInvis(int bound);
     int roundabout$getTrueInvis();
 
-
+    void roundabout$setLifePunchClone(LifePunchCloneEntity clone);
+    LifePunchCloneEntity roundabout$getLifePunchClone();
 
     /**Metallica*/
     void roundabout$setMetallicaInvis(int invis);
     int roundabout$getMetallicaInvis();
+
     Vec3 roundabout$calculateViewVectorButICanUseIt(float $$0, float $$1);
 
     /**Gravity Direction*/
@@ -396,6 +400,8 @@ public interface StandUser {
     void DoMoldTick();
     void SetInMoldTicks(int e);
     int getMoldTicks();
+    void setMoldSkin(byte b);
+    byte getMoldSkin();
     void MoldFieldExit();
     void rdbt$SetCrawlTicks(int ticks);
 
@@ -438,6 +444,13 @@ public interface StandUser {
     void roundabout$setRibcageTrap(boolean trap);
     boolean roundabout$hasSpringLegs();
     void roundabout$setSpringLegs(boolean legs);
+
+    boolean roundabout$hasGERooted();
+    void roundabout$setGERooted(boolean tree);
+    ItemStack roundabout$getGERootedItem();
+    void roundabout$setGERootedItem(ItemStack stack);
+    AnimationState roundabout$getGERootsAnimation();
+    int roundabout$getGERootsShrinkTicks();
 
     /** catch the rainbow **/
     boolean roundabout$getIsRainWalking();

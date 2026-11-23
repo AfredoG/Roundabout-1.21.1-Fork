@@ -14,14 +14,10 @@ import net.hydra.jojomod.client.ClientUtil;
 import net.hydra.jojomod.client.StandIcons;
 import net.hydra.jojomod.client.gui.FogInventoryMenu;
 import net.hydra.jojomod.client.gui.PowerInventoryMenu;
-import net.hydra.jojomod.entity.BlockWallEntity;
-import net.hydra.jojomod.entity.D4CCloneEntity;
-import net.hydra.jojomod.entity.KingCrimsonProjectionEntity;
-import net.hydra.jojomod.entity.ParallelChestEntity;
+import net.hydra.jojomod.entity.*;
 import net.hydra.jojomod.entity.corpses.FallenMob;
 import net.hydra.jojomod.entity.corpses.FallenPhantom;
 import net.hydra.jojomod.entity.gold_experience.GELifeform;
-import net.hydra.jojomod.entity.mobs.AnubisGuardian;
 import net.hydra.jojomod.entity.mobs.Butterfly;
 import net.hydra.jojomod.entity.mobs.StrayCatEntity;
 import net.hydra.jojomod.entity.npcs.Aesthetician;
@@ -35,6 +31,7 @@ import net.hydra.jojomod.entity.projectile.SoftAndWetBubbleEntity;
 import net.hydra.jojomod.entity.projectile.SoftAndWetPlunderBubbleEntity;
 import net.hydra.jojomod.entity.stand.*;
 import net.hydra.jojomod.entity.substand.EncasementBubbleEntity;
+import net.hydra.jojomod.entity.substand.MoldSporesEntity;
 import net.hydra.jojomod.entity.visages.CloneEntity;
 import net.hydra.jojomod.entity.visages.JojoNPC;
 import net.hydra.jojomod.event.ModEffects;
@@ -45,7 +42,6 @@ import net.hydra.jojomod.event.index.*;
 import net.hydra.jojomod.event.powers.*;
 import net.hydra.jojomod.fates.FatePowers;
 import net.hydra.jojomod.fates.powers.VampiricFate;
-import net.hydra.jojomod.fates.powers.ZombieFate;
 import net.hydra.jojomod.powers.GeneralPowers;
 import net.hydra.jojomod.stand.powers.*;
 import net.hydra.jojomod.item.*;
@@ -62,7 +58,6 @@ import net.minecraft.client.resources.DefaultPlayerSkin;
 import net.minecraft.client.resources.SkinManager;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.particles.*;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
@@ -75,12 +70,10 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.Container;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -118,6 +111,7 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.AbstractFurnaceBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.*;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -239,6 +233,9 @@ public class MainUtil {
     public static ArrayList<String> blackOrWhiteListParallelMobs = Lists.newArrayList();
     public static ArrayList<String> fleshBudMobBlacklist = Lists.newArrayList();
     public static ArrayList<String> lootPoolForD4CChests = Lists.newArrayList();
+    public static ArrayList<String> kingNothingBlockSniffBlacklist = Lists.newArrayList();
+    public static ArrayList<String> kingNothingMobSniffBlacklist = Lists.newArrayList();
+
 
     public static final Map<Block, Block> FREEZABLE_BLOCKS = new HashMap<>();
     public static final Map<Block, Block> FREEZABLE_BLOCK_ITEMS = new HashMap<>();
@@ -251,9 +248,15 @@ public class MainUtil {
     public static final Map<Block, Block> PURPLE_HAZE_DECAY_BLOCKS = new HashMap<>();
     public static final Map<Block, Float> PURPLE_HAZE_DECAY_RATE = new HashMap<>();
 
+    public static final Map<Item, Block> KING_NOTHING_BLOCK_FORM_PREDICT = new HashMap<>();
+    public static final Map<Item, EntityType<?>> KING_NOTHING_ENTITY_FORM_PREDICT = new HashMap<>();
+    public static final Map<Block, Set<Block>> KING_NOTHING_BLOCK_GROUPS = new HashMap<>();
+    public static final Map<Block, Block> KING_NOTHING_BLOCK_KEYS = new HashMap<>();
+
     public static final Map<Item, EntityType> GOLD_EXPERIENCE_DNA_DROPS = new HashMap<>();
     public static final Map<Item, Float> GOLD_EXPERIENCE_TRANSFORM_RATE = new HashMap<>();
     public static final Map<Item, Boolean> GOLD_EXPERIENCE_IS_BABY = new HashMap<>();
+    public static final List<Item> GOLD_EXPERIENCE_DISGUISE_ITEMS = new ArrayList<>();
 
     public static final Map<Item, List<MobEffect>> foodCuresThat = new HashMap<>();
     public static final Map<Item, List<MobEffect>> foodAddsThat = new HashMap<>();
@@ -624,6 +627,18 @@ public class MainUtil {
         return true;
     }
 
+    public static boolean isBlockSniffBlacklisted(Block blk) {
+        ResourceLocation rl = BuiltInRegistries.BLOCK.getKey(blk);
+        return kingNothingBlockSniffBlacklist != null && !kingNothingBlockSniffBlacklist.isEmpty()
+                && kingNothingBlockSniffBlacklist.contains(rl.toString());
+    }
+
+    public static boolean isMobSniffBlacklisted(Entity ent) {
+        ResourceLocation rl = BuiltInRegistries.ENTITY_TYPE.getKey(ent.getType());
+        return kingNothingMobSniffBlacklist != null && !kingNothingMobSniffBlacklist.isEmpty()
+                && kingNothingMobSniffBlacklist.contains(rl.toString());
+    }
+
     public static boolean isStandingInBlock(LivingEntity LE) {
         if (LE.level().getBlockState(BlockPos.containing(LE.getPosition(1))).isSolid()) {
             return true;
@@ -855,7 +870,7 @@ public class MainUtil {
     public static double getWorthyOdds(Mob mob) {
         if ((isBossMob(mob)
                 && !ClientNetworking.getAppropriateConfig().generalStandUserMobSettings.bossMobsCanNaturallyHaveStands)
-                || mob instanceof JojoNPC || mob instanceof FallenMob || mob instanceof CloneEntity || isMobStandUserBlacklisted(mob)) {
+                || mob instanceof JojoNPC || mob instanceof StrayCatEntity || mob instanceof FallenMob || mob instanceof CloneEntity || isMobStandUserBlacklisted(mob)) {
             return 0;
         }
         return ClientNetworking.getAppropriateConfig().generalStandUserMobSettings.worthyMobOdds;
@@ -879,7 +894,7 @@ public class MainUtil {
     public static double getStandUserOdds(Mob mob) {
         if ((isBossMob(mob)
                 && !ClientNetworking.getAppropriateConfig().generalStandUserMobSettings.bossMobsCanNaturallyHaveStands)
-                || mob instanceof JojoNPC || mob instanceof FallenMob || mob instanceof CloneEntity || mob instanceof ZombieAesthetician
+                || mob instanceof JojoNPC || mob instanceof StrayCatEntity || mob instanceof FallenMob || mob instanceof CloneEntity || mob instanceof ZombieAesthetician
                 || isMobStandUserBlacklisted(mob)) {
             return 0;
         } else if (mob instanceof AbstractVillager) {
@@ -1023,6 +1038,10 @@ public class MainUtil {
 
             }
         }
+    }
+
+    public static <T extends Comparable<T>> BlockState copyBlockStateProperty(BlockState from, BlockState to, Property<T> prop) {
+        return to.setValue(prop, from.getValue(prop));
     }
 
     public static boolean canAddItem(ItemStack itemStack, Inventory inventory) {
@@ -1427,6 +1446,15 @@ public class MainUtil {
                     return ItemStack.EMPTY;
                 }
             }
+            if (su.roundabout$getStandPowers() instanceof PowersSilverChariot PSC && PowerTypes.hasStandActive(pl) && PowerTypes.hasHandsActive(pl)) {
+                if (ES == EquipmentSlot.MAINHAND) {
+                    if (PSC.self.getMainArm() == HumanoidArm.RIGHT) {
+                        return ItemStack.EMPTY;
+                    } else if (PSC.self.getMainArm() == HumanoidArm.LEFT) {
+                        return ItemStack.EMPTY;
+                    }
+                }
+            }
             if (pl.isUsingItem()) {
                 return stack;
             }
@@ -1779,6 +1807,9 @@ public class MainUtil {
 
         mob.rdbt$setExperienceTaken(compoundtag.getBoolean("expTaken"));
         StandPowers powers = mob.roundabout$getStandPowers();
+        if (tag.hasUUID("GEActiveImbueId") && powers instanceof PowersGoldExperience gePowers) {
+            gePowers.setActiveImbuedItemId(tag.getUUID("GEActiveImbueId"));
+        }
         List<CooldownInstance> CDCopy = new ArrayList<>(mob.rdbt$getPowerCooldowns()) {
         };
         if (!CDCopy.isEmpty()) {
@@ -1821,6 +1852,12 @@ public class MainUtil {
         }
 
         StandPowers powers = mob.roundabout$getStandPowers();
+        if (powers instanceof PowersGoldExperience gePowers) {
+            UUID activeId = gePowers.getActiveImbuedItemId();
+            if (activeId != null) {
+                tag.putUUID("GEActiveImbueId", activeId);
+            }
+        }
         List<CooldownInstance> CDCopy = new ArrayList<>(mob.rdbt$getPowerCooldowns()) {
         };
         if (!CDCopy.isEmpty()) {
@@ -1915,8 +1952,8 @@ public class MainUtil {
 
     public static boolean canGrantStand(Entity ent) {
         if (ent instanceof Mob ME) {
-            if (!(ME instanceof StandEntity)) {
-                if (((StandUser) ME).roundabout$getStandDisc().isEmpty() && !(ent instanceof StrayCatEntity)) {
+            if (!(ME instanceof StandEntity) && !(ME instanceof StrayCatEntity) && !(ME instanceof FallenMob)) {
+                if (((StandUser) ME).roundabout$getStandDisc().isEmpty()) {
                     return ((IMob) ME).roundabout$isWorthy();
                 }
             }
@@ -1931,7 +1968,7 @@ public class MainUtil {
     }
 
     public static float gasDamageMultiplier() {
-        return (float) (0.78F * (ClientNetworking.getAppropriateConfig().itemSettings.gasolineExplosionDamage * 0.01));
+        return (float) (0.82F * (ClientNetworking.getAppropriateConfig().itemSettings.gasolineExplosionDamage * 0.01));
     }
 
     public static void makeBleed(Entity entity, int level, int ticks, Entity source) {
@@ -2799,7 +2836,8 @@ public class MainUtil {
                 || sauce.is(ModDamageTypes.HAZE_VIRUS)
                 || sauce.is(ModDamageTypes.DISTORTION_VIRUS)
                 || sauce.is(ModDamageTypes.POD_BITE)
-                || sauce.is(ModDamageTypes.BITES_THE_DUST)){
+                || sauce.is(ModDamageTypes.BITES_THE_DUST)
+                || sauce.is(ModDamageTypes.BRAMBLE)){
             return true;
         }
         return false;
@@ -2830,7 +2868,7 @@ public class MainUtil {
                 || sauce.is(ModDamageTypes.EXPLOSIVE_STAND) || sauce.is(ModDamageTypes.HEEL_SPIKE) ||
                 sauce.is(ModDamageTypes.CORPSE_ARROW) || sauce.is(ModDamageTypes.STAND_RUSH)
                 || sauce.is(ModDamageTypes.CROSSFIRE) ||
-                sauce.is(ModDamageTypes.CORPSE_EXPLOSION)) {
+                sauce.is(ModDamageTypes.CORPSE_EXPLOSION) || sauce.is(ModDamageTypes.BRAMBLE)) {
             return true;
         }
         return false;
@@ -2973,7 +3011,7 @@ public class MainUtil {
                 value.equals(ModEffects.SINGE)
                 || value.equals(ModEffects.STAND_MELTING) ||
                 value.equals(ModEffects.CAPTURING_LOVE) || value.equals(ModEffects.MELTING)
-                || value.equals(ModEffects.MOLD) || value.equals(ModEffects.STITCHED);
+                || value.equals(ModEffects.MOLD) || value.equals(ModEffects.STITCHED) || value.equals(ModEffects.RECONSTRUCTION);
     }
 
     public static boolean hidesPotionEffectSwirl(MobEffect value) {
@@ -3803,6 +3841,15 @@ public class MainUtil {
             if (PowerTypes.canHavePower(player, data)) {
                 PowerTypes.setPowerTypeWithPenalty(player, data);
             }
+        } else if (context == PacketDataIndex.BYTE_MOUNT_HOVER_INPUT) {
+            // System.out.println("Received hover input: " + data);
+            if (player.getVehicle() != null && player.getVehicle() instanceof SilverChariotMountEntity scme) {
+                scme.setHovering(data == 1);
+                // System.out.println("Server hover state: " + scme.isHovering());
+                // System.out.println("Server hover charge: " + scme.getHoverTicks());
+            } else {
+                // System.out.println("Player is not riding Silver Chariot Mount!");
+            }
         }
     }
 
@@ -4614,6 +4661,13 @@ public class MainUtil {
             return ((StandUser) LE).getMoldTicks() > 0;
         }
         return false;
+    }
+
+    public static byte getMoldSkin(Entity ent) {
+        if (ent instanceof LivingEntity LE) {
+            return ((StandUser) LE).getMoldSkin();
+        }
+        return PowersGreenDay.PART_FIVE_GREEN_DAY;
     }
 
     public static Boolean isInPurpleHaze(Entity entity) {
