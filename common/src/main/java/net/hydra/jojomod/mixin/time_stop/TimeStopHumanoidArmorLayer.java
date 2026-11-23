@@ -133,7 +133,6 @@ public abstract class TimeStopHumanoidArmorLayer<T extends LivingEntity, M exten
 
     }
 
-    @Shadow protected abstract ResourceLocation getArmorLocation(ArmorItem $$0, boolean $$1, @Nullable String $$2);
 
     public TimeStopHumanoidArmorLayer(RenderLayerParent<T, M> $$0) {
         super($$0);

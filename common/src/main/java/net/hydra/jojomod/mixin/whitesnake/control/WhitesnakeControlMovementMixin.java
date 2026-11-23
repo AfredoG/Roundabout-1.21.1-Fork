@@ -14,13 +14,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(ServerEntity.class)
 public abstract class WhitesnakeControlMovementMixin {
     @Shadow @Final private Entity entity;
-    @Shadow private Vec3 ap;
+    @Shadow private Vec3 lastSentMovement;
 
     @Inject(method = "sendChanges", at = @At("HEAD"))
     private void roundaboutWhitesnake$skipMovementEcho(CallbackInfo ci) {
         if (entity instanceof WhitesnakeEntity whitesnake && whitesnake.isControlModeActive()
                 && !entity.hasImpulse && !entity.hurtMarked) {
-            ap = entity.getDeltaMovement();
+            lastSentMovement = entity.getDeltaMovement();
         }
     }
 }

@@ -102,11 +102,7 @@ public abstract class AchtungItemRenderer {
                             MatrixUtil.mulComponentWise($$13.pose(), 0.75F);
                         }
 
-                        if ($$10) {
-                            $$14 = getCompassFoilBufferDirect($$4, $$12, $$13);
-                        } else {
-                            $$14 = getCompassFoilBuffer($$4, $$12, $$13);
-                        }
+                        $$14 = getCompassFoilBuffer($$4, $$12, $$13);
 
                         ClientUtil.popPoseAndCooperate($$3,53);
                     } else if ($$10) {
@@ -267,10 +263,6 @@ public abstract class AchtungItemRenderer {
         return null;
     }
 
-    @Shadow
-    public static VertexConsumer getCompassFoilBufferDirect(MultiBufferSource $$0, RenderType $$1, PoseStack.Pose $$2) {
-        return null;
-    }
 
     @Shadow
     protected static boolean hasAnimatedTexture(ItemStack $$0) {

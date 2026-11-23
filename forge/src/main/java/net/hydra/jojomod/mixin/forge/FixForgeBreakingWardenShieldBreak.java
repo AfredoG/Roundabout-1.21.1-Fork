@@ -18,7 +18,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public abstract class FixForgeBreakingWardenShieldBreak extends LivingEntity  {
 
     @Shadow
-    public abstract void disableShield(boolean p_36385_);
+    public abstract void disableShield();
 
     protected FixForgeBreakingWardenShieldBreak(EntityType<? extends LivingEntity> p_20966_, Level p_20967_) {
         super(p_20966_, p_20967_);
@@ -31,7 +31,7 @@ public abstract class FixForgeBreakingWardenShieldBreak extends LivingEntity  {
             super.blockUsingShield(p_36295_);
             if (p_36295_.getMainHandItem().canDisableShield(this.useItem, this, p_36295_)
                     || p_36295_.canDisableShield()) {
-                this.disableShield(true);
+                this.disableShield();
             }
             ci.cancel();
         }

@@ -33,7 +33,7 @@ public abstract class GravityShulkerMixin extends AbstractGolem implements Varia
     @Shadow public abstract Direction getAttachFace();
 
     @Shadow
-    public static AABB getProgressDeltaAabb(Direction direction, float f, float g) {
+    public static AABB getProgressDeltaAabb(float scale, Direction direction, float f, float g) {
         return null;
     }
 
@@ -65,7 +65,7 @@ public abstract class GravityShulkerMixin extends AbstractGolem implements Varia
             for (Entity $$5 : this.level()
                     .getEntities(
                             this,
-                            getProgressDeltaAabb($$2, $$1, $$0).move(this.getX() - 0.5, this.getY(), this.getZ() - 0.5),
+                            getProgressDeltaAabb(this.getScale(), $$2, $$1, $$0).move(this.getX() - 0.5, this.getY(), this.getZ() - 0.5),
                             EntitySelector.NO_SPECTATORS.and($$0x -> !$$0x.isPassengerOfSameVehicle(this))
                     )) {
                 if (!($$5 instanceof Shulker) && !$$5.noPhysics) {

@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(RangedCrossbowAttackGoal.class)
-public class DazeCrossbowAtk<T extends Monster & CrossbowAttackMob> {
+public class DazeCrossbowAtk<T extends net.minecraft.world.entity.Mob & CrossbowAttackMob> {
     /**Minor code preventing crossbow charging on barrage*/
 
     @Inject(method = "tick", at = @At(value = "HEAD"), cancellable = true)

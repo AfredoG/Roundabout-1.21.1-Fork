@@ -5,7 +5,7 @@ Imported on 2026-11-13 into AfredoG/Roundabout-1.21.1-Fork, branch `port/neoforg
 ## Status
 
 This is an INCOMPLETE development port: Minecraft 1.21.1, NeoForge 21.1.265, Java 21, Gradle 8.14.3.
-Latest compilation: 0 Java errors and 18 warnings; full build succeeds and produces development and sources JARs. The compile/build output is in build-errors.txt. The first dedicated-server launch fails during Mixin application (CenturyBoyPotion / MobEffect.isDurationEffectTick); see server-startup.log. No playable release; the client has not been launched.
+Latest compilation: 0 Java errors and 18 warnings; full build succeeds and produces development and sources JARs. The compile/build output is in build-errors.txt. The latest dedicated-server launch fails during Mixin application (GravityPlayerMixin / Player.isAboveGround); the preceding effect/entity/shield blockers have been fixed. See server-startup.log and mixin-diagnostics.tsv. No playable release; the client has not been launched.
 See BUILD_STATUS.md and build-errors.txt for diagnostics and remaining work.
 This import changes no mod source code and does not constitute a new build test.
 
@@ -45,7 +45,7 @@ git remote add upstream https://github.com/Hydraheads/RoundaboutMod.git
 Read port/BUILD_STATUS.md, port/build-errors.txt, and the existing port documentation before editing.
 Follow existing port/update_upstream.py workflow for upstream updates; retain upstream history.
 Use Java 21 and the standalone neoforge Gradle project. Restore dependencies when needed.
-Next work: runtime Mixin migration, starting with CenturyBoyPotion and other removed MobEffect hooks. Continue client/server startup validation and then in-game tests. Entity attachments, persistence, navigation, explosion/crossbow gravity hooks and NeoForge sleep events have now received port batches; consult the final BUILD_STATUS.md checkpoints.
+Next work: runtime Mixin migration, starting with GravityPlayerMixin (ground check, ServerPlayer movement statistics, player particles), then melee/fall damage and block-interaction hooks. Continue client/server startup validation and then in-game tests. Entity attachments, persistence, navigation, explosion/crossbow gravity hooks and NeoForge sleep events have now received port batches; consult the final BUILD_STATUS.md checkpoints.
 Do not exclude failing classes or disable required mixins to manufacture a successful build.
 
 Save small coherent checkpoints frequently to this remote port branch, including current diagnostics and next steps.

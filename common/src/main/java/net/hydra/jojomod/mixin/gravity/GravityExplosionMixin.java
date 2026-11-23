@@ -41,7 +41,6 @@ public abstract class GravityExplosionMixin {
 
     @Shadow @Final private Map<Player, Vec3> hitPlayers;
 
-    @Shadow public abstract DamageSource getDamageSource();
 
     @Shadow
     public static float getSeenPercent(Vec3 vec3, Entity entity) {

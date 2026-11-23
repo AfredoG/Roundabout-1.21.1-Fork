@@ -119,7 +119,7 @@ public abstract class WorldTickServer extends Level {
     }
     @Inject(method = "gameEvent", at = @At(value = "HEAD"), cancellable = true
             , require = 0)
-    private void roundabout$gameEvent(GameEvent $$0, Vec3 $$1, GameEvent.Context $$2, CallbackInfo ci) {
+    private void roundabout$gameEvent(Holder<GameEvent> $$0, Vec3 $$1, GameEvent.Context $$2, CallbackInfo ci) {
         if(((ILevelAccess)this).roundabout$isSoundPlundered(BlockPos.containing($$1))){
             ci.cancel();
         } else if(((ILevelAccess)this).roundabout$isSoundPlunderedEntity($$2.sourceEntity())){
@@ -165,7 +165,7 @@ public abstract class WorldTickServer extends Level {
     //    }
     //}
     @Inject(method = "gameEvent", at = @At("HEAD"), cancellable = true)
-    private void rdbt$hideEntity(GameEvent $$0, Vec3 $$1, GameEvent.Context $$2, CallbackInfo ci) {
+    private void rdbt$hideEntity(Holder<GameEvent> $$0, Vec3 $$1, GameEvent.Context $$2, CallbackInfo ci) {
         if ($$2 != null && PowerTypes.isExistentiallyElsewhere($$2.sourceEntity())) {
             ci.cancel();
         }

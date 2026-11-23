@@ -596,7 +596,7 @@ public abstract class EntityAndData implements IEntityAndData {
         return false;
     }
     @Inject(method = "changeDimension", at = @At(value = "HEAD"), cancellable = true)
-    private void roundabout$changeDim(ServerLevel $$0, CallbackInfoReturnable<Boolean> ci) {
+    private void roundabout$changeDim(net.minecraft.world.level.portal.DimensionTransition transition, CallbackInfoReturnable<Entity> ci) {
         if (((Entity)(Object)this) instanceof LivingEntity LE){
             if (this.level() instanceof ServerLevel && !this.isRemoved()) {
                 if (((StandUser)this).roundabout$getStand() != null){
@@ -647,11 +647,14 @@ public abstract class EntityAndData implements IEntityAndData {
 
     @Override
     public float roundabout$getStepHeight() {
-        return this.maxUpStep;
+        return ((Entity)(Object)this).maxUpStep();
     }
 
     public  AABB rdbt$getPoseBox(Pose pose){
-        return getBoundingBoxForPose(pose);
+        Entity entity = (Entity)(Object)this;
+        return entity instanceof LivingEntity living
+                ? living.getLocalBoundsForPose(pose).move(entity.position())
+                : entity.getDimensions(pose).makeBoundingBox(entity.position());
     }
     /**In a timestop, fire doesn't tick*/
     @Inject(method = "setRemainingFireTicks", at = @At("HEAD"), cancellable = true)
@@ -914,7 +917,6 @@ public abstract class EntityAndData implements IEntityAndData {
 
     @Shadow public abstract boolean isInLava();
 
-    @Shadow private float maxUpStep;
 
     @Shadow
     public boolean hurtMarked;
@@ -937,8 +939,6 @@ public abstract class EntityAndData implements IEntityAndData {
     @Shadow
     public Optional<BlockPos> mainSupportingBlockPos;
 
-    @Shadow
-    protected abstract AABB getBoundingBoxForPose(Pose pose);
 
     @Shadow
     public abstract Vec3 position();

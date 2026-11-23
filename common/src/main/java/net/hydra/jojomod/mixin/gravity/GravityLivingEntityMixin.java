@@ -593,6 +593,15 @@ public abstract class GravityLivingEntityMixin extends Entity implements IGravit
     }
 
 
+    @Inject(method = "getLocalBoundsForPose", at = @At("RETURN"), cancellable = true)
+    private void roundabout$rotateLocalPoseBounds(Pose pose, CallbackInfoReturnable<AABB> cir) {
+        Direction gravity = GravityAPI.getGravityDirection(this);
+        if (gravity != Direction.DOWN) {
+            // The new API returns local bounds; callers apply world translation afterwards.
+            cir.setReturnValue(RotationUtil.boxPlayerToWorld(cir.getReturnValue().inflate(-0.01), gravity));
+        }
+    }
+
     // Native effect ticking preserves expiration events and the synchronized particle list.
     @ModifyArgs(method = "tickEffects", at = @At(value = "INVOKE",
             target = "Lnet/minecraft/world/level/Level;addParticle(Lnet/minecraft/core/particles/ParticleOptions;DDDDDD)V"))

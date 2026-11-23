@@ -24,10 +24,9 @@ public abstract class AchtungItemEntity extends Entity {
      * Support for thrown item gaining invisibility
      */
     @Inject(method = "setThrower", at = @At(value = "HEAD"), cancellable = true)
-    protected void roundabout$setThrower(@Nullable UUID $$0, CallbackInfo ci) {
-        if ($$0 != null) {
-            Player pl =  this.level().getPlayerByUUID($$0);
-            if (pl != null){
+    protected void roundabout$setThrower(@Nullable Entity thrower, CallbackInfo ci) {
+        if (thrower != null) {
+            if (thrower instanceof Player pl){
                 if (MainUtil.getEntityIsTrulyInvisible(pl) && ClientNetworking.getAppropriateConfig().achtungSettings.hidesShotProjectiles){
                     ((IEntityAndData)this).roundabout$setTrueInvisibility(MainUtil.getEntityTrulyInvisibleTicks(pl));
                 }

@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(RangedCrossbowAttackGoal.class) // stops Pillagers from charging their crossbow with Anubis
-public abstract class AnubisCrossbowCancelMixin<T extends Monster & RangedAttackMob & CrossbowAttackMob> extends Goal {
+public abstract class AnubisCrossbowCancelMixin<T extends net.minecraft.world.entity.Mob & RangedAttackMob & CrossbowAttackMob> extends Goal {
 
     @Shadow
     @Final

@@ -1,33 +1,49 @@
 To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.14.3/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
 Daemon will be stopped at the end of the build
 > Task :createMinecraftArtifacts UP-TO-DATE
-> Task :compileJava UP-TO-DATE
+
+> Task :compileJava
+Note: common/src/main/java/net/hydra/jojomod/mixin/StandUserEntity.java uses or overrides a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: common/src/main/java/net/hydra/jojomod/mixin/StandUserEntity.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+
 > Task :processResources UP-TO-DATE
-> Task :classes UP-TO-DATE
+> Task :classes
+> Task :jarJar NO-SOURCE
+> Task :jar
+> Task :sourcesJar
+> Task :assemble
+> Task :compileTestJava NO-SOURCE
+> Task :processTestResources NO-SOURCE
+> Task :testClasses UP-TO-DATE
+> Task :test NO-SOURCE
+> Task :check UP-TO-DATE
+> Task :build
 > Task :downloadAssets UP-TO-DATE
 > Task :writeServerLegacyClasspath UP-TO-DATE
-> Task :prepareServerRun
+> Task :prepareServerRun UP-TO-DATE
 
 > Task :runServer
 WARN StatusConsoleListener Advanced terminal features are not available in this environment
-[15:14:40] [main/INFO] [cp.mo.mo.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgeserverdev, --gameDir, ., --fml.fmlVersion, 4.0.45, --fml.mcVersion, 1.21.1, --fml.neoForgeVersion, 21.1.265, --fml.neoFormVersion, 20240808.144430, --nogui]
-[15:14:40] [main/INFO] [cp.mo.mo.Launcher/MODLAUNCHER]: JVM identified as Azul Systems, Inc. OpenJDK 64-Bit Server VM 21.0.6+7-LTS
-[15:14:40] [main/INFO] [cp.mo.mo.Launcher/MODLAUNCHER]: ModLauncher 11.0.5+main.901c6ea8 starting: java version 21.0.6 by Azul Systems, Inc.; OS Linux arch amd64 version 6.18.57
-[15:14:40] [main/INFO] [ne.ne.fm.lo.ImmediateWindowHandler/]: ImmediateWindowProvider not loading because launch target is forgeserverdev
-[15:14:40] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.7 Source=union:/workspace/scratch/a39f1b87edab/build-tools/gradle-cache/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.16.4+mixin.0.8.7/26d01f0567ab46e9ca0d2ed89d0ecc11aadbd433/sponge-mixin-0.16.4+mixin.0.8.7.jar%2394!/ Service=ModLauncher Env=SERVER
-[15:14:41] [main/INFO] [ne.ne.fm.lo.mo.lo.JarInJarDependencyLocator/]: Found 2 dependencies adding them to mods collection
-[15:14:41] [main/INFO] [ne.ne.fm.lo.mo.ModDiscoverer/]:
+[15:24:03] [main/INFO] [cp.mo.mo.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgeserverdev, --gameDir, ., --fml.fmlVersion, 4.0.45, --fml.mcVersion, 1.21.1, --fml.neoForgeVersion, 21.1.265, --fml.neoFormVersion, 20240808.144430, --nogui]
+[15:24:03] [main/INFO] [cp.mo.mo.Launcher/MODLAUNCHER]: JVM identified as Azul Systems, Inc. OpenJDK 64-Bit Server VM 21.0.6+7-LTS
+[15:24:03] [main/INFO] [cp.mo.mo.Launcher/MODLAUNCHER]: ModLauncher 11.0.5+main.901c6ea8 starting: java version 21.0.6 by Azul Systems, Inc.; OS Linux arch amd64 version 6.18.57
+[15:24:03] [main/INFO] [ne.ne.fm.lo.ImmediateWindowHandler/]: ImmediateWindowProvider not loading because launch target is forgeserverdev
+[15:24:03] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.7 Source=union:/workspace/scratch/a39f1b87edab/build-tools/gradle-cache/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.16.4+mixin.0.8.7/26d01f0567ab46e9ca0d2ed89d0ecc11aadbd433/sponge-mixin-0.16.4+mixin.0.8.7.jar%2394!/ Service=ModLauncher Env=SERVER
+[15:24:03] [main/INFO] [ne.ne.fm.lo.mo.lo.JarInJarDependencyLocator/]: Found 2 dependencies adding them to mods collection
+[15:24:03] [main/INFO] [ne.ne.fm.lo.mo.ModDiscoverer/]:
      Mod List:
 		Name Version (Mod Id)
 
 		Minecraft 1.21.1 (minecraft)
 		NeoForge 21.1.265 (neoforge)
 		Roundabout (Unofficial NeoForge Port) 3.6.3-port.1-dev (roundabout)
-[15:14:41] [main/INFO] [mixin/]: Compatibility level set to JAVA_21
-[15:14:41] [main/INFO] [cp.mo.mo.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgeserverdev' with arguments [--gameDir, ., --nogui]
-[15:14:42] [main/INFO] [MixinExtras|Service/]: Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.5.5).
-[15:14:42] [main/FATAL] [mixin/]: Mixin apply for mod roundabout failed roundabout.mixins.json:century_boy.CenturyBoyPotion from mod roundabout -> net.minecraft.world.effect.MobEffect: org.spongepowered.asm.mixin.transformer.throwables.InvalidMixinException @Shadow method isDurationEffectTick in roundabout.mixins.json:century_boy.CenturyBoyPotion from mod roundabout was not located in the target class net.minecraft.world.effect.MobEffect. No refMap loaded.
-org.spongepowered.asm.mixin.transformer.throwables.InvalidMixinException: @Shadow method isDurationEffectTick in roundabout.mixins.json:century_boy.CenturyBoyPotion from mod roundabout was not located in the target class net.minecraft.world.effect.MobEffect. No refMap loaded.
+[15:24:04] [main/INFO] [mixin/]: Compatibility level set to JAVA_21
+[15:24:04] [main/INFO] [cp.mo.mo.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgeserverdev' with arguments [--gameDir, ., --nogui]
+[15:24:05] [main/INFO] [MixinExtras|Service/]: Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.5.5).
+[15:24:05] [main/FATAL] [mixin/]: Mixin apply for mod roundabout failed roundabout.mixins.json:gravity.GravityPlayerMixin from mod roundabout -> net.minecraft.world.entity.player.Player: org.spongepowered.asm.mixin.transformer.throwables.InvalidMixinException @Shadow method isAboveGround in roundabout.mixins.json:gravity.GravityPlayerMixin from mod roundabout was not located in the target class net.minecraft.world.entity.player.Player. No refMap loaded.
+org.spongepowered.asm.mixin.transformer.throwables.InvalidMixinException: @Shadow method isAboveGround in roundabout.mixins.json:gravity.GravityPlayerMixin from mod roundabout was not located in the target class net.minecraft.world.entity.player.Player. No refMap loaded.
 	at MC-BOOTSTRAP/org.spongepowered.mixin@0.16.4+mixin.0.8.7/org.spongepowered.asm.mixin.transformer.MixinPreProcessorStandard.attachSpecialMethod(MixinPreProcessorStandard.java:436) ~[sponge-mixin-0.16.4+mixin.0.8.7.jar:0.16.4+mixin.0.8.7] {}
 	at MC-BOOTSTRAP/org.spongepowered.mixin@0.16.4+mixin.0.8.7/org.spongepowered.asm.mixin.transformer.MixinPreProcessorStandard.attachShadowMethod(MixinPreProcessorStandard.java:412) ~[sponge-mixin-0.16.4+mixin.0.8.7.jar:0.16.4+mixin.0.8.7] {}
 	at MC-BOOTSTRAP/org.spongepowered.mixin@0.16.4+mixin.0.8.7/org.spongepowered.asm.mixin.transformer.MixinPreProcessorStandard.attachMethods(MixinPreProcessorStandard.java:340) ~[sponge-mixin-0.16.4+mixin.0.8.7.jar:0.16.4+mixin.0.8.7] {}
@@ -51,8 +67,7 @@ org.spongepowered.asm.mixin.transformer.throwables.InvalidMixinException: @Shado
 	at cpw.mods.securejarhandler/cpw.mods.cl.ModuleClassLoader.findClass(ModuleClassLoader.java:298) ~[securejarhandler-3.0.8.jar:?] {}
 	at cpw.mods.securejarhandler/cpw.mods.cl.ModuleClassLoader.loadClass(ModuleClassLoader.java:214) ~[securejarhandler-3.0.8.jar:?] {}
 	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526) ~[?:?] {}
-	at TRANSFORMER/minecraft@1.21.1/net.minecraft.core.registries.BuiltInRegistries.<clinit>(BuiltInRegistries.java:139) ~[neoforge-21.1.265.jar%23125!/:?] {re:classloading}
-	at TRANSFORMER/minecraft@1.21.1/net.minecraft.server.Bootstrap.bootStrap(Bootstrap.java:42) ~[neoforge-21.1.265.jar%23125!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.server.Bootstrap.bootStrap(Bootstrap.java:45) ~[neoforge-21.1.265.jar%23125!/:?] {re:classloading}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.server.Main.main(Main.java:120) ~[neoforge-21.1.265.jar%23125!/:?] {re:classloading}
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?] {}
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?] {}
@@ -109,17 +124,16 @@ Caused by: org.spongepowered.asm.mixin.transformer.throwables.MixinTransformerEr
 	at cpw.mods.securejarhandler/cpw.mods.cl.ModuleClassLoader.findClass(ModuleClassLoader.java:298)
 	at cpw.mods.securejarhandler/cpw.mods.cl.ModuleClassLoader.loadClass(ModuleClassLoader.java:214)
 	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526)
-	at TRANSFORMER/minecraft@1.21.1/net.minecraft.core.registries.BuiltInRegistries.<clinit>(BuiltInRegistries.java:139)
-	at TRANSFORMER/minecraft@1.21.1/net.minecraft.server.Bootstrap.bootStrap(Bootstrap.java:42)
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.server.Bootstrap.bootStrap(Bootstrap.java:45)
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.server.Main.main(Main.java:120)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	... 17 more
-Caused by: org.spongepowered.asm.mixin.throwables.MixinApplyError: Mixin [roundabout.mixins.json:century_boy.CenturyBoyPotion from mod roundabout] from phase [DEFAULT] in config [roundabout.mixins.json] FAILED during APPLY
+Caused by: org.spongepowered.asm.mixin.throwables.MixinApplyError: Mixin [roundabout.mixins.json:gravity.GravityPlayerMixin from mod roundabout] from phase [DEFAULT] in config [roundabout.mixins.json] FAILED during APPLY
 	at MC-BOOTSTRAP/org.spongepowered.mixin@0.16.4+mixin.0.8.7/org.spongepowered.asm.mixin.transformer.MixinProcessor.handleMixinError(MixinProcessor.java:686)
 	at MC-BOOTSTRAP/org.spongepowered.mixin@0.16.4+mixin.0.8.7/org.spongepowered.asm.mixin.transformer.MixinProcessor.handleMixinApplyError(MixinProcessor.java:637)
 	at MC-BOOTSTRAP/org.spongepowered.mixin@0.16.4+mixin.0.8.7/org.spongepowered.asm.mixin.transformer.MixinProcessor.applyMixins(MixinProcessor.java:368)
-	... 34 more
-Caused by: org.spongepowered.asm.mixin.transformer.throwables.InvalidMixinException: @Shadow method isDurationEffectTick in roundabout.mixins.json:century_boy.CenturyBoyPotion from mod roundabout was not located in the target class net.minecraft.world.effect.MobEffect. No refMap loaded.
+	... 33 more
+Caused by: org.spongepowered.asm.mixin.transformer.throwables.InvalidMixinException: @Shadow method isAboveGround in roundabout.mixins.json:gravity.GravityPlayerMixin from mod roundabout was not located in the target class net.minecraft.world.entity.player.Player. No refMap loaded.
 	at MC-BOOTSTRAP/org.spongepowered.mixin@0.16.4+mixin.0.8.7/org.spongepowered.asm.mixin.transformer.MixinPreProcessorStandard.attachSpecialMethod(MixinPreProcessorStandard.java:436)
 	at MC-BOOTSTRAP/org.spongepowered.mixin@0.16.4+mixin.0.8.7/org.spongepowered.asm.mixin.transformer.MixinPreProcessorStandard.attachShadowMethod(MixinPreProcessorStandard.java:412)
 	at MC-BOOTSTRAP/org.spongepowered.mixin@0.16.4+mixin.0.8.7/org.spongepowered.asm.mixin.transformer.MixinPreProcessorStandard.attachMethods(MixinPreProcessorStandard.java:340)
@@ -130,9 +144,11 @@ Caused by: org.spongepowered.asm.mixin.transformer.throwables.InvalidMixinExcept
 	at MC-BOOTSTRAP/org.spongepowered.mixin@0.16.4+mixin.0.8.7/org.spongepowered.asm.mixin.transformer.TargetClassContext.apply(TargetClassContext.java:437)
 	at MC-BOOTSTRAP/org.spongepowered.mixin@0.16.4+mixin.0.8.7/org.spongepowered.asm.mixin.transformer.TargetClassContext.applyMixins(TargetClassContext.java:418)
 	at MC-BOOTSTRAP/org.spongepowered.mixin@0.16.4+mixin.0.8.7/org.spongepowered.asm.mixin.transformer.MixinProcessor.applyMixins(MixinProcessor.java:352)
-	... 34 more
+	... 33 more
 
 > Task :runServer FAILED
+
+[Incubating] Problems report is available at: file://neoforge/build/reports/problems/problems-report.html
 
 FAILURE: Build failed with an exception.
 
@@ -146,5 +162,5 @@ Execution failed for task ':runServer'.
 > Run with --scan to get full insights.
 > Get more help at https://help.gradle.org.
 
-BUILD FAILED in 35s
-7 actionable tasks: 2 executed, 5 up-to-date
+BUILD FAILED in 20s
+9 actionable tasks: 4 executed, 5 up-to-date

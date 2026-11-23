@@ -4067,13 +4067,13 @@ public abstract class StandUserEntity extends Entity implements StandUser {
 
     // Vampire remains mob drops
     @Inject(method = "dropAllDeathLoot", at = @At(value = "HEAD"), cancellable = true, require = 0)
-    private void roundabout$dropAllDeathLoot(DamageSource $$0, CallbackInfo ci) {
+    private void roundabout$dropAllDeathLoot(ServerLevel serverLevel, DamageSource $$0, CallbackInfo ci) {
         if (!PowerTypes.originatedFromOurWorld(this)) {
             int dropMode = ClientNetworking.getAppropriateConfig().d4cSettings.dropMode;
             if (dropMode < 3) {
                 if (dropMode == 1 || dropMode == 2) {
                     if (!(!(rdbt$this() instanceof Enemy) && dropMode == 1)) {
-                        this.dropExperience();
+                        this.dropExperience($$0.getEntity());
                     }
                 }
                 ci.cancel();
@@ -6051,8 +6051,6 @@ public abstract class StandUserEntity extends Entity implements StandUser {
         return 0;
     }
 
-    @Shadow
-    protected abstract float getEyeHeight(Pose $$0, EntityDimensions $$1);
 
     @Inject(method = "baseTick", at = @At(value = "HEAD"), cancellable = true, require = 0)
     protected void roundabout$BreathingCancel(CallbackInfo ci) {
@@ -6519,7 +6517,7 @@ public abstract class StandUserEntity extends Entity implements StandUser {
     }
 
     @Inject(method = "onChangedBlock", at = @At(value = "HEAD"), cancellable = true, require = 0)
-    protected void roundabout$onChangedBlock(BlockPos $$0, CallbackInfo ci) {
+    protected void roundabout$onChangedBlock(ServerLevel serverLevel, BlockPos $$0, CallbackInfo ci) {
         roundabout$getStandPowers().onChangedBlock($$0);
     }
 
@@ -6618,9 +6616,6 @@ public abstract class StandUserEntity extends Entity implements StandUser {
     @Shadow
     public abstract double getAttributeValue(net.minecraft.core.Holder<Attribute> $$0);
 
-    @Shadow
-    @Nullable
-    public abstract AttributeInstance getAttribute(Attribute attribute);
 
     @Shadow
     public abstract void kill();
@@ -6719,7 +6714,7 @@ public abstract class StandUserEntity extends Entity implements StandUser {
     protected abstract void updateGlowingStatus();
 
     @Shadow
-    protected abstract void dropExperience();
+    protected abstract void dropExperience(@Nullable Entity killer);
 
     public double previousYpos = getY();
 
