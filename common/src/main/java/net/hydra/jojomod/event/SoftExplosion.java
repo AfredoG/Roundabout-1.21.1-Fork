@@ -69,7 +69,8 @@ public class SoftExplosion extends Explosion {
     }
 
     public SoftExplosion(Level $$0, @Nullable Entity $$1, @Nullable DamageSource $$2, @Nullable ExplosionDamageCalculator $$3, double $$4, double $$5, double $$6, float $$7, boolean $$8, BlockInteraction $$9) {
-        super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
+        super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9,
+                ParticleTypes.EXPLOSION, ParticleTypes.EXPLOSION_EMITTER, SoundEvents.GENERIC_EXPLODE);
         this.random = RandomSource.create();
         this.toBlow = new ObjectArrayList();
         this.hitPlayers = Maps.newHashMap();

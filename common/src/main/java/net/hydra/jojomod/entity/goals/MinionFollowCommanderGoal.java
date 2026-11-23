@@ -169,7 +169,7 @@ public class MinionFollowCommanderGoal extends Goal {
     }
 
     private boolean canTeleportTo(BlockPos $$0) {
-        PathType $$1 = WalkNodeEvaluator.getBlockPathTypeStatic(this.level, $$0.mutable());
+        PathType $$1 = WalkNodeEvaluator.getPathTypeStatic(this.fallenMob, $$0);
         if ($$1 != PathType.WALKABLE) {
             return false;
         } else {

@@ -1,370 +1,19 @@
-forge/src/main/java/net/hydra/jojomod/mixin/forge/ForgeServerPlayer.java:43: error: cannot find symbol
-    private void roundabout$changeDim(ServerLevel p_9180_, net.neoforged.neoforge.common.util.ITeleporter teleporter, CallbackInfoReturnable<Entity> cir) {
-                                                                                             ^
-  symbol:   class ITeleporter
-  location: package net.neoforged.neoforge.common.util
-forge/src/main/java/net/hydra/jojomod/mixin/forge/ForgeCoffinSleepAtDayMixin.java:9: error: cannot find symbol
-import net.neoforged.neoforge.event.entity.player.SleepingTimeCheckEvent;
-                                                 ^
-  symbol:   class SleepingTimeCheckEvent
-  location: package net.neoforged.neoforge.event.entity.player
-common/src/main/java/net/hydra/jojomod/entity/substand/SheerHeartAttackEntity.java:947: error: method isPathfindable in class BlockStateBase cannot be applied to given types;
-				if (BS.isPathfindable(this.level(), this.blockTarget, PathComputationType.LAND)) {
-				      ^
-  required: PathComputationType
-  found:    Level,BlockPos,PathComputationType
-  reason: actual and formal argument lists differ in length
-common/src/main/java/net/hydra/jojomod/entity/substand/SheerHeartAttackEntity.java:1237: error: method does not override or implement a method from a supertype
-	@Override public boolean canBeLeashed(Player p_21418_) { return false;}
-	^
-common/src/main/java/net/hydra/jojomod/entity/mobs/Snake.java:37: error: Snake is not abstract and does not override abstract method isFood(ItemStack) in Animal
-public class Snake extends Animal {
-       ^
-common/src/main/java/net/hydra/jojomod/entity/pathfinding/TuskHoleEntity.java:319: error: getVisualShape(BlockState,BlockGetter,BlockPos,CollisionContext) has protected access in BlockBehaviour
-                    double height = bs.getBlock().getVisualShape(bs,this.level(),this.blockPosition(), CollisionContext.of(this)).max(Direction.Axis.Y);
-                                                 ^
-common/src/main/java/net/hydra/jojomod/entity/pathfinding/TuskHoleEntity.java:444: error: method does not override or implement a method from a supertype
-    @Override
-    ^
-common/src/main/java/net/hydra/jojomod/entity/zombie_minion/DogMinion.java:61: error: cannot find symbol
-                    this.gameEvent(GameEvent.ENTITY_SHAKE);
-                                            ^
-  symbol:   variable ENTITY_SHAKE
-  location: class GameEvent
-common/src/main/java/net/hydra/jojomod/entity/zombie_minion/AxolotlMinion.java:78: error: method does not override or implement a method from a supertype
-    @Override
-    ^
-common/src/main/java/net/hydra/jojomod/entity/mobs/AnubisGuardian.java:37: error: AnubisGuardian is not abstract and does not override abstract method applyRaidBuffs(ServerLevel,int,boolean) in Raider
-public class AnubisGuardian extends AbstractIllager implements RangedAttackMob {
-       ^
-common/src/main/java/net/hydra/jojomod/entity/mobs/AnubisGuardian.java:178: error: method does not override or implement a method from a supertype
-    @Override
-    ^
-common/src/main/java/net/hydra/jojomod/entity/mobs/AnubisGuardian.java:326: error: method does not override or implement a method from a supertype
-    @Override
-    ^
-common/src/main/java/net/hydra/jojomod/entity/mobs/AnubisGuardian.java:328: error: cannot find symbol
-        double $$2 = this.getAttackReachSqr($$0);
-                         ^
-  symbol: method getAttackReachSqr(LivingEntity)
-common/src/main/java/net/hydra/jojomod/entity/mobs/FalconEntity.java:49: error: FalconEntity is not abstract and does not override abstract method isFood(ItemStack) in Animal
-public class FalconEntity extends ShoulderRidingEntity implements VariantHolder<FalconEntity.Variant>, FlyingAnimal {
-       ^
-common/src/main/java/net/hydra/jojomod/entity/mobs/FalconEntity.java:142: error: constructor FollowOwnerGoal in class FollowOwnerGoal cannot be applied to given types;
-        this.goalSelector.addGoal(2, new FollowOwnerGoal(this, 1.0D, 5.0F, 1.0F, true));
-                                     ^
-  required: TamableAnimal,double,float,float
-  found:    FalconEntity,double,float,float,boolean
-  reason: actual and formal argument lists differ in length
-common/src/main/java/net/hydra/jojomod/entity/substand/SeperatedArmEntity.java:550: error: method pull in class LeverBlock cannot be applied to given types;
-                        ((LeverBlock) level().getBlockState(IsArmContactingBlock()).getBlock()).pull(level().getBlockState(IsArmContactingBlock()), this.level(), IsArmContactingBlock());
-                                                                                               ^
-  required: BlockState,Level,BlockPos,Player
-  found:    BlockState,Level,BlockPos
-  reason: actual and formal argument lists differ in length
-common/src/main/java/net/hydra/jojomod/entity/substand/SeperatedArmEntity.java:553: error: method press in class ButtonBlock cannot be applied to given types;
-                        ((ButtonBlock) level().getBlockState(IsArmContactingBlock()).getBlock()).press(level().getBlockState(IsArmContactingBlock()), this.level(), IsArmContactingBlock());
-                                                                                                ^
-  required: BlockState,Level,BlockPos,Player
-  found:    BlockState,Level,BlockPos
-  reason: actual and formal argument lists differ in length
-common/src/main/java/net/hydra/jojomod/entity/KingCrimsonCloneEntity.java:320: error: jumpFromGround() in KingCrimsonCloneEntity cannot override jumpFromGround() in LivingEntity
-    protected void jumpFromGround() {
-                   ^
-  attempting to assign weaker access privileges; was public
-common/src/main/java/net/hydra/jojomod/stand/powers/presets/BlockGrabPreset.java:1065: error: cannot find symbol
-        return ServerGamePacketListenerImpl.MAX_INTERACTION_DISTANCE;
-                                           ^
-  symbol:   variable MAX_INTERACTION_DISTANCE
-  location: class ServerGamePacketListenerImpl
-common/src/main/java/net/hydra/jojomod/stand/powers/presets/BlockGrabPreset.java:1109: error: cannot find symbol
-                                            && !(state.getBlock() instanceof StemGrownBlock) && !(state.getBlock() instanceof GlassBlock))) {
-                                                                             ^
-  symbol:   class StemGrownBlock
-  location: class BlockGrabPreset
-common/src/main/java/net/hydra/jojomod/stand/powers/presets/BlockGrabPreset.java:1109: error: cannot find symbol
-                                            && !(state.getBlock() instanceof StemGrownBlock) && !(state.getBlock() instanceof GlassBlock))) {
-                                                                                                                              ^
-  symbol:   class GlassBlock
-  location: class BlockGrabPreset
-common/src/main/java/net/hydra/jojomod/stand/powers/presets/BlockGrabPreset.java:1178: error: method createMinecart in class AbstractMinecart cannot be applied to given types;
-                        AbstractMinecart $$7 = AbstractMinecart.createMinecart(
-                                                               ^
-  required: ServerLevel,double,double,double,Type,ItemStack,Player
-  found:    Level,double,double,double,Type
-  reason: actual and formal argument lists differ in length
-common/src/main/java/net/hydra/jojomod/stand/powers/presets/BlockGrabPreset.java:1179: error: incompatible types: Level cannot be converted to ServerLevel
-                                this.getSelf().level(), (double)this.getSelf().getX(),
-                                                    ^
-common/src/main/java/net/hydra/jojomod/stand/powers/PowersKingCrimson.java:2239: error: cannot find symbol
-            if (stack.getFoodProperties(player) != null || item instanceof BowlFoodItem || item instanceof PotionItem
-                                                                           ^
-  symbol:   class BowlFoodItem
-  location: class PowersKingCrimson
-common/src/main/java/net/hydra/jojomod/entity/D4CCloneEntity.java:645: error: jumpFromGround() in D4CCloneEntity cannot override jumpFromGround() in LivingEntity
-    protected void jumpFromGround() {
-                   ^
-  attempting to assign weaker access privileges; was public
-common/src/main/java/net/hydra/jojomod/entity/projectile/JJFProjectileEntity.java:114: error: method does not override or implement a method from a supertype
-    @Override
-    ^
-common/src/main/java/net/hydra/jojomod/entity/projectile/JJFProjectileEntity.java:119: error: method ignoreExplosion in class Entity cannot be applied to given types;
-        return super.ignoreExplosion();
-                    ^
-  required: Explosion
-  found:    no arguments
-  reason: actual and formal argument lists differ in length
-common/src/main/java/net/hydra/jojomod/entity/projectile/JJFProjectileEntity.java:1291: error: incompatible types: ParticleType<ColorParticleOption> cannot be converted to ParticleOptions
-        cloud.setParticle(ParticleTypes.ENTITY_EFFECT);
-                                       ^
-common/src/main/java/net/hydra/jojomod/event/SoftExplosion.java:72: error: no suitable constructor found for Explosion(Level,Entity,DamageSource,ExplosionDamageCalculator,double,double,double,float,boolean,BlockInteraction)
-        super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
-        ^
-    constructor Explosion.Explosion(Level,Entity,double,double,double,float,List<BlockPos>,BlockInteraction,ParticleOptions,ParticleOptions,Holder<SoundEvent>) is not applicable
-      (actual and formal argument lists differ in length)
-    constructor Explosion.Explosion(Level,Entity,double,double,double,float,boolean,BlockInteraction,List<BlockPos>) is not applicable
-      (actual and formal argument lists differ in length)
-    constructor Explosion.Explosion(Level,Entity,double,double,double,float,boolean,BlockInteraction) is not applicable
-      (actual and formal argument lists differ in length)
-    constructor Explosion.Explosion(Level,Entity,DamageSource,ExplosionDamageCalculator,double,double,double,float,boolean,BlockInteraction,ParticleOptions,ParticleOptions,Holder<SoundEvent>) is not applicable
-      (actual and formal argument lists differ in length)
-common/src/main/java/net/hydra/jojomod/entity/projectile/ThrownObjectEntity.java:1091: error: method canBeLeashed in class Mob cannot be applied to given types;
-            if (entity.canBeLeashed(player)) {
-                      ^
-  required: no arguments
-  found:    Player
-  reason: actual and formal argument lists differ in length
-common/src/main/java/net/hydra/jojomod/entity/projectile/ThrownObjectEntity.java:1104: error: method equipSaddle in interface Saddleable cannot be applied to given types;
-                    $$4.equipSaddle(SoundSource.NEUTRAL);
-                       ^
-  required: ItemStack,SoundSource
-  found:    SoundSource
-  reason: actual and formal argument lists differ in length
-common/src/main/java/net/hydra/jojomod/entity/FakeExperienceOrb.java:123: error: getBlockPosBelowThatAffectsMyMovement() in FakeExperienceOrb cannot override getBlockPosBelowThatAffectsMyMovement() in Entity
-    protected BlockPos getBlockPosBelowThatAffectsMyMovement() {
-                       ^
-  attempting to assign weaker access privileges; was public
-common/src/main/java/net/hydra/jojomod/entity/FakeExperienceOrb.java:239: error: incompatible types: ResourceKey<Enchantment> cannot be converted to DataComponentType<?>
-        Map.Entry<EquipmentSlot, ItemStack> $$2 = EnchantmentHelper.getRandomItemWith(Enchantments.MENDING, $$0, ItemStack::isDamaged);
-                                                                                                  ^
-common/src/main/java/net/hydra/jojomod/entity/navigation/AvoidLightNodeEvaluator.java:12: error: method does not override or implement a method from a supertype
-    @Override
-    ^
-common/src/main/java/net/hydra/jojomod/entity/navigation/AvoidLightNodeEvaluator.java:27: error: cannot find symbol
-            return super.getBlockPathType(level, x, y, z);
-                        ^
-  symbol: method getBlockPathType(BlockGetter,int,int,int)
-common/src/main/java/net/hydra/jojomod/entity/navigation/AvoidLightNodeEvaluator.java:29: error: cannot find symbol
-        return super.getBlockPathType(level, x, y, z);
-                    ^
-  symbol: method getBlockPathType(BlockGetter,int,int,int)
-common/src/main/java/net/hydra/jojomod/entity/goals/MinionFollowCommanderGoal.java:172: error: cannot find symbol
-        PathType $$1 = WalkNodeEvaluator.getBlockPathTypeStatic(this.level, $$0.mutable());
-                                        ^
-  symbol:   method getBlockPathTypeStatic(LevelReader,MutableBlockPos)
-  location: class WalkNodeEvaluator
-common/src/main/java/net/hydra/jojomod/entity/goals/CorpseBuildBreakGoal.java:122: error: cannot find symbol
-        if(this.fallenMob.getMainHandItem().getEnchantmentTags().getAsString().indexOf(enchTags) == -1){
-                                           ^
-  symbol:   method getEnchantmentTags()
-  location: class ItemStack
-common/src/main/java/net/hydra/jojomod/entity/goals/CorpseBuildBreakGoal.java:125: error: cannot find symbol
-        int enchtagsInd = this.fallenMob.getMainHandItem().getEnchantmentTags().getAsString().indexOf(enchTags)+6+enchTags.length();
-                                                          ^
-  symbol:   method getEnchantmentTags()
-  location: class ItemStack
-common/src/main/java/net/hydra/jojomod/entity/goals/CorpseBuildBreakGoal.java:127: error: cannot find symbol
-        return Integer.valueOf(this.fallenMob.getMainHandItem().getEnchantmentTags().getAsString().charAt(enchtagsInd));
-                                                               ^
-  symbol:   method getEnchantmentTags()
-  location: class ItemStack
-common/src/main/java/net/hydra/jojomod/entity/goals/CorpseFollowCommanderGoal.java:138: error: cannot find symbol
-        PathType $$1 = WalkNodeEvaluator.getBlockPathTypeStatic(this.level, $$0.mutable());
-                                        ^
-  symbol:   method getBlockPathTypeStatic(LevelReader,MutableBlockPos)
-  location: class WalkNodeEvaluator
-common/src/main/java/net/hydra/jojomod/mixin/ZAbstractFish.java:23: error: cannot find symbol
-        CompoundTag $$1 = $$0.getOrCreateTag();
-                             ^
-  symbol:   method getOrCreateTag()
-  location: variable $$0 of type ItemStack
-common/src/main/java/net/hydra/jojomod/mixin/gravity/client/GravityClientPacketListener.java:129: error: no suitable constructor found for Explosion(ClientLevel,<null>,double,double,double,float,List<BlockPos>)
-        Explosion $$1 = new Explosion(this.minecraft.level, null, $$0.getX(), $$0.getY(), $$0.getZ(), $$0.getPower(), $$0.getToBlow());
-                        ^
-    constructor Explosion.Explosion(Level,Entity,double,double,double,float,List<BlockPos>,BlockInteraction,ParticleOptions,ParticleOptions,Holder<SoundEvent>) is not applicable
-      (actual and formal argument lists differ in length)
-    constructor Explosion.Explosion(Level,Entity,double,double,double,float,boolean,BlockInteraction,List<BlockPos>) is not applicable
-      (actual and formal argument lists differ in length)
-    constructor Explosion.Explosion(Level,Entity,double,double,double,float,boolean,BlockInteraction) is not applicable
-      (actual and formal argument lists differ in length)
-    constructor Explosion.Explosion(Level,Entity,DamageSource,ExplosionDamageCalculator,double,double,double,float,boolean,BlockInteraction,ParticleOptions,ParticleOptions,Holder<SoundEvent>) is not applicable
-      (actual and formal argument lists differ in length)
-common/src/main/java/net/hydra/jojomod/mixin/gravity/client/GravityClientPlayNetworkHandlerMixin.java:75: error: no suitable constructor found for Explosion(ClientLevel,<null>,double,double,double,float,List<BlockPos>)
-        Explosion $$1 = new Explosion(this.minecraft.level, null, $$0.getX(), $$0.getY(), $$0.getZ(), $$0.getPower(), $$0.getToBlow());
-                        ^
-    constructor Explosion.Explosion(Level,Entity,double,double,double,float,List<BlockPos>,BlockInteraction,ParticleOptions,ParticleOptions,Holder<SoundEvent>) is not applicable
-      (actual and formal argument lists differ in length)
-    constructor Explosion.Explosion(Level,Entity,double,double,double,float,boolean,BlockInteraction,List<BlockPos>) is not applicable
-      (actual and formal argument lists differ in length)
-    constructor Explosion.Explosion(Level,Entity,double,double,double,float,boolean,BlockInteraction) is not applicable
-      (actual and formal argument lists differ in length)
-    constructor Explosion.Explosion(Level,Entity,DamageSource,ExplosionDamageCalculator,double,double,double,float,boolean,BlockInteraction,ParticleOptions,ParticleOptions,Holder<SoundEvent>) is not applicable
-      (actual and formal argument lists differ in length)
-common/src/main/java/net/hydra/jojomod/mixin/gravity/GravityShulkerBoxBlockEntityMixin.java:41: error: method getProgressDeltaAabb in class Shulker cannot be applied to given types;
-            AABB $$4 = Shulker.getProgressDeltaAabb($$3, this.progressOld, this.progress).move($$1);
-                              ^
-  required: float,Direction,float,float
-  found:    Direction,float,float
-  reason: actual and formal argument lists differ in length
-common/src/main/java/net/hydra/jojomod/mixin/gravity/GravityServerGamePacketListenerImplMixin.java:253: error: cannot find symbol
-                                        .setOnGroundWithKnownMovement(
-                                        ^
-  symbol:   method setOnGroundWithKnownMovement(boolean,Vec3)
-  location: variable player of type ServerPlayer
-common/src/main/java/net/hydra/jojomod/mixin/gravity/GravityLivingEntityMixin.java:225: error: cannot find symbol
-                float $$7 = (float)EnchantmentHelper.getDepthStrider(rdbt$this());
-                                                    ^
-  symbol:   method getDepthStrider(LivingEntity)
-  location: class EnchantmentHelper
-common/src/main/java/net/hydra/jojomod/mixin/gravity/GravityLivingEntityMixin.java:716: error: incompatible types: bad type in conditional expression
-                                $$4 ? ParticleTypes.AMBIENT_ENTITY_EFFECT : ParticleTypes.ENTITY_EFFECT,
-                                                                                         ^
-    ParticleType<ColorParticleOption> cannot be converted to ParticleOptions
-common/src/main/java/net/hydra/jojomod/mixin/gravity/GravityLivingEntityMixin.java:716: error: cannot find symbol
-                                $$4 ? ParticleTypes.AMBIENT_ENTITY_EFFECT : ParticleTypes.ENTITY_EFFECT,
-                                                   ^
-  symbol:   variable AMBIENT_ENTITY_EFFECT
-  location: class ParticleTypes
-common/src/main/java/net/hydra/jojomod/mixin/gravity/GravityPiglinMixin.java:51: error: cannot find symbol
-        Vector3f vec3f = this.getProjectileShotVector(this, new Vec3(d, g, e), multishotSpray);
-                             ^
-  symbol: method getProjectileShotVector(GravityPiglinMixin,Vec3,float)
-common/src/main/java/net/hydra/jojomod/mixin/gravity/GravityMoveControlMixin.java:267: error: cannot find symbol
-                            && $$3.getBlockPathType(this.mob.level(),
-                                  ^
-  symbol:   method getBlockPathType(Level,int,int,int)
-  location: variable $$3 of type NodeEvaluator
-common/src/main/java/net/hydra/jojomod/mixin/gravity/GravityMoveControlMixin.java:278: error: cannot find symbol
-                            && $$3.getBlockPathType(this.mob.level(),
-                                  ^
-  symbol:   method getBlockPathType(Level,int,int,int)
-  location: variable $$3 of type NodeEvaluator
-common/src/main/java/net/hydra/jojomod/mixin/gravity/GravityMoveControlMixin.java:290: error: cannot find symbol
-                            && $$3.getBlockPathType(this.mob.level(),
-                                  ^
-  symbol:   method getBlockPathType(Level,int,int,int)
-  location: variable $$3 of type NodeEvaluator
-common/src/main/java/net/hydra/jojomod/mixin/gravity/GravityPillagerMixin.java:56: error: cannot find symbol
-        Vector3f vec3f = this.getProjectileShotVector(this, new Vec3(d, g, e), multishotSpray);
-                             ^
-  symbol: method getProjectileShotVector(GravityPillagerMixin,Vec3,float)
-common/src/main/java/net/hydra/jojomod/mixin/whitesnake/control/WhitesnakeSoundListenerMixin.java:38: error: cannot find symbol
-                executor.execute(() -> listener.setListenerPosition(position));
-                                               ^
-  symbol:   method setListenerPosition(Vec3)
-  location: variable listener of type Listener
-common/src/main/java/net/hydra/jojomod/mixin/ZAxolotl.java:25: error: cannot find symbol
-        CompoundTag $$1 = $$0.getOrCreateTag();
-                             ^
-  symbol:   method getOrCreateTag()
-  location: variable $$0 of type ItemStack
-common/src/main/java/net/hydra/jojomod/mixin/justice/JusticeFogRenderer.java:161: error: cannot find symbol
-                            if (!mi.getFactorData().isEmpty()) {
-                                   ^
-  symbol:   method getFactorData()
-  location: variable mi of type MobEffectInstance
-common/src/main/java/net/hydra/jojomod/mixin/justice/JusticeFogRenderer.java:162: error: cannot find symbol
-                                float joever = Mth.lerp(mi.getFactorData().get().getFactor($$9, $$4), $$2, 15.0F);
-                                                          ^
-  symbol:   method getFactorData()
-  location: variable mi of type MobEffectInstance
-common/src/main/java/net/hydra/jojomod/mixin/stand_users/LoweringItemInHandRenderer.java:42: error: cannot find symbol
-                    if ((itemStack3.getItem() instanceof Vanishable) && !(itemStack3.getItem() instanceof CrossbowItem)
-                                                         ^
-  symbol:   class Vanishable
-  location: class LoweringItemInHandRenderer
-common/src/main/java/net/hydra/jojomod/mixin/achtung/AchtungItemRenderer.java:232: error: no suitable method found for addVertex(float,float,float,float,float,float,float,float,float,int,int,float,float,float)
-                vc.addVertex($$36.x(), $$36.y(), $$36.z(), $$27, $$28, $$29, ClientUtil.getThrowFadeToTheEther(), $$34, $$35, $$7, $$33, $$14.x(), $$14.y(), $$14.z());
-                  ^
-    method VertexConsumer.addVertex(float,float,float) is not applicable
-      (actual and formal argument lists differ in length)
-    method VertexConsumer.addVertex(float,float,float,int,float,float,int,int,float,float,float) is not applicable
-      (actual and formal argument lists differ in length)
-    method VertexConsumer.addVertex(Vector3f) is not applicable
-      (actual and formal argument lists differ in length)
-    method VertexConsumer.addVertex(Pose,Vector3f) is not applicable
-      (actual and formal argument lists differ in length)
-    method VertexConsumer.addVertex(Pose,float,float,float) is not applicable
-      (actual and formal argument lists differ in length)
-    method VertexConsumer.addVertex(Matrix4f,float,float,float) is not applicable
-      (actual and formal argument lists differ in length)
-common/src/main/java/net/hydra/jojomod/stand/powers/PowersCalifornia.java:1127: error: method getExperienceReward in class LivingEntity cannot be applied to given types;
-                if (!((StandUser)LE).rdbt$getExperienceTaken() && LE.getExperienceReward() > 0) {
-                                                                    ^
-  required: ServerLevel,Entity
-  found:    no arguments
-  reason: actual and formal argument lists differ in length
-common/src/main/java/net/hydra/jojomod/item/MemoryChessPieceItem.java:258: error: method getExperienceReward in class LivingEntity cannot be applied to given types;
-                    tag.putInt("experience",livingEntity.getExperienceReward());
-                                                        ^
-  required: ServerLevel,Entity
-  found:    no arguments
-  reason: actual and formal argument lists differ in length
+# Java compilation: SUCCESS, 0 errors, 18 warnings.
+# Full build: SUCCESS. This does not establish runtime compatibility.
+
+> Task :compileJava
 forge/src/main/java/net/hydra/jojomod/DataGenerators.java:19: warning: [removal] bus() in EventBusSubscriber has been deprecated and marked for removal
 @EventBusSubscriber(modid = Roundabout.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
                                                ^
 forge/src/main/java/net/hydra/jojomod/DataGenerators.java:19: warning: [removal] Bus in EventBusSubscriber has been deprecated and marked for removal
 @EventBusSubscriber(modid = Roundabout.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
                                                                        ^
-forge/src/main/java/net/hydra/jojomod/mixin/forge/ForgeServerPlayer.java:52: error: incompatible types: UUID cannot be converted to Entity
-                        $$4.setThrower(stand.getUUID());
-                                                    ^
-forge/src/main/java/net/hydra/jojomod/mixin/forge/ForgeCoffinSleepAtDayMixin.java:29: error: cannot find symbol
-                SleepingTimeCheckEvent evt = new SleepingTimeCheckEvent(player, sleepingLocation);
-                ^
-  symbol:   class SleepingTimeCheckEvent
-  location: class ForgeCoffinSleepAtDayMixin
-forge/src/main/java/net/hydra/jojomod/mixin/forge/ForgeCoffinSleepAtDayMixin.java:29: error: cannot find symbol
-                SleepingTimeCheckEvent evt = new SleepingTimeCheckEvent(player, sleepingLocation);
-                                                 ^
-  symbol:   class SleepingTimeCheckEvent
-  location: class ForgeCoffinSleepAtDayMixin
-forge/src/main/java/net/hydra/jojomod/mixin/forge/ForgeCoffinSleepAtDayMixin.java:32: error: cannot find symbol
-                Event.Result canContinueSleep = evt.getResult();
-                     ^
-  symbol:   class Result
-  location: class Event
-forge/src/main/java/net/hydra/jojomod/mixin/forge/DimensionResourceKeyD4CForge.java:88: error: cannot find symbol
-                s = String.format(Locale.ROOT, "Integrated server @ %.0f ms ticks, %.0f tx, %.0f rx", integratedserver.getAverageTickTime(), f, f1);
-                                                                                                                      ^
-  symbol:   method getAverageTickTime()
-  location: variable integratedserver of type IntegratedServer
-forge/src/main/java/net/hydra/jojomod/mixin/forge/DimensionResourceKeyD4CForge.java:90: error: cannot find symbol
-                s = String.format(Locale.ROOT, "\"%s\" server, %.0f tx, %.0f rx", this.minecraft.player.getServerBrand(), f, f1);
-                                                                                                       ^
-  symbol:   method getServerBrand()
-  location: variable player of type LocalPlayer
-forge/src/main/java/net/hydra/jojomod/mixin/forge/DimensionResourceKeyD4CForge.java:95: error: cannot find symbol
-                cir.setReturnValue(Lists.newArrayList("Minecraft " + SharedConstants.getCurrentVersion().getName() + " (" + this.minecraft.getLaunchedVersion() + "/" + ClientBrandRetriever.getClientModName() + ")", this.minecraft.fpsString, s, this.minecraft.levelRenderer.getChunkStatistics(), this.minecraft.levelRenderer.getEntityStatistics(), "P: " + this.minecraft.particleEngine.countParticles() + ". T: " + this.minecraft.level.getEntityCount(), this.minecraft.level.gatherChunkSourceStats(), "", String.format(Locale.ROOT, "Chunk-relative: %d %d %d", blockpos.getX() & 15, blockpos.getY() & 15, blockpos.getZ() & 15)));
-                                                                                                                                                                                                                                                                                ^
-  symbol:   method getChunkStatistics()
-  location: variable levelRenderer of type LevelRenderer
-forge/src/main/java/net/hydra/jojomod/mixin/forge/DimensionResourceKeyD4CForge.java:125: error: cannot find symbol
-                List<String> list = Lists.newArrayList("Minecraft " + SharedConstants.getCurrentVersion().getName() + " (" + this.minecraft.getLaunchedVersion() + "/" + ClientBrandRetriever.getClientModName() + ("release".equalsIgnoreCase(this.minecraft.getVersionType()) ? "" : "/" + this.minecraft.getVersionType()) + ")", this.minecraft.fpsString, s, this.minecraft.levelRenderer.getChunkStatistics(), this.minecraft.levelRenderer.getEntityStatistics(), "P: " + this.minecraft.particleEngine.countParticles() + ". T: " + this.minecraft.level.getEntityCount(), this.minecraft.level.gatherChunkSourceStats());
-                                                                                                                                                                                                                                                                                                                                                                                              ^
-  symbol:   method getChunkStatistics()
-  location: variable levelRenderer of type LevelRenderer
 forge/src/main/java/net/hydra/jojomod/registry/ForgeCreativeTab.java:24: warning: [removal] bus() in EventBusSubscriber has been deprecated and marked for removal
 @EventBusSubscriber(modid = Roundabout.MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
                                                ^
 forge/src/main/java/net/hydra/jojomod/registry/ForgeCreativeTab.java:24: warning: [removal] Bus in EventBusSubscriber has been deprecated and marked for removal
 @EventBusSubscriber(modid = Roundabout.MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
                                                                        ^
-forge/src/main/java/net/hydra/jojomod/registry/ForgeCreativeTab.java:115: error: cannot find symbol
-            event.getEntries().putAfter(Items.CUT_COPPER_SLAB.getDefaultInstance(), ForgeItems.METEOR_BLOCK_ITEM.get().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-                 ^
-  symbol:   method getEntries()
-  location: variable event of type BuildCreativeModeTabContentsEvent
 forge/src/main/java/net/hydra/jojomod/registry/ForgeItems.java:251: warning: [removal] initializeClient(Consumer<IClientItemExtensions>) in Item has been deprecated and marked for removal
                 public void initializeClient(Consumer<IClientItemExtensions> consumer) {
                             ^
@@ -411,6 +60,26 @@ Note: Some input files use or override a deprecated API.
 Note: Recompile with -Xlint:deprecation for details.
 Note: Some input files use unchecked or unsafe operations.
 Note: Recompile with -Xlint:unchecked for details.
-Note: Some messages have been simplified; recompile with -Xdiags:verbose to get full output
-71 errors
 18 warnings
+
+
+# Successful packaging after excluding the obsolete SRG AT from sourcesJar:
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.14.3/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build
+> Task :createMinecraftArtifacts UP-TO-DATE
+> Task :compileJava UP-TO-DATE
+> Task :processResources
+> Task :classes
+> Task :jarJar NO-SOURCE
+> Task :jar UP-TO-DATE
+> Task :sourcesJar
+> Task :assemble
+> Task :compileTestJava NO-SOURCE
+> Task :processTestResources NO-SOURCE
+> Task :testClasses UP-TO-DATE
+> Task :test NO-SOURCE
+> Task :check UP-TO-DATE
+> Task :build
+
+BUILD SUCCESSFUL in 12s
+5 actionable tasks: 2 executed, 3 up-to-date

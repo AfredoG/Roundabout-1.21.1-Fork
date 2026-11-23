@@ -52,4 +52,18 @@ public abstract class GravityCrossbowItemMixin {
             rocket.setPos(origin.x, origin.y, origin.z);
         }
     }
+    // Apply the target's gravity before native multishot rotation, velocity and sound handling.
+    @org.spongepowered.asm.mixin.injection.ModifyArgs(method = "shootProjectile", at = @At(value = "INVOKE",
+            target = "Lnet/minecraft/world/item/CrossbowItem;getProjectileShotVector(Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/phys/Vec3;F)Lorg/joml/Vector3f;"))
+    private void roundabout$aimAtRotatedTarget(org.spongepowered.asm.mixin.injection.invoke.arg.Args args,
+            LivingEntity shooter, Projectile projectile, int index, float speed, float inaccuracy, float angle, LivingEntity target) {
+        Direction gravity = GravityAPI.getGravityDirection(target);
+        if (gravity != Direction.DOWN) {
+            Vec3 aim = target.position().add(RotationUtil.vecPlayerToWorld(0.0, target.getBbHeight() / 3.0, 0.0, gravity));
+            double x = aim.x - shooter.getX();
+            double z = aim.z - shooter.getZ();
+            double y = aim.y - projectile.getY() + Math.sqrt(x * x + z * z) * 0.2F;
+            args.set(1, new Vec3(x, y, z));
+        }
+    }
 }

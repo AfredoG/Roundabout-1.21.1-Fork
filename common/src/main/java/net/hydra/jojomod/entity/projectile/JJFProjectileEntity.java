@@ -112,11 +112,11 @@ public class JJFProjectileEntity extends ThrowableItemProjectile {
 
 
     @Override
-    public boolean ignoreExplosion() {
+    public boolean ignoreExplosion(net.minecraft.world.level.Explosion explosion) {
         if (isTnt()) {
             return true;
         }
-        return super.ignoreExplosion();
+        return super.ignoreExplosion(explosion);
     }
 
     @Override
@@ -1288,7 +1288,7 @@ public class JJFProjectileEntity extends ThrowableItemProjectile {
         cloud.setDuration(160);
         cloud.setWaitTime(0);
         cloud.setRadiusPerTick(-3.0F / 160.0F);
-        cloud.setParticle(ParticleTypes.ENTITY_EFFECT);
+        // AreaEffectCloud updates its default ENTITY_EFFECT particle from the potion contents.
 
         for (MobEffectInstance effect : PotionData.getMobEffects(getItem())) {
             int duration = Math.max(20, effect.getDuration() / 4);

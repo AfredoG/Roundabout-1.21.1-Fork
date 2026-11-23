@@ -944,7 +944,7 @@ public class SheerHeartAttackEntity extends StandEntity {
 				newPath = this.getNavigation().createPath(getEntityTarget(), 0);
 			}else if (this.getTargetType() == BLOCK) {
 				BlockState BS = this.level().getBlockState(this.blockTarget);
-				if (BS.isPathfindable(this.level(), this.blockTarget, PathComputationType.LAND)) {
+				if (BS.isPathfindable(PathComputationType.LAND)) {
 					newPath = this.getNavigation().createPath(this.blockTarget.below(), 0);
 				}else {
 					newPath = this.getNavigation().createPath(this.blockTarget, 0);
@@ -1234,7 +1234,7 @@ public class SheerHeartAttackEntity extends StandEntity {
 		return false;
 	}
 
-	@Override public boolean canBeLeashed(Player p_21418_) { return false;}
+	@Override public boolean canBeLeashed() { return false;}
 	@Override public boolean isPickable() { return true;}
 	@Override public boolean isPushedByFluid() { return true;}
 	@Override public boolean hasNoPhysics() { return false;}

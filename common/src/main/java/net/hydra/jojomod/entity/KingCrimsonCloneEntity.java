@@ -317,7 +317,7 @@ public class KingCrimsonCloneEntity extends CloneEntity {
     }
 
     @Override
-    protected void jumpFromGround() {
+    public void jumpFromGround() {
         Vec3 $$0 = this.getDeltaMovement();
         this.setDeltaMovement($$0.x, (double)this.getJumpPower(), $$0.z);
         if (this.isSprinting()) {

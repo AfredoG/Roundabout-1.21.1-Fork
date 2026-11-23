@@ -236,6 +236,12 @@ public class Snake extends Animal {
     }
 
     @Override
+    public boolean isFood(net.minecraft.world.item.ItemStack stack) {
+        // Retain the default food check inherited from Animal before 1.21.
+        return stack.is(net.minecraft.world.item.Items.WHEAT);
+    }
+
+    @Override
     public @Nullable AgeableMob getBreedOffspring(ServerLevel serverLevel, AgeableMob ageableMob) {
         return null;
     }

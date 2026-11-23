@@ -111,27 +111,13 @@ public abstract class GravityClientPacketListener {
             }
         }
     }
-    @Inject(
-            method = "handleExplosion",
-            at = @At(
-                    value = "HEAD"
-            ),
-            cancellable = true)
-    private void wrapOperation_onExplosion_add_0(ClientboundExplodePacket $$0, CallbackInfo ci) {
-        PacketUtils.ensureRunningOnSameThread($$0, (ClientPacketListener)(Object)this, this.minecraft);
-        Player playerEntity = this.minecraft.player;
-        Direction gravityDirection = GravityAPI.getGravityDirection(playerEntity);
-        if (gravityDirection == Direction.DOWN)
-            return;
-
-        ci.cancel();
-        Vec3 player = RotationUtil.vecWorldToPlayer((double)$$0.getKnockbackX(), (double)$$0.getKnockbackY(), (double)$$0.getKnockbackZ(), gravityDirection);
-        Explosion $$1 = new Explosion(this.minecraft.level, null, $$0.getX(), $$0.getY(), $$0.getZ(), $$0.getPower(), $$0.getToBlow());
-        $$1.finalizeExplosion(true);
-        this.minecraft
-                .player
-                .setDeltaMovement(
-                        this.minecraft.player.getDeltaMovement().add(player.x,player.y,player.z)
-                );
+    @org.spongepowered.asm.mixin.injection.ModifyArgs(method = "handleExplosion", at = @At(value = "INVOKE",
+            target = "Lnet/minecraft/world/phys/Vec3;add(DDD)Lnet/minecraft/world/phys/Vec3;"))
+    private void roundabout$rotateExplosionKnockback(org.spongepowered.asm.mixin.injection.invoke.arg.Args args) {
+        Direction gravity = GravityAPI.getGravityDirection(this.minecraft.player);
+        if (gravity != Direction.DOWN) {
+            Vec3 knockback = RotationUtil.vecWorldToPlayer((double)args.get(0), (double)args.get(1), (double)args.get(2), gravity);
+            args.setAll(knockback.x, knockback.y, knockback.z);
+        }
     }
 }

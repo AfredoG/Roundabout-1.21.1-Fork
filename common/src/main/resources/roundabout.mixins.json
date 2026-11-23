@@ -158,8 +158,6 @@
     "gravity.GravityMoveControlMixin",
     "gravity.GravityPathMixin",
     "gravity.GravityPathNavigationMixin",
-    "gravity.GravityPiglinMixin",
-    "gravity.GravityPillagerMixin",
     "gravity.GravityPistonMovingBlockEntityMixin",
     "gravity.GravityPlayerListMixin",
     "gravity.GravityPlayerMixin",

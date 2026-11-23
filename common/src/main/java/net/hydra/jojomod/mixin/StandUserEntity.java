@@ -749,12 +749,16 @@ public abstract class StandUserEntity extends Entity implements StandUser {
     /**
      * Tick thru effects for bleed to not show potion swirls
      */
-    @Inject(method = "tickEffects", at = @At(value = "INVOKE", target = "Lnet/minecraft/network/syncher/SynchedEntityData;get(Lnet/minecraft/network/syncher/EntityDataAccessor;)Ljava/lang/Object;", shift = At.Shift.AFTER, ordinal = 0), cancellable = true, require = 0)
+    @Inject(method = "tickEffects", at = @At(value = "FIELD",
+            target = "Lnet/minecraft/world/entity/LivingEntity;DATA_EFFECT_PARTICLES:Lnet/minecraft/network/syncher/EntityDataAccessor;"), cancellable = true)
     public void roundabout$tickEffects(CallbackInfo ci) {
-
-        if (rdbt$tickEffectsBleedEdition(false)) {
+        // Effects still expire through vanilla/NeoForge; only their visible particles are suppressed.
+        boolean hidden = PowerTypes.isExistentiallyElsewhere(this)
+                && !(level().isClientSide() && !PowerTypes.isInADifferentExistence(this, ClientUtil.getPlayer()));
+        boolean rotated = ((IGravityEntity)this).roundabout$getGravityDirection() != Direction.DOWN;
+        if (hidden || rdbt$tickEffectsBleedEdition(rotated)) {
             ci.cancel();
-            ((StandUser) rdbt$this()).rdbt$setRemoveLoveSafety(true);
+            rdbt$setRemoveLoveSafety(true);
         }
     }
 
@@ -832,40 +836,8 @@ public abstract class StandUserEntity extends Entity implements StandUser {
         }
     }
 
-    @Inject(method = "tickEffects", at = @At(value = "HEAD"), cancellable = true, require = 0)
+    @Inject(method = "tickEffects", at = @At("HEAD"))
     public void roundabout$tickEffectsPre(CallbackInfo ci) {
-        if (PowerTypes.isExistentiallyElsewhere(this) &&
-                !(level().isClientSide() && !PowerTypes.isInADifferentExistence(this,
-                        ClientUtil.getPlayer()))) {
-            // tick effects down but don't spawn particles
-            try {
-                Iterator<net.minecraft.core.Holder<MobEffect>> $$0 = this.activeEffects.keySet().iterator();
-                while ($$0.hasNext()) {
-                    net.minecraft.core.Holder<MobEffect> $$1 = $$0.next();
-                    MobEffectInstance $$2 = this.activeEffects.get($$1);
-                    if (!$$2.tick(rdbt$this(), () -> this.onEffectUpdated($$2, true, null))) {
-                        if (!this.level().isClientSide) {
-                            $$0.remove();
-                            this.onEffectRemoved($$2);
-                        }
-                    } else if ($$2.getDuration() % 600 == 0) {
-                        this.onEffectUpdated($$2, false, null);
-                    }
-                }
-            } catch (ConcurrentModificationException var11) {
-            }
-
-            if (this.effectsDirty) {
-                if (!this.level().isClientSide) {
-                    this.updateInvisibilityStatus();
-                    this.updateGlowingStatus();
-                }
-
-                this.effectsDirty = false;
-            }
-            ci.cancel();
-            return;
-        }
         if (!this.level().isClientSide) {
             rdbt$setRemoveLoveSafety(false);
         }

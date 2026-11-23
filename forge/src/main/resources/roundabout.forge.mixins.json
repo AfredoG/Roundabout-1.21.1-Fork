@@ -6,7 +6,6 @@
   "mixins": [
     "ExperimentalFixD4CForge",
     "FixForgeBreakingWardenShieldBreak",
-    "ForgeCoffinSleepAtDayMixin",
     "ForgeEatingMixin",
     "ForgeLootTableMixin",
     "ForgeMilkBucketMixin",

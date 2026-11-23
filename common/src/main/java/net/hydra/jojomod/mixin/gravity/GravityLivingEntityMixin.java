@@ -30,7 +30,7 @@ import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.animal.FlyingAnimal;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.SoundType;
@@ -110,22 +110,6 @@ public abstract class GravityLivingEntityMixin extends Entity implements IGravit
     @Shadow public abstract void knockback(double d, double e, double f);
 
     @Shadow public abstract boolean isBlocking();
-
-    @Shadow @Final private Map<net.minecraft.core.Holder<MobEffect>, MobEffectInstance> activeEffects;
-
-    @Shadow protected abstract void onEffectUpdated(MobEffectInstance mobEffectInstance, boolean bl, @Nullable Entity entity);
-
-    @Shadow protected abstract void onEffectRemoved(MobEffectInstance mobEffectInstance);
-
-    @Shadow private boolean effectsDirty;
-
-    @Shadow protected abstract void updateInvisibilityStatus();
-
-    @Shadow protected abstract void updateGlowingStatus();
-
-    @Shadow @Final private static EntityDataAccessor<Integer> DATA_EFFECT_COLOR_ID;
-
-    @Shadow @Final private static EntityDataAccessor<Boolean> DATA_EFFECT_AMBIENCE_ID;
 
     @Shadow protected abstract void updateWalkAnimation(float f);
 
@@ -222,18 +206,15 @@ public abstract class GravityLivingEntityMixin extends Entity implements IGravit
                 double $$4 = rdbt$assertDazed(RotationUtil.vecWorldToPlayer(position(), gravityDirection).y);
                 float $$5 = this.isSprinting() ? 0.9F : this.getWaterSlowDown();
                 float $$6 = 0.02F;
-                float $$7 = (float)EnchantmentHelper.getDepthStrider(rdbt$this());
-                if ($$7 > 3.0F) {
-                    $$7 = 3.0F;
-                }
+                float $$7 = (float)rdbt$this().getAttributeValue(Attributes.WATER_MOVEMENT_EFFICIENCY);
 
                 if (!this.onGround()) {
                     $$7 *= 0.5F;
                 }
 
                 if ($$7 > 0.0F) {
-                    $$5 += (0.54600006F - $$5) * $$7 / 3.0F;
-                    $$6 += (this.getSpeed() - $$6) * $$7 / 3.0F;
+                    $$5 += (0.54600006F - $$5) * $$7;
+                    $$6 += (this.getSpeed() - $$6) * $$7;
                 }
 
                 if (this.hasEffect(MobEffects.DOLPHINS_GRACE)) {
@@ -612,118 +593,19 @@ public abstract class GravityLivingEntityMixin extends Entity implements IGravit
     }
 
 
-    @Inject(
-            method = "tickEffects",
-            at = @At(
-                    value = "HEAD"
-            ),
-            cancellable = true, require = 0
-    )
-    private void roundabout$tickEffects(CallbackInfo ci) {
-        Entity ent = ((Entity) (Object) this);
-        Direction gravityDirection = GravityAPI.getGravityDirection(ent);
-        if (gravityDirection == Direction.DOWN) return;
-        ci.cancel();
-        if (PowerTypes.isExistentiallyElsewhere(ent) &&
-                !(level().isClientSide() && !PowerTypes.isInADifferentExistence(ent,
-                        ClientUtil.getPlayer()))){
-            // tick effects down but don't spawn particles
-            try {
-                Iterator<net.minecraft.core.Holder<MobEffect>> $$0 = this.activeEffects.keySet().iterator();
-                while ($$0.hasNext()) {
-                    net.minecraft.core.Holder<MobEffect> $$1 = $$0.next();
-                    MobEffectInstance $$2 = this.activeEffects.get($$1);
-                    if (!$$2.tick(rdbt$this(), () -> this.onEffectUpdated($$2, true, null))) {
-                        if (!this.level().isClientSide) {
-                            $$0.remove();
-                            this.onEffectRemoved($$2);
-                        }
-                    } else if ($$2.getDuration() % 600 == 0) {
-                        this.onEffectUpdated($$2, false, null);
-                    }
-                }
-            } catch (ConcurrentModificationException var11) {
-            }
-
-            if (this.effectsDirty) {
-                if (!this.level().isClientSide) {
-                    this.updateInvisibilityStatus();
-                    this.updateGlowingStatus();
-                }
-
-                this.effectsDirty = false;
-            }
-            ci.cancel();
-            return;
+    // Native effect ticking preserves expiration events and the synchronized particle list.
+    @ModifyArgs(method = "tickEffects", at = @At(value = "INVOKE",
+            target = "Lnet/minecraft/world/level/Level;addParticle(Lnet/minecraft/core/particles/ParticleOptions;DDDDDD)V"))
+    private void roundabout$rotateEffectParticles(org.spongepowered.asm.mixin.injection.invoke.arg.Args args) {
+        Direction gravity = GravityAPI.getGravityDirection(this);
+        if (gravity != Direction.DOWN) {
+            Vec3 offset = new Vec3((double)args.get(1), (double)args.get(2), (double)args.get(3)).subtract(this.position());
+            Vec3 position = this.position().add(RotationUtil.vecPlayerToWorld(offset, gravity));
+            args.set(1, position.x);
+            args.set(2, position.y);
+            args.set(3, position.z);
         }
-        ((StandUser)rdbt$this()).rdbt$setRemoveLoveSafety(false);
-        Iterator<net.minecraft.core.Holder<MobEffect>> $$0 = this.activeEffects.keySet().iterator();
-
-        try {
-            while ($$0.hasNext()) {
-                net.minecraft.core.Holder<MobEffect> $$1 = $$0.next();
-                MobEffectInstance $$2 = this.activeEffects.get($$1);
-                if (!$$2.tick(rdbt$this(), () -> this.onEffectUpdated($$2, true, null))) {
-                    if (!this.level().isClientSide) {
-                        $$0.remove();
-                        this.onEffectRemoved($$2);
-                    }
-                } else if ($$2.getDuration() % 600 == 0) {
-                    this.onEffectUpdated($$2, false, null);
-                }
-            }
-        } catch (ConcurrentModificationException var11) {
-        }
-
-        if (this.effectsDirty) {
-            if (!this.level().isClientSide) {
-                this.updateInvisibilityStatus();
-                this.updateGlowingStatus();
-            }
-
-            this.effectsDirty = false;
-        }
-
-        int $$3 = this.entityData.get(DATA_EFFECT_COLOR_ID);
-
-        if (((StandUser)rdbt$this()).rdbt$tickEffectsBleedEdition(true)){
-            ((StandUser)rdbt$this()).rdbt$setRemoveLoveSafety(true);
-            return;
-        }
-
-        boolean $$4 = this.entityData.get(DATA_EFFECT_AMBIENCE_ID);
-        if ($$3 > 0) {
-            boolean $$5;
-            if (this.isInvisible()) {
-                $$5 = this.random.nextInt(15) == 0;
-            } else {
-                $$5 = this.random.nextBoolean();
-            }
-
-            if ($$4) {
-                $$5 &= this.random.nextInt(5) == 0;
-            }
-
-            if ($$5 && $$3 > 0) {
-                double $$7 = (double)($$3 >> 16 & 0xFF) / 255.0;
-                double $$8 = (double)($$3 >> 8 & 0xFF) / 255.0;
-                double $$9 = (double)($$3 >> 0 & 0xFF) / 255.0;
-                Vec3 vec3d = this.position().subtract(RotationUtil.vecPlayerToWorld(this.position().subtract(this.getRandomX(0.5),
-                        this.getRandomY(),
-                        this.getRandomZ(0.5)), gravityDirection));
-                this.level()
-                        .addParticle(
-                                $$4 ? ParticleTypes.AMBIENT_ENTITY_EFFECT : ParticleTypes.ENTITY_EFFECT,
-                                vec3d.x,vec3d.y,vec3d.z,
-                                $$7,
-                                $$8,
-                                $$9
-                        );
-            }
-        }
-        ((StandUser)rdbt$this()).rdbt$setRemoveLoveSafety(true);
     }
-
 
     @Inject(
             method = "makePoofParticles",

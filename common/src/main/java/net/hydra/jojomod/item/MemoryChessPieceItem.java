@@ -255,7 +255,9 @@ public class MemoryChessPieceItem extends BlockItem {
                 tag.putLong("Pos", victim.getOnPos().above().asLong());
                 tag.putString("Dimension", victim.level().dimension().location().toString());
             } else if (stealType == 10) {
-                    tag.putInt("experience",livingEntity.getExperienceReward());
+                    if (livingEntity.level() instanceof ServerLevel serverLevel) {
+                        tag.putInt("experience", livingEntity.getExperienceReward(serverLevel, null));
+                    }
                 } else if (stealType == 11 && victim instanceof Villager vg){
                     GossipContainer gossips = vg.getGossips();
                     Tag gossipTag = gossips.store(NbtOps.INSTANCE);

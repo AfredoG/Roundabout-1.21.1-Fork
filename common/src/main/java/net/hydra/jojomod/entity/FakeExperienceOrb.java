@@ -120,7 +120,7 @@ public class FakeExperienceOrb  extends Entity {
     }
 
     @Override
-    protected BlockPos getBlockPosBelowThatAffectsMyMovement() {
+    public BlockPos getBlockPosBelowThatAffectsMyMovement() {
         return this.getOnPos(0.999999F);
     }
 
@@ -218,11 +218,11 @@ public class FakeExperienceOrb  extends Entity {
 
     @Override
     public void playerTouch(Player $$0) {
-        if (!this.level().isClientSide) {
+        if ($$0 instanceof net.minecraft.server.level.ServerPlayer serverPlayer) {
             if ($$0.takeXpDelay == 0) {
                 $$0.takeXpDelay = 2;
                 $$0.take(this, 1);
-                int $$1 = this.repairPlayerItems($$0, this.value);
+                int $$1 = this.repairPlayerItems(serverPlayer, this.value);
                 if ($$1 > 0) {
                     $$0.giveExperiencePoints($$1);
                 }
@@ -235,17 +235,20 @@ public class FakeExperienceOrb  extends Entity {
         }
     }
 
-    private int repairPlayerItems(Player $$0, int $$1) {
-        Map.Entry<EquipmentSlot, ItemStack> $$2 = EnchantmentHelper.getRandomItemWith(Enchantments.MENDING, $$0, ItemStack::isDamaged);
-        if ($$2 != null) {
-            ItemStack $$3 = $$2.getValue();
-            int $$4 = Math.min(this.xpToDurability(this.value), $$3.getDamageValue());
-            $$3.setDamageValue($$3.getDamageValue() - $$4);
-            int $$5 = $$1 - this.durabilityToXp($$4);
-            return $$5 > 0 ? this.repairPlayerItems($$0, $$5) : 0;
-        } else {
-            return $$1;
+    private int repairPlayerItems(net.minecraft.server.level.ServerPlayer player, int experience) {
+        var enchanted = EnchantmentHelper.getRandomItemWith(
+                net.minecraft.world.item.enchantment.EnchantmentEffectComponents.REPAIR_WITH_XP, player, ItemStack::isDamaged);
+        if (enchanted.isEmpty()) return experience;
+        ItemStack item = enchanted.get().itemStack();
+        int repairBudget = EnchantmentHelper.modifyDurabilityToRepairFromXp(
+                player.serverLevel(), item, (int) (experience * item.getXpRepairRatio()));
+        int repaired = Math.min(repairBudget, item.getDamageValue());
+        item.setDamageValue(item.getDamageValue() - repaired);
+        if (repaired > 0) {
+            int remaining = experience - repaired * experience / repairBudget;
+            if (remaining > 0) return repairPlayerItems(player, remaining);
         }
+        return 0;
     }
 
     private int durabilityToXp(int $$0) {

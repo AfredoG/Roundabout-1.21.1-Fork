@@ -5,7 +5,7 @@ Imported on 2026-11-13 into AfredoG/Roundabout-1.21.1-Fork, branch `port/neoforg
 ## Status
 
 This is an INCOMPLETE development port: Minecraft 1.21.1, NeoForge 21.1.265, Java 21, Gradle 8.14.3.
-Last executed full compilation after subsequent port fixes: 71 Java errors and 18 warnings. The authentic full log is saved in build-errors.txt. No playable JAR; client and dedicated server have not been validated.
+Latest compilation: 0 Java errors and 18 warnings; full build succeeds and produces development and sources JARs. The compile/build output is in build-errors.txt. The first dedicated-server launch fails during Mixin application (CenturyBoyPotion / MobEffect.isDurationEffectTick); see server-startup.log. No playable release; the client has not been launched.
 See BUILD_STATUS.md and build-errors.txt for diagnostics and remaining work.
 This import changes no mod source code and does not constitute a new build test.
 
@@ -45,7 +45,7 @@ git remote add upstream https://github.com/Hydraheads/RoundaboutMod.git
 Read port/BUILD_STATUS.md, port/build-errors.txt, and the existing port documentation before editing.
 Follow existing port/update_upstream.py workflow for upstream updates; retain upstream history.
 Use Java 21 and the standalone neoforge Gradle project. Restore dependencies when needed.
-Next work: navigation/AI changes, remaining explosion/rendering APIs, item interactions and NeoForge events. Entity riding/attachments, nameplates, painting bounding boxes and spawn packets have now been ported. Registry-aware persistence, inventory slots, protection data, item custom data and combat holders have received port batches; consult the final BUILD_STATUS.md checkpoints before revisiting them.
+Next work: runtime Mixin migration, starting with CenturyBoyPotion and other removed MobEffect hooks. Continue client/server startup validation and then in-game tests. Entity attachments, persistence, navigation, explosion/crossbow gravity hooks and NeoForge sleep events have now received port batches; consult the final BUILD_STATUS.md checkpoints.
 Do not exclude failing classes or disable required mixins to manufacture a successful build.
 
 Save small coherent checkpoints frequently to this remote port branch, including current diagnostics and next steps.
@@ -53,3 +53,5 @@ Verify the remote branch head after each save; a local commit alone is not a dur
 If using the GitHub connector, use expected_sha when updating the branch and verify the created tree.
 If using Git, fetch the remote history before continuing. Do not push the old archive history over the imported branch.
 Do not force-push master or apply the cumulative legacy patch to this already-patched branch.
+
+Remote publication after e3577dc7a843b0edc18b731537977a7924029510 is pending: automatic review rejected the new tree twice and requires explicit confirmation of the public repository/branch and payload. Do not bypass that rejection with another transport.

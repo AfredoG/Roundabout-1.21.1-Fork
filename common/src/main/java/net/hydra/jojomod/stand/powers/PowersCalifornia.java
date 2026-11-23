@@ -1124,7 +1124,8 @@ public class PowersCalifornia extends NewDashPreset {
                 if (LE instanceof Player pl){
                     return 13;
                 }
-                if (!((StandUser)LE).rdbt$getExperienceTaken() && LE.getExperienceReward() > 0) {
+                if (!((StandUser)LE).rdbt$getExperienceTaken() && LE.level() instanceof ServerLevel serverLevel
+                        && LE.getExperienceReward(serverLevel, null) > 0) {
                     ((StandUser)LE).rdbt$setExperienceTaken(true);
                     return 10;
                 }

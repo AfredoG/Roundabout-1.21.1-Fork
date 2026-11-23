@@ -38,7 +38,7 @@ public abstract class GravityShulkerBoxBlockEntityMixin {
         ci.cancel();
         if ($$2.getBlock() instanceof ShulkerBoxBlock) {
             Direction $$3 = $$2.getValue(ShulkerBoxBlock.FACING);
-            AABB $$4 = Shulker.getProgressDeltaAabb($$3, this.progressOld, this.progress).move($$1);
+            AABB $$4 = Shulker.getProgressDeltaAabb(1.0F, $$3, this.progressOld, this.progress).move($$1);
             List<Entity> $$5 = $$0.getEntities(null, $$4);
             if (!$$5.isEmpty()) {
                 for (int $$6 = 0; $$6 < $$5.size(); $$6++) {

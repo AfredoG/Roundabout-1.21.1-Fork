@@ -112,7 +112,7 @@ public class ForgeCreativeTab {
     @SubscribeEvent
     public static void buildContents(BuildCreativeModeTabContentsEvent event) {
         if(event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
-            event.getEntries().putAfter(Items.CUT_COPPER_SLAB.getDefaultInstance(), ForgeItems.METEOR_BLOCK_ITEM.get().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(Items.CUT_COPPER_SLAB.getDefaultInstance(), ForgeItems.METEOR_BLOCK_ITEM.get().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
         }
 
         if(event.getTab() == JOJO_GROUP.get()) {

@@ -316,7 +316,7 @@ public class TuskHoleEntity extends GroundPathfindingStandAttackEntity {
                 BlockState bs = this.level().getBlockState(this.blockPosition());
                 y = y%1;
                 if (!bs.isAir()) {
-                    double height = bs.getBlock().getVisualShape(bs,this.level(),this.blockPosition(), CollisionContext.of(this)).max(Direction.Axis.Y);
+                    double height = bs.getVisualShape(this.level(), this.blockPosition(), CollisionContext.of(this)).max(Direction.Axis.Y);
                     y += height-y;
                 }
 
@@ -442,9 +442,9 @@ class TuskHoleAttackGoal extends MeleeAttackGoal {
     }
 
     @Override
-    protected void checkAndPerformAttack(LivingEntity $$0, double $$1) {
-        double $$2 = 2;
-        if ($$1 <= $$2) {
+    protected void checkAndPerformAttack(LivingEntity $$0) {
+        double distanceSquared = this.mob.distanceToSqr($$0);
+        if (distanceSquared <= 2.0) {
             this.mob.doHurtTarget($$0);
         }
 

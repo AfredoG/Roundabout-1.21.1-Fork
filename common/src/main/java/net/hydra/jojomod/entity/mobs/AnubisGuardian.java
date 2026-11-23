@@ -176,7 +176,7 @@ public class AnubisGuardian extends AbstractIllager implements RangedAttackMob {
     @Override
     public SoundEvent getCelebrateSound() {return null;}
     @Override
-    public void applyRaidBuffs(int i, boolean b) {}
+    public void applyRaidBuffs(net.minecraft.server.level.ServerLevel level, int i, boolean b) {}
 
     @Override
     public void performRangedAttack(LivingEntity livingEntity, float f) {
@@ -324,9 +324,8 @@ static class SwordRush extends MeleeAttackGoal {
 
 
     @Override
-    protected void checkAndPerformAttack(LivingEntity $$0, double $$1) {
-        double $$2 = this.getAttackReachSqr($$0);
-        if ($$1 <= $$2 && $$0.hurtTime == 0 && this.getTicksUntilNextAttack() <= 15 && stunTicks == 0) {
+    protected void checkAndPerformAttack(LivingEntity $$0) {
+        if (this.mob.isWithinMeleeAttackRange($$0) && $$0.hurtTime == 0 && this.getTicksUntilNextAttack() <= 15 && stunTicks == 0) {
             this.resetAttackCooldown();
             this.mob.swing(InteractionHand.MAIN_HAND);
             this.mob.doHurtTarget($$0);

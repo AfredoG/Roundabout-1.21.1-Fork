@@ -1,7 +1,7 @@
 package net.hydra.jojomod.entity.navigation;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.pathfinder.PathfindingContext;
 import net.minecraft.world.level.LightLayer;
 import net.minecraft.world.level.pathfinder.PathType;
 import net.minecraft.world.level.pathfinder.WalkNodeEvaluator;
@@ -10,7 +10,7 @@ public class AvoidLightNodeEvaluator extends WalkNodeEvaluator {
 
 
     @Override
-    public PathType getBlockPathType(BlockGetter level, int x, int y, int z) {
+    public PathType getPathType(PathfindingContext context, int x, int y, int z) {
         BlockPos pos = new BlockPos(x, y, z);
         if(mob != null) {
             int light = mob.level().getBrightness(LightLayer.BLOCK, pos);
@@ -24,8 +24,8 @@ public class AvoidLightNodeEvaluator extends WalkNodeEvaluator {
             if (light > 11 && lightSelf < light || isDay && light2 > 14 && lightSelf2 < light2 && !isWeatherNotClear) {
                 return PathType.BLOCKED;
             }
-            return super.getBlockPathType(level, x, y, z);
+            return super.getPathType(context, x, y, z);
         }
-        return super.getBlockPathType(level, x, y, z);
+        return super.getPathType(context, x, y, z);
     }
 }

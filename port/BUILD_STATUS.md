@@ -8,36 +8,21 @@
 - Gradle help: успешно.
 - Подготовка исходников и классов Minecraft/NeoForge: успешно.
 - processResources: успешно; проверены метаданные, access transformer, mixin-конфигурации и 141 рецепт.
-- compileJava: НЕУСПЕШНО, 71 ошибок, 18 предупреждений (актуальный полный журнал сохранён в build-errors.txt).
+- compileJava: УСПЕШНО, 0 ошибок, 18 предупреждений. Вывод компиляции и успешной сборки сохранён в build-errors.txt.
 - JDK 21 и Gradle восстановлены; подготовка Minecraft/NeoForge и processResources прошли в новой среде.
-- JAR для установки: отсутствует.
-- Запуск клиента и выделенного сервера полного мода: не выполнен (компиляция не проходит).
+- build: УСПЕШНО; получены dev JAR и sources JAR. Dev JAR ещё не пригоден для игровой установки.
+- Запуск выделенного сервера: выполнен, остановился при применении CenturyBoyPotion к MobEffect (удалённый shadow isDurationEffectTick). Журнал: server-startup.log. Клиент ещё не запускался.
 - Помощник обновления: проверены чистое слияние, конфликт, отказ при незакоммиченных изменениях.
 - GitHub Actions: конфигурация добавлена, удалённый запуск не выполнялся.
 
-Список ошибок — build-errors.txt. Ошибки могут быть каскадными; их число не является оценкой процента готовности.
+Вывод компиляции — build-errors.txt, попытка запуска — server-startup.log. Успешная сборка не является оценкой игровой готовности.
 Текущая проверка выполнена на Azul JDK 21.0.6 и Gradle 8.14.3; зависимости восстановлены заново.
 
-## Категории актуального полного журнала (71 ошибок)
+## Актуальный результат проверки
 
-| Ошибка | Количество |
-|---|---:|
-| cannot find symbol | 37 |
-| method does not override or implement a method from a supertype | 7 |
-| no suitable constructor found for Explosion(ClientLevel,<null>,double,double,double,float,List<BlockPos>) | 2 |
-| method getExperienceReward in class LivingEntity cannot be applied to given types; | 2 |
-| method isPathfindable in class BlockStateBase cannot be applied to given types; | 1 |
-| Snake is not abstract and does not override abstract method isFood(ItemStack) in Animal | 1 |
-| getVisualShape(BlockState,BlockGetter,BlockPos,CollisionContext) has protected access in BlockBehaviour | 1 |
-| AnubisGuardian is not abstract and does not override abstract method applyRaidBuffs(ServerLevel,int,boolean) in Raider | 1 |
-| FalconEntity is not abstract and does not override abstract method isFood(ItemStack) in Animal | 1 |
-| constructor FollowOwnerGoal in class FollowOwnerGoal cannot be applied to given types; | 1 |
-| method pull in class LeverBlock cannot be applied to given types; | 1 |
-| method press in class ButtonBlock cannot be applied to given types; | 1 |
-| jumpFromGround() in KingCrimsonCloneEntity cannot override jumpFromGround() in LivingEntity | 1 |
-| method createMinecart in class AbstractMinecart cannot be applied to given types; | 1 |
-| incompatible types: Level cannot be converted to ServerLevel | 1 |
+Ошибок Java-компиляции больше нет. Оставшиеся 18 предупреждений относятся к устаревающему параметру bus у EventBusSubscriber. Все 509 mixin-классов, перечисленных в двух упакованных конфигурациях, присутствуют в JAR; это не доказывает применимость их инъекций.
 
+Следующий барьер — совместимость Mixin во время загрузки. Первая фактическая остановка сервера: CenturyBoyPotion ссылается на отсутствующий MobEffect.isDurationEffectTick. Требуется перенос целей и дескрипторов, без исключения классов или ослабления required/defaultRequire.
 
 ## Что требуется закончить
 
@@ -567,3 +552,15 @@
 - Маски персонажей и Stray Cat в горшке меняют NAME_TAG через getAttachments. Прочие точки привязки копируются без изменений. Killer Queen, Pearl Jam и маскировка Diver Down используют современную точку надписи; устаревшая обязательная инъекция getNameTagOffsetY заменена.
 - EntityGeometryCheck: **136 утверждений прошли** на реальных классах 1.21.1. Проверены три размера картин во всех четырёх направлениях, центр/габариты/толщина, координаты и направление пакета появления; проверены две пассажирские точки и неизменность исходных привязок при коррекции надписи. Harness создаёт минимальный реестр empty fluid для конструирования сущности без мира. Это не игровой запуск и не проверка применения всех mixin.
 - Проверен список mixin в обработанных ресурсах: устаревшие классы отсутствуют, общая обработка гравитации и обработка падения лошади остаются. Полный мод ещё не компилируется; играбельного JAR нет.
+
+## Контрольная точка 23 ноября 2026 — первая успешная полная сборка
+
+- compileJava: **71 → 0 ошибок**, 18 предупреждений. Полная задача build прошла после исправления упаковки sourcesJar: в архив исходников включается только действующий Mojang access transformer; старый SRG-вариант исключён. Оба JAR содержат ровно один AT, его содержимое совпадает с neoforge/src/main/resources/META-INF/accesstransformer.cfg.
+- Перенесены навигация PathfindingContext, атаки мобов, следование сокола, привязь, седло, рычаги/кнопки и создание вагонеток. Дальность атаки Tusk и миньона-аксолотля сохранена. Старое наследуемое питание змеи/сокола задано явно; признак полёта перенесён из FollowOwnerGoal в TamableAnimal.
+- Данные рыб/аксолотлей в вёдрах дописываются в BUCKET_ENTITY_DATA через CustomData.update без потери штатных полей. FakeExperienceOrb использует компонент зачарования REPAIR_WITH_XP и актуальный коэффициент ремонта. CorpseBuildBreakGoal больше не читает зачарования из строкового NBT и не применяет Unbreaking дважды.
+- GravityCrossbowItemMixin меняет только вектор наведения на повёрнутую цель; удалены два устаревших дублирующих mixin мобов. Штатные multishot, скорость, разброс, износ и звук остаются в CrossbowItem. Два старых обработчика взрыва сведены к одной коррекции вектора отбрасывания; частицы, звук и режим разрушения из пакета обрабатывает Minecraft.
+- GravityLivingEntityMixin использует WATER_MOVEMENT_EFFICIENCY. Переписанные копии tickEffects удалены: штатная обработка эффектов и NeoForge-события истечения сохраняются, мод корректирует только частицы и их подавление для кровотечения/другого измерения. Удалён shadow несуществующего DATA_EFFECT_COLOR_ID.
+- Сон в гробах перенесён на CanPlayerSleepEvent/CanContinueSleepingEvent с дневным сном и грозой; прочие причины отказа сохраняются. Переход между измерениями использует DimensionTransition. Исправлены API звукового слушателя, тумана, вершин и creative tab.
+- Повторно запущены все четыре имеющихся автономных harness против реально скомпилированных классов: **22 persistence + 42 block interaction + 136 geometry + 13 combat = 213 проверок**, все прошли. Это проверки отдельных компонентов, без игрового мира и применённых mixin.
+- Первый настоящий runServer дошёл до Mixin/bootstrap и обнаружил CenturyBoyPotion: отсутствует shadow isDurationEffectTick. Сервер не запустился, мир не создан, клиент не проверен. Dev JAR не объявляется играбельным.
+- Изменения после удалённого e3577dc7 сохраняются локальными коммитами: автоматическая проверка дважды запретила публикацию дерева в публичный форк, потребовав явного подтверждения точного назначения и состава. Не считать локальные коммиты удалённой резервной копией.

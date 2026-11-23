@@ -95,6 +95,12 @@ public class FalconEntity extends ShoulderRidingEntity implements VariantHolder<
     }
 
     @Override
+    public boolean isFood(net.minecraft.world.item.ItemStack stack) {
+        // Retain the default food check inherited from Animal before 1.21.
+        return stack.is(net.minecraft.world.item.Items.WHEAT);
+    }
+
+    @Override
     public @Nullable AgeableMob getBreedOffspring(ServerLevel serverLevel, AgeableMob ageableMob) {
         return null;
     }
@@ -139,11 +145,16 @@ public class FalconEntity extends ShoulderRidingEntity implements VariantHolder<
         this.goalSelector.addGoal(0, new FloatGoal(this));
         this.goalSelector.addGoal(1, new LookAtPlayerGoal(this, Player.class, 8.0F));
         this.goalSelector.addGoal(2, new SitWhenOrderedToGoal(this));
-        this.goalSelector.addGoal(2, new FollowOwnerGoal(this, 1.0D, 5.0F, 1.0F, true));
+        this.goalSelector.addGoal(2, new FollowOwnerGoal(this, 1.0D, 5.0F, 1.0F));
         this.goalSelector.addGoal(2, new FalconWanderGoal(this, 1.0D));
         this.goalSelector.addGoal(3, new LandOnOwnersShoulderGoal(this));
         this.goalSelector.addGoal(3, new FollowMobGoal(this, 1.0D, 3.0F, 7.0F));
 
+    }
+
+    @Override
+    protected boolean canFlyToOwner() {
+        return true;
     }
 
     public InteractionResult mobInteract(Player p_29414_, InteractionHand p_29415_) {

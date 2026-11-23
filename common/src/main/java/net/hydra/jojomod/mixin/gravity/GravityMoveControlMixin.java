@@ -264,7 +264,7 @@ public abstract class GravityMoveControlMixin implements Control {
 
                 if (dir == Direction.UP) {
                     if ($$3 != null
-                            && $$3.getBlockPathType(this.mob.level(),
+                            && $$3.getPathType(new net.minecraft.world.level.pathfinder.PathfindingContext(this.mob.level(), this.mob),
                             Mth.floor(this.mob.getX() + (double) $$0),
                             this.mob.getBlockY(),
                             Mth.floor(this.mob.getZ() + (double) $$1))
@@ -275,7 +275,7 @@ public abstract class GravityMoveControlMixin implements Control {
                 }
                 if (dir == Direction.NORTH || dir == Direction.SOUTH) {
                     if ($$3 != null
-                            && $$3.getBlockPathType(this.mob.level(),
+                            && $$3.getPathType(new net.minecraft.world.level.pathfinder.PathfindingContext(this.mob.level(), this.mob),
                             Mth.floor(this.mob.getX() + (double) $$0),
                             Mth.floor(this.mob.getY() + (double) $$1),
                             this.mob.getBlockZ())
@@ -287,7 +287,7 @@ public abstract class GravityMoveControlMixin implements Control {
                 }
                 if (dir == Direction.EAST || dir == Direction.WEST) {
                     if ($$3 != null
-                            && $$3.getBlockPathType(this.mob.level(),
+                            && $$3.getPathType(new net.minecraft.world.level.pathfinder.PathfindingContext(this.mob.level(), this.mob),
                             this.mob.getBlockX(),
                             Mth.floor(this.mob.getY() + (double) $$0),
                             Mth.floor(this.mob.getZ() + (double) $$1))

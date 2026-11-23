@@ -547,10 +547,10 @@ public class SeperatedArmEntity extends StandEntity {
             if(neuteredSpinTicks == 0) {
                 if (IsArmContactingBlock() != null) {
                     if (level().getBlockState(IsArmContactingBlock()).getBlock() instanceof LeverBlock) {
-                        ((LeverBlock) level().getBlockState(IsArmContactingBlock()).getBlock()).pull(level().getBlockState(IsArmContactingBlock()), this.level(), IsArmContactingBlock());
+                        ((LeverBlock) level().getBlockState(IsArmContactingBlock()).getBlock()).pull(level().getBlockState(IsArmContactingBlock()), this.level(), IsArmContactingBlock(), null);
                     }
                     if (level().getBlockState(IsArmContactingBlock()).getBlock() instanceof ButtonBlock) {
-                        ((ButtonBlock) level().getBlockState(IsArmContactingBlock()).getBlock()).press(level().getBlockState(IsArmContactingBlock()), this.level(), IsArmContactingBlock());
+                        ((ButtonBlock) level().getBlockState(IsArmContactingBlock()).getBlock()).press(level().getBlockState(IsArmContactingBlock()), this.level(), IsArmContactingBlock(), null);
                     }
                 }
                 for (int i = 0; i < 1; i = i + 1) {

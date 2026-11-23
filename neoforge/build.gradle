@@ -84,3 +84,13 @@ tasks.withType(Jar).configureEach {
     preserveFileTimestamps = false
     reproducibleFileOrder = true
 }
+
+// Shared upstream resources also contain the obsolete SRG access transformer.
+// The sources archive must carry the same Mojang-named version as the runtime JAR.
+tasks.named('sourcesJar', Jar) {
+    eachFile { details ->
+        if (details.file == file('../forge/src/main/resources/META-INF/accesstransformer.cfg')) {
+            details.exclude()
+        }
+    }
+}

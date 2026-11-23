@@ -1088,7 +1088,7 @@ private void bridgePlace(BlockHitResult $$0,Player P) {
     }
     public boolean useLeash(ItemStack stack, Mob entity) {
         if (this.getOwner() != null && this.getOwner() instanceof Player player){
-            if (entity.canBeLeashed(player)) {
+            if (entity.canBeLeashed()) {
                 entity.setLeashedTo(player, true);
                 return true;
             }
@@ -1101,7 +1101,7 @@ private void bridgePlace(BlockHitResult $$0,Player P) {
             Saddleable $$4 = (Saddleable)$$2;
             if (!$$4.isSaddled() && $$4.isSaddleable()) {
                 if (!this.level().isClientSide) {
-                    $$4.equipSaddle(SoundSource.NEUTRAL);
+                    $$4.equipSaddle($$0.copyWithCount(1), SoundSource.NEUTRAL);
                     $$2.level().gameEvent($$2, GameEvent.EQUIP, $$2.position());
                     return true;
                 }

@@ -34,6 +34,7 @@ import net.minecraft.client.Options;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.network.ServerGamePacketListenerImpl;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
@@ -1062,7 +1063,8 @@ public class BlockGrabPreset extends NewPunchingStand {
     }
 
     public double getGrabRange(){
-        return ServerGamePacketListenerImpl.MAX_INTERACTION_DISTANCE;
+        // Stand grabbing uses the legacy six-block squared reach, independently of player block reach.
+        return 6.0D * 6.0D;
     }
 
     @SuppressWarnings("deprecation")
@@ -1106,7 +1108,7 @@ public class BlockGrabPreset extends NewPunchingStand {
                                     this.getSelf().level().getBlockState(this.grabBlock.south()).is(state.getBlock()) ||
                                     this.getSelf().level().getBlockState(this.grabBlock.east()).is(state.getBlock()) ||
                                     this.getSelf().level().getBlockState(this.grabBlock.west()).is(state.getBlock()) && !state.is(Blocks.PUMPKIN)
-                                            && !(state.getBlock() instanceof StemGrownBlock) && !(state.getBlock() instanceof GlassBlock))) {
+                                            && !state.is(Blocks.MELON) && !(state.getBlock() instanceof TransparentBlock))) {
 
                                 if (!this.getSelf().level().isClientSide) {
 
@@ -1176,9 +1178,9 @@ public class BlockGrabPreset extends NewPunchingStand {
                     && !((TimeStop) this.getSelf().level()).inTimeStopRange(self)){
 
                         AbstractMinecart $$7 = AbstractMinecart.createMinecart(
-                                this.getSelf().level(), (double)this.getSelf().getX(),
-                                (double)this.getSelf().getY() + 3, (double)this.getSelf().getZ() + 0.5,
-                                ((IMinecartItemAccess)ME).roundabout$getType()
+                                (ServerLevel)this.getSelf().level(), this.getSelf().getX(),
+                                this.getSelf().getY() + 3, this.getSelf().getZ() + 0.5,
+                                ((IMinecartItemAccess)ME).roundabout$getType(), stack, (Player)this.getSelf()
                         );
 
                         if (stack.has(net.minecraft.core.component.DataComponents.CUSTOM_NAME)) {

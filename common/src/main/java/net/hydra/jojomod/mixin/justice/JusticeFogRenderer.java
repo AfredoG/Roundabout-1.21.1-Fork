@@ -158,11 +158,9 @@ public class JusticeFogRenderer {
                     } else if (isDark){
                         MobEffectInstance mi = $$9.getEffect(MobEffects.DARKNESS);
                         if (mi != null) {
-                            if (!mi.getFactorData().isEmpty()) {
-                                float joever = Mth.lerp(mi.getFactorData().get().getFactor($$9, $$4), $$2, 15.0F);
-                                start = $$1 == FogRenderer.FogMode.FOG_SKY ? 0.0F : joever * 0.75F;
-                                end = joever;
-                            }
+                            float joever = Mth.lerp(mi.getBlendFactor($$9, $$4), $$2, 15.0F);
+                            start = $$1 == FogRenderer.FogMode.FOG_SKY ? 0.0F : joever * 0.75F;
+                            end = joever;
                         }
                     }
                 } else if ($$5 == FogType.WATER) {

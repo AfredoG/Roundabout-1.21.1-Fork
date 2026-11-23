@@ -76,8 +76,8 @@ public class AxolotlMinion extends BaseMinion  implements LerpingModel {
         }
     }
     @Override
-    public double getMeleeAttackRangeSqr(LivingEntity $$0) {
-        return (double)1.5F + (double)$$0.getBbWidth() * (double)2.0F;
+    public boolean isWithinMeleeAttackRange(LivingEntity $$0) {
+        return this.distanceToSqr($$0) <= 1.5 + $$0.getBbWidth() * 2.0;
     }
     @Override
     protected EntityDimensions getDefaultDimensions(Pose pose) {

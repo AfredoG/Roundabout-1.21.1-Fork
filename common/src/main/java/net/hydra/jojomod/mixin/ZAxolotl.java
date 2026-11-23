@@ -22,10 +22,12 @@ public abstract class ZAxolotl extends Animal {
 
     @Inject(method = "saveToBucketTag(Lnet/minecraft/world/item/ItemStack;)V", at = @At(value = "TAIL"))
     protected void roundabout$saveToBucketTag(ItemStack $$0,CallbackInfo ci) {
-        CompoundTag $$1 = $$0.getOrCreateTag();
-        MainUtil.saveEntityData($$1,((IEntityAndData) this));
-        MainUtil.saveLivingData($$1,((StandUser) this),this);
-        MainUtil.saveMobData($$1,((IMob) this));
+        net.minecraft.world.item.component.CustomData.update(
+                net.minecraft.core.component.DataComponents.BUCKET_ENTITY_DATA, $$0, $$1 -> {
+                    MainUtil.saveEntityData($$1, ((IEntityAndData)this));
+                    MainUtil.saveLivingData($$1, ((StandUser)this), this);
+                    MainUtil.saveMobData($$1, ((IMob)this));
+                });
     }
     @Inject(method = "loadFromBucketTag(Lnet/minecraft/nbt/CompoundTag;)V", at = @At(value = "TAIL"))
     protected void roundabout$loadFromBucketTag(CompoundTag $$0, CallbackInfo ci) {

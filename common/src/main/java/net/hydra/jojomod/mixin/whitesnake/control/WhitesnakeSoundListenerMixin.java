@@ -1,6 +1,7 @@
 package net.hydra.jojomod.mixin.whitesnake.control;
 
 import com.mojang.blaze3d.audio.Listener;
+import com.mojang.blaze3d.audio.ListenerTransform;
 import net.hydra.jojomod.event.powers.StandUser;
 import net.hydra.jojomod.event.powers.whitesnake.disc.WhitesnakeDiscUtil;
 import net.hydra.jojomod.stand.powers.PowersWhitesnake;
@@ -35,7 +36,10 @@ public abstract class WhitesnakeSoundListenerMixin {
             LivingEntity stand = powers.getPilotingStand();
             if (stand != null && stand.isAlive() && !stand.isRemoved()) {
                 Vec3 position = stand.getEyePosition(minecraft.getTimer().getGameTimeDeltaPartialTick(true));
-                executor.execute(() -> listener.setListenerPosition(position));
+                executor.execute(() -> {
+                    ListenerTransform transform = listener.getTransform();
+                    listener.setTransform(new ListenerTransform(position, transform.forward(), transform.up()));
+                });
             }
         }
     }

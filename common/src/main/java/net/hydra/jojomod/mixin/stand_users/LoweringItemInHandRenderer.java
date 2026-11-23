@@ -11,6 +11,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.renderer.ItemInHandRenderer;
 import net.minecraft.util.Mth;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import org.spongepowered.asm.mixin.Final;
@@ -39,7 +40,7 @@ public class LoweringItemInHandRenderer implements AccessLoweringRenderer {
                     ItemStack itemStack3 = clientPlayerEntity2.getMainHandItem();
                     ItemStack itemStack4 = clientPlayerEntity2.getOffhandItem();
                     //if (itemStack3.getItem() instanceof TieredItem && !clientPlayerEntity2.getUseItem().equals(itemStack3)) {
-                    if ((itemStack3.getItem() instanceof Vanishable) && !(itemStack3.getItem() instanceof CrossbowItem)
+                    if (itemStack3.is(ItemTags.VANISHING_ENCHANTABLE) && !(itemStack3.getItem() instanceof CrossbowItem)
                             && !(itemStack3.getItem() instanceof GasolineCanItem)
                             && !(itemStack3.getItem() instanceof FishingRodItem)
                             && !clientPlayerEntity2.getUseItem().equals(itemStack3) &&

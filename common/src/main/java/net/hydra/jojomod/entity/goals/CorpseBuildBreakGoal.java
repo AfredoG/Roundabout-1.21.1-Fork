@@ -118,15 +118,6 @@ public class CorpseBuildBreakGoal extends Goal {
 
     }
 
-    public int getEnchLevel(String enchTags){
-        if(this.fallenMob.getMainHandItem().getEnchantmentTags().getAsString().indexOf(enchTags) == -1){
-            return -1;
-        }
-        int enchtagsInd = this.fallenMob.getMainHandItem().getEnchantmentTags().getAsString().indexOf(enchTags)+6+enchTags.length();
-
-        return Integer.valueOf(this.fallenMob.getMainHandItem().getEnchantmentTags().getAsString().charAt(enchtagsInd));
-
-    }
     @Override
     public void tick() {
         //Get distance
@@ -174,12 +165,7 @@ public class CorpseBuildBreakGoal extends Goal {
                         bstate.getBlock().destroy(this.fallenMob.level(),mineBlock,bstate);
                         this.fallenMob.level().destroyBlock(mineBlock,true,this.owner);
                         if(this.fallenMob.getMainHandItem().isDamageableItem()) {
-                            if(getEnchLevel("minecraft:unbreaking") != -1){
-                                if(this.fallenMob.getRandom().nextIntBetweenInclusive(1,100) <= 100/(getEnchLevel("minecraft:unbreaking")+1)){
-                                    this.fallenMob.getMainHandItem().hurtAndBreak(2,  this.fallenMob, net.minecraft.world.entity.LivingEntity.getSlotForHand(InteractionHand.MAIN_HAND));
-
-                                }
-                            } else{this.fallenMob.getMainHandItem().hurtAndBreak(2,  this.fallenMob, net.minecraft.world.entity.LivingEntity.getSlotForHand(InteractionHand.MAIN_HAND));}
+                            this.fallenMob.getMainHandItem().hurtAndBreak(2,  this.fallenMob, net.minecraft.world.entity.LivingEntity.getSlotForHand(InteractionHand.MAIN_HAND));
 
                         }
                         this.stop();
@@ -230,12 +216,7 @@ public class CorpseBuildBreakGoal extends Goal {
                             bstate.getBlock().destroy(this.fallenMob.level(),mineBlock,bstate);
                             this.fallenMob.level().destroyBlock(mineBlock,true);
                             if(this.fallenMob.getMainHandItem().isDamageableItem()) {
-                                if(getEnchLevel("minecraft:unbreaking") != -1){
-                                    if(this.fallenMob.getRandom().nextIntBetweenInclusive(1,100) <= 100/(getEnchLevel("minecraft:unbreaking")+1)){
-                                        this.fallenMob.getMainHandItem().hurtAndBreak(2,  this.fallenMob, net.minecraft.world.entity.LivingEntity.getSlotForHand(InteractionHand.MAIN_HAND));
-
-                                    }
-                                } else{this.fallenMob.getMainHandItem().hurtAndBreak(2,  this.fallenMob, net.minecraft.world.entity.LivingEntity.getSlotForHand(InteractionHand.MAIN_HAND));}
+                                this.fallenMob.getMainHandItem().hurtAndBreak(2,  this.fallenMob, net.minecraft.world.entity.LivingEntity.getSlotForHand(InteractionHand.MAIN_HAND));
 
                             }
                             this.stop();

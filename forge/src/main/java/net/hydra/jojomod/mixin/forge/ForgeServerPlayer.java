@@ -21,6 +21,7 @@ import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.portal.DimensionTransition;
 import net.minecraft.world.phys.Vec3;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -39,8 +40,8 @@ public abstract class ForgeServerPlayer extends Player {
     public void roundabout$die(DamageSource $$0, CallbackInfo ci) {
         MainUtil.onDeath(this,$$0);
     }
-    @Inject(method = "changeDimension", at = @At(value = "HEAD"), cancellable = true, remap = false)
-    private void roundabout$changeDim(ServerLevel p_9180_, net.neoforged.neoforge.common.util.ITeleporter teleporter, CallbackInfoReturnable<Entity> cir) {
+    @Inject(method = "changeDimension(Lnet/minecraft/world/level/portal/DimensionTransition;)Lnet/minecraft/world/entity/Entity;", at = @At("HEAD"))
+    private void roundabout$changeDim(DimensionTransition transition, CallbackInfoReturnable<Entity> cir) {
         if (((Entity)(Object)this) instanceof LivingEntity LE){
             if (((StandUser)this).roundabout$getStand() != null){
                 StandEntity stand = ((StandUser)this).roundabout$getStand();
@@ -49,7 +50,7 @@ public abstract class ForgeServerPlayer extends Player {
                         double $$3 = this.getEyeY();
                         ItemEntity $$4 = new ItemEntity(this.level(), this.getX(), $$3, this.getZ(), stand.getHeldItem().copy());
                         $$4.setPickUpDelay(40);
-                        $$4.setThrower(stand.getUUID());
+                        $$4.setThrower(stand);
                         stand.level().addFreshEntity($$4);
                         stand.setHeldItem(ItemStack.EMPTY);
                     }

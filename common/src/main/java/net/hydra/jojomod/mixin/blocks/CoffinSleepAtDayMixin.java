@@ -27,24 +27,9 @@ public abstract class CoffinSleepAtDayMixin extends Player {
         super($$0, $$1, $$2, $$3);
     }
 
-    @Inject(method = "startSleepInBed", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;isDay()Z"), cancellable = true,  require = 0)
-    private void allowCoffinSleepAtDay(BlockPos pos, CallbackInfoReturnable<Either<Player.BedSleepingProblem, Unit>> cir) {
-        ServerPlayer player = (ServerPlayer)(Object)this;
-
-        if (player.level().getBlockState(pos).getBlock() instanceof CoffinBlock) {
-            if (player.level().isDay() || player.level().isThundering()) {
-                player.startSleeping(pos);
-                cir.setReturnValue(Either.right(Unit.INSTANCE));
-            } else {
-                cir.setReturnValue(Either.left(Player.BedSleepingProblem.NOT_POSSIBLE_HERE));
-            }
-            cir.cancel();
-        }
-    }
-
     @Inject(method = "setRespawnPosition", at = @At(value = "HEAD"), cancellable = true,  require = 0)
     public void rdbt$setRespawnPosition(ResourceKey<Level> $$0, BlockPos $$1, float $$2, boolean $$3, boolean $$4, CallbackInfo ci) {
-        if (this.level().getBlockState($$1).is(ModBlocks.KING_BED_BLOCK)){
+        if ($$1 != null && this.level().getBlockState($$1).is(ModBlocks.KING_BED_BLOCK)){
             ci.cancel();
         }
     }

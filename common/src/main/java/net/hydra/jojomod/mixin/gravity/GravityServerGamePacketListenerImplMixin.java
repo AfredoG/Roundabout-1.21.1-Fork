@@ -250,7 +250,7 @@ public abstract class GravityServerGamePacketListenerImplMixin {
                                 this.player.serverLevel().getChunkSource().move(this.player);
                                 this.player.doCheckFallDamage(this.player.getX() - $$7, this.player.getY() - $$8, this.player.getZ() - $$9, $$0.isOnGround());
                                 this.player
-                                        .setOnGroundWithKnownMovement(
+                                        .setOnGroundWithMovement(
                                                 $$0.isOnGround(), new Vec3(this.player.getX() - $$7, this.player.getY() - $$8, this.player.getZ() - $$9)
                                         );
                                 if ($$18) {
