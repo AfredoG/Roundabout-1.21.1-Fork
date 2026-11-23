@@ -1,7 +1,3 @@
-common/src/main/java/net/hydra/jojomod/mixin/gravity/GravityCamelMixin.java:19: error: cannot find symbol
-public abstract class GravityCamelMixin  extends AbstractHorse implements PlayerRideableJumping, RiderShieldingMount, Saddleable {
-                                                                                                 ^
-  symbol: class RiderShieldingMount
 forge/src/main/java/net/hydra/jojomod/mixin/forge/ForgeServerPlayer.java:43: error: cannot find symbol
     private void roundabout$changeDim(ServerLevel p_9180_, net.neoforged.neoforge.common.util.ITeleporter teleporter, CallbackInfoReturnable<Entity> cir) {
                                                                                              ^
@@ -12,17 +8,6 @@ import net.neoforged.neoforge.event.entity.player.SleepingTimeCheckEvent;
                                                  ^
   symbol:   class SleepingTimeCheckEvent
   location: package net.neoforged.neoforge.event.entity.player
-common/src/main/java/net/hydra/jojomod/entity/projectile/RoadRollerEntity.java:882: error: method does not override or implement a method from a supertype
-    @Override
-    ^
-common/src/main/java/net/hydra/jojomod/entity/projectile/SoftAndWetPlunderBubbleEntity.java:633: error: method does not override or implement a method from a supertype
-    @Override
-    ^
-common/src/main/java/net/hydra/jojomod/stand/powers/PowersKillerQueen.java:4919: error: cannot find symbol
-                    float height = (LE.getNameTagOffsetY() + 0.275F);
-                                      ^
-  symbol:   method getNameTagOffsetY()
-  location: variable LE of type LivingEntity
 common/src/main/java/net/hydra/jojomod/entity/substand/SheerHeartAttackEntity.java:947: error: method isPathfindable in class BlockStateBase cannot be applied to given types;
 				if (BS.isPathfindable(this.level(), this.blockTarget, PathComputationType.LAND)) {
 				      ^
@@ -32,50 +17,6 @@ common/src/main/java/net/hydra/jojomod/entity/substand/SheerHeartAttackEntity.ja
 common/src/main/java/net/hydra/jojomod/entity/substand/SheerHeartAttackEntity.java:1237: error: method does not override or implement a method from a supertype
 	@Override public boolean canBeLeashed(Player p_21418_) { return false;}
 	^
-common/src/main/java/net/hydra/jojomod/entity/stand/SilverChariotEntity.java:907: error: method does not override or implement a method from a supertype
-    @Override
-    ^
-common/src/main/java/net/hydra/jojomod/entity/stand/SilverChariotEntity.java:909: error: cannot find symbol
-        return super.getMyRidingOffset();
-                    ^
-  symbol: method getMyRidingOffset()
-common/src/main/java/net/hydra/jojomod/entity/stand/SilverChariotEntity.java:939: error: method does not override or implement a method from a supertype
-    @Override
-    ^
-common/src/main/java/net/hydra/jojomod/entity/stand/SilverChariotEntity.java:941: error: cannot find symbol
-        return super.getPassengersRidingOffset();
-                    ^
-  symbol: method getPassengersRidingOffset()
-common/src/main/java/net/hydra/jojomod/entity/corpses/FallenMob.java:105: error: getTeam() in FallenMob cannot override getTeam() in Entity
-    public Team getTeam() {
-                ^
-  return type Team is not compatible with PlayerTeam
-common/src/main/java/net/hydra/jojomod/entity/corpses/FallenMob.java:104: error: method does not override or implement a method from a supertype
-    @Override
-    ^
-common/src/main/java/net/hydra/jojomod/entity/corpses/FallenMob.java:173: error: method does not override or implement a method from a supertype
-    @Override
-    ^
-common/src/main/java/net/hydra/jojomod/entity/corpses/FallenMob.java:176: error: cannot find symbol
-            return super.getMyRidingOffset()+0.2F;
-                        ^
-  symbol: method getMyRidingOffset()
-common/src/main/java/net/hydra/jojomod/entity/corpses/FallenMob.java:178: error: cannot find symbol
-        return super.getMyRidingOffset();
-                    ^
-  symbol: method getMyRidingOffset()
-common/src/main/java/net/hydra/jojomod/entity/corpses/FallenSpider.java:153: error: method does not override or implement a method from a supertype
-    @Override
-    ^
-common/src/main/java/net/hydra/jojomod/entity/corpses/FallenPhantom.java:281: error: method does not override or implement a method from a supertype
-    @Override
-    ^
-common/src/main/java/net/hydra/jojomod/entity/BlockD4CEntity.java:503: error: incompatible types: int cannot be converted to ServerEntity
-        return new ClientboundAddEntityPacket(this, Block.getId(this.getBlockState()));
-                                                               ^
-common/src/main/java/net/hydra/jojomod/entity/BlockWallEntity.java:379: error: incompatible types: int cannot be converted to ServerEntity
-        return new ClientboundAddEntityPacket(this, Block.getId(this.getBlockState()));
-                                                               ^
 common/src/main/java/net/hydra/jojomod/entity/mobs/Snake.java:37: error: Snake is not abstract and does not override abstract method isFood(ItemStack) in Animal
 public class Snake extends Animal {
        ^
@@ -90,9 +31,6 @@ common/src/main/java/net/hydra/jojomod/entity/zombie_minion/DogMinion.java:61: e
                                             ^
   symbol:   variable ENTITY_SHAKE
   location: class GameEvent
-common/src/main/java/net/hydra/jojomod/entity/Zombiefish.java:54: error: method does not override or implement a method from a supertype
-    @Override
-    ^
 common/src/main/java/net/hydra/jojomod/entity/zombie_minion/AxolotlMinion.java:78: error: method does not override or implement a method from a supertype
     @Override
     ^
@@ -118,26 +56,6 @@ common/src/main/java/net/hydra/jojomod/entity/mobs/FalconEntity.java:142: error:
   required: TamableAnimal,double,float,float
   found:    FalconEntity,double,float,float,boolean
   reason: actual and formal argument lists differ in length
-common/src/main/java/net/hydra/jojomod/entity/mobs/StrayCatEntity.java:132: error: method does not override or implement a method from a supertype
-    @Override
-    ^
-common/src/main/java/net/hydra/jojomod/entity/mobs/StrayCatEntity.java:135: error: cannot find symbol
-            return super.getNameTagOffsetY() + 0.25f;
-                        ^
-  symbol: method getNameTagOffsetY()
-common/src/main/java/net/hydra/jojomod/entity/mobs/StrayCatEntity.java:138: error: cannot find symbol
-        return super.getNameTagOffsetY();
-                    ^
-  symbol: method getNameTagOffsetY()
-common/src/main/java/net/hydra/jojomod/entity/paintings/RoundaboutPainting.java:46: error: method does not override or implement a method from a supertype
-    @Override
-    ^
-common/src/main/java/net/hydra/jojomod/entity/paintings/RoundaboutPainting.java:51: error: method does not override or implement a method from a supertype
-    @Override
-    ^
-common/src/main/java/net/hydra/jojomod/entity/paintings/RoundaboutPainting.java:91: error: method does not override or implement a method from a supertype
-    @Override
-    ^
 common/src/main/java/net/hydra/jojomod/entity/substand/SeperatedArmEntity.java:550: error: method pull in class LeverBlock cannot be applied to given types;
                         ((LeverBlock) level().getBlockState(IsArmContactingBlock()).getBlock()).pull(level().getBlockState(IsArmContactingBlock()), this.level(), IsArmContactingBlock());
                                                                                                ^
@@ -150,9 +68,6 @@ common/src/main/java/net/hydra/jojomod/entity/substand/SeperatedArmEntity.java:5
   required: BlockState,Level,BlockPos,Player
   found:    BlockState,Level,BlockPos
   reason: actual and formal argument lists differ in length
-common/src/main/java/net/hydra/jojomod/entity/visages/CloneEntity.java:65: error: method does not override or implement a method from a supertype
-    @Override
-    ^
 common/src/main/java/net/hydra/jojomod/entity/KingCrimsonCloneEntity.java:320: error: jumpFromGround() in KingCrimsonCloneEntity cannot override jumpFromGround() in LivingEntity
     protected void jumpFromGround() {
                    ^
@@ -232,15 +147,6 @@ common/src/main/java/net/hydra/jojomod/entity/FakeExperienceOrb.java:123: error:
 common/src/main/java/net/hydra/jojomod/entity/FakeExperienceOrb.java:239: error: incompatible types: ResourceKey<Enchantment> cannot be converted to DataComponentType<?>
         Map.Entry<EquipmentSlot, ItemStack> $$2 = EnchantmentHelper.getRandomItemWith(Enchantments.MENDING, $$0, ItemStack::isDamaged);
                                                                                                   ^
-common/src/main/java/net/hydra/jojomod/entity/paintings/VanGoughPainting.java:30: error: VanGoughPainting is not abstract and does not override abstract method calculateBoundingBox(BlockPos,Direction) in HangingEntity
-public class VanGoughPainting extends RoundaboutPainting {
-       ^
-common/src/main/java/net/hydra/jojomod/entity/paintings/MonaLisaPainting.java:16: error: MonaLisaPainting is not abstract and does not override abstract method calculateBoundingBox(BlockPos,Direction) in HangingEntity
-public class MonaLisaPainting extends RoundaboutPainting {
-       ^
-common/src/main/java/net/hydra/jojomod/entity/paintings/BirthOfVenusPainting.java:16: error: BirthOfVenusPainting is not abstract and does not override abstract method calculateBoundingBox(BlockPos,Direction) in HangingEntity
-public class BirthOfVenusPainting extends RoundaboutPainting {
-       ^
 common/src/main/java/net/hydra/jojomod/entity/navigation/AvoidLightNodeEvaluator.java:12: error: method does not override or implement a method from a supertype
     @Override
     ^
@@ -315,34 +221,6 @@ common/src/main/java/net/hydra/jojomod/mixin/gravity/GravityServerGamePacketList
                                         ^
   symbol:   method setOnGroundWithKnownMovement(boolean,Vec3)
   location: variable player of type ServerPlayer
-common/src/main/java/net/hydra/jojomod/mixin/gravity/GravityChickenMixin.java:37: error: cannot find symbol
-                 $$0.getMyRidingOffset() + 0.0,
-                    ^
-  symbol:   method getMyRidingOffset()
-  location: variable $$0 of type Entity
-common/src/main/java/net/hydra/jojomod/mixin/gravity/GravityBoatMixin.java:40: error: cannot find symbol
-            float $$3 = (float)((this.isRemoved() ? 0.01F : this.getPassengersRidingOffset()) + $$0.getMyRidingOffset());
-                                                                ^
-  symbol: method getPassengersRidingOffset()
-common/src/main/java/net/hydra/jojomod/mixin/gravity/GravityBoatMixin.java:40: error: cannot find symbol
-            float $$3 = (float)((this.isRemoved() ? 0.01F : this.getPassengersRidingOffset()) + $$0.getMyRidingOffset());
-                                                                                                   ^
-  symbol:   method getMyRidingOffset()
-  location: variable $$0 of type Entity
-common/src/main/java/net/hydra/jojomod/mixin/gravity/GravityCamelMixin.java:37: error: cannot find symbol
-            float $$5 = (float)(this.isRemoved() ? 0.01F : this.getBodyAnchorAnimationYOffset($$3, 0.0F) + $$0.getMyRidingOffset());
-                                                                                                              ^
-  symbol:   method getMyRidingOffset()
-  location: variable $$0 of type Entity
-common/src/main/java/net/hydra/jojomod/mixin/gravity/GravityAbstractHorseMixin.java:51: error: cannot find symbol
-                    this.getPassengersRidingOffset() + $$0.getMyRidingOffset() + (double)$$5,
-                        ^
-  symbol: method getPassengersRidingOffset()
-common/src/main/java/net/hydra/jojomod/mixin/gravity/GravityAbstractHorseMixin.java:51: error: cannot find symbol
-                    this.getPassengersRidingOffset() + $$0.getMyRidingOffset() + (double)$$5,
-                                                          ^
-  symbol:   method getMyRidingOffset()
-  location: variable $$0 of type Entity
 common/src/main/java/net/hydra/jojomod/mixin/gravity/GravityLivingEntityMixin.java:225: error: cannot find symbol
                 float $$7 = (float)EnchantmentHelper.getDepthStrider(rdbt$this());
                                                     ^
@@ -376,24 +254,6 @@ common/src/main/java/net/hydra/jojomod/mixin/gravity/GravityMoveControlMixin.jav
                                   ^
   symbol:   method getBlockPathType(Level,int,int,int)
   location: variable $$3 of type NodeEvaluator
-common/src/main/java/net/hydra/jojomod/mixin/gravity/GravityLlamaMixin.java:37: error: cannot find symbol
-                    this.getPassengersRidingOffset() + $$0.getMyRidingOffset(),
-                        ^
-  symbol: method getPassengersRidingOffset()
-common/src/main/java/net/hydra/jojomod/mixin/gravity/GravityLlamaMixin.java:37: error: cannot find symbol
-                    this.getPassengersRidingOffset() + $$0.getMyRidingOffset(),
-                                                          ^
-  symbol:   method getMyRidingOffset()
-  location: variable $$0 of type Entity
-common/src/main/java/net/hydra/jojomod/mixin/gravity/GravityEntityMixin.java:872: error: cannot find symbol
-            double $$2 = this.getPassengersRidingOffset() + $$0.getMyRidingOffset();
-                                                               ^
-  symbol:   method getMyRidingOffset()
-  location: variable $$0 of type Entity
-common/src/main/java/net/hydra/jojomod/mixin/gravity/GravityPlayerMixin.java:46: error: getDimensions(Pose) in GravityPlayerMixin cannot override getDimensions(Pose) in LivingEntity
-    public abstract EntityDimensions getDimensions(Pose pose);
-                                     ^
-  overridden method is final
 common/src/main/java/net/hydra/jojomod/mixin/gravity/GravityPillagerMixin.java:56: error: cannot find symbol
         Vector3f vec3f = this.getProjectileShotVector(this, new Vec3(d, g, e), multishotSpray);
                              ^
@@ -438,27 +298,6 @@ common/src/main/java/net/hydra/jojomod/mixin/achtung/AchtungItemRenderer.java:23
       (actual and formal argument lists differ in length)
     method VertexConsumer.addVertex(Matrix4f,float,float,float) is not applicable
       (actual and formal argument lists differ in length)
-common/src/main/java/net/hydra/jojomod/mixin/ZLivingEntityRenderer.java:437: error: cannot find symbol
-                        float yDiff = targetY - entity.getNameTagOffsetY();
-                                                      ^
-  symbol:   method getNameTagOffsetY()
-  location: variable entity of type T
-  where T is a type-variable:
-    T extends LivingEntity declared in class ZLivingEntityRenderer
-common/src/main/java/net/hydra/jojomod/mixin/ZLivingEntityRenderer.java:441: error: method renderNameTag in class EntityRenderer<T#2> cannot be applied to given types;
-                        this.renderNameTag(entity, Component.literal(disguiseName), poseStack, buffer, packedLight);
-                            ^
-  required: T#1,Component,PoseStack,MultiBufferSource,int,float
-  found:    T#1,MutableComponent,PoseStack,MultiBufferSource,int
-  reason: actual and formal argument lists differ in length
-  where T#1,T#2 are type-variables:
-    T#1 extends LivingEntity declared in class ZLivingEntityRenderer
-    T#2 extends Entity declared in class EntityRenderer
-common/src/main/java/net/hydra/jojomod/stand/powers/PowersPearlJam.java:195: error: cannot find symbol
-                float height = LE.getNameTagOffsetY() + 0.275F;
-                                 ^
-  symbol:   method getNameTagOffsetY()
-  location: variable LE of type LivingEntity
 common/src/main/java/net/hydra/jojomod/stand/powers/PowersCalifornia.java:1127: error: method getExperienceReward in class LivingEntity cannot be applied to given types;
                 if (!((StandUser)LE).rdbt$getExperienceTaken() && LE.getExperienceReward() > 0) {
                                                                     ^
@@ -573,5 +412,5 @@ Note: Recompile with -Xlint:deprecation for details.
 Note: Some input files use unchecked or unsafe operations.
 Note: Recompile with -Xlint:unchecked for details.
 Note: Some messages have been simplified; recompile with -Xdiags:verbose to get full output
-112 errors
+71 errors
 18 warnings

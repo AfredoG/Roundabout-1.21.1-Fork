@@ -1,5 +1,6 @@
 package net.hydra.jojomod.entity.visages;
 
+import net.minecraft.world.phys.Vec3;
 import com.mojang.authlib.GameProfile;
 import net.hydra.jojomod.client.ClientNetworking;
 import net.hydra.jojomod.entity.navigation.ActiveCloneManager;
@@ -63,8 +64,8 @@ public class CloneEntity extends PathfinderMob {
         entityData.set(VISAGE,visage);
     }
     @Override
-    public double getMyRidingOffset() {
-        return -0.35;
+    public Vec3 getVehicleAttachmentPoint(Entity vehicle) {
+        return new Vec3(0.0, -(-0.35), 0.0);
     }
     @Override
     public Component getDisplayName() {

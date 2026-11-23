@@ -30,6 +30,12 @@ public abstract class RoundaboutPainting extends HangingEntity {
     public RoundaboutPainting(EntityType<? extends RoundaboutPainting> $$0,Level $$1, BlockPos $$2) {
         super($$0, $$1, $$2);
     }
+
+    @Override
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+        // Each painting has a fixed entity type; it has no additional tracked variant.
+    }
+
     @Override
     public void addAdditionalSaveData(CompoundTag $$0) {
         $$0.putByte("facing", (byte)this.direction.get2DDataValue());
@@ -43,14 +49,26 @@ public abstract class RoundaboutPainting extends HangingEntity {
         this.setDirection(this.direction);
     }
 
-    @Override
+    /** Texture dimensions remain in pixels for the existing renderers. */
     public int getWidth() {
         return 2;
     }
 
-    @Override
     public int getHeight() {
         return 2;
+    }
+
+    @Override
+    protected net.minecraft.world.phys.AABB calculateBoundingBox(BlockPos pos, Direction direction) {
+        Vec3 center = Vec3.atCenterOf(pos).relative(direction, -0.46875)
+                .relative(direction.getCounterClockWise(), getWidth() % 32 == 0 ? 0.5 : 0.0)
+                .relative(Direction.UP, getHeight() % 32 == 0 ? 0.5 : 0.0);
+        double width = getWidth() / 16.0;
+        double height = getHeight() / 16.0;
+        return net.minecraft.world.phys.AABB.ofSize(center,
+                direction.getAxis() == Direction.Axis.X ? 0.0625 : width,
+                height,
+                direction.getAxis() == Direction.Axis.Z ? 0.0625 : width);
     }
 
     @Override
@@ -89,7 +107,7 @@ public abstract class RoundaboutPainting extends HangingEntity {
     }
 
     @Override
-    public Packet<ClientGamePacketListener> getAddEntityPacket() {
+    public Packet<ClientGamePacketListener> getAddEntityPacket(net.minecraft.server.level.ServerEntity tracking) {
         return new ClientboundAddEntityPacket(this, this.direction.get3DDataValue(), this.getPos());
     }
 

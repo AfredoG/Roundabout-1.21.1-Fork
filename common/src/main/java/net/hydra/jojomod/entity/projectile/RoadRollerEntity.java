@@ -880,8 +880,8 @@ public class RoadRollerEntity extends LivingEntity implements PlayerRideable, ne
     }
 
     @Override
-    public double getPassengersRidingOffset() {
-        return (double) (this.getBbHeight() * 0.7F);
+    protected Vec3 getPassengerAttachmentPoint(Entity passenger, net.minecraft.world.entity.EntityDimensions dimensions, float scale) {
+        return new Vec3(0.0, (double) (this.getBbHeight() * 0.7F), 0.0);
     }
 
     @Override

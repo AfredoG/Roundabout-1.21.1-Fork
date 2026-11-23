@@ -1,5 +1,6 @@
 package net.hydra.jojomod.entity;
 
+import net.minecraft.world.phys.Vec3;
 import net.hydra.jojomod.entity.corpses.FallenMob;
 import net.hydra.jojomod.entity.zombie_minion.BaseMinion;
 import net.hydra.jojomod.event.ModEffects;
@@ -52,8 +53,8 @@ public class Zombiefish extends PathfinderMob {
     }
 
     @Override
-    public double getMyRidingOffset() {
-        return 0.1;
+    public Vec3 getVehicleAttachmentPoint(Entity vehicle) {
+        return new Vec3(0.0, -(0.1), 0.0);
     }
 
     @Override

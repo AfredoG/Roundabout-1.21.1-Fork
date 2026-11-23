@@ -375,8 +375,9 @@ public class BlockWallEntity extends Entity {
         return true;
     }
 
-    public Packet<ClientGamePacketListener> getAddEntityPacket() {
-        return new ClientboundAddEntityPacket(this, Block.getId(this.getBlockState()));
+    @Override
+    public Packet<ClientGamePacketListener> getAddEntityPacket(net.minecraft.server.level.ServerEntity tracking) {
+        return new ClientboundAddEntityPacket(this, tracking, Block.getId(this.getBlockState()));
     }
 
     public void recreateFromPacket(ClientboundAddEntityPacket $$0) {

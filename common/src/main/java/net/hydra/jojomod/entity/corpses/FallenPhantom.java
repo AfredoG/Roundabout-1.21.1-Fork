@@ -279,8 +279,8 @@ public class FallenPhantom extends FallenMob implements PlayerRideableJumping {
     }
 
     @Override
-    public double getPassengersRidingOffset() {
-        return this.getEyeHeight();
+    protected Vec3 getPassengerAttachmentPoint(Entity passenger, net.minecraft.world.entity.EntityDimensions dimensions, float scale) {
+        return new Vec3(0.0, this.getEyeHeight(), 0.0);
     }
 
     @Override

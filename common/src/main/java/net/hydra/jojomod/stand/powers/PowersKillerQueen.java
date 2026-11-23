@@ -4916,11 +4916,12 @@ public class PowersKillerQueen extends NewPunchingStand {
                 if (LE.getId() == bitesTheDustPlantedEntity.getId() || LE.distanceTo(bitesTheDustPlantedEntity) <= btdRange && LE.hasLineOfSight(bitesTheDustPlantedEntity)) {
                     matrixStack.pushPose();
 
-                    float height = (LE.getNameTagOffsetY() + 0.275F);
+                    Vec3 labelPosition = net.hydra.jojomod.util.EntityAttachmentUtil.nameTagPosition(
+                        LE, mc.getTimer().getGameTimeDeltaPartialTick(true));
 
                     // Orient the texture
                     matrixStack.scale(1, 1, 1);
-                    matrixStack.translate(0, height, 0);
+                    matrixStack.translate(labelPosition.x, labelPosition.y + 0.275, labelPosition.z);
                     matrixStack.mulPose(mc.getEntityRenderDispatcher().cameraOrientation());
                     matrixStack.mulPose(Axis.YP.rotationDegrees(180.0F));
 

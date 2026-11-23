@@ -154,11 +154,9 @@ public class FallenZombie extends FallenMob{
 
 
     @Override
-    public double getMyRidingOffset() {
-        if (!getActivated()){
-            return (this.isBaby() ? 0.0 : -0.45) +0.65F;
-        }
-        return this.isBaby() ? 0.0 : -0.45;
+    public net.minecraft.world.phys.Vec3 getVehicleAttachmentPoint(net.minecraft.world.entity.Entity vehicle) {
+        double offset = (this.isBaby() ? 0.0 : -0.45) + (getActivated() ? 0.0 : 0.65F);
+        return new net.minecraft.world.phys.Vec3(0.0, -offset, 0.0);
     }
     @Override
     protected EntityDimensions getDefaultDimensions(Pose pose) {

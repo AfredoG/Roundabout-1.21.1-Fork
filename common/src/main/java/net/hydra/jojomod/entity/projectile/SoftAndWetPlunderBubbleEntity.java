@@ -631,8 +631,8 @@ public class SoftAndWetPlunderBubbleEntity extends SoftAndWetBubbleEntity {
     }
 
     @Override
-    public double getPassengersRidingOffset() {
-        return -0.5F;
+    protected Vec3 getPassengerAttachmentPoint(Entity passenger, net.minecraft.world.entity.EntityDimensions dimensions, float scale) {
+        return new Vec3(0.0, -0.5F, 0.0);
     }
     public int airSupply = 0;
     Collection<MobEffectInstance> mobEffects;

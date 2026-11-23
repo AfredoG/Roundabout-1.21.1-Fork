@@ -548,15 +548,23 @@ public abstract class EntityAndData implements IEntityAndData {
         }
     }
 
-    @Inject(method = "getNameTagOffsetY", at = @At("HEAD"), cancellable = true)
-    public void roundabout$getNameTagOffsetY(CallbackInfoReturnable<Float> cir){
-        if (((Entity)(Object)this) instanceof Player PE){
-            ItemStack stack = ((IPlayerEntity) PE).roundabout$getMaskSlot();
-            if (stack !=null && !stack.isEmpty() && stack.getItem() instanceof MaskItem ME){
-
-                VisageData vd = ME.visageData.generateVisageData(PE);
-                cir.setReturnValue(this.getBbHeight() + vd.getNametagHeight());
+    @Inject(method = "getAttachments", at = @At("RETURN"), cancellable = true)
+    public void roundabout$nameTagAttachment(CallbackInfoReturnable<net.minecraft.world.entity.EntityAttachments> cir) {
+        Entity entity = (Entity) (Object) this;
+        net.minecraft.world.entity.EntityAttachments attachments = cir.getReturnValue();
+        if (entity instanceof Player player) {
+            ItemStack stack = ((IPlayerEntity) player).roundabout$getMaskSlot();
+            if (stack != null && !stack.isEmpty() && stack.getItem() instanceof MaskItem mask) {
+                VisageData visage = mask.visageData.generateVisageData(player);
+                // EntityRenderer adds 0.5 above the attachment point.
+                cir.setReturnValue(net.hydra.jojomod.util.EntityAttachmentUtil.withNameTagHeight(
+                        attachments, entity.getBbWidth(), entity.getBbHeight(),
+                        entity.getBbHeight() + visage.getNametagHeight() - 0.5));
             }
+        } else if (entity instanceof net.hydra.jojomod.entity.mobs.StrayCatEntity cat && cat.getPotted()) {
+            Vec3 point = attachments.get(net.minecraft.world.entity.EntityAttachment.NAME_TAG, 0, 0.0F);
+            cir.setReturnValue(net.hydra.jojomod.util.EntityAttachmentUtil.withNameTagHeight(
+                    attachments, entity.getBbWidth(), entity.getBbHeight(), point.y + 0.25));
         }
     }
     @Inject(method = "turn", at = @At("HEAD"), cancellable = true)

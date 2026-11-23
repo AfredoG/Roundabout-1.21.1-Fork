@@ -8,7 +8,7 @@
 - Gradle help: успешно.
 - Подготовка исходников и классов Minecraft/NeoForge: успешно.
 - processResources: успешно; проверены метаданные, access transformer, mixin-конфигурации и 141 рецепт.
-- compileJava: НЕУСПЕШНО, 112 ошибок, 18 предупреждений (актуальный полный журнал сохранён в build-errors.txt).
+- compileJava: НЕУСПЕШНО, 71 ошибок, 18 предупреждений (актуальный полный журнал сохранён в build-errors.txt).
 - JDK 21 и Gradle восстановлены; подготовка Minecraft/NeoForge и processResources прошли в новой среде.
 - JAR для установки: отсутствует.
 - Запуск клиента и выделенного сервера полного мода: не выполнен (компиляция не проходит).
@@ -18,17 +18,15 @@
 Список ошибок — build-errors.txt. Ошибки могут быть каскадными; их число не является оценкой процента готовности.
 Текущая проверка выполнена на Azul JDK 21.0.6 и Gradle 8.14.3; зависимости восстановлены заново.
 
-## Категории актуального полного журнала (112 ошибок)
+## Категории актуального полного журнала (71 ошибок)
 
 | Ошибка | Количество |
 |---|---:|
-| cannot find symbol | 56 |
-| method does not override or implement a method from a supertype | 21 |
-| incompatible types: int cannot be converted to ServerEntity | 2 |
+| cannot find symbol | 37 |
+| method does not override or implement a method from a supertype | 7 |
 | no suitable constructor found for Explosion(ClientLevel,<null>,double,double,double,float,List<BlockPos>) | 2 |
 | method getExperienceReward in class LivingEntity cannot be applied to given types; | 2 |
 | method isPathfindable in class BlockStateBase cannot be applied to given types; | 1 |
-| getTeam() in FallenMob cannot override getTeam() in Entity | 1 |
 | Snake is not abstract and does not override abstract method isFood(ItemStack) in Animal | 1 |
 | getVisualShape(BlockState,BlockGetter,BlockPos,CollisionContext) has protected access in BlockBehaviour | 1 |
 | AnubisGuardian is not abstract and does not override abstract method applyRaidBuffs(ServerLevel,int,boolean) in Raider | 1 |
@@ -37,6 +35,8 @@
 | method pull in class LeverBlock cannot be applied to given types; | 1 |
 | method press in class ButtonBlock cannot be applied to given types; | 1 |
 | jumpFromGround() in KingCrimsonCloneEntity cannot override jumpFromGround() in LivingEntity | 1 |
+| method createMinecart in class AbstractMinecart cannot be applied to given types; | 1 |
+| incompatible types: Level cannot be converted to ServerLevel | 1 |
 
 
 ## Что требуется закончить
@@ -556,3 +556,14 @@
 - Слот брони Black Sabbath выбирает для фактического игрока; износ огнестрельного оружия получает используемую руку. BombPlantedArrow устанавливает копию исходной стрелы через setPickupItemStack с обновлением цвета и компонентов зелий.
 - PersistenceCheck: **22 проверки прошли** на реальных классах NeoForge 21.1.265. Проверены компоненты и износ предмета, пустой стек, все позиции разреженного инвентаря, граница/перекрытие зон защиты, сохранение и удаление с последующей загрузкой. Для запуска нужны Java 21, compileClasspath и resource JAR Minecraft из stripClient; harness создаёт пустой LoadingModList и выполняет Bootstrap. Полный мод при этом не загружается; интеграция дисков, NPC и Whitesnake в игре ещё не проверена.
 - Клиент/сервер не запускались; играбельного JAR нет. Дальше — геометрия посадки и точек привязки, картины и spawn-пакеты, навигация, взрывы, рендеринг и NeoForge-события.
+
+
+## Контрольная точка: геометрия сущностей (2026-11-22)
+
+- Полная compileJava: **112 → 71 ошибка**, 18 предупреждений. Новых диагностик относительно предыдущей точки нет; исправлены промежуточные импорты Vec3 и обязательный defineSynchedData у картин. processResources и git diff --check прошли.
+- Посадка при изменённой гравитации получает штатный getPassengerRidingPosition и вычитает getVehicleAttachmentPoint, затем поворачивает весь вектор один раз. По исходникам 1.21.1 лодка, лошадь и курица вызывают базовый positionRider, а верблюд и лама предоставляют точки привязки. Их смещения сидений/анимаций и повороты пассажиров остаются в ванильной логике. Четыре устаревшие копии mixin удалены, общий обработчик перенесён без require=0. У лошади сохранён отдельный расчёт урона от падения.
+- Смещения мёртвых/активированных миньонов, Zombiefish, Clone, пузыря, паука и фантома перенесены в новую систему привязок. Учтён обратный знак VEHICLE: его координата вычитается при посадке. Удалены только пустые делегирующие override Silver Chariot и недопустимый Shadow final getDimensions.
+- Картины сохраняют размеры текстур в пикселях; AABB рассчитывается в блоках с прежним креплением, сдвигом чётных размеров и толщиной 1/16 блока. У фиксированных типов картин нет дополнительных синхронизируемых вариантов. Картины и два вида движущихся блоков используют новый getAddEntityPacket(ServerEntity), сохраняя направление/BlockState в packet data.
+- Маски персонажей и Stray Cat в горшке меняют NAME_TAG через getAttachments. Прочие точки привязки копируются без изменений. Killer Queen, Pearl Jam и маскировка Diver Down используют современную точку надписи; устаревшая обязательная инъекция getNameTagOffsetY заменена.
+- EntityGeometryCheck: **136 утверждений прошли** на реальных классах 1.21.1. Проверены три размера картин во всех четырёх направлениях, центр/габариты/толщина, координаты и направление пакета появления; проверены две пассажирские точки и неизменность исходных привязок при коррекции надписи. Harness создаёт минимальный реестр empty fluid для конструирования сущности без мира. Это не игровой запуск и не проверка применения всех mixin.
+- Проверен список mixin в обработанных ресурсах: устаревшие классы отсутствуют, общая обработка гравитации и обработка падения лошади остаются. Полный мод ещё не компилируется; играбельного JAR нет.

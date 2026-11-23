@@ -102,7 +102,7 @@ public class FallenMob extends PathfinderMob implements NeutralMob, net.hydra.jo
     /**Corpses will attempt to use their owner's scoreboard by default.
      *this can accomplish not killing your allies and their corpses*/
     @Override
-    public Team getTeam() {
+    public net.minecraft.world.scores.PlayerTeam getTeam() {
         if (ClientNetworking.getAppropriateConfig().justiceSettings.corpsesUseOwnerTeam) {
             if (getRealController() != null) {
                 return this.level().getScoreboard().getPlayersTeam(getRealController().getScoreboardName());
@@ -171,11 +171,9 @@ public class FallenMob extends PathfinderMob implements NeutralMob, net.hydra.jo
     }
 
     @Override
-    public double getMyRidingOffset() {
-        if (!getActivated()){
-            return super.getMyRidingOffset()+0.2F;
-        }
-        return super.getMyRidingOffset();
+    public Vec3 getVehicleAttachmentPoint(Entity vehicle) {
+        Vec3 attachment = super.getVehicleAttachmentPoint(vehicle);
+        return getActivated() ? attachment : attachment.add(0.0, -0.2F, 0.0);
     }
     protected float getEquipmentDropChance(EquipmentSlot $$0) {
         return 0;

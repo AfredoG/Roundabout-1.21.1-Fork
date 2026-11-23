@@ -121,9 +121,6 @@ public abstract class GravityEntityMixin implements IGravityEntity {
     public abstract boolean isControlledByLocalInstance();
 
     @Shadow
-    public abstract double getPassengersRidingOffset();
-
-    @Shadow
     public abstract boolean hasPassenger(Entity entity);
 
     @Shadow
@@ -862,15 +859,18 @@ public abstract class GravityEntityMixin implements IGravityEntity {
         }
     }
 
-    @Inject(method = "positionRider(Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/entity/Entity$MoveFunction;)V", at = @At("HEAD"), cancellable = true, require = 0)
+    @Inject(method = "positionRider(Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/entity/Entity$MoveFunction;)V", at = @At("HEAD"), cancellable = true)
     private void rdbt$positionRider(Entity $$0, Entity.MoveFunction $$1, CallbackInfo ci) {
         Direction gravityDirection = GravityAPI.getGravityDirection((Entity) (Object) this);
         if (gravityDirection == Direction.DOWN)
             return;
         ci.cancel();
         if (this.hasPassenger($$0)) {
-            double $$2 = this.getPassengersRidingOffset() + $$0.getMyRidingOffset();
-            Vec3 transform = RotationUtil.vecPlayerToWorld(0, $$2, 0, gravityDirection);
+            Entity vehicle = (Entity) (Object) this;
+            // Preserve every vanilla attachment offset, then rotate once into gravity space.
+            Vec3 localOffset = vehicle.getPassengerRidingPosition($$0).subtract(vehicle.position())
+                    .subtract($$0.getVehicleAttachmentPoint(vehicle));
+            Vec3 transform = RotationUtil.vecPlayerToWorld(localOffset, gravityDirection);
             $$1.accept($$0,
                     this.getX() + transform.x,
                     this.getY() + transform.y,

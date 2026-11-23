@@ -434,11 +434,11 @@ public abstract class ZLivingEntityRenderer<T extends LivingEntity, M extends En
                     String disguiseName = profile.getName();
                     if (disguiseName != null && !disguiseName.isEmpty()) {
                         float targetY = (entity.isCrouching() ? 2.0F : 2.3F);
-                        float yDiff = targetY - entity.getNameTagOffsetY();
+                        double yDiff = targetY - net.hydra.jojomod.util.EntityAttachmentUtil.nameTagPosition(entity, partialTicks).y;
 
                         poseStack.pushPose();
                         poseStack.translate(0.0D, yDiff, 0.0D);
-                        this.renderNameTag(entity, Component.literal(disguiseName), poseStack, buffer, packedLight);
+                        this.renderNameTag(entity, Component.literal(disguiseName), poseStack, buffer, packedLight, partialTicks);
                         poseStack.popPose();
                     }
                 }

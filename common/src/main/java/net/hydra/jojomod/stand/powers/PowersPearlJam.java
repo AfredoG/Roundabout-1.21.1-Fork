@@ -1,5 +1,6 @@
 package net.hydra.jojomod.stand.powers;
 
+import net.minecraft.world.phys.Vec3;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
@@ -192,8 +193,9 @@ public class PowersPearlJam extends NewDashPreset {
             Minecraft mc = Minecraft.getInstance();
             if (LE != this.getSelf() && this.getSelf() instanceof Player && this.getSelf().distanceToSqr(LE) <= 1024 && palmReadEffects.containsKey(LE) && this.palmReadEffects.get(LE) != null && !this.palmReadEffects.get(LE).isEmpty()){
                 matrixStack.pushPose();
-                float height = LE.getNameTagOffsetY() + 0.275F;
-                matrixStack.translate(0, height, 0);
+                Vec3 labelPosition = net.hydra.jojomod.util.EntityAttachmentUtil.nameTagPosition(
+                        LE, mc.getTimer().getGameTimeDeltaPartialTick(true));
+                matrixStack.translate(labelPosition.x, labelPosition.y + 0.275, labelPosition.z);
                 matrixStack.mulPose(mc.getEntityRenderDispatcher().cameraOrientation());
                 matrixStack.scale(-0.025F, -0.025F, 0.025F);
 

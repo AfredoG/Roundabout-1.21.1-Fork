@@ -905,11 +905,6 @@ public class SilverChariotEntity extends FollowingStandEntity {
     }
 
     @Override
-    public double getMyRidingOffset() {
-        return super.getMyRidingOffset();
-    }
-
-    @Override
     public void rideTick() {
         super.rideTick();
     }
@@ -934,11 +929,6 @@ public class SilverChariotEntity extends FollowingStandEntity {
             return;
         }
         super.removePassenger($$0);
-    }
-
-    @Override
-    public double getPassengersRidingOffset() {
-        return super.getPassengersRidingOffset();
     }
 
     @Override
