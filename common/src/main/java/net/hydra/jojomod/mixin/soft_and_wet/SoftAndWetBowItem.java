@@ -24,7 +24,7 @@ public class SoftAndWetBowItem {
 
         if ($$2 != null && ((StandUser) $$2).roundabout$isBubbleEncased()) {
             StandUser SE = ((StandUser) $$2);
-            int $$7 = this.getUseDuration($$0) - $$3;
+            int $$7 = this.getUseDuration($$0, $$2) - $$3;
             float $$8 = getPowerForTime($$7);
             if (!((double) $$8 < 0.1)) {
                 MainUtil.playPop($$2);
@@ -38,7 +38,7 @@ public class SoftAndWetBowItem {
      * */
 
     @Shadow
-    public int getUseDuration(ItemStack $$0) {
+    public int getUseDuration(ItemStack $$0, LivingEntity user) {
         return 72000;
     }
 

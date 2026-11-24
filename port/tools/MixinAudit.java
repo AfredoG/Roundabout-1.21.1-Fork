@@ -11,9 +11,9 @@ import org.objectweb.asm.tree.*;
  *   MixinAudit common/src/main/resources/roundabout.mixins.json
  *              forge/src/main/resources/roundabout.forge.mixins.json
  *
- * Prints TSV candidates for missing shadows/declared injection methods and callback signatures.
+ * Prints TSV candidates for missing shadows/injection methods, callback signatures and INVOKE/FIELD targets.
  * Inherited/injected members, bridge methods, coercion and overloads require manual review.
- * This does not validate @At instructions, locals, redirects, side-only loading, or game behavior.
+ * @At target presence is checked; slices, ordinals, coercion, locals and side/game behavior are not.
  * An empty report is NOT evidence of a successful mod startup. No source/config is modified.
  */
 public class MixinAudit {
@@ -73,11 +73,28 @@ public class MixinAudit {
                         String n=m.name.replaceFirst("^shadow\\$","");
                         if(!member(target,n,m.desc,false,true))missing("SHADOW_METHOD",mixin,target,n,m.desc,"");
                     }
+                    Object points=value(a,"at",List.of());
+                    List<?> ats=points instanceof AnnotationNode an?List.of(an):points instanceof List<?> list?list:List.of();
                     Object methods=value(a,"method",null);
                     if(methods instanceof List<?> list)for(Object o:list) {
                         String spec=o.toString(); int paren=spec.indexOf('(');
                         String n=paren<0?spec:spec.substring(0,paren), d=paren<0?"":spec.substring(paren);
                         if(!member(target,n,d,false,false))missing("INJECT_METHOD",mixin,target,n,d,"require="+value(a,"require","default"));
+                        for(Object point:ats) {
+                            AnnotationNode at=(AnnotationNode)point;
+                            String where=value(at,"value","").toString(), wanted=value(at,"target","").toString();
+                            if(!(where.equals("INVOKE")||where.equals("FIELD"))||!wanted.startsWith("L"))continue;
+                            for(MethodNode tm:read(target).methods) {
+                                if(!(n.endsWith("*") ? tm.name.startsWith(n.substring(0,n.length()-1)) : tm.name.equals(n))||(!d.isEmpty()&&!d.equals(tm.desc)))continue;
+                                boolean found=false;
+                                for(AbstractInsnNode insn:tm.instructions) {
+                                    String actual=insn instanceof MethodInsnNode call ? "L"+call.owner+";"+call.name+call.desc
+                                            :insn instanceof FieldInsnNode field ? "L"+field.owner+";"+field.name+":"+field.desc:"";
+                                    if(wanted.equals(actual)){found=true;break;}
+                                }
+                                if(!found)missing("INJECTION_POINT",mixin,target,tm.name,tm.desc,m.name+" -> "+wanted+" require="+value(a,"require","default"));
+                            }
+                        }
                         if(a.desc.equals("Lorg/spongepowered/asm/mixin/injection/Inject;")) {
                             Type[] parameters=Type.getArgumentTypes(m.desc); int ci=-1;
                             for(int k=0;k<parameters.length;k++)if(parameters[k].getDescriptor().startsWith("Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo")){ci=k;break;}

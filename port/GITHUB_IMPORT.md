@@ -5,7 +5,7 @@ Imported on 2026-11-13 into AfredoG/Roundabout-1.21.1-Fork, branch `port/neoforg
 ## Status
 
 This is an INCOMPLETE development port: Minecraft 1.21.1, NeoForge 21.1.265, Java 21, Gradle 8.14.3.
-Latest compilation: 0 Java errors and 18 warnings; full build succeeds and produces development and sources JARs. The compile/build output is in build-errors.txt. The latest dedicated-server launch fails during Mixin application (GravityPlayerMixin / Player.isAboveGround); the preceding effect/entity/shield blockers have been fixed. See server-startup.log and mixin-diagnostics.tsv. No playable release; the client has not been launched.
+Latest compilation: 0 Java errors and 18 warnings; full build succeeds. The dedicated server now loads a new world, reaches Done, runs commands and six spawned entities, saves and stops normally. See server-startup.log. Client startup has not been verified: the static audit retains 37 client-side candidates, not confirmed error counts. No playable release is claimed.
 See BUILD_STATUS.md and build-errors.txt for diagnostics and remaining work.
 This import changes no mod source code and does not constitute a new build test.
 
@@ -45,7 +45,7 @@ git remote add upstream https://github.com/Hydraheads/RoundaboutMod.git
 Read port/BUILD_STATUS.md, port/build-errors.txt, and the existing port documentation before editing.
 Follow existing port/update_upstream.py workflow for upstream updates; retain upstream history.
 Use Java 21 and the standalone neoforge Gradle project. Restore dependencies when needed.
-Next work: runtime Mixin migration, starting with GravityPlayerMixin (ground check, ServerPlayer movement statistics, player particles), then melee/fall damage and block-interaction hooks. Continue client/server startup validation and then in-game tests. Entity attachments, persistence, navigation, explosion/crossbow gravity hooks and NeoForge sleep events have now received port batches; consult the final BUILD_STATUS.md checkpoints.
+Next work: client startup, render/armor/model registration, mouse control and exact callback signatures, then in-world stand behavior and networking. Server-side movement, fall damage, block/item hooks, registries and data loading now pass the dedicated-server startup check; consult the final BUILD_STATUS.md checkpoint.
 Do not exclude failing classes or disable required mixins to manufacture a successful build.
 
 Save small coherent checkpoints frequently to this remote port branch, including current diagnostics and next steps.
@@ -54,4 +54,4 @@ If using the GitHub connector, use expected_sha when updating the branch and ver
 If using Git, fetch the remote history before continuing. Do not push the old archive history over the imported branch.
 Do not force-push master or apply the cumulative legacy patch to this already-patched branch.
 
-Remote publication after e3577dc7a843b0edc18b731537977a7924029510 is pending: automatic review rejected the new tree twice and requires explicit confirmation of the public repository/branch and payload. Do not bypass that rejection with another transport.
+Publication resumed after explicit user confirmation. On 2026-11-24 all three pending checkpoints were uploaded to port/neoforge-1.21.1 and fetched back: 10cebd03bfea2dc8cb17ed2aeaaa3340989a4034, 81f2a3468285bec5e704b5259764dc00cdcd5c49, a32e1b6f1461af05dc407a8e2bdacc583f0bc4fd. Each tree matches the corresponding local checkpoint exactly.

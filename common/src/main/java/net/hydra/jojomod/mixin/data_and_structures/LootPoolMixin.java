@@ -4,7 +4,6 @@ import net.hydra.jojomod.access.ILootPool;
 import net.hydra.jojomod.access.ILootTable;
 import net.hydra.jojomod.block.ModBlocks;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.storage.loot.BuiltInLootTables;
@@ -12,17 +11,12 @@ import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
-import net.minecraft.world.level.storage.loot.entries.LootPoolEntry;
 import net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer;
-import org.apache.commons.lang3.mutable.MutableInt;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
 import java.util.List;
 import java.util.function.Consumer;
@@ -37,20 +31,18 @@ public abstract class LootPoolMixin implements ILootPool {
         return this.entries.size();
     }
 
-    @Inject(method = "addRandomItem", at = @At(value = "INVOKE", target = "Ljava/util/List;size()I", ordinal = 0),
-            locals = LocalCapture.CAPTURE_FAILHARD)
-    private void roundabout$addLootEntry(Consumer<ItemStack> consumer, LootContext context, CallbackInfo ci,
-                                       RandomSource randomSource, List<LootPoolEntry> list, MutableInt totalWeight) {
-        if (roundabout$doesLootTableContain(context.getLevel(), BuiltInLootTables.FISHING_TREASURE)) {
-            // Keep the candidate list and weight sum consistent before vanilla checks either one.
-            LootItem.lootTableItem(ModBlocks.EQUIPPABLE_STONE_MASK_BLOCK).setWeight(1).build().expand(context, entry -> {
-                int weight = entry.getWeight(context.getLuck());
-                if (weight > 0) {
-                    list.add(entry);
-                    totalWeight.add(weight);
-                }
-            });
+    @com.llamalad7.mixinextras.injector.ModifyExpressionValue(method = "addRandomItem",
+            at = @At(value = "FIELD", target = "Lnet/minecraft/world/level/storage/loot/LootPool;entries:Ljava/util/List;"))
+    private List<LootPoolEntryContainer> roundabout$addLootEntry(List<LootPoolEntryContainer> original,
+                                                               Consumer<ItemStack> consumer, LootContext context) {
+        if (!roundabout$doesLootTableContain(context.getLevel(), BuiltInLootTables.FISHING_TREASURE)) {
+            return original;
         }
+        // A per-roll view keeps frozen pool data intact. Native expansion calculates both
+        // candidates and their weight sum, without relying on compiler-specific locals.
+        List<LootPoolEntryContainer> entries = new java.util.ArrayList<>(original);
+        entries.add(LootItem.lootTableItem(ModBlocks.EQUIPPABLE_STONE_MASK_BLOCK).setWeight(1).build());
+        return entries;
     }
 
     @Unique

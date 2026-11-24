@@ -38,7 +38,8 @@ public class ModBlocks {
     public static final BooleanProperty IGNITED = BooleanProperty.create("ignited");
     public static final BooleanProperty DECAY = BooleanProperty.create("decay");
     public static final BooleanProperty IN_FOG = BooleanProperty.create("in_fog");
-    public static final BooleanProperty LIT = BooleanProperty.create("lit");
+    // NeoForge state lookup uses property identity; emission and state must share this instance.
+    public static final BooleanProperty LIT = BlockStateProperties.LIT;
     public static final IntegerProperty COLOR = IntegerProperty.create("color", 0, 12);
     public static final IntegerProperty FLESH_LAYER = IntegerProperty.create("layers", 1, 4);
     public static final IntegerProperty EATING_STAGE = IntegerProperty.create("stage",1,3);

@@ -407,10 +407,6 @@ public abstract class ZMob extends LivingEntity implements IMob {
     }
 
     @Shadow
-    public double getPerceivedTargetDistanceSquareForMeleeAttack(LivingEntity $$0) {
-        return 0;
-    }
-    @Shadow
     public Sensing getSensing() {
         return null;
     }
@@ -854,7 +850,7 @@ public abstract class ZMob extends LivingEntity implements IMob {
                         LivingEntity $$0 = this.getTarget();
                         if ($$0 != null) {
                             this.getLookControl().setLookAt($$0, 30.0F, 30.0F);
-                            double $$1 = this.getPerceivedTargetDistanceSquareForMeleeAttack($$0);
+                            double $$1 = this.distanceToSqr($$0);
                             this.roundabout$ticksUntilNextPathRecalculation = Math.max(this.roundabout$ticksUntilNextPathRecalculation - 1, 0);
                             if ((this.roundabout$followingTargetEvenIfNotSeen || this.getSensing().hasLineOfSight($$0))
                                     && this.roundabout$ticksUntilNextPathRecalculation <= 0

@@ -62,11 +62,29 @@ processResources {
                 parts[2] = 'neoforge'
             }
             if (parts[1] == 'forge' && parts[2] == 'loot_modifiers') parts[1] = 'neoforge'
+            if (parts.join('/') == 'data/forge/tags/block/ores.json') parts[1] = 'c'
             details.path = parts.join('/')
         }
     }
     includeEmptyDirs = false
     doLast {
+        // Keep upstream Forge paths/content in source; migrate only known NeoForge codec IDs.
+        def biomeCodecIds = ['forge:add_features':'neoforge:add_features',
+                             'forge:add_spawns':'neoforge:add_spawns', 'forge:or':'neoforge:or']
+        Closure migrateBiomeCodecs
+        migrateBiomeCodecs = { value ->
+            if (value instanceof Map) {
+                if (biomeCodecIds.containsKey(value.type)) value.type = biomeCodecIds[value.type]
+                value.values().each { migrateBiomeCodecs(it) }
+            } else if (value instanceof List) {
+                value.each { migrateBiomeCodecs(it) }
+            }
+        }
+        fileTree(destinationDir).matching { include 'data/*/neoforge/biome_modifier/**/*.json' }.each { modifier ->
+            def json = new groovy.json.JsonSlurper().parse(modifier)
+            migrateBiomeCodecs(json)
+            modifier.setText(groovy.json.JsonOutput.prettyPrint(groovy.json.JsonOutput.toJson(json)) + '\n', 'UTF-8')
+        }
         // 1.21 recipe results are ItemStack objects with an id, including cooking.
         fileTree(destinationDir).matching { include 'data/*/recipe/**/*.json' }.each { recipe ->
             def json = new groovy.json.JsonSlurper().parse(recipe)

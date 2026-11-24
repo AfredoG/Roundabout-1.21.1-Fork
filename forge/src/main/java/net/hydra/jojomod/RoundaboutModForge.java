@@ -1,6 +1,5 @@
 package net.hydra.jojomod;
 
-import net.hydra.jojomod.Utils.commands.ForgeCommandRegistry;
 import net.hydra.jojomod.biome_modifiers.BiomeCodec;
 import net.hydra.jojomod.client.ClientClass;
 import net.hydra.jojomod.networking.ForgeNetworkHandler;
@@ -16,7 +15,6 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.neoforged.fml.event.lifecycle.FMLLoadCompleteEvent;
 import net.neoforged.fml.loading.FMLPaths;
 
 import static net.hydra.jojomod.registry.ForgeBlocks.registerDynamicFogBlocks;
@@ -63,7 +61,6 @@ public class RoundaboutModForge {
 
         bus.addListener(this::clientSetup);
         bus.addListener(this::commonSetup);
-        bus.addListener(this::loadComplete);
         NeoForge.EVENT_BUS.addListener(this::entityLifeCycle);
         NeoForge.EVENT_BUS.addListener(net.hydra.jojomod.Utils.ForgeBrewingRecipes::register);
 
@@ -76,10 +73,6 @@ public class RoundaboutModForge {
 
     private void clientSetup(final FMLClientSetupEvent event) {
         ClientClass.init();
-    }
-
-    private void loadComplete(final FMLLoadCompleteEvent event) {
-        NeoForge.EVENT_BUS.register(new ForgeCommandRegistry());
     }
 
     private void commonSetup(final FMLCommonSetupEvent event){

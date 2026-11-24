@@ -11,8 +11,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(ThrownExperienceBottle.class)
 public class GravityThrownExperienceBottleMixin {
-    @Inject(method = "getGravity", at = @At("HEAD"), cancellable = true)
-    private void rdbt$multiplyGravity(CallbackInfoReturnable<Float> cir) {
-        cir.setReturnValue(0.07F * (float) GravityAPI.getGravityStrength(((Entity) (Object) this)));
+    @Inject(method = "getDefaultGravity", at = @At("RETURN"), cancellable = true)
+    private void rdbt$multiplyGravity(CallbackInfoReturnable<Double> cir) {
+        cir.setReturnValue(cir.getReturnValue() * GravityAPI.getGravityStrength((Entity)(Object)this));
     }
 }

@@ -7,7 +7,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -29,9 +29,8 @@ public class ScissorsPumpkinBlock {
 
     /**This mixin allows you to use scissors to shear a pumpkin block*/
 
-    @Inject(method = "use", at = @At(value = "HEAD"), cancellable = true)
-    protected void roundabout$tick(BlockState $$0, Level $$1, BlockPos $$2, Player $$3, InteractionHand $$4, BlockHitResult $$5, CallbackInfoReturnable<InteractionResult> cir) {
-        ItemStack $$6 = $$3.getItemInHand($$4);
+    @Inject(method = "useItemOn", at = @At(value = "HEAD"), cancellable = true)
+    protected void roundabout$tick(ItemStack $$6, BlockState $$0, Level $$1, BlockPos $$2, Player $$3, InteractionHand $$4, BlockHitResult $$5, CallbackInfoReturnable<ItemInteractionResult> cir) {
         if ($$6.is(ModItems.SCISSORS)) {
             if (!$$1.isClientSide) {
                 Direction $$7 = $$5.getDirection();
@@ -54,7 +53,7 @@ public class ScissorsPumpkinBlock {
                 $$3.awardStat(Stats.ITEM_USED.get(ModItems.SCISSORS));
             }
 
-            cir.setReturnValue(InteractionResult.sidedSuccess($$1.isClientSide));
+            cir.setReturnValue(ItemInteractionResult.sidedSuccess($$1.isClientSide));
         }
     }
 }

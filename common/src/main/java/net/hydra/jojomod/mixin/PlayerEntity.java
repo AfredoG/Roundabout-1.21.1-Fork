@@ -263,11 +263,11 @@ public abstract class PlayerEntity extends LivingEntity implements IPlayerEntity
 
     }
     @Inject(
-            method = "startAutoSpinAttack(I)V",
+            method = "startAutoSpinAttack(IFLnet/minecraft/world/item/ItemStack;)V",
             at = @At("HEAD"),
             cancellable = true, require = 0
     )
-    public void rdbt$startAutoSpinAttackP(int $$0, CallbackInfo ci){
+    public void rdbt$startAutoSpinAttackP(int ticks, float damage, ItemStack weapon, CallbackInfo ci){
         ((StandUser)this).roundabout$getStandPowers().onSpinAttackStart();
     }
 
@@ -452,31 +452,6 @@ public abstract class PlayerEntity extends LivingEntity implements IPlayerEntity
         }
     }
 
-    @Unique
-    public boolean rdbt$isExhaustingMovement = false;
-    @Inject(method = "checkMovementStatistics",at=@At(value = "HEAD"),require = 0)
-    public void rdbt$checkMovementStatistics(CallbackInfo ci) {
-        rdbt$isExhaustingMovement = true;
-    }
-    @Inject(method = "checkMovementStatistics",at=@At(value = "TAIL"),require = 0)
-    public void rdbt$checkMovementStatistics2(CallbackInfo ci) {
-        rdbt$isExhaustingMovement = false;
-    }
-    @Inject(method = "causeFoodExhaustion",at=@At(value = "HEAD"),require = 0,cancellable = true)
-    public void rdbt$causeFoodExhaustion(float exhaustion,CallbackInfo ci) {
-        //White Album does not lose nearly as much hunger from skating
-        if (rdbt$isExhaustingMovement){
-            if (((StandUser)this).roundabout$getStandPowers() instanceof PowersWhiteAlbum PW &&
-            PW.hasSkatesActivated() && !this.isInWater()){
-                if (!this.getAbilities().invulnerable) {
-                    if (!this.level().isClientSide) {
-                        this.getFoodData().addExhaustion(exhaustion*0.3F);
-                        ci.cancel();
-                    }
-                }
-            }
-        }
-    }
     @Unique
     @Override
     public byte roundabout$getPower(){
@@ -1264,21 +1239,13 @@ public abstract class PlayerEntity extends LivingEntity implements IPlayerEntity
             }
         }
     }
-    @Inject(method = "getProjectile(Lnet/minecraft/world/item/ItemStack;)Lnet/minecraft/world/item/ItemStack;",
-            at = @At(value = "INVOKE",
-                    target="Lnet/minecraft/world/item/ProjectileWeaponItem;getAllSupportedProjectiles()Ljava/util/function/Predicate;",
-            shift= At.Shift.AFTER),
-            cancellable = true)
-    public void roundabout$getProjectile(ItemStack $$0, CallbackInfoReturnable<ItemStack> cir) {
-        Predicate<ItemStack> $$1 = ((ProjectileWeaponItem)$$0.getItem()).getAllSupportedProjectiles();
-        for (int $$3 = 0; $$3 < this.inventory.getContainerSize(); $$3++) {
-            ItemStack $$4 = this.inventory.getItem($$3);
-            if ($$1.test($$4) ||
-                    ($$4.getItem() instanceof StandArrowItem && !($$4.getDamageValue() >= $$4.getMaxDamage()))
-                    || $$4.getItem() instanceof WorthyArrowItem) {
-                cir.setReturnValue($$4);
-            }
-        }
+    @com.llamalad7.mixinextras.injector.ModifyExpressionValue(
+            method = "getProjectile(Lnet/minecraft/world/item/ItemStack;)Lnet/minecraft/world/item/ItemStack;",
+            at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/ProjectileWeaponItem;getAllSupportedProjectiles(Lnet/minecraft/world/item/ItemStack;)Ljava/util/function/Predicate;"))
+    private Predicate<ItemStack> roundabout$standArrowPredicate(Predicate<ItemStack> original) {
+        // Let the native inventory selection and NeoForge projectile hook run normally.
+        return original.or(stack -> (stack.getItem() instanceof StandArrowItem && stack.getDamageValue() < stack.getMaxDamage())
+                || stack.getItem() instanceof WorthyArrowItem);
     }
 
     @Inject(method = "getSpeed", at = @At(value = "HEAD"), cancellable = true)

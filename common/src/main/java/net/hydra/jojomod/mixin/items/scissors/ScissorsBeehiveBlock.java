@@ -5,7 +5,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -33,9 +33,8 @@ public class ScissorsBeehiveBlock {
      *
      * The code is mostly just a faithful use of vanilla code so if it updates check this out.*/
 
-    @Inject(method = "use", at = @At(value = "HEAD"), cancellable = true)
-    protected void roundabout$Tick(BlockState $$0, Level $$1, BlockPos $$2, Player $$3, InteractionHand $$4, BlockHitResult $$5, CallbackInfoReturnable<InteractionResult> cir) {
-        ItemStack $$6 = $$3.getItemInHand($$4);
+    @Inject(method = "useItemOn", at = @At(value = "HEAD"), cancellable = true)
+    protected void roundabout$Tick(ItemStack $$6, BlockState $$0, Level $$1, BlockPos $$2, Player $$3, InteractionHand $$4, BlockHitResult $$5, CallbackInfoReturnable<ItemInteractionResult> cir) {
         if ($$6.is(ModItems.SCISSORS)) {
             ItemStack itemStack = $$3.getItemInHand($$4);
             int i = $$0.getValue(HONEY_LEVEL);
@@ -56,7 +55,7 @@ public class ScissorsBeehiveBlock {
                 } else {
                     this.resetHoneyLevel($$1, $$0, $$2);
                 }
-                cir.setReturnValue(InteractionResult.sidedSuccess($$1.isClientSide));
+                cir.setReturnValue(ItemInteractionResult.sidedSuccess($$1.isClientSide));
 
             }
         }

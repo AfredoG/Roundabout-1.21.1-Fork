@@ -41,21 +41,14 @@ public class PowersItemStack {
             powers.gainExpFromStandardMining($$1,$$2);
         }
     }
-    @Inject(method = "hurt", at = @At(value = "HEAD"), cancellable = true)
-    protected void roundabout$fortHurt(int $$0, RandomSource $$1, ServerPlayer $$2, CallbackInfoReturnable<Boolean> cir) {
-        if ($$2 != null){
-            if ($$2.hasEffect(ModEffects.FORTIFICATION)){
-                cir.setReturnValue(false);
-            }
+    // All three 1.21.1 NeoForge durability entry points converge on this overload.
+    @Inject(method = "hurtAndBreak(ILnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/entity/LivingEntity;Ljava/util/function/Consumer;)V",
+            at = @At("HEAD"), cancellable = true)
+    protected void roundabout$fortHurtAndBreak(int amount, net.minecraft.server.level.ServerLevel level,
+                                             LivingEntity wearer, Consumer<net.minecraft.world.item.Item> onBreak,
+                                             CallbackInfo ci) {
+        if (wearer != null && wearer.hasEffect(ModEffects.FORTIFICATION)) {
+            ci.cancel();
         }
     }
-    @Inject(method = "hurtAndBreak", at = @At(value = "HEAD"), cancellable = true)
-    protected <T extends LivingEntity> void roundabout$fortHurtAndBreak(int $$0, T $$1, Consumer<T> $$2, CallbackInfo ci) {
-        if ($$1 != null){
-            if ($$1.hasEffect(ModEffects.FORTIFICATION)){
-                ci.cancel();
-            }
-        }
-    }
-
 }

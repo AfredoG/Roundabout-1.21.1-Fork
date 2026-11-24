@@ -10,8 +10,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(ThrownPotion.class)
 public class GravityThrownPotionMixin {
-    @Inject(method = "getGravity", at = @At("HEAD"), cancellable = true)
-    private void rdbt$multiplyGravity(CallbackInfoReturnable<Float> cir) {
-        cir.setReturnValue(0.05F * (float) GravityAPI.getGravityStrength(((Entity) (Object) this)));
+    @Inject(method = "getDefaultGravity", at = @At("RETURN"), cancellable = true)
+    private void rdbt$multiplyGravity(CallbackInfoReturnable<Double> cir) {
+        cir.setReturnValue(cir.getReturnValue() * GravityAPI.getGravityStrength((Entity)(Object)this));
     }
 }

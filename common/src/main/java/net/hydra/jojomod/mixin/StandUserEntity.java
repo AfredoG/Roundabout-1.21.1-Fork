@@ -5348,7 +5348,12 @@ public abstract class StandUserEntity extends Entity implements StandUser {
         }
 
         if (rdbt$this() instanceof Mob mb && ((IMob) mb).roundabout$isVampire()) {
-            $$1 /= 2;
+            if (mb instanceof net.minecraft.world.entity.animal.horse.AbstractHorse) {
+                // Horses retain their native six-block tolerance and half damage multiplier.
+                $$0 *= 0.5F;
+            } else {
+                $$1 *= 0.5F;
+            }
             adj = true;
         }
         if (this.roundabout$hasDiverLegs()) {
@@ -5369,9 +5374,10 @@ public abstract class StandUserEntity extends Entity implements StandUser {
         if (this.getType().is(EntityTypeTags.FALL_DAMAGE_IMMUNE) || roundabout$isBubbleEncased()) {
             return 0;
         } else {
-            MobEffectInstance jumpEffect = this.getEffect(MobEffects.JUMP);
-            float jumpLevel = jumpEffect == null ? 0.0F : (float) (jumpEffect.getAmplifier() + 1);
-            return Mth.ceil(((roundabout$getGravity(blockmultiplier)) - 3.0F - jumpLevel) * fallLength);
+            // Jump Boost and species-specific fall tolerance are attributes in 1.21.
+            double safeDistance = this.getAttributeValue(Attributes.SAFE_FALL_DISTANCE);
+            double multiplier = this.getAttributeValue(Attributes.FALL_DAMAGE_MULTIPLIER);
+            return Mth.ceil((roundabout$getGravity(blockmultiplier) - safeDistance) * fallLength * multiplier);
         }
     }
 

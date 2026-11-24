@@ -26,8 +26,8 @@ public class TimeStopChestBlock {
      * Most people honestly won't notice this detail but during the month of time stop,
      * it was decided that we would be super elaborate as to make the ability feel bugless**/
 
-    @Inject(method = "use", at = @At(value = "HEAD"), cancellable = true)
-    protected void roundabout$OpenChest(BlockState $$0, Level $$1, BlockPos $$2, Player $$3, InteractionHand $$4, BlockHitResult $$5, CallbackInfoReturnable<InteractionResult> ci) {
+    @Inject(method = "useWithoutItem", at = @At(value = "HEAD"), cancellable = true)
+    protected void roundabout$OpenChest(BlockState $$0, Level $$1, BlockPos $$2, Player $$3, BlockHitResult $$5, CallbackInfoReturnable<InteractionResult> ci) {
         if (!$$1.isClientSide) {
             if (((TimeStop)$$1).inTimeStopRange($$2)) {
                 ((TimeStop) $$1).streamTileEntityTSToCLient($$2);

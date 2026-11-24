@@ -18,7 +18,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(MeleeAttackGoal.class)
 public abstract class GravityMeleeAttackGoalMixin {
-    @Shadow protected abstract double getAttackReachSqr(LivingEntity livingEntity);
 
     @Shadow private int ticksUntilNextAttack;
 
@@ -27,12 +26,12 @@ public abstract class GravityMeleeAttackGoalMixin {
     @Shadow @Final protected PathfinderMob mob;
 
     @Inject(
-            method = "checkAndPerformAttack(Lnet/minecraft/world/entity/LivingEntity;D)V",
+            method = "checkAndPerformAttack(Lnet/minecraft/world/entity/LivingEntity;)V",
             at = @At(
                     value = "HEAD"
             ),
             cancellable = true)
-    private void rdbt$checkAndPerformAttack(LivingEntity $$0, double $$1, CallbackInfo ci) {
+    private void rdbt$checkAndPerformAttack(LivingEntity $$0, CallbackInfo ci) {
         if (PowerTypes.isInADifferentExistence($$0,mob)){
             ci.cancel();
             return;
@@ -57,7 +56,9 @@ public abstract class GravityMeleeAttackGoalMixin {
         if (MainUtil.canActuallyHitInvolved2(this.mob,$$0)) {
             ci.cancel();
 
-            double $$2 = this.getAttackReachSqr($$0);
+            // Preserve the stand-specific reach extension for differently oriented targets.
+            double $$1 = this.mob.distanceToSqr($$0);
+            double $$2 = Math.pow(this.mob.getBbWidth() * 2.0, 2) + $$0.getBbWidth();
             if (Math.sqrt($$1) <= (Math.sqrt($$2) + 2) && this.ticksUntilNextAttack <= 0) {
                 this.resetAttackCooldown();
                 this.mob.swing(InteractionHand.MAIN_HAND);
