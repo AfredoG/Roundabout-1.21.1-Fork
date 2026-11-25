@@ -31,7 +31,6 @@ import net.hydra.jojomod.entity.projectile.SoftAndWetBubbleEntity;
 import net.hydra.jojomod.entity.projectile.SoftAndWetPlunderBubbleEntity;
 import net.hydra.jojomod.entity.stand.*;
 import net.hydra.jojomod.entity.substand.EncasementBubbleEntity;
-import net.hydra.jojomod.entity.substand.MoldSporesEntity;
 import net.hydra.jojomod.entity.visages.CloneEntity;
 import net.hydra.jojomod.entity.visages.JojoNPC;
 import net.hydra.jojomod.event.ModEffects;
@@ -1449,9 +1448,9 @@ public class MainUtil {
             if (su.roundabout$getStandPowers() instanceof PowersSilverChariot PSC && PowerTypes.hasStandActive(pl) && PowerTypes.hasHandsActive(pl)) {
                 if (ES == EquipmentSlot.MAINHAND) {
                     if (PSC.self.getMainArm() == HumanoidArm.RIGHT) {
-                        return ItemStack.EMPTY;
+                        // return ItemStack.EMPTY;
                     } else if (PSC.self.getMainArm() == HumanoidArm.LEFT) {
-                        return ItemStack.EMPTY;
+                        // return ItemStack.EMPTY;
                     }
                 }
             }
@@ -2837,7 +2836,8 @@ public class MainUtil {
                 || sauce.is(ModDamageTypes.DISTORTION_VIRUS)
                 || sauce.is(ModDamageTypes.POD_BITE)
                 || sauce.is(ModDamageTypes.BITES_THE_DUST)
-                || sauce.is(ModDamageTypes.BRAMBLE)){
+                || sauce.is(ModDamageTypes.BRAMBLE)
+                || sauce.is(ModDamageTypes.GER_STAND)){
             return true;
         }
         return false;
@@ -2868,7 +2868,8 @@ public class MainUtil {
                 || sauce.is(ModDamageTypes.EXPLOSIVE_STAND) || sauce.is(ModDamageTypes.HEEL_SPIKE) ||
                 sauce.is(ModDamageTypes.CORPSE_ARROW) || sauce.is(ModDamageTypes.STAND_RUSH)
                 || sauce.is(ModDamageTypes.CROSSFIRE) ||
-                sauce.is(ModDamageTypes.CORPSE_EXPLOSION) || sauce.is(ModDamageTypes.BRAMBLE)) {
+                sauce.is(ModDamageTypes.CORPSE_EXPLOSION) || sauce.is(ModDamageTypes.BRAMBLE)
+                || sauce.is(ModDamageTypes.GER_STAND)) {
             return true;
         }
         return false;
@@ -3003,15 +3004,24 @@ public class MainUtil {
     }
 
     public static boolean isSpecialEffect(MobEffect value) {
-        return value.equals(ModEffects.BLEED) || value.equals(ModEffects.FACELESS)
-                || value.equals(ModEffects.BANISH) || value.equals(ModEffects.WARDING) || value.equals(ModEffects.HEX)
-                || value.equals(ModEffects.DOOMED) || value.equals(ModEffects.DOOM_IMMUNITY)
-                || value.equals(ModEffects.SWITCH) || value.equals(ModEffects.STAND_VIRUS) ||
-                value.equals(ModEffects.IMPRINTING) || value.equals(ModEffects.SWAPPED) ||
-                value.equals(ModEffects.SINGE)
-                || value.equals(ModEffects.STAND_MELTING) ||
-                value.equals(ModEffects.CAPTURING_LOVE) || value.equals(ModEffects.MELTING)
-                || value.equals(ModEffects.MOLD) || value.equals(ModEffects.STITCHED) || value.equals(ModEffects.RECONSTRUCTION);
+        return value.equals(ModEffects.BLEED)
+                || value.equals(ModEffects.FACELESS)
+                || value.equals(ModEffects.BANISH)
+                || value.equals(ModEffects.WARDING)
+                || value.equals(ModEffects.HEX)
+                || value.equals(ModEffects.DOOMED)
+                || value.equals(ModEffects.DOOM_IMMUNITY)
+                || value.equals(ModEffects.SWITCH)
+                || value.equals(ModEffects.STAND_VIRUS)
+                || value.equals(ModEffects.IMPRINTING)
+                || value.equals(ModEffects.SWAPPED)
+                || value.equals(ModEffects.SINGE)
+                || value.equals(ModEffects.STAND_MELTING)
+                || value.equals(ModEffects.CAPTURING_LOVE) || value.equals(ModEffects.MELTING)
+                || value.equals(ModEffects.MOLD)
+                || value.equals(ModEffects.STITCHED)
+                || value.equals(ModEffects.INFINITE_SPIN)
+                || value.equals(ModEffects.RECONSTRUCTION);
     }
 
     public static boolean hidesPotionEffectSwirl(MobEffect value) {

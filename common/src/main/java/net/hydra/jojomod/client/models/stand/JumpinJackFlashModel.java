@@ -2,6 +2,8 @@
 package net.hydra.jojomod.client.models.stand;
 
 import net.hydra.jojomod.client.models.stand.animations.JumpinJackFlashAnimations;
+import net.hydra.jojomod.event.powers.StandUser;
+import net.hydra.jojomod.stand.powers.PowersJumpinJackFlash;
 import net.hydra.jojomod.entity.stand.JumpinJackFlashEntity;
 import net.hydra.jojomod.entity.stand.FollowingStandEntity;
 import net.hydra.jojomod.entity.stand.StandEntity;
@@ -439,6 +441,24 @@ public class JumpinJackFlashModel<T extends FollowingStandEntity> extends StandM
         left_spin_on.yRot = -spin;
     }
 
+    private void jjf$applyArmsMode(T entity) {
+        if (!(entity instanceof JumpinJackFlashEntity jjf)) {
+            return;
+        }
+        boolean armsMode = jjf.jjf$isArmsMode();
+        head.visible = !armsMode;
+        legs.visible = !armsMode;
+        upper_chest_only.visible = !armsMode;
+        lower_chest.visible = !armsMode;
+        boolean active = jjf.getAnimation() == JumpinJackFlashEntity.JJF_SHOOT_WINDUP_ANIMATION
+                || jjf.getAnimation() == JumpinJackFlashEntity.JJF_SHOOT_LOOP_ANIMATION;
+        if (entity.getUser() instanceof StandUser user
+                && user.roundabout$getStandPowers() instanceof PowersJumpinJackFlash powers) {
+            active = active || powers.jjf$isUsingLauncherClient();
+        }
+        right_arm.visible = !armsMode || active;
+        left_arm.visible = !armsMode || active;
+    }
     @Override
     public void setupAnim(
             T entity,
@@ -460,6 +480,8 @@ public class JumpinJackFlashModel<T extends FollowingStandEntity> extends StandM
         defaultModifiers(entity);
         defaultAnimations(entity, ageInTicks, 1.0F);
         if (entity instanceof JumpinJackFlashEntity jjf) {
+            this.animate(jjf.driftAnimationState, JumpinJackFlashAnimations.ZERO_G_DRIFT, ageInTicks);
+            this.animate(jjf.spitAnimationState, JumpinJackFlashAnimations.ZERO_G_SPIT, ageInTicks);
             boolean importedActive = jjf.jjfPunchAnimationState.isStarted()
                     || jjf.jjfShootWindupAnimationState.isStarted()
                     || jjf.jjfShootLoopAnimationState.isStarted();
@@ -478,5 +500,6 @@ public class JumpinJackFlashModel<T extends FollowingStandEntity> extends StandM
             jjf$applySpinAnimation(entity, ageInTicks);
         }
         jjf$applyForwardChargePose(entity, ageInTicks);
+        jjf$applyArmsMode(entity);
     }
 }
