@@ -8,6 +8,9 @@ import net.hydra.jojomod.util.gravity.RotationUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.multiplayer.ClientPacketListener;
+import net.minecraft.client.multiplayer.ClientCommonPacketListenerImpl;
+import net.minecraft.client.multiplayer.CommonListenerCookie;
+import net.minecraft.network.Connection;
 import net.minecraft.client.multiplayer.PlayerInfo;
 import net.minecraft.core.Direction;
 import net.minecraft.network.protocol.PacketUtils;
@@ -27,10 +30,10 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(value = ClientPacketListener.class, priority = 1001)
-public abstract class GravityClientPlayNetworkHandlerMixin {
-    @Shadow
-    @Final
-    private Minecraft minecraft;
+public abstract class GravityClientPlayNetworkHandlerMixin extends ClientCommonPacketListenerImpl {
+    protected GravityClientPlayNetworkHandlerMixin(Minecraft minecraft, Connection connection, CommonListenerCookie cookie) {
+        super(minecraft, connection, cookie);
+    }
 
     @Shadow
     @Final

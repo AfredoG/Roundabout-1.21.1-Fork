@@ -23,9 +23,9 @@ public class KillerQueenEntity extends FollowingStandEntity {
         super(entityType, world);
     }
 
-    protected static final EntityDataAccessor<Boolean> PLANTED_BITES_THE_DUST = SynchedEntityData.defineId(FollowingStandEntity.class,
+    protected static final EntityDataAccessor<Boolean> PLANTED_BITES_THE_DUST = SynchedEntityData.defineId(KillerQueenEntity.class,
             EntityDataSerializers.BOOLEAN);
-    protected static final EntityDataAccessor<Boolean> BUBBLE_SHIELD_ACTIVE = SynchedEntityData.defineId(FollowingStandEntity.class,
+    protected static final EntityDataAccessor<Boolean> BUBBLE_SHIELD_ACTIVE = SynchedEntityData.defineId(KillerQueenEntity.class,
             EntityDataSerializers.BOOLEAN);
 
 

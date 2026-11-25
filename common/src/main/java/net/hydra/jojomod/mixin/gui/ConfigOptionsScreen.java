@@ -24,10 +24,9 @@ public abstract class ConfigOptionsScreen extends Screen {
 
     /**Peacefully adds the config button to the options screen button list*/
     @Inject(method = "init", at = @At(value = "INVOKE",
-            target = "Lnet/minecraft/client/gui/layouts/GridLayout;arrangeElements()V",
-            shift = At.Shift.BEFORE),
-            locals = LocalCapture.CAPTURE_FAILHARD)
-    private void roundabout$init(CallbackInfo ci, GridLayout $$0, GridLayout.RowHelper $$1)
+            target = "Lnet/minecraft/client/gui/layouts/HeaderAndFooterLayout;addToContents(Lnet/minecraft/client/gui/layouts/LayoutElement;)Lnet/minecraft/client/gui/layouts/LayoutElement;",
+            shift = At.Shift.BEFORE))
+    private void roundabout$init(CallbackInfo ci, @com.llamalad7.mixinextras.sugar.Local GridLayout.RowHelper $$1)
     {
         if (!ClientConfig.getLocalInstance().configSettings.shouldShowConfigButton || !(this.lastScreen instanceof TitleScreen))
             return;

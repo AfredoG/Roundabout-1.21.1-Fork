@@ -37,20 +37,20 @@ public abstract class AchtungHumanoidArmorLayer<T extends LivingEntity, M extend
      *
      */
 
-    @Inject(method = "renderModel(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;ILnet/minecraft/world/item/ArmorItem;Lnet/minecraft/client/model/HumanoidModel;ZFFFLjava/lang/String;)V",
-            at = @At(value = "HEAD"), cancellable = true)
-    public void roundabout$RenderModelAchtung(PoseStack $$0, MultiBufferSource $$1,int $$2, ArmorItem $$3, A $$4,boolean $$5,
-    float $$6, float $$7, float $$8, String $$9, CallbackInfo ci){
+    @Inject(method = "renderModel(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;ILnet/minecraft/client/model/Model;ILnet/minecraft/resources/ResourceLocation;)V",
+            at = @At("HEAD"), cancellable = true)
+    private void roundabout$fadeArmor(PoseStack pose, MultiBufferSource buffers, int light,
+                                      net.minecraft.client.model.Model model, int color,
+                                      ResourceLocation texture, CallbackInfo ci) {
         float fade = ClientUtil.getThrowFadeToTheEther();
-        if (fade != 1) {
-            if (fade <= 0){
-                ci.cancel();
-                return;
-            }
-            VertexConsumer $$10 = $$1.getBuffer(RenderType.entityTranslucentCull(this.getArmorLocation($$3, $$5, $$9)));
-            $$4.renderToBuffer($$0, $$10, $$2, OverlayTexture.NO_OVERLAY, net.minecraft.util.FastColor.ARGB32.colorFromFloat(1.0F, $$6, $$7, $$8));
-            ci.cancel();
+        if (fade == 1.0F) return;
+        if (fade > 0.0F) {
+            int alpha = net.minecraft.util.Mth.clamp(Math.round((color >>> 24) * fade), 0, 255);
+            VertexConsumer vertices = buffers.getBuffer(RenderType.entityTranslucentCull(texture));
+            model.renderToBuffer(pose, vertices, light, OverlayTexture.NO_OVERLAY,
+                    (alpha << 24) | (color & 0x00FFFFFF));
         }
+        ci.cancel();
     }
 
     @Inject(method = "render(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;ILnet/minecraft/world/entity/LivingEntity;FFFFFF)V",
@@ -75,5 +75,4 @@ public abstract class AchtungHumanoidArmorLayer<T extends LivingEntity, M extend
         super($$0);
     }
 
-    @Shadow protected abstract ResourceLocation getArmorLocation(ArmorItem $$0, boolean $$1, @Nullable String $$2);
 }

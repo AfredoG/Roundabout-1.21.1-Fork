@@ -100,9 +100,9 @@ public abstract class MouseHandlerMixin {
      *
      * The class isn't super accessible so this mixin uses a lot of base code*/
 
-    @Inject(method = "turnPlayer()V",
+    @Inject(method = "turnPlayer(D)V",
             at = @At(value = "HEAD"),cancellable = true)
-    private void roundabout$turnPlayer(CallbackInfo ci) {
+    private void roundabout$turnPlayer(double elapsed, CallbackInfo ci) {
         Player player = Minecraft.getInstance().player;
         if (player != null){
             //You cannot look around while totally frozen
@@ -123,9 +123,7 @@ public abstract class MouseHandlerMixin {
                 if (scopelvl > 0 || isUsingRifle) {
                     ci.cancel();
 
-                    double $$0 = Blaze3D.getTime();
-                    double $$1 = $$0 - this.lastMouseEventTime;
-                    this.lastMouseEventTime = $$0;
+                    double $$1 = elapsed;
                     if (this.isMouseGrabbed() && this.minecraft.isWindowActive()) {
                         double $$2 = this.minecraft.options.sensitivity().get() * 0.6F + 0.2F;
                         double $$3 = $$2 * $$2 * $$2;
@@ -212,18 +210,14 @@ public abstract class MouseHandlerMixin {
     private double mousePressedTime;
     @Shadow
     @Final
-    private SmoothDouble smoothTurnX = new SmoothDouble();
+    private SmoothDouble smoothTurnX;
     @Shadow
     @Final
-    private SmoothDouble smoothTurnY = new SmoothDouble();
+    private SmoothDouble smoothTurnY;
     @Shadow
     private double accumulatedDX;
     @Shadow
     private double accumulatedDY;
-    @Shadow
-    private double accumulatedScroll;
-    @Shadow
-    private double lastMouseEventTime = Double.MIN_VALUE;
     @Shadow
     private boolean mouseGrabbed;
     @Shadow

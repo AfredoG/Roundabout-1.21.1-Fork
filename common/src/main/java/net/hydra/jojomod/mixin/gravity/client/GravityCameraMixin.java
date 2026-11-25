@@ -60,7 +60,7 @@ public abstract class GravityCameraMixin {
     // Vanilla has the two-angle setter; NeoForge's three-angle setter also includes roll.
     // Only the setter that actually builds the quaternion contains this invocation.
     @Inject(
-            method = "setRotation*",
+            method = "setRotation(FFF)V",
             at = @At(value = "INVOKE", target = "Lorg/joml/Quaternionf;rotationYXZ(FFF)Lorg/joml/Quaternionf;",
                     remap = false, shift = At.Shift.AFTER)
     )

@@ -32,8 +32,6 @@ public abstract class TimeStopHumanoidArmorLayer<T extends LivingEntity, M exten
     /**This class is targetted so the last piece of equipment worn before a timestop is rendered in the timestop*/
 
     @Unique
-    public int roundabout$ArmorPhase;
-    @Unique
     public boolean roundabout$ModifyEntity;
     @Unique
     public @Nullable ItemStack roundabout$RenderChest;
@@ -48,7 +46,6 @@ public abstract class TimeStopHumanoidArmorLayer<T extends LivingEntity, M exten
     @Inject(method = "render(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;ILnet/minecraft/world/entity/LivingEntity;FFFFFF)V",
             at = @At(value = "HEAD"),cancellable = true)
     public void roundabout$Render(PoseStack $$0, MultiBufferSource $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, CallbackInfo ci) {
-        roundabout$ArmorPhase = 0;
         StandUserClient userclient = ((StandUserClient) $$3);
 
         if ($$3 instanceof Player PE) {
@@ -95,34 +92,22 @@ public abstract class TimeStopHumanoidArmorLayer<T extends LivingEntity, M exten
             roundabout$ModifyEntity = false;
         }
     }
-    @ModifyVariable(method = "renderArmorPiece", at = @At(value = "STORE"), ordinal = 0)
-    private ItemStack roundabout$renderArmorPiece(ItemStack $$0) {
-        if (roundabout$ModifyEntity) {
-            ItemStack rewrite;
-            roundabout$ArmorPhase++;
-            if (roundabout$ArmorPhase == 1){
-                if (roundabout$RenderChest != null) {
-                    return roundabout$RenderChest;
-                }
-            } else if (roundabout$ArmorPhase == 2){
-                if (roundabout$RenderLegs != null) {
-                    return roundabout$RenderLegs;
-                }
-            } else if (roundabout$ArmorPhase == 3){
-                if (roundabout$RenderBoots != null) {
-                    return roundabout$RenderBoots;
-                }
-            } else {
-                if (roundabout$RenderHead != null) {
-                    return roundabout$RenderHead;
-                }
-            }
-            return $$0;
-        } else {
-            return $$0;
-        }
+    @com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation(
+            method = "renderArmorPiece(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/entity/EquipmentSlot;ILnet/minecraft/client/model/HumanoidModel;FFFFFF)V",
+            at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/LivingEntity;getItemBySlot(Lnet/minecraft/world/entity/EquipmentSlot;)Lnet/minecraft/world/item/ItemStack;"))
+    private ItemStack roundabout$frozenArmor(LivingEntity entity, EquipmentSlot slot,
+            com.llamalad7.mixinextras.injector.wrapoperation.Operation<ItemStack> original) {
+        ItemStack current = original.call(entity, slot);
+        if (!roundabout$ModifyEntity) return current;
+        ItemStack frozen = switch (slot) {
+            case CHEST -> roundabout$RenderChest;
+            case LEGS -> roundabout$RenderLegs;
+            case FEET -> roundabout$RenderBoots;
+            case HEAD -> roundabout$RenderHead;
+            default -> null;
+        };
+        return frozen != null ? frozen : current;
     }
-
 
     /**Shadows, ignore
      * -------------------------------------------------------------------------------------------------------------

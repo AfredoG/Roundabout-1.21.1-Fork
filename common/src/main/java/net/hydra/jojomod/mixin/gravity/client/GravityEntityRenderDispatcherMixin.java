@@ -44,7 +44,7 @@ public abstract class GravityEntityRenderDispatcherMixin {
     private boolean shouldRenderShadow;
 
     @Shadow
-    private static void shadowVertex(PoseStack.Pose entry, VertexConsumer vertices, float alpha, float x, float y, float z, float u, float v) {}
+    private static void shadowVertex(PoseStack.Pose entry, VertexConsumer vertices, int color, float x, float y, float z, float u, float v) {}
 
     @Inject(
             method = "render(Lnet/minecraft/world/entity/Entity;DDDFFLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;I)V",
@@ -168,10 +168,10 @@ public abstract class GravityEntityRenderDispatcherMixin {
                         float minV = -(float) playerRelNN.z / 2.0F / radius + 0.5F;
                         float maxV = -(float) playerRelPP.z / 2.0F / radius + 0.5F;
 
-                        shadowVertex(entry, vertices, alpha, (float) relNN.x, (float) relNN.y, (float) relNN.z, minU, minV);
-                        shadowVertex(entry, vertices, alpha, (float) relNP.x, (float) relNP.y, (float) relNP.z, minU, maxV);
-                        shadowVertex(entry, vertices, alpha, (float) relPP.x, (float) relPP.y, (float) relPP.z, maxU, maxV);
-                        shadowVertex(entry, vertices, alpha, (float) relPN.x, (float) relPN.y, (float) relPN.z, maxU, minV);
+                        shadowVertex(entry, vertices, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, 1, 1, 1), (float) relNN.x, (float) relNN.y, (float) relNN.z, minU, minV);
+                        shadowVertex(entry, vertices, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, 1, 1, 1), (float) relNP.x, (float) relNP.y, (float) relNP.z, minU, maxV);
+                        shadowVertex(entry, vertices, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, 1, 1, 1), (float) relPP.x, (float) relPP.y, (float) relPP.z, maxU, maxV);
+                        shadowVertex(entry, vertices, net.minecraft.util.FastColor.ARGB32.colorFromFloat(alpha, 1, 1, 1), (float) relPN.x, (float) relPN.y, (float) relPN.z, maxU, minV);
                     }
                 }
             }
@@ -181,13 +181,13 @@ public abstract class GravityEntityRenderDispatcherMixin {
 
 
     @ModifyVariable(
-            method = "renderHitbox(Lcom/mojang/blaze3d/vertex/PoseStack;Lcom/mojang/blaze3d/vertex/VertexConsumer;Lnet/minecraft/world/entity/Entity;F)V",
+            method = "renderHitbox(Lcom/mojang/blaze3d/vertex/PoseStack;Lcom/mojang/blaze3d/vertex/VertexConsumer;Lnet/minecraft/world/entity/Entity;FFFF)V",
             at = @At(
                     value = "STORE"
             ),
             ordinal = 0
     )
-    private static AABB rdbt$renderHitboxAAB(AABB box,PoseStack matrices, VertexConsumer vertices, Entity entity, float tickDelta) {
+    private static AABB rdbt$renderHitboxAAB(AABB box,PoseStack matrices, VertexConsumer vertices, Entity entity, float tickDelta, float red, float green, float blue) {
         Direction gravityDirection = GravityAPI.getGravityDirection(entity);
         if (gravityDirection == Direction.DOWN) {
             return box;
@@ -197,13 +197,13 @@ public abstract class GravityEntityRenderDispatcherMixin {
     }
 
     @ModifyVariable(
-            method = "renderHitbox(Lcom/mojang/blaze3d/vertex/PoseStack;Lcom/mojang/blaze3d/vertex/VertexConsumer;Lnet/minecraft/world/entity/Entity;F)V",
+            method = "renderHitbox(Lcom/mojang/blaze3d/vertex/PoseStack;Lcom/mojang/blaze3d/vertex/VertexConsumer;Lnet/minecraft/world/entity/Entity;FFFF)V",
             at = @At(
                     value = "STORE"
             ),
             ordinal = 0
     )
-    private static Vec3 rdbt$renderHitboxViewVec(Vec3 viewVector,PoseStack matrices, VertexConsumer vertices, Entity entity, float tickDelta) {
+    private static Vec3 rdbt$renderHitboxViewVec(Vec3 viewVector,PoseStack matrices, VertexConsumer vertices, Entity entity, float tickDelta, float red, float green, float blue) {
         Direction gravityDirection = GravityAPI.getGravityDirection(entity);
         if (gravityDirection == Direction.DOWN) {
             return viewVector;

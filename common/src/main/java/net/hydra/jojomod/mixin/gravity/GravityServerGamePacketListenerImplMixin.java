@@ -12,6 +12,9 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.network.ServerGamePacketListenerImpl;
+import net.minecraft.server.network.ServerCommonPacketListenerImpl;
+import net.minecraft.server.network.CommonListenerCookie;
+import net.minecraft.network.Connection;
 import net.minecraft.util.Mth;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -36,18 +39,19 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 
 @Mixin(value = ServerGamePacketListenerImpl.class, priority = 999)
-public abstract class GravityServerGamePacketListenerImplMixin {
+public abstract class GravityServerGamePacketListenerImplMixin extends ServerCommonPacketListenerImpl {
+    protected GravityServerGamePacketListenerImplMixin(MinecraftServer server, Connection connection, CommonListenerCookie cookie) {
+        super(server, connection, cookie);
+    }
 
 
     @Shadow protected abstract boolean isPlayerCollidingWithAnythingNew(LevelReader levelReader, AABB aABB, double d, double e, double f);
 
-    @Shadow @Final private MinecraftServer server;
 
     @Shadow protected abstract boolean noBlocksAround(Entity entity);
 
     @Shadow private boolean clientIsFloating;
 
-    @Shadow protected abstract boolean isSingleplayerOwner();
 
     @Shadow @Final
     static Logger LOGGER;
@@ -63,7 +67,6 @@ public abstract class GravityServerGamePacketListenerImplMixin {
 
     @Shadow private int tickCount;
 
-    @Shadow public abstract void disconnect(Component component);
 
     @Shadow
     private static boolean containsInvalidValues(double d, double e, double f, float g, float h) {

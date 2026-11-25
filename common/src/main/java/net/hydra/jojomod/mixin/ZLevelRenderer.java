@@ -846,14 +846,14 @@ public abstract class ZLevelRenderer implements ILevelRenderer {
             return;
     }
 
-    @Inject(method = "renderChunkLayer", at = @At("HEAD"))
-    private void roundabout$renderChunkLayer(RenderType renderType, PoseStack matrices, double cameraX, double cameraY, double cameraZ, Matrix4f positionMatrix, CallbackInfo ci)
+    @Inject(method = "renderSectionLayer", at = @At("HEAD"))
+    private void roundabout$renderChunkLayer(RenderType renderType, double cameraX, double cameraY, double cameraZ, Matrix4f modelViewMatrix, Matrix4f projectionMatrix, CallbackInfo ci)
     {
         if (renderType == RenderType.solid())
         {
             RPostShaderRegistry.InverseProjectionMatrix.identity();
-            RPostShaderRegistry.InverseProjectionMatrix.mul(positionMatrix);
-            RPostShaderRegistry.InverseProjectionMatrix.mul(matrices.last().pose());
+            RPostShaderRegistry.InverseProjectionMatrix.mul(projectionMatrix);
+            RPostShaderRegistry.InverseProjectionMatrix.mul(modelViewMatrix);
             RPostShaderRegistry.InverseProjectionMatrix.invert();
         }
     }

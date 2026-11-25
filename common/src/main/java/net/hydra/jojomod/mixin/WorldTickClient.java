@@ -467,7 +467,7 @@ public abstract class WorldTickClient extends Level implements IClientLevel {
             return;
         }
     }
-    @Inject(method = "playLocalSound", at = @At(value = "HEAD"), cancellable = true)
+    @Inject(method = "playLocalSound(DDDLnet/minecraft/sounds/SoundEvent;Lnet/minecraft/sounds/SoundSource;FFZ)V", at = @At(value = "HEAD"), cancellable = true)
     private void roundabout$playLocalSound(double $$0, double $$1, double $$2, SoundEvent $$3, SoundSource $$4, float $$5, float $$6, boolean $$7, CallbackInfo ci) {
         BlockPos bpos = new BlockPos((int) $$0, (int) $$1, (int) $$2);
         if (ClientUtil.getScreenFreeze()){

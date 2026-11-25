@@ -27,8 +27,8 @@ public class ZEntityRenderer<T extends Entity> {
     }
 
     /**Cancel original nametag when disguised*/
-    @Inject(method = "renderNameTag(Lnet/minecraft/world/entity/Entity;Lnet/minecraft/network/chat/Component;Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;I)V", at = @At("HEAD"), cancellable = true)
-    private void rdbt$cancelNameTagWhenDisguised(T entity, Component displayName, PoseStack poseStack, MultiBufferSource buffer, int packedLight, CallbackInfo ci) {
+    @Inject(method = "renderNameTag(Lnet/minecraft/world/entity/Entity;Lnet/minecraft/network/chat/Component;Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;IF)V", at = @At("HEAD"), cancellable = true)
+    private void rdbt$cancelNameTagWhenDisguised(T entity, Component displayName, PoseStack poseStack, MultiBufferSource buffer, int packedLight, float partialTick, CallbackInfo ci) {
         if (entity instanceof StandUser su && su.roundabout$isDisguised()) {
             com.mojang.authlib.GameProfile profile = su.roundabout$getDisguiseProfile();
             // compares nametag to the disguised nametag, if it's not the same that it gets deleted

@@ -24,15 +24,15 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(MobRenderer.class)
-public abstract class JusticeMobRenderer<T extends Mob, M extends EntityModel<T>> extends LivingEntityRenderer<T, M> {
+@Mixin(LivingEntityRenderer.class)
+public abstract class JusticeMobRenderer {
 
     /**Disguises hide the base mobs and render new ones instead*/
     @Unique
     Mob roundabout$shapeShift = null;
-    @Inject(method = "render(Lnet/minecraft/world/entity/Mob;FFLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;I)V",
+    @Inject(method = "render(Lnet/minecraft/world/entity/LivingEntity;FFLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;I)V",
             at = @At(value = "HEAD"),cancellable = true)
-    private void roundabout$render(T $$0, float $$1, float $$2, PoseStack $$3, MultiBufferSource $$4, int $$5, CallbackInfo ci) {
+    private void roundabout$render(LivingEntity $$0, float $$1, float $$2, PoseStack $$3, MultiBufferSource $$4, int $$5, CallbackInfo ci) {
 
         if ($$0 instanceof Creeper) {
             if (((IJusticeCreeper) $$0).roundabout$isTransformed()){
@@ -51,11 +51,11 @@ public abstract class JusticeMobRenderer<T extends Mob, M extends EntityModel<T>
     }
 
     @Unique
-    public void roundabout$doTheThing(T $$0, float $$1, float $$2, PoseStack $$3, MultiBufferSource $$4, int $$5){
+    public void roundabout$doTheThing(LivingEntity $$0, float $$1, float $$2, PoseStack $$3, MultiBufferSource $$4, int $$5){
         if (roundabout$shapeShift != null) {
             ItemStack tem = $$0.getMainHandItem();
             roundabout$shapeShift.setAggressive(!tem.isEmpty() && tem.getMaxDamage() > 0);
-            roundabout$renderEntityForce1($$1, $$2, $$3, $$4, roundabout$shapeShift, $$0, $$5);
+            roundabout$renderEntityForce1($$1, $$2, $$3, $$4, roundabout$shapeShift, (Mob) $$0, $$5);
         }
     }
     @Unique
@@ -125,7 +125,5 @@ public abstract class JusticeMobRenderer<T extends Mob, M extends EntityModel<T>
      * -------------------------------------------------------------------------------------------------------------
      * */
 
-    public JusticeMobRenderer(EntityRendererProvider.Context $$0, M $$1, float $$2) {
-        super($$0, $$1, $$2);
-    }
+
 }

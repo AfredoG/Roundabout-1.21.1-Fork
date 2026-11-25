@@ -66,12 +66,12 @@ public class MixinAudit {
             for(String target:targets) {
                 if(read(target)==null) {missing("TARGET",mixin,target,"","","");continue;}
                 for(FieldNode f:c.fields)for(var a:annotations(f.visibleAnnotations,f.invisibleAnnotations))if(a.desc.endsWith("/Shadow;")) {
-                    if(!member(target,f.name,f.desc,true,true))missing("SHADOW_FIELD",mixin,target,f.name,f.desc,"");
+                    if(!member(target,f.name,f.desc,true,false))missing("SHADOW_FIELD",mixin,target,f.name,f.desc,member(target,f.name,f.desc,true,true) ? "Inherited field: use the target superclass or an accessor on its declaring class" : "");
                 }
                 for(MethodNode m:c.methods)for(var a:annotations(m.visibleAnnotations,m.invisibleAnnotations)) {
                     if(a.desc.endsWith("/Shadow;")) {
                         String n=m.name.replaceFirst("^shadow\\$","");
-                        if(!member(target,n,m.desc,false,true))missing("SHADOW_METHOD",mixin,target,n,m.desc,"");
+                        if(!member(target,n,m.desc,false,false))missing("SHADOW_METHOD",mixin,target,n,m.desc,member(target,n,m.desc,false,true) ? "Inherited method: check superclass access or an accessor" : "");
                     }
                     Object points=value(a,"at",List.of());
                     List<?> ats=points instanceof AnnotationNode an?List.of(an):points instanceof List<?> list?list:List.of();

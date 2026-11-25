@@ -233,7 +233,7 @@ public class MoldSporesEntity extends StandEntity {
      * USER_ID is the mob id of the stand's user. Needs to be stored as an int,
      * because clients do not have access to UUIDS.
      */
-    protected static final EntityDataAccessor<Integer> USER_ID = SynchedEntityData.defineId(SeperatedLegsEntity.class,
+    protected static final EntityDataAccessor<Integer> USER_ID = SynchedEntityData.defineId(MoldSporesEntity.class,
             EntityDataSerializers.INT);
 
 

@@ -29,8 +29,8 @@ public abstract class CreamCancelPlayerRendererMixin {
         }
     }
 
-    @Inject(method = "renderHitbox(Lcom/mojang/blaze3d/vertex/PoseStack;Lcom/mojang/blaze3d/vertex/VertexConsumer;Lnet/minecraft/world/entity/Entity;F)V", at = @At("HEAD"), cancellable = true)
-    private static void roundabout$RenderHitboxes(PoseStack $$0, VertexConsumer $$1, Entity $$2, float $$3, CallbackInfo ci) {
+    @Inject(method = "renderHitbox(Lcom/mojang/blaze3d/vertex/PoseStack;Lcom/mojang/blaze3d/vertex/VertexConsumer;Lnet/minecraft/world/entity/Entity;FFFF)V", at = @At("HEAD"), cancellable = true)
+    private static void roundabout$RenderHitboxes(PoseStack $$0, VertexConsumer $$1, Entity $$2, float $$3, float red, float green, float blue, CallbackInfo ci) {
         if ($$2 instanceof Player pl && pl instanceof StandUser standUser) {
             if (standUser.roundabout$getStandPowers() instanceof PowersCream cream && cream.insideVoidInt > 0) {
                 ci.cancel();

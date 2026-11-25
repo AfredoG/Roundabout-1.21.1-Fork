@@ -5,7 +5,7 @@ Imported on 2026-11-13 into AfredoG/Roundabout-1.21.1-Fork, branch `port/neoforg
 ## Status
 
 This is an INCOMPLETE development port: Minecraft 1.21.1, NeoForge 21.1.265, Java 21, Gradle 8.14.3.
-Latest compilation: 0 Java errors and 18 warnings; full build succeeds. The dedicated server now loads a new world, reaches Done, runs commands and six spawned entities, saves and stops normally. See server-startup.log. Client startup has not been verified: the static audit retains 37 client-side candidates, not confirmed error counts. No playable release is claimed.
+Latest clean build: 0 Java errors and 18 warnings; both JARs have the correct single access transformer and all 504 configured mixin classes. The dedicated server loads and saves worlds. A real client now joins a world, renders armor and stands, summons Star Platinum, opens its menu, activates/resumes time stop and switches to Killer Queen. A separate dedicated server also accepts a client over TCP; summoning creates Star Platinum on the server and renders it on the client, including time-stop/resume effects. A full client restart preserves the player's equipment and chosen stand. Static MixinAudit reports no candidates; this is not proof of complete runtime compatibility. See CLIENT_SMOKE_TEST.md, the runtime logs and screenshots. This is an early interactive development build, not a completed release.
 See BUILD_STATUS.md and build-errors.txt for diagnostics and remaining work.
 This import changes no mod source code and does not constitute a new build test.
 

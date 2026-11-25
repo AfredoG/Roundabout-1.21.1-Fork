@@ -20,7 +20,7 @@ public class BCTank extends BCTroop{
                 0.12F).add(Attributes.MAX_HEALTH, 12.0).add(Attributes.ATTACK_DAMAGE, 7.0);
     }
 
-    private static final EntityDataAccessor<Byte> CURRENT_ANIM = SynchedEntityData.defineId(BCSoldier.class, EntityDataSerializers.BYTE);
+    private static final EntityDataAccessor<Byte> CURRENT_ANIM = SynchedEntityData.defineId(BCTank.class, EntityDataSerializers.BYTE);
 
 
     public static final byte

@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(ItemInHandLayer.class)
 public abstract class WhitesnakePlayerHeldItemMixin {
-    @Inject(method = "render", at = @At("HEAD"), cancellable = true)
+    @Inject(method = "render(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;ILnet/minecraft/world/entity/LivingEntity;FFFFFF)V", at = @At("HEAD"), cancellable = true)
     private void roundaboutWhitesnake$hideControlItems(PoseStack poseStack, MultiBufferSource buffers,
                                                        int light, LivingEntity entity, float limbSwing,
                                                        float limbSwingAmount, float partialTick,

@@ -52,13 +52,8 @@ public abstract class WhitesnakeControlMinecraftMixin {
         }
     }
 
-    @Inject(method = "clearLevel()V", at = @At("HEAD"))
-    private void roundaboutWhitesnake$clearLevel(CallbackInfo ci) {
-        WhitesnakeControlClient.clear();
-    }
-
-    @Inject(method = "clearLevel(Lnet/minecraft/client/gui/screens/Screen;)V", at = @At("HEAD"))
-    private void roundaboutWhitesnake$clearLevel(Screen screen, CallbackInfo ci) {
+    @Inject(method = "disconnect(Lnet/minecraft/client/gui/screens/Screen;Z)V", at = @At("HEAD"))
+    private void roundaboutWhitesnake$clearLevel(Screen screen, boolean transferring, CallbackInfo ci) {
         WhitesnakeControlClient.clear();
     }
 }

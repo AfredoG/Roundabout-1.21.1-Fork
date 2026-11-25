@@ -1,26 +1,18 @@
-
-Welcome to Gradle 8.14.3!
-
-Here are the highlights of this release:
- - Java 24 support
- - GraalVM Native Image toolchain selection
- - Enhancements to test reporting
- - Build Authoring improvements
-
-For more details see https://docs.gradle.org/8.14.3/release-notes.html
-
+JAVA_TOOL_OPTIONS: environment truststore/proxy settings omitted.
 To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.14.3/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
 Daemon will be stopped at the end of the build
+> Task :clean
 
 > Task :createMinecraftArtifacts
-Loaded 131 artifacts from neoforge/build/tmp/createMinecraftArtifacts/nfrt_artifact_manifest.properties
+JAVA_TOOL_OPTIONS: environment truststore/proxy settings omitted.
+Loaded 131 artifacts from <repo>/neoforge/build/tmp/createMinecraftArtifacts/nfrt_artifact_manifest.properties
 *** Started working on downloadJson
  ✓ Completed downloadJson in 0.02s
-*** Started working on downloadServer
 *** Started working on downloadClientMappings
+*** Started working on downloadServer
 *** Started working on downloadClient
- ✓ Completed downloadClient in 0.02s
- ✓ Completed downloadClientMappings in 0.02s
+ ✓ Completed downloadClientMappings in 0.03s
+ ✓ Completed downloadClient in 0.03s
  ✓ Completed downloadServer in 0.03s
 *** Started working on stripClient
  ♻ Used cache of stripClient in 0.00s
@@ -52,69 +44,62 @@ Loaded 131 artifacts from neoforge/build/tmp/createMinecraftArtifacts/nfrt_artif
  ♻ Used cache of compiledWithNeoForge in 0.00s
 *** Started working on sourcesAndCompiledWithNeoForge
  ♻ Used cache of sourcesAndCompiledWithNeoForge in 0.00s
-Performing periodic cache maintenance on build-tools/gradle-cache-checkpoint/caches/neoformruntime
-Cleaning intermediate results cache in build-tools/gradle-cache-checkpoint/caches/neoformruntime/intermediate_results
- Maximum age: 744h
- Maximum cache size: 10 GiB
- 35 files found
- 210 MiB overall size
- 0 expired keys found
-Total runtime: 1.01s
+Total runtime: 1.71s
 
 
 > Task :compileJava
-forge/src/main/java/net/hydra/jojomod/DataGenerators.java:19: warning: [removal] bus() in EventBusSubscriber has been deprecated and marked for removal
+<repo>/forge/src/main/java/net/hydra/jojomod/DataGenerators.java:19: warning: [removal] bus() in EventBusSubscriber has been deprecated and marked for removal
 @EventBusSubscriber(modid = Roundabout.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
                                                ^
-forge/src/main/java/net/hydra/jojomod/DataGenerators.java:19: warning: [removal] Bus in EventBusSubscriber has been deprecated and marked for removal
+<repo>/forge/src/main/java/net/hydra/jojomod/DataGenerators.java:19: warning: [removal] Bus in EventBusSubscriber has been deprecated and marked for removal
 @EventBusSubscriber(modid = Roundabout.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
                                                                        ^
-forge/src/main/java/net/hydra/jojomod/registry/ForgeCreativeTab.java:24: warning: [removal] bus() in EventBusSubscriber has been deprecated and marked for removal
+<repo>/forge/src/main/java/net/hydra/jojomod/registry/ForgeCreativeTab.java:24: warning: [removal] bus() in EventBusSubscriber has been deprecated and marked for removal
 @EventBusSubscriber(modid = Roundabout.MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
                                                ^
-forge/src/main/java/net/hydra/jojomod/registry/ForgeCreativeTab.java:24: warning: [removal] Bus in EventBusSubscriber has been deprecated and marked for removal
+<repo>/forge/src/main/java/net/hydra/jojomod/registry/ForgeCreativeTab.java:24: warning: [removal] Bus in EventBusSubscriber has been deprecated and marked for removal
 @EventBusSubscriber(modid = Roundabout.MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
                                                                        ^
-forge/src/main/java/net/hydra/jojomod/registry/ForgeItems.java:251: warning: [removal] initializeClient(Consumer<IClientItemExtensions>) in Item has been deprecated and marked for removal
+<repo>/forge/src/main/java/net/hydra/jojomod/registry/ForgeItems.java:251: warning: [removal] initializeClient(Consumer<IClientItemExtensions>) in Item has been deprecated and marked for removal
                 public void initializeClient(Consumer<IClientItemExtensions> consumer) {
                             ^
-forge/src/main/java/net/hydra/jojomod/registry/ForgeItems.java:456: warning: [removal] initializeClient(Consumer<IClientItemExtensions>) in Item has been deprecated and marked for removal
+<repo>/forge/src/main/java/net/hydra/jojomod/registry/ForgeItems.java:456: warning: [removal] initializeClient(Consumer<IClientItemExtensions>) in Item has been deprecated and marked for removal
                 public void initializeClient(Consumer<IClientItemExtensions> consumer) {
                             ^
-forge/src/main/java/net/hydra/jojomod/registry/ForgeBlocks.java:38: warning: [removal] bus() in EventBusSubscriber has been deprecated and marked for removal
+<repo>/forge/src/main/java/net/hydra/jojomod/registry/ForgeBlocks.java:38: warning: [removal] bus() in EventBusSubscriber has been deprecated and marked for removal
 @EventBusSubscriber(modid = Roundabout.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
                                                ^
-forge/src/main/java/net/hydra/jojomod/registry/ForgeBlocks.java:38: warning: [removal] Bus in EventBusSubscriber has been deprecated and marked for removal
+<repo>/forge/src/main/java/net/hydra/jojomod/registry/ForgeBlocks.java:38: warning: [removal] Bus in EventBusSubscriber has been deprecated and marked for removal
 @EventBusSubscriber(modid = Roundabout.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
                                                                        ^
-forge/src/main/java/net/hydra/jojomod/RoundaboutModForge.java:85: warning: [removal] bus() in EventBusSubscriber has been deprecated and marked for removal
+<repo>/forge/src/main/java/net/hydra/jojomod/RoundaboutModForge.java:85: warning: [removal] bus() in EventBusSubscriber has been deprecated and marked for removal
     @EventBusSubscriber(modid = Roundabout.MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
                                                    ^
-forge/src/main/java/net/hydra/jojomod/RoundaboutModForge.java:85: warning: [removal] Bus in EventBusSubscriber has been deprecated and marked for removal
+<repo>/forge/src/main/java/net/hydra/jojomod/RoundaboutModForge.java:85: warning: [removal] Bus in EventBusSubscriber has been deprecated and marked for removal
     @EventBusSubscriber(modid = Roundabout.MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
                                                                            ^
-forge/src/main/java/net/hydra/jojomod/registry/ForgeKeyInputs.java:16: warning: [removal] bus() in EventBusSubscriber has been deprecated and marked for removal
+<repo>/forge/src/main/java/net/hydra/jojomod/registry/ForgeKeyInputs.java:16: warning: [removal] bus() in EventBusSubscriber has been deprecated and marked for removal
 @EventBusSubscriber(modid = Roundabout.MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
                                                ^
-forge/src/main/java/net/hydra/jojomod/registry/ForgeKeyInputs.java:16: warning: [removal] Bus in EventBusSubscriber has been deprecated and marked for removal
+<repo>/forge/src/main/java/net/hydra/jojomod/registry/ForgeKeyInputs.java:16: warning: [removal] Bus in EventBusSubscriber has been deprecated and marked for removal
 @EventBusSubscriber(modid = Roundabout.MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
                                                                        ^
-forge/src/main/java/net/hydra/jojomod/registry/ForgeEvents.java:59: warning: [removal] bus() in EventBusSubscriber has been deprecated and marked for removal
+<repo>/forge/src/main/java/net/hydra/jojomod/registry/ForgeEvents.java:59: warning: [removal] bus() in EventBusSubscriber has been deprecated and marked for removal
 @EventBusSubscriber(modid = Roundabout.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
                                                ^
-forge/src/main/java/net/hydra/jojomod/registry/ForgeEvents.java:59: warning: [removal] Bus in EventBusSubscriber has been deprecated and marked for removal
+<repo>/forge/src/main/java/net/hydra/jojomod/registry/ForgeEvents.java:59: warning: [removal] Bus in EventBusSubscriber has been deprecated and marked for removal
 @EventBusSubscriber(modid = Roundabout.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
                                                                        ^
-forge/src/main/java/net/hydra/jojomod/registry/ClientForgeForgeEvents.java:9: warning: [removal] bus() in EventBusSubscriber has been deprecated and marked for removal
+<repo>/forge/src/main/java/net/hydra/jojomod/registry/ClientForgeForgeEvents.java:9: warning: [removal] bus() in EventBusSubscriber has been deprecated and marked for removal
 @EventBusSubscriber(modid = Roundabout.MOD_ID, value = Dist.CLIENT, bus = EventBusSubscriber.Bus.GAME)
                                                                     ^
-forge/src/main/java/net/hydra/jojomod/registry/ClientForgeForgeEvents.java:9: warning: [removal] Bus in EventBusSubscriber has been deprecated and marked for removal
+<repo>/forge/src/main/java/net/hydra/jojomod/registry/ClientForgeForgeEvents.java:9: warning: [removal] Bus in EventBusSubscriber has been deprecated and marked for removal
 @EventBusSubscriber(modid = Roundabout.MOD_ID, value = Dist.CLIENT, bus = EventBusSubscriber.Bus.GAME)
                                                                                             ^
-forge/src/main/java/net/hydra/jojomod/registry/ClientForgeEvents.java:62: warning: [removal] bus() in EventBusSubscriber has been deprecated and marked for removal
+<repo>/forge/src/main/java/net/hydra/jojomod/registry/ClientForgeEvents.java:62: warning: [removal] bus() in EventBusSubscriber has been deprecated and marked for removal
 @EventBusSubscriber(modid = Roundabout.MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
                                                ^
-forge/src/main/java/net/hydra/jojomod/registry/ClientForgeEvents.java:62: warning: [removal] Bus in EventBusSubscriber has been deprecated and marked for removal
+<repo>/forge/src/main/java/net/hydra/jojomod/registry/ClientForgeEvents.java:62: warning: [removal] Bus in EventBusSubscriber has been deprecated and marked for removal
 @EventBusSubscriber(modid = Roundabout.MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
                                                                        ^
 Note: Some input files use or override a deprecated API.
@@ -136,7 +121,20 @@ Note: Recompile with -Xlint:unchecked for details.
 > Task :check UP-TO-DATE
 > Task :build
 
-[Incubating] Problems report is available at: file://neoforge/build/reports/problems/problems-report.html
+> Task :downloadAssets
+JAVA_TOOL_OPTIONS: environment truststore/proxy settings omitted.
+Loaded 131 artifacts from <repo>/neoforge/build/tmp/downloadAssets/nfrt_artifact_manifest.properties
+Downloading asset index 17
+Using Minecraft asset root: <gradle-cache>/caches/neoformruntime/assets
+  ↓ https://piston-meta.mojang.com/v1/packages/cad0b8152ca4f766217470e74695403d76592f92/17.json
 
-BUILD SUCCESSFUL in 32s
-5 actionable tasks: 5 executed
+> Task :writeClientLegacyClasspath
+> Task :prepareClientRun
+> Task :writeServerLegacyClasspath
+> Task :prepareServerRun
+> Task :exportValidationLaunch
+
+[Incubating] Problems report is available at: file://<repo>/neoforge/build/reports/problems/problems-report.html
+
+BUILD SUCCESSFUL in 34s
+12 actionable tasks: 12 executed

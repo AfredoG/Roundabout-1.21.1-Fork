@@ -56,7 +56,7 @@ public class ZItemInHandLayer<T extends LivingEntity, M extends EntityModel<T> &
     @Unique
     public Entity stored$Ent;
 
-    @Inject(method = "render", at = @At(value = "HEAD"),cancellable = true)
+    @Inject(method = "render(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;ILnet/minecraft/world/entity/LivingEntity;FFFFFF)V", at = @At(value = "HEAD"),cancellable = true)
     public void roundabout$Render(PoseStack poseStack, MultiBufferSource buffer, int packedLight, T entity, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, CallbackInfo ci){
         stored$Ent = entity;
         IEntityAndData entityAndData = ((IEntityAndData) entity);
@@ -130,7 +130,7 @@ public class ZItemInHandLayer<T extends LivingEntity, M extends EntityModel<T> &
         }
     }
 
-    @ModifyVariable(method = "render", at = @At(value = "STORE"), ordinal = 0)
+    @ModifyVariable(method = "render(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;ILnet/minecraft/world/entity/LivingEntity;FFFFFF)V", at = @At(value = "STORE"), ordinal = 0)
     public ItemStack roundabout$Render2(ItemStack it){
         if (stored$Ent instanceof Player) {
             EquipmentSlot es;
@@ -164,7 +164,7 @@ public class ZItemInHandLayer<T extends LivingEntity, M extends EntityModel<T> &
         return it;
     }
 
-    @ModifyVariable(method = "render", at = @At(value = "STORE"), ordinal = 1)
+    @ModifyVariable(method = "render(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;ILnet/minecraft/world/entity/LivingEntity;FFFFFF)V", at = @At(value = "STORE"), ordinal = 1)
     public ItemStack roundabout$Render3(ItemStack it){
 
         if (stored$Ent instanceof Player) {

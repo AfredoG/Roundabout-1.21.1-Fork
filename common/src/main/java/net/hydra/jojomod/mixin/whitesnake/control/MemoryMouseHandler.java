@@ -1,6 +1,5 @@
 package net.hydra.jojomod.mixin.whitesnake.control;
 
-import com.mojang.blaze3d.Blaze3D;
 import net.hydra.jojomod.event.powers.whitesnake.disc.DiscItemData;
 import net.hydra.jojomod.event.powers.StandUser;
 import net.hydra.jojomod.client.WhitesnakeControlClient;
@@ -19,12 +18,12 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(MouseHandler.class)
 public abstract class MemoryMouseHandler {
-    @Inject(method = "turnPlayer()V", at = @At("HEAD"), cancellable = true)
-    private void roundabout$memoryControlsView(CallbackInfo ci) {
+    @Inject(method = "turnPlayer(D)V", at = @At("HEAD"), cancellable = true)
+    private void roundabout$memoryControlsView(double elapsed, CallbackInfo ci) {
         Entity stand = roundabout$getControlledStand();
         if (stand != null) {
             ci.cancel();
-            roundabout$turnControlledStand(stand);
+            roundabout$turnControlledStand(stand, elapsed);
             return;
         }
         if (minecraft.player != null && !DiscItemData.hasPlayerControl(minecraft.player)) {
@@ -32,10 +31,7 @@ public abstract class MemoryMouseHandler {
         }
     }
 
-    private void roundabout$turnControlledStand(Entity stand) {
-        double time = Blaze3D.getTime();
-        double elapsed = time - lastMouseEventTime;
-        lastMouseEventTime = time;
+    private void roundabout$turnControlledStand(Entity stand, double elapsed) {
         if (!isMouseGrabbed() || !minecraft.isWindowActive()) {
             accumulatedDX = 0.0D;
             accumulatedDY = 0.0D;
@@ -90,8 +86,6 @@ public abstract class MemoryMouseHandler {
     private double accumulatedDX;
     @Shadow
     private double accumulatedDY;
-    @Shadow
-    private double lastMouseEventTime;
     @Shadow
     public abstract boolean isMouseGrabbed();
 }

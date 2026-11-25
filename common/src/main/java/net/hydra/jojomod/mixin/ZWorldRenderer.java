@@ -56,7 +56,7 @@ public class ZWorldRenderer {
 
     @Shadow
     @Final
-    private Vector3d frustumPos = null;
+    private Vector3d frustumPos;
 
     @Shadow
     @Final
@@ -109,13 +109,7 @@ public class ZWorldRenderer {
         return $$1;
     }
 
-    @Inject(method = "renderClouds", at = @At(value = "HEAD"), cancellable = true)
-    private void roundabout$renderClouds(PoseStack $$0, Matrix4f $$1, float $$2, double $$3, double $$4, double $$5,
-            CallbackInfo ci) {
-
-    }
-
-    @ModifyVariable(method = "renderClouds(Lcom/mojang/blaze3d/vertex/PoseStack;Lorg/joml/Matrix4f;FDDD)V", at = @At(value = "HEAD"), ordinal = 0)
+    @ModifyVariable(method = "renderClouds(Lcom/mojang/blaze3d/vertex/PoseStack;Lorg/joml/Matrix4f;Lorg/joml/Matrix4f;FDDD)V", at = @At(value = "HEAD"), ordinal = 0)
     private float roundabout$TSCloudCancel(float $$2) {
         LivingEntity player = Minecraft.getInstance().player;
         if (player != null) {
